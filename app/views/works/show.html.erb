@@ -1,2 +1,7 @@
 <h1> Here is info on one piece of media </h1>
-<h1><%=@work.title %></h1>
+<section>
+<h2><%=@work.title %></h2>
+  <h3> <%= "Created by: #{@work.creator}"%></h>
+  <h3> <%= "Published: #{@work.publication_year}"%> </h3>
+  <h3> <%= @work.description %></h3>
+</section>
