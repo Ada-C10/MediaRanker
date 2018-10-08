@@ -1,2 +1,33 @@
-<h1>Works#index</h1>
-<p>Find me in app/views/works/index.html.erb</p>
+<body>
+  <header>
+    <h1>Total Works </h1>
+  </header>
+  <main>
+    <section class="movies">
+      <h2>Movies</h2>
+      <% movies = Work.find_by(category: "movie") %>
+      <% if movies.nil? %>
+        <%= puts "No movies" if movies.nil? %>
+      <% else %>
+        <% movies.each do |movie| %>
+          <p><%= movie.title %></p>
+        <% end %>
+      <% end %>
+    </section>
+    <section class="books">
+      <h2>Books</h2>
+      <% movies = Work.find_by(category: "book") %>
+      <% movies.each do |movie| %>
+        <p><%= movie.title %></p>
+      <% end %>
+    </section>
+    <section class="albums">
+      <h2>Albums</h2>
+      <h2>Books</h2>
+      <% movies = Work.find_by(category: "album") %>
+      <% movies.each do |movie| %>
+        <p><%= movie.title %></p>
+      <% end %>
+    </section>
+  </main>
+</body>
