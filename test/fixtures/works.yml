@@ -2,14 +2,14 @@
 
 one:
   title: MyString
-  category: MyString
+  category: album
   creator: MyString
   publication: 1
   description: MyString
 
 two:
   title: MyString
-  category: MyString
+  category: album
   creator: MyString
   publication: 1
   description: MyString

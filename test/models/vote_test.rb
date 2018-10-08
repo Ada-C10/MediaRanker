@@ -1,9 +1,22 @@
 require "test_helper"
 
 describe Vote do
-  let(:vote) { Vote.new }
+  describe 'Vote validations' do
+     before do
+       # Arrange
+       @user = User.create(name: 'test name')
+       @work = Work.create(title: 'test book', category: :album,
+                        creator: 'test creator', publication: 1234,
+                        description: 'test description')
+       @vote = Vote.create(user_id: @user.id, work_id: @work.id)
+     end
 
-  it "must be valid" do
-    value(vote).must_be :valid?
-  end
+     it 'is valid when all fields are present' do
+       # Act
+       result = @vote.valid?
+
+       # Assert
+       expect(result).must_equal true
+     end
+   end
 end
