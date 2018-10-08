@@ -1,0 +1,41 @@
+<% if @work.errors.any? %>
+  <ul class="errors">
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+<h1><%= page_title %></h1>
+<div class="new-work">
+  <%= form_with model: @work, local: false do |f| %>
+
+    <p>
+      <%=f.label :category %>
+      <!-- Could do the following, but will need to create a method in work
+      to be able to handle if one category is not yet posted -->
+      <%#=f.select :category, Work.all.map { |work| [work.category]}.uniq %>
+      <%= f.select :category, ['album', 'book', 'movie'] %>
+    </p>
+    <p>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :publication_year %>
+      <%= f.text_field :publication_year %>
+    </p>
+    <p>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+</div>
