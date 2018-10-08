@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_08_220612) do
+ActiveRecord::Schema.define(version: 2018_10_08_232107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,11 +36,11 @@ ActiveRecord::Schema.define(version: 2018_10_08_220612) do
     t.string "title"
     t.string "category"
     t.string "creator"
-    t.date "pub_year"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "vote_id"
+    t.integer "pub_year"
     t.index ["vote_id"], name: "index_works_on_vote_id"
   end
 
