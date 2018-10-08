@@ -5,9 +5,9 @@
   <main>
     <section class="movies">
       <h2>Movies</h2>
-      <% movies = Work.find_by(category: "movie") %>
+      <% movies = Work.where(category: "movie") %>
       <% if movies.nil? %>
-        <%= puts "No movies" if movies.nil? %>
+        <%= puts "No movies" %>
       <% else %>
         <% movies.each do |movie| %>
           <p><%= movie.title %></p>
@@ -16,15 +16,14 @@
     </section>
     <section class="books">
       <h2>Books</h2>
-      <% movies = Work.find_by(category: "book") %>
+      <% movies = Work.where(category: "book") %>
       <% movies.each do |movie| %>
         <p><%= movie.title %></p>
       <% end %>
     </section>
     <section class="albums">
       <h2>Albums</h2>
-      <h2>Books</h2>
-      <% movies = Work.find_by(category: "album") %>
+      <% movies = Work.where(category: "album") %>
       <% movies.each do |movie| %>
         <p><%= movie.title %></p>
       <% end %>
