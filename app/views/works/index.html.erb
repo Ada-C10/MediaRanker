@@ -1,0 +1,67 @@
+<h1 class="title">List of Works</h1>
+
+<h2 class="sub-header">Albums</h2>
+<table class="index-table">
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+  <tbody>
+    <% @albums.each do |album| %>
+      <tr>
+        <td><%= album.votes.count %></td>
+        <td><%= album.title %></td>
+        <td><%= album.creator %></td>
+        <td><%= album.publication_year %></td>
+        <td>Upvote Button</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2 class="sub-header">Books</h2>
+<table class="index-table">
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.votes.count %></td>
+        <td><%= book.title %></td>
+        <td><%= book.creator %></td>
+        <td><%= book.publication_year %></td>
+        <td>Upvote Button</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2 class="sub-header">Movies</h2>
+<table class="index-table">
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.votes.count %></td>
+        <td><%= movie.title %></td>
+        <td><%= movie.creator %></td>
+        <td><%= movie.publication_year %></td>
+        <td>Upvote Button</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

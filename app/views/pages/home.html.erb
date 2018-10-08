@@ -1,0 +1,26 @@
+<div class='page'>
+  <div class='section spotlight'>
+    <h3>Media Spotlight</h3>
+  </div>
+  <div class='section movies'>
+    <strong class="section-header">Top Movies</strong>
+    <% @movies.each do |movie| %>
+      <p class="work-title"><%= movie.title %> by <%= movie.creator %></p>
+      <p><%= movie.votes.count %> votes</p>
+    <% end %>
+  </div>
+  <div class='section books'>
+    <strong class="section-header">Top Books</strong>
+    <% @books.each do |book| %>
+      <p class="work-title"><%= book.title %> by <%= book.creator %></p>
+      <p><%= book.votes.count %> votes</p>
+    <% end %>
+  </div>
+  <div class='section albums'>
+    <strong class="section-header">Top Albums</strong>
+    <% @albums.each do |album| %>
+      <p class="work-title"><%= album.title %> by <%= album.creator %></p>
+      <p><%= album.votes.count %> votes</p>
+    <% end %>
+  </div>
+</div>
