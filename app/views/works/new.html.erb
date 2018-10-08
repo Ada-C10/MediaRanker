@@ -1,0 +1,20 @@
+<%= form_with model: @work, class: 'form' do |f| %>
+  <h2>Add new work</h2>
+
+  <%= f.label :category %>
+  <%= f.select :category, %w[album book movie] %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
+
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year %>
+
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year %>
+
+  <%= f.submit 'Add work', class: 'submit' %>
+<% end %>
