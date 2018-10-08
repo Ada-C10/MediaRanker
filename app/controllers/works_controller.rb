@@ -1,5 +1,9 @@
 class WorksController < ApplicationController
 
+  def homepage
+
+  end
+  
   def index
     @works = Work.all
   end
