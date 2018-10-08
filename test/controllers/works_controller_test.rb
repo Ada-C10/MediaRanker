@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe WorksController do
-  let(:work) { works :one }
+  let(:work) { Work.new(category: 'book', title: 'POODR', creator: 'Sandi Metz', publication_year: 2012, description: 'An Agile Primer') }
 
   it "gets index" do
     get works_url
