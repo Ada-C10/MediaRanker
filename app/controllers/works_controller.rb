@@ -26,7 +26,20 @@ class WorksController < ApplicationController
 
     if @work.nil?
       head :not_found
-    end 
+    end
+  end
+
+
+  private
+
+  def work_params
+    return params.require(:work).permit(
+      :title,
+      :published_year,
+      :category,
+      :creator,
+      :description
+    )
   end
 
 end
