@@ -7,7 +7,7 @@ class WorksController < ApplicationController
     id = params[:id]
     @work = Work.find_by(id: id)
 
-    if @work.nill?
+    if @work.nil?
       render :notfound, status: :not_found
     end
   end
