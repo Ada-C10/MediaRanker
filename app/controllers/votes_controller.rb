@@ -1,5 +1,3 @@
-require 'date'
-
 class VotesController < ApplicationController
 
   def index
