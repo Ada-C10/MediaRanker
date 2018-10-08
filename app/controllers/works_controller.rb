@@ -1,6 +1,5 @@
 class WorksController < ApplicationController
 
-
   def index
     @albums = Work.where(category: 'Album')
     @books = Work.where(category: 'Book')
