@@ -3,6 +3,14 @@ class WorksController < ApplicationController
     @works = Work.order(:name)
   end
 
+  def show
+  end
+
+  def new
+  end 
+
   def create
   end
+
+
 end
