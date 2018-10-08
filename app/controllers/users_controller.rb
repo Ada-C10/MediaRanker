@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   def index
-    @users = Users.all.order(:title)
+    @users = User.all.order(:id)
   end
 
   def show
     id = params[:id]
-    @user = user.find_by(id: id)
+    @user = User.find_by(id: id)
 
     if id == nil
       render :not_found, status: :not_found
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    id = params[:id].to_i
+    id = params[:id]
     @user = User.find_by(id: id)
   end
 
@@ -24,8 +24,8 @@ class UsersController < ApplicationController
 
 
   def update
-    id = params[:id].to_i
-    @user = .find_by(id: id)
+    id = params[:id]
+    @user = User.find_by(id: id)
     @user.update(user_params)
 
     if @user.save
@@ -46,13 +46,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    id = params[:id].to_i
+    id = params[:id]
     @user = User.find_by(id: id)
     if @user.destroy
       redirect_to root_path
     end
   end
 
-  # def user_params
-  #     return params.require(:user).permit(:name ,: ,:cost, :passenger_id, :driver_id)
-  #   end
+end
+
+  def user_params
+      return params.require(:user).permit(:username)
+    end
