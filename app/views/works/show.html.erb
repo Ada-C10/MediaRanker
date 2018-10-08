@@ -10,9 +10,9 @@
     </section>
     <section class="buttons">
       <button>Back to media ranks</button>
-      <button>Edit</button>
+      <button><%= link_to "Edit", edit_work_path(@work.id)%></button>
       <button>Upvote</button>
-      <button>Delete</button>
+      <button><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %></button>
     </section>
   </body>
   <!-- Will want to change it to #of votes for this media category -->
