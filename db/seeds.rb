@@ -7,16 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 # create join path to get to media seed file
-MEDIA_FILE = Rails.root.join('db', 'media_seeds.csv')
-puts "Loading raw seed data from #{MEDIA_FILE}"
+WORK_FILE = Rails.root.join('db', 'media_seeds.csv')
+puts "Loading raw seed data from #{WORK_FILE}"
 
 work_failures = []
-CSV.foreach(DRIVER_FILE, :headers => true) do |row|
+CSV.foreach(WORK_FILE, :headers => true) do |row|
   work = Work.new
   work.category = row['category']
   work.title = row['title']
   work.creator = row['creator']
-  work.publication_year = row['publication_year']
+  # handle year only in view strftime(%Y)
+  work.publication_year = Date.strptime(row['publication_year'], '%Y')
   work.description = row['description']
   successful = work.save
   if !successful

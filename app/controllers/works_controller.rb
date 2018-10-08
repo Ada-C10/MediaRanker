@@ -2,13 +2,11 @@ class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
 
   # GET /works
-  # GET /works.json
   def index
     @works = Work.all
   end
 
   # GET /works/1
-  # GET /works/1.json
   def show
   end
 
@@ -22,7 +20,7 @@ class WorksController < ApplicationController
   end
 
   # POST /works
-  # POST /works.json
+
   def create
     @work = Work.new(work_params)
 
@@ -38,7 +36,7 @@ class WorksController < ApplicationController
   end
 
   # PATCH/PUT /works/1
-  # PATCH/PUT /works/1.json
+
   def update
     respond_to do |format|
       if @work.update(work_params)
@@ -52,7 +50,6 @@ class WorksController < ApplicationController
   end
 
   # DELETE /works/1
-  # DELETE /works/1.json
   def destroy
     @work.destroy
     respond_to do |format|
