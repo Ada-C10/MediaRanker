@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  creator: MyString
-  published: 1
-  description: MyString
-  category: MyString
+album:
+  title: Queen Of The Damned Soundtrack
+  creator: Warner Music Group
+  published: 2002
+  description: Spooky music, oooooooooo
+  category: Album
 
-two:
-  title: MyString
-  creator: MyString
-  published: 1
-  description: MyString
-  category: MyString
+book:
+  title: The Alchemist
+  creator: Paulo Coelho
+  published: 1988
+  description: A spiritual parable
+  category: Book
