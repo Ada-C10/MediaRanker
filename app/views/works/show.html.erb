@@ -1,2 +1,20 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+<% if @work.nil? %>
+  <h1> 404 Not found</h1>
+<% else %>
+  <body>
+    <section class="work info">
+      <h1><%= @work.title %></h1>
+      <p>Created by:<%= @work.creator%></p>
+      <p>Published:<%= @work.publication_year%></p>
+      <p><%= @work.description %></p>
+    </section>
+    <section class="buttons">
+      <button>Back to media ranks</button>
+      <button>Edit</button>
+      <button>Upvote</button>
+      <button>Delete</button>
+    </section>
+  </body>
+  <!-- Will want to change it to #of votes for this media category -->
+  <h2>Votes for this <%= @work.category %></h2>
+<%end%>
