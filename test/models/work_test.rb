@@ -7,7 +7,7 @@ describe Work do
     value(work).must_be :valid?
   end
 
-  it 'has required fields' do
+  it 'presence of required fields' do
     fields = [:title, :category, :creator, :publication_year, :description]
 
     fields.each do |field|
@@ -39,6 +39,31 @@ describe Work do
 
       expect(valid).must_equal false
       expect(other_work.errors.messages).must_include :title
+    end
+
+    it 'must have an creator' do
+      # Arrange
+      work = works(:book)
+      work.creator = nil
+
+      # Act
+      #valid = book.valid?
+      valid = work.save
+
+      # Assert
+      expect(valid).must_equal false
+      expect(work.errors.messages).must_include :creator
+    end
+
+    it 'requires a unique creator' do
+      other_work = works(:album)
+      #change the title to the work title we set above (work points to book in the test data)
+      other_work.creator = work.creator
+
+      valid = other_work.valid?
+
+      expect(valid).must_equal false
+      expect(other_work.errors.messages).must_include :creator
     end
   end
 
