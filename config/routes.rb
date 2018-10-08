@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home_controller/index'
   get 'users/index'
   get 'users/show'
   get 'users/new'
