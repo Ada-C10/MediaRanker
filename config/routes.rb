@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :works
   get 'works/index'
   get 'works/show'
   get 'works/update'
