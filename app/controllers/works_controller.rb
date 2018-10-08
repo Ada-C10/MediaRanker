@@ -5,8 +5,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
+    @work = Work.find_by(id: params[:id])
     #if nil render not found, else show page
   end
 
@@ -17,7 +16,24 @@ class WorksController < ApplicationController
   def create
     filtered_params = work_params()
     work = Work.new(filtered_params)
-    #if nil re-render form, else  show all
+    is_successful_save = work.save
+    #if not successful re-render form, else  show all
+  end
+
+  def edit
+    @work = Work.find_by(id: params[:id])
+  end
+
+  def update
+    work = Work.find_by(id: params[:id])
+    passenger.update
+    #if successful save vs not, .update returns boolean?
+    #redirect to show page
+  end
+
+  def destroy
+    work = Work.find_by
+    #redirect to work#index (with partial rendered?)
   end
 
   private
