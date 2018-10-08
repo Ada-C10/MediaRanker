@@ -65,6 +65,40 @@ describe Work do
       expect(valid).must_equal false
       expect(other_work.errors.messages).must_include :creator
     end
+
+    it 'must have a publication_year' do
+      # Arrange
+      # why do I have to define a new variable here, and not just use work
+      # work = works(:book)
+      work.publication_year = nil
+
+      # Act
+      #valid = book.valid?
+      valid = work.save
+
+      # Assert
+      expect(valid).must_equal false
+      expect(work.errors.messages).must_include :publication_year
+    end
+
+    it 'must have a valid year' do
+      work.publication_year = ''
+      3.times do
+        # Arrange
+        work.publication_year += '1'
+
+        # Act
+        valid = work.valid?
+
+        # Assert
+        expect(valid).must_equal false
+        expect(work.errors.messages).must_include :publication_year
+      end
+
+      work.publication_year += '1'
+      valid = work.valid?
+      expect(valid).must_equal true
+    end
   end
 
 
