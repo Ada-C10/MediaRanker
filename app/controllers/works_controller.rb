@@ -12,9 +12,6 @@ class WorksController < ApplicationController
     end
   end
 
-  def edit
-    @work = Work.find_by(id: params[:id])
-  end
 
   def create
     @work = Work.new(work_params)
@@ -24,6 +21,11 @@ class WorksController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @work = Work.find_by(id: params[:id])
+  end
+
 
   def update
     @work = Work.find_by(id: params[:id])
