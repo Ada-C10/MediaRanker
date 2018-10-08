@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @work.category %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @work.title %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @work.creator %>
+</p>
+
+<p>
+  <strong>Publication year:</strong>
+  <%= @work.publication_year %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @work.description %>
+</p>
+
+<%= link_to 'Edit', edit_work_path(@work) %> |
+<%= link_to 'Back', works_path %>
