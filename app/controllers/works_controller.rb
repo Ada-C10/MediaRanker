@@ -6,7 +6,10 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find_by(id: params[:id])
-    #if nil render not found, else show page
+    if @work == nil
+      head :not_found
+      #render invalid_page, status: :not_found
+    end
   end
 
   def new
@@ -18,6 +21,11 @@ class WorksController < ApplicationController
     work = Work.new(filtered_params)
     is_successful_save = work.save
     #if not successful re-render form, else  show all
+    if is_successful_save
+      redirect_to works_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -27,12 +35,15 @@ class WorksController < ApplicationController
   def update
     work = Work.find_by(id: params[:id])
     passenger.update
+    redirect_to works_path
     #if successful save vs not, .update returns boolean?
     #redirect to show page
   end
 
   def destroy
-    work = Work.find_by
+    work = Work.find_by(id: params[:id])
+    work.destroy
+    redirect_to works_path
     #redirect to work#index (with partial rendered?)
   end
 
