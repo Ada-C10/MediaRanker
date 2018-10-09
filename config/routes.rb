@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'sessions/login'
+  get 'sessions/new'
+  get 'sessions/destroy'
+  get 'sessions/index'
+  get 'sessions/new'
+  get 'sessions/destroy'
+  get 'login/new'
+  get 'login/destroy'
+  root 'home#index'
+
+  resources :works
+  resources :users, only: [:index, :show, :new, :create]
 end

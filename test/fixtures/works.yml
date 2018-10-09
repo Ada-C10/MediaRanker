@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 2018-10-08
-  description: MyString
+hp:
+  category: books
+  title: Harry Potter
+  creator: J.K. Rowling
+  publication_year: '1997'
+  description: A series of novels that chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry. The main story arc concerns Harry's struggle against Lord Voldemort, a dark wizard who intends to become immortal, overthrow the wizard governing body known as the Ministry of Magic, and subjugate all wizards and Muggles (non-magical people).
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 2018-10-08
-  description: MyString
+interstellar:
+  category: movies
+  title: Interstellar
+  creator: Christopher Nolan
+  publication_year: '2014'
+  description: Set in a dystopian future where humanity is struggling to survive, the film follows a group of astronauts who travel through a wormhole in search of a new home for humanity.
