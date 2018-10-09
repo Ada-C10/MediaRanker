@@ -20,7 +20,7 @@
 header {
   background-color: #B2DFDB;
   color: white;
-  padding: 2em;
+  padding: 3em;
 }
 
 header a {
@@ -29,11 +29,13 @@ header a {
 
 nav {
   display: inline;
+  padding-top: 2em;
 }
 
 nav ul {
   list-style: none;
   display: flex;
+  padding-top: 2em;
 }
 
 nav a:visited, nav a:link, nav a:hover {
