@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :get_work, only: [:show, :edit, :update]
+  before_action :get_work, only: [:show, :edit, :update, :destroy, :upvote]
   def get_work
     @work = Work.find_by(id: params[:id].to_i)
   end
@@ -51,10 +51,25 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    work = Work.find_by(id: params[:id].to_i)
-
-    work.destroy
+    @work.destroy
     redirect_to works_path
+  end
+
+  def upvote
+    @current_user = User.find_by(id: session[:user_id])
+
+    if @current_user.nil?
+      flash.now[:warning] = "A problem occured: You must login to do that"
+      redirect_back(fallback_location: root_path)
+    else
+      if Vote.vote_allowed?
+        Vote.create(date: Date.current, user_id: @current_user.id, work_id: @work.id)
+        flash[:success] = "Successfully upvoted!"
+        redirect_to works_path
+      else
+        flash.now[:warning] = "A problem occured: Could not upvote"
+      end
+    end
   end
 
   private
