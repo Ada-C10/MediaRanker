@@ -1,52 +1,35 @@
 <header>
-  <h1>Driver Details</h1>
+  <h1>@work.title</h1>
 </header>
 
-<section>
-  <p><strong>ID</strong><br><%= @driver.id %></p>
+<ul>
+  <li>Created by: <%@work.creator%></li>
+  <li>Published: <%@work.publication_year%></li>
+  <li><%@work.description%> </li>
+</ul>
 
-  <p><strong>VIN</strong><br><%= @driver.vin %></p>
 
-  <p><strong>Total Earnings</strong><br><%= @driver.total_earnings %></p>
+  <%# button_to "Back to media ranks", root, class: "alt-button", method: :get %>
+  <%# button_to "Edit", edit_work_path(@work.id), class: "alt-button", method: :get %>
+  <%# button_to "Delete", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure?'}, class: "alt-button" %>
+<h1>Total votes for this <%@work.category%></h1>
 
-  <p><strong>Rating</strong><br><%= @driver.average_rating %></p>
 
-  <%= button_to "Edit", edit_driver_path(@driver.id), class: "alt-button", method: :get %>
-  <%= button_to "Delete", driver_path(@driver.id), method: :delete,
-    data: { confirm: 'Are you sure?'}, class: "alt-button" %>
-</section>
-</section>
-
-<hr>
 
 <section>
-<header>
-  <h2>Trips</h2>
-</header>
+  <h5>User</h5>
+  <h5>Date</h5>
 
-<section>
-  <% trips = @driver.list_trips %>
   <table class="list-of-data">
     <tr class="table-header details">
-      <td>Trip ID</td>
-      <td>Passenger ID</td>
+      <td>User</td>
       <td>Date</td>
-      <td>Cost</td>
-      <td>Rating</td>
     </tr>
-    <% trips.each do |trip| %>
+
+    <% @works.each do |work| %>
       <tr class="details">
-        <td><%= link_to "#{trip.id}", trip_path(trip.id) %></td>
-        <td><%= link_to "#{trip.passenger_id}", passenger_path(trip.passenger_id) %></td>
-        <td><%= trip.date %></td>
-        <td><%= trip.display_cost %></td>
-        <td>
-          <% if trip.rating %>
-            <%= trip.rating %>
-          <% else %>
-            <%= "--" %>
-          <% end %>
-        </td>
+        <td><%= link_to "#{work.user}", work_path(work.id) %></td>
+        <td><%# link_to "#{work.vote.date}", work_path(work.id) %></td>
       </tr>
     <% end %>
   </table>
