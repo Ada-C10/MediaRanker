@@ -1,6 +1,10 @@
 <h1>Works</h1>
-<% @works.each do |work| %>
-  <%= work.category %>
-  <%= work.title %>
-  <%= work.creator %>
-<% end %>
+<ul>
+  <% @works.each do |work| %>
+    <li>
+      <%= work.category %>
+      <%= work.title %>
+      <%= work.creator %>
+    </li>
+  <% end %>
+</ul>
