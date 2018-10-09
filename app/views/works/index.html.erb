@@ -2,10 +2,10 @@
 
 <ul>
   <% @works.sort.reverse.each do |work| %>
-    <li><strong><%=work.title %></strong></li>
-    <!-- <%=link_to "View Details", driver_path(driver.id) %> |
-    <%=link_to "Edit", edit_driver_path(driver.id) %> |
-    <%=link_to "Delete", driver_path(driver), method: :delete, data: {confirm: "Are you sure you want to delete #{driver.name} from the database?" }%> -->
-    <br> </br>
+    <li><strong><%=link_to "#{work.title}", work_path(work.id)%></strong>
+    <%=work.created_by %>
+    <%=work.year_published %>
+    <br></br>
+    </li>
   <% end %>
 </ul>

@@ -1,5 +1,4 @@
 class WorksController < ApplicationController
-  has_many :votes
 
   def homepage
 
