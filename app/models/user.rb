@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  validates :category, presence: true
-  validates :title, presence: true
+  validates :name, presence: true
   has_many :votes
 end
