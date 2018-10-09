@@ -1,1 +1,9 @@
 <h2>All Works</h2>
+<%= @works.each do |work|%>
+  <h2><%= work.title %></h2>
+  <ul>
+    <li>Created by: <%= work.creator %></li>
+    <li>Published: <%= work.publication_year %></li>
+    <li><%= work.description %></li>
+  </ul>
+<% end %>
