@@ -42,7 +42,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     @work.destroy
-    redirect_to work_path
+    redirect_to works_path
   end
 
   private
