@@ -1,2 +1,55 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+
+<main>
+    <h2>User Summary: <a href="/users/1">dee</a></h2><%# @user.name %>
+<p>Joined site Oct  6, 2018</p><%# @user.creator %>
+<section class="user-votes__container">
+  <h3 class="user-votes__header">Votes</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Media Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%# @users.all_votes.each do |work| %>
+        <tr>
+          <%#=link_to work.title, work_path(work.id) %>
+          <td><a href="/works/44">Abatar</a></td>
+          <%#= work.user_id %>
+          <td>Jambes Cameron</td>
+          <%#= work.publication_year %>
+          <td>2009</td>
+          <%#= work.category %>
+          <td>Movie</td>
+          <%#= end%>
+          <%#= vote.created %>
+          <td>Oct  8, 2018</td>
+        </tr>
+        <tr>
+          <td><a href="/works/35">Titanic</a></td>
+          <td>"jambes cameron"</td>
+          <td>1997</td>
+          <td>Movie</td>
+          <td>Oct  8, 2018</td>
+        </tr>
+        <tr>
+          <td><a href="/works/41">tacocat</a></td>
+          <td>tacocat</td>
+          <td>1990</td>
+          <td>Album</td>
+          <td>Oct  8, 2018</td>
+        </tr>
+    </tbody>
+  </table>
+</section>
+
+<a class="btn btn-secondary" href="/users">See all Users</a>
+<a class="btn btn-primary" href="/">Back to Media List</a>
+
+  </main>

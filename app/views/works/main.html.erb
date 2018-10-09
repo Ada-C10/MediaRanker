@@ -1,15 +1,58 @@
-<h1>Works#index</h1>
-<p>Find me in app/views/works/index.html.erb</p>
+<header class="app-header__header">
+    <h1>
+      <a href="/">Media Ranker</a>
+      <small>Ranking the Best of Everything</small>
+    </h1>
 
+    <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/">View top media</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/works">View all media</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/works/new">Add a new work</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/users">View all users</a>
+        </li>
+      </ul>
+      <ul class="nav app-header__user-nav-container">
+
+        <li class="nav-item app-header__nav_item">
+          <a class="btn btn-primary" href="/users/17">Logged in as hh</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a class="btn btn-primary" rel="nofollow" data-method="post" href="/logout">Log Out</a>
+        </li>
+
+
+      </ul>
+    </nav>
+  </header>
+
+<main>
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight</span>
+      <a class="spotlight__link-to" href="/works/32">Harry Potter and the Gorblet of Fire</a> by Warner Brothers
+    </h2>
+    <p class="spotlight__description">
+      9 votes - SNAPE KILLS DUMBLEDORP
+    </p>
+  </section>
 
 <%['movie', 'book', 'album'].each do |category| %>
   <h2> Top <%=category%>s </h2>
   <% @works.each do |work| %>
     <%if category == work.category%>
-      <h4> <%=link_to work.title, work_path(work.id) %>by <%=work.creator%></h2>
+      <h4> <%=link_to work.title, work_path(work.id) %> by <%= work.creator%></h2>
       <p>
         Votes: Method goes here
       </p>
     <%end%>
   <%end%>
 <%end%>
+</main>

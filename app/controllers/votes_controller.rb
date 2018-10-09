@@ -23,6 +23,19 @@ class VotesController < ApplicationController
     @vote = Vote.new
   end
 
+
+  def status
+    id = params[:id].to_i
+    @vote = Vote.find_by(id: id)
+    if @vote.due.class == Date
+      @vote.due = nil
+    else @vote.due == nil
+      @vote.due = "Completed on #{Date.today}"
+    end
+    @vote.save
+    redirect_to work_path(@work.id)
+  end
+
   def update
     id = params[:id]
     @vote = Vote.find_by(id: id)

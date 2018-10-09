@@ -1,2 +1,14 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+<% @works.each do |work| %>
+<section>
+  <h2><%= link_to work.title, work_path(work.id)  %></h2>
+  <p><%= work.creator %></p>
+  <p><% work.publication_year %></p>
+  <p><%= work.description %></p>
+  <section>
+    <a class="btn btn-primary" href="/">Back to media ranks</a>
+    <a class="btn btn-primary" href="/works/id/edit">Edit</a>
+    <a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/id/upvote">Upvote</a>
+    <a class="btn btn-danger" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/works/id">Delete</a>
+  </section>
+</section>
+<% end %>
