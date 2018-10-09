@@ -1,9 +1,34 @@
 require "test_helper"
 
 describe Work do
-  let(:work) { Work.new }
 
-  it "must be valid" do
-    value(work).must_be :valid?
+  describe 'validations' do
+    before do
+      @work = Work.new(category: 'book', title: 'Harry Potter', creator: 'JK Rowling', publication_year: 1999)
+    end
+
+    it 'is valid when all required field are present' do
+      expect(@work.valid?).must_equal true
+    end
+
+    it 'is invalid without category' do
+      @work.category = nil
+      expect(@work.valid?).must_equal false
+    end
+
+    it 'is invalid without title' do
+      @work.title = nil
+      expect(@work.valid?).must_equal false
+    end
+
+    it 'is invalid without creator' do
+      @work.creator = nil
+      expect(@work.valid?).must_equal false
+    end
+
+    it 'is invalid without integer publication year' do
+      @work.publication_year = "ninety"
+      expect(@work.valid?).must_equal false
+    end
   end
 end
