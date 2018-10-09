@@ -10,7 +10,7 @@
       <% @works.each do |work| %>
         <% if work.category == 'movie' %>
         <li>
-          <strong><%= work.title %></strong> by
+          <strong><%= link_to work.title, work_path(work.id) %></strong> by
           <%= work.creator %>
         </li>
         <% end %>
@@ -25,7 +25,7 @@
       <% @works.each do |work| %>
         <% if work.category == 'book' %>
         <li>
-          <strong><%= work.title %></strong> by
+          <strong><%= link_to work.title, work_path(work.id) %></strong> by
           <%= work.creator %>
         </li>
         <% end %>
@@ -40,7 +40,7 @@
       <% @works.each do |work| %>
         <% if work.category == 'album' %>
         <li>
-          <strong><%= work.title %></strong> by
+          <strong><%= link_to work.title, work_path(work.id) %></strong> by
           <%= work.creator %>
         </li>
         <% end %>
