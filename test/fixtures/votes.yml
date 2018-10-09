@@ -5,3 +5,7 @@ vote1:
 vote2:
   user: user2
   work: album
+
+vote3:
+  user: user3
+  work: book

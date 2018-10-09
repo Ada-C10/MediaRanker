@@ -1,0 +1,19 @@
+<h1> <%= @work.title %> </h1>
+<p> Created by: <%= @work.creator %> </p>
+<p> Published: <%= @work.published %> </p>
+<p> <%= @work.description %> </p>
+
+<nav>
+  <button>
+    <%= link_to "Back to media ranks", works_path %>
+  </button>
+  <button>
+    <%= link_to "Edit", edit_work_path(@work.id) %>
+  </button>
+  <button>
+    <p> Upvote </p>
+  </button>
+  <button>
+    <p> Delete </p>
+  </button>
+</nav>

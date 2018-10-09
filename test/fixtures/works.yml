@@ -13,3 +13,10 @@ book:
   published: 1988
   description: A spiritual parable
   category: Book
+
+movie:
+  title: Worst Movie Ever
+  creator: Jackie FahmBomb
+  published: 1200
+  description: Yuck yuck yuck
+  category: Movie

@@ -10,6 +10,26 @@
   </head>
 
   <body>
+    <h1 class="logo"> <%= link_to "Media Ranker", works_path %> | Ranking the Best of Everything</h1>
+    <nav>
+      <ul>
+        <li> View top media </li>
+        <li> <%= link_to "View all media", works_path %> </li>
+        <li> <%= link_to "Add a new work", new_work_path %> </li>
+        <li> View all users </li>
+        <li>
+          <% if session[:user_id] %>
+            <%= link_to "Log Out", logout_path, method: :delete %>
+          <% else %>
+            <%= link_to "Login", login_path %>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+      <% if @current_user %>
+        <h2> You are signed in as <%= @current_user.name %> </h2>
+      <% end %>
+
     <%= yield %>
   </body>
 </html>
