@@ -2,7 +2,7 @@ class WorksController < ApplicationController
 
 
   def index
-    # Order by vote count 
+    # Order by vote count
     @works = Work.all
   end
 
@@ -29,13 +29,31 @@ class WorksController < ApplicationController
   end
 
   def edit
+    id = params[:id].to_i
+    @work = Work.find_by(id: id)
   end
 
   def show
+    id = params[:id].to_i
+    @work = Work.find_by(id: id)
+
+    if @work.nil?
+      render :notfound, status: :not_found
+    end
   end
 
   def destroy
     # Flash notice for success/failure
+    id = params[:id].to_i
+    work = Work.find_by(id: id)
+    if work.nil?
+      flash[:error] = "Work #{params[:id]} not found"
+    else
+      @deleted_work = work.destroy
+      flash[:success] = "#{work.title} deleted"
+    end
+
+    redirect_to root_path 
   end
 
 end
