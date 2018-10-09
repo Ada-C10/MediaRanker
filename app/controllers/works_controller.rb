@@ -62,9 +62,10 @@ class WorksController < ApplicationController
       @deleted_work = work.destroy
       flash[:success] = "#{work.title} deleted"
     end
-
     redirect_to root_path
   end
+
+  # TODO Create an upvote method ?
 
   private
 

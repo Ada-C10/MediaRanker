@@ -9,21 +9,21 @@
   <section class="single_work_container">
     <h2>Movies</h2>
     <% @movies.each do |movie| %>
-      <p><%= "#{movie.title} by #{movie.creator}" %></p>
+      <p><%= link_to "#{movie.title}", work_path(movie.id) %> <%=" by #{movie.creator}" %></p>
     <% end %>
   </section>
 
   <section class="single_work_container">
     <h2>Albums</h2>
     <% @albums.each do |album| %>
-      <p><%= "#{album.title} by #{album.creator}" %></p>
+      <p><%= link_to "#{album.title}", work_path(album.id) %> <%= " by #{album.creator}" %></p>
     <% end %>
   </section>
 
   <section class="single_work_container">
     <h2>Books</h2>
     <% @books.each do |book| %>
-      <p><%= "#{book.title} by #{book.creator}" %></p>
+      <p><%= link_to "#{book.title}", work_path(book.id) %> <%= " by #{book.creator}" %></p>
     <% end %>
   </section>
 </div>
