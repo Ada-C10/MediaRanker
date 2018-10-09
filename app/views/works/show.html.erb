@@ -1,0 +1,14 @@
+<% if @work.nil? %>
+  <h1> 404 Not found</h1>
+<% else %>
+  <h1><%=@work.title %></h1>
+  <p>Creator: <%= @work.creator %></p>
+  <p>Published:<%= @work.publication_year %></p>
+  <p>Description: <%= @work.description %></p>
+  <p>Category: <%= @work.category %></p>
+
+
+  <%= link_to "Edit", edit_work_path(@work.id) %>
+  <br />
+  <%= link_to "Delete #{@work.title}", work_path(@work.id), method: :delete %>
+<% end %>
