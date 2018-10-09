@@ -1,0 +1,100 @@
+<header class="app-header__header">
+    <h1>
+      <a href="/">Media Ranker</a>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+
+    <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/">View top media</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/works">View all media</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/works/new">Add a new work</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/users">View all users</a>
+        </li>
+      </ul>
+      <ul class="nav app-header__user-nav-container">
+
+        <li class="nav-item app-header__nav_item">
+          <a class="btn btn-primary" href="/login">Log In</a>
+        </li>
+
+      </ul>
+    </nav>
+  </header>
+
+
+  <main>
+    <section>
+  <h2><%= @work.title %></h2>
+  <p>Created by: <%= @work.creator %></p>
+  <p>Published: <%= @work.publication_year %></p>
+  <p><%= @work.description %></p>
+  <section>
+    <%= link_to 'Back to media ranks', root_path %>
+    <%= link_to 'Edit', work_path(@work) %>
+    <a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/5/upvote">!!!Upvote</a>
+    <%= link_to 'Delete', work_path(@work), method: :delete, data: { confirm: "Are you sure you want to delete: #{@work.title}?" } %>
+  </section>
+</section>
+
+<section class="works-votes__container">
+  <h3 class="works-votes__header">!!!!!!!10 Votes for this Album</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="/users/59">a</a></td>
+        <td>Oct  9, 2018</td>
+      </li>
+      <tr>
+        <td><a href="/users/6">royalfro</a></td>
+        <td>Oct  8, 2018</td>
+      </li>
+      <tr>
+        <td><a href="/users/3">Totoro</a></td>
+        <td>Oct  8, 2018</td>
+      </li>
+      <tr>
+        <td><a href="/users/31">Bullfrog</a></td>
+        <td>Oct  8, 2018</td>
+      </li>
+      <tr>
+        <td><a href="/users/21">mike</a></td>
+        <td>Oct  8, 2018</td>
+      </li>
+      <tr>
+        <td><a href="/users/18">zhangjessie2017@gmail.com</a></td>
+        <td>Oct  8, 2018</td>
+      </li>
+      <tr>
+        <td><a href="/users/20">mlklkk</a></td>
+        <td>Oct  8, 2018</td>
+      </li>
+      <tr>
+        <td><a href="/users/9">shooob</a></td>
+        <td>Oct  8, 2018</td>
+      </li>
+      <tr>
+        <td><a href="/users/15">Pumpkin</a></td>
+        <td>Oct  8, 2018</td>
+      </li>
+      <tr>
+        <td><a href="/users/7">amanda</a></td>
+        <td>Oct  8, 2018</td>
+      </li>
+  </ul>
+</section>
+
+  </main>
