@@ -2,43 +2,33 @@
 
   <h2>List of Works</h2>
 
-  <ul class="work-columns">
-    <li>
-      Votes
-    </li>
-    <li>
-      Title
-    </li>
-    <li>
-      Created By
-    </li>
-    <li>
-      Published
-    </li>
-    <li>
-      Upvote
-    </li>
-  </ul>
 
-  <% @works.each do |work| %>
-  <ul class="list-of-works">
-    <li>
-      <%= work.votes %>
-    </li>
-    <li>
-      <%= work.title %>
-    </li>
-    <li>
-      <%= work.creator %>
-    </li>
-    <li>
-      <%= work.publication_year %>
-    </li>
-    <li>
-      <%= button_to "Upvote", new_vote_path %>
-    </li>
+  <%['album', 'book', 'movie'].each do |category| %>
+  <section class="list-of-<%= category %>">
+    <h2><%=category%></h2>
+    <table class="table <%=category%>">
+      <thead>
+        <tr>
+          <th scope="col">Votes</th>
+          <th scope="col">Title</th>
+          <th scope="col">Created By</th>
+          <th scope="col">Published</th>
+          <th scope="col">Upvote</th>
+        </tr>
+      </thead>
+      <% @works.top_ten(category).each do |work| %>
+      <tbody>
+        <tr>
+          <td>NUM VOTES HERE</td>
+          <td><%=work.title%></td>
+          <td><%=work.creator%></td>
+          <td><%=work.publication_year%></td>
+          <td><%= button_to "Upvote", new_vote_path(work), method: :post%> </td>
+        </tr>
+      </tbody>
+      <%end%>
+    </table>
+  </section>
+  <%end%>
 
-  </ul>
-
-  <% end %>
 </div>
