@@ -48,6 +48,15 @@ class WorksController < ApplicationController
     end
   end
 
+  def destroy
+    work = Work.find_by(id: params[:id])
+
+    work.destroy
+
+    flash[:success] = "Successfully destroyed work \"#{work.title}\""
+    redirect_to works_path
+  end
+
   private
   def work_params
     return params.require(:work).permit(
