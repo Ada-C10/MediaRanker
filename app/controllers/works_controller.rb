@@ -16,6 +16,16 @@ class WorksController < ApplicationController
   end
 
   def create
+    filtered_work_params = work_params()
+    @work = Work.new(filtered_work_params)
+
+    is_successful_save = @work.save
+
+    if is_successful_save
+      redirect_to works_path
+    else
+      render :new, status: :bad_request
+    end
 
   end
 
@@ -32,6 +42,6 @@ class WorksController < ApplicationController
       :description,
     )
   end
-  
+
 
 end
