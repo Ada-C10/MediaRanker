@@ -16,3 +16,28 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+header {
+  background-color: #B2DFDB;
+  color: white;
+  padding: 2em;
+}
+
+header a {
+  color: #FF4500;
+}
+
+nav {
+  display: inline;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav a:visited, nav a:link, nav a:hover {
+  color: teal;
+  margin: 2em;
+  text-decoration: none;
+}
