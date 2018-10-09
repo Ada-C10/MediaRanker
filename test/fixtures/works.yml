@@ -5,19 +5,19 @@
 # below each fixture, per the syntax in the comments below
 #
 
-Blue:
+blue:
   category: album
   title: Blue Breaker
   creator: Dr. Sarai Langosh
   publication_year: 1949
   description: Book about the expedition
-Joe:
+joe:
   category: book
   title: Joe Treat
   creator: Blaise Lesch
   publication_year: 1968
   description: Voluptatem adipisci qui velit
-Green:
+green:
   category: movie
   title: The one and only
   creator: Dr. Who

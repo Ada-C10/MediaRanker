@@ -15,16 +15,11 @@ require "test_helper"
 describe Work do
 
   describe 'relations' do
-    work = Work.create!(title: 'album')
+    work = works(:blue)
 
-    # let(:work) { Work.new }
-    #
-    # it "must be valid" do
-    #   value(work).must_be :valid?
-    # end
 
     it "must be valid when all fields are present" do
-      value(work).must_be :valid?
+      value(work.title).must_be :valid?
     end
 
   end

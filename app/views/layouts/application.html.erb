@@ -10,6 +10,27 @@
   </head>
 
   <body>
+
+
+    <header>
+            <h1><%= link_to "MediaRanker", works_path %></h1>
+
+
+                <%= link_to "View All Media", works_path %>
+                <br>
+                <%= link_to "Add a new work", new_work_path %>
+
+                  <%= link_to "View All Users", users_path %>
+                  <br>
+            
+
+          </header>
+
+
+  <main>
     <%= yield %>
-  </body>
+  </main>
+
+</body>
+
 </html>
