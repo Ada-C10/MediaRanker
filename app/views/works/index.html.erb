@@ -20,13 +20,29 @@
 <article>
   <h2>Books</h2>
   <section>
-
+    <ul>
+      <li>
+        <% @works.each do |work| %>
+          <% if work.category == "book" %>
+            <%= work.title %><br>
+          <% end %>
+        <% end %>
+      </li>
+    </ul>
   </section>
 </article>
 
 <article>
   <h2>Movies</h2>
   <section>
-
+    <ul>
+      <li>
+        <% @works.each do |work| %>
+          <% if work.category == "movie" %>
+            <%= work.title %><br>
+          <% end %>
+        <% end %>
+      </li>
+    </ul>
   </section>
 </article>
