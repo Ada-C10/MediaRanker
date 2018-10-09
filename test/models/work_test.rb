@@ -10,6 +10,7 @@ describe Work do
       is_valid = work.valid?
 
       expect( is_valid ).must_equal false
+      expect( work.errors.messages ).must_include :title
     end
 
     it 'has a unique title' do
@@ -20,6 +21,7 @@ describe Work do
       is_valid = new_work.valid?
 
       expect( is_valid ).must_equal false
+      expect( new_work.errors.messages).must_include :title
 
     end
 

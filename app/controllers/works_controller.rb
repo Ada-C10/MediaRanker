@@ -18,11 +18,12 @@ class WorksController < ApplicationController
       redirect_to works_path
     else
       render :new, status: :bad_request
-    end 
+    end
   end
 
 
 
+private
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)

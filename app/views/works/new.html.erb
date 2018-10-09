@@ -1,20 +1,33 @@
 <h1>Add New Work</h1>
 
+<% if @work.errors.messages.any? %>
+<ul class="errors">
+  <% @work.errors.each do |column, message| %>
+  <li>
+    <%= column.capitalize %>
+    <%= message %>
+  </li>
+  <% end %>
+
+</ul>
+<% end %>
+
+
 <%= form_with model: @work do |f| %>
 <%= f.label :category %>
 <%= f.select :category, Work::CATEGORY, prompt: "Pick Category" %>
-
+<br>
 <%= f.label :title %>
 <%= f.text_field :title %>
-
+<br>
 <%= f.label :creator %>
 <%= f.text_field :creator %>
-
+<br>
 <%= f.label :publication_year %>
 <%= f.text_field :publication_year %>
-
+<br>
 <%= f.label :description %>
 <%= f.text_area :description, cols: 25, rows:10 %>
-
+<br>
 <%= f.submit %>
 <% end  %>
