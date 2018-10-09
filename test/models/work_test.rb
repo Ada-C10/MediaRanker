@@ -22,7 +22,7 @@ describe Work do
     # Uniqueness
 
     it 'is invalid unless title is unique' do
-      @work.save
+      @work.save!
       another_work = Work.new(title: 'TeSt bOoK', category: :album,
         creator: 'test creator', publication: 1700, description: nil)
         expect(another_work.valid?).must_equal false
@@ -65,7 +65,7 @@ describe Work do
     it 'can get votes with "votes"' do
       user = User.create!(name: 'test name')
       vote = Vote.create!(user_id: user.id, work_id: @work.id)
-      expect(@work.votes.ids).must_equal [user.id]
+      expect(@work.votes.ids).must_equal [vote.id]
     end
 
     it 'can get users with "users" through votes' do
