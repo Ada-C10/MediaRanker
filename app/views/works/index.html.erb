@@ -1,1 +1,8 @@
-<h1>Works Page</h1>
+<h1>List of Works</h1>
+
+<ul>
+  <% @works.each do |work| %>
+    <p>Title: <%= work.title %></p>
+  <% end %>
+
+</ul>
