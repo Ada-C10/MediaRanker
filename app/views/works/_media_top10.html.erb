@@ -1,0 +1,16 @@
+  <ul>
+    <% model.each do |media| %>
+
+    <li>
+      <h3>
+        <%= link_to work_path(media.id) do %>
+          <%= media.title %>
+        <% end %>
+
+        by <%= media.creator %>
+      </h3>
+      <sub class="sub-votes"> <%= media.votes.length %> votes </sub>
+    <li>
+    <% end %>
+
+  </ul>

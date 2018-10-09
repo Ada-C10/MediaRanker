@@ -1,6 +1,23 @@
-<ul>
 
-  <li>Top Movies</li>
-  <li>Top Books</li>
-  <li>Top Albums</li>
-</ul>
+
+
+<h2> Top Movies </h2>
+<%= render partial: 'works/media_top10',
+locals: {
+  model: @movies
+}
+%>
+
+<h2> Top Books </h2>
+<%= render partial: 'works/media_top10',
+locals: {
+  model: @books
+}
+%>
+
+<h2> Top Albums </h2>
+<%= render partial: 'works/media_top10',
+locals: {
+  model: @albums
+}
+%>

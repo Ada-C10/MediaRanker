@@ -1,9 +1,10 @@
 class WorksController < ApplicationController
 
   def index
-    @albums = sort_by_votes(Work.where(category: 'album'))
-    @books = sort_by_votes(Work.where(category: 'book'))
-    @movies = sort_by_votes(Work.where(category: 'movie'))
+    media = sorted_media
+    @albums = media[:albums]
+    @books = media[:books]
+    @movies = media[:movies]
   end
 
   def show
@@ -48,6 +49,10 @@ class WorksController < ApplicationController
   end
 
   def main
+    media = sorted_media
+    @albums = media[:albums][0..9]
+    @books = media[:books][0..9]
+    @movies = media[:movies][0..9]
   end
 
   def upvote
@@ -86,5 +91,13 @@ class WorksController < ApplicationController
 
   def sort_by_votes(medias)
     return medias.sort_by{ |media| -media.votes.length }
+  end
+
+  def sorted_media
+    return {
+      :albums => sort_by_votes(Work.where(category: 'album')),
+      :books => sort_by_votes(Work.where(category: 'book')),
+      :movies => sort_by_votes(Work.where(category: 'movie'))
+    }
   end
 end
