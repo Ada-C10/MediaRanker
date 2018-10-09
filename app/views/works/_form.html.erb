@@ -4,8 +4,8 @@
       <h2><%= pluralize(work.errors.count, "error") %> prohibited this work from being saved:</h2>
 
       <ul>
-      <% work.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% work.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
@@ -34,7 +34,7 @@
   <div class="field">
     <%= form.label :publication_year %>
     <%# form.select_year :publication_year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1) %>
-    <%= form.select_year(Date.today, start_year: 2018, end_year: 1900) %>
+    <%= form.text_field :publication_year, value: work.publication_year.strftime('%Y') %>
   </div>
 
   <div class="actions">
