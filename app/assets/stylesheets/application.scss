@@ -16,3 +16,31 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+body {
+  padding: 0 5% 0 5%;
+  background-color: rgb(246, 166, 30);
+
+}
+
+main {
+  background-color: white;
+}
+
+h1 {
+  text-align: center;
+  padding: 2% 0 2% 0;
+}
+
+h2, h3, h4, h5, h6 {
+  color: rgb(246, 166, 30);
+
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  width: 40%;
+  padding-bottom: 1.5%;
+}
