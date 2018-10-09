@@ -1,0 +1,26 @@
+
+<%= form_with model: @work, method: method, message: message do |f| %>
+<h1 class="detail-before-buttons index-header"><%= message %></h1>
+
+
+<br>
+<h2> message </h2>
+<%= f.label :category, "Category"%>
+<%= f.select :category, ['movie', 'album','book']%>
+
+<%= f.label :title, "Title"%>
+<%= f.text_field :title%>
+
+<%= f.label :creator, "Creator"%>
+<%= f.text_field :creator%>
+
+<%= f.label :publication_year, "Publication Year"%>
+<%= f.text_field :publication_year%>
+
+<%= f.label :description, "Description"%>
+<%= f.text_field :description%>
+
+
+<%= f.submit button_text%>
+
+<% end %>

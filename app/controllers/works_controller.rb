@@ -27,7 +27,7 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
+    @work = Work.find_by(id: params[:id].to_i)
   end
 
 
