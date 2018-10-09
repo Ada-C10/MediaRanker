@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   #   resources :votes, only: [:index, :create]
   # end
 
-  get 'works', to: 'works#homepage', as: 'home'
+  get '/home', to: 'works#homepage', as: 'home'
 
 
 end
