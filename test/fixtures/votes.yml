@@ -1,9 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  work: one
+marshall_secret:
+  user: marshall
+  work: secret
 
-two:
-  user: two
-  work: two
+marshall_billy:
+  user: marshall
+  work: billy
+
+lily_secret:
+  user: lily
+  work: secret
+
+lily_remember:
+  user: lily
+  work: remember

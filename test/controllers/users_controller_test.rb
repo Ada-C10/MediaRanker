@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe UsersController do
-  let(:user) { users :one }
+  let(:user) { users(:marshall) }
 
   it "gets index" do
     get users_url
@@ -15,7 +15,7 @@ describe UsersController do
 
   it "creates user" do
     expect {
-      post users_url, params: { user: { name: user.name } }
+      post users_url, params: { user: { name: 'a unique name' } }
     }.must_change "User.count"
 
     must_redirect_to user_path(User.last)
@@ -26,21 +26,4 @@ describe UsersController do
     value(response).must_be :success?
   end
 
-  it "gets edit" do
-    get edit_user_url(user)
-    value(response).must_be :success?
-  end
-
-  it "updates user" do
-    patch user_url(user), params: { user: { name: user.name } }
-    must_redirect_to user_path(user)
-  end
-
-  it "destroys user" do
-    expect {
-      delete user_url(user)
-    }.must_change "User.count", -1
-
-    must_redirect_to users_path
-  end
 end
