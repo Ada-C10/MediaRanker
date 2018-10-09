@@ -11,20 +11,32 @@
 <% end %>
 
 <%= form_with model: @work, class: 'work-form', data: { remote: false } do |f| %>
-<%= f.label :category %>
-<%= f.select :category, ['album', 'book', 'movie'] %>
+<div>
+  <%= f.label :category %>
+  <%= f.select :category, ['album', 'book', 'movie'] %>
+</div>
 
-<%= f.label :title %>
-<%= f.text_field :title %>
+<div>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
 
-<%= f.label :creator %>
-<%= f.text_field :creator %>
+<div>
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
+</div>
 
-<%= f.label :publication_year %>
-<%= f.text_field :publication_year %>
+<div>
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year %>
+</div>
 
-<%= f.label :description %>
-<%= f.text_area :description %>
+<div>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+</div>
 
-<%= f.submit %>
-<% end %>
+<div>
+  <%= f.submit %>
+  <% end %>
+</div>

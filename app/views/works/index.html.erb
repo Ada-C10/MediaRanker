@@ -3,7 +3,7 @@
   <% @works.each do |work| %>
     <li>
       <%= work.category %>
-      <%= work.title %>
+      <%= link_to work.title, work_path(work.id) %>
       <%= work.creator %>
     </li>
   <% end %>
