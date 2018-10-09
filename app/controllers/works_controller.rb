@@ -41,7 +41,7 @@ class WorksController < ApplicationController
       :category,
       :title,
       :creator,
-      :pub_year,
+      :publication_year,
       :description
     )
   end
