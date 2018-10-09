@@ -1,0 +1,32 @@
+<article>
+  <h1>List of Works</h1>
+</article>
+
+<article>
+  <h2>Albums</h2>
+  <section>
+    <ul>
+      <li>
+        <% @works.each do |work| %>
+          <% if work.category == "album" %>
+            <%= work.title %><br>
+          <% end %>
+        <% end %>
+      </li>
+    </ul>
+  </section>
+</article>
+
+<article>
+  <h2>Books</h2>
+  <section>
+
+  </section>
+</article>
+
+<article>
+  <h2>Movies</h2>
+  <section>
+
+  </section>
+</article>
