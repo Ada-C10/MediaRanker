@@ -7,7 +7,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id].to_i)
 
     if @work.nil?
-      head :not_found 
+      head :not_found
     end
   end
 
@@ -19,7 +19,7 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      redirect_to work_path(@work_id)
+      redirect_to works_path(@work_id)
     else
       render :new
     end

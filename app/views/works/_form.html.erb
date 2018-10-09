@@ -8,21 +8,25 @@
       <ul class="errors">
         <% @work.errors.each do |column, message| %>
         <li>
-          <strong><%= column.capitalize %></strong><%= message %>
+          <strong><%= column.capitalize %></strong> <%= message %>
         </li>
         <% end %>
       </ul>
     <% end %>
 
     <%= form_with model: @work, class: "form" do |f|%>
-        <%= f.label :name %>
-        <%= f.text_field :name, placeholder: :name, class: "form__input"%>
+        <%= f.label :category %>
+        <%= f.text_field :category, class: "form__input"%>
+        <%= f.select :category, [ ['Album', 1], ['Book', 2], ['Movie', 42]  ] %>
 
-        <%= f.label :vin %>
-        <%= f.text_field :vin, placeholder: :vin, class: "form__input"%>
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form__input"%>
 
-        <%= f.label :image_url %>
-        <%= f.text_field :image_url, placeholder: :image_url, class: "form__input" %>
+        <%= f.label :creator %>
+        <%= f.text_field :creator, class: "form__input"%>
+
+        <%= f.label :publication_year %>
+        <%= f.text_field :publication_year, class: "form__input" %>
 
       <%= f.submit button_title, class: 'btn'%>
     <% end %>

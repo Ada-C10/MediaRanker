@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'main/index', as: 'main'
 
 
-  resources :works, only: [:index, :create]
+  resources :works, only: [:index, :create, :new]
 
 
 

@@ -1,0 +1,53 @@
+<header>
+  <h1>Driver Details</h1>
+</header>
+
+<section>
+  <p><strong>ID</strong><br><%= @driver.id %></p>
+
+  <p><strong>VIN</strong><br><%= @driver.vin %></p>
+
+  <p><strong>Total Earnings</strong><br><%= @driver.total_earnings %></p>
+
+  <p><strong>Rating</strong><br><%= @driver.average_rating %></p>
+
+  <%= button_to "Edit", edit_driver_path(@driver.id), class: "alt-button", method: :get %>
+  <%= button_to "Delete", driver_path(@driver.id), method: :delete,
+    data: { confirm: 'Are you sure?'}, class: "alt-button" %>
+</section>
+</section>
+
+<hr>
+
+<section>
+<header>
+  <h2>Trips</h2>
+</header>
+
+<section>
+  <% trips = @driver.list_trips %>
+  <table class="list-of-data">
+    <tr class="table-header details">
+      <td>Trip ID</td>
+      <td>Passenger ID</td>
+      <td>Date</td>
+      <td>Cost</td>
+      <td>Rating</td>
+    </tr>
+    <% trips.each do |trip| %>
+      <tr class="details">
+        <td><%= link_to "#{trip.id}", trip_path(trip.id) %></td>
+        <td><%= link_to "#{trip.passenger_id}", passenger_path(trip.passenger_id) %></td>
+        <td><%= trip.date %></td>
+        <td><%= trip.display_cost %></td>
+        <td>
+          <% if trip.rating %>
+            <%= trip.rating %>
+          <% else %>
+            <%= "--" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</section>
