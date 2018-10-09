@@ -5,4 +5,5 @@ class Work < ApplicationRecord
   def self.categories
     return %w(album book movie)
   end
+
 end
