@@ -1,0 +1,36 @@
+<section>
+  <h2><%= @medium.title %></h2>
+  <p>Created By: <%= @medium.creator %></p>
+  <p>Published: <%= @medium.publication_year %></p>
+  <p><%= @medium.description %></p>
+</section>
+
+
+
+<section>
+  <h3><%= @medium.votes.length %> votes for this <%= @medium.category %></h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          User
+        </th>
+        <th>
+          Date
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @medium.votes.each do |vote| %>
+      <tr>
+        <td>
+          <%= vote.user.name %>
+        </td>
+        <td>
+          <%= vote.created_at.to_date %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

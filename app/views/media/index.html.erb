@@ -1,0 +1,25 @@
+<section class="media-table">
+  <h4>Media</h4>
+  <table>
+    <thead>
+      <tr>
+        <td>Votes</td>
+        <td>Title</td>
+        <td>Created By</td>
+        <td>Published</td>
+        <td>Upvote</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @media.each do |medium| %>
+      <tr>
+        <td><%= medium.votes.length %></td>
+        <td><%= medium.title %></td>
+        <td><%= medium.creator %></td>
+        <td><%= medium.publication_year %></td>
+        <td><%= link_to "upvote", medium_path(medium.id) %> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
