@@ -1,7 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  date: 2018-10-08
+vote_one:
+  date: '2018-10-08'
+  user: jackie
+  work: hp
 
-two:
-  date: 2018-10-08
+vote_two:
+  date: '2018-10-06'
+  user: dan
+  work: sgtpepper

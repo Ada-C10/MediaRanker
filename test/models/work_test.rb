@@ -2,6 +2,7 @@ require "test_helper"
 
 describe Work do
   let(:work) { works(:hp) }
+  let(:vote) { votes(:vote_one) }
 
   it "must be valid" do
     value(work).must_be :valid?
@@ -21,7 +22,6 @@ describe Work do
       # Arrange is done with let
 
       # Act
-      work.votes << Vote.new
       votes = work.votes
 
       # Assert
@@ -30,6 +30,21 @@ describe Work do
       expect(votes.length).must_be :>=, 1
       votes.each do |vote|
         expect(vote).must_be_instance_of Vote
+      end
+    end
+
+    it 'has many users through votes' do
+      # Arrange is done with let
+
+      # Act
+      votes = work.votes
+
+      # Assert
+      expect(work).must_be_instance_of Work
+
+      expect(votes.length).must_be :>=, 1
+      votes.each do |vote|
+        expect(vote.user).must_be_instance_of User
       end
     end
   end
@@ -121,6 +136,9 @@ describe Work do
     it 'should return nil if there are no works' do
       # Arrange
       Work.all.each do |work|
+        work.votes.each do |vote|
+          vote.destroy
+        end
         work.destroy
       end
 
@@ -150,6 +168,9 @@ describe Work do
       # Arrange
       Work.all.each do |work|
         if work.category == "album"
+          work.votes.each do |vote|
+            vote.destroy
+          end
           work.destroy
         end
       end
@@ -181,6 +202,9 @@ describe Work do
       # Arrange
       Work.all.each do |work|
         if work.category == "book"
+          work.votes.each do |vote|
+            vote.destroy
+          end
           work.destroy
         end
       end
@@ -212,6 +236,9 @@ describe Work do
       # Arrange
       Work.all.each do |work|
         if work.category == "movie"
+          work.votes.each do |vote|
+            vote.destroy
+          end
           work.destroy
         end
       end
