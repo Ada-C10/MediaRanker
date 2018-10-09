@@ -6,12 +6,16 @@ class WorksController < ApplicationController
 
   def show
     id = params[:id]
-    @work = user.find_by(id: id)
+    @work = Work.find_by(id: id)
 
     if id == nil
       render :not_found, status: :not_found
     end
 
+  end
+
+  def main
+    @works = Work.all
   end
 
   def edit
