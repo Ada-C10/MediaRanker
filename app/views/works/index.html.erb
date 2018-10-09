@@ -14,7 +14,7 @@
     <tbody>
       <tr>
       <% @works.albums_list.each do |album| %>
-        <td>Votes</td>
+        <td><%=album.votes.length%></td>
         <td><%=album.title%></td>
         <td><%=album.creator%></td>
         <td><%=album.publication_year%></td>

@@ -3,16 +3,17 @@ body {
 }
 
 header {
-  background-color: #AACFCC;
+  background-color: #B2DFDB;
 }
 
 .title {
-  font-size: larger;
+  font-size: 2.5rem;
   font-weight: 700;
 }
 
 h1 {
   text-align: center;
+  color: white;
 }
 
 h1 a:link, h1 a:visited {
