@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-  def index
+
+  private
+
+  def user_params
+    return params.require(:user).permit(:name)
   end
 
-  def show
-  end
-
-  def new
-  end
 end
