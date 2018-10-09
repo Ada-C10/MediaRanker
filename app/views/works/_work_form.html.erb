@@ -1,24 +1,30 @@
 <%= render partial: 'layouts/form_errors',
 locals: {
-  model: @driver
+  model: @work
 }
 %>
 
+<%= form_with model: @work, class: 'work-form' do |f| %>
+
+<h3><%= form_title %></h3>
+
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<%= f.label :category %>
+<%= f.text_field :category %>
+
+<%= f.label :creator %>
+<%= f.text_field :creator %>
 
 
-<%= form_with model: @driver, class: 'driver-form' do |f| %>
-
-  <h3><%= form_title %></h3>
-
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :vin %>
-  <%= f.text_field :vin %>
+<%= f.label :publication_year %>
+<%= f.text_field :publication_year %>
 
 
+<%= f.label :description %>
+<%= f.text_field :description %>
 
-
-  <%= f.submit action_type, class: "driver-form-submit-button" %>
+<%= f.submit action_type, class: "work-form-submit-button" %>
 
 <% end %>
