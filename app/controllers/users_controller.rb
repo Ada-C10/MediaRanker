@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     # @task = Task.new(name: params[:task][:name], description: params[:task][:description], due: params[:task][:due]) #instantiate a new book
     if @user.save # save returns true if the database insert succeeds
-      redirect_to drivers_path # go to the index so we can see the book in the list
+      redirect_to root_path # go to the index so we can see the book in the list
     else # save failed :(
       render :new # show the new book form view again
     end
