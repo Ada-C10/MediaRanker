@@ -1,0 +1,24 @@
+<h2> List of Works </h2>
+<h3> Albums </h3>
+
+<%= render partial: 'works/media_table',
+locals: {
+  model: @albums
+}
+%>
+
+<h3> Books </h3>
+
+<%= render partial: 'works/media_table',
+locals: {
+  model: @books
+}
+%>
+
+<h3> Movies </h3>
+
+<%= render partial: 'works/media_table',
+locals: {
+  model: @movies
+}
+%>

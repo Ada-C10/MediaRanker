@@ -1,0 +1,23 @@
+
+<table>
+
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created by</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+
+  <% model.each do |media| %>
+    <tr>
+      <td> <%= media.votes.length %> </td>
+      <td> <%= media.title %> </td>
+      <td> <%= media.creator %></td>
+      <td> <%= media.pub_year %></td>
+      <td> UPVOTE BUTTON HERE </td>
+    </tr>
+
+  <% end %>
+
+</table>
