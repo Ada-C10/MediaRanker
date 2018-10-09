@@ -25,5 +25,24 @@ class WorksController < ApplicationController
   end
 
   def new
+    @work = Work.new
   end
+
+  def create
+    @work = Work.new(work_params)
+    if @work.save
+      flash[:success] = "Succesfully created new #{@work.category}: #{@work.title}!"
+      redirect_to work_path(@work.id)
+    else
+      render :new
+    end
+  end
+
+
+  private
+
+  def work_params
+    return params.require(:work).permit(:title, :creator, :publication, :category)
+  end
+
 end
