@@ -1,7 +1,7 @@
 <h1>Works#home</h1>
 <p>Find me in app/views/works/home.html.erb</p>
 <% spotlight = Work.spotlight %>
-<h1>Media Spotlight: <%= spotlight.title %> by <%= spotlight.creator %>
+<h1>Media Spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %> by <%= spotlight.creator %>
 </h1>
 <h4><%= spotlight.description %></h4>
 
@@ -10,7 +10,7 @@
     <li><h2>TOP <%= category.upcase %>S</h2></li>
       <ul>
         <% Work.by_category(category).each do |work| %>
-          <li><h3><%= work.title %></h3></li>
+          <li><h3><%= link_to work.title, work_path(work.id) %></h3></li>
           <li><h4>by <%= work.creator %></h4></li>
         <% end %>
       </ul>

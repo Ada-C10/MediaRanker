@@ -6,7 +6,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(params[:id].to_i)
+    @work = Work.find(params[:id].to_i)
     if @work.nil?
       render :notfound, status: :not_found
     end
