@@ -5,9 +5,7 @@ Rails.application.routes.draw do
   get '/works/main', to: 'works#main', as: 'main_works'
 
   resources :users
-  resources :works do
-    resources :votes, only: [:index]
-  end
+  resources :works
 
 
 end
