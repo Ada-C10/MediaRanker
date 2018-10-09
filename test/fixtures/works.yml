@@ -2,14 +2,14 @@
 
 one:
   title: MyString
-  pub_year: 1
+  publication_year: 1
   description: MyString
   creator: MyString
   category: MyString
 
 two:
   title: MyString
-  pub_year: 1
+  publication_year: 1
   description: MyString
   creator: MyString
   category: MyString
