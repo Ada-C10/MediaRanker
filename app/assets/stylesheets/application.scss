@@ -17,6 +17,14 @@
 /* Import scss content */
 @import "**/*";
 
+.title{
+  color: #ff4500;
+}
+
+#subtitle{
+  color: white;
+}
+
 header{
   background-color: #a6e1db;
   width: 100vw;
@@ -27,37 +35,39 @@ header{
 }
 
 .header_title{
-  background-color: purple;
   text-align: center;
   padding-top: 50px;
   padding-bottom: 50px;
 }
 
 .links ul{
-  background-color: lightgreen;
   display: flex;
   flex-direction: row;
   list-style: none;
 }
 
 .site_navigation{
-  background-color: orange;
+  color: #00a99a;
   width: 50vw;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
 }
 
 .login_logout{
-  background-color: yellow;
   width: 50vw;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
 }
 
 .login_logout > li{
-  padding-right: 40px;
+  margin-right: 40px;
+  text-align: center;
+  padding: 7px;
+  border-radius: 5px;
+  background-color: #00a99a;
+  color: white;
 }
