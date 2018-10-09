@@ -1,12 +1,17 @@
 class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
 
-  def index
+  def main
     @works = Work.all
-    @books = Work.select {|work| work.category = 'book'}
-    @albums = Work.select {|work| work.category = 'album'}
-    @movies = Work.select {|work| work.category = 'movie'}
+    @albums = Work.albums
+    @books = Work.books
+    @movies = Work.movies
+  end
 
+  def index
+    @albums = Work.albums
+    @books = Work.books
+    @movies = Work.movies
   end
 
   def show
@@ -42,6 +47,8 @@ class WorksController < ApplicationController
     @work.destroy
       redirect_to works_url, notice: 'Work was successfully deleted.'
   end
+
+
 
   private
     def set_work
