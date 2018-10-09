@@ -7,9 +7,28 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One" rel="stylesheet">
   </head>
 
   <body>
+    <div id="header_container">
+      <header>
+        <h1><%= link_to "Media Ranker", welcome_index_path %> </h1>
+        <h2><%= "Ranking the Best of Everything" %></h2>
+      </header>
+
+      <nav>
+        <!-- View Top Media -->
+        <!-- View all media -->
+        <!-- Add a new work -->
+        <!-- View all users -->
+      </nav>
+    </div>
+    <section id="Media Spotlight">
+      <!--Spotlight here  -->
+      <h1><%= "Media Spotlight:" %> </h1>
+    </section>
+
     <%= yield %>
   </body>
 </html>

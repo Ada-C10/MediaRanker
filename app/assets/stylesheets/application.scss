@@ -16,3 +16,35 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+* {
+  font-family: 'Gudea', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Hammersmith One', sans-serif;
+}
+
+
+#header_container {
+  background-color: #ACDFDB;
+  color: white;
+}
+
+header {
+  display: flex;
+  margin: 1rem;
+  padding: 3rem;
+}
+
+header h1 a {
+  color: #FF572E;
+  border-right: white 2px solid;
+  padding-right: 25px;
+  margin-right: 15px;
+  font-weight: 700;
+}
+
+header h2 {
+  font-weight: 500;
+}
