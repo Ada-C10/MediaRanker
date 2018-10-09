@@ -95,4 +95,25 @@ describe Work do
       expect(remember.errors.messages).must_include :title
     end
   end
+
+  describe 'custom method: books' do
+    it 'returns a collection if there are books in the database' do
+      expect(Work.books).must_be_instance_of Array
+    end
+
+    it 'returns an empty collection if there are no books' do
+
+    end
+
+  end
+
+  describe 'custom method: albums' do
+
+
+  end
+
+  describe 'custom method: movies' do
+
+
+  end
 end

@@ -1,7 +1,8 @@
 require "test_helper"
+require 'pry'
 
 describe WorksController do
-  let(:work) { Work.new(category: 'book', title: 'POODR', creator: 'Sandi Metz', publication_year: 2012, description: 'An Agile Primer') }
+  let(:work) { works(:secret)}
 
   it "gets index" do
     get works_url
@@ -15,7 +16,7 @@ describe WorksController do
 
   it "creates work" do
     expect {
-      post works_url, params: { work: { category: work.category, creator: work.creator, description: work.description, publication_year: work.publication_year, title: work.title } }
+      post works_url, params: { work: { category: work.category, creator: work.creator, description: work.description, publication_year: work.publication_year, title: "a unique title" } }
     }.must_change "Work.count"
 
     must_redirect_to work_path(Work.last)
