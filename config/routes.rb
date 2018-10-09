@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
   get 'votes/index'
+  get 'welcome/index'
+
+  root 'welcome#index'
+
   resources :work do
     resources :votes, only:[:index]
   end
@@ -8,5 +13,4 @@ Rails.application.routes.draw do
     resources :votes, only:[:index]
   end
 
-  # Unsure if I need a vote controller/vote routes as it's linked to the work/user views
 end
