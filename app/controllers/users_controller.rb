@@ -2,10 +2,10 @@ class UsersController < ApplicationController
 
     def index
       # @user = User.all.order(:due_date)
-        @users = User.all
+        @users = User.allorder(:created_at)
     end
 
-    def show
+    def show # TODO: add flash etc???
       if @user = User.find_by(id: params[:id].to_i)
       else
         return head :not_found

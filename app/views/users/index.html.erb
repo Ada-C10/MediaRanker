@@ -1,0 +1,29 @@
+<main>
+    <h2>List of Users</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Votes</th>
+      <th>Joined</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><a href="/users/1">user.username</a></td>
+        <td>!!!1</td>
+        <td>user.created_at</td>
+      </tr>
+    <% end %>
+      <tr>
+        <td><a href="/users/2">!!!hello</a></td>
+        <td>!!!0</td>
+        <td>!!!Oct  7, 2018</td>
+    </tr>
+</tbody>
+</table>
+
+<a class="btn btn-secondary" href="/">Back to Media List</a>
+
+</main>
