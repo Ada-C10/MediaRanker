@@ -23,6 +23,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
     else
       flash.now[:error] = "Error: Work not added"
+
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
@@ -42,6 +43,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
     else
       flash.now[:error] = "Error: Changes not saved"
+
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
