@@ -8,19 +8,13 @@ describe Work do
     @work = Work.new(title: "a work", category: "book")
   end
 
-  describe 'initialize ' do
-    it 'must instantiate a valid book' do
-      is_valid = @work.valid?
-      expect(is_valid).must_equal true
-    end
-  end
-
   describe 'validations' do
     it 'is valid when a title and a valid category of movie, book, or album is present' do
 
       work = Work.first
       empty_hash = {}
       expect(work.valid?).must_equal true
+      expect(work).must_be_kind_of Work
       expect(work.errors.messages).must_equal empty_hash
     end
 
