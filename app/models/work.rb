@@ -1,7 +1,9 @@
+require 'pry'
 class Work < ApplicationRecord
   has_many :votes
 	# belongs_to :user # optional
 
+  validates :category, presence: true
   validates :title, presence: true
 
   # validates :title, uniqueness: true
@@ -12,14 +14,14 @@ class Work < ApplicationRecord
   end
 
   def self.albums
-    return Work.select { |work| work.category == "album" }
+    return Work.all.select { |work| work.category == "album" }
   end
 
   def self.books
-    return Work.select { |work| work.category == "book" }
+    return Work.all.select { |work| work.category == "book" }
   end
 
   def self.movies
-    return Work.select { |work| work.category == "movie" }
+    return Work.all.select { |work| work.category == "movie" }
   end
 end
