@@ -8,6 +8,13 @@ class WorksController < ApplicationController
     end
   end
 
+  def show
+    @work = Work.find_by(id: params[:id])
+    if @work.nil?
+      head :not_found
+    end
+  end
+
   private
   def work_params
     return params.require(:work).permit(

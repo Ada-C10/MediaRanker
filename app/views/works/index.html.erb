@@ -2,7 +2,7 @@
 
 <ul>
   <% @works.each do |work| %>
-    <p>Title: <%= work.title %></p>
+    <p>Title: <%= link_to work.title, work_path(work.id) %></p>
   <% end %>
 
 </ul>
