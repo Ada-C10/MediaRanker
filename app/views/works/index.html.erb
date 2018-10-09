@@ -1,7 +1,8 @@
 <h1> This is all the media! </h1>
 
 <section>
-  <% @works.each do |work| %>
+  <h2> Books </h2>
+  <% @books.each do |work| %>
   <h2>
     <%= link_to "#{work.title}", work_path(work.id) %>
   </h2>
@@ -10,3 +11,27 @@
 
   <% end %>
   </section>
+
+  <section>
+    <h2> Albums </h2>
+    <% @albums.each do |work| %>
+    <h2>
+      <%= link_to "#{work.title}", work_path(work.id) %>
+    </h2>
+    <%= "Created by: #{work.creator}" %>
+    <%= "Published : #{work.publication_year}" %>
+
+    <% end %>
+    </section>
+
+    <section>
+      <h2> Movies </h2>
+      <% @movies.each do |work| %>
+      <h2>
+        <%= link_to "#{work.title}", work_path(work.id) %>
+      </h2>
+      <%= "Created by: #{work.creator}" %>
+      <%= "Published : #{work.publication_year}" %>
+
+      <% end %>
+      </section>
