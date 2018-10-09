@@ -79,16 +79,15 @@ describe Work do
       expect(valid).must_equal true
     end
 
-    # TODO: custom validation? only matters within the category
-    # it 'requires a unique title' do
-    #   other_work = Work.new title: work.title, category: 'book'
-    #
-    #   work.save
-    #   valid = other_work.valid?
-    #
-    #   expect(valid).must_equal false
-    #   expect(other_work.errors.messages).must_include :title
-    # end
+    it 'requires a unique title' do
+      other_work = Work.new title: work.title, category: 'book'
+
+      valid = other_work.valid?
+
+      expect(valid).must_equal false
+      expect(other_work.errors.messages).must_include :title
+      expect(other_work.errors.messages[:title]).must_equal ["has already been taken"]
+    end
   end
 
   describe 'spotlight' do

@@ -5,9 +5,7 @@ class Work < ApplicationRecord
 
   validates :category, presence: true
   validates :title, presence: true
-
-  # validates :title, uniqueness: true
-  # only needs to be unique for the category
+  validates :title, uniqueness: { scope: :category }
 
   def self.spotlight
     return Work.all.max_by { |work| work.votes.length }
