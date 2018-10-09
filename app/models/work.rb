@@ -2,7 +2,9 @@ class Work < ApplicationRecord
   # CATEGORIES = ["album", "book", "movie"]
   has_many :votes
 
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
+  # , uniqueness: true
+  validates_uniqueness_of :work, scope: :category
   # validates_inclusion_of :category, :in => CATEGORIES
 
 

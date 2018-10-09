@@ -2,7 +2,7 @@ require "test_helper"
 
 describe Work do
 
-  # describe 'relations' do
+  describe 'relations' do
   #     it 'can set the author through "author"' do
   #       # Create two models
   #       author = Author.create!(name: "test author") #! saves it to db
@@ -64,3 +64,5 @@ describe Work do
 
   end
 end
+
+# TODO: test validates_uniqueness_of with category scope
