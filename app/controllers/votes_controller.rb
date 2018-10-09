@@ -13,8 +13,7 @@ class VotesController < ApplicationController
       # Show only votes for that user on index
       @votes = @user.votes
     else
-      @votes.all 
+      @votes.all
     end
-
   end
 end

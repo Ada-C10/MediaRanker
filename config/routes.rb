@@ -5,10 +5,10 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  # resources :welcome, only:[:index] do
-  #   resources :work, only:[:index]
-  #   resources :user, only:[:index]
-  # end
+  resources :welcome, only:[:index] do
+    resources :works, only:[:index]
+    resources :users, only:[:index]
+  end
 
   resources :works do
     resources :votes, only:[:index]
