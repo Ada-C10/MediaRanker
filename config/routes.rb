@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/works/main', to: 'works#main', as: 'main_works'
 
-  resources :users
+  resources :users, only: [:index, :show]
   resources :works
   post '/works/:id/upvote', to: 'works#upvote', as: 'upvote_work'
 
