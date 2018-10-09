@@ -1,0 +1,7 @@
+<h1>These are the users!</h1>
+<% @users.each do |user| %>
+  <h2><%= "Username: #{user.name}" %> </h2>
+  <p> <%= "Joined: #{user.created_at}" %></p>
+  <p> <%= "Number of votes: #{user.votes.length}" %> </p>
+
+<% end %>
