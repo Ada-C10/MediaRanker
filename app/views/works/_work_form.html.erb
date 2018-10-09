@@ -1,0 +1,30 @@
+<h2 class="my-class"><%= page_title %></h2>
+
+<% if @work.errors.any? %>
+<ul>
+  <% @work.errors.each do |field, message| %>
+  <li>
+    <strong><%= field.capitalize %>: </strong><%= message %>
+  </li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_with model: @work, class: 'work-form', data: { remote: false } do |f| %>
+<%= f.label :category %>
+<%= f.select :category, ['album', 'book', 'movie'] %>
+
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<%= f.label :creator %>
+<%= f.text_field :creator %>
+
+<%= f.label :publication_year %>
+<%= f.text_field :publication_year %>
+
+<%= f.label :description %>
+<%= f.text_area :description %>
+
+<%= f.submit %>
+<% end %>
