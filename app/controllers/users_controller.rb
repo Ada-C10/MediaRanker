@@ -67,8 +67,6 @@ class UsersController < ApplicationController
         :username,
       )
     end
-  end
 
-  end
 
 end
