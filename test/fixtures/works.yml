@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 2018-10-08
-  description: MyText
+beatles:
+  category: album
+  title: Yellow Submarine
+  creator: John Lennon
+  publication_year: 1975
+  description: And we lived beneath the waves in our yellow submarine
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 2018-10-08
-  description: MyText
+potter:
+  category: book
+  title: The Order of the Phoenix
+  creator: J. K. Rowling
+  publication_year: 2003
+  description: It follows Harry Potter's struggles through his fifth year at Hogwarts School of Witchcraft and Wizardry. 

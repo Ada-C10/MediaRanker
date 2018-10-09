@@ -1,9 +1,15 @@
 require "test_helper"
 
 describe Work do
-  let(:work) { Work.new }
+  describe 'validations' do
+    it 'has a title' do
+      work = Work.new(title: nil, category: 'album', creator: 'test_creator', publication_year: 1989, description: 'this is the test description')
 
-  it "must be valid" do
-    value(work).must_be :valid?
+      is_valid = work.valid?
+
+      expect( is_valid ).must_equal false
+    end
+
+  
   end
 end
