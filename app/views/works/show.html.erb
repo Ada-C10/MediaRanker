@@ -15,3 +15,26 @@
 </div>
 
 <h3> <%= @work.votes.length %> votes for this <%= @work.category %> </h3>
+
+
+
+<table class="table">
+
+  <tr>
+    <th>User</th>
+    <th>Date</th>
+  </tr>
+
+  <% @work.votes.each do |vote| %>
+    <tr>
+      <td>
+        <%= link_to user_path(vote.user.id) do %>
+          <%= vote.user.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= vote.created_at %> </td>
+    </tr>
+  <% end %>
+
+</table>

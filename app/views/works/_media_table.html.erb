@@ -19,7 +19,7 @@
       </td>
       <td> <%= media.creator %></td>
       <td> <%= media.pub_year %></td>
-      <td> UPVOTE BUTTON HERE </td>
+      <td> <%= link_to "Upvote", upvote_work_path(media.id), class: "btn btn-primary", method: :post %> </td>
     </tr>
 
   <% end %>

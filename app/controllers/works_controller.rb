@@ -2,8 +2,6 @@ class WorksController < ApplicationController
 
   def index
     @albums = sort_by_votes(Work.where(category: 'album'))
-
-
     @books = sort_by_votes(Work.where(category: 'book'))
     @movies = sort_by_votes(Work.where(category: 'movie'))
   end
