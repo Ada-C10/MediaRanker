@@ -24,19 +24,30 @@
     </ul>
   </nav>
 
-  <section class="welcome session flash">
-    <% if @current_user %>
-      <h2>Hi <%= @current_user.name %>! You're logged in!</h2>
-    <% end %>
-  </section>
-
-  <section class="flash">
-    <% flash.each do |nme, msg| %>
-    <div class="<%= nme %>"><%= msg %></div>
-    <% end %>
-  </section>
-
   <body>
+    <header>
+
+      <section class="flash flash-session">
+        <% if @current_user %>
+          <h2>Hi <%= @current_user.name %>! You're logged in!</h2>
+        <% end %>
+      </section>
+
+      <section class="flash flash-alert">
+        <% flash.each do |name, message| %>
+          <% if message.class == Array %>
+            <div class="alert-warning">
+            <% msg.each do |msg| %>
+              <p><strong><%= "#{name}:" %></strong><%= "#{msg}" %></p>
+            <% end %>
+            </div>
+          <% else %>
+            <div class="alert-<%= name %>"><%= message %></div>
+          <% end %>
+        <% end %>
+      </section>
+    </header>
+
     <%= yield %>
   </body>
 </html>
