@@ -15,9 +15,13 @@
         <li> <%= msg %> </li>
       </ul>
     <% end %>
+
+    <h2><%= link_to "Media Ranker", root_path, class: "main_title" %></h2>
+    <h4>Ranking the Best of Everything</h4>
+    
     <nav>
       <ul>
-        <li><%= link_to "View All Media", works_path, class: "all_media-link" %>
+        <li><%= link_to "View All Media", works_path, class: "all_media_link" %>
         </li>
         <li><%= link_to "Add A New Work", new_work_path, class: "new_work_link" %></li>
       </ul>

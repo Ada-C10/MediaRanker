@@ -1,8 +1,19 @@
-<h1>List of Works</h1>
+<h1>Media Spotlights</h1>
 
 <ul>
   <% @works.each do |work| %>
-    <p>Title: <%= link_to work.title, work_path(work.id) %></p>
+    <% if work.category == 'album' %>
+      <h4>Albums</h4>
+      <p>Title: <%= link_to work.title, work_path(work.id) %></p>
+
+    <% elsif work.category == 'book' %>
+      <h4>Books</h4>
+      <p>Title: <%= link_to work.title, work_path(work.id) %></p>
+
+    <% elsif work.category == 'movie' %>
+      <h4>Movies</h4>
+      <p>Title: <%= link_to work.title, work_path(work.id) %></p>
+    <% end %>
   <% end %>
 
 </ul>

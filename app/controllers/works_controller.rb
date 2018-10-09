@@ -24,7 +24,7 @@ class WorksController < ApplicationController
     filtered_work_params = work_params()
      @work = Work.new(filtered_work_params)
       if @work.save
-        flash[:success] = "Work was successfully created with title #{@work.title}"
+        flash[:success] = "Successfully created #{@work.category}!"
         redirect_to works_path
     else
       flash.now[:error] = "Invalid work data"
@@ -40,7 +40,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work.update(work_params)
-      flash[:success] = "Work was successfully updated!"
+      flash[:success] = "Successfully updated!"
       redirect_to work_path(@work.id)
     else
       # flash.now[:error] = "Invalid work data"
@@ -53,7 +53,7 @@ class WorksController < ApplicationController
 
     work.destroy
 
-    flash[:success] = "Successfully destroyed work \"#{work.title}\""
+    flash[:success] = "Successfully deleted work \"#{work.title}\""
     redirect_to works_path
   end
 
