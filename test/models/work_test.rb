@@ -99,6 +99,19 @@ describe Work do
       valid = work.valid?
       expect(valid).must_equal true
     end
+
+  it 'must have a category' do
+    work.category = nil
+
+    # Act
+    valid = work.valid?
+
+    # Assert
+    expect(valid).must_equal false
+    expect(work.errors.messages).must_include :category
+  end
+
+
   end
 
 
