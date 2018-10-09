@@ -9,25 +9,42 @@
     <ul>
       <% @works.each do |work| %>
         <% if work.category == 'movie' %>
-          <li>
-            <strong>
-              <%= link_to work.title, work_path(work.id) %>
-            </strong> by
-            <%= work.creator %>
-          </li>
+        <li>
+          <strong><%= work.title %></strong> by
+          <%= work.creator %>
+        </li>
         <% end %>
       <% end %>
     </ul>
-
   </div>
   <div>
     <h2 class='list-titles'>
       Top Books
     </h2>
+    <ul>
+      <% @works.each do |work| %>
+        <% if work.category == 'book' %>
+        <li>
+          <strong><%= work.title %></strong> by
+          <%= work.creator %>
+        </li>
+        <% end %>
+      <% end %>
+    </ul>
   </div>
   <div>
     <h2 class='list-titles'>
       Top Albums
     </h2>
+    <ul>
+      <% @works.each do |work| %>
+        <% if work.category == 'album' %>
+        <li>
+          <strong><%= work.title %></strong> by
+          <%= work.creator %>
+        </li>
+        <% end %>
+      <% end %>
+    </ul>
   </div>
 </section>
