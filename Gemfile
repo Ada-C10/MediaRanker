@@ -5,6 +5,10 @@ ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
+
+# autoprefixer throws a JS/ES6 error, so we're going to downgrade it: https://stackoverflow.com/questions/51379326/current-execjs-runtime-doest-support-es6/51383529
+gem 'autoprefixer-rails', '8.6.5'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
