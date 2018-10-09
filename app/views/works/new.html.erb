@@ -1,5 +1,26 @@
-<h1>Add a new work</h1>
-<%= form_with model: @work do |f| %>
-  <%= f.label :category %>
-  
-<% end %>
+<section class="work-form">
+  <h1>Add a new work</h1>
+  <%= form_with model: @work do |f| %>
+    <%= f.label :category %>
+    <br />
+    <%= f.select(:category, options_for_select([["album", "album"], ["book", "book"], ["movie", "movie"]])) %>
+    <br />
+    <%= f.label :title %>
+    <br />
+    <%= f.text_field :title, class: "full"%>
+    <br />
+    <%= f.label :creator %>
+    <br />
+    <%= f.text_field :creator, class: "full" %>
+    <br />
+    <%= f.label :publication_year %>
+    <br />
+    <%= f.text_field :publication_year, class: "full" %>
+    <br />
+    <%= f.label :description %>
+    <br />
+    <%= f.text_area :description, class: "full" %>
+    <br />
+    <%= f.submit %>
+  <% end %>
+</section>
