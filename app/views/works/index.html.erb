@@ -1,7 +1,7 @@
 <h1> All Works </h1>
 
 <ul>
-  <% @works.sort.reverse.each do |work| %>
+  <% @works.each do |work| %>
     <li><strong><%=link_to "#{work.title}", work_path(work.id)%></strong>
     <%=work.created_by %>
     <%=work.year_published %>

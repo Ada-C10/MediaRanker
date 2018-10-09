@@ -1,11 +1,7 @@
 <h1> All Users </h1>
 
 <ul>
-  <% @users.sort.reverse.each do |user| %>
-    <li><strong><%=user.username %></strong></li>
-    <!-- <%=link_to "View Details", driver_path(driver.id) %> |
-    <%=link_to "Edit", edit_driver_path(driver.id) %> |
-    <%=link_to "Delete", driver_path(driver), method: :delete, data: {confirm: "Are you sure you want to delete #{driver.name} from the database?" }%> -->
-    <br> </br>
+  <% @users.each do |user| %>
+    <li><strong><%=link_to "#{user.name}", user_path(user.id)%></strong></li>
   <% end %>
 </ul>
