@@ -4,7 +4,7 @@
 
 <div>
   <%= f.label :category %>
-  <%= f.select :category, ['movie', 'book', 'album'] %>
+  <%= f.select :category, Work.get_categories %>
 </div>
 
 <div>

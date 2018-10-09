@@ -3,7 +3,7 @@
   <h2>List of Works</h2>
 
 
-  <%['album', 'book', 'movie'].each do |category| %>
+  <%@works.get_categories.each do |category| %>
   <section class="list-of-<%= category %>">
     <h2><%=category%></h2>
     <table class="table <%=category%>">
