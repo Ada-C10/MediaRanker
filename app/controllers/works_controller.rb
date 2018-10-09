@@ -1,15 +1,33 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.order(:name)
+    @works = Work.order(:title)
   end
 
   def show
+    @work = Work.find_by(id: params[:id].to_i)
+
+    if @work.nil?
+      head :not_found 
+    end
   end
 
   def new
-  end 
+    @work = Work.new
+  end
 
   def create
+    @work = Work.new(work_params)
+
+    if @work.save
+      redirect_to work_path(@work_id)
+    else
+      render :new
+    end
+  end
+
+  private
+  def work_params
+    return params.require(:work).permit(:id, :title, :creator, :description, :votes)
   end
 
 
