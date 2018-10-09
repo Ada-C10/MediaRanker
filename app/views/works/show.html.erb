@@ -1,0 +1,31 @@
+<div id="work_details">
+  <h2><%=@work.title%></h2>
+  <ul>
+    <li>Created by: <%=@work.creator%></li>
+    <li>Published: <%=@work.publication_year%></li>
+    <li><p><%=@work.description%></p></li>
+  </ul>
+  <ul class="options_bar">
+    <h1>THESE ARE BAD LINKS. FIX THEEEEEEM</h1>
+    <li>
+      <button type="button" class="btn btn-info">
+        <%= link_to "Back to media ranks", works_path%>
+      </button>
+    </li>
+    <li>
+      <button type="button" class="btn btn-info">
+        <%= link_to "Edit", edit_work_path(@work)%>
+      </button>
+    </li>
+    <li>
+      <button type="button" class="btn btn-info">
+        <%= link_to "Upvote", new_work_path(@work), method: :post%>
+      </button>
+    </li>
+    <li>
+      <button type="button" class="btn btn-danger">
+        <%= link_to "Delete", work_path(@work), method: :delete%>
+      </button>
+    </li>
+  </ul>
+</div>
