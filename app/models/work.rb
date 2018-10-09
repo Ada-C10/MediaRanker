@@ -7,6 +7,10 @@ class Work < ApplicationRecord
   # validates :title, uniqueness: true
   # only needs to be unique for the category
 
+  def self.spotlight
+    return Work.all.max_by { |work| work.votes.length }
+  end
+
   def self.albums
     return Work.select { |work| work.category == "album" }
   end
