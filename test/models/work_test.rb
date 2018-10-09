@@ -3,6 +3,7 @@ require "test_helper"
 describe Work do
   let(:ten) {works(:ten)}
   let(:fire) {works(:fire)}
+  let (:vale) {works(:vale)}
 
 
   it "must be valid if all params are filled correctly" do
@@ -33,5 +34,14 @@ describe Work do
 
     fire.publication_year = 7777
     expect(fire.valid?).must_equal false
+  end
+
+  describe "sorting methods" do
+    it "puts the media in the correct category" do
+      expect(Work.movies).must_include fire
+      expect(Work.albums).must_include ten
+      expect(Work.books).must_include vale
+
+    end
   end
 end
