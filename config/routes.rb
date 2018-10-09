@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  post 'sessions/login', to: 'sessions#login', as: 'login'
-  get 'sessions/new', to: 'session#new', as: 'new_session'
-  get 'sessions/destroy', to: 'session#destroy', as: 'logout'
+  post '/login', to: 'sessions#login', as: 'login'
+  get '/login', to: 'sessions#new', as: 'new_session'
+  delete 'sessions/destroy', to: 'session#destroy', as: 'logout'
   # need to update below to exclude routes we do not need
   resources :works
   resources :users

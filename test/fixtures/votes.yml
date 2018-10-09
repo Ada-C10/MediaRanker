@@ -2,8 +2,8 @@
 
 harry_votes:
   quantity: 2
-  user: 1
-  work: 1
+  user: hannah
+  work: harry_potter
 
 wheel_votes:
   quantity: 5
