@@ -7,3 +7,5 @@
 <p> Published: <%= @work.publication_year %> </p>
 
 <p> Description: <%= @work.description %> </p>
+
+<%= link_to "Edit", edit_work_path(@work.id), class: "edit-link" %>
