@@ -2,13 +2,16 @@ require "test_helper"
 
 describe Work do
   it 'must instantiate a valid book' do
-    work = Work.new(title: "a work")
+    work = Work.new(title: "a work", category: "book")
     is_valid = work.valid?
     expect(is_valid).must_equal true
   end
 
   describe 'validations' do
     it 'is valid when a title is present' do
+
+      work = Work.first
+      expect(work.valid?).must_equal true
 
     # messages = :book_example.errors.messages
     # expect(messages).must_equal []
