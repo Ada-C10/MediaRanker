@@ -18,7 +18,11 @@ class WorksController < ApplicationController
 
     is_successful_save = @work.save
 
-    is_successful_save ? redirect_to works_path : render :new, status: :bad_request
+    if is_successful_save
+      redirect_to works_path
+    else
+      render :new, status: :bad_request
+    end
   end
 
   def edit
