@@ -16,7 +16,7 @@ class WorksController < ApplicationController
     @work = Work.new
   end
 
-  def create
+  def create # TODO: add checks from destroy for sessions + flash
     @work = Work.new(work_params)
 
     result = @work.save
@@ -28,7 +28,7 @@ class WorksController < ApplicationController
     end
   end
 
-  def edit
+  def edit # TODO: add checks from destroy for sessions + flash
     @work = Work.find_by(id: params[:id])
     if !@work
       return head :not_found
@@ -51,11 +51,17 @@ class WorksController < ApplicationController
 
     @work = Work.find_by(id: params[:id])
 
-    if @work
+    if @work && session[:user_id] # TODO: CHECK THIS B/C NOW WE HAVE SESSIONS IN THA MIX
       @work.destroy
-      redirect_to works_path
-    else
+      flash[:success] = "Successfully destroyed #{work.category} #{work.id}"
+      redirect_to root_path
+
+    elsif !@work && session[:user_id]
       return head :not_found
+
+    elsif @work && !session[:user_id]
+      flash[:error] = "You must be logged in to delete something!" #NOTE: this isn't true on the model site...
+      redirect_back(fallback_location: root_path)
     end
   end
 
