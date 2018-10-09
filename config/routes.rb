@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   # QUESTION:  no delete for users? no delete for votes?
   # nested routes for works--votes?
 
+  resources :sessions, only: [:new, :create, :delete]
+
+  post '/sessions/logout', to: 'sessions#logout', as: 'logout'
+
 end
