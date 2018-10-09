@@ -24,9 +24,10 @@ class WorksController < ApplicationController
     filtered_work_params = work_params()
      @work = Work.new(filtered_work_params)
       if @work.save
-        flash[:notice] = "Work was successfully created"
+        flash[:success] = "Work was successfully created with title #{@work.title}"
         redirect_to works_path
     else
+      flash.now[:error] = "Invalid work data"
       render :new, status: :bad_request
     end
   end
@@ -39,9 +40,11 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work.update(work_params)
+      flash[:success] = "Work was successfully updated!"
       redirect_to work_path(@work.id)
     else
-      render :update
+      # flash.now[:error] = "Invalid work data"
+      render :edit, status: :bad_request
     end
   end
 

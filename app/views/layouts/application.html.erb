@@ -8,6 +8,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
+  <body>
+    <% flash.each do |name, msg| %>
+      <ul>
+        <li> <%= msg %> </li>
+      </ul>
+    <% end %>
     <nav>
       <ul>
         <li><%= link_to "View All Media", works_path, class: "all_media-link" %>
