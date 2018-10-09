@@ -1,1 +1,33 @@
-<h2>Media Spotlight</h2>
+<section class='spotlight'>
+  <h2>Media Spotlight</h2>
+</section>
+<section class='top-lists'>
+  <div>
+    <h2 class='list-titles'>
+      Top Movies
+    </h2>
+    <ul>
+      <% @works.each do |work| %>
+        <% if work.category == 'movie' %>
+          <li>
+            <strong>
+              <%= link_to work.title, work_path(work.id) %>
+            </strong> by
+            <%= work.creator %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+
+  </div>
+  <div>
+    <h2 class='list-titles'>
+      Top Books
+    </h2>
+  </div>
+  <div>
+    <h2 class='list-titles'>
+      Top Albums
+    </h2>
+  </div>
+</section>
