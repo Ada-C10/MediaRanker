@@ -1,0 +1,14 @@
+<h1>Works index page</h1>
+
+
+
+<ul>
+    <% @works.each do |work| %>
+    <%= link_to "(#{work.title})", work_path(work.id) %>
+      <!-- create average rating method in the model: calling it on each instance of the driver  -->
+      <%= link_to "Edit", edit_work_path(work.id) %>
+         <%= link_to "Delete", work_path(work), method: :delete, data: { confirm: "Are you 1000% sure you want to delete the passenger #{work.title}?" } %>
+
+    <p>
+    <% end %>
+</ul>
