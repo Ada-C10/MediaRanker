@@ -4,4 +4,56 @@ class WorksController < ApplicationController
     @works = Work.all
   end
 
+  def show
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      head :not_found
+    end
+  end
+
+
+  def new
+    @work = Work.new
+  end
+
+
+  def create
+    @work = Work.new(work_params)
+
+    if @work.save
+      redirect_to works_path
+    else
+      render :new , status: :bad_request
+    end
+  end
+
+
+  def edit
+    @work = Work.find_by(id: params[:id])
+  end
+
+
+  def update
+    @work = Work.find_by(id: params[:id])
+
+    if @work.update(user_params)
+      redirect_to work_path
+    else
+      render :edit , status: :bad_request
+    end
+  end
+
+
+  def destroy
+    work = Work.find_by(id: params[:id])
+    work.destroy
+    redirect_to works_path
+  end
+
+
+  def work_params
+    return params.require(:work).permit(:category, :title, :creator, :pub_year, :description)
+  end
+
 end
