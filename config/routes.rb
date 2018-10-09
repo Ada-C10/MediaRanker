@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
+  root 'works#home'
+
+  get 'sessions/login', to: 'sessions#new'
   post 'sessions/login', to: 'sessions#login', as: 'login'
-  get 'sessions/login', to: 'sessions#new', as: 'new_session'
   delete 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
 
-  root 'works#home'
   resources :works
   resources :users
   resources :votes

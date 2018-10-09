@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
   def home
-    @current_user = User.find_by(id: session[:user_id] = user.id)
+    @current_user = User.find_by(id: session[:user_id])
     # nil if not logged in, or User model if they are logged in
   end
 
