@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe Vote do
-  describe 'Vote validations' do
+  describe 'Vote validations - presence' do
      before do
        # Arrange
        @user = User.create(name: 'test name')
