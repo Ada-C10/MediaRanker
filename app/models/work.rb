@@ -3,6 +3,8 @@ class Work < ApplicationRecord
 
   # validations goes here: user and work combo is unique...
   validates :title, presence: true, uniqueness: {scope: :creator, :message => "and creator combination already exists"}
+  validates :creator, presence: true
+  validates :publication_year, presence: true, numericality: {only_integer: true, greater_than: 1455, less_than: Date.today.year} 
 
   CATEGORIES = %w[album book movie]
 
