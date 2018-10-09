@@ -9,9 +9,16 @@ describe Vote do
                         description: 'test description')
      end
 
+     # Presence
+
      it 'is valid when all fields are present' do
        vote = Vote.new(user_id: @user.id, work_id: @work.id)
        expect(vote.valid?).must_equal true
      end
+
+     # Uniqueness
+
+     # Valid Values
+
    end
 end
