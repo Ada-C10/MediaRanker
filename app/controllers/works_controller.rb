@@ -20,12 +20,14 @@ class WorksController < ApplicationController
   end
 
   def create
+    # debugger
     filtered_work_params = work_params()
      @work = Work.new(filtered_work_params)
       if @work.save
-        redirect_to work_path(work.id)
+        flash[:notice] = "Work was successfully created"
+        redirect_to works_path
     else
-      render :new
+      render :new, status: :bad_request
     end
   end
 
