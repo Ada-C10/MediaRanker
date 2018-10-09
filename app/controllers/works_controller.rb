@@ -15,6 +15,20 @@ class WorksController < ApplicationController
     end
   end
 
+  def new
+    @work = Work.new
+  end
+
+  def create
+    filtered_work_params = work_params()
+     @work = Work.new(filtered_work_params)
+      if @work.save
+        redirect_to work_path(work.id)
+    else
+      render :new
+    end
+  end
+
   private
   def work_params
     return params.require(:work).permit(
