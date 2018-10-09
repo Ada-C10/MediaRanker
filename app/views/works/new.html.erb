@@ -1,7 +1,7 @@
 <h1>Works#new</h1>
 <p>Find me in app/views/works/new.html.erb</p>
 
-<%= form_with model: @work, url: 'works_path', method: :post do |f| %>
+<%= form_with model: @work do |f| %>
   <% if @work.errors.any? %>
   <ul class="errors">
     <% @work.errors.each do | col, msg | %>
