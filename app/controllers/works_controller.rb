@@ -11,4 +11,7 @@ class WorksController < ApplicationController
       render :notfound, status: :not_found
     end
   end
+
+  def new
+  end
 end
