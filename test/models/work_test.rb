@@ -36,6 +36,17 @@ describe Work do
     expect(fire.valid?).must_equal false
   end
 
+  describe "uniqueness of works in a given category" do
+  it "must not allow the same name in a category" do
+    duplicate = Work.new(title: vale.title, category: vale.category, creator: "someone", publication_year: 1988, description: "whatever")
+    expect(duplicate.valid?).must_equal false
+  end
+  it "must allow the same name in a different category" do
+    duplicate = Work.new(title: vale.title, category: ten.category, creator: "someone", publication_year: 1988, description: "whatever")
+    expect(duplicate.valid?).must_equal true
+  end
+  end
+
   describe "sorting methods" do
     it "puts the media in the correct category" do
       expect(Work.movies).must_include fire
