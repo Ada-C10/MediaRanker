@@ -19,10 +19,9 @@ class WorksController < ApplicationController
   end
 
   def create
-  #   formatted_work_params = work_params.dup
-  #   formatted_work_params[:publication] = work_params[:publication].to_i
     @work = Work.new(work_params)
     if @work.save
+      flash[:success] = "Succesfully created new #{@work.category}: #{@work.title}!"
       redirect_to work_path(@work.id)
     else
       render :new

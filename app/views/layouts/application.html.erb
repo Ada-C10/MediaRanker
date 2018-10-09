@@ -30,7 +30,7 @@
     <header>
 
       <section class="alert-info">
-        User.find_by(id: session[:user_id]).name = <%= current_user %>
+        Session Info: User.find_by(id: session[:user_id]).name = <%= current_user %>
       </section>
 
       <section class="flash flash-session">

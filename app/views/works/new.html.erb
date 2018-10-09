@@ -20,13 +20,13 @@
 
 <!-- Change to select from collection -->
   <%= f.label :category, "Category" %>
-  <%= f.select :category, [[:album], [:book], [:movie]], selected: 1 %>
+  <%= f.select :category, VALID_WORK_CATEGORIES %>
 
   <%= f.label :publication, 'Year Published' %>
-  <%= f.text_field :publication, placeholder: 'Year Published', required: true, maxlength: 4 %>
+  <%= f.text_field :publication, placeholder: 'Year', required: true, maxlength: 4 %>
 <!-- Change to a text box -->
   <%= f.label :description, 'Description' %>
-  <%= f.text_field :description, placeholder: 'Description', maxlength: 50 %>
+  <%= f.text_area :description, cols: 20, rows: 2, placeholder: 'Description', maxlength: 50 %>
 
   <%= f.submit 'Save Me!' %>
 <% end %>
