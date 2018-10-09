@@ -2,10 +2,10 @@
 
 harry_votes:
   quantity: 2
-  user_id: 1
-  work_id: 1
+  user: 1
+  work: 1
 
 wheel_votes:
   quantity: 5
-  user_id: 2 
-  work_id: 2
+  user: 2
+  work: 2
