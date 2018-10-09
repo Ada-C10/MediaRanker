@@ -15,4 +15,15 @@ class Work < ApplicationRecord
     return Work.select { |work| work.category == 'album' }
   end
 
+  def self.spotlight
+    media_spotlight = Work.first
+    max_votes = Work.first.votes.length
+    Work.all.each do |work|
+      if work.votes.length > max_votes
+        max_votes = work.votes.length
+        media_spotlight = work
+      end
+    end
+    return media_spotlight
+  end
 end

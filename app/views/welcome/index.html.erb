@@ -1,5 +1,6 @@
 <section class="spotlight">
-  <h2>Media Spotlight: </h2>
+  <h2>Media Spotlight: <%="#{@work.title} by #{@work.creator}"%></h2>
+  <%= "#{@vote_count} votes - #{@work.description}" %>
 </section>
 <section class="top_ten_container">
   <section class="top_ten">
