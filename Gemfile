@@ -3,8 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'pry-rails'
+
 group :test do
-  gem 'simplecov', require: false 
+  gem 'simplecov', require: false
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

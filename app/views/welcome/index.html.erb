@@ -1,5 +1,29 @@
-<h1>Welcome</h1>
-<%= @movies.each do |movie| %>
-  <%= "#{movie.title}" %>
-  <%= "#{movie.creator}" %> 
-<% end %>
+
+<section id="Media Spotlight">
+  <!--Spotlight here  -->
+  <h1><%= "Media Spotlight:" %> </h1>
+</section>
+
+<div class="main_work_container">
+
+  <section class="single_work_container">
+    <h2>Movies</h2>
+    <% @movies.each do |movie| %>
+      <p><%= "#{movie.title} by #{movie.creator}" %></p>
+    <% end %>
+  </section>
+
+  <section class="single_work_container">
+    <h2>Albums</h2>
+    <% @albums.each do |album| %>
+      <p><%= "#{album.title} by #{album.creator}" %></p>
+    <% end %>
+  </section>
+
+  <section class="single_work_container">
+    <h2>Books</h2>
+    <% @books.each do |book| %>
+      <p><%= "#{book.title} by #{book.creator}" %></p>
+    <% end %>
+  </section>
+</div>
