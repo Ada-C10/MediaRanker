@@ -48,6 +48,4 @@ class WorksController < ApplicationController
       :description
     )
   end
-
-
 end
