@@ -1,0 +1,25 @@
+<%= form_with model: @work do |form| %>
+
+  <p><%=directions%></p>
+
+  <%= form.select :category, ['Movie', 'Book', 'Album']%>
+
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+
+  <h3>need to use the user_id for the creator</h3>
+
+  <%= form.label :created_by %>
+  <%= form.text_field :created_by %>
+
+
+
+  <%= form.label :year_published %>
+  <%= form.text_field :year_published %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+
+  <%= form.submit action_button, class: "task-button" %>
+
+<% end %>
