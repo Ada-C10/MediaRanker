@@ -20,6 +20,12 @@
     </ul>
   </nav>
 
+  <section class="flash">
+    <% if @current_user %>
+      <h2>Welcome <%= @current_user.name %></h2>
+    <% end %>
+  </section>
+
   <body>
     <%= yield %>
   </body>
