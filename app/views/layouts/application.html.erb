@@ -13,25 +13,36 @@
   </head>
 
   <body>
-    <header>
-      <section class="flash">
-        <% flash.each do |name, message| %>
-          <div class="<%= name %>">
-            <strong> <%= message %></div>
-        <% end %>
+    <nav class="navbar">
+      <% if session[:user_id] %>
+        <%= link_to "Logged in as: #{session[:user_name]}", user_path(session[:user_id]), class: "btn btn-primary" %>
+        <%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to "Log In", login_path, class: "btn btn-primary" %>
+      <% end %> 
+    </nav>
 
+    <header>
+    <section class="flash">
+            <% flash.each do |name, message| %>
+              <% if message.class == Array %>
+                <% message.each do |msg| %>
+                  <div class="alert-<%= name %>">
+                    <strong><%= "#{name}:" %></strong><%= " #{msg}" %></div>
+                <% end %>
+              <% else %>
+                <div class="alert-<%= name %>">
+                    <%= message %>
+                </div>
+              <% end %>
+            <% end %>
+    </section>
+    <section>
         <% if @current_user %>
           <h2>Logged in as: <%= @current_user.name %> </h2>
         <% end %>
-      </section>
-      <nav>
-      <% if session[:user_id] %>
-        <% link_to "Log Out", logout_path, method: :delete %>
-      <% else %>
-         <% link_to "Log In", login_path %>
-      <% end %>
+    </section>
       
-      </nav>
     </header>
     <%= yield %>
   </body>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post 'sessions/login', to: 'sessions#login', as: 'login'
   # route to sessions new with login form
   get 'sessions/login', to: 'sessions#new'
-  get 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
+  delete 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
 
   resources :works
   # get 'works/index'

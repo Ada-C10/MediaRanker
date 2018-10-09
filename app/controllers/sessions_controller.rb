@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     end
     # store user id for session
     session[:user_id] = user.id
+    session[:user_name] = user.name
     flash[:success] = "Welcome #{user.name}!"
     redirect_to root_path
 
