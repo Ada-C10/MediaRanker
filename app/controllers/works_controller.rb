@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :get_work, only: [:show, :edit]
+  before_action :get_work, only: [:show, :edit, :update]
   def get_work
     @work = Work.find_by(id: params[:id].to_i)
   end
@@ -22,6 +22,7 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
+
     if @work.save
       redirect_to works_path
     else
@@ -30,12 +31,24 @@ class WorksController < ApplicationController
   end
 
   def edit
+    if @work.nil?
+      render :notfound, status: :not_found
+    end
   end
 
   def update
+    if @work.update(work_params)
+      redirect_to work_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    work = Work.find_by(id: params[:id].to_i)
+
+    work.destroy
+    redirect_to works_path
   end
 
   private

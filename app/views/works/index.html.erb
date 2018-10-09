@@ -2,66 +2,25 @@
 
 <h2 class="sub-header">Albums</h2>
 <table class="index-table">
-  <tr>
-    <th>Votes</th>
-    <th>Title</th>
-    <th>Created By</th>
-    <th>Published</th>
-    <th>Upvote</th>
-  </tr>
+  <%= render partial: "headers" %>
   <tbody>
-    <% @albums.each do |album| %>
-      <tr>
-        <td><%= album.votes.count %></td>
-        <td><%= link_to album.title, work_path(album.id) %></td>
-        <td><%= album.creator %></td>
-        <td><%= album.publication_year %></td>
-        <td>Upvote Button</td>
-      </tr>
-    <% end %>
+    <%= render partial: "categorytable", collection: @albums %>
   </tbody>
 </table>
 
 <h2 class="sub-header">Books</h2>
 <table class="index-table">
-  <tr>
-    <th>Votes</th>
-    <th>Title</th>
-    <th>Created By</th>
-    <th>Published</th>
-    <th>Upvote</th>
-  </tr>
+  <%= render partial: "headers" %>
   <tbody>
-    <% @books.each do |book| %>
-      <tr>
-        <td><%= book.votes.count %></td>
-        <td><%= link_to book.title, work_path(book.id) %></td>
-        <td><%= book.creator %></td>
-        <td><%= book.publication_year %></td>
-        <td>Upvote Button</td>
-      </tr>
-    <% end %>
+    <%= render partial: "categorytable", collection: @books %>
   </tbody>
 </table>
 
+
 <h2 class="sub-header">Movies</h2>
 <table class="index-table">
-  <tr>
-    <th>Votes</th>
-    <th>Title</th>
-    <th>Created By</th>
-    <th>Published</th>
-    <th>Upvote</th>
-  </tr>
+  <%= render partial: "headers" %>
   <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.votes.count %></td>
-        <td><%= link_to movie.title, work_path(movie.id) %></td>
-        <td><%= movie.creator %></td>
-        <td><%= movie.publication_year %></td>
-        <td>Upvote Button</td>
-      </tr>
-    <% end %>
+    <%= render partial: "categorytable", collection: @movies %>
   </tbody>
 </table>

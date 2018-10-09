@@ -4,25 +4,19 @@
   <p>Published: <%= "#{@work.publication_year}" %> </p>
   <p><%= @work.description %></p>
 
-  <p class="button">Back to Media Ranks</p>
-  <p class="button">Edit</p>
+  <p class="button"><%= link_to "Back to Media Ranks", root_path %></p>
+  <p class="button"><%= link_to "Edit", edit_work_path(@work.id) %></p>
   <p class="button">Upvote</p>
-  <p class="button">Delete</p>
+  <p class="button"><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %></p>
 
-  <h1><%= "#{@work.votes.count}" %> Votes for this Book</h1>
+  <h1><%= "#{@work.votes.count}" %> Votes for this <%= @work.category.capitalize %></h1>
   <table class="show-table">
     <tr>
       <th>User</th>
       <th>Date</th>
     </tr>
     <tbody>
-      <% @work.votes.each do |vote| %>
-        <tr>
-          <td><%= User.find_by(id: vote.user_id).name %></td>
-          <td><%= vote.date %></td>
-        </tr>
-      <% end %>
+      <%= render partial: "votelist", collection: @work.votes %>
     </tbody>
   </table>
-
 </section>
