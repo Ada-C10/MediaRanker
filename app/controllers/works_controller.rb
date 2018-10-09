@@ -18,7 +18,6 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
     if @work.save # save returns true if the database insert succeeds
       flash[:success] = 'Work Created!'
-
       redirect_to root_path # go to the index so we can see the book in the list
     else # save failed :(
       flash.now[:error] = 'Work not created!'
