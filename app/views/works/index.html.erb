@@ -1,2 +1,56 @@
-<h1>Works#index</h1>
-<p>Find me in app/views/works/index.html.erb</p>
+<div class="main_work_container">
+
+  <section class="single_work_container">
+    <h3><%="Movies"%></h3>
+    <table>
+      <tr>
+        <th>
+          <%= "Votes" %>
+        </th>
+        <th>
+          <%= "Title" %>
+        </th>
+        <th>
+          <%= "Created By" %>
+        </th>
+        <th>
+          <%= "Year Published" %>
+        </th>
+        <th>
+          <%= "Upvote" %>
+        </th>
+      </tr>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td>
+            <p>
+              <%= "Votes Here" %>
+            </p>
+          </td>
+          <td>
+            <p>
+              <%= "#{movie.title}" %>
+            </p>
+          </td>
+          <td>
+            <p>
+              <%= "#{movie.creator}" %>
+            </p>
+          </td>
+          <td>
+            <p>
+              <%= "#{movie.publication_year}" %>
+            </p>
+          </td>
+          <td>
+            <p>
+              <%= "UPVOTE button here" %>
+            </p>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+
+  </section>
+
+</div>
