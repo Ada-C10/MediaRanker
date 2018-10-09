@@ -1,10 +1,9 @@
 
-<%= form_with model: @work, method: method, message: message do |f| %>
-<h1 class="detail-before-buttons index-header"><%= message %></h1>
-
+<%= form_with model: @work, message: message do |f| %>
+<h1><%= message %></h1>
 
 <br>
-<h2> message </h2>
+<h2><%= message %> </h2>
 <%= f.label :category, "Category"%>
 <%= f.select :category, ['movie', 'album','book']%>
 

@@ -10,6 +10,23 @@
   </head>
 
   <body>
+    <header>
+      <h1> <%= link_to  "Media Ranker", root_path , id: "home-link" %> | Ranking the Best of Everything </h1>
+      <nav>
+        <ul>
+          <li><%= link_to  "View top media", root_path , id: "home-link" %></li>
+          <li><%= link_to  "View all media", works_path , id: "home-link" %></li>
+          <li><%= link_to  "Add a new work", new_work_path , id: "home-link" %></li>
+          <li><%= link_to  "View all users", users_path , id: "home-link" %></li>
+        </ul>
+      </nav>
+      <nav>
+        <ul>
+          <li>Logged in as Danielle</li>
+          <li>Logout</li>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
