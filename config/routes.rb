@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  root 'mediaranker#index'
-
-  resources :mediaranker, only: [:index]
+  root 'works#top'
 
   resources :works
 
-  resources :votes
+# Do we need a controller for votes? Good question Dan. I will think more about it. 
+  # resources :votes
 
   resources :users
 end
