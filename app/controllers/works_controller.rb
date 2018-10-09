@@ -1,9 +1,10 @@
 class WorksController < ApplicationController
+  has_many :votes
 
   def homepage
 
   end
-  
+
   def index
     @works = Work.all
   end
