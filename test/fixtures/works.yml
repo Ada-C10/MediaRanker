@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+kings:
+  category: book
+  title: The Way of Kings
+  creator: Brandon Sanderson
+  publication_year: 2010
+  description: An epic fantasy novel in the Stormlight Archive Series.
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+happiness:
+  category: movie
+  title: On Happiness Road
+  creator: Hsin Yin Sung
+  publication_year: 2018
+  description: Forty years of Taiwanese history comes under review in this tender and powerfully nostalgic tale of the search for happiness.
+
+park:
+  category: album
+  title: Ask Bout Me
+  creator: Jay Park
+  publication_year: 2018
+  description: Filmed in Seattle in June and features people from all walks of life doing doing their own things as they live.
