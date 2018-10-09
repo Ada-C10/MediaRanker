@@ -4,10 +4,6 @@ marshall_secret:
   user: marshall
   work: secret
 
-marshall_billy:
-  user: marshall
-  work: billy
-
 lily_secret:
   user: lily
   work: secret

@@ -4,6 +4,7 @@ describe Work do
   let(:secret) {works(:secret)}
   let(:remember) {works(:remember)}
   let(:billy) {works(:billy)}
+  let(:marshall_billy) {votes{:marshall_billy}}
 
   it "allows completely valid entries" do
     expect(remember.valid?).must_equal true
@@ -146,24 +147,46 @@ describe Work do
 
   describe 'custom method: movies' do
 
-        it 'returns an array if there is only one movie' do
-          expect(Work.movies).must_be_instance_of Array
-          expect(Work.movies.length).must_equal 1
-          expect(Work.movies.first.category).must_equal 'movie'
-        end
+    it 'returns an array if there is only one movie' do
+      expect(Work.movies).must_be_instance_of Array
+      expect(Work.movies.length).must_equal 1
+      expect(Work.movies.first.category).must_equal 'movie'
+    end
 
-        it 'returns a collection if there are movies in the database' do
-          remember.update(category: 'movie')
-          secret.update(category: 'movie')
-          expect(Work.movies).must_be_instance_of Array
-          expect(Work.movies.length).must_equal 3
-          expect(Work.movies.all?{|work| work.category = 'movie'}).must_equal true
-        end
+    it 'returns a collection if there are movies in the database' do
+      remember.update(category: 'movie')
+      secret.update(category: 'movie')
+      expect(Work.movies).must_be_instance_of Array
+      expect(Work.movies.length).must_equal 3
+      expect(Work.movies.all?{|work| work.category = 'movie'}).must_equal true
+    end
 
-        it 'returns an empty collection if there are no movies' do
-          billy.update(category: 'album')
-          expect(Work.movies).must_be_instance_of Array
-          expect(Work.movies.length).must_equal 0
-        end
+    it 'returns an empty collection if there are no movies' do
+      billy.update(category: 'album')
+      expect(Work.movies).must_be_instance_of Array
+      expect(Work.movies.length).must_equal 0
+    end
   end
+
+  describe 'a work has many votes' do
+    it 'retrieves a list of votes' do
+      expect(secret.votes.count).must_equal 2
+    end
+
+    it 'only retrieves votes for that work' do
+      expect(secret.votes.all?{|vote| vote.work == secret}).must_equal true
+    end
+
+    it 'deletes votes if the work gets deleted' do
+      expect(Vote.select{|vote| vote.work == secret}.length).must_equal 2
+      secret.destroy
+      expect(Vote.select{|vote| vote.work == secret}.length).must_equal 0
+    end
+
+    it 'returns an empty collection if there are no votes' do
+      expect(billy.votes.count).must_equal 0
+    end
+
+  end
+
 end
