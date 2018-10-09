@@ -24,6 +24,7 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
+      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
       redirect_to works_path
     else
       render :new
@@ -38,8 +39,13 @@ class WorksController < ApplicationController
 
   def update
     if @work.update(work_params)
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path
     else
+      flash.now[:warning] = "A problem occured: Could not update #{@work.category}"
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
       render :edit
     end
   end

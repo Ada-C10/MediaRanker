@@ -10,6 +10,40 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <section class="flash">
+        <% flash.each do |name, message| %>
+          <% if message.class == Array %>
+            <div class="alert-warning">
+              <ul>
+                <% message.each do |msg| %>
+                  <li><%= "#{name}: #{msg}\n" %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% else %>
+            <div class="alert-<%= name %>"><%= message %></div>
+          <% end %>
+        <% end %>
+
+        <% if @current_user %>
+          <h2>Welcome <%= @current_user.name %></h2>
+        <% end %>
+      </section>
+      <nav>
+        <ul>
+          <li>
+            <% if session[:user_id] %>
+              <%= link_to "Log Out", logout_path, method: :delete %>
+            <% else %>
+              <%= link_to "Log In", login_path %>
+             <% end %>
+           </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
