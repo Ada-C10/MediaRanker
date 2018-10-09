@@ -1,15 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  year_published: MyString
-  description: MyString
+  category: book
+  title: Gone With the Wind
+  creator: Margaret Mitchell
+  publication_year: 2014
+  description: This is a great book about the aftermath of the Civil War
 
 two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  year_published: MyString
-  description: MyString
+  category: book
+  title: Foundation
+  creator: Isaac Asimov
+  publication_year: 1979
+  description: A great book about a time long long ago in a galaxy far far away
+
+three:
+  category: movie
+  title: Book Number Three
+  creator: Test Author
+  publication_year: 2000
+  description: This is a description
+
+four:
+  category: album
+  title: Purple Rain
+  creator: Prince
+  publication_year: 1980
+  description: A great album
