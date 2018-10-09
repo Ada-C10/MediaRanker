@@ -1,2 +1,14 @@
 <h1>Works#index</h1>
 <p>Find me in app/views/works/index.html.erb</p>
+
+<%['movie', 'book', 'album'].each do |category| %>
+  <h2> Top <%=category.capitalize%>s </h2>
+  <% @works.each do |work| %>
+    <%if category == work.category%>
+    <h4> <%= link_to "#{work.title}", work_path(work.id)%> by <%=work.creator%> </h4>
+    <p>
+      Votes: Method goes here
+    </p>
+    <%end%>
+  <%end%>
+<%end%>
