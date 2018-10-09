@@ -5,7 +5,9 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find_by(id: params[:id])
-    head :not_found if @book.nil?
+    if @work.nil?
+      head :not_found
+    end
   end
 
   def new
