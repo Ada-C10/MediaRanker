@@ -1,15 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  category: MyString
-  creator: MyString
-  pub_year: 2018-10-08
-  description: MyString
-
+  title: I will always love you
+  category: album
+  creator: Houston
+  publication_year: 2018
+  description: The body guard sound track. Original song is by Dolly Parton
 two:
-  title: MyString
-  category: MyString
-  creator: MyString
-  pub_year: 2018-10-08
-  description: MyString
+  title: Cutting for Stone
+  category: book
+  creator: Abraham Verghese
+  publication_year: 2009
+  description: Is a novel written by Ethiopian-born Indian-American medical doctor and author Abraham Verghese. It is a saga of twin brothers, orphaned by their mother's death at their births and forsaken by their father.
+three:
+  title: The Notebook
+  category: Nick Cassavetes
+  creator: movie
+  publication_year: 2004
+  description: A poor yet passionate young man falls in love with a rich young woman, giving her a sense of freedom, but they are soon separated because of their social differences.
