@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :works, :users, :votes
 
   # QUESTION:  no delete for users? no delete for votes?
+  # nested routes for works--votes?
 
 end

@@ -59,6 +59,10 @@ class WorksController < ApplicationController
     end
   end
 
+  def gen_categories
+    # CATEGORIES = ["album", "book", "movie"] # QUESTION: keep here or move?
+    # constant is in model
+  end
 
   private
 
