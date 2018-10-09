@@ -33,7 +33,8 @@
 
   <div class="field">
     <%= form.label :publication_year %>
-    <%= form.date_select :publication_year %>
+    <%# form.select_year :publication_year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1) %>
+    <%= form.text_field :publication_year %>
   </div>
 
   <div class="actions">

@@ -1,25 +1,19 @@
 class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
 
-  # GET /works
   def index
     @works = Work.all
   end
 
-  # GET /works/1
   def show
   end
 
-  # GET /works/new
   def new
     @work = Work.new
   end
 
-  # GET /works/1/edit
   def edit
   end
-
-  # POST /works
 
   def create
     @work = Work.new(work_params)
@@ -27,34 +21,26 @@ class WorksController < ApplicationController
     respond_to do |format|
       if @work.save
         format.html { redirect_to @work, notice: 'Work was successfully created.' }
-        format.json { render :show, status: :created, location: @work }
       else
         format.html { render :new }
-        format.json { render json: @work.errors, status: :unprocessable_entity }
       end
     end
   end
-
-  # PATCH/PUT /works/1
 
   def update
     respond_to do |format|
       if @work.update(work_params)
         format.html { redirect_to @work, notice: 'Work was successfully updated.' }
-        format.json { render :show, status: :ok, location: @work }
       else
         format.html { render :edit }
-        format.json { render json: @work.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /works/1
   def destroy
     @work.destroy
     respond_to do |format|
       format.html { redirect_to works_url, notice: 'Work was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

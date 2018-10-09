@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  creator: MyString
-  description: MyString
-  category: MyString
-  publication_year: 2018-10-08
+cookies:
+  title: Batches 'n' Cookies
+  creator: Lizzo
+  description: music video by Lizzo feat. Sophia Eris
+  category: video
+  publication_year: 2013-10-08
 
-two:
-  title: MyString
-  creator: MyString
-  description: MyString
-  category: MyString
-  publication_year: 2018-10-08
+fitness:
+  title: Fitness
+  creator: Lizzo
+  description: I been workin on my fitness
+  category: music
+  publication_year: 2017-10-08
