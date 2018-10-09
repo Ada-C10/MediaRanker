@@ -16,11 +16,44 @@
       <li><%= link_to "View All Media", works_path %></li>
       <li><%= link_to "Add A New Work", new_work_path %></li>
       <li><%= link_to "View All Users", users_path %></li>
-      <li><%= link_to "Log In", new_user_path %></li>
+      <% if session[:user_id] != nil %>
+        <% current_user = User.find_by(id: session[:user_id]).name %>
+        <li><%= link_to "Log Out (logged in as #{current_user})", logout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Log In", login_path %></li>
+      <% end %>
     </ul>
   </nav>
 
   <body>
+
+    <header>
+
+      <section class="alert-info">
+        User.find_by(id: session[:user_id]).name = <%= current_user %>
+      </section>
+
+      <section class="flash flash-session">
+        <% if @current_user %>
+          <h2>Hi <%= @current_user.name %>! You're logged in!</h2>
+        <% end %>
+      </section>
+
+      <section class="flash flash-alert">
+        <% flash.each do |name, message| %>
+          <% if message.class == Array %>
+            <div class="alert-warning">
+            <% msg.each do |msg| %>
+              <p><strong><%= "#{name}:" %></strong><%= "#{msg}" %></p>
+            <% end %>
+            </div>
+          <% else %>
+            <div class="alert-<%= name %>"><%= message %></div>
+          <% end %>
+        <% end %>
+      </section>
+    </header>
+
     <%= yield %>
   </body>
 </html>

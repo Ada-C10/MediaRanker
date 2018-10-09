@@ -1,0 +1,10 @@
+<h1>Sessions#new</h1>
+<p>Find me in app/views/sessions/new.html.erb</p>
+
+<h1>Please Log In</h1>
+
+<%= form_with model: @user, url: login_path, method: :post do |f| %>
+  <%= f.label :name, 'Username (6-20 characters)' %>
+  <%= f.text_field :name, placeholder: 'Username' %>
+  <%= f.submit 'Login' %>
+<% end %>
