@@ -20,7 +20,7 @@
 
 <!-- Change to select from collection -->
   <%= f.label :category, "Category" %>
-  <%= f.select :category, [[1], [2], [3], [4], [5]], selected: 1, prompt: 'Select Category (Required)' %>
+  <%= f.select :category, [[:album], [:book], [:movie]], selected: 1 %>
 
   <%= f.label :publication, 'Year Published' %>
   <%= f.text_field :publication, placeholder: 'Year Published', required: true, maxlength: 4 %>

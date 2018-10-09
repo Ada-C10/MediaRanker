@@ -19,6 +19,8 @@ class WorksController < ApplicationController
   end
 
   def create
+  #   formatted_work_params = work_params.dup
+  #   formatted_work_params[:publication] = work_params[:publication].to_i
     @work = Work.new(work_params)
     if @work.save
       redirect_to work_path(@work.id)
@@ -31,6 +33,7 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    return params.require(:work).permit(:title, :creator) #TODO: update permit
+    return params.require(:work).permit(:title, :creator, :publication, :category)
   end
+
 end
