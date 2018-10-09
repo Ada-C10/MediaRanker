@@ -34,7 +34,6 @@ describe Work do
     end
 
 
-
     it "must not be valid for duplicate title with the same category" do
       work1 = Work.new(title: @work.title, category: @work.category)
       # binding.pry
@@ -51,10 +50,7 @@ describe Work do
       expect( work1.title ).must_equal @work.title
     end
 
-
-
-
   end
-  
+
 
 end
