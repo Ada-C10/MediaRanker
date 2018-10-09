@@ -26,7 +26,7 @@ describe Work do
     end
 
     it 'is invalid when category is not included in valid categories array' do
-      VALID_CATEGORIES.each do |category|
+      VALID_WORK_CATEGORIES.each do |category|
         @work.category = category
         expect(@work.valid?).must_equal true
       end
