@@ -10,6 +10,16 @@
   </head>
 
   <body>
+
+    <nav>
+      <ul>
+        <li><%= link_to "View top media", main_works_path %></li>
+        <li><%= link_to "View all media", works_path %></li>
+        <li><%= link_to "Add a new work", new_work_path %></li>
+
+      </ul>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

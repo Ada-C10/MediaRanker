@@ -8,7 +8,6 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find_by(id: params[:id])
-    @trips = @work.trips
     if @work.nil?
       head :not_found
     end
@@ -20,11 +19,10 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-
     if @work.save
       redirect_to works_path
     else
-      render :new
+      render :new, status: :bad_request
     end
   end
 
@@ -47,6 +45,9 @@ class WorksController < ApplicationController
 
     work.destroy
     redirect_to works_path
+  end
+
+  def main
   end
 
   private

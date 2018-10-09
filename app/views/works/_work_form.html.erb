@@ -1,0 +1,28 @@
+<%= render partial: 'layouts/form_errors',
+locals: {
+  model: @work
+}
+%>
+
+<%= form_with model: @work, class: 'work-form' do |f| %>
+
+<h2><%= form_title %></h2>
+
+<%= f.label :category %>
+ <%= f.select :category, Work.categories %>
+
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<%= f.label :creator %>
+<%= f.text_field :creator %>
+
+<%= f.label 'Publication Year' %>
+<%= f.text_field :pub_year %>
+
+<%= f.label :description %>
+<%= f.text_field :description %>
+
+<%= f.submit action_type, class: "work-form-submit-button" %>
+
+<% end %>
