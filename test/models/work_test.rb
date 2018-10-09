@@ -1,9 +1,37 @@
 require "test_helper"
 
 describe Work do
-  let(:work) { Work.new }
+  let(:ten) {works(:ten)}
+  let(:fire) {works(:fire)}
 
-  it "must be valid" do
-    value(work).must_be :valid?
+
+  it "must be valid if all params are filled correctly" do
+    expect(ten.valid?).must_equal true
+  end
+
+  it "must have a title" do
+    ten.title = nil
+    expect(ten.valid?).must_equal false
+    expect(ten.errors.messages).must_include :title
+  end
+
+  it "must have a publication_year" do
+    fire.publication_year = nil
+    expect(fire.valid?).must_equal false
+    expect(fire.errors.messages).must_include :publication_year
+  end
+
+  it "must have a publication_year that is year between now and the year 1000" do
+    fire.publication_year = "year"
+    expect(fire.valid?).must_equal false
+
+    fire.publication_year = 5
+    expect(fire.valid?).must_equal false
+
+    fire.publication_year = 1984
+    expect(fire.valid?).must_equal true
+
+    fire.publication_year = 7777
+    expect(fire.valid?).must_equal false
   end
 end
