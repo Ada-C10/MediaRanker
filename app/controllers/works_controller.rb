@@ -20,6 +20,21 @@ class WorksController < ApplicationController
     end
   end
 
+  def edit
+    @work = Work.find_by(id: params[:id])
+  end
+
+  def update
+    work = Work.find(params[:id])
+    if work.update(work_params)
+      flash[:succes] = "Successfully updated \"#{work.title}\""
+      redirect_to work_path(work.id)
+    else
+      flash.now[:error] = "Invalid data entered"
+      render :edit, status: :bad_request
+    end
+  end
+
 
   private
 

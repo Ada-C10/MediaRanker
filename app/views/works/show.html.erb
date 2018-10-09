@@ -8,3 +8,9 @@
 <p>
   <%= @work.description %>
 </p>
+
+<section>
+  <div>
+    <%= link_to "Edit", edit_work_path(@work.id) %>
+  </div>
+</section>
