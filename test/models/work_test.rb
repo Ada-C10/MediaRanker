@@ -15,11 +15,16 @@ require "test_helper"
 describe Work do
 
   describe 'relations' do
-    work = works(:blue)
 
+    before do
+      @work = works(:blue)
+    end
 
     it "must be valid when all fields are present" do
-      value(work.title).must_be :valid?
+
+      @work.title.must_equal "Blue Breaker"
+      is_valid = @work.valid?
+      expect( is_valid ).must_equal true
     end
 
   end
