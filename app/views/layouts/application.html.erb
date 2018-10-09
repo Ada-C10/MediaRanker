@@ -10,6 +10,21 @@
   </head>
 
   <body>
+    <header>
+      <h1><%=link_to "Media Ranker"%>
+        <span>| Ranking the Best of Everything</span</h1>
+      </h1>
+      <nav>
+        <ul>
+          <li> <%= link_to "View top media"%></li>
+          <li> <%= link_to "View all media"%></li>
+          <li> <%= link_to "Add a new work"%></li>
+          <li> <%= link_to "View all users"%></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
     <%= yield %>
+    </main>
   </body>
 </html>
