@@ -97,23 +97,73 @@ describe Work do
   end
 
   describe 'custom method: books' do
-    it 'returns a collection if there are books in the database' do
+
+    it 'returns an array if there is only one book' do
       expect(Work.books).must_be_instance_of Array
+      expect(Work.books.length).must_equal 1
+      expect(Work.books.first.category).must_equal 'book'
+    end
+
+    it 'returns a collection if there are books in the database' do
+      remember.update(category: 'book')
+      billy.update(category: 'book')
+      expect(Work.books).must_be_instance_of Array
+      expect(Work.books.length).must_equal 3
+      expect(Work.books.all?{|work| work.category = 'book'}).must_equal true
     end
 
     it 'returns an empty collection if there are no books' do
-
+      secret.update(category: 'album')
+      expect(Work.books).must_be_instance_of Array
+      expect(Work.books.length).must_equal 0
     end
 
   end
 
   describe 'custom method: albums' do
 
+        it 'returns an array if there is only one album' do
+          expect(Work.albums).must_be_instance_of Array
+          expect(Work.albums.length).must_equal 1
+          expect(Work.albums.first.category).must_equal 'album'
+        end
+
+        it 'returns a collection if there are albums in the database' do
+          secret.update(category: 'album')
+          billy.update(category: 'album')
+          expect(Work.albums).must_be_instance_of Array
+          expect(Work.albums.length).must_equal 3
+          expect(Work.albums.all?{|work| work.category = 'album'}).must_equal true
+        end
+
+        it 'returns an empty collection if there are no albums' do
+          remember.update(category: 'book')
+          expect(Work.albums).must_be_instance_of Array
+          expect(Work.albums.length).must_equal 0
+        end
 
   end
 
   describe 'custom method: movies' do
 
+        it 'returns an array if there is only one movie' do
+          expect(Work.movies).must_be_instance_of Array
+          expect(Work.movies.length).must_equal 1
+          expect(Work.movies.first.category).must_equal 'movie'
+        end
 
+        it 'returns a collection if there are movies in the database' do
+          remember.update(category: 'movie')
+          secret.update(category: 'movie')
+          expect(Work.movies).must_be_instance_of Array
+          expect(Work.movies.length).must_equal 3
+          expect(Work.movies.all?{|work| work.category = 'movie'}).must_equal true
+        end
+
+        it 'returns an empty collection if there are no movies' do
+          billy.update(category: 'album')
+          expect(Work.movies).must_be_instance_of Array
+          expect(Work.movies.length).must_equal 0
+        end
   end
 end
