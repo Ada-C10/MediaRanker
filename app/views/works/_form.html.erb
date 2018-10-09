@@ -14,14 +14,14 @@
       </ul>
     <% end %>
 
-    <%= form_with model: @driver, class: "form" do |f|%>
-        <%# f.label :name %>
+    <%= form_with model: @work, class: "form" do |f|%>
+        <%= f.label :name %>
         <%= f.text_field :name, placeholder: :name, class: "form__input"%>
 
-        <%# f.label :vin %>
+        <%= f.label :vin %>
         <%= f.text_field :vin, placeholder: :vin, class: "form__input"%>
 
-        <%# f.label :image_url %>
+        <%= f.label :image_url %>
         <%= f.text_field :image_url, placeholder: :image_url, class: "form__input" %>
 
       <%= f.submit button_title, class: 'btn'%>
