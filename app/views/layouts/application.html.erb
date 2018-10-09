@@ -10,7 +10,15 @@
 </head>
 
 <body>
-  <header>Welcome Page!
+  <header>
+    <nav>
+      <ul>
+        <li><%= link_to "Users", users_path, class: "all_users-link" %>
+        </li>
+        <li><%= link_to "Works", works_path, class: "all_works-link" %></li>
+        <li><%= link_to "Create New Works", new_work_path, class: "new_work-link" %></li>
+      </ul>
+    </nav>
   </header>
   <%= yield %>
   <footer>
