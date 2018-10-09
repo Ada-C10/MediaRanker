@@ -11,16 +11,26 @@
 
   <body>
     <header>
-      <h1>Media Ranker | Ranking the Best of Everything</h1>
-      <nav>
-        <ul>
-          <li>top media link</li>
-          <li>all media link</li>
-          <li>add new work link</li>
-          <li>all users link</li>
-          <li>log in link</li>
-        </ul>
-      </nav>
+      <div class="header_title">
+        <h1>Media Ranker | Ranking the Best of Everything
+        </h1>
+      </div>
+      <div class="links">
+        <nav>
+          <ul>
+            <div class="site_navigation">
+              <li>top media link</li>
+              <li>all media link</li>
+              <li>add new work link</li>
+              <li>all users link</li>
+            </div>
+            <div class="login_logout">
+              <li>log in link</li>
+              <li>Log out</li>
+            </div>
+          </ul>
+        </nav>
+      </div>
     </header>
     <%= yield %>
   </body>

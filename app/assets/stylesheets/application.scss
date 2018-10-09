@@ -16,3 +16,48 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+header{
+  background-color: #a6e1db;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.header_title{
+  background-color: purple;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.links ul{
+  background-color: lightgreen;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.site_navigation{
+  background-color: orange;
+  width: 50vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap-reverse;
+}
+
+.login_logout{
+  background-color: yellow;
+  width: 50vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  flex-wrap: wrap-reverse;
+}
+
+.login_logout > li{
+  padding-right: 40px;
+}
