@@ -2,8 +2,8 @@
 
 <section>
   <ul>
-  <h2><%= "Top Albums" %></h2>
-  <% @works.each do |work| %>
+    <h2><%= "Top Albums" %></h2>
+    <% @works.each do |work| %>
     <% if work.category == "album" %>
     <li><%= work.title %></li>
     <li><%= work.creator %></li>
@@ -15,7 +15,7 @@
 
 <section>
   <ul>
-  <h2><%= "Top Movies" %></h2>
+    <h2><%= "Top Movies" %></h2>
     <% @works.each do |work| %>
     <% if work.category == "movie" %>
 
@@ -26,7 +26,6 @@
     <% end %>
     <% end %>
   </ul>
-
 </section>
 
 <section>
@@ -34,6 +33,7 @@
     <h2><%= "Top Books" %></h2>
     <% @works.each do |work| %>
     <% if work.category == "book" %>
+    
     <li><%= work.title %></li>
     <li><%= work.creator %></li>
     <br>
@@ -41,5 +41,4 @@
   </ul>
   <% end %>
   <% end %>
-
 </section>

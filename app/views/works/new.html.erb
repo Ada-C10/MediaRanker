@@ -1,1 +1,5 @@
 <h1>Add New Work</h1>
+
+<%= form_with model: @work do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
