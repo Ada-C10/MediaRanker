@@ -6,6 +6,7 @@ get 'sessions/new', to: 'sessions#new', as: 'new_session'
 # destroying the session
 delete 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
 
+#TODO  Route for upvote method to upvote method in works controller 
   root 'welcome#index'
 
   resources :welcome, only:[:index] do

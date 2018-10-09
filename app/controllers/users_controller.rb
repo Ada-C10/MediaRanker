@@ -9,13 +9,15 @@ class UsersController < ApplicationController
 
   def show
     @current_user = User.find_by(id: session[:user_id])
-    # Figure out how to show user votes... 
+    # Figure out how to show user votes...
     # @votes = @current_user.votes.all
-
+    # Find USER
+    user_id = params[:id].to_i
+    @user = User.find_by(id: user_id)
     if @user.nil?
       render :notfound, status: :not_found
     end
-
+    # @user_votes = @user.votes 
   end
 
   def new
