@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
+  root "works#index"
+
+  resources :users
   # create session for user login
   post 'sessions/login', to: 'sessions#login', as: 'login'
-  get 'sessions/login'
-  get 'sessions/new', to: 'sessions#new', as: 'new_session'
+  # route to sessions new with login form
+  get 'sessions/login', to: 'sessions#new'
   get 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
-  root "works#index"
+
   resources :works
-  get 'works/index'
-  get 'works/show'
-  get 'works/update'
-  get 'works/create'
-  get 'works/new'
-  get 'works/destroy'
+  # get 'works/index'
+  # get 'works/show'
+  # get 'works/update'
+  # get 'works/create'
+  # get 'works/new'
+  # get 'works/destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
