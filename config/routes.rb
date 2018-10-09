@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'works#index'
+  get '/home', to: 'home#index'
+  root 'home#index'
 
   resources :users
   resources :votes
