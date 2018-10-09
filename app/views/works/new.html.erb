@@ -1,3 +1,9 @@
-<h1>Works New page</h1>
+<h1>Create new works here!</h1>
+
+<%= render partial: 'layouts/form_errors',
+locals: {
+  model: @work
+}
+%>
 
 <%= render partial: "form", locals: {directions: "Complete this form to enter a new piece of media:", action_button: "Create New Media"} %>

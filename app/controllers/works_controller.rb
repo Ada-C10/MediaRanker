@@ -23,8 +23,10 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
+      flash[:success] = "Congratulations - you successfully entered a piece of Media!"
       redirect_to works_path
     else
+      flash.now[:error] = "The data you entered was not valid.  Please try again."
       render :new, status: :bad_request
     end
   end
