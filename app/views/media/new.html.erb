@@ -1,0 +1,15 @@
+<h2>Add media to the database</h2>
+<%= form_with model: @medium do |f| %>
+<%= f.label :category %>
+<%= f.select :category, ['album', 'book', 'film'] %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<%= f.label :creator %>
+<%= f.text_field :creator %>
+<%= f.label :publication_year %>
+<%= f.text_field :publication_year %>
+<%= f.label :description %>
+<%= f.text_area :description %>
+<%= f.submit "slurp" %>
+
+<% end %>
