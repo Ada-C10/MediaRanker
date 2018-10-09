@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+pride:
+  category: Book
+  title: Pride and Prejudice
+  creator: Jane Austin
+  publication_year: 1813
+  description: Master piece comedy
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+hello:
+  category: Album
+  title: Hello
+  creator: Adele Adkins
+  publication_year: 2015
+  description: a piano ballad
