@@ -1,2 +1,20 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+
+<section class="main_work_container">
+  <h2><%= "#{@work.title}" %></h2>
+  <p>
+    <%= "Created by: #{@work.creator}" %>
+  </p>
+  <p>
+    <%= "Published: #{@work.publication_year}" %>
+  </p>
+  <p>
+    <%= "#{@work.description}" %>
+  </p>
+
+  <section>
+    <%= link_to "Home", welcome_index_path, class: "btn btn-primary" %>
+    <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary"%>
+     <!--TODO Add Upvote link once you have one   -->
+    <%= link_to "Delete", work_path(@work.id), method: :delete, class: "btn btn-danger" %>
+  </section>
+</section>
