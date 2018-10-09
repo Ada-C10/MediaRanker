@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
-  category: MyString
+harry_potter:
+  title: Goblet of Fire
+  creator: J.K. Rowling
+  publication_year: 2005
+  description: Enchanting and heart-wrenching.
+  category: movie
 
-two:
-  title: MyString
+wheel_of_time:
+  title: Knife of Dreams
   creator: MyString
   publication_year: 1
-  description: MyString
-  category: MyString
+  description: The dragon reborn continues to struggle with madness as he seeks to save humanity
+  category: book
