@@ -1,1 +1,9 @@
 List of Works
+
+<% @works.each do |work| %>
+<ul>
+  <li>
+  <%= link_to work[:title], work_path(work.id) %>
+</li>
+  <% end %>
+</ul>
