@@ -1,0 +1,37 @@
+<article>
+  <h1>Media Spotlight: title here</h1>
+  <h4># of votes--category</h4>
+</article>
+
+<article>
+  <h4>Top Movies</h4>
+  <section>
+    <ul>
+      <% @movies.each do |movie| %>
+        <li><%= movie.title %></li>
+      <% end %>
+    </ul>
+  </section>
+</article>
+
+<article>
+  <h4>Top Books</h4>
+  <section>
+    <ul>
+      <% @books.each do |book| %>
+        <li><%= book.title %></li>
+      <% end %>
+    </ul>
+  </section>
+</article>
+
+<article>
+  <h4>Top Albums</h4>
+  <section>
+    <ul>
+      <% @albums.each do |album| %>
+        <li><%= album.title %></li>
+      <% end %>
+    </ul>
+  </section>
+</article>
