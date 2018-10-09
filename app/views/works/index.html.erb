@@ -8,11 +8,7 @@
   <% if work.category == 'book' %>
 
   <li>
-    <%= work.category %>
-    <%= work.title %>
-    <%= work.creator %>
-    <%= work.publication_year %>
-    <%= work.description %>
+    <%= link_to "#{work.title}  #{work.creator} #{work.publication_year} #{work.description}", work_path(work.id) %>
   </li>
     <% end %>
   <% end %>
@@ -25,11 +21,7 @@
   <% @works.each do |work| %>
   <% if work.category == 'album' %>
   <li>
-    <%= work.category %>
-    <%= work.title %>
-    <%= work.creator %>
-    <%= work.publication_year %>
-    <%= work.description %>
+    <%= link_to "#{work.title}  #{work.creator} #{work.publication_year} #{work.description}", work_path(work.id)%>
   </li>
     <% end %>
   <% end %>
@@ -43,11 +35,7 @@
   <% @works.each do |work| %>
   <% if work.category == 'movie' %>
   <li>
-    <%= work.category %>
-    <%= work.title %>
-    <%= work.creator %>
-    <%= work.publication_year %>
-    <%= work.description %>
+    <%= link_to "#{work.title}  #{work.creator} #{work.publication_year} #{work.description}", work_path(work.id)%>
   </li>
     <% end %>
   <% end %>
