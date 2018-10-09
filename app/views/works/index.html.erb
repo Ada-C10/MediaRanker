@@ -1,15 +1,75 @@
+<header>
+  <h1>Media Ranker | Ranking the Best of Everything </h1>
+</header>
+
+<nav>
+  <ul>
+    <li>
+      View top media
+    </li>
+    <li>
+      View all media
+    </li>
+    <li>
+      <%= link_to "Add a new work", new_work_path %>
+    </li>
+    <li>
+      <%= link_to "View all users", users_path %>
+    </li>
+  </ul>
+</nav>
+
 <h1> List of Works </h1>
+<strong>
+  Books
+</strong>
 <ul>
+
   <% @works.each do |work| %>
+  <% if work.category == 'book' %>
+
   <li>
-    <strong>
-      <%= work.id %>
-    </strong>
     <%= work.category %>
     <%= work.title %>
     <%= work.creator %>
     <%= work.publication_year %>
     <%= work.description %>
   </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<strong>
+  Albums
+</strong>
+<ul>
+  <% @works.each do |work| %>
+  <% if work.category == 'album' %>
+  <li>
+    <%= work.category %>
+    <%= work.title %>
+    <%= work.creator %>
+    <%= work.publication_year %>
+    <%= work.description %>
+  </li>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<strong>
+  Movies
+</strong>
+<ul>
+  <% @works.each do |work| %>
+  <% if work.category == 'movie' %>
+  <li>
+    <%= work.category %>
+    <%= work.title %>
+    <%= work.creator %>
+    <%= work.publication_year %>
+    <%= work.description %>
+  </li>
+    <% end %>
   <% end %>
 </ul>
