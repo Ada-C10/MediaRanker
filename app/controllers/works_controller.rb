@@ -35,6 +35,16 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
   end
 
+  def update
+    @work = Work.find_by(id: params[:id])
+
+    if @work.update(work_params)
+      redirect_to work_path(@work.id)
+    else
+      render :update
+    end
+  end
+
   private
   def work_params
     return params.require(:work).permit(
