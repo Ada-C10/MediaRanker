@@ -1,0 +1,26 @@
+<h1> <%= action_name %> </h1>
+
+
+<% if model_name.errors.any? %>
+  <ul class="errors">
+    <% model_name.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_with model: model_name, class: class_name do |f|%>
+  <%= form_description %>
+
+<!-- change form labels to match input to edit -->
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label number_info %>
+  <%= f.text_field number_info %>
+
+  <%= f.submit button_title, class: button_class %>
+<% end %>

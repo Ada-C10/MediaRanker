@@ -1,2 +1,24 @@
-<h1>Works#index</h1>
-<p>Find me in app/views/works/index.html.erb</p>
+<h2> All the works </h2>
+<p> Here they are! </p>
+
+<!-- album, book, movie -->
+<table>
+  <tbody>
+    <thead> <!--table header row -->
+      <tr>
+
+      <!-- create one table per category -->
+
+      <!-- for each category, create a header row -->
+
+      </tr>
+    </thead>
+<% @works.each do |work| %>
+<tr>
+  <!-- for each category, add the works associated with it, unordered, under the correct table header -->
+  <td><%= link_to "#{work.title}", work_path(work.id) %></td>
+</tr>
+  <% end %>
+</tbody>
+</table>
+</section>

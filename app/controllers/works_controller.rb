@@ -4,7 +4,12 @@ class WorksController < ApplicationController
   end
 
   def show
+    id = params[:id].to_i
+    @work = Work.find_by(id: id)
 
+    if @work.nil?
+     render :notfound, status: :not_found
+    end
   end
 
   def new
@@ -24,6 +29,10 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    work = Work.find_by(id: params[:id].to_i)
+    @deleted_work = work.destroy
+
+    redirect_to root_path
 
   end
 

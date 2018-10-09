@@ -1,0 +1,16 @@
+<h2> Work details</h2>
+
+<% if @work.nil? %>
+  <h1> 404 Not found</h1>
+<% else %>
+ <ul>
+   <li> <%= @work.title %> </li>
+   <li> <%= @work.creator %> </li>
+   <li> <%= @work.category %> </li>
+   <li> <%= @work.year %> </li>
+   <li> <%= @work.description %> </li>
+ </ul>
+  <%= link_to "Edit", edit_work_path(@work.id) %>
+  <%= link_to "Delete Work", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure? This cannot be undone!'} %>
+
+ <% end %>
