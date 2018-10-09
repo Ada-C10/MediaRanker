@@ -1,7 +1,9 @@
 class WorksController < ApplicationController
+require 'pry'
 
   def index
     @works = Work.all
+
   end
 
   def show

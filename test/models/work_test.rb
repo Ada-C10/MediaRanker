@@ -2,19 +2,19 @@ require "test_helper"
 
 require 'pry'
 
-# @work = works[:name] syntax ?
-
 describe Work do
 
   before do
     @work = Work.new(title: "a work", category: "book")
-    @saved_book = Work.find_by(category: 'book')
+    @saved_book = works(:book_example)
+    # Work.find_by(category: 'book')
   end
 
   describe 'validations' do
     it 'is valid when a title and a valid category of movie, book, or album is present' do
 
       empty_hash = {}
+      binding.pry
       expect(@saved_book.valid?).must_equal true
       expect(@saved_book).must_be_kind_of Work
       expect(@saved_book.errors.messages).must_equal empty_hash
@@ -64,7 +64,7 @@ describe Work do
       expect(@work.errors.messages).must_include :title
     end
 
-    it 'is invalid if work of different category but same title is created for movie, book, and album' do
+    it 'is valid if work of different category but same title is created for movie, book, and album' do
       #TO DO: populate her
 
       dup_title = @saved_book.title
