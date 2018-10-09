@@ -20,8 +20,13 @@ class WorksController < ApplicationController
 
     respond_to do |format|
       if @work.save
+        flash[:success] = 'Work successfully created'
         format.html { redirect_to @work, notice: 'Work was successfully created.' }
       else
+        flash.now[:error] = 'Work not created!'
+        @work.errors.messages.each do |field, messages|
+          flash.now[field] = messages
+        end
         format.html { render :new }
       end
     end
