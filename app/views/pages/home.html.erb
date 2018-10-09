@@ -1,1 +1,31 @@
-<h2>Hello!</h2>
+<body>
+  <section class="media_spotlight">
+    <h2>Media Spotlight</h2>
+  </section>
+  <section class="movies">
+    <h2>Top Movies</h2>
+    <% movies = Work.where(category: "movie") %>
+    <% if movies.nil? %>
+      <%= puts "No movies" %>
+    <% else %>
+      <% movies.each do |movie| %>
+        <p><%= movie.title %></p>
+      <% end %>
+    <% end %>
+  </section>
+  <section class="books">
+    <h2>Top Books</h2>
+    <% movies = Work.where(category: "book") %>
+    <% movies.each do |movie| %>
+      <p><%= movie.title %></p>
+    <% end %>
+  </section>
+  <section class="albums">
+    <h2>Top Albums</h2>
+    <% movies = Work.where(category: "album") %>
+    <% movies.each do |movie| %>
+      <p><%= movie.title %></p>
+    <% end %>
+  </section>
+
+</body>
