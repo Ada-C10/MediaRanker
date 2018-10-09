@@ -1,43 +1,45 @@
 <h1>All Works</h1>
 
 <section>
+  <ul>
+  <h2><%= "Top Albums" %></h2>
   <% @works.each do |work| %>
-  <ul>
     <% if work.category == "album" %>
+    <li><%= work.title %></li>
+    <li><%= work.creator %></li>
+    <br>
+    <% end %>
+    <% end %>
+  </ul>
+</section>
+
+<section>
+  <ul>
+  <h2><%= "Top Movies" %></h2>
+    <% @works.each do |work| %>
+    <% if work.category == "movie" %>
+
+    <li><%= work.title %></li>
+    <li><%= work.creator %></li>
+    <br>
+    <br>
+    <% end %>
+    <% end %>
+  </ul>
+
+</section>
+
+<section>
+  <ul>
     <h2><%= "Top Books" %></h2>
-        <li><%= work.title %></li>
-        <li><%= work.creator %></li>
-        <br>
-        <br>
-        <% end %>
-    <% end %>
+    <% @works.each do |work| %>
+    <% if work.category == "book" %>
+    <li><%= work.title %></li>
+    <li><%= work.creator %></li>
+    <br>
+    <br>
   </ul>
-</section>
-
-<section>
-  <ul>
-    <% elsif work.category == "movie" %>
-    <%= "Movie" %>
-        <li><%= work.title %></li>
-        <li><%= work.creator %></li>
-        <br>
-        <br>
-        <% end %>
-      <% end %>
-  </ul>
-
-</section>
-
-<section>
-  <ul>
-    <% elsif work.category == "book" %>
-        <li><%= work.title %></li>
-        <li><%= work.creator %></li>
-        <br>
-        <br>
-        <% end %>
-    <% end %>
-  </ul>
+  <% end %>
   <% end %>
 
 </section>
