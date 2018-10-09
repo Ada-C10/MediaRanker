@@ -13,4 +13,8 @@ class Work < ApplicationRecord
   def self.by_category(category)
     return Work.where(category: category).order(:title)
   end
+
+  def self.spotlight
+    return Work.first
+  end
 end

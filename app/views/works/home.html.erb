@@ -1,12 +1,18 @@
 <h1>Works#home</h1>
 <p>Find me in app/views/works/home.html.erb</p>
+<% spotlight = Work.spotlight %>
+<h1>Media Spotlight: <%= spotlight.title %> by <%= spotlight.creator %>
+</h1>
+<h4><%= spotlight.description %></h4>
 
-<% VALID_WORK_CATEGORIES.each do |category| %>
-  <br>
-  TOP <%= category.upcase %>S
-  <br><br>
-  <% Work.by_category(category).each do |work| %>
-    <%= work.title %>
-    <br>
+<ul>
+  <% VALID_WORK_CATEGORIES.each do |category| %>
+    <li><h2>TOP <%= category.upcase %>S</h2></li>
+      <ul>
+        <% Work.by_category(category).each do |work| %>
+          <li><h3><%= work.title %></h3></li>
+          <li><h4>by <%= work.creator %></h4></li>
+        <% end %>
+      </ul>
   <% end %>
-<% end %>
+</ul>
