@@ -1,6 +1,8 @@
 class WorksController < ApplicationController
+  def home
+  end
+
   def index
-    @works = Work.all.order(:category).order(:title)
   end
 
   def show

@@ -1,7 +1,8 @@
 class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
-  validates :title, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 40 }
+  validates :title, presence: true, uniqueness: { case_sensitive: false },
+    length: { maximum: 40 }
   validates :category, presence: true, inclusion: { in: VALID_WORK_CATEGORIES,
     message: "%{value} is not a valid category" }
   validates :creator, presence: true, length: { maximum: 30 }

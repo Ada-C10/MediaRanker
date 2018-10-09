@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'works#index'
+  root 'works#home'
   resources :works
   resources :users
   resources :votes

@@ -1,9 +1,9 @@
-<h1>Works#index</h1>
-<p>Find me in app/views/works/index.html.erb</p>
+<h1>Works#home</h1>
+<p>Find me in app/views/works/home.html.erb</p>
 
 <% VALID_WORK_CATEGORIES.each do |category| %>
   <br>
-  ALL <%= category.upcase %>S
+  TOP <%= category.upcase %>S
   <br><br>
   <% Work.by_category(category).each do |work| %>
     <%= work.title %>
