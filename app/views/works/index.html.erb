@@ -1,6 +1,9 @@
 <h1>List of Works</h1>
 <ul>
   <li>Albums</li>
+  <% @albums.each do |album| %>
+  <%= album.title %>
+  <% end %>
   <li>Books</li>
   <li>Movies</li>
 </ul>

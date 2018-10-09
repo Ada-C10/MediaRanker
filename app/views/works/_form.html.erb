@@ -16,7 +16,7 @@
 
     <%= form_with model: @work, class: "form" do |f|%>
         <%= f.label :category %>
-        <%= f.select :category, ['Album','Book','Movie'], class: 'form__input'%>
+        <%= f.select :category, ['album','book','movie'], class: 'form__input'%>
 
         <%= f.label :title %>
         <%= f.text_field :title, class: "form__input"%>
