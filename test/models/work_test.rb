@@ -26,5 +26,21 @@ describe Work do
       expect(@work.errors.messages).must_include :title
     end
 
+    it 'has a unique title' do
+
+    end
+
+    it 'has one of three valid categories' do
+
+    end
+
+    it 'has a publication year that has only integers' do
+
+    end
+
+    it 'has a description' do
+
+    end
+
   end
 end
