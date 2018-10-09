@@ -26,6 +26,14 @@ describe Work do
       expect( is_valid ).must_equal true
     end
 
+    it "must  NOT be valid when all fields are not present" do
+      work1 = Work.new(title: "The name of the wind")
+
+      is_valid = work1.valid?
+      expect( is_valid ).must_equal false
+    end
+
+
 
     it "must not be valid for duplicate title with the same category" do
       work1 = Work.new(title: @work.title, category: @work.category)
@@ -40,13 +48,13 @@ describe Work do
 
       is_valid = work1.valid?
       expect( is_valid ).must_equal true
-
+      expect( work1.title ).must_equal @work.title
     end
 
 
 
 
   end
-
+  
 
 end
