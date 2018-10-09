@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  # create session for user login
+  post 'sessions/login', to: 'sessions#login', as: 'login'
+  get 'sessions/login'
+  get 'sessions/new', to: 'sessions#new', as: 'new_session'
+  get 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
   root "works#index"
   resources :works
   get 'works/index'
