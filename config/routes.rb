@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-  get 'votes/index'
-  get 'welcome/index'
+  # Lets user login when they submit login form
+post 'sessions/login', to: 'sessions#login', as: 'login'
+# Brings up login form (get request)
+get 'sessions/new', to: 'sessions#new', as: 'new_session'
+# destroying the session
+delete 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
 
   root 'welcome#index'
 
@@ -14,7 +17,8 @@ Rails.application.routes.draw do
     resources :votes, only:[:index]
   end
 
-  resources :users do
+# Don't need to delete users, instead we log them out
+  resources :users, except:[:destroy] do
     resources :votes, only:[:index]
   end
 
