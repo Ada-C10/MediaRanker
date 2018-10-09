@@ -1,25 +1,46 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  string: MyString
-  published_year: MyString
-  date: MyString
-  creator: MyString
-  string: MyString
-  description: MyString
-  string: MyString
-  category: MyString
-  string: MyString
+book1:
+  title: cat in the hat
+  creator: dr. seuss
+  category: book
+  publication_year: 1999
+  description: one fish
 
-two:
-  title: MyString
-  string: MyString
-  published_year: MyString
-  date: MyString
-  creator: MyString
-  string: MyString
-  description: MyString
-  string: MyString
-  category: MyString
-  string: MyString
+
+book2:
+  title: killer joe
+  creator: tracy letts
+  category: book
+  publication_year: 1998
+  description: a play
+
+album1:
+  title: white album
+  creator: beatles
+  category: album
+  publication_year: 1969
+  description: groovy songs
+
+
+album2:
+  title: black album
+  creator: jay z
+  category: album
+  publication_year: 2002
+  description: chill songz
+
+movie1:
+  title: rosemary's baby
+  creator: roman polanski
+  category: movie
+  publication_year: 1969
+  description: devil baby
+
+
+movie2:
+  title: whiplash
+  creator: damien chazelle
+  category: movie
+  publication_year: 2014
+  description: veritas
