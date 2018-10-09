@@ -29,8 +29,9 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
-      redirect to works_path
+      redirect_to works_path
     else
+      puts "#{@work.errors}"
       render :new
     end
   end
