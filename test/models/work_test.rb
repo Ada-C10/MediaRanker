@@ -8,9 +8,14 @@ describe Work do
   end
 
   describe 'Relationships' do
-    it 'has many votes' do
-      expect(work.votes).must_be_kind_of Integer
-      work.votes.must_equal votes(:wheel_of_time)
+    it 'can have many votes' do
+      work.votes << Vote.first
+      votes = work.votes
+
+      expect(votes.length).must_be :>=, 0
+      votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end 
     end
   end
 
