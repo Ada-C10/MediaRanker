@@ -1,11 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  joined_date: 2018-10-08
-  status: 
+jessie:
+  name: Jessie Z
 
-two:
-  name: MyString
-  joined_date: 2018-10-08
-  status: 
+tony:
+  name: Tony L
+
+lily:
+  name: Lily X
