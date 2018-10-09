@@ -3,6 +3,10 @@ class WorksController < ApplicationController
     @works = Work.all.order(:title)
   end
 
+  def main
+    @works = Work.all.order(:title)
+  end
+
   def show
     id = params[:id]
     @work = Work.find_by(id: id)
