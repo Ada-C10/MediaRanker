@@ -23,10 +23,16 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
+      flash[:success] = 'Work Created!'
       redirect_to work_path(@work.id)
     else
+      flash.now[:error] = 'Work could not be created!'
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
       render :new
     end
+
   end
 
   def edit
@@ -43,7 +49,12 @@ class WorksController < ApplicationController
 
   def destroy
     work = Work.find_by(id: params[:id])
-    work.destroy
+    if work.nil?
+      flash[:error] = "Work #{params[:id]} not found"
+    else
+      work.destroy
+      flash[:success] = "#{work.title} deleted"
+    end
     redirect_to works_path
   end
 
