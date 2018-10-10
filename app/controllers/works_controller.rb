@@ -5,9 +5,10 @@ class WorksController < ApplicationController
   end
 
   def index
-    @books = Work.all.where(category: "book")
-    @movies = Work.all.where(category: "movie")
-    @albums = Work.all.where(category: "album")
+    works = Work.all.order('vote_count DESC, title')
+    @albums = works.where(category: "album")
+    @books = works.where(category: "book")
+    @movies = works.where(category: "movie")
   end
 
   def show
@@ -51,24 +52,30 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    # Delete all votes that reference this work first
+    votes = Vote.all.where(work_id: @work.id)
+    votes.each do |vote|
+      vote.destroy
+    end
     @work.destroy
     redirect_to works_path
   end
 
   def upvote
     @current_user = User.find_by(id: session[:user_id])
-
+    # raise
     if @current_user.nil?
-      flash.now[:warning] = "A problem occured: You must login to do that"
+      flash[:warning] = "A problem occured: You must login to do that"
       redirect_back(fallback_location: root_path)
     else
-      if Vote.vote_allowed?
+      if Vote.vote_allowed?(@current_user, @work)
         Vote.create(date: Date.current, user_id: @current_user.id, work_id: @work.id)
+        @work.vote_count = @work.votes.count
+        @work.save
         flash[:success] = "Successfully upvoted!"
-        redirect_to works_path
+        redirect_back(fallback_location: root_path)
       else
-        flash.now[:warning] = "A problem occured: Could not upvote"
+        flash[:warning] = "A problem occured: Could not upvote"
+        redirect_back(fallback_location: root_path)
       end
     end
   end

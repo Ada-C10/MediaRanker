@@ -6,7 +6,7 @@
 
   <p class="button"><%= link_to "Back to Media Ranks", root_path %></p>
   <p class="button"><%= link_to "Edit", edit_work_path(@work.id) %></p>
-  <p class="button">Upvote</p>
+  <p class="button"><%= link_to "Upvote", upvote_path(@work.id) %></p>
   <p class="button"><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %></p>
 
   <h1><%= "#{@work.votes.count}" %> Votes for this <%= @work.category.capitalize %></h1>

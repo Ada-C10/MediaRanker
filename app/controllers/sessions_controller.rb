@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
       flash[:success] = "Successfully logged in as existing user #{user.name}"
     end
 
-
     session[:user_id] = user.id
     redirect_to root_path
   end

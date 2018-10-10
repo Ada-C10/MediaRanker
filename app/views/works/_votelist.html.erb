@@ -1,4 +1,4 @@
 <tr>
   <td><%= User.find_by(id: votelist.user_id).name %></td>
-  <td><%= votelist.date %></td>
+  <td><%= votelist.date.strftime("%B %d, %Y") %></td>
 </tr>
