@@ -1,0 +1,14 @@
+
+<%= form_with model: @work, class: 'task-form' do |f| %>
+  <p><%= f.label :category %>:
+    <%= f.select :category, Work::WORK_CATEGORIES%></p>
+  <p><%= f.label :title %>:
+    <%= f.text_field :title%></p>
+  <p><%= f.label :creator %>:
+    <%= f.text_field :creator %></p>
+  <p><%= f.label :publication_year %>:
+    <%= f.text_field :published_year %></p>
+  <p><%= f.label :description %>:
+    <%= f.text_area :description %></p>
+  <%= f.submit "Save Work" %>
+<% end %>
