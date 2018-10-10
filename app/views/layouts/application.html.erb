@@ -16,7 +16,7 @@
       <li><%= link_to "View All Media", works_path %></li>
       <li><%= link_to "Add A New Work", new_work_path %></li>
       <li><%= link_to "View All Users", users_path %></li>
-      <% if session[:user_id] != nil %>
+      <% if session[:user_id] %>
         <% current_user = User.find_by(id: session[:user_id]).name %>
         <li><%= link_to "Log Out (logged in as #{current_user})", logout_path, method: :delete %></li>
       <% else %>
@@ -28,14 +28,10 @@
   <body>
 
     <header>
-
-      <section class="alert-info">
-        Session Info: User.find_by(id: session[:user_id]).name = <%= current_user %>
-      </section>
-
+  <% if session[:user_id] %>
       <section class="flash flash-session">
-        <% if @current_user %>
-          <h2>Hi <%= @current_user.name %>! You're logged in!</h2>
+          <% current_user = User.find_by(id: session[:user_id]).name %>
+          <div class="alert-info"><%= "Hi #{current_user}! You're logged in!" %></div>
         <% end %>
       </section>
 
@@ -44,17 +40,17 @@
           <% if message.class == Array %>
             <div class="alert-warning">
             <% message.each do |nme, msg| %>
-              <strong>(Array)<%= "#{nme}".capitalize %>:</strong> <%= "#{msg}" %>
+              <strong>(Array) <%= "#{nme}".capitalize %>:</strong> <%= "#{msg}" %>
             <% end %>
             </div>
         <% elsif message.class == Hash %>
           <div class="alert-warning">
           <% message.each do |nme, msg| %>
-            <strong>(Hash)<%= "#{nme}".capitalize %>:</strong> <%= "#{msg}" %>
+            <strong>(Hash) <%= "#{nme}".capitalize %></strong> <%= "#{msg[0]}." %>
           <% end %>
           </div>
           <% else %>
-            <div class="alert-warning alert-<%= name %>"><strong>(Item)<%= "#{name}".capitalize %>:</strong> <%= "#{message}" %></div>
+            <div class="alert-danger alert-<%= name %>"><strong>(Item) <%= "#{name}".capitalize %>:</strong> <%= "#{message}" %></div>
           <% end %>
         <% end %>
         </ul>
