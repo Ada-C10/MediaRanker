@@ -11,8 +11,11 @@ class SessionsController < ApplicationController
       flash[:success] = "Successfuly logged in as existing user #{username}"
     else
       @user = User.new(username: username) # if user not found, create a new one
+
+      @user.save
+      #?????
       # QUESTION: create if/else if not saved successfully??
-      flash[:success] = "Successfully created new user #{username} with ID #{user.id}"
+      flash[:success] = "Successfully created new user #{username} with ID #{@user.id}"
     end
 
     session[:user_id] = @user.id
