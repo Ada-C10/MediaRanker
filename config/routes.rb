@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   root 'works#index'
 
   resources :works
-  resources :users
 
-  resources :votes, only [:show]
+  resources :users do
+    resources :works, except: [:index, :show]
+    resources :votes, only: [:create]
+  end
 
   #
   # get '/works', to: 'works#index', as: 'all_works'
