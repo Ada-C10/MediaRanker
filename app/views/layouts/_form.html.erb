@@ -16,11 +16,21 @@
   <%= form_description %>
 
 <!-- change form labels to match input to edit -->
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
 
-  <%= f.label number_info %>
-  <%= f.text_field number_info %>
+  <%= f.label :category %>
+  <%= f.text_field :category %>
+
+  <%= f.label :year %>
+  <%= f.text_field :year %>
+
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
 
   <%= f.submit button_title, class: button_class %>
 <% end %>

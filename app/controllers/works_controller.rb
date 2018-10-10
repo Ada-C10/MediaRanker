@@ -15,8 +15,10 @@ class WorksController < ApplicationController
 
   def update
     if @work && @work.update(work_params) #(if book exists AND can be updated)
+      flash[:success] = "#{@work.title} has been edited."
       redirect_to work_path(@work.id)
     else
+      flash.now[:error] = 'Sorry, no edits were saved.'
       render :edit
     end
   end
@@ -24,7 +26,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save # save returns true if the database insert succeeds
-      flash[:success] = "#{work.title} has been added to the site."
+      flash[:success] = "#{@work.title} has been added to the site."
       redirect_to root_path
     else
       flash.now[:error] = 'Work has not been added!'
@@ -41,7 +43,7 @@ class WorksController < ApplicationController
 
   def destroy
     if @work != nil
-      @work.destroy
+      work = @work.destroy #to temp store work instance for title below
       flash[:success] = "#{work.title} has been removed from the site."
       redirect_to root_path
     end
@@ -56,11 +58,11 @@ class WorksController < ApplicationController
 
     if @work.nil?
       flash.now[:warning] = "Sorry, we can't find what you are looking for."
-     render :not_found, status: :not_found
+     render :not_found
     end
   end
 
   def work_params
-    return params.require(:work).permit(:id, :creator, :category, :year, :description)
+    return params.require(:work).permit(:id, :creator, :category, :year, :description, :title)
   end
 end
