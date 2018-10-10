@@ -22,7 +22,10 @@ class WorksController < ApplicationController
       flash.now[:error] = "Invalid work data"
       render :new, status: :bad_request
     end
+  end
 
+  def edit
+    @work = Work.find_by(id: params[:id])
   end
 
   private
