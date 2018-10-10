@@ -150,10 +150,10 @@ describe Work do
     end
   end
 
-  describe 'albums' do
-    it 'should return an array of only album works' do
+  describe 'list_of' do
+    it 'should return an array of only album, movie, or book works' do
       # Act
-      works = Work.albums
+      works = Work.list_of("album")
 
       # Assert
       expect(works).must_be_instance_of Array
@@ -162,9 +162,31 @@ describe Work do
         expect(work).must_be_instance_of Work
         expect(work.category).must_equal "album"
       end
+
+      # Re-Act
+      works = Work.list_of("book")
+
+      # Reassert
+      expect(works).must_be_instance_of Array
+
+      works.each do |work|
+        expect(work).must_be_instance_of Work
+        expect(work.category).must_equal "book"
+      end
+
+      # Re-act
+      works = Work.list_of("movie")
+
+      # Reassert
+      expect(works).must_be_instance_of Array
+
+      works.each do |work|
+        expect(work).must_be_instance_of Work
+        expect(work.category).must_equal "movie"
+      end
     end
 
-    it 'should return an empty array when there are no albums' do
+    it 'should return an empty array when there are none of the designated type of work' do
       # Arrange
       Work.all.each do |work|
         if work.category == "album"
@@ -176,75 +198,7 @@ describe Work do
       end
 
       # Act
-      works = Work.albums
-
-      # Assert
-      expect(works).must_be_instance_of Array
-      expect(works.length).must_equal 0
-    end
-  end
-
-  describe 'books' do
-    it 'should return an array of only book works' do
-      # Act
-      works = Work.books
-
-      # Assert
-      expect(works).must_be_instance_of Array
-
-      works.each do |work|
-        expect(work).must_be_instance_of Work
-        expect(work.category).must_equal "book"
-      end
-    end
-
-    it 'should return an empty array when there are no books' do
-      # Arrange
-      Work.all.each do |work|
-        if work.category == "book"
-          work.votes.each do |vote|
-            vote.destroy
-          end
-          work.destroy
-        end
-      end
-
-      # Act
-      works = Work.books
-
-      # Assert
-      expect(works).must_be_instance_of Array
-      expect(works.length).must_equal 0
-    end
-  end
-
-  describe 'movies' do
-    it 'should return an array of only movie works' do
-      # Act
-      works = Work.movies
-
-      # Assert
-      expect(works).must_be_instance_of Array
-
-      works.each do |work|
-        expect(work).must_be_instance_of Work
-        expect(work.category).must_equal "movie"
-      end
-    end
-
-    it 'should return an empty array when there are no movies' do
-      # Arrange
-      Work.all.each do |work|
-        if work.category == "movie"
-          work.votes.each do |vote|
-            vote.destroy
-          end
-          work.destroy
-        end
-      end
-
-      # Act
-      works = Work.movies
+      works = Work.list_of("album")
 
       # Assert
       expect(works).must_be_instance_of Array
