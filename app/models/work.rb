@@ -1,4 +1,3 @@
-require 'pry'
 class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
@@ -13,14 +12,20 @@ class Work < ApplicationRecord
   end
 
   def self.albums
-    return Work.all.select { |work| work.category == "album" }
+    return sort_by_votes(Work.all.select { |work| work.category == "album" })
   end
 
   def self.books
-    return Work.all.select { |work| work.category == "book" }
+    return sort_by_votes(Work.all.select { |work| work.category == "book" })
   end
 
   def self.movies
-    return Work.all.select { |work| work.category == "movie" }
+    return sort_by_votes(Work.all.select { |work| work.category == "movie" })
   end
+
+  private
+
+    def self.sort_by_votes(work_list)
+      return work_list.sort_by { |work| -work.votes.length }
+    end
 end
