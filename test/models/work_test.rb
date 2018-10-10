@@ -13,17 +13,27 @@ describe Work do
       expect( work.errors.messages ).must_include :title
     end
 
-    it 'has a unique title' do
+    it 'has a unique title within the same category' do
       work = works(:potter)
 
-      new_work = Work.new(category: 'book', title: work.title, creator: 'Jon Snow', publication_year: 1990, description: 'Creating a new description here')
+      new_work = Work.new(category: work.category, title: work.title, creator: 'Jon Snow', publication_year: 1990, description: 'Creating a new description here')
 
       is_valid = new_work.valid?
 
       expect( is_valid ).must_equal false
       expect( new_work.errors.messages).must_include :title
-
     end
+
+    it 'is valid with same title in different categories' do
+      work = works(:greys)
+
+      new_work = Work.new(category: 'album' , title: work.title, creator: 'Derek Shepherd', publication_year: 2010, description: 'Some sort of window to your right as he goes left, and you stay right')
+
+      is_valid = new_work.valid?
+
+      expect( is_valid ).must_equal true
+    end
+
 
     it 'is valid when all fields are present' do
       work = works(:beatles)

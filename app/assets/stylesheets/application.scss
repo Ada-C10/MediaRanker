@@ -16,3 +16,17 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+
+header {
+  background-color: #B2DFDB;
+  color: tomato;
+}
+
+nav.ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  list-style-type: none;
+}

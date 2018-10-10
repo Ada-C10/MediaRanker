@@ -12,6 +12,7 @@
 </ul>
 <% end %>
 
+
 <%= form_with model: @work do |f| %>
 <%= f.label :category %>
 <%= f.select :category, Work::CATEGORY, prompt: "Pick Category" %>
