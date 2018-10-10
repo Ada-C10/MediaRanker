@@ -1,1 +1,17 @@
 <h1>Index of all works</h1>
+
+<ul>
+  <% @works.sort.each do |work| %>
+    <li><strong>#<%=work.id %>: <%=work.title %></strong></li>
+    type: <%=work.category %>
+    <br />
+    description: <%=work.description %>
+    <br />
+    publication year: <%=work.pub_year %>
+    <br>
+    <%=link_to "View Details", work_path(work.id) %> |
+
+    <%= link_to "Edit work", edit_work_path(work) %> |    <%= link_to "Delete work", work_path(work), method: :delete, data: { confirm: "Are you sure you want to delete this work?" } %>
+    <br> </br>
+  <% end %>
+</ul>
