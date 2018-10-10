@@ -73,6 +73,46 @@ class WorksController < ApplicationController
     redirect_to root_path
   end
 
+  def upvote
+    work = Work.find_by(id: params[:id].to_i)
+    user = User.find_by(id: session[:user_id])
+
+    if user.nil?
+      flash[:error] = "A problem occurred: You must log in to vote"
+
+      work.errors.messages.each do |field, messages|
+        flash[field] = messages
+      end
+
+      redirect_back(fallback_location: root_path)
+
+    elsif !user.works.include? work # user eligible to vote
+      vote = Vote.new(work: work, user: user)
+
+      if vote.save
+        flash[:success] = "Successfully upvoted!"
+        redirect_back(fallback_location: root_path)
+      else
+        flash[:error] = "Error: Could not process vote"
+
+        work.errors.messages.each do |field, messages|
+          flash[field] = messages
+        end
+
+        redirect_back(fallback_location: root_path)
+      end
+
+    else # user.votes.works.include? work # user ineligible to vote
+      flash[:error] = "A problem occurred: You've already voted on this work"
+
+      work.errors.messages.each do |field, messages|
+        flash[field] = messages
+      end
+
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   private
 
     def work_params
