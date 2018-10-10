@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   resources :votes
 
   resources :users
-  post 'user/login' to: 'user#login', as: 'login'
-  
+  post 'user/login', to: 'user#login', as: 'login'
+
   resources :works
 
 
