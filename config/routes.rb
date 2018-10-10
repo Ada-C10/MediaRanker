@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   resources :works
   get '/works/welcome', to: 'works#welcome', as: 'welcome'
 
-  resources :users
-  
+  resources :users, only:[:index, :show]
+
   resources :votes
 
   resources :sessions, only:[:new]

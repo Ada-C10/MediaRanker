@@ -9,3 +9,9 @@
 <%= @work.publication_year %>
 <br>
 <%= @work.description %>
+
+<%= link_to "Back to media ranks", root_path, class: "btn btn-primary" %>
+
+<%= link_to "Delete", work_path(@work.id), class: "btn btn-primary" %>
+
+<%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary" %>
