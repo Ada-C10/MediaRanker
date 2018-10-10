@@ -4,8 +4,26 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+book:
+    title: Harry Potter and the Goblet of Fire
+    creator: Jk Rowling
+    publication_year: 1999
+    description: One of the hottest books in the series
+    category: Book
+
 # column: value
 #
-two: {}
+album:
+      title: Harry Potter and the Goblet of Fire
+      creator: Jk Rowling
+      publication_year: 1999
+      description: One of the hottest books in the series
+      category: album
+
 # column: value
+movie:
+      title: Harry Potter and the Goblet of Fire
+      creator: Jk Rowling
+      publication_year: 1999
+      description: One of the hottest books in the series
+      category: movie

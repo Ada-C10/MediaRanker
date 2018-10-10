@@ -22,6 +22,20 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def login
+    user = User.find_by(id: params[:user][:username])
+
+    if user.nil?
+      user = User.create(id: params[:user][:username])
+    else
+      @current_user = User.find_by(id: session[:user_id])
+    end
+
+    session[:user_id] = user.id
+    flash[:success] = "#{user.username} is successfully logged in"
+    redirect_to root_path
+  end
+
 
   def update
     id = params[:id]
@@ -46,15 +60,21 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    id = params[:id]
-    @user = User.find_by(id: id)
-    if @user.destroy
-      redirect_to root_path
-    end
+    # id = params[:id]
+    # @user = User.find_by(id: id)
+    # if @user.destroy
+    #   redirect_to root_path
+    # end
+
+    session[:user_id] = nil
+    flash[:session] = "Successfully logged out"
+    redirect_back fallback_location: root_path
   end
 
 end
 
-  def user_params
-      return params.require(:user).permit(:username)
-    end
+private
+
+def user_params
+  return params.require(:user).permit(:username)
+end

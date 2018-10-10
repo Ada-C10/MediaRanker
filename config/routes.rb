@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   patch '/votes/:id/status', to: 'votes#status', as: 'vote_status'
 
   resources :users
-
+  post 'users/login', to: 'users#login', as: 'login'
+  
   resources :works
 
 end
