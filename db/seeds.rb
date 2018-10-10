@@ -17,7 +17,7 @@ CSV.foreach(WORK_FILE, :headers => true) do |row|
   work.title = row['title']
   work.creator = row['creator']
   # handle year only in view strftime(%Y)
-  work.publication_year = Date.strptime(row['publication_year'], '%Y')
+  work.publication_year = row['publication_year'].to_i
   work.description = row['description']
   successful = work.save
   if !successful
