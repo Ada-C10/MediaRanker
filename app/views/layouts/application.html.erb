@@ -16,18 +16,22 @@
       </ul>
     <% end %>
 
-    <h2><%= link_to "Media Ranker", root_path, class: "main_title" %></h2>
-    <h4>Ranking the Best of Everything</h4>
-    
-    <nav>
-      <ul>
-        <li><%= link_to "View All Media", works_path, class: "all_media_link" %>
-        </li>
-        <li><%= link_to "Add A New Work", new_work_path, class: "new_work_link" %></li>
-      </ul>
-    </nav>
+    <header>
+      <h1 class="title"><span class="ranker"><%= link_to "Media Ranker", root_path %></span><span id="subtext">Ranking the Best of Everything</span></h1>
 
+      <nav>
+        <ul>
+          <li class="nav-list"><%= link_to "View All Media", works_path%>
+          </li>
+          <li class="nav-list"><%= link_to "Add A New Work", new_work_path %></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
     <%= yield %>
+    </main>
+
     <!-- <%= debug(params) if Rails.env.development? %> -->
   </body>
 </html>

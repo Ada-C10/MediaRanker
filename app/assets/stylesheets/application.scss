@@ -16,3 +16,63 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+// *{
+//   border: solid 1px black;
+// }
+
+h1 {
+  text-align: center;
+}
+
+.title {
+  padding-top: 60px;
+}
+
+.ranker a {
+  padding-right: 20px;
+  color: #FF5722;
+  border-right: solid white 2px;
+  font-weight: 600;
+}
+
+.ranker a:hover {
+  text-decoration: none;
+  color: #FF5722;
+}
+
+#subtext {
+  color: #FFFFFF;
+  font-weight: 300;
+  font-size: .8em;
+  padding-left: 20px;
+}
+
+h2, h3, h4, h5, h6 {
+  color: #00796B;
+}
+
+header {
+  background-color: #B2DFDB;
+  width: 100%;
+  height: 100%;
+ }
+
+ nav {
+   margin-top: 60px;
+ }
+
+ nav ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  width: 40%;
+}
+
+.nav-list a {
+  color: #00796B;
+}
+
+.nav-list a:hover {
+  text-decoration: none;
+  color: #00796B;
+}
