@@ -1,15 +1,43 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  published_year: 1
-  category: MyString
-  creator: MyString
-  description: MyString
+kveikur:
+  title: Kveikur
+  published_year: 2013
+  category: album
+  creator: Sigur Ros
+  description: Seventh studio album from Icelandic post-rock band Sigur Rós
 
-two:
-  title: MyString
-  published_year: 1
-  category: MyString
-  creator: MyString
-  description: MyString
+clueless:
+  title: Clueless
+  published_year: 1995
+  category: movie
+  creator: Amy Heckerling
+  description: American coming-of-age romantic comedy set in the Valley
+
+rhymes:
+  title: The Great Mixtape
+  published_year: 2015
+  category: album
+  creator: Sampha the Great
+  description: Released as a free download in 2015, and was eventually released on CD and vinyl by Melbourne label Wondercore Island
+
+  crazy:
+    title: Crazy Rich Asians
+    published_year: 2013
+    category: book
+    creator: Kevin Kwan
+    description: A hilarious and heartwarming New York Times bestselling novel—now a major motion picture!
+
+donnie:
+  title: Donnie Darko
+  published_year: 2001
+  category: movie
+  creator: Richard Kelly
+  description: Follows the adventures of the troubled title character as he seeks the meaning behind his doomsday-related visions
+
+goldfinch:
+    title: The Goldfinch
+    published_year: 2013
+    category: book
+    creator: Donna Tartt
+    description:  Bildungsroman told in the first person by Theodore Decker who, at the age of 13, survives a terrorist bombing at an art museum in which his beloved mother dies
