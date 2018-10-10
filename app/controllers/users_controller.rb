@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # TODO: delete this method and associations
   def new
     @current_user = User.find_by(id: session[:user_id])
     # user id will be nil if not logged in or whole author model if they are logged in
