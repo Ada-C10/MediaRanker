@@ -8,8 +8,9 @@ Rails.application.routes.draw do
     resources :votes, only: [:create]
   end
 
-  get '/login', to: 'sessions#new', as: 'login_form'
-  post '/login', to: 'sesstions#create' as: 'login'
+  # get '/login', to: 'sessions#new', as: 'login_form'
+  get '/login', to: 'sessions#new', as: 'new_login'
+  post '/login', to: 'sessions#create', as: 'login'
   delete '/login', to: 'sessions#destroy', as: 'logout'
 
 end
