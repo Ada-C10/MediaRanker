@@ -7,9 +7,11 @@
           <%= media.title %>
         <% end %>
 
-        by <%= media.creator %>
+        <small class = "by-creator">
+          by <%= media.creator %>
+        </small>
       </h3>
-      <sub class="sub-votes"> <%= media.votes.length %> votes </sub>
+      <p> <%= media.votes.length %> votes </p>
     <li>
     <% end %>
 

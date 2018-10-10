@@ -1,3 +1,36 @@
 // Place all the styles related to the works controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h2 {
+  text-align: center;
+}
+
+
+.work-main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.media-spotlight {
+  text-align: left;
+  grid-column: 1 / 4;
+  padding: 2% 5% 2% 5%;
+}
+
+.by-creator {
+  color: rgb(189, 189, 189);
+}
+
+a {
+  color: rgb(246, 166, 30);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+
+ul {
+  list-style-type: none;
+}

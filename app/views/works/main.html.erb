@@ -1,27 +1,43 @@
 
-<div class = "media-spotlight">
-<h2> Media Spotlight: <%= @media.title %> by <%= @media.creator %> </h2>
-  <h5> <%= @media.votes.length %> votes </h5>
+<div class="work-main">
+
+  <section class = "media-spotlight">
+    <h2>
+      Media Spotlight: <%= @media.title %>
+      
+      <small class = "by-creator">
+        by <%= @media.creator %>
+      </small>
+    </h2>
+    <p> <%= @media.votes.length %> votes </p>
+  </section>
+
+
+  <section>
+    <h2> Top Movies </h2>
+    <%= render partial: 'works/media_top10',
+    locals: {
+      model: @movies
+    }
+    %>
+  </section>
+
+  <section>
+    <h2> Top Books </h2>
+    <%= render partial: 'works/media_top10',
+    locals: {
+      model: @books
+    }
+    %>
+  </section>
+
+  <section>
+    <h2> Top Albums </h2>
+    <%= render partial: 'works/media_top10',
+    locals: {
+      model: @albums
+    }
+    %>
+  </section>
+
 </div>
-
-
-<h2> Top Movies </h2>
-<%= render partial: 'works/media_top10',
-locals: {
-  model: @movies
-}
-%>
-
-<h2> Top Books </h2>
-<%= render partial: 'works/media_top10',
-locals: {
-  model: @books
-}
-%>
-
-<h2> Top Albums </h2>
-<%= render partial: 'works/media_top10',
-locals: {
-  model: @albums
-}
-%>
