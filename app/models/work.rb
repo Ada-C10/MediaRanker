@@ -3,6 +3,11 @@ class Work < ApplicationRecord
 
   validates :title, presence: true
 
+  def self.category_list(category_type)
+    category_list =  Work.select { |work| work.category == category_type }
+    return category_list.sort_by { |work| work.vote_count }.reverse!
+  end
+
   def self.movies_list
     return Work.select { |work| work.category == 'movie' }
   end

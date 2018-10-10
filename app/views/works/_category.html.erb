@@ -1,4 +1,4 @@
-<h4>category_name</h4>
+<h4><%= category_name %></h4>
 <table class="table">
   <thead>
     <tr>
@@ -11,11 +11,11 @@
   </thead>
   <tbody>
     <tr>
-    <% @works."#{category_list}".each do |category| %>
-      <td><%=category.votes.length%></td>
-      <td><%=category.title%></td>
-      <td><%=category.creator%></td>
-      <td><%=category.publication_year%></td>
+    <% category.each do |work| %>
+      <td><%=work.vote_count%></td>
+      <td><%=work.title%></td>
+      <td><%=work.creator%></td>
+      <td><%=work.publication_year%></td>
       <td>Upvote</td>
     </tr>
     <% end %>
