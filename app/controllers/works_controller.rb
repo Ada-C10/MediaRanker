@@ -1,6 +1,8 @@
 class WorksController < ApplicationController
   def index
-    @work = Work.all
+    @album = Work.select { |item| item.category == "album"}
+    @movie = Work.select { |item| item.category == "movie"}
+    @book = Work.select { |item| item.category == "book"}
   end
 
   # we should actually make them inactive instead of deleting them

@@ -2,8 +2,7 @@
 <h3>Albums</h3>
 <table>
 <tr><td>Votes</td><td>Title</td><td>Created By</td><td>Published</td><td>Upvote</td></tr>
-<%album = Work.select { |item| item.category == "album"} %>
-<% album.each do |work| %>
+<% @album.each do |work| %>
 <tr>
   <td><%= link_to "#{work.title}", work_path(work.id) %></td><td>
   <td><%=work.creator%></td>
@@ -15,8 +14,7 @@
 <h3>Books</h3>
 <table>
 <tr><td>Votes</td><td>Title</td><td>Created By</td><td>Published</td><td>Upvote</td></tr>
-<%book = Work.select { |item| item.category == "book"} %>
-<%book.each do |work| %>
+<%@book.each do |work| %>
 <tr>
   <td><%= link_to "#{work.title}", work_path(work.id) %></td><td>
   <td><%=work.creator%></td>
@@ -28,8 +26,7 @@
 <h3>Movies</h3>
 <table>
 <tr><td>Votes</td><td>Title</td><td>Created By</td><td>Published</td><td>Upvote</td></tr>
-<%movies = Work.select { |item| item.category == "movies"} %>
-<%movies.each do |work| %>
+<%@movie.each do |work| %>
 <tr>
   <td><%= link_to "#{work.title}", work_path(work.id) %></td><td>
   <td><%=work.creator%></td>
