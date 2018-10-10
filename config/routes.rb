@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :votes, only: [:create]
   end
 
+  resources :sessions, only: [:new, :create]
   #
   # get '/works', to: 'works#index', as: 'all_works'
   #
