@@ -9,15 +9,40 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <section class="flash-messages">
-  <% flash.each do |key, message| %>
-    <p class="<%= key %>">
-      <%= message %>
-    </p>
-  <% end %>
-</section>
-
   <body>
+
+    <header id="banner">
+
+      <div class="brand">
+        <h1>Media Ranker </h1>
+        <h2>Ranking the Best of Everything</h2>
+      </div>
+
+      <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+          <%=link_to "View top media", works_path, class: "btn btn-link" %>
+          <%=link_to "View all media", works_path, class: "btn btn-link" %>
+          <%=link_to "Add a new work", new_work_path, class: "btn btn-link" %>
+          <%=link_to "View all users", users_path, class: "btn btn-link" %>
+        </form>
+
+        <div class="login">
+          <%=link_to "Login", new_user_path, class: "btn btn-link" %>
+        </div>
+      </nav>
+
+    </header>
+
+
+
+    <section class="flash-messages">
+      <% flash.each do |key, message| %>
+      <p class="<%= key %>">
+        <%= message %>
+      </p>
+      <% end %>
+    </section>
+
     <%= yield %>
   </body>
 </html>
