@@ -21,7 +21,11 @@
   color: black;
 }
 
-section:not(.media-spotlight) h2 {
+.media-spotlight .by-creator {
+  font-size: 1.8rem;
+}
+
+.work-main section:not(.media-spotlight) h2 {
   text-align: center;
   padding: 5% 0 2% 0;
   border-bottom: 2px solid rgb(246, 166, 30);
@@ -46,4 +50,15 @@ a:hover {
 
 ul {
   list-style-type: none;
+}
+
+
+.index-media h3 {
+  border-bottom: none;
+  color: black;
+}
+
+.index-media h2 {
+  padding: 1% 0 0 0;
+  font-size: 2.3rem;
 }

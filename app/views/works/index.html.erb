@@ -1,4 +1,6 @@
+<section class="index-media">
 <h2> List of Works </h2>
+
 <h3> Albums </h3>
 
 <%= render partial: 'works/media_table',
@@ -6,7 +8,9 @@ locals: {
   model: @albums
 }
 %>
+</section>
 
+<section class="index-media">
 <h3> Books </h3>
 
 <%= render partial: 'works/media_table',
@@ -14,7 +18,9 @@ locals: {
   model: @books
 }
 %>
+</section>
 
+<section class="index-media">
 <h3> Movies </h3>
 
 <%= render partial: 'works/media_table',
@@ -22,3 +28,4 @@ locals: {
   model: @movies
 }
 %>
+</section>
