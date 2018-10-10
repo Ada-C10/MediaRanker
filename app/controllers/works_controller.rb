@@ -1,7 +1,9 @@
 class WorksController < ApplicationController
 
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def home
-    @works = Work.all 
+    @works = Work.all
   end
 
   def index
@@ -9,7 +11,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by( id: params[:id])
+    # @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
     end
@@ -34,13 +36,13 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
+    # @work = Work.find_by(id: params[:id])
   end
 
   def update
-    work = Work.find(params[:id])
-    if work.update(work_params)
-      redirect_to work_path(work.id)
+    # work = Work.find(params[:id])
+    if @work.update(work_params)
+      redirect_to work_path(@work.id)
     else
       render :edit, status: :bad_request
     end
@@ -48,9 +50,8 @@ class WorksController < ApplicationController
 
 
   def destroy
-    work = Work.find_by(id: params[:id])
-
-    work.destroy
+    # work = Work.find_by(id: params[:id])
+    @work.destroy
     redirect_to works_path
   end
 
@@ -66,6 +67,11 @@ class WorksController < ApplicationController
       :publication_year,
       :description,
     )
+  end
+
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 
 

@@ -5,7 +5,10 @@ root 'works#home'
 
 resources :works
 resources :users
-resources :sessions
 
+
+
+resources :sessions, only: [:new, :create]
+post '/sessions/logout', to: 'sessions#logout', as: 'logout'
 
 end

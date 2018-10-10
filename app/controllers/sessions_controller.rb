@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
       end
 
     end
-    redirect_to home_page
+    redirect_to root_page
 
   end
 
