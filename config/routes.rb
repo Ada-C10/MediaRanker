@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   get 'sessions/login', to: 'sessions#new', as: 'new_session'
   delete 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
 
+  # Home Page
   root 'pages#home'
 
+  # Restful Routes
   resources :works
   resources :users
 end

@@ -22,9 +22,4 @@ class SessionsController < ApplicationController
     flash[:success] = "Successfully logged out"
     redirect_back(fallback_location: root_path)
   end
-
-  private
-  def sessions_params
-    return params.require(:user).permit(:name)
-  end
 end

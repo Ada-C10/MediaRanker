@@ -57,5 +57,6 @@ describe Work do
   end
 
   describe "Custom Methods" do
+    
   end
 end
