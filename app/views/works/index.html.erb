@@ -12,48 +12,44 @@
     </h3>
   </div>
 
-  <div class="div3">
+  <div class="div5">
     <h3>your works</h3>
+  </div>
 
-    <ol class="album">
-      <% i = 0 %>
-      <% @works.each do |work| %>
-      <% if work.category == "Album" %>
-      <li>
-        <p>
-          <%= "#{work.category}" %>: <%= "#{work.title}" %>
-        </p>
-      </li>
-      <% end %>
-      <% end %>
-    </ol>
-
-    <ol class="movie">
-      <% i = 0 %>
-      <% @works.each do |work| %>
-      <% if work.category == "Movie" %>
-      <li>
-        <p>
-          <%= "#{work.category}" %>: <%= "#{work.title}" %>
-        </p>
-      </li>
-      <% end %>
-      <% end %>
-    </ol>
-
+  <div class="div6">
+    <h2>BOOKS</h2>
     <ol class="book">
-      <% i = 0 %>
       <% @works.each do |work| %>
-      <% if work.category == "Book" %>
+      <% if work.category == "book" %>
       <li>
         <p>
-          <%= "#{work.category}" %>: <%= "#{work.title}" %>
+          <strong><%= "#{work.title}" %></strong> by <%= "#{work.creator}" %>
+        </p>
+        <p>
+          <%= "#{work.votes.count}" %> votes
         </p>
       </li>
       <% end %>
+    </ol>
+    <% end %>
+  </div>
+
+  <div class="album">
+    <h2>ALBUMS</h2>
+    <ol class="album">
+      <% @works.each do |work| %>
+      <% if work.category == "book" %>
+      <li>
+        <p>
+          <strong><%= "#{work.title}" %></strong> by <%= "#{work.creator}" %>
+        </p>
+        <p>
+          <%= "#{work.votes.count}" %> votes
+        </p>
+      </li>
       <% end %>
     </ol>
-
+    <% end %>
   </div>
 
 </div>
