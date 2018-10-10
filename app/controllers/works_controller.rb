@@ -3,14 +3,14 @@ require 'pry'
 
   def index
     @works = Work.all
-
   end
 
   def show
     @work = Work.find_by(id: params[:id])
+
     if @work == nil
-      head :not_found
-      #render invalid_page, status: :not_found
+      flash.now[:failure] = "Work not found. Please use one of the options above."
+      render 'layouts/invalid_page', status: :not_found
     end
   end
 
@@ -22,7 +22,7 @@ require 'pry'
     filtered_params = work_params()
     work = Work.new(filtered_params)
     is_successful_save = work.save
-    #if not successful re-render form, else  show all
+
     if is_successful_save
       flash[:success] = "Work #{work.title} successfully added."
       redirect_to works_path
@@ -39,6 +39,7 @@ require 'pry'
   def update
     work = Work.find_by(id: params[:id])
     is_successful_update = passenger.update
+
     if is_successful_update
       flash[:success] = "Work #{work.title} was successfully updated."
       redirect_to works_path
@@ -46,20 +47,19 @@ require 'pry'
       flash.now[:failure] = "Work #{work.title} was not updated."
       render :edit
     end
-    #if successful save vs not, .update returns boolean?
-    #redirect to show page
   end
 
   def destroy
     work = Work.find_by(id: params[:id])
     is_successful_deletion = work.destroy
+
     if is_successful_deletion
       flash[:success] = "Work #{work.title} successfully deleted."
       redirect_to works_path
     else
       flash[:failure] = "Work #{work.title} not destroyed."
       #flash back
-      redirect_back(fallback_location: root_path)
+      redirect_back fallback_location: root_path
     end
   end
 
