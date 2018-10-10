@@ -1,41 +1,45 @@
 
 <%= form_with model: @work do |f| %>
-  <% if @work.errors.any?%>
-  <h5>Errors:</h5>
+<% if @work.errors.any?%>
+<h5>Errors:</h5>
 
-  <ul>
-    <% @work.errors.each do |column, message| %>
-    <li>
-      <strong><%=column.capitalize%>: </strong><%= message%>
-    </li>
-    <%end%>
-  </ul>
-  <% end %>
+<ul>
+  <% @work.errors.each do |column, message| %>
+  <li>
+    <strong><%=column.capitalize%>: </strong><%= message%>
+  </li>
+  <%end%>
+</ul>
+<% end %>
+
+<section>
+
+  <form>
 
 
-<div>
+    <div class="form-group">
+      <label>Category</label>
+      <%= f.select :category, Work.all.map{ |w| [w.category]}.uniq%>
+    </div>
 
-  <%= f.label :category %><br>
-  <%= f.text_field :category %>
-  <br>
-  <br>
-  <%= f.label :title %><br>
-  <%= f.text_field :title %>
-  <br>
-  <br>
-  <%= f.label :creator %><br>
-  <%= f.text_field :creator %>
-  <br>
-  <br>
-  <%= f.label :publication_year %><br>
-  <%= f.text_field :publication_year %>
-  <br>
-  <br>
-  <%= f.label :description %><br>
-  <%= f.text_field :description %>
+    <div class="form-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+    <%= f.label :creator %><br>
+    <%= f.text_field :creator %>
+    <br>
+    <br>
+    <%= f.label :publication_year %><br>
+    <%= f.text_field :publication_year %>
+    <br>
+    <br>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
 
-</div>
+  </div>
 
-<%= f.submit action_name %>
-
+  <%= f.submit action_name %>
+</form>
+</section>
 <% end %>
