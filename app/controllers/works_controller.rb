@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
+  after_action :return_to, only: [:main, :index, :show, :new, :edit]
 
   def main
     @works = Work.all
@@ -57,5 +58,9 @@ class WorksController < ApplicationController
 
     def work_params
       params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+    end
+
+    def return_to
+      session[:return_to] = request.fullpath
     end
 end

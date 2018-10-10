@@ -1,23 +1,19 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  after_action :return_to, only: [:index, :show]
 
-  # GET /users
 
   def index
     @users = User.all
   end
 
-  # GET /users/1
   def show
   end
 
-  # GET /users/new
   def new
     @user = User.new
   end
 
-  # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
 
@@ -35,5 +31,9 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name)
+    end
+
+    def return_to
+      session[:return_to] = request.fullpath
     end
 end
