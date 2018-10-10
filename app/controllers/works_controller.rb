@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def home
     @current_user = User.find_by(id: session[:user_id])
     # nil if not logged in, or User model if they are logged in
@@ -17,12 +19,7 @@ class WorksController < ApplicationController
 
   end
 
-  def show
-    @work = Work.find(params[:id].to_i)
-    if @work.nil?
-      render :notfound, status: :not_found
-    end
-  end
+  def show; end
 
   def new
     @work = Work.new
@@ -30,20 +27,63 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-    if @work.save
+    if @work.save # save returns true if the database insert succeeds
       flash[:success] = "Succesfully created new #{@work.category}: #{@work.title}!"
-      redirect_to work_path(@work.id)
-    else
-      flash[:failure] = "There was a problem saving the new work. Try again?"
-      flash[:errors] = @work.errors
-      redirect_to new_work_path
-      # I think we're supposed to use render :new
-      # why use render :new instead of redirect_to?
+      redirect_to works_path # go to the index so we can see the book in the list
+    else # save failed :(
+      flash.now[:error] = "Work not created!"
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
+
+      render :new
     end
   end
 
+#   def create
+#   @book = Book.new(book_params)
+#   if @book.save # save returns true if the database insert succeeds
+#     flash[:success] = 'Book Created!'
+#
+#     redirect_to root_path # go to the index so we can see the book in the list
+#   else # save failed :(
+#     flash.now[:error] = 'Book not created!'
+#     @book.errors.messages.each do |field, messages|
+#       flash.now[field] = messages
+#     end
+#
+#     render :new # show the new book form view again
+#   end
+# end
+
+  def edit; end
+
+  def update
+    if @work && @work.update(work_params)
+      redirect_to work_path(@work.id)
+    elsif @work
+      render :edit
+    end
+  end
+
+  def destroy
+    if !work.nil?
+      @deleted_work = work.destroy
+      flash[:success] = "#{@work.title} deleted"
+      redirect_to root_path
+    end
+  end
 
   private
+
+# Filter
+  def find_work
+    @work = Work.find(params[:id].to_i)
+    if @work.nil?
+      flash.now[:warning] = 'Cannot find the work'
+      render :notfound, status: :not_found
+    end
+  end
 
   def work_params
     return params.require(:work).permit(:title, :creator, :publication, :category, :description)
