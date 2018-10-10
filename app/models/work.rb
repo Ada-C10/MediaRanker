@@ -4,41 +4,40 @@ class Work < ApplicationRecord
   validates :publication_year, inclusion: { in: 1000..Date.today.year, message: "should be a four-digit year"}, allow_blank: true
   validates :category, inclusion: { in: ['book', 'album', 'movie'], message: "should be a book, movie, or album"}
 
-  def self.albums
-    return Work.select {|work| work.category == 'album'}
+  MEDIA_CATEGORIES = ['movie', 'book', 'album']
+
+  def self.list(media_category)
+    check_category(media_category)
+    list = Work.select {|work| work.category == media_category}
+    return list.sort_by { |work| work.votes.count }.reverse!
   end
 
-  def self.books
-    return Work.select {|work| work.category == 'book'}
+  def self.top_ten(media_category)
+    return self.list(media_category).first(10)
   end
 
-  def self.movies
-    return Work.select {|work| work.category == 'movie'}
+  def self.media_lists
+    media_lists = []
+    MEDIA_CATEGORIES.each do |media_category|
+      media_lists << self.list(media_category)
+    end
+    return media_lists.sort
   end
 
-  def self.top_ten_albums
-    return self.top_albums.first(10)
+  def self.top_ten_lists
+    top_ten_lists = []
+    MEDIA_CATEGORIES.each do |media_category|
+      top_ten_lists << self.top_ten(media_category)
+    end
+    return top_ten_lists.sort.reverse
   end
 
-  def self.top_ten_books
-    return self.top_books.first(10)
-  end
+private
 
-  def self.top_ten_movies
-    return self.top_movies.first(10)
+  def self.check_category(input)
+    if !MEDIA_CATEGORIES.include?(input)
+      raise ArgumentError, 'must use a valid media category'
+    end
   end
-
-  def self.top_albums
-    return self.albums.sort_by { |work| work.votes.count }.reverse!
-  end
-
-  def self.top_books
-    return self.books.sort_by { |work| work.votes.count }.reverse!
-  end
-
-  def self.top_movies
-    return self.movies.sort_by { |work| work.votes.count }.reverse!
-  end
-
 
 end

@@ -13,7 +13,7 @@
 <hr class="root__hr" />
 
 <section class="top-ten__container">
-<% [@top_ten_movies, @top_ten_books, @top_ten_albums].each do |works| %>
+<% @top_ten_lists.each do |works| %>
   <section class="top-ten__list-container">
     <h2 class="top-ten__header">
       Top <%="#{works.first.category.capitalize}s"%>

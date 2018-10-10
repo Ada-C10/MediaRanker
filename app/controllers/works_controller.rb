@@ -4,18 +4,11 @@ class WorksController < ApplicationController
 
   def main
     @works = Work.all
-    @top_ten_albums = Work.top_ten_albums
-    @top_ten_books = Work.top_ten_books
-    @top_ten_movies = Work.top_ten_movies
+    @top_ten_lists = Work.top_ten_lists
   end
 
   def index
-    @albums = Work.albums
-    @books = Work.books
-    @movies = Work.movies
-    @top_albums = Work.top_albums
-    @top_books = Work.top_books
-    @top_movies = Work.top_movies
+    @media_lists = Work.media_lists
   end
 
   def show
