@@ -1,3 +1,5 @@
+
+
 <%= render partial: 'layouts/form_errors', locals: {
 model: @work } %>
 
@@ -5,19 +7,19 @@ model: @work } %>
 <h2> <%= form_title %> </h2>
 <p>
 <%= f.label :category %>
-<%= f.text_field :category %>
+<%= f.text_field :category, placeholder: "book" %>
 
 <%= f.label :title %>
-<%= f.text_field :title %>
+<%= f.text_field :title, placeholder: "A Game of Thrones" %>
 
 <%= f.label :creator %>
-<%= f.text_field :creator %>
+<%= f.text_field :creator, placeholder: "George R. R. Martin" %>
 
 <%= f.label :publication_year %>
-<%= f.text_field :publication_year %>
+<%= f.text_field :publication_year, placeholder: "1996" %>
 
 <%= f.label :Description %>
-<%= f.text_field :description %>
+<%= f.text_field :description, placeholder: "First novel in A Song of Ice and Fire." %>
 </p>
 <p><%= f.submit action_type, class: "btn btn-primary" %></p>
 <%end%>
