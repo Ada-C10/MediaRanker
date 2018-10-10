@@ -13,11 +13,11 @@
     <% Work.get_categories.each do |category| %>
     <section class="top-<%=category.pluralize%>">
       <h3>Top <%=category.pluralize%></h3>
-      <% Work.top_ten(category).each do |category| %>
+      <% Work.top_ten(category).each do |work| %>
       <ul>
         <li>
-          <%=category.title%> by
-          <%=category.creator%>
+          <%=link_to work.title, work_path(work)%> by
+          <%=work.creator%>
         </li>
         <li>
           NUM OF VOTES

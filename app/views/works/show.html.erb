@@ -5,28 +5,25 @@
     <li>Published: <%=@work.publication_year%></li>
     <li><p><%=@work.description%></p></li>
   </ul>
-  <ul class="options_bar">
+  <div class="options_bar">
     <h1>THESE ARE BAD LINKS. FIX THEEEEEEM</h1>
-    <li>
-      <button type="button" class="btn btn-info">
-        <%= link_to "Back to media ranks", works_path%>
-      </button>
-    </li>
-    <li>
-      <button type="button" class="btn btn-info">
-        <%= link_to "Edit", edit_work_path(@work)%>
-      </button>
-    </li>
-    <li>
-      <button type="button" class="btn btn-info">
-        <%= link_to "Upvote", new_work_path(@work), method: :post%>
-      </button>
-    </li>
-    <li>
-      <button type="button" class="btn btn-danger">
-        <%= link_to "Delete", work_path(@work), method: :delete%>
-      </button>
-    </li>
-  </ul>
+
+    <button type="button" class="btn btn-info">
+      <%= link_to "Back to media ranks", works_path%>
+    </button>
+
+    <button type="button" class="btn btn-info">
+      <%= link_to "Edit", edit_work_path(@work)%>
+    </button>
+
+    <button type="button" class="btn btn-info">
+      <%= link_to "Upvote", create_work_vote_path(@work), method: :post%>
+    </button>
+
+    <button type="button" class="btn btn-danger">
+      <%= link_to "Delete", work_path(@work), method: :delete%>
+    </button>
+
+  </div>
     <h1>ADD VOTES FOR THIS WORK YADA YADA</h1>
 </div>

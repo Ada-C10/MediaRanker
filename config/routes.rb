@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root "homepage#index", as: "home"
 
   resources :users, :works, :votes
+
+  post '/works/:work_id/votes', to: 'votes#create', as: 'create_work_vote'
 end
