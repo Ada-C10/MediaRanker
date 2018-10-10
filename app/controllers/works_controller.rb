@@ -17,7 +17,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save # save returns true if the database insert succeeds
-      flash[:success] = "Succesfully created new #{@work.category}: #{@work.title}!"
+      flash[:success] = "Succesfully created new #{@work.category} \"#{@work.title}!\""
       redirect_to works_path # go to the index so we can see the book in the list
     else # save failed :(
       flash[:error] = "Work not created!"
