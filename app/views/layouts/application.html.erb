@@ -10,22 +10,41 @@
 </head>
 
 <body>
-
-
   <header>
-
     <h1 class="MediaRanker"><%= link_to "MediaRanker", root_path %></h1>
 
     <nav class="top-navbar">
 
-    <%= link_to "View All Media", works_path %>
-    <br>
-    <%= link_to "Add a new work", new_work_path %>
+      <%= link_to "View All Media", works_path %>
+      <br>
+      <%= link_to "Add a new work", new_work_path %>
 
-    <%= link_to "View All Users", users_path %>
-  </nav>
+      <%= link_to "View All Users", users_path %>
+    </nav>
 
-    <br>
+    <section class="login-info">
+      <!-- Oh gosh this logic should probably be in a controller filter -->
+      <% logged_in_user = User.find_by(id: session[:user_id]) %>
+      <% if logged_in_user %>
+      <p>
+        <%= logged_in_user.username %>
+        <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
+      </p>
+      <% else %>
+      <%= link_to "Log in", new_session_path, class: "btn btn-outline-info" %>
+
+      <% end %>
+    </section>
+
+    <section class="flash-messages">
+    <% flash.each do |key, message| %>
+      <p class="<%= key %>">
+        <%= message %>
+      </p>
+    <% end %>
+  </section>
+
+
 
   </header>
 

@@ -16,3 +16,10 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+
+
+.form-errors {
+  background-color: rgba(255, 37, 37, 0.53);
+  border: 1px solid black;
+}

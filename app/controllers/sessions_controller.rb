@@ -1,18 +1,18 @@
+require 'pry'
 class SessionsController < ApplicationController
-
 
   def new
   end
 
   def create
     name = params[:username]
-    # user = User.find_by(username: name)
+    user = User.find_by(username: name)
 
-    if @logged_in_user
-      flash[:success] = "Successfully logged in as #{name}"
-      session[:user_id] = @logged_in_user.id
+    if user
+      flash[:success] = "Welcome back, you are successfully logged in as #{name}"
+      session[:user_id] = user.id
     else
-      user = User.new(name)
+      user = User.new(username: name)
       is_successful_save = user.save
 
       if is_successful_save
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
       end
 
     end
-    redirect_to root_page
+    redirect_to root_path
 
   end
 
@@ -32,7 +32,6 @@ class SessionsController < ApplicationController
     flash[:success] = "Successfully logged out"
     redirect_to root_path
   end
-
 
 
 end
