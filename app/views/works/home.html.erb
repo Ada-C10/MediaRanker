@@ -1,8 +1,7 @@
 <h1>Works#home</h1>
 <p>Find me in app/views/works/home.html.erb</p>
 <% spotlight = Work.spotlight %>
-<h1>Media Spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %> by <%= spotlight.creator %>
-</h1>
+<h1>Media Spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %> by <%= spotlight.creator %></h1>
 <h4><%= spotlight.description %></h4>
 
 <ul>

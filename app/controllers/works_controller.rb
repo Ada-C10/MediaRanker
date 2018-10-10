@@ -9,9 +9,9 @@ class WorksController < ApplicationController
     @work_titles = []
 # Find project constants in config/initializers/constants.rb
     VALID_WORK_CATEGORIES.each do |cat|
-      @section_headers << "ALL" + "#{cat.upcase}" + "S"
-      Work.by_category(cat).each do |wrk|
-        @work_titles << wrk.title
+      @section_headers << "ALL " + "#{cat.upcase}" + "S"
+      Work.by_category(cat).each do |work|
+        @work_titles << work.title
       end
     end
 

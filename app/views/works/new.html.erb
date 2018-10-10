@@ -9,15 +9,15 @@
   <%= f.label :creator, 'Creator' %>
   <%= f.text_field :creator, placeholder: 'Creator', required: true, maxlength: 30 %>
 
-<!-- Change to select from collection -->
   <%= f.label :category, "Category" %>
   <%= f.select :category, VALID_WORK_CATEGORIES %>
 
   <%= f.label :publication, 'Year Published' %>
   <%= f.text_field :publication, placeholder: 'Year', required: true, maxlength: 4 %>
-<!-- Change to a text box -->
+
   <%= f.label :description, 'Description' %>
   <%= f.text_area :description, cols: 20, rows: 2, placeholder: 'Description', maxlength: 50 %>
 
   <%= f.submit 'Save Me!' %>
+  
 <% end %>
