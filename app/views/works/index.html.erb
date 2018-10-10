@@ -1,1 +1,74 @@
-<strong>THIS IS THE PAGE TO LIST ALL THE OF WORKS </strong>
+<h2>List of Works</h2>
+
+
+<table class="table">
+  <h3>Albums</h3>
+  <thead>
+    <tr>
+      <th scope="col">Votes</th>
+      <th scope="col">Title</th>
+      <th scope="col">Created By</th>
+      <th scope="col">Published</th>
+      <th scope="col">Upvote</th>
+    </tr>
+  </thead>
+  <tr>
+    <%@works.each do |work| %>
+    <%if work.category == "album"%>
+    <td scope="row">some votes</td>
+    <td scope="row"><%=work.title%></td>
+    <td scope="row"><%=work.creator%></td>
+    <td scope="row"><%=work.publication_year%></td>
+    <td scope="row">upvote</td>
+    <%end%>
+  </tr>
+  <%end%>
+</table>
+
+<table class="table">
+  <h3>Books</h3>
+  <thead>
+    <tr>
+      <th scope="col">Votes</th>
+      <th scope="col">Title</th>
+      <th scope="col">Created By</th>
+      <th scope="col">Published</th>
+      <th scope="col">Upvote</th>
+    </tr>
+  </thead>
+  <tr>
+    <%@works.each do |work| %>
+    <%if work.category == "book"%>
+    <td scope="row">some votes</td>
+    <td scope="row"><%=work.title%></td>
+    <td scope="row"><%=work.creator%></td>
+    <td scope="row"><%=work.publication_year%></td>
+    <td scope="row">upvote</td>
+    <%end%>
+  </tr>
+  <%end%>
+</table>
+
+<table class="table">
+  <h3>Movies</h3>
+  <thead>
+    <tr>
+      <th scope="col">Votes</th>
+      <th scope="col">Title</th>
+      <th scope="col">Created By</th>
+      <th scope="col">Published</th>
+      <th scope="col">Upvote</th>
+    </tr>
+  </thead>
+  <tr>
+    <%@works.each do |work| %>
+    <%if work.category == "movie"%>
+    <td scope="row">some votes</td>
+    <td scope="row" ><%=work.title%></td>
+    <td scope="row"><%=work.creator%></td>
+    <td scope="row"><%=work.publication_year%></td>
+    <td scope="row">upvote</td>
+    <%end%>
+  </tr>
+  <%end%>
+</table>

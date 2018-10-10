@@ -1,0 +1,29 @@
+
+<%= form_with model: @work do |f| %>
+
+<div>
+
+  <%= f.label :category %><br>
+  <%= f.text_field :category %>
+  <br>
+  <br>
+  <%= f.label :title %><br>
+  <%= f.text_field :title %>
+  <br>
+  <br>
+  <%= f.label :creator %><br>
+  <%= f.text_field :creator %>
+  <br>
+  <br>
+  <%= f.label :publication_year %><br>
+  <%= f.text_field :publication_year %>
+  <br>
+  <br>
+  <%= f.label :description %><br>
+  <%= f.text_field :description %>
+
+</div>
+
+<%= f.submit action_name %>
+
+<% end %>

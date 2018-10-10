@@ -16,3 +16,13 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+.app-header__header {
+  background-color: #b2dfdb;
+  align-items: center;
+}
+ small {
+   color: white;
+   border-left: 2px solid white;
+   padding-left: 10px;
+ }
