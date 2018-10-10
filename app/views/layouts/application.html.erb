@@ -9,11 +9,25 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <body>
   <header>
     <h1>Media Ranker</h1>
+    <section class="flash">
+        <%flash.each do |name, message|%>
+        <% if message.class == Array %>
+          <%message.each do |msg|%>
+            <div class="alert-warning">
+              <strong> <%= "#{name}:" %> </strong> <%= " #{msg}"%> </div>
+          <%end%>
+        <%else%>
+          <div class="alert-warning">
+             <%=message %>
+           </div>
+        <%end%>
+      <%end%>
+      </section>
   </header>
 
-  <body>
     <nav>
       <ul>
         <li>
