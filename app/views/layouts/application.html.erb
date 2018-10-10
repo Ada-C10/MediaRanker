@@ -10,26 +10,46 @@
   </head>
 
   <body>
-    <% flash.each do |name, msg| %>
-      <ul>
-        <li> <%= msg %> </li>
-      </ul>
-    <% end %>
-
     <header>
       <h1 class="title"><span class="ranker"><%= link_to "Media Ranker", root_path %></span><span id="subtext">Ranking the Best of Everything</span></h1>
 
-      <nav>
-        <ul>
-          <li class="nav-list"><%= link_to "View All Media", works_path%>
-          </li>
-          <li class="nav-list"><%= link_to "Add A New Work", new_work_path %></li>
-        </ul>
-      </nav>
+      <div class="top-navbar">
+        <nav>
+          <ul>
+            <li class="nav-list"><%= link_to "View All Media", works_path%>
+            </li>
+            <li class="nav-list"><%= link_to "Add A New Work", new_work_path %></li>
+          </ul>
+        </nav>
+
+        <!-- <section class="login-info"> -->
+          <!-- Oh gosh this logic should probably be in a controller filter -->
+          <ul>
+            <% logged_in_user = User.find_by(id: session[:user_id]) %>
+            <% if logged_in_user %>
+            <p>
+              Currently logged in as user
+              <%= logged_in_user.name %>
+              <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
+            </p>
+            <% else %>
+            <%= link_to "Log in", new_session_path, class: "btn btn-outline-info" %>
+            <% end %>
+          </ul>
+        <!-- </section> -->
+      </div>
     </header>
 
+    <section class="flash-messages">
+      <% flash.each do |name, msg| %>
+      <ul>
+        <li> <%= msg %> </li>
+      </ul>
+      <% end %>
+    </section>
+
     <main>
-    <%= yield %>
+      <%= yield %>
     </main>
 
     <!-- <%= debug(params) if Rails.env.development? %> -->

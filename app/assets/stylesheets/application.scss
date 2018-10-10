@@ -55,15 +55,15 @@ header {
   height: 100%;
  }
 
- nav {
-   margin-top: 60px;
- }
-
- nav ul {
+.top-navbar ul {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
   width: 40%;
+}
+
+nav {
+  margin-top: 60px;
 }
 
 .nav-list a {
@@ -73,4 +73,15 @@ header {
 .nav-list a:hover {
   text-decoration: none;
   color: #00796B;
+}
+
+// .login-info {
+//   margin: -5rem 3rem;
+//   text-align: right;
+// }
+
+.headliner {
+  color: #26A69A;
+  margin-top: 30px;
+  margin-left: 20px;
 }
