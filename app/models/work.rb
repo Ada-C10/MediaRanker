@@ -1,5 +1,7 @@
 class Work < ApplicationRecord
   validates :title, presence: true
+  validates_inclusion_of :category, in: %w(book, album, movie)
+
 
   def self.albums
     return Work.where(category: 'album')

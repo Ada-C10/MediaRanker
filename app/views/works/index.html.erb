@@ -1,20 +1,21 @@
 <h1>List of Works</h1>
-Albums
+
    <br />
-   <% @albums.each do |album| %>
    <table>
       <tr>
+        <h3>Albums</h3>
+        <% @albums.each do |album| %>
          <td>Title: <%= album.title %></td>
          <td>Created by: <%= album.creator %></td>
          <td>Published: <%= album.publication_year %></td>
          <% end %>
       </tr>
 
-Books
-      <br />
-      <% @books.each do |book| %>
 
+      <br />
       <tr>
+        <h3>Books</h3>
+        <% @books.each do |book| %>
          <td>Title: <%= link_to book.title, work_path(book.id) %> </td>
          <td>Created by: <%= book.creator %></td>
          <td>Published: <%= book.publication_year %></td>
@@ -22,13 +23,11 @@ Books
       </tr>
 
 
-
-Movies
       <br />
-      <% @movies.each do |movie| %>
       <tr>
+        <h3>Movies</h3>
+        <% @movies.each do |movie| %>
          <td>Title: <%= link_to movie.title, work_path(movie.id) %></td>
-         <% raise %>
          <td>Created by: <%= movie.creator %></td>
          <td>Published: <%= movie.publication_year %></td>
          <% end %>

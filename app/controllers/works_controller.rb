@@ -44,7 +44,7 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    work = Work.find_by(id: params[:id].to_i)
+    work = Work.find_by(id: params[:id].to_i) #the id here is coming from the url whereas down...
     if work.nil?
       flash[:error] = "Work #{params[:id]} not found"
     else
@@ -57,7 +57,7 @@ class WorksController < ApplicationController
 
   private
   def work_params
-    return params.require(:work).permit(:id, :title, :creator, :description, :category, :publication_year)
+    return params.require(:work).permit(:title, :creator, :description, :category, :publication_year) #this data is coming from the form
   end
 
 
