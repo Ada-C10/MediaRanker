@@ -17,7 +17,7 @@
       <li><%= link_to "Add A New Work", new_work_path %></li>
       <li><%= link_to "View All Users", users_path %></li>
       <% if @current_user %>
-        <li><%= link_to "Log Out (logged in as #{@current_user})", logout_path, method: :delete %></li>
+        <li><%= link_to "Log Out (logged in as #{@current_user.name})", logout_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "Log In", login_path %></li>
       <% end %>
@@ -27,34 +27,27 @@
   <body>
 
     <header>
-  <% if @current_user %>
+      <% if @current_user %>
       <section class="flash flash-session">
-          <div class="alert-info"><%= "Hi #{@current_user}! You're logged in!" %></div>
+        <div class="alert-info"><%= "Hi #{@current_user.name}! You're logged in!" %></div>
         <% end %>
       </section>
 
-      <section class="flash flash-alert">
+      <section class="flash">
         <% flash.each do |name, message| %>
-          <% if message.class == Array %>
-            <div class="alert-warning">
-            <% message.each do |nme, msg| %>
-              <strong>(Array) <%= "#{nme}".capitalize %>:</strong> <%= "#{msg}" %>
-            <% end %>
-            </div>
-        <% elsif message.class == Hash %>
+        <% if message.class == Array %>
           <div class="alert-warning">
-          <% message.each do |nme, msg| %>
-            <strong>(Hash) <%= "#{nme}".capitalize %></strong> <%= "#{msg[0]}." %><br>
-          <% end %>
-          </div>
+            <% message.each do |msg| %>
+              <strong>(Array) <%= "#{name}".capitalize %></strong> <%= "#{msg}" %></div>
+            <% end %>
           <% else %>
             <div class="alert-danger alert-<%= name %>"><strong>(Item) <%= "#{name}".capitalize %>:</strong> <%= "#{message}" %></div>
           <% end %>
         <% end %>
-        </ul>
       </section>
     </header>
 
     <%= yield %>
+
   </body>
 </html>

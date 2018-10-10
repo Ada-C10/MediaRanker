@@ -31,30 +31,14 @@ class WorksController < ApplicationController
       flash[:success] = "Succesfully created new #{@work.category}: #{@work.title}!"
       redirect_to works_path # go to the index so we can see the book in the list
     else # save failed :(
-      flash.now[:error] = "Work not created!"
+      flash[:error] = "Work not created!"
       @work.errors.messages.each do |field, messages|
-        flash.now[field] = messages
+        flash[field] = messages
       end
-
-      render :new
+      redirect_to new_work_path
+      # I think we're supposed to use render :new, but don't I want the url to change...?
     end
   end
-
-#   def create
-#   @book = Book.new(book_params)
-#   if @book.save # save returns true if the database insert succeeds
-#     flash[:success] = 'Book Created!'
-#
-#     redirect_to root_path # go to the index so we can see the book in the list
-#   else # save failed :(
-#     flash.now[:error] = 'Book not created!'
-#     @book.errors.messages.each do |field, messages|
-#       flash.now[field] = messages
-#     end
-#
-#     render :new # show the new book form view again
-#   end
-# end
 
   def edit; end
 
