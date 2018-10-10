@@ -2,8 +2,6 @@ require "test_helper"
 
 describe Work do
 
-
-
   describe 'validations' do
 
     before do
@@ -32,11 +30,12 @@ describe Work do
 
 
     it 'is invalid with a non-unique title' do
-      work2 = Work.new(title: @work.title)
+      @work.title = Work.first.title
 
-      is_valid = work2.valid?
+      is_valid = @work.valid?
 
-      # expect( is_valid ).must_equal false
+      expect( is_valid ).must_equal false
+      expect( @work.errors.messages ).must_include :title
     end
 
 

@@ -1,19 +1,19 @@
 work1:
-  category:
+  category: Movie
   title:
   publication_year:
   description:
   creator:
 
 work2:
-  category:
+  category: Movie
   title:
   publication_year:
   description:
   creator:
 
 work3:
-  category:
+  category: Album
   title:
   publication_year:
   description:
