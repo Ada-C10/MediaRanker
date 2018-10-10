@@ -4,3 +4,4 @@ class WorksController < ApplicationController
       work.id
     end
   end
+end
