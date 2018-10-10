@@ -17,12 +17,17 @@
 /* Import scss content */
 @import "**/*";
 
-.app-header__header {
+.site_header {
   background-color: #b2dfdb;
-  align-items: center;
+  margin-bottom: 0.5rem;
+  justify-content: center;
 }
  small {
    color: white;
    border-left: 2px solid white;
    padding-left: 10px;
+ }
+
+ a:hover, a:visited, a:link, a:active {
+   color: red;
  }
