@@ -1,6 +1,6 @@
 class Work < ApplicationRecord
   validates :title, presence: true
-  validates_inclusion_of :category, in: %w(book, album, movie)
+  validates_inclusion_of :category, in: %w(book album movie)
 
 
   def self.albums

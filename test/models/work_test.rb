@@ -29,6 +29,17 @@ describe Work do
       expect(valid).must_equal false
       expect(work.errors.messages).must_include :title
     end
+
+    it 'must have a valid category:book,movie,album' do
+      #arrange
+      work.category = nil
+
+      #act
+      valid = work.save
+
+      #assert
+      expect(valid).must_equal false
+    end 
   end
 
   describe 'Custom Methods' do
