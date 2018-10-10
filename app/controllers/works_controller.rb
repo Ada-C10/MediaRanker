@@ -41,11 +41,7 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    @vote = Vote.new
-    # += 1?
-    @vote.quantity = 1
-    @vote.user_id = @current_user.id
-    @vote.work_id = @work.id
+    @vote = Vote.new(quantity: 1, user_id: @current_user.id, work_id: @work.id)
 
     if @vote.save
       redirect_back fallback_location: works_path
