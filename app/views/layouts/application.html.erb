@@ -46,7 +46,7 @@
         <% elsif message.class == Hash %>
           <div class="alert-warning">
           <% message.each do |nme, msg| %>
-            <strong>(Hash) <%= "#{nme}".capitalize %></strong> <%= "#{msg[0]}." %>
+            <strong>(Hash) <%= "#{nme}".capitalize %></strong> <%= "#{msg[0]}." %><br>
           <% end %>
           </div>
           <% else %>
