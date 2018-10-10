@@ -6,11 +6,11 @@ class SessionsController < ApplicationController
 
   def create
     name = params[:username]
-    user = User.find_by(username: name)
+    # user = User.find_by(username: name)
 
-    if user
+    if @logged_in_user
       flash[:success] = "Successfully logged in as #{name}"
-      session[:user_id] = user.id
+      session[:user_id] = @logged_in_user.id
     else
       user = User.new(name)
       is_successful_save = user.save
