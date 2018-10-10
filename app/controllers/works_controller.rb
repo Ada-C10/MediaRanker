@@ -19,15 +19,16 @@ require 'pry'
   end
 
   def create
+
     filtered_params = work_params()
-    work = Work.new(filtered_params)
-    is_successful_save = work.save
+    @work = Work.new(filtered_params)
+    is_successful_save = @work.save
 
     if is_successful_save
-      flash[:success] = "The #{work.category} '#{work.title}' was successfully added."
+      flash[:success] = "The #{@work.category} '#{@work.title}' was successfully added."
       redirect_to works_path
     else
-      flash.now[:failure] = "The work '#{work.title}' was not added."
+      flash.now[:failure] = "The work was not added."
       render :new
     end
   end

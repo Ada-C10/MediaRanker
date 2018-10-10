@@ -1,3 +1,6 @@
+<%= render partial: 'layouts/form_errors', locals: {
+model: @work } %>
+
 <%= form_with model: @work do |f| %>
 <h2> <%= form_title %> </h2>
 <p>
