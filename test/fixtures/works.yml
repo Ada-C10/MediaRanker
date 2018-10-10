@@ -4,7 +4,12 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+alanis:
+  creator: Alanis Morisette
+  year: '1995'
+  category: album
+  title: Jagged Little Pill
+  description: classic 90's 
 # column: value
 #
 two: {}
