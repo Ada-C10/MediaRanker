@@ -33,14 +33,14 @@
         </ul>
         <ul class="nav app-header__user-nav-container">
 
-          <% if session[:user_id] %>
+          <% if @current_user %>
             <li class="nav-item app-header__nav_item">
-              <%= link_to "Logged in as #{User.find(session[:user_id]).name}", user_path(session[:user_id]), class: "btn btn-primary"%>
+              <%= link_to "Logged in as #{@current_user.name}", user_path(@current_user.id), class: "btn btn-primary"%>
             </li>
           <% end %>
 
           <li class="nav-item app-header__nav_item">
-            <% if session[:user_id] == nil %>
+            <% if !@current_user %>
               <%=link_to "Log In", login_path, class: "btn btn-primary"%>
             <% else %>
               <%= link_to "Log Out", logout_path, class: "btn btn-primary", method: :delete%>
