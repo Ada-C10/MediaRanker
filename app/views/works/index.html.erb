@@ -1,0 +1,59 @@
+<div class="container">
+
+  <div class="div1">
+    <h3>
+      <%= link_to "new works", new_work_path, class: "new-work" %>
+    </h3>
+  </div>
+
+  <div class="div2">
+    <h3>
+      <%= link_to "all works", all_works_path, class: "homepage" %>
+    </h3>
+  </div>
+
+  <div class="div3">
+    <h3>your works</h3>
+
+    <ol class="album">
+      <% i = 0 %>
+      <% @works.each do |work| %>
+      <% if work.category == "Album" %>
+      <li>
+        <p>
+          <%= "#{work.category}" %>: <%= "#{work.title}" %>
+        </p>
+      </li>
+      <% end %>
+      <% end %>
+    </ol>
+
+    <ol class="movie">
+      <% i = 0 %>
+      <% @works.each do |work| %>
+      <% if work.category == "Movie" %>
+      <li>
+        <p>
+          <%= "#{work.category}" %>: <%= "#{work.title}" %>
+        </p>
+      </li>
+      <% end %>
+      <% end %>
+    </ol>
+
+    <ol class="book">
+      <% i = 0 %>
+      <% @works.each do |work| %>
+      <% if work.category == "Book" %>
+      <li>
+        <p>
+          <%= "#{work.category}" %>: <%= "#{work.title}" %>
+        </p>
+      </li>
+      <% end %>
+      <% end %>
+    </ol>
+
+  </div>
+
+</div>
