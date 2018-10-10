@@ -6,12 +6,16 @@ class WorksController < ApplicationController
 
   def show
     id = params[:id]
-    @work = user.find_by(id: id)
+    @work = Work.find_by(id: id)
 
     if id == nil
       render :not_found, status: :not_found
     end
 
+  end
+
+  def main
+    @works = Work.all
   end
 
   def edit
@@ -36,11 +40,15 @@ class WorksController < ApplicationController
   end
 
   def create
-    @work = Work.new(:id)
-    # @task = Task.new(name: params[:task][:name], description: params[:task][:description], due: params[:task][:due]) #instantiate a new book
-    if @work.save # save returns true if the database insert succeeds
-      redirect_to work_path # go to the index so we can see the book in the list
+    @work = Work.new(work_params)
+    if @work.save
+      flash[:success] = "New work created"
+      redirect_to work_path(@work.id) # go to the index so we can see the book in the list
     else # save failed :(
+      flash.now[:error] = 'Work not created'
+      @work.errors.messages.each do |field, messages|
+        flash.now[:field] = messages
+      end
       render :new # show the new book form view again
     end
   end
@@ -49,13 +57,14 @@ class WorksController < ApplicationController
     id = params[:id]
     @work = Work.find_by(id: id)
     if @work.destroy
+      flash[:success] = "#{work.title} deleted"
       redirect_to root_path
     end
   end
 
   private
-  def user_params
-    return params.require(:work).permit(:title)
+  def work_params
+    return params.require(:work).permit(:title, :publication_year, :creator, :description)
   end
 
 end

@@ -22,6 +22,20 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def login
+    user = User.find_by(id: params[:user][:username])
+
+    if user.nil?
+      user = User.create(id: params[:user][:username])
+    else
+      @current_user = User.find_by(id: session[:user_id])
+    end
+
+    session[:user_id] = user.id
+    flash[:success] = "#{user.username} is successfully logged in"
+    redirect_to root_path
+  end
+
 
   def update
     id = params[:id]
@@ -39,22 +53,28 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     # @task = Task.new(name: params[:task][:name], description: params[:task][:description], due: params[:task][:due]) #instantiate a new book
     if @user.save # save returns true if the database insert succeeds
-      redirect_to drivers_path # go to the index so we can see the book in the list
+      redirect_to root_path # go to the index so we can see the book in the list
     else # save failed :(
       render :new # show the new book form view again
     end
   end
 
   def destroy
-    id = params[:id]
-    @user = User.find_by(id: id)
-    if @user.destroy
-      redirect_to root_path
-    end
+    # id = params[:id]
+    # @user = User.find_by(id: id)
+    # if @user.destroy
+    #   redirect_to root_path
+    # end
+
+    session[:user_id] = nil
+    flash[:session] = "Successfully logged out"
+    redirect_back fallback_location: root_path
   end
 
 end
 
-  def user_params
-      return params.require(:user).permit(:username)
-    end
+private
+
+def user_params
+  return params.require(:user).permit(:username)
+end
