@@ -17,4 +17,8 @@ class Work < ApplicationRecord
     return CATEGORIES
   end
 
+  def self.get_plural_categories
+    return CATEGORIES.map { |category| category.pluralize }
+  end
+
 end

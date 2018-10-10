@@ -10,14 +10,14 @@
   </section>
 
   <section class="top-media">
-
-    <section class="top-movies">
-      <h3>Top Movies</h3>
-      <% Work.where(category: 'movie').each do |movie| %>
+    <% Work.get_categories.each do |category| %>
+    <section class="top-<%=category.pluralize%>">
+      <h3>Top <%=category.pluralize%></h3>
+      <% Work.top_ten(category).each do |category| %>
       <ul>
         <li>
-          <%=movie.title%> by
-          <%=movie.creator%>
+          <%=category.title%> by
+          <%=category.creator%>
         </li>
         <li>
           NUM OF VOTES
@@ -25,37 +25,7 @@
       </ul>
       <%end%>
     </section>
-
-    <section class="top-books">
-      <h3>Top Books</h3>
-      <% Work.where(category: 'book').each do |book| %>
-      <ul>
-        <li>
-          <%=book.title%> by
-          <%=book.creator%>
-        </li>
-        <li>
-          NUM OF VOTES
-        </li>
-      </ul>
-      <%end%>
-    </section>
-
-    <section class="top-albums">
-      <h3>Top Albums</h3>
-      <% Work.where(category: 'album').each do |album| %>
-      <ul>
-        <li>
-          <%=album.title%> by
-          <%=album.creator%>
-        </li>
-        <li>
-          NUM OF VOTES
-        </li>
-      </ul>
-      <%end%>
-    </section>
-
+    <% end %>
   </section>
 
 </div>
