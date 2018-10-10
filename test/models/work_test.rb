@@ -16,6 +16,10 @@ describe Work do
       expect(result).must_equal true
     end
 
+    it 'it has required fields' do
+      
+    end
+
   end
 
 end
