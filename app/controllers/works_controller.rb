@@ -19,6 +19,30 @@ class WorksController < ApplicationController
     end
   end
 
+  def show
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
+  end
+
+  def edit
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
+  end
+
+  def update
+    @work = Work.find(params[:id])
+    result = @work.update(work_params)
+    updated_work = Work.find(params[:id])
+
+    if result
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
+      redirect_to work_path(@work.id)
+    else
+      flash.now[:error] = "A problem occurred: Could not update #{@work.category}"
+      render :edit
+    end
+  end
+
   private
   def work_params
     return params.require(:work).permit(

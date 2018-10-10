@@ -1,0 +1,21 @@
+<section>
+  <h2><%= @work.title %></h2>
+  <ul>
+    <li>Created by: <%= @work.creator %></li>
+    <li>Published: <%= @work.publication_year %></li>
+    <li>Description: <%= @work.description %></li>
+  </ul>
+</section>
+
+<section class="show_page_links">
+  <ul>
+    <li><%= link_to "Back to media ranks", root_path %></li>
+    <li><%= link_to "Edit", edit_work_path(@work.id) %></li>
+    <li>UPvote link here</li>
+    <li><%= link_to "Delete", work_path(@work.id), method: :delete %></li>
+  </ul>
+</section>
+
+<section>
+  <h2># Votes for this <%= @work.category %></h2>
+</section>
