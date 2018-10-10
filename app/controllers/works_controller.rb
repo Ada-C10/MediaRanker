@@ -35,6 +35,19 @@ class WorksController < ApplicationController
     end
   end
 
+  def destroy
+    work = Work.find_by(id: params[:id])
+    if work
+      work.destroy
+      flash[:success] = "Successfully deleted #{work.title}"
+      redirect_to works_path
+    else
+      flash[:error] = "#{work.title} not deleted"
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+
 
   private
 
