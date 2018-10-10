@@ -4,6 +4,22 @@ describe Work do
   let(:work) { works(:kings) }
 
   describe "Relationships" do
+    it "can have many votes" do
+      expect(work.votes.count).must_equal 2
+    end
+
+    it "can have 0 votes" do
+      work = Work.new(title: "Aladdin")
+      expect(work.votes.count).must_equal 0
+    end
+
+    it "can access users through votes" do
+      expect(work.users.length).must_be :>=, 0
+
+      work.users.each do |user|
+        expect(user).must_be_instance_of User
+      end
+    end
   end
 
   describe "Validations" do

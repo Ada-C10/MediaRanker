@@ -51,6 +51,7 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    # Delete all votes that reference this work first
     @work.destroy
     redirect_to works_path
   end
