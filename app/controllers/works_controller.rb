@@ -38,6 +38,35 @@ class WorksController < ApplicationController
     end
   end
 
+  def update
+    @work = Work.find(params[:id])
+
+    if @work.nil?
+      head :not_found
+    end
+
+    is_updated = @work.update(work_params)
+
+    if is_updated
+      redirect_to work_path(@work)
+    else
+      render :edit, status: :bad_request
+    end
+  end
+
+  def destroy
+      work = Work.find_by(id: params[:id])
+
+      if work.nil?
+        head :not_found
+      end
+
+      if work.destroy
+        redirect_to works_path
+      else
+        render :show
+      end
+    end
   private
 
     def work_params

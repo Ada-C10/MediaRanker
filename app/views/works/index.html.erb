@@ -1,29 +1,30 @@
-<h3>All Media Page</h3>
 <br>
+<section>
+  <h3>List of Works</h3>
+</section>
 <br>
 <table cellpadding="5">
 
-
-
   <thead>
     <tr>
-      <td>Category</td>
+      <td>Votes</td>
       <td>Title</td>
-      <td>Creator</td>
-      <td>Publication Year</td>
-      <td>Description</td>
+      <td>Created By</td>
+      <td>Published</td>
+      <td>Upvote</td>
     </tr>
   </thead>
 
   <tbody>
-  <% @works.each do  |w| %>
+
+    <% @works.each do  |w| %>
     <tr>
-      <td><%= w.category %></td>
-      <td><%= w.title %></td>
+      <td><%="vote count" %></td>
+      <td><%= link_to "#{w.title}", work_path(w.id)%></td>
       <td><%= w.creator %></td>
       <td><%= w.publication_year %></td>
-      <td><%= w.description %></td>
-    <% end   %>
+      <td><%= "Upvote" %></td>
+      <% end   %>
     </tr>
   </tbody>
 </table>

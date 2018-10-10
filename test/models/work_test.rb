@@ -1,6 +1,8 @@
 require "test_helper"
 
 describe Work do
+
+
   describe 'validations' do
     before do
       # Arrange
@@ -13,6 +15,11 @@ describe Work do
 
       # Assert
       expect(result).must_equal true
+    end
+
+    it 'is valid when title is unique' do
+      is_valid = @work.valid?
+      expect( is_valid ).must_equal true
     end
 
     it 'is not valid when some fields are not present' do

@@ -1,16 +1,16 @@
 <h3>Media Details</h3>
 
-<strong><%= link_to "Edit", edit_work_path(@work.id) %></strong>
-<strong><%= link_to "Delete", work_path, method: :delete,
-   data: { confirm: "Are you sure you want to delete this trip?" } %></strong>
-
 <h3><%= @work.title %></h3>
-<p><%= @work.creator %></p>
-<p><%= @work.publication_year %></p>
+<p><%= "Created by: #{@work.creator}" %></p>
+<p><%= "Published: #{@work.publication_year}" %></p>
 <p><%= @work.description %></p>
 
+<strong><%= link_to "Back to media ranks", works_path %></strong>
+<strong><%= link_to "Edit", edit_work_path(@work.id) %></strong>
+<strong><%= link_to "Delete", work_path, method: :delete,
+   data: { confirm: "Are you sure you want to delete this?" } %></strong>
 
-<h2>Votes</h2>
+<h4><%= "Votes for #{@work.category}" %></h4>
 
 <table cellpadding="20">
 

@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MediaRanker</title>
+    <title>Media Ranker</title>
+    <section>
+
+    <%= "Media Ranker | Ranking the Best of Everything" %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,21 +15,22 @@
   <body>
     <header>
       <nav class="top-navbar">
-        <ul>
-          <li>
-            <%= link_to "View Top Media"%>
-          </li>
-          <li>
+
+            <%= link_to "View Top Media", root_path %>
+
             <%= link_to "View All Media", works_path %>
-          </li>
-          <li>
+
             <%= link_to "Add a new work", new_work_path %>
-          </li>
-          <li>
+
             <%= link_to "View all users", users_path %>
-          </li>
-        </ul>
+
       </nav>
+
+      </section>
+
+      <section>
+        <strong><%= link_to "Log In" %></strong>
+      </section>
 
     <%= yield %>
   </body>
