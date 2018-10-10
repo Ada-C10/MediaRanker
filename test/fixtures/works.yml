@@ -14,16 +14,30 @@ book:
 # column: value
 #
 album:
-      title: Harry Potter and the Goblet of Fire
-      creator: Jk Rowling
+      title:
+      creator: Biggie Smalls
       publication_year: 1999
       description: One of the hottest books in the series
       category: album
 
 # column: value
 movie:
-      title: Harry Potter and the Goblet of Fire
-      creator: Jk Rowling
+      title: A
+      creator: Bob Hope
       publication_year: 1999
       description: One of the hottest books in the series
+      category: movie
+
+creator:
+      title: You are my sunshine
+      creator:
+      publication_year: 1999
+      description: One of the hottest books in the series
+      category: movie
+
+publication:
+      title: You are my rock
+      creator: Sarah Marshall
+      publication_year: twenty
+      description:
       category: movie

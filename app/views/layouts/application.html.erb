@@ -35,9 +35,9 @@
 
             <li class="nav-item app-header__nav_item">
               <% if session[:user_id] %>
-              <li class="btn btn-primary"><%= link_to "Log Out", user_path(session[:user_id]), method: :delete, class: "btn btn-primary" %></li>
+              <li class="btn btn-primary"><%= link_to "Log Out", user_path(session[:user_id]), method: :delete %></li>
               <% elsif %>
-              <li class="btn btn-primary"><%= link_to "Login", new_user_path, class: "btn btn-primary" %></li>
+              <li class="btn btn-primary"><%= link_to "Login", new_user_path%></li>
               <% end %>
             </li>
 
@@ -45,8 +45,6 @@
           </ul>
         </nav>
       </header>
-
-
 
     <header>
       <section class="flash">
@@ -56,7 +54,7 @@
           <p><strong><% "#{name}: #{msg}" %></strong><p>
           <% end %>
         <% else %>
-          <div class="alert-warning">
+          <div class="alert alert-warning">
             <% message %>
           </div>
         <% end %>
@@ -66,7 +64,10 @@
       <h2>Welcome <%= @current_user.username %></h2>
       <%end%>
 
-    </header>
+  </header>
+
+
+
 
     <%= yield %>
   </body>
