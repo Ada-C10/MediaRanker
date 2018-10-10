@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_book, only: [:show, :edit, :update]
+  before_action :find_book, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all.order(:username)
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def upvote
-    
+
   end
 
   private
