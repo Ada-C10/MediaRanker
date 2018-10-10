@@ -24,10 +24,10 @@ require 'pry'
     is_successful_save = work.save
 
     if is_successful_save
-      flash[:success] = "Work #{work.title} successfully added."
+      flash[:success] = "The #{work.category} '#{work.title}' was successfully added."
       redirect_to works_path
     else
-      flash.now[:failure] = "Work #{work.title} was not added."
+      flash.now[:failure] = "The work '#{work.title}' was not added."
       render :new
     end
   end
