@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
     if user.nil?
       # Create a new author if one doesn't exist
       user = User.create(name: params[:user][:name])
-
     else
       # Log in the existing user
       # No code needed
@@ -24,10 +23,10 @@ class SessionsController < ApplicationController
 
   def destroy
     # Set user id to nil
-    sessions[:user_id] = nil
+    session[:user_id] = nil
     flash[:success] = "Successfully logged out"
     # Go back to where you came from or if you came straight here
-    # Go back to the home page 
+    # Go back to the home page
     redirect_back fallback_location: root_path
   end
 end

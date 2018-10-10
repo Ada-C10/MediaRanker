@@ -13,16 +13,22 @@
   <body>
     <div id="header_container">
       <header>
-          <!--Enter Flash code here  -->
-          <!-- <section class="flash">
-             flash.each do |name, message|
-            <! if message.class == Array  -->
-            <!-- messages.each do |msg| -->
-            <!-- div class="alert"  -->
-            <!--  else etc.  -->
-              <!--   -->
-            <!-- end -->
-          <!-- </section> -->
+
+        <section class="flash">
+          <% flash.each do |name, message| %>
+            <% if message.class == Array %>
+              <div class="alert-warning">
+                <% message.each do |msg| %>
+                    <p><strong><%= "#{name}:" %></strong><%= " #{msg}" %></p>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="alert-<%= name %>">
+                  <%= message %>
+              </div>
+            <% end %>
+          <% end %>
+
         <h1><%= link_to "Media Ranker", welcome_index_path %> </h1>
         <h2><%= "Ranking the Best of Everything" %></h2>
       </header>
@@ -30,13 +36,17 @@
       <nav>
         <!-- View Top Media -->
         <!-- View all media -->
+        <%= link_to "View All Media", works_path %>
         <!-- Add a new work -->
+        <%= link_to "Add Media", new_work_path %>
         <!-- View all users -->
-        <!-- Logout link if logged in -->
-        <!-- if session[:user_id] -->
-        <!-- link_to "Log Out", logout_path, method: :delete -->
-        <!-- Login  link if not logged in  -->
-        <!-- link_to "Log In", login_path -->
+        <%= link_to "Users", users_path %>
+
+        <% if @current_user %>
+          <%= link_to "Log Out", logout_path, method: :delete, class: 'btn btn-primary' %>
+        <% else %>
+          <%= link_to "Login", login_path, class: 'btn btn-primary' %>
+        <% end %>
       </nav>
     </div>
 

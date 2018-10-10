@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # Lets user login when they submit login form
 post 'sessions/login', to: 'sessions#login', as: 'login'
 # Brings up login form (get request)
-get 'sessions/new', to: 'sessions#new', as: 'new_session'
+get 'sessions/login', to: 'sessions#new', as: 'new_session'
 # destroying the session
 delete 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
 
@@ -14,7 +14,7 @@ delete 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
     resources :users, only:[:index]
   end
 
-  resources :works 
+  resources :works
     # resources :votes, only:[:index]
 
 

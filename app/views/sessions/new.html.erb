@@ -1,6 +1,8 @@
-<h1>Please log in</h1>
-<%= form_with model: @user, url: login_path, method: :post do |f| %>
-  <%= f.label :name, 'Username' %>
-  <%= f.text_field :name, placeholder: 'Username' %>
-  <%= f.submit 'Login' %>
-<% end %>
+<div class="form-group">
+  <h1>Log In</h1>
+  <%= form_with model: @user, url: login_path, method: :post do |f| %>
+    <%= f.label :name, 'Username' %>
+    <%= f.text_field :name, placeholder: 'Username', class: "form-control" %>
+    <%= f.submit 'Login', class: "btn btn-primary" %>
+  <% end %>
+</div>
