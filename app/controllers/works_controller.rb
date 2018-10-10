@@ -1,14 +1,12 @@
 class WorksController < ApplicationController
 
+  before_action :sorted_media, only: [:index, :main]
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
+
   def index
-    media = sorted_media
-    @albums = media[:albums]
-    @books = media[:books]
-    @movies = media[:movies]
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
     end
@@ -28,13 +26,10 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
   end
 
-
   def update
-    work = Work.find_by(id: params[:id])
-    if work.update(work_params)
+    if @work.update(work_params)
       redirect_to works_path
     else
       head :not_acceptable
@@ -42,34 +37,29 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    work = Work.find_by(id: params[:id])
 
-    work.destroy
+    @work.destroy
     redirect_to works_path
   end
 
   def main
-    media = sorted_media
-    @albums = media[:albums][0..9]
-    @books = media[:books][0..9]
-    @movies = media[:movies][0..9]
+    @albums = @albums[0..9]
+    @books = @books[0..9]
+    @movies = @movies[0..9]
 
     @media = sort_by_votes(Work.all).first
   end
 
   def upvote
-    work = Work.find_by(id: params[:id])
-
-
     if session[:user_id]
       user = User.find_by(id: session[:user_id])
-      vote = Vote.find_by(user: user, work: work)
+      vote = Vote.find_by(user: user, work: @work)
 
       if vote
         flash[:already_vote] = "Cannot upvote the same media twice."
       else
         flash[:success] = "Successfully voted for #{work.title}"
-        Vote.create(user: user, work: work)
+        Vote.create(user: user, work: @work)
       end
 
     else
@@ -96,10 +86,12 @@ class WorksController < ApplicationController
   end
 
   def sorted_media
-    return {
-      :albums => sort_by_votes(Work.where(category: 'album')),
-      :books => sort_by_votes(Work.where(category: 'book')),
-      :movies => sort_by_votes(Work.where(category: 'movie'))
-    }
+      @albums = sort_by_votes(Work.where(category: 'album'))
+      @books = sort_by_votes(Work.where(category: 'book'))
+      @movies = sort_by_votes(Work.where(category: 'movie'))
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 end
