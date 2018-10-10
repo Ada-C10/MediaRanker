@@ -10,6 +10,29 @@
   </head>
 
   <body>
+    <header>
+      <section class = "flash">
+        <%flash.each do |name, message|%>
+        <% if message.class == Array %>
+          <%message.each do |msg|%>
+            <div class = "alert-<%=name %>">
+              <strong> <%= "#{name}:" %> </strong> <%= " #{msg}"%> </div>
+          <%end%>
+        <%else%>
+          <div class = "alert- <%=name %>">
+             <%=message %>
+           </div>
+        <%end%>
+      <%end%>
+      </section>
+    <h1><%= link_to "Media Ranker", root_path %></h1>
+    <nav>
+      <ul>
+        <li><%= link_to "Add a New Work", "/works/new" %></li>
+        <li><%= link_to "View all Works", "/works" %></li>
+      </ul>
+    </nav>
+  </header>
     <%= yield %>
   </body>
 </html>

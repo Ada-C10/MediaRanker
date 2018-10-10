@@ -1,0 +1,11 @@
+<%categories = ['movie', 'book', 'album']%>
+<%categories.each do |category|%>
+  <h1>Top 10 <%=category%>s</h1>
+    <% @works.each do |work| %>
+        <%if category == work.category%>
+        <h4> <%=link_to work.title, work_path(work.id)%> by <%=work.creator%></h4>
+        <%end%>
+    <%end%>
+    <br>
+    <br>
+<% end %>
