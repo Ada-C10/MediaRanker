@@ -20,10 +20,10 @@
   <li>
     <%= link_to "Edit", edit_work_path(@work.id) %>
   </li>
-  <!-- <li>
+  <li>
     <%= link_to "Upvote", home_path %>
   </li>
   <li>
-    <%= link_to "Delete", work_path(@work.id) %>
-  </li> -->
+    <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to delete  #{@work.title}?"} %>
+  </li>
 </ul>
