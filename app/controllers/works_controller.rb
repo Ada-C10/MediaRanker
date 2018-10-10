@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
   def upvote
     # Vote doesn't need a controller
     # find the work -troubleshoot - start with the show page
@@ -14,7 +14,7 @@ class WorksController < ApplicationController
     # Should be able to grab the current user
     # Should be able to link to current work
     # date created = today
-    
+
   end
 
   def index
@@ -44,40 +44,30 @@ class WorksController < ApplicationController
     end
   end
 
+# Has issue with update, .work_id method not found 
   def update
-      @work = Book.find_by(id: params[:id].to_i)
-      if @work.update(work_params)
-        redirect_to work_path(@work.id)
-      else
-        render :edit
-      end
+    if @work && @work.update(work_params)
+      redirect_to work_path(@work.id)
+    elsif @work
+      render :edit
     end
+  end
 
   def edit
-    id = params[:id].to_i
-    @work = Work.find_by(id: id)
   end
 
   def show
-    id = params[:id].to_i
-    @work = Work.find_by(id: id)
+    # Troubleshoot later
     @work_votes = @work.votes
-    if @work.nil?
-      render :notfound, status: :not_found
-    end
   end
 
   def destroy
+    unless @work.nil?
     # Flash notice for success/failure
-    id = params[:id].to_i
-    work = Work.find_by(id: id)
-    if work.nil?
-      flash[:error] = "Work #{params[:id]} not found"
-    else
-      @deleted_work = work.destroy
-      flash[:success] = "#{work.title} deleted"
+      @work.destroy
+      flash[:success] = "#{@work.title} deleted"
+      redirect_to root_path
     end
-    redirect_to root_path
   end
 
   # TODO Create an upvote method ?
@@ -86,6 +76,15 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    id = params[:id].to_i
+    @work = Work.find_by(id: id)
+    if @work.nil?
+      flash.now[:danger] = "Cannot find the work #{params[:id]}"
+      render :notfound
+    end
   end
 
 end

@@ -1,6 +1,8 @@
 class Work < ApplicationRecord
   # Many votes can be associated with a single work
   has_many :votes
+  # has_many :users :through :votes
+  
   validates :work_id, uniqueness: { scope: :user_id, message: "You can only vote once for this work" }
 
   validates :category, presence: true
