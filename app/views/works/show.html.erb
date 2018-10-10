@@ -1,6 +1,18 @@
 <h2><%= @work.title %></h2>
 <ul>
-  <li>Created by:<%= @work.creator %></li>
-  <li>Published:<%= @work.publication_year %></li>
+  <li>Created by: <%= @work.creator %></li>
+  <li>Published: <%= @work.publication_year %></li>
   <li><%= @work.description %></li>
+</ul>
+<h3>To Do</h3>
+<ul>
+  <li>Add links</li>
+  <ul>
+    <li>Back to media ranks</li>
+    <li>Edit</li>
+    <li>Upvote</li>
+    <li>Delete</li>
+  </ul>
+  <li>Add total votes for this work</li>
+  <li>Add list of users who voted for this work</li>
 </ul>
