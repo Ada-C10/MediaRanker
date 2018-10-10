@@ -1,0 +1,11 @@
+<div class="description-container">
+
+  <h2><%= @work.title %> by <%= @work.creator %></h2>
+
+  <p class="description-text"><%= @work.description %> | <%= @work.category %> | <%= @work.publication_year %></p>
+</div>
+<div class="return-home">
+  <h3>
+    <%= link_to "Return Home", all_works_path, class: "homepage" %>
+  </h3>
+</div>
