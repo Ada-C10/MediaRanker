@@ -1,13 +1,38 @@
 require "test_helper"
 
 describe User do
-  let(:user) { User.new }
-  let(:jazz) { User.new }
 
-  it "must be valid" do
-    value(user).must_be :valid?
-    value(jazz).must_be :valid?
+  # it "is valid when all fields are present" do
+  #   describe 'validations' do
+  #     before do
+  #       # Arrange
+  #       author = Author.new(name: 'test author')
+  #       @book = Book.new(title: 'test book', author: author)
+  #     end
+  #     value(user).must_be :valid
+  #   end
+
+  it 'is an invalid username name blank' do
+    user = users(:blank)
+    expect(user.valid?).must_equal false
   end
+
+  it "is an valid username" do
+    user = users(:jazz)
+    expect(user.valid?).must_equal true
+  end
+
+  it 'is an invalid length for a username' do
+    user = users(:tierney)
+    expect(user.valid?).must_equal false
+  end
+
+  it 'is an invalid username duplicate' do
+    user = users(:jazz)
+    user = User.new(username: "jazztaz")
+    expect(user.valid?).must_equal false
+  end
+
 
   # describe 'relations' do
   #   it 'can set the user through "user"' do

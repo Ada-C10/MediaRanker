@@ -5,13 +5,13 @@
 # below each fixture, per the syntax in the comments below
 #
  vote1:
-   username: jazz
+   user: jazz
    work: book
 
 # column: value
 #
  vote2:
-   username: tierney
+   user: tierney
    work: album
 
 # column: value
