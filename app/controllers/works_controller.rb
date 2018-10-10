@@ -1,15 +1,20 @@
 class WorksController < ApplicationController
 
   def index
-    # @work = Work.all.order(:due_date)
-      @works = Work.all.order(:category)
+      # we separate/list works by category type
+      @albums = Work.where(category: 'album')
+      @books = Work.where(category: 'book')
+      @movies = Work.where(category: 'movie')
   end
 
   def show
-    if @work = Work.find_by(id: params[:id].to_i)
+    if @work = Work.find_by(id: params[:id])
+      return @work
     else
       return head :not_found
     end
+
+    # @votes = @work.votes ??
   end
 
   def new
@@ -22,27 +27,33 @@ class WorksController < ApplicationController
     result = @work.save
 
     if result
-      redirect_to works_path
+      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
+      redirect_to work_path(@work.id)
     else
+      flash.now[:alert] = "something went wrong" #QUESTION: how to flash error messages??? error.messages?????
       render :new
     end
   end
 
   def edit # TODO: add checks from destroy for sessions + flash
     @work = Work.find_by(id: params[:id])
-    if !@work
-      return head :not_found
-    end
   end
 
   def update
-    @work = Work.find(params[:id])
+    @work = Work.find_by(id: params[:id])
+
+    # can't update something if it doesn't exist
+    if !@work
+      return head :not_found
+    end
 
     result = @work.update(work_params)
 
     if result
-      redirect_to work_path(@work)
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
+      redirect_to work_path(@work.id)
     else
+      flash.now[:alert] = "something went wrong" #QUESTION: how to flash error messages??? error.messages?????
       render :edit
     end
   end
@@ -52,22 +63,23 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work && session[:user_id] # TODO: CHECK THIS B/C NOW WE HAVE SESSIONS IN THA MIX
-      @work.destroy
-      flash[:success] = "Successfully destroyed #{work.category} #{work.id}"
-      redirect_to root_path
+      result = @work.destroy
+      if result
+        flash[:success] = "Successfully destroyed #{@work.category} #{work.id}"
+        redirect_to root_path
+      else
+        flash.now[:alert] = "something went wrong" #QUESTION: how to flash error messages??? error.messages?????
+        render :show
+      end
 
     elsif !@work && session[:user_id]
+      #QUESTION: add flash alert not found???
       return head :not_found
 
-    elsif @work && !session[:user_id]
+    elsif @work && !session[:user_id] # QUESTION: needed???
       flash[:error] = "You must be logged in to delete something!" #NOTE: this isn't true on the model site...
       redirect_back(fallback_location: root_path)
     end
-  end
-
-  def gen_categories
-    # CATEGORIES = ["album", "book", "movie"] # QUESTION: keep here or move?
-    # constant is in model
   end
 
   private
