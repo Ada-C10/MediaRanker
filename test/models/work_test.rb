@@ -64,7 +64,28 @@ describe Work do
 
       expect(@work.valid?).must_equal false
     end
+  end
 
+  describe 'relations' do
+    it 'has some votes' do
+      w = Work.find_by(title: 'Princess Bride')
+      # test data has 2 votes in votes.yml
+
+      votes = w.votes
+
+      expect(votes).must_respond_to :each
+      expect(votes.count).must_equal 2
+    end
+  end
+
+  describe 'top_ten method' do
+    it 'returns a collection of works' do
+      ['movie', 'album', 'book'].each do |category|
+        works = Work.top_ten(category)
+        expect(works).must_respond_to :each
+      end
+    end
 
   end
+
 end
