@@ -1,3 +1,5 @@
+<%= render partial: 'layouts/form_errors', locals: { model: @work } %>
+
 <h2>Add a new work</h2>
 
 <%= form_with model: @work, class: 'work-form' do |f| %>
