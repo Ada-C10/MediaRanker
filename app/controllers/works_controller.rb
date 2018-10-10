@@ -36,7 +36,7 @@ class WorksController < ApplicationController
 
   def destroy
     unless @work.nil?
-      @work = work.destroy
+      @work = @work.destroy
       flash[:success] = "#{@work.title} has been deleted from MediaRanker."
       redirect_to works_path
     end

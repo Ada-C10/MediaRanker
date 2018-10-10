@@ -14,6 +14,6 @@
     <p> <%= link_to "Upvote", work_votes_path(@work.id), method: :post %></p>
   </button>
   <button>
-    <p> Delete </p>
+    <p> <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to delete #{@work.title}?"} %></p>
   </button>
 </nav>
