@@ -1,4 +1,5 @@
-<%= form_with model: @work, method: method do |f|%>
+
+<%= form_with model: @work, method: method, local: true do |f|%>
 <h1><%= action_name %></h1>
   <%= f.label :category, "Category"%>
   <%= f.select :category, ['movie', 'album','book']%>
