@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
   def index
-    @work = Work.all 
+    @work = Work.all
   end
 
   def delete
@@ -10,6 +10,11 @@ class WorksController < ApplicationController
   end
 
   def show
+    id = params[:id].to_i
+    @work = Work.find_by(id: id)
+    if @work.nil?
+      render :notfound, status: :notfound
+    end
   end
 
   def update
