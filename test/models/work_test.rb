@@ -1,7 +1,5 @@
 require "test_helper"
 
-require 'pry'
-
 describe Work do
 
   before do
@@ -14,7 +12,6 @@ describe Work do
     it 'is valid when a title and a valid category of movie, book, or album is present' do
 
       empty_hash = {}
-      binding.pry
       expect(@saved_book.valid?).must_equal true
       expect(@saved_book).must_be_kind_of Work
       expect(@saved_book.errors.messages).must_equal empty_hash
