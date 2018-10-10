@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+
+  <% model.each do |work|%>
+  <tr>
+    <td>(vote num)</td>
+    <td><%= work.title %></td>
+    <td><%= work.creator %></td>
+    <td><%= work.publication_year %></td>
+    <td>(vote link)</td>
+  </tr>
+  <% end %>
+</table>
