@@ -8,6 +8,7 @@
 
   <p><%= button_to "Edit", edit_work_path(@work.id), method: :get %></p>
   <p><%= button_to "Delete", work_path(@work.id), method: :delete , data: {confirm: "Are you sure?"}%></p>
+  <p><%= button_to "Upvote", new_work_path(@work.id), method: :create %></p>
 
 
 <% end %>

@@ -1,5 +1,6 @@
 require "test_helper"
 
+
 describe Work do
   let(:work) { works(:hello) }
 
@@ -65,4 +66,26 @@ describe Work do
       expect(work.errors.messages[:category]).must_equal ["can't be blank"]
     end
   end
+
+  describe 'by_category' do
+    it 'returns an array ' do
+      expect(Work.by_category("Album")).must_be_instance_of Array
+
+    end
+
+    it 'includes instances of work' do
+       expect(Work.by_category("Album").first).must_be_instance_of Work
+
+    end
+
+    it 'returns an empty array when no works in one category' do
+      work.category = "Book"
+      work.save
+
+      expect(Work.by_category("Album")).must_equal []
+
+    end
+
+  end
+
 end
