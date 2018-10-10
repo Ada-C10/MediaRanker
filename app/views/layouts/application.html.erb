@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <body>
   <header>
     <h1>Media Ranker</h1>
     <h1>Ranking the Best of Everything</h1>
@@ -22,10 +22,34 @@
         <li>Log Out</li>
       </ul>
     </nav>
+
+
+  <section class="login-info">
+    <% logged_in_user = User.find_by(id: session[:user_id]) %>
+    <% if logged_in_user  %>
+    <p>
+      Currently logged in as
+      <%= logged_in_user.username %>
+      <%= link_to "Log out", logout_path, method: :post %>
+      <% else %>
+      <%= link_to "Log in", new_session_path %>
+      <% end %>
+    </p>
+  </section>
   </header>
 
+  <section class="flash-messages">
+    <% flash.each do |key, message| %>
+      <p class="<%= key %>">
+        <%= message %>
+      </p>
+    <% end %>
+  </section>
 
-  <body>
+
+  <main>
     <%= yield %>
+  </main>
+
   </body>
 </html>
