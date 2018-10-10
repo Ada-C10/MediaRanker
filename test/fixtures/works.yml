@@ -21,12 +21,12 @@ rhymes:
   creator: Sampha the Great
   description: Released as a free download in 2015, and was eventually released on CD and vinyl by Melbourne label Wondercore Island
 
-  crazy:
-    title: Crazy Rich Asians
-    published_year: 2013
-    category: book
-    creator: Kevin Kwan
-    description: A hilarious and heartwarming New York Times bestselling novel—now a major motion picture!
+crazy:
+  title: Crazy Rich Asians
+  published_year: 2013
+  category: book
+  creator: Kevin Kwan
+  description: A hilarious and heartwarming New York Times bestselling novel—now a major motion picture!
 
 donnie:
   title: Donnie Darko
@@ -41,3 +41,10 @@ goldfinch:
     category: book
     creator: Donna Tartt
     description:  Bildungsroman told in the first person by Theodore Decker who, at the age of 13, survives a terrorist bombing at an art museum in which his beloved mother dies
+
+memento:
+  title: memento
+  published_year: nil
+  category: movie
+  creator: nil
+  description: nil
