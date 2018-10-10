@@ -15,7 +15,7 @@ class Work < ApplicationRecord
     return Work.select { |work| work.category == 'album' }
   end
 
-  def self.spotlight
+  def self.top_media
     media_spotlight = Work.first
     max_votes = Work.first.votes.length
     Work.all.each do |work|
@@ -25,5 +25,37 @@ class Work < ApplicationRecord
       end
     end
     return media_spotlight
+  end
+
+  def self.top_movies
+    movies = Work.movies_list.sort_by { |work| work.vote_count }
+  end
+
+  def self.top_books
+    top_10 = []
+    books = Work.books_list.sort_by { |work| work.vote_count }
+    books.reverse!
+
+    10.times do |i|
+      top_10 << books[i]
+    end
+
+    return top_10
+  end
+
+  def self.top_albums
+    top_10 = []
+    albums = Work.albums_list.sort_by { |work| work.vote_count }
+    albums.reverse!
+
+    10.times do |i|
+      top_10 << albums[i]
+    end
+
+    return top_10
+  end
+
+  def vote_count
+    return self.votes.length
   end
 end

@@ -1,0 +1,67 @@
+@import "bootstrap";
+
+body {
+  font-family: 'Gudea', sans-serif;
+}
+
+header {
+  background-color: #B2DFDB;
+  padding: 3rem 2rem;
+}
+
+.title {
+  border-right: solid;
+  margin: 1rem 1rem;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+h1 a:link, h1 a:visited {
+  color: #FF5722;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: #00796B;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #00796B;
+}
+
+.btn-primary {
+  background-color: #26A69A;
+  border-color: #26A69A;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #00796B;
+}
+
+a, h2, h3 {
+  color: #26A69A;
+}
+
+a {
+  text-decoration: none;
+
+}
+
+ul {
+  list-style: none;
+}
+
+h2 {
+  font-weight: bold;
+}

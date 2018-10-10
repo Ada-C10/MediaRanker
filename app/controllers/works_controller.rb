@@ -44,6 +44,17 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
+  def upvote
+    # check if user is logged in
+    # find work_id using find_by params
+    # check if user has not already voted on work
+
+      # if above true, Vote.create(user_id: current_user, work_id: params)
+      # flash success message
+
+      # else flash failure message
+  end
+
   private
 
   def work_params
