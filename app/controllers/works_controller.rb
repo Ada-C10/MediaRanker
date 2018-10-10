@@ -21,6 +21,44 @@ class WorksController < ApplicationController
     end
   end
 
+  def edit
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      head :not_found
+    end
+
+  end
+
+  def update
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      head :not_found
+    end
+
+    if @work.update(work_params)
+      redirect_to work_path(@work.id)
+    else
+      render :edit, status: :bad_request
+    end
+  end
+
+  def destroy
+    work = Work.find_by(id: params[:id])
+
+    if work.nil?
+      head :not_found
+    end
+
+    if work.destroy
+      # TODO change this to root path (for the homepage)
+      redirect_to works_path
+    else
+      render :show
+    end 
+  end
+
 
 
 private
