@@ -6,6 +6,7 @@
 display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 grid-column-gap: 2em;
+line-height: 1.5;
 }
 
 .top-ten__header {
@@ -15,4 +16,12 @@ grid-column-gap: 2em;
 
 .top-ten__creator {
     color: slategrey;
+}
+
+// .top-ten__container li .list-group-item {
+//   border: none;
+// }
+
+.list-group-item:last-child {
+  border:0;
 }
