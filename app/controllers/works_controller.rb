@@ -16,8 +16,10 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
+      flash[:success] = "#{@work.title} has been added to MediaRanker."
       redirect_to work_path(@work.id)
     else
+      flash.now[:danger] = "Work was not created because of the following errors:"
       render :new
     end
   end
@@ -35,7 +37,7 @@ class WorksController < ApplicationController
   def destroy
     unless @work.nil?
       @work = work.destroy
-      flash[:success] = "#{@work.title} deleted"
+      flash[:success] = "#{@work.title} has been deleted from MediaRanker."
       redirect_to works_path
     end
   end
