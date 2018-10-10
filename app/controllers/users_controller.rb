@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @work = Work.where(user_id: params[:id])
     @user = User.find_by(id: params[:id])
 
     if @user.nil?
