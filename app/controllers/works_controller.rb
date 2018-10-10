@@ -37,7 +37,7 @@ class WorksController < ApplicationController
       flash[:failure] = "There was a problem saving the new work. Try again?"
       flash[:errors] = @work.errors
       redirect_to new_work_path
-      # render :new
+      # I think we're supposed to use render :new
       # why use render :new instead of redirect_to?
     end
   end
