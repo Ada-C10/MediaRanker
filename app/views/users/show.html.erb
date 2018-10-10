@@ -1,0 +1,10 @@
+<% if @user.nil? %>
+  <h1> 404 Not found</h1>
+<% else %>
+  <h1>User Summary: <%=@user.name%></h1>
+  <p>Created at:<%= @user.created_at%> </p>
+
+  <p><%= link_to "See all Users", users_path %></p>
+  <p><%= link_to "Back to Media List", works_path%></p>
+
+<% end %>

@@ -15,23 +15,22 @@ describe Work do
     end
   end
 
-  # describe 'Relationships' do
-  #   it 'can have many votes' do
-  #
-  #     work.votes << Vote.first
-  #     votes = work.votes
-  #
-  #     expect(votes.length).must_be :>=, 1
-  #     genres.each do |vote|
-  #       expect(vote).must_be_instance_of Vote
-  #     end
-  #   end
-  # end
+  describe 'Relationships' do
+    it 'can have many votes' do
+
+      work.votes << Vote.first
+      votes = work.votes
+
+      expect(votes.length).must_be :>=, 1
+      votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end
+    end
+  end
 
   describe 'validations' do
     it 'must have a title' do
 
-      # work = works(:hello)
       work.title = nil
 
       valid = work.save
