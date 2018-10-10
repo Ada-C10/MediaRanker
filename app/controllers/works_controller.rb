@@ -12,7 +12,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id].to_i)
 
     if @work.nil?
-      head :not_found
+      head :notfound
     end
   end
 
