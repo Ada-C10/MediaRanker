@@ -21,6 +21,7 @@ header {
   background-color: #B2DFDB;
   color: white;
   padding: 3em;
+  margin-bottom: 1.5em;
 }
 
 header a {
@@ -42,4 +43,8 @@ nav a:visited, nav a:link, nav a:hover {
   color: teal;
   margin: 2em;
   text-decoration: none;
+}
+
+h2, h3 {
+  color: teal;
 }
