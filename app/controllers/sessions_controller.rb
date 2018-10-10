@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(name: name)
 
     if user
-      flash[:existing_user] = "Welome back #{name}!"
+      flash[:existing_user] = "Welcome back #{name}!"
     else
       flash.now[:new_user] = "Successfully logged in as new user \"#{name}\""
       render :new

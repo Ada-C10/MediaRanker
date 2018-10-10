@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   resources :works
 
+  resources :users, only: [:index, :show] 
+
+
+
   resources :sessions, only: [:new, :create]
   post '/sessions/logout', to: 'sessions#logout', as: 'logout'
 end
