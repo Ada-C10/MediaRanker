@@ -2,7 +2,7 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def home
-    @current_user = User.find_by(id: session[:user_id])
+    # @current_user = User.find_by(id: session[:user_id])
     # nil if not logged in, or User model if they are logged in
   end
 
@@ -67,8 +67,8 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    if !work.nil?
-      @deleted_work = work.destroy
+    unless @work.nil?
+      @deleted_work = @work.destroy
       flash[:success] = "#{@work.title} deleted"
       redirect_to root_path
     end
