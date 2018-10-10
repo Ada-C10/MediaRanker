@@ -3,14 +3,19 @@ class WorksController < ApplicationController
     @work = Work.all
   end
 
-  def delete
+  # we should actually make them inactive instead of deleting them
+  # options: delete it's associated votes, will user still exist? yes if you use: user has many works through votes, and not belongs to
+  def destroy
+    work = Work.find_by(id: params[:id].to_i)
+    work.destroy
+    redirect_to root_path
   end
 
   def edit
     @work = Work.find(params[:id].to_i)
   end
 
-  # does not update
+
   def update
     @work = Work.find_by(id: params[:id].to_i)
     if @work.update(work_params)
@@ -20,7 +25,6 @@ class WorksController < ApplicationController
     end
   end
 
-  # does
   def show
     id = params[:id].to_i
     @work = Work.find_by(id: id)
@@ -33,14 +37,17 @@ class WorksController < ApplicationController
     @work = Work.new
   end
 
-  # def create
-  #   @work = Work.new(work_params)
-  #   if @work.save
-  #     redirect_to work_path
-  #   else
-  #     render :new
-  #   end
-  # end
+
+  def create
+    @work = Work.new(work_params)
+    if @work.save
+      flash[:sucess] = "Book added sucessfully"
+      redirect_to works_path
+    else
+      flash.now[:error] = "Book not created"
+      render :new
+    end
+  end
 
   def upvote
   end
