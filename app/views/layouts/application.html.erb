@@ -26,14 +26,17 @@
             </div>
             <div class="login_logout">
               <% logged_in_user = User.find_by(id: session[:user_id]) %>
-                <% if logged_in_user %>
-                  <button type="button">
-
-                    <%= link_to "Currently logged in as #{logged_in_user.username}", user_path(logged_in_user.id) %>
-                    <%= link_to "Log Out", logout_path, method: :post, class: "btn btn-outline-info" %>
-                  </button>
-                <% else %>
-                  <%= link_to "Log In", new_session_path, class: "btn btn-outline-info" %>
+              <% if logged_in_user %>
+                <button type="button">
+                  <%= link_to "Currently logged in as #{logged_in_user.username}", user_path(logged_in_user.id) %>
+                </button>
+                <button type="button">
+                  <%= link_to "Log Out", logout_path, method: :post%>
+                </button>
+              <% else %>
+                <button type="button">
+                  <%= link_to "Log In", new_session_path%>
+                </button>
               <% end %>
             </div>
           </ul>
