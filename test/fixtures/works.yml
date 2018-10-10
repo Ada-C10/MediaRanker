@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  pub_year: 2018-10-08
-  description: MyString
+  category: Album
+  title: MyAlbum
+  creator: MyCat
+  publication_year: 2018-11-08
+  description: Fatty Catty
 
 two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  pub_year: 2018-10-08
-  description: MyString
+  category: Book
+  title: MySBook
+  creator: MyPup
+  publication_year: 2018-10-08
+  description: Chub Rock

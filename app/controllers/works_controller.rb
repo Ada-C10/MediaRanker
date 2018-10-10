@@ -4,7 +4,8 @@ class WorksController < ApplicationController
   end
 
   def index
-    @works = Work.all
+     @works = Work.all.order(category: :asc)
+    # @works = Work.all
   end
 
   def new
