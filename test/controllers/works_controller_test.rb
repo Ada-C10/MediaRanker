@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe WorksController do
-  let(:work) { works :one }
+  let(:work) { works :fitness }
 
   it "gets index" do
     get works_url

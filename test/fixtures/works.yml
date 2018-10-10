@@ -11,5 +11,12 @@ fitness:
   title: Fitness
   creator: Lizzo
   description: I been workin on my fitness
-  category: music
+  category: album
   publication_year: 2017-10-08
+
+i-like-that:
+  title: I Like That
+  creator: Janelle Monae
+  description: sometimes I wanna roll, but wanna stay at home
+  category: album
+  publication_year: 2018-02-18

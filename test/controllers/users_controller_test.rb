@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe UsersController do
-  let(:user) { users :one }
+  let(:user) { users :coco }
 
   it "gets index" do
     get users_url
