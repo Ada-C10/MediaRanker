@@ -54,13 +54,13 @@
         <ul class="nav app-header__user-nav-container">
 
           <li class="nav-item app-header__nav_item">
-            <% if session[:user_id] %>
+            <% if @current_user %>
               <%= link_to "Log Out", logout_path, class: "btn btn-primary", method: :delete %>
             <% else %>
               <%= link_to "Log in", login_path, class: "btn btn-primary" %>
             <% end %>
           </li>
-        </ul>    
+        </ul>
       </nav>
     </header>
     <%= yield %>
