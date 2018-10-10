@@ -2,6 +2,7 @@ require "test_helper"
 
 describe User do
   let(:user) { users(:jackie) }
+  let(:work) { works(:hp) }
 
   it "must be valid" do
     value(user).must_be :valid?
@@ -93,10 +94,43 @@ describe User do
     end
   end
 
-  #TODO custom method test
-=begin
-  def vote_date(work)
-    return self.votes.find_by(work_id: work.id).date
+  describe 'vote_date' do
+    it 'must return the date the user voted on the designated work' do
+      # Arrange in fixture
+      # Act
+      date = user.vote_date(work)
+
+      # Assert
+      expect(date).must_equal Date.parse('2018-10-08')
+    end
+
+    it 'returns nil when the user has not voted on that work' do
+      date = user.vote_date(works(:interstellar))
+
+      # Assert
+      expect(date).must_be_nil
+    end
   end
-=end
+
+  describe 'vote_count' do
+    it 'must return the total number of votes a user has made' do
+      # Arrange in fixture
+      # Act
+      count = user.vote_count
+
+      # Assert
+      expect(count).must_equal 2
+    end
+
+    it 'returns 0 when the user has not voted on anything' do
+      # Arrange
+      new_user = users(:dan)
+
+      # Act
+      count = new_user.vote_count
+
+      # Assert
+      expect(count).must_equal 0
+    end
+  end
 end

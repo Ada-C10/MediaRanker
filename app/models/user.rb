@@ -7,6 +7,11 @@ class User < ApplicationRecord
   validates :joined, presence: true
 
   def vote_date(work)
-    return self.votes.find_by(work_id: work.id).date
+    vote = self.votes.find_by(work_id: work.id)
+    return vote ? vote.date : nil
+  end
+
+  def vote_count
+    return self.votes.length
   end
 end

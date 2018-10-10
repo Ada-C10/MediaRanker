@@ -76,7 +76,7 @@ class WorksController < ApplicationController
   def upvote
     work = Work.find_by(id: params[:id].to_i)
     user = User.find_by(id: session[:user_id])
-
+    
     if user.nil?
       flash[:error] = "A problem occurred: You must log in to vote"
 

@@ -1,13 +1,15 @@
-<section>
-  <h2>
-    Media Spotlight:
-    <%= link_to Work.spotlight.title, work_path(Work.spotlight.id) %>
-    by <%= Work.spotlight.creator %>
-  </h2>
-  <p>
-    <%= Work.spotlight.votes.length %> votes - <%= Work.spotlight.description[0..20] %>...
-  </p>
-</section>
+<% if Work.spotlight %>
+  <section>
+    <h2>
+      Media Spotlight:
+        <%= link_to Work.spotlight.title, work_path(Work.spotlight.id) %>
+      by <%= Work.spotlight.creator %>
+    </h2>
+    <p>
+      <%= Work.spotlight.votes.length %> votes - <%= Work.spotlight.description[0..20] %>...
+    </p>
+  </section>
+<% end %>
 
 <hr>
 

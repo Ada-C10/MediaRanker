@@ -3,6 +3,7 @@ require "test_helper"
 describe Work do
   let(:work) { works(:hp) }
   let(:vote) { votes(:vote_one) }
+  let(:user) { users(:jackie) }
 
   it "must be valid" do
     value(work).must_be :valid?
@@ -117,7 +118,7 @@ describe Work do
     it 'should have the most votes of all work objects' do
       # Arrange
       10.times do
-        Work.first.votes << Vote.new
+        Work.first.votes << Vote.new(user: user, work: work)
       end
 
       # Act
@@ -128,11 +129,30 @@ describe Work do
       expect(vote_count).must_equal Work.all.max_by { |work| work.votes.length }.votes.length
     end
 
-    # TODO: tiebreakers
-    # it 'should return the one thats first alphabetically if theres a tie' do
-    # end
+    it 'should return the first work alphabetically if there is a vote tie' do
+      # Arrange
+      15.times do
+        works(:sgtpepper).votes << Vote.new(user: user, work: work)
+      end
 
-    # TODO: Need to account for this in the view
+      # Act
+      top_work = Work.spotlight
+
+      # Assert
+      expect(top_work).must_equal works(:sgtpepper)
+
+      # Re-Arrange
+      # 16 times because sgtpepper has existing extra vote from fixture
+      16.times do
+        works(:interstellar).votes << Vote.new(user: user, work: work)
+      end
+      # Act
+      top_work = Work.spotlight
+
+      # Assert
+      expect(top_work).must_equal works(:interstellar)
+    end
+
     it 'should return nil if there are no works' do
       # Arrange
       Work.all.each do |work|
@@ -186,6 +206,38 @@ describe Work do
       end
     end
 
+    it 'should return the works ordered by vote count and then alphabetically' do
+      # Arrange
+      works(:sgtpepper).category = "book"
+      works(:sgtpepper).save
+      works(:interstellar).category = "book"
+      works(:interstellar).save
+
+      # Act
+      works = Work.list_of("book")
+
+      # Assert
+      expect(works[0].vote_count >= works[1].vote_count).must_equal true
+      expect(works[1].vote_count >= works[2].vote_count).must_equal true
+
+      # Re-Arrange
+      15.times do
+        works(:sgtpepper).votes << Vote.new(user: user, work: work)
+      end
+
+      # 16 times because sgtpepper has existing extra vote from fixture
+      16.times do
+        works(:interstellar).votes << Vote.new(user: user, work: work)
+      end
+      # Act
+      works = Work.list_of("book")
+
+      # Assert
+      expect(works.first).must_equal works(:interstellar)
+      expect(works[0].vote_count >= works[1].vote_count).must_equal true
+      expect(works[1].vote_count >= works[2].vote_count).must_equal true
+    end
+
     it 'should return an empty array when there are none of the designated type of work' do
       # Arrange
       Work.all.each do |work|
@@ -203,6 +255,28 @@ describe Work do
       # Assert
       expect(works).must_be_instance_of Array
       expect(works.length).must_equal 0
+    end
+  end
+
+  describe 'vote_count' do
+    it 'must return the total number of votes on a work' do
+      # Arrange in fixture
+      # Act
+      count = work.vote_count
+
+      # Assert
+      expect(count).must_equal 1
+    end
+
+    it 'returns 0 when the work has no votes on anything' do
+      # Arrange
+      interstellar = works(:interstellar)
+
+      # Act
+      count = interstellar.vote_count
+
+      # Assert
+      expect(count).must_equal 0
     end
   end
 end
