@@ -38,6 +38,7 @@ class WorksController < ApplicationController
       flash[:errors] = @work.errors
       redirect_to new_work_path
       # render :new
+      # why use render :new instead of redirect_to?
     end
   end
 
