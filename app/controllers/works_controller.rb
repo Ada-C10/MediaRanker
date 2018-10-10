@@ -17,7 +17,7 @@ class WorksController < ApplicationController
     def create
     @work = Work.new(work_params)
     if @work.save
-      redirect_to drivers_path
+      redirect_to works_path
     else
       render :new
     end
