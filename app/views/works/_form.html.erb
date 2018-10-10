@@ -1,7 +1,7 @@
 <!-- form_for outdated -->
 <h1><%=title%></h1>
 
-<!-- add one line at the end of initializer -->
+<!-- this outputs errors to user plus the file to config initializer action view -->
 <% if @work.errors.any? %>
   <ul class="errors">
     <% @work.errors.each do |column, message| %>
