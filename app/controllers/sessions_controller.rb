@@ -12,8 +12,17 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
-      flash.now[:error] = "No such user \"#{name}\""
-      render :new
+      user = User.new(username: name)
+      user.save
+      if user.save
+        flash[:success] = "Successfully created new user #{name}"
+        session[:user_id] = user.id
+        redirect_to root_path
+      else
+        flash.now[:error] = "Something went wrong, could not create user  #{name}"
+        render :new
+      end
+
     end
   end
 

@@ -18,23 +18,22 @@
         <li>View all media</li>
         <li>Add a new work</li>
         <li>View all users</li>
-        <li>Logged in as </li>
-        <li>Log Out</li>
       </ul>
     </nav>
 
 
   <section class="login-info">
     <% logged_in_user = User.find_by(id: session[:user_id]) %>
+
     <% if logged_in_user  %>
-    <p>
-      Currently logged in as
-      <%= logged_in_user.username %>
-      <%= link_to "Log out", logout_path, method: :post %>
+      <%= link_to "Logged in as #{logged_in_user.username}", logout_path, method: :post, class: "btn btn-primary" %>
+
+      <%= link_to "Log out", logout_path, method: :post, class: "btn btn-primary" %>
       <% else %>
-      <%= link_to "Log in", new_session_path %>
+        <%= link_to "Log in", new_session_path,  class: "btn btn-primary" %>
+
       <% end %>
-    </p>
+
   </section>
   </header>
 
