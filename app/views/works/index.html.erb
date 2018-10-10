@@ -18,7 +18,7 @@
        <% if work.category == 'album' %>
        <tr>
          <td>[TO DO: POPULATE WORK -  WORK.VOTES]</td>
-         <td><%= work.title%></td>
+         <td><%=link_to "#{work.title}", work_path(work)%></td>
          <td><%= work.creator%></td>
          <td><%= work.publication_year%></td>
          <td><a class="btn btn-primary">VOTE[TO DO: ADD data-method="post" href="/works/[NUM]/vote"]</a></td>
@@ -48,7 +48,7 @@
          <% if work.category == 'book' %>
          <tr>
            <td>[TO DO: POPULATE WORK -  WORK.VOTES]</td>
-           <td><%= work.title%></td>
+           <td><%=link_to "#{work.title}", work_path(work)%></td>
            <td><%= work.creator%></td>
            <td><%= work.publication_year%></td>
            <td><a class="btn btn-primary">VOTE[TO DO: ADD data-method="post" href="/works/[NUM]/vote"]</a></td>
@@ -77,7 +77,7 @@
           <% if work.category == 'movie' %>
           <tr>
             <td>[TO DO: POPULATE WORK -  WORK.VOTES]</td>
-            <td><%= work.title%></td>
+            <td><%=link_to "#{work.title}", work_path(work)%></td>
             <td><%= work.creator%></td>
             <td><%= work.publication_year%></td>
             <td><a class="btn btn-primary">VOTE[TO DO: ADD data-method="post" href="/works/[NUM]/vote"]</a></td>
