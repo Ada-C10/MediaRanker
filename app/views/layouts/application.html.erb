@@ -27,11 +27,11 @@
             <div class="login_logout">
               <% logged_in_user = User.find_by(id: session[:user_id]) %>
                 <% if logged_in_user %>
-                  <p>
-                    Currently logged in as
-                    <%= logged_in_user.username %>
+                  <button type="button">
+
+                    <%= link_to "Currently logged in as #{logged_in_user.username}", user_path(logged_in_user.id) %>
                     <%= link_to "Log Out", logout_path, method: :post, class: "btn btn-outline-info" %>
-                  </p>
+                  </button>
                 <% else %>
                   <%= link_to "Log In", new_session_path, class: "btn btn-outline-info" %>
               <% end %>
