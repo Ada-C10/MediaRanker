@@ -33,6 +33,17 @@
           </li>
         </ul>
       </nav>
+      <section class="flash">
+        <% flash.each do |name, message| %>
+          <% if message.class == Array %>
+            <% message.each do |msg| %>
+              <div class="alert-warning"><%= "#{name}: #{msg}" %></div>
+            <% end %>
+          <% else %>
+            <div class="alert-warning"><%= message %></div>
+          <% end %>
+        <% end %>
+      </section>
     </header>
     <main>
       <%= yield %>

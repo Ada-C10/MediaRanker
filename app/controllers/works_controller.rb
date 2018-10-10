@@ -1,9 +1,15 @@
 class WorksController < ApplicationController
   def index
+    @current_user = User.find_by(id: session[:user_id])
+    # user id will be nil if not logged in or whole author model if they are logged in
+
     @works = Work.all
   end
 
   def show
+    @current_user = User.find_by(id: session[:user_id])
+    # user id will be nil if not logged in or whole author model if they are logged in
+
     @work = Work.find_by(id: params[:id].to_i)
 
     if @work.nil?
@@ -12,6 +18,9 @@ class WorksController < ApplicationController
   end
 
   def new
+    @current_user = User.find_by(id: session[:user_id])
+    # user id will be nil if not logged in or whole author model if they are logged in
+
     @work = Work.new
   end
 
@@ -33,6 +42,9 @@ class WorksController < ApplicationController
   end
 
   def edit
+    @current_user = User.find_by(id: session[:user_id])
+    # user id will be nil if not logged in or whole author model if they are logged in
+
     @work = Work.find_by(id: params[:id].to_i)
   end
 
