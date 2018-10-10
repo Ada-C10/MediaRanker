@@ -8,7 +8,13 @@ class WorksController < ApplicationController
     # In new vote, set date created to update date
     # User id = from session (current user.id)
     # Work id = work.id
-    # Push new vote into @work.votes << vote, @user.votes ? Give it a try 
+    # Push new vote into @work.votes << vote, @user.votes ? Give it a try
+
+    # Might not need this
+    # Should be able to grab the current user
+    # Should be able to link to current work
+    # date created = today
+    
   end
 
   def index

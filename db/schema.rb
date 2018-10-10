@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2018_10_09_185536) do
     t.date "date_created"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    # Can't create a vote without a user/work 
     t.bigint "work_id"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
