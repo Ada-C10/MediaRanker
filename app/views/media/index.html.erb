@@ -11,15 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @media.each do |medium| %>
-      <tr>
-        <td><%= medium.votes.length %></td>
-        <td><%= medium.title %></td>
-        <td><%= medium.creator %></td>
-        <td><%= medium.publication_year %></td>
-        <td><%= link_to "upvote", medium_path(medium.id) %> </td>
-      </tr>
-      <% end %>
+      <%= render partial: "/media/medium", collection: @media %>
     </tbody>
   </table>
 </section>
