@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :works
   resources :users
+  resources :sessions
 
   get '/pages', to: 'pages#index', as: 'pages'
+  post '/logout', to: 'sessions#logout', as: 'logout'
 end
