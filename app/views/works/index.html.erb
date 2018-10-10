@@ -3,17 +3,30 @@
 
   <section>
     <h4>Albums</h4>
-      <ul class = "albums-list">
+      <ul class = "album-list">
       <% albums = Work.where(category: "album") %>
         <% albums.each do |ref , info| %>
       <li><%= ref.title %></li>
       <% end %>
       </ul>
     <h4>Books</h4>
-      <ul class = "books-list">
+      <ul class = "book-list">
+        <% books = Work.where(category: "book") %>
+          <% books.each do |ref , info| %>
+        <li><%= ref.title %></li>
+        <% end %>
+        </ul>
       </ul>
     <h4>Movies</h4>
-      <ul class = "movies-list">
+      <ul class = "movie-list">
+        <% movies = Work.where(category: "movie") %>
+          <% movies.each do |ref , info| %>
+        <li><%= ref.title %></li>
+        <% end %>
+        </ul>
       </ul>
   </section>
+  <!-- <section>
+    <p><%= Work::WORK_CATEGORIES %></p>
+  </section> -->
 </section>
