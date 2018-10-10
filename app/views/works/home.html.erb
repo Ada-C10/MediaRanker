@@ -5,10 +5,10 @@
 <h4><%= spotlight.description %></h4>
 
 <ul>
-  <% VALID_WORK_CATEGORIES.each do |category| %>
+  <% @works.each_key do |category| %>
     <li><h2>TOP <%= category.upcase %>S</h2></li>
       <ul>
-        <% Work.by_category(category).each do |work| %>
+        <% @works[category].each do |work| %>
           <li><h3><%= link_to work.title, work_path(work.id) %></h3></li>
           <li><h4>by <%= work.creator %></h4></li>
         <% end %>
