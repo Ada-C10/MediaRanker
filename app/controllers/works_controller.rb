@@ -87,7 +87,7 @@ class WorksController < ApplicationController
       redirect_back(fallback_location: root_path)
 
     elsif !user.works.include? work # user eligible to vote
-      vote = Vote.new(work: work, user: user)
+      vote = Vote.new(work: work, user: user, date: Date.today)
 
       if vote.save
         flash[:success] = "Successfully upvoted!"
