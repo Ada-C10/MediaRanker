@@ -25,8 +25,8 @@ CSV.foreach(WORK_FILE, :headers=> true) do |row|
     work.category = row["category"]
     work.title = row["title"]
     work.creator = row["creator"]
-    work.publication_year = row["publication_year"]
-    work.description = "description"
+    work.publication_year = row['publication_year']
+    work.description = row["description"]
 
     successful = work.save
     if !successful
@@ -39,3 +39,4 @@ end
 
 puts "Added #{Work.count} work records"
 puts "#{work_failures.length} works failed to save"
+  # work.publication_year = Date.parse("#{row['publication_year']}-1-1")

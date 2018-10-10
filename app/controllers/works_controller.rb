@@ -38,6 +38,10 @@ class WorksController < ApplicationController
   def destroy
     work = Work.find_by(id: params[:id].to_i)
     @deleted_work = work.destroy
+
+    if @deleted_work
+      redirect_to works_path
+    end
   end
 
   private
