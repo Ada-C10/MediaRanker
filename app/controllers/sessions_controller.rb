@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
 
+  def new
+    @user = User.new
+  end
+
   def login
     user = User.find_by(name: session_params[:name])
 
@@ -11,12 +15,13 @@ class SessionsController < ApplicationController
       end
 
       session[:user_id] = user.id
-      flash[:success] = "Succesfully logged in. Welcome #{user.name}!"
+      if session[:user_id]
+        flash[:success] = "Succesfully logged in. Welcome #{user.name}!"
+      else
+        flash[:warning] = "User not created."
+      end
+      
       redirect_to root_path
-  end
-
-  def new
-    @user = User.new
   end
 
   def destroy
