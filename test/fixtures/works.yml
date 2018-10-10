@@ -4,8 +4,63 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+# one: {}
+# # column: value
+# #
+# two: {}
+# # column: value
+
+princess:
+  title: Princess Bride
+  creator: Andrew and Rob
+  publication_year: 1987
+  description: A good yarn
+  category: movie
+stars:
+  title: The Last Jedi
+  creator: Disney now
+  publication_year: 2017
+  description: Almost Romeo and Juliet
+  category: movie
+parable:
+  title: Parable of the Sower
+  creator: Octavia Butler
+  publication_year: 1993
+  description: Fire drugs?
+  category: book
+kindred:
+  title: Kindred
+  creator: Octavia Butler
+  publication_year: 1979
+  description: A good sci-fi book
+  category: book
+poodr:
+  title: Practical Object Oriented Design in Ruby
+  creator: Cassie Metz
+  publication_year: 2012
+  description: A good book on programming
+  category: book
+potter:
+  title: Harry Potter and the Sorcerer's Stone
+  creator: JK Rowling
+  publication_year: 2000
+  description: Magical boy gets out of cupboard and saves the world-ish
+  category: book
+jovi:
+  title: Slippery when wet
+  creator: Jon Bon Jovi
+  publication_year: 1987
+  description: 80's music
+  category: album
+abbey:
+  title: Abbey Road
+  creator: The Beatles
+  publication_year: 1969
+  description: nostaligic music
+  category: album
+help:
+  title: Help!
+  creator: The Beatles
+  publication_year: 1965
+  description: nostaligic music again
+  category: album
