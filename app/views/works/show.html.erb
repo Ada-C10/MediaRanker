@@ -8,12 +8,27 @@
 <section>
   <%= link_to "Back to Media Ranks", root_path, class: "btn btn-primary", role: "button" %>
   <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary", role: "button" %>
-  <!-- TODO: Add upvote functionality -->
-  <%= link_to "Upvote", work_path(@work.id), class: "btn btn-primary", role: "button" %>
+  <%= link_to "Upvote", upvote_path(@work.id), class: "btn btn-primary", role: "button", method: :post %>
   <%= link_to "Delete", work_path(@work.id), class: "btn btn-danger", role: "button", method: :delete,
       data: { confirm: 'Are you sure?'} %>
 </section>
 
 <section>
-  VOTES FOR WORK
+  <h3><%= @work.votes.length %> votes for this <%= @work.category %></h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @work.users.each do |user| %>
+        <tr>
+          <td><%= link_to "#{user.username}", user_path(user.id) %></td>
+          <td><%= user.joined %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </section>
