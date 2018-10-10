@@ -2,8 +2,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @current_user = User.find_by(id: session[:user_id])
-
     @users = User.all
   end
 
