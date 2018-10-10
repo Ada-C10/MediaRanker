@@ -6,8 +6,9 @@ class Work < ApplicationRecord
 
   MEDIA_CATEGORIES = ['movie', 'book', 'album']
 
+#  scope :by_category, -> (category) { where(category: category) }
+
   def self.list(media_category)
-    check_category(media_category)
     list = Work.select {|work| work.category == media_category}
     return list.sort_by { |work| work.votes.count }.reverse!
   end
@@ -30,14 +31,6 @@ class Work < ApplicationRecord
       top_ten_lists << self.top_ten(media_category)
     end
     return top_ten_lists.sort.reverse
-  end
-
-private
-
-  def self.check_category(input)
-    if !MEDIA_CATEGORIES.include?(input)
-      raise ArgumentError, 'must use a valid media category'
-    end
   end
 
 end

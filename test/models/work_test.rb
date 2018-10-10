@@ -1,10 +1,12 @@
 require "test_helper"
 require 'pry'
+
 describe Work do
   let(:secret) {works(:secret)}
   let(:remember) {works(:remember)}
   let(:billy) {works(:billy)}
-  let(:marshall_billy) {votes{:marshall_billy}}
+  let(:marshall_billy) {votes(:marshall_billy)}
+  let(:media_categories) {['movie', 'book', 'album']}
 
   it "allows completely valid entries" do
     expect(remember.valid?).must_equal true
@@ -165,6 +167,82 @@ describe Work do
       billy.update(category: 'album')
       expect(Work.list('movie')).must_be_instance_of Array
       expect(Work.list('movie').length).must_equal 0
+    end
+  end
+
+  describe 'top_ten' do
+    it 'returns exactly 10 records if there are at least 10 in db' do
+      media_categories.each do |category|
+        15.times do
+          Work.create(category: category, title: rand(0..999999))
+        end
+        expect(Work.top_ten(category).count).must_equal 10
+      end
+    end
+
+    it 'returns all of the records if there are fewer than 10 in db' do
+      media_categories.each do |category|
+        expect(Work.top_ten(category).count).must_equal 1
+      end
+    end
+
+    it 'returns an empty list if there are no records in db' do
+      secret.destroy
+      remember.destroy
+      billy.destroy
+      media_categories.each do |category|
+        expect(Work.top_ten(category).empty?).must_equal true
+      end
+    end
+  end
+
+  describe 'media_lists' do
+
+    let(:lists) {Work.media_lists}
+
+    it 'returns an array of arrays' do
+      expect(lists).must_be_instance_of Array
+      lists.each do |list|
+        expect(list).must_be_instance_of Array
+        expect(list.count).must_equal 1   #1 of each category in fixtures
+      end
+    end
+
+    it 'returns an array of empty arrays if there are no works' do
+      secret.destroy
+      remember.destroy
+      billy.destroy
+
+      expect(lists).must_be_instance_of Array
+
+      lists.each do |list|
+        expect(list).must_be_instance_of Array
+        expect(list.empty?).must_equal true   #0 of each category in fixtures
+      end
+    end
+  end
+
+  describe 'top_ten_lists' do
+    let(:lists) {Work.top_ten_lists}
+    it 'returns an array of arrays' do
+      expect(lists).must_be_instance_of Array
+      lists.each do |list|
+        expect(list).must_be_instance_of Array
+        expect(list.count).must_equal 1   #1 of each category in fixtures
+      end
+    end
+
+    it 'returns an array of empty arrays if there are no works' do
+      secret.destroy
+      remember.destroy
+      billy.destroy
+
+      expect(lists).must_be_instance_of Array
+
+      lists.each do |list|
+        expect(list).must_be_instance_of Array
+        expect(list.empty?).must_equal true   #0 of each category in fixtures
+      end
     end
   end
 

@@ -3,7 +3,6 @@ class WorksController < ApplicationController
   after_action :return_to, only: [:main, :index, :show, :new, :edit]
 
   def main
-    @works = Work.all
     @top_ten_lists = Work.top_ten_lists
   end
 
