@@ -17,17 +17,4 @@
   </p>
 </section>
 
-<table>
-  <thead>
-    <tr>
-      <td>Votes</td>
-      <td>Title</td>
-      <td>Created By</td>
-      <td>Published</td>
-      <td>Upvote</td>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render partial: "/media/medium", collection: @media %>
-  </tbody>
-</table>
+<%= render partial: "media/media_table" %>
