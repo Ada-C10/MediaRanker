@@ -30,6 +30,10 @@ class WorksController < ApplicationController
     end
   end
 
+  def edit
+    @work = Work.find_by(id: params[:id].to_i)
+  end
+
   def update
     @work = Work.find_by(id: params[:id].to_i)
     if @work.update(work_params)

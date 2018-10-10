@@ -1,24 +1,22 @@
 <header>
-  <h1>@work.title</h1>
+  <h1><%=@work.title%></h1>
 </header>
 
 <ul>
   <li>Created by: <%@work.creator%></li>
   <li>Published: <%@work.publication_year%></li>
-  <li><%@work.description%> </li>
+  <li>Description: <%@work.description%> </li>
 </ul>
 
 
-  <%# button_to "Back to media ranks", root, class: "alt-button", method: :get %>
-  <%# button_to "Edit", edit_work_path(@work.id), class: "alt-button", method: :get %>
-  <%# button_to "Delete", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure?'}, class: "alt-button" %>
-<h1>Total votes for this <%@work.category%></h1>
-
+  <%= button_to "Back to media ranks", root_path, class: "alt-button", method: :get %>
+  <%= button_to "Edit", edit_work_path(@work.id), class: "alt-button", method: :get %>
+  <h5>upvote</h5><%# insert button to upvote here%>
+  <%= button_to "Delete", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure?'}, class: "alt-button" %>
+<h1><%= %> (insert work.total_votes here) votes for this <%= @work.category%></h1>
 
 
 <section>
-  <h5>User</h5>
-  <h5>Date</h5>
 
   <table class="list-of-data">
     <tr class="table-header details">
@@ -26,11 +24,11 @@
       <td>Date</td>
     </tr>
 
-    <% @works.each do |work| %>
+    <%# @works.each do |work| %>
       <tr class="details">
-        <td><%= link_to "#{work.user}", work_path(work.id) %></td>
-        <td><%# link_to "#{work.vote.date}", work_path(work.id) %></td>
+        <td><%= link_to @work.title, work_path(@work.id) %></td>
+        <td><%#  update this when i have votes link_to "#{work.vote.date}", work_path(work.id) %></td>
       </tr>
-    <% end %>
+    <%# end %>
   </table>
 </section>
