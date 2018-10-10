@@ -3,13 +3,32 @@
 
   <section>
     <% Work::WORK_CATEGORIES.each do |category| %>
-    <h4><%= category.capitalize %></h4>
-      <ul class = "media-list">
+    <h4><%= category.capitalize%>s</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created by</th>
+          <th>Published</th>
+          <th>Upvote</th>
+        </tr>
+      </thead>
       <% list = Work.where(category: category) %>
-        <% list.each do |ref , info| %>
-      <li><%= ref.title %></li>
+      <% list.each do |work , info| %>
+      <tbody>
+        <tr>
+          <td> no. votes</td>
+          <td><%= work.title %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.published_year %></td>
+          <td>
+            <button type="button" class="btn btn-info upvote-btn">Upvote</button>
+          </td>
+        </tr>
+      </tbody>
       <% end %>
-      </ul>
+    </table>
     <% end %>
   </section>
 </section>
