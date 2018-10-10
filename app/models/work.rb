@@ -17,18 +17,27 @@ class Work < ApplicationRecord
   end
 
   def self.top_ten_albums
-    top_ten = self.albums.sort_by { |work| work.votes.count }.reverse!
-    return top_ten.first(10)
+    return self.top_albums.first(10)
   end
 
   def self.top_ten_books
-    top_ten = self.books.sort_by { |work| work.votes.count }.reverse!
-    return top_ten.first(10)
+    return self.top_books.first(10)
   end
 
   def self.top_ten_movies
-    top_ten = self.movies.sort_by { |work| work.votes.count }.reverse!
-    return top_ten.first(10)
+    return self.top_movies.first(10)
+  end
+
+  def self.top_albums
+    return self.albums.sort_by { |work| work.votes.count }.reverse!
+  end
+
+  def self.top_books
+    return self.books.sort_by { |work| work.votes.count }.reverse!
+  end
+
+  def self.top_movies
+    return self.movies.sort_by { |work| work.votes.count }.reverse!
   end
 
 

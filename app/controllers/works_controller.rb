@@ -13,6 +13,9 @@ class WorksController < ApplicationController
     @albums = Work.albums
     @books = Work.books
     @movies = Work.movies
+    @top_albums = Work.top_albums
+    @top_books = Work.top_books
+    @top_movies = Work.top_movies
   end
 
   def show
