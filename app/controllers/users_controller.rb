@@ -17,24 +17,25 @@ class UsersController < ApplicationController
     end
   end
 
-  # TODO: delete this method and associations
-  def new
-    @current_user = User.find_by(id: session[:user_id])
-    # user id will be nil if not logged in or whole author model if they are logged in
+  # TODO: delete these methods and associations
+  # def new
+  #   @current_user = User.find_by(id: session[:user_id])
+  #   # user id will be nil if not logged in or whole author model if they are logged in
+  #
+  #   @user = User.new
+  # end
 
-    @user = User.new
-  end
-
-  def create
-    @user = User.new(user_params)
-    @user.joined = Date.today
-
-    if @user.save
-      redirect_to user_path
-    else
-      render :new
-    end
-  end
+  # def create
+  #   @user = User.new(user_params)
+  #   @user.joined = Date.today
+  #   raise
+  #
+  #   if @user.save
+  #     redirect_to user_path
+  #   else
+  #     render :new
+  #   end
+  # end
 
   private
 

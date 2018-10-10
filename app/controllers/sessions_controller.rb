@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:user][:username])
 
     if user.nil? # Create a new user
-      user = User.create(username: params[:user][:username])
+      user = User.create(username: params[:user][:username], joined: Date.today)
     # Else: login existing user, no need to do anything
     end
 
