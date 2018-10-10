@@ -41,10 +41,10 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
-      flash[:sucess] = "Book added sucessfully"
+      flash[:sucess] = "#{@work.category} added sucessfully"
       redirect_to works_path
     else
-      flash.now[:error] = "Book not created"
+      flash.now[:warning] = "#{@work.category} not created"
       render :new
     end
   end
