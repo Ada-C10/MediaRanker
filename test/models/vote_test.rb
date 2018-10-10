@@ -23,6 +23,7 @@ describe Vote do
       user = vote.user
 
       # Assert
+      expect(vote).must_be_instance_of Vote
       expect(user).must_be_instance_of User
     end
 
@@ -33,6 +34,7 @@ describe Vote do
       work = vote.work
 
       # Assert
+      expect(vote).must_be_instance_of Vote
       expect(work).must_be_instance_of Work
     end
   end
