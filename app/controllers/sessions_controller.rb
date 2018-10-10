@@ -1,12 +1,13 @@
 class SessionsController < ApplicationController
   def login
-    user = User.find_by(name: params[:user][:username])
+    user = User.find_by(username: params[:user][:username])
+    
     if user.nil?
-      user = User.create(name: params[:user][:username])
+      user = User.create(username: params[:user][:username])
     end
 
     session[:user_id] = user.id
-    flash[:success] = "Welcome #{user.name}!"
+    flash[:success] = "Welcome #{user.username}!"
     redirect_to root_path
   end
 
@@ -19,5 +20,5 @@ class SessionsController < ApplicationController
     flash[:success] = 'Successfully logged out.'
     redirect_back(fallback_location: root_path)
   end
-  
+
 end

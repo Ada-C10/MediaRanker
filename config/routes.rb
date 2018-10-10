@@ -7,4 +7,8 @@ Rails.application.routes.draw do
 
   resources :works
 
+  #need to use except for the user routes you're not using
+  resources :users
+  resources :votes
+
 end

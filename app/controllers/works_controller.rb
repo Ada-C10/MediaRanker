@@ -2,8 +2,6 @@ class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
 
   def index
-    @current_user = User.find_by(id: session[:user_id])
-
     @books = Work.get_books
     @albums = Work.get_albums
     @movies = Work.get_movies

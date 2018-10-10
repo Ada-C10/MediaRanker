@@ -16,18 +16,18 @@
         <li> View top media </li>
         <li> <%= link_to "View all media", works_path %> </li>
         <li> <%= link_to "Add a new work", new_work_path %> </li>
-        <li> View all users </li>
+        <li> <%= link_to "View all users", users_path %> </li>
         <li>
-          <% if session[:user_id] %>
-            <%= link_to "Log Out", logout_path, method: :delete %>
+          <% if @current_user %>
+            <%= link_to "Log Out", logout_path, method: :delete, class: 'btn btn-info'%>
           <% else %>
-            <%= link_to "Login", login_path %>
+            <%= link_to "Login", login_path, class: 'btn btn-info'%>
           <% end %>
         </li>
       </ul>
     </nav>
       <% if @current_user %>
-        <h2> You are signed in as <%= @current_user.name %> </h2>
+        <h2> You are signed in as <%= @current_user.username %> </h2>
       <% end %>
 
     <%= yield %>
