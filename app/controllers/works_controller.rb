@@ -56,7 +56,12 @@ class WorksController < ApplicationController
       redirect_to works_path
     else
       render :show
-    end 
+    end
+  end
+
+
+  def welcome
+    @works = Work.all
   end
 
 

@@ -1,0 +1,52 @@
+<section>
+  <h2>Media Spotlight: title by </h2>
+  <p>
+    7 votes - Description here
+  </p>
+</section>
+
+<section>
+  <h2>Top Movies</h2>
+  <ul>
+    <h2><%= "Top Movies" %></h2>
+    <% @works.each do |work| %>
+    <% if work.category == "movie" %>
+
+    <li><%= work.title %></li>
+    <li><%= work.creator %></li>
+    <br>
+    <br>
+    <% end %>
+    <% end %>
+  </ul>
+</section>
+
+<section>
+  <h2>Top Books</h2>
+  <ul>
+    <h2><%= "Top Books" %></h2>
+    <% @works.each do |work| %>
+    <% if work.category == "book" %>
+
+    <li><%= work.title %></li>
+    <li><%= work.creator %></li>
+    <br>
+    <br>
+  </ul>
+  <% end %>
+  <% end %>
+</section>
+
+<section>
+  <h2>Top Albums</h2>
+  <ul>
+    <h2><%= "Top Albums" %></h2>
+    <% @works.each do |work| %>
+    <% if work.category == "album" %>
+    <li><%= work.title %></li>
+    <li><%= work.creator %></li>
+    <br>
+    <% end %>
+    <% end %>
+  </ul>
+</section>
