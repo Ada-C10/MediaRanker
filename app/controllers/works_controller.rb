@@ -7,8 +7,7 @@ class WorksController < ApplicationController
     @movies = Work.get_movies
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @work = Work.new
@@ -23,19 +22,20 @@ class WorksController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
-    if @work.update(work_params)
+    if @work && @work.update(work_params)
       redirect_to work_path(@work.id)
-    else
+    elsif @work
       render :edit
     end
   end
 
   def destroy
-    if @work.destroy
+    unless @work.nil?
+      @work = work.destroy
+      flash[:success] = "#{@work.title} deleted"
       redirect_to works_path
     end
   end
@@ -49,6 +49,11 @@ class WorksController < ApplicationController
 
   def set_work
     @work = Work.find(params[:id])
+
+    # if @work.nil?
+    #   flash.now[:warning] = "Cannot find the book"
+    #   render :not_found
+    # end
   end
 
 end
