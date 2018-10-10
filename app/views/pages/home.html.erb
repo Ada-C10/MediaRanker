@@ -1,5 +1,22 @@
 <h1>Hey welfcome to the media site haha...ha..</h1>
 
+<section>
+  <h2>
+    <span>Media Spotlight</span>
+    <%= link_to @media_spotlight.title, medium_path(@media_spotlight) %>
+  </h2>
+  <p>
+    <%= @media_spotlight.votes.length  %>
+    <% if @media_spotlight.votes.length == 1 %>
+      vote
+    <% else %>
+      votes
+    <% end %>
+     -
+    <%= @media_spotlight.description %>
+  </p>
+</section>
+
 <table>
   <thead>
     <tr>
