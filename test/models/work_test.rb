@@ -50,6 +50,15 @@ describe Work do
       expect( work1.title ).must_equal @work.title
     end
 
+
+    it "nil title is not valid" do
+      @work.title = nil
+      result = @work.valid?
+
+      expect(result).must_equal false
+      expect(@work.errors.messages).must_include :title
+    end
+
   end
 
 

@@ -13,13 +13,18 @@
 
 
   <header>
-    <h1><%= link_to "MediaRanker", works_path %></h1>
+
+    <h1 class="MediaRanker"><%= link_to "MediaRanker", root_path %></h1>
+
+    <nav class="top-navbar">
 
     <%= link_to "View All Media", works_path %>
     <br>
     <%= link_to "Add a new work", new_work_path %>
 
     <%= link_to "View All Users", users_path %>
+  </nav>
+
     <br>
 
   </header>
