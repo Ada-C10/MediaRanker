@@ -53,6 +53,8 @@ class WorksController < ApplicationController
     @albums = media[:albums][0..9]
     @books = media[:books][0..9]
     @movies = media[:movies][0..9]
+
+    @media = sort_by_votes(Work.all).first
   end
 
   def upvote
