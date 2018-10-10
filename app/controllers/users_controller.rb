@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    return params.require(:work).permit(
+    return params.require(:user).permit(
       :username
     )
   end
