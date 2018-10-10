@@ -1,38 +1,43 @@
-Add new media
-test
-
-
+<h2>Add New Media</h2>
 
 
 <%= form_with model: @work do |f| %>
-  <div class = "form">
-        <%= f.label :category %><br>
-        <%= f.text_field :category %>
-        <br>
-        <br>
-        <%= f.label :title %><br>
-        <%= f.text_field :title %>
-        <br>
-        <br>
-        <%= f.label :creator %><br>
-        <%= f.text_field :creator %>
-        <br>
-        <br>
-        <%= f.label :publication_year %><br>
-        <%= f.text_field :publication_year %>
-        <br>
-        <br>
-        <%= f.label :description %><br>
-        <%= f.text_field :description %>
-      </div>
 
-    <%= f.label :category%>
 
+<div class = "form">
+
+  <div class = "form-group">
+    <label>Category</label>
+    <select class = "form-control" name="work[category]">
+      <option>Book</option>
+      <option>Album</option>
+      <option>Movie</option>
     </select>
   </div>
 
-<%= f.submit "create" %>
+  <div class = "form-group">
+    <label>Title</label>
+    <input class = "form-control" type = "text" name = "work[title]">
+  </div>
 
+  <div class = "form-group">
+    <label>Creator</label>
+    <input class = "form-control" type = "text" name = "work[creator]">
+  </div>
 
+  <div class = "form-group">
+    <label>Publication Year</label>
+    <input class = "form-control" type = "text" name = "work[publication_year]">
+  </div>
 
-<% end %>
+  <div class = "form-group">
+    <label>Description</label>
+    <textarea class="form-control" type="text" name="work[description]"></textarea>
+  </div>
+
+  <div class = "form-group">
+      <input type = "submit" name = "commit" value = "Create Work" class="btn btn-primary" data-disable-with="Create Work">
+  </div>
+  <% end %>
+
+</div>

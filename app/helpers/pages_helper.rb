@@ -1,5 +1,9 @@
 module PagesHelper
 
+  def top_work
+    ####write code
+  end
+
   def all_books
     books = Work.where(category: "Book")
   end
