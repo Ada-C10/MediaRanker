@@ -1,0 +1,21 @@
+<%= form_with model: @work, class: "book-form"  do |f|%>
+  <p>Please provide the following information to save your work to our database:</p>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+
+  <section class="description-section">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+      <%= f.label :category, "Category" %>
+      <%= f.text_area :description %>
+  </section>
+  <%#= f.select :author_id, [ ['Bob', 1], ['Ada', 2], ['JK', 42]  ] %>
+
+  <%# f.text_field :author %>
+
+  <%# f.hidden :creator, value: 'Divya' %>
+
+  <%= f.submit button_title, class: "work-button" %>
+<% end %>
