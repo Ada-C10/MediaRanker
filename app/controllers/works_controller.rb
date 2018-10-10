@@ -28,6 +28,18 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
   end
 
+  def update
+    work = Work.find_by(id: params[:id])
+
+    if work.update(work_params)
+      flash[:success] = "Successfully updated work \"#{work.title}\""
+      redirect_to work_path(work)
+    else
+      flash.now[:error] = "Invaid book data"
+      render :edit, status: :bad_request
+    end
+  end
+
   private
 
 
