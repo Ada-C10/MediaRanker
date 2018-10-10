@@ -7,4 +7,6 @@ class Work < ApplicationRecord
   validates :description, presence: true
   validates :category, presence: true
 
+  def upvote
+  end 
 end

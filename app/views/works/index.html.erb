@@ -1,32 +1,82 @@
+<!-- consider incorporating conditional statment if albums books of movies is empty -->
 <body>
-  <header>
-    <h1>Total Works </h1>
-  </header>
   <main>
-    <section class="movies">
-      <h2>Movies</h2>
-      <% movies = Work.where(category: "movie") %>
-      <% if movies.nil? %>
-        <%= puts "No movies" %>
-      <% else %>
-        <% movies.each do |movie| %>
-          <p><%= movie.title %></p>
+  <h2>List of Works</h2>
+  <section class="media-table">
+    <h4>Albums</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width=80>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width=100>Published</th>
+          <th width=100>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% albums = Work.where(category: "album") %>
+        <% albums.each do |album| %>
+          <tr>
+            <td>Vote Count</td>
+            <td><%= link_to "#{album.title}", work_path(album.id) %></td>
+            <td><%= album.creator %></td>
+            <td><%= album.publication_year %></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/34/upvote">Upvote</a></td>
+          </tr>
         <% end %>
-      <% end %>
-    </section>
-    <section class="books">
-      <h2>Books</h2>
-      <% movies = Work.where(category: "book") %>
-      <% movies.each do |movie| %>
-        <p><%= movie.title %></p>
-      <% end %>
-    </section>
-    <section class="albums">
-      <h2>Albums</h2>
-      <% movies = Work.where(category: "album") %>
-      <% movies.each do |movie| %>
-        <p><%= movie.title %></p>
-      <% end %>
-    </section>
-  </main>
-</body>
+      </tbody>
+    </table>
+  </section>
+  <section class="media-table">
+    <h4>Books</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width=80>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width=100>Published</th>
+          <th width=100>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% books = Work.where(category: "book") %>
+        <% books.each do |book| %>
+          <tr>
+            <td>Vote Count</td>
+            <td><%= link_to "#{book.title}", work_path(book.id) %></td>
+            <td><%= book.creator %></td>
+            <td><%= book.publication_year %></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/34/upvote">Upvote</a></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+  <section class="media-table">
+    <h4>Movies</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width=80>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width=100>Published</th>
+          <th width=100>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% movies = Work.where(category: "movie") %>
+        <% movies.each do |movie| %>
+          <tr>
+            <td>Vote Count</td>
+            <td><%= link_to "#{movie.title}", work_path(movie.id) %></td>
+            <td><%= movie.creator %></td>
+            <td><%= movie.publication_year %></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/34/upvote">Upvote</a></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
