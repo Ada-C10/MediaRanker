@@ -1,0 +1,8 @@
+<h2><%= list_name %></h2>
+<ul>
+  <% model.each do |work| %>
+  <li>
+    <%= work.title %> by <%= work.creator %>
+  </li>
+  <% end %>
+</ul>

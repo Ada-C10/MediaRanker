@@ -1,3 +1,20 @@
 <h2>Media Ranker</h2>
 <%= link_to "Add a Work", new_work_path %>
 <%= link_to "View all works", works_path %>
+
+<h2>Media Spotlight: <%= @works.first.title %> by <%= @works.first.creator %></h2>
+
+<%= render partial: "top_works_list", locals: {
+  model: @movies,
+  list_name: "Top Movies"
+} %>
+
+<%= render partial: "top_works_list", locals: {
+  model: @books,
+  list_name: "Top Books"
+} %>
+
+<%= render partial: "top_works_list", locals: {
+  model: @albums,
+  list_name: "Top Albums"
+} %>
