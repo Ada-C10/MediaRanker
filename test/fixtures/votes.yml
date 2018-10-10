@@ -1,11 +1,39 @@
 vote1:
-  work: work2
-  user: user1
+  work: motorcycle
+  user: sporty
 
 vote2:
-  work: work3
-  user: user1
+  work: dogs
+  user: sporty
 
 vote3:
-  work: work1
-  user: user2
+  work: king
+  user: ginger
+
+vote4:
+  work: spider
+  user: scary
+
+vote5:
+  work: spider
+  user: posh
+
+vote6:
+  work: king
+  user: sporty
+
+vote7:
+  work: dogs
+  user: baby
+
+vote8:
+  work: spider
+  user: baby
+
+vote9:
+  work: motorcycle
+  user: scary
+
+vote10:
+  work: king
+  user: posh

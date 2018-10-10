@@ -1,20 +1,27 @@
-work1:
-  category: Movie
-  title:
-  publication_year:
-  description:
-  creator:
+motorcycle:
+  category: Book
+  title: Zen and the Art of Motorcycle Maintenance
+  publication_year: 1974
+  description: life and motorcycles
+  creator: Robert Pirsig
 
-work2:
+dogs:
   category: Movie
-  title:
-  publication_year:
-  description:
-  creator:
+  title: Lady and the Tramp
+  publication_year: 1955
+  description: dogs. lots of dogs.
+  creator: Disney
 
-work3:
+king:
   category: Album
-  title:
-  publication_year:
-  description:
-  creator:
+  title: Love Stuff
+  publication_year: 2015
+  description: more than what you'd expect from Rob Schneider's daughter
+  creator: Elle King
+
+spider:
+  category: Book
+  title: Charlotte's Web
+  publication_year: 1952
+  description: so many spiders and a pig, I think?
+  creator: E.B. White
