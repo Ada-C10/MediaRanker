@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    filtered_user = user_params()
+    @user = User.new(filtered_user)
     if @user.save
       redirect_to users_path
     else
@@ -39,6 +40,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    return params.require(:user).permit(:name)
+    return params.require(:user).permit(:username)
   end
 end

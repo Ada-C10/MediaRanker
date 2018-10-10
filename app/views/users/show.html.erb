@@ -1,0 +1,17 @@
+<div class="description-container">
+
+  <h2><%= @user.title %> </h2>
+  <h4>Created by <%= @user.username %></h4>
+
+  <p class="description-text"><%= @user.votes %></p>
+</div>
+<div class="return-to-users">
+  <h3>
+    <%= link_to "Return Home", all_users_path, class: "all-users" %>
+  </h3>
+</div>
+<div class="return-home">
+  <h3>
+    <%= link_to "Return Home", root_path, class: "homepage" %>
+  </h3>
+</div>
