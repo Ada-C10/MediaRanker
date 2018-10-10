@@ -2,14 +2,13 @@ class SessionsController < ApplicationController
   def login
     @user = User.find_by(name: params[:user][:name])
     if @user.nil?
-      #create a new user
-      user = User.create(name: params[:user][:name])
-    else
-      #log in existing author
+      @user = User.create(name: params[:user][:name])
   end
 
-  session[:user_id] = [user.id]
-  flash[:success] = "Welcome #{user.name}!"
+  session[:user_id] = [@user.id]
+  session[:name] = [@user.name]
+  @current_user = User.find_by(id: session[:user_id]  )
+  flash[:success] = "Welcome #{@user.name}!"
   redirect_to root_path
 end
 
@@ -22,11 +21,5 @@ end
   def new
     @user = User.new
   end
-
-  private
-  def user_params
-      return params.require(:user).permit(:name)
-
-end
 
 end

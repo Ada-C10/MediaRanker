@@ -10,6 +10,9 @@ resources :works
 
 resources :users, only: [:index, :show]
 
+post '/works/:id/upvote', to: 'works#upvote', as: 'upvote'
+
+
 end
 
 

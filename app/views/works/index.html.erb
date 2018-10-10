@@ -8,6 +8,7 @@
   </h2>
   <%= "Created by: #{work.creator}" %>
   <%= "Published : #{work.publication_year}" %>
+  <%= link_to "Upvote", upvote_path(work.id), method: :post, class: 'btn btn primary'%> 
 
   <% end %>
   </section>
@@ -20,6 +21,7 @@
     </h2>
     <%= "Created by: #{work.creator}" %>
     <%= "Published : #{work.publication_year}" %>
+    <%=link_to "Upvote", upvote_path(work.id), method: :post, class: 'btn btn primary'%>
 
     <% end %>
     </section>
@@ -32,6 +34,6 @@
       </h2>
       <%= "Created by: #{work.creator}" %>
       <%= "Published : #{work.publication_year}" %>
-
+      <%=link_to "Upvote", upvote_path(work.id), method: :post, class: 'btn btn primary'%>
       <% end %>
       </section>

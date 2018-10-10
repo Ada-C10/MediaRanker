@@ -3,9 +3,10 @@
 <h2><%=@work.title %></h2>
   <h3> <%= "Created by: #{@work.creator}"%></h>
   <h3> <%= "Published: #{@work.publication_year}"%> </h3>
+  <h3> <%= "Number of Votes: #{@work.votes.length}"%> </h3>
   <h3> <%= @work.description %></h3>
 
-  <%= link_to "Edit |", edit_work_path(@work.id) %>
+  <%= link_to "Edit", edit_work_path(@work.id) %>
   <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure? This cannot be undone!'} %>
-
+  <%= link_to "Upvote", upvote_path(@work.id), method: :post, class: 'btn btn primary'%>
 </section>
