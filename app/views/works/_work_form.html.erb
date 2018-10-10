@@ -4,23 +4,42 @@ locals: {
 }
 %>
 
-<%= form_with model: @work, class: 'work-form' do |f| %>
+<div class='row'>
+  <div class='col-sm-12'>
+    <%= form_with model: @work, class: 'form-horizontal', role: 'form' do |f| %>
 
-<%= f.label :category %>
-<%= f.select :category, [*"album", "book", "movie"] %>
+    <div class="form-group">
+      <div class="control-label col-sm-12">
+        <div>
+          <%= f.label :category %>
+        </div>
+        <%= f.select :category, [*"album", "book", "movie"] %>
+      </div>
+    </div>
 
-<%= f.label :title %>
-<%= f.text_field :title %>
+    <div class="form-group">
+      <div class="control-label col-sm-12">
 
-<%= f.label :creator %>
-<%= f.text_field :creator %>
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
 
-<%= f.label :publication_year %>
-<%= f.text_field :publication_year %>
+        <%= f.label :creator %>
+        <%= f.text_field :creator, class: "form-control" %>
 
-<%= f.label :description %>
-<%= f.text_field :description %>
+        <%= f.label :publication_year %>
+        <%= f.text_field :publication_year,class: "form-control" %>
 
-<%= f.submit action_type, class: "book-form-submit-button" %>
+        <%= f.label :description %>
+        <%= f.text_field :description, class: "form-control" %>
+      </div>
+    </div>
 
-<% end %>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit action_type, class: 'btn btn-primary btn-md' %>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+</div>

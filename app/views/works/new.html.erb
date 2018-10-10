@@ -3,8 +3,10 @@
     <%= flash[:notice] %>
   </div>
 
+  <h1 class="new-title">Add a New Work</h1>
   <%= render partial: "work_form", locals: {
-      action_type: "Create New Work",
+      action_type: "Create Work",
       form_title: "New Work Form"
     } %>
+
 </div>
