@@ -10,6 +10,24 @@
   </head>
 
   <body>
+    <section class="flash">
+      <% flash.each do |name, message| %>
+        <% if message.class == Array %>
+          <% message.each do |msg| %>
+            <div class="alert-<%= name %>">
+              <strong><%= "#{name}:" %></strong><%= " #{msg}" %></div>
+          <% end %>
+        <% else %>
+          <div class="alert-<%= name %>">
+              <%= message %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <!-- <% if @current_user %>
+        <h2>Welcome <%= @current_user.name %> </h2>
+      <% end %> -->
+    </section>
     <%= yield %>
   </body>
 </html>
