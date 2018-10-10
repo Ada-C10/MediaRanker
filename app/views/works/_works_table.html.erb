@@ -10,7 +10,11 @@
   <% model.each do |work|%>
   <tr>
     <td>(vote num)</td>
-    <td><%= work.title %></td>
+    <td>
+      <%= link_to work_path(work.id) do %>
+      <%= work.title %>
+      <% end %>
+    </td>
     <td><%= work.creator %></td>
     <td><%= work.publication_year %></td>
     <td>(vote link)</td>
