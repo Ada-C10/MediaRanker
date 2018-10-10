@@ -14,7 +14,7 @@
 <section>
   <h2>Top Movies</h2>
   <ul>
-    <% Work.movies[0..9].each do |movie| %>
+    <% Work.list_of("movie")[0..9].each do |movie| %>
       <li>
         <h4>
           <%= link_to movie.title, work_path(movie.id) %>
@@ -31,7 +31,7 @@
 <section>
   <h2>Top Books</h2>
   <ul>
-    <% Work.books[0..9].each do |book| %>
+    <% Work.list_of("book")[0..9].each do |book| %>
       <li>
         <h4>
           <%= link_to book.title, work_path(book.id) %>
@@ -48,7 +48,7 @@
 <section>
   <h2>Top Albums</h2>
   <ul>
-    <% Work.albums[0..9].each do |album| %>
+    <% Work.list_of("album")[0..9].each do |album| %>
       <li>
         <h4>
           <%= link_to album.title, work_path(album.id) %>

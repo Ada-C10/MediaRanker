@@ -11,16 +11,8 @@ class Work < ApplicationRecord
     return Work.all.max_by { |work| work.votes.length }
   end
 
-  def self.albums
-    return sort_by_votes(Work.all.select { |work| work.category == "album" })
-  end
-
-  def self.books
-    return sort_by_votes(Work.all.select { |work| work.category == "book" })
-  end
-
-  def self.movies
-    return sort_by_votes(Work.all.select { |work| work.category == "movie" })
+  def self.list_of(work_category)
+    return sort_by_votes(Work.all.select { |work| work.category == work_category })
   end
 
   private
