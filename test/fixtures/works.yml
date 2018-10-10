@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  votes: 1
-  title: MyString
-  creator: MyString
-  description: MyString
+harry_potter:
+  title: Harry Potter
+  publication_year: 1999
+  creator: JK Rowling
+  description: A book about magic
+  category: book
 
-two:
-  votes: 1
-  title: MyString
-  creator: MyString
-  description: MyString
+lord_of_the_rings:
+  title: Lord of The Rings
+  publication_year: 1954
+  creator: JRR Tolkien
+  description: a book about magic
+  category: book
