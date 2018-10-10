@@ -1,0 +1,42 @@
+<h1>Edit Work</h1>
+
+<%= form_with model: @work, class: 'work-form' do |f| %>
+
+<% if @work.errors.any? %>
+  <ul class="errors">
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+  <hr />
+  <%= f.label :category %>
+  <%= f.select :category, [["Album", "album"], ["Book", "book"], ["Movie", "movie"]] %>
+
+  <hr />
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <hr />
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
+
+  <hr />
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year %>
+
+  <hr />
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+
+  <hr />
+
+<%= f.submit "Edit Work", class: "work-button"%>
+
+
+
+<% end %>
