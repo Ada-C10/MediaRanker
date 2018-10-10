@@ -4,7 +4,7 @@ describe Work do
   let(:work) { works :cookies }
 
   it "must be valid" do
-    value(work).must_be :valid?
+    expect(work).must_be :valid?
   end
 
   describe 'validations' do

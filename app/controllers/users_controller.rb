@@ -6,9 +6,9 @@ class UsersController < ApplicationController
   end
 
 
-  def show
+  def show; end
     # call model method to retrieve all votes user has cast
-  end
+
 
 
   def new

@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_action :set_vote, only: [:show, :edit, :update, :destroy]
+  before_action :set_vote, only: [:show, :edit, :update, :destroy, :upvote]
 
   def new
     @vote = Vote.new
@@ -12,14 +12,13 @@ class VotesController < ApplicationController
   end
 
   def index
-  end
-
-  def show
     @votes = Vote.all
   end
 
+  def show; end
+
   def create
-     @vote = Vote.new(vote_params)
+     @vote = Vote.new
 
     respond_to do |format|
       if @vote.save
@@ -39,6 +38,9 @@ class VotesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_vote
       @vote = Vote.find(params[:id])
+      if @vote.nil?
+        flash.now[:warning] = 'Vote not found'
+        redirect_to rooth_path
     end
 
     def vote_params

@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-vote-one:
-  user: ellejohnnie
-  work: cookies
-
-vote-two:
-  user: jojo
-  work: fitness
-
-vote-three:
+one:
   user: coco
   work: fitness
+
+two:
+  user: jojo
+  work: cookies
+
+three:
+  user: ellejohnnie
+  work: cookies

@@ -5,15 +5,13 @@ class WorksController < ApplicationController
     @works = Work.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @work = Work.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @work = Work.new(work_params)
@@ -23,7 +21,7 @@ class WorksController < ApplicationController
         flash[:success] = 'Work successfully created'
         format.html { redirect_to @work, notice: 'Work was successfully created.' }
       else
-        flash.now[:error] = 'Work not created!'
+        flash.now[:warning] = 'Work not created!'
         @work.errors.messages.each do |field, messages|
           flash.now[field] = messages
         end
@@ -53,6 +51,10 @@ class WorksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_work
       @work = Work.find(params[:id])
+      if @work.nil?
+        flash.now[:error] = 'Work not found'
+        render :not_found
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
