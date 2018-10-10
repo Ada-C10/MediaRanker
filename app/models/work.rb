@@ -21,4 +21,9 @@ class Work < ApplicationRecord
     return CATEGORIES.map { |category| category.pluralize }
   end
 
+  def self.top_media
+    return Work.all.max_by { |work| work.votes.count }
+  end
+
+
 end
