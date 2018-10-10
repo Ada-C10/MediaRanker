@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :votes
 
-  post 'works/:id/upvote', to: 'votes#upvote', as: 'upvote'
+  post 'works/:id/upvote', to: 'works#upvote', as: 'upvote'
   root to: 'pages#home'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

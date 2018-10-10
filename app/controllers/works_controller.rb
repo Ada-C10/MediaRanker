@@ -40,6 +40,25 @@ class WorksController < ApplicationController
     end
   end
 
+  def upvote
+    @vote = Vote.new
+    # += 1?
+    @vote.quantity = 1
+    @vote.user = params[:user_id]
+    @vote.work = params[:work_id]
+    if @vote.save
+      redirect_back fallback_location: works_path
+    else
+      puts "#{@vote.errors}"
+    end
+  end
+
+  def vote_count
+    @votes = Vote.where(work_id: params[:id].to_i)
+    return @votes.length
+
+  end
+
   private
 
   def find_work
