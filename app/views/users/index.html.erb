@@ -1,7 +1,17 @@
-<h1>These are the users!</h1>
-<% @users.each do |user| %>
-  <h2><%= link_to "#{user.name}", user_path(user.id) %></h2>
-  <p> <%= "Joined: #{user.created_at}" %></p>
-  <p> <%= "Number of votes: #{user.votes.length}" %> </p>
+<h2>List of all Users:</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th> Username </th>
+      <th> Joined </th>
+      <th> Votes </th>
+    </tr>
+  </thead>
+  <tbody>
+<tr> <% @users.each do |user| %>
+  <td><%= link_to "#{user.name}", user_path(user.id) %></td>
+  <td> <%=  user.created_at %></td>
+  <td> <%=  user.votes.length %> </td>
+ </tr>
 
 <% end %>
