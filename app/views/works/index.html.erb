@@ -18,11 +18,11 @@
         <% albums = Work.where(category: "album") %>
         <% albums.each do |album| %>
           <tr>
-            <td>0</td>
+            <td><%= album.votes.count %></td>
             <td><%= link_to "#{album.title}", work_path(album.id) %></td>
             <td><%= album.creator %></td>
             <td><%= album.publication_year %></td>
-            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/34/upvote">Upvote</a></td>
+            <td><%= link_to "Upvote", upvote_path(album.id), class: "btn btn-primary", rel: "nofollow", method: "post" %></td>
           </tr>
         <% end %>
       </tbody>

@@ -1,5 +1,6 @@
 class Work < ApplicationRecord
   has_many :votes
+  has_many :users, through: :votes
 
   validates :title, uniqueness: true, presence: true
   validates :creator, presence: true
@@ -7,6 +8,4 @@ class Work < ApplicationRecord
   validates :description, presence: true
   validates :category, presence: true
 
-  def upvote
-  end 
 end

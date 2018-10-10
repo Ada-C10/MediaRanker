@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :destroy]
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def index
     @works = Work.all.order(:title)
@@ -44,8 +44,9 @@ class WorksController < ApplicationController
     @vote = Vote.new
     # += 1?
     @vote.quantity = 1
-    @vote.user = params[:user_id]
-    @vote.work = params[:work_id]
+    @vote.user_id = @current_user.id
+    @vote.work_id = @work.id
+
     if @vote.save
       redirect_back fallback_location: works_path
     else
@@ -53,11 +54,6 @@ class WorksController < ApplicationController
     end
   end
 
-  def vote_count
-    @votes = Vote.where(work_id: params[:id].to_i)
-    return @votes.length
-
-  end
 
   private
 
