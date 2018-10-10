@@ -18,7 +18,7 @@ class VotesController < ApplicationController
   def show; end
 
   def create
-     @vote = Vote.new
+     @vote = Vote.new(vote_params)
 
     respond_to do |format|
       if @vote.save
