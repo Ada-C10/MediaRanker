@@ -1,7 +1,10 @@
 class PagesController < ApplicationController
   def show
     if params[:page] == "home"
-      @media = Medium.all
+      @movies = Medium.where(category: "movie")
+      @books = Medium.where(category: "book")
+      @albums = Medium.where(category: "album")
+      
       @media_spotlight = Medium.spotlight
     end
 

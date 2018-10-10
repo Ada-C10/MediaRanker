@@ -1,6 +1,8 @@
 class MediaController < ApplicationController
   def index
-    @media = Medium.all
+    @movies = Medium.where(category: "movie")
+    @books = Medium.where(category: "book")
+    @albums = Medium.where(category: "album")
   end
 
   def show
