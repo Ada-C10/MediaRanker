@@ -17,11 +17,36 @@ describe Work do
       expect(result).must_equal true
     end
 
-    it "is not valid if title or category is nil" do
+    it "is invalid if category is nil" do
       work = Work.new(title: "jumanji", creator: "Joe Johnston")
       result = work.valid?
 
       expect(result).must_equal false
+      expect(work.errors.messages).must_include :category
+    end
+
+    it "is invalid if title is nil" do
+      work = Work.new(title: nil, category: "book")
+      result = work.valid?
+
+      expect(result).must_equal false
+      expect(work.errors.messages).must_include :title
+    end
+
+    it "is invalid when title is not unique" do
+      work = Work.new(title: works(:memento).title, category: "movie")
+      result = work.valid?
+
+      expect(result).must_equal false
+      expect(work.errors.messages).must_include :title
+    end
+
+    it "is invalid when category is not one of given categories" do
+      work = Work.new(title: "Rugrats", category: "biopic")
+      result = work.valid?
+
+      expect(result).must_equal false
+      expect(work.errors.messages).must_include :category
     end
 
   end
