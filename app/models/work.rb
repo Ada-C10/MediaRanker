@@ -16,5 +16,20 @@ class Work < ApplicationRecord
     return Work.select {|work| work.category == 'movie'}
   end
 
+  def self.top_ten_albums
+    top_ten = self.albums.sort_by { |work| work.votes.count }.reverse!
+    return top_ten.first(10)
+  end
+
+  def self.top_ten_books
+    top_ten = self.books.sort_by { |work| work.votes.count }.reverse!
+    return top_ten.first(10)
+  end
+
+  def self.top_ten_movies
+    top_ten = self.movies.sort_by { |work| work.votes.count }.reverse!
+    return top_ten.first(10)
+  end
+
 
 end
