@@ -2,7 +2,7 @@
   <section class="spotlight">
   <h2 class="spotlight__header">
     <span class="spotlight__headerprefix">Media Spotlight</span>
-    <% this_work = @works.first %>
+    <% this_work = @top_ten_lists.first.first %>
     <%= link_to "#{this_work.title}", work_path(this_work.id)%> by <%="#{this_work.creator}"%>
   </h2>
   <p class="spotlight__description">
