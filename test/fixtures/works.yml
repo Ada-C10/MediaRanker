@@ -1,25 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  string: MyString
-  created_by: MyString
-  string: MyString
-  publication_year: MyString
-  integer: MyString
-  description: MyString
-  string: MyString
-  category: MyString
-  string: MyString
+harrypotter:
+  title: 'Harry Potter'
+  creator: 'Warner Brothers'
+  publication_year: 2005
+  description: 'A movie about Harry Potter'
+  category: 'movie'
 
-two:
-  title: MyString
-  string: MyString
-  created_by: MyString
-  string: MyString
-  publication_year: MyString
-  integer: MyString
-  description: MyString
-  string: MyString
-  category: MyString
-  string: MyString
+pride:
+  title: 'Pride & Prejudice'
+  creator: 'Jane Austen'
+  publication_year: '1990'
+  description: 'Mr. Darcy'
+  category: 'book'
