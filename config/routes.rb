@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'works/show'
   get 'works/update'
   get 'works/upvote'
+  root 'pages#index'
+  # get 'pages/index'
   post 'sessions/login', to: 'sessions#login', as: 'login'
   get 'sessions/login', to: 'sessions#new'
   delete 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
