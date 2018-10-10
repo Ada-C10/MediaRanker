@@ -5,6 +5,8 @@
   <p><%= @medium.description %></p>
 </section>
 
+<%= link_to "Delete", medium_path(@medium), method: :delete, data: { confirm: "Are you 1000% sure you want to delete the book #{@medium.title}?" } %>
+
 
 
 <section>
