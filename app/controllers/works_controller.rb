@@ -50,10 +50,9 @@ class WorksController < ApplicationController
   def set_work
     @work = Work.find(params[:id])
 
-    # if @work.nil?
-    #   flash.now[:warning] = "Cannot find the book"
-    #   render :not_found
-    # end
+    if @work.nil?
+      flash.now[:warning] = "Cannot find the book"
+    end
   end
 
 end
