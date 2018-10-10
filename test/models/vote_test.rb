@@ -38,4 +38,72 @@ describe Vote do
       expect(work).must_be_instance_of Work
     end
   end
+
+  describe 'validations' do
+    it 'must have a user' do
+      # Arrange
+      vote.user = nil
+
+      # Act
+      valid = vote.valid? # run validations
+
+      # Assert
+      expect(valid).must_equal false
+      expect(vote.errors.messages).must_include :user
+      expect(vote.errors.messages[:user]).must_equal ["must exist", "can't be blank"]
+
+      # Rearrange
+      vote.user = users(:jackie)
+
+      # Re-Act
+      valid = vote.valid? # run validations
+
+      # Reassert
+      expect(valid).must_equal true
+    end
+
+    it 'must have a work' do
+      # Arrange
+      vote.work = nil
+
+      # Act
+      valid = vote.valid? # run validations
+
+      # Assert
+      expect(valid).must_equal false
+      expect(vote.errors.messages).must_include :work
+      expect(vote.errors.messages[:work]).must_equal ["must exist", "can't be blank"]
+
+      # Rearrange
+      vote.work = works(:hp)
+
+      # Re-Act
+      valid = vote.valid? # run validations
+
+      # Reassert
+      expect(valid).must_equal true
+    end
+
+    it 'must have a date' do
+      # Arrange
+      vote.date = nil
+
+      # Act
+      valid = vote.valid? # run validations
+
+      # Assert
+      expect(valid).must_equal false
+      expect(vote.errors.messages).must_include :date
+      expect(vote.errors.messages[:date]).must_equal ["can't be blank"]
+
+      # Rearrange
+      vote.date = Date.today
+
+      # Re-Act
+      valid = vote.valid? # run validations
+
+      # Reassert
+      expect(valid).must_equal true
+    end
+  end
 end
