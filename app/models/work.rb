@@ -7,17 +7,17 @@ class Work < ApplicationRecord
 
   def self.get_books
     books = Work.all.where(category: "book")
-    books.sort_by {|book| book.votes}
+    books.sort_by {|book| book.votes.count}.reverse!
   end
 
   def self.get_albums
     albums = Work.all.where(category: "album")
-    albums.sort_by {|album| album.votes}
+    albums.sort_by {|album| album.votes.count}.reverse!
   end
 
   def self.get_movies
     movies = Work.all.where(category: "movie")
-    movies.sort_by {|movie| movie.votes}
+    movies.sort_by {|movie| movie.votes.count}.reverse!
   end
 
 
