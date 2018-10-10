@@ -1,11 +1,11 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def index
-    @works = Work.all # .order(:name)
+    @works = Work.all #.order(:votes)
   end
 
-  def show
-    @work = Work.find(params[:id].to_i)
-  end
+  def show; end
 
   def new
     @work = Work.new
@@ -15,40 +15,51 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
+      flash[:success] = "Media Added!"
       redirect_to works_path
     else
+      flash.now[:warning] = "Media not Added!"
+      @work.errors.messages.each do |field, msg|
+        flash.now[field] = messages
+      end
+
       render :new
     end
   end
 
-  def edit
-    @work = Work.find(params[:id].to_i)
-  end
+  def edit; end
 
   def update
-    @work = Work.find_by(id: params[:id].to_i)
-
-    if @work.update(work_params)
+    if @work && @work.update(work_params)
       redirect_to work_path(@work.id)
-    else
+    elsif @work
+      flash.now[:warning]  = @work.errors.messages
       render :edit
     end
   end
 
   def destroy
-    work = Work.find_by(id: params[:id].to_i)
-    @deleted_work = work.destroy
-
-    if @deleted_work
+    unless @work.nil?
+      @work.destroy
+      flash[:success] = "#{@work.title} deleted"
       redirect_to works_path
     end
   end
 
   def top_media
-    
+    redirect_to top_media
   end
 
   private
+
+  def find_work
+    @work = Work.find_by_id(params[:id])
+
+    if @work.nil?
+      flash.now[:warning] = "Cannot find the media #{params[:title]}"
+      render :notfound
+    end
+  end
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)

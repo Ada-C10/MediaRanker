@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-before_action :find_user
+  before_action :find_user
 
 private
   def find_user

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_book, only: [:show, :edit, :update, :destroy]
+  before_action :find_users, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all.order(:username)
