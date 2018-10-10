@@ -1,8 +1,5 @@
 class SessionsController < ApplicationController
 
-  def index
-    @work = Work.all
-  end
 
   def new
   end
