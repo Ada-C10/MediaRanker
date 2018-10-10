@@ -1,5 +1,15 @@
 class WorksController < ApplicationController
 
+  def upvote
+    # Vote doesn't need a controller
+    # find the work -troubleshoot - start with the show page
+      # then attempt from index page
+    # Create new instance of vote Vote.new (if they haven't already voted)
+    # In new vote, set date created to update date
+    # User id = from session (current user.id)
+    # Work id = work.id
+    # Push new vote into @work.votes << vote, @user.votes ? Give it a try 
+  end
 
   def index
     # Order by vote count?
@@ -45,7 +55,7 @@ class WorksController < ApplicationController
   def show
     id = params[:id].to_i
     @work = Work.find_by(id: id)
-
+    @work_votes = @work.votes
     if @work.nil?
       render :notfound, status: :not_found
     end

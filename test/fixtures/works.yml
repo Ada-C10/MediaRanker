@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+rambo:
+  category: movie
+  title: rambo
+  creator: cassy
+  publication_year: 2018
+  description: crazy boxing movie 
 
 two:
   category: MyString

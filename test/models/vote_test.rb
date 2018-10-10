@@ -1,9 +1,17 @@
 require "test_helper"
 
 describe Vote do
-  let(:vote) { Vote.new }
+  describe 'validations' do
+    before do
 
-  it "must be valid" do
-    value(vote).must_be :valid?
+    end
   end
+
+  describe 'relations' do
+
+  end
+
+  describe 'custom methods' do
+
+  end 
 end
