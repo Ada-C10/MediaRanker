@@ -1,0 +1,19 @@
+<h2><%= "#{@work.title}"%></h2>
+
+
+<p>
+  <strong>
+    <p> Created by: <%= @work.creator %> </p>
+    <p> Published: <%= @work.publication_year %> </p>
+    <p> <%= @work.description %> </p>
+  </strong>
+
+</p>
+<div class="links">
+
+  <%= link_to "Back to media ranks", root_path %>
+  <%= link_to "Edit", edit_work_path(@work.id) %>
+  <%= link_to "Delete", @work, method: :delete, data: { confirm: "Are you sure that you want to delete?" } %>
+
+
+</div>

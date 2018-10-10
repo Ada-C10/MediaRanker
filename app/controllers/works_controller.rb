@@ -17,9 +17,6 @@ class WorksController < ApplicationController
     redirect_to root_path
   end
 
-  def create
-  end
-
   def show
     work_id = params[:id]
     @work= Work.find_by(id: work_id)
@@ -32,6 +29,28 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     @work.update(work_params)
     redirect_to works_path
+  end
+
+  def create
+    filtered_params = work_params()
+    @work = Work.new(filtered_params)
+    save_success = @work.save
+    if save_success
+      redirect_to works_path
+    else
+      render :new
+    end
+  end
+  private
+
+  def work_params
+    return params.require(:work).permit(
+      :title,
+      :creator,
+      :description,
+      :publication_year,
+      :category,
+    )
   end
 
 
