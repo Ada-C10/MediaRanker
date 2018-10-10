@@ -1,9 +1,37 @@
 <h1>List of Works</h1>
 <ul>
-  <li>Albums</li>
-  <% @albums.each do |album| %>
-  <%= album.title %>
-  <% end %>
-  <li>Books</li>
-  <li>Movies</li>
+   <li>Albums</li>
+   <br />
+   <% @albums.each do |album| %>
+   <table>
+      <tr>
+         <td>Title: <%= album.title %></td>
+         <td>Created by: <%= album.creator %></td>
+         <td>Published: <%= album.publication_year %></td>
+         <% end %>
+      </tr>
+    </li>
+      <li>Books
+      <br />
+      <% @books.each do |book| %>
+      <tr>
+         <td>Title: <%= book.title %> </td>
+         <td>Created by: <%= book.creator %></td>
+         <td>Published: <%= book.publication_year %></td>
+         <% end %>
+      </tr>
+      </li>
+
+
+      <li>Movies
+      <br />
+      <% @movies.each do |movie| %>
+      <tr>
+         <td>Title: <%= movie.title %></td>
+         <td>Created by: <%= movie.creator %></td>
+         <td>Published: <%= movie.publication_year %></td>
+         <% end %>
+      </tr>
+      </li>
 </ul>
+</table>

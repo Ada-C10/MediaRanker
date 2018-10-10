@@ -5,7 +5,7 @@ class WorksController < ApplicationController
     @albums = Work.albums
     @books = Work.books
     @movies = Work.movies
-    
+
   end
 
   def show

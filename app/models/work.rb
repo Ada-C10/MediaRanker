@@ -2,14 +2,14 @@ class Work < ApplicationRecord
   validates :title, presence: true
 
   def self.albums
-    return Work.find_by(category: 'album')
+    return Work.where(category: 'album')
   end
 
   def self.books
-    return Work.find_by(category: 'book')
+    return Work.where(category: 'book')
   end
 
   def self.movies
-    return Work.find_by(category: 'movie')
+    return Work.where(category: 'movie')
   end
 end
