@@ -1,0 +1,10 @@
+<h1> <%= action_name %> </h1>
+
+<%= form_with model: @user, class: "user-form"  do |f|%>
+  <p>Please enter a username: </p>
+
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+
+  <%= f.submit button_title, class: "user-button" %>
+<% end %>

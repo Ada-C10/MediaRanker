@@ -44,6 +44,10 @@ class WorksController < ApplicationController
     end
   end
 
+  def top_media
+    
+  end
+
   private
 
   def work_params

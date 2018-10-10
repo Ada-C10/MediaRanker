@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  created_by: MyString
-  publication_year: 2018-10-08
-  description: MyString
-  category: MyString
+breaker:
+  title: Blue Breaker
+  creator: Dr. Sarai Langosh
+  publication_year: 1949
+  description: Et et expedita non aut quo.
+  category: album
 
-two:
-  title: MyString
-  created_by: MyString
-  publication_year: 2018-10-08
-  description: MyString
-  category: MyString
+treat:
+  title: Joe Treat
+  creator: Blaise Lesch
+  publication_year: 1968
+  description: Voluptatem adipisci qui velit.
+  category: book

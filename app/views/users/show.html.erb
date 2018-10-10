@@ -1,0 +1,8 @@
+<% if @user.nil? %>
+  <h1> 404 Not found</h1>
+<% else %>
+  <h1><%= @user.username %></h2>
+  <h3><%= @user.created_at %></h3>
+
+  <p>Votes go here</p>
+<% end %>
