@@ -43,6 +43,19 @@ class WorksController < ApplicationController
     end
   end
 
+  def destroy
+    work_id = params[:id]
+    work = Work.find_by(id: work_id)
+
+    if work.destroy
+      flash[:success] = "Successfully destroyed #{work.category} #{work.id}"
+      redirect_to root_path
+    else
+      flash.now[:error] = "Unable to destroy #{work.category} #{work.id}"
+      render :edit
+    end
+  end
+
   private
   def work_params
     return params.require(:work).permit(

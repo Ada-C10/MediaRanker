@@ -7,13 +7,12 @@
   </ul>
 </section>
 
-<section class="show_page_links">
-  <ul>
-    <li><%= link_to "Back to media ranks", root_path %></li>
-    <li><%= link_to "Edit", edit_work_path(@work.id) %></li>
-    <li>UPvote link here</li>
-    <li><%= link_to "Delete", work_path(@work.id), method: :delete %></li>
-  </ul>
+<section class="show_page_buttons">
+
+    <button type="button"><%= link_to "Back to media ranks", root_path %></button>
+    <button type="button"><%= link_to "Edit", edit_work_path(@work.id) %></button>
+    <button type="button">UPVOTE link</button>
+    <button type="button"><%= link_to "Delete", work_path(@work.id), data: { confirm: "Are you sure you want to delete #{@work.category} #{@work.title}?", method: :delete} %></button>
 </section>
 
 <section>
