@@ -12,9 +12,9 @@
     </tr>
   </thead>
   <tbody>
-      <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user.username, user_path(user.id)%></td>
+        <% @users.each do |user| %>
+        <td><%= link_to user.username, user_path(user.id) %></td>
         <td> vote method </td>
         <% end %>
       </tr>

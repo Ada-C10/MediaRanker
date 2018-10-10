@@ -52,11 +52,12 @@ describe Work do
       more = Work.new(publication_year: 10001)
 
       expect(less.valid?).must_equal false
-      expect(less.valid?).must_equal false
+      expect(more.valid?).must_equal false
+      expect(less.errors.messages).must_include :publication_year
     end
 
     describe 'relations' do
     end
-    
+
   end
 end

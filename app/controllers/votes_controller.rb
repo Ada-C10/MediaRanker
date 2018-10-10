@@ -24,25 +24,13 @@ class VotesController < ApplicationController
   end
 
 
-  def status
-    id = params[:id].to_i
-    @vote = Vote.find_by(id: id)
-    if @vote.due.class == Date
-      @vote.due = nil
-    else @vote.due == nil
-      @vote.due = "Completed on #{Date.today}"
-    end
-    @vote.save
-    redirect_to work_path(@work.id)
-  end
-
   def update
     id = params[:id]
     @vote = Vote.find_by(id: id)
     @vote.update(vote_params)
 
     if @vote.save
-      redirect_to vote_path # go to the index so we can see the book in the list
+      redirect_to vote_path
     else
       render :new
     end
@@ -50,11 +38,9 @@ class VotesController < ApplicationController
 
   def create
     @vote = Vote.new(:id)
-    # @task = Task.new(name: params[:task][:name], description: params[:task][:description], due: params[:task][:due]) #instantiate a new book
-    if @vote.save # save returns true if the database insert succeeds
-      redirect_to vote_path # go to the index so we can see the book in the list
-    else # save failed :(
-      render :new # show the new book form view again
+    if @vote.save
+      redirect_to vote_path
+    #   render :new # show the new book form view again
     end
   end
 
@@ -67,3 +53,9 @@ class VotesController < ApplicationController
   end
 
 end
+
+private
+
+  def vote_params
+    return params.require(:vote).permit(:user_id, :work_id)
+  end

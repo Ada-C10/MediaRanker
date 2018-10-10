@@ -25,6 +25,10 @@ class WorksController < ApplicationController
 
   def new
     @work = Work.new
+    if params[:user_id]
+      @user_id =  params[:user_id]
+      @work.user_id = @user_id
+    end
   end
 
   def update
@@ -43,7 +47,7 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
     if @work.save
       flash[:success] = "New work created"
-      redirect_to work_path(@work.id) # go to the index so we can see the book in the list
+      redirect_to work_path(@work.id)
     else # save failed :(
       flash.now[:error] = 'Work not created'
       @work.errors.messages.each do |field, messages|
@@ -57,14 +61,14 @@ class WorksController < ApplicationController
     id = params[:id]
     @work = Work.find_by(id: id)
     if @work.destroy
-      flash[:success] = "#{work.title} deleted"
+      flash[:success] = "#{@work.title} deleted"
       redirect_to root_path
     end
   end
 
   private
   def work_params
-    return params.require(:work).permit(:title, :publication_year, :creator, :description)
+    return params.require(:work).permit(:title, :publication_year, :creator, :description, :user_id)
   end
 
 end
