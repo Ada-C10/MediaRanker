@@ -1,20 +1,23 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def index
     @works = Work.all.order(:title)
+
+    medias = ['albums','movies','books']
+
+    medias.each do |media|
+      media = Work.all.order(:title).select {|work| work.category == media}
+    end
+
+
   end
 
   def main
     @works = Work.all.order(:title)
   end
 
-  def show
-    id = params[:id]
-    @work = Work.find_by(id: id)
-
-    if @work.nil?
-      render :notfound, status: :not_found
-    end
-  end
+  def show; end
 
   def new
     @work = Work.new
@@ -35,30 +38,36 @@ class WorksController < ApplicationController
 
   end
 
-  def edit
-    @work = Work.find_by(id: params[:id].to_i)
-  end
+  def edit; end
 
 
   def update
-    @work = Work.find_by(id: params[:id])
-    if @work.update(work_params)
+    if @work && @work.update(work_params)
       redirect_to work_path(@work.id)
+    elsif @book
+      render :edit
     end
   end
 
   def destroy
-    work = Work.find_by(id: params[:id])
-    if work.nil?
-      flash[:error] = "Work #{params[:id]} not found"
-    else
-      work.destroy
-      flash[:success] = "#{work.title} deleted"
+    if !@work.nil?
+      @work.destroy
+      flash[:success] = "#{@work.title} deleted"
     end
     redirect_to works_path
   end
 
   private
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      flash.now[:warning] = "Work #{params[:id]} not found"
+      render :notfound
+    end
+  end
+
 
   def work_params
     return params.require(:work).permit(:title,:category,:publication_year,:description)
