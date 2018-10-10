@@ -36,15 +36,15 @@ class WorksController < ApplicationController
       flash[:success] = 'Work Created!'
       redirect_to root_path # go to the index so we can see the book in the list
     else # save failed :(
-      flash.now[:error] = 'Work not created!'
+      flash.now[:danger] = 'Work not created!'
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
-      render :new # show the new book form view again
+      render :new # show the new work form view again
     end
   end
 
-# Has issue with update, .work_id method not found 
+# Has issue with update/creating a new work, .work_id method not found
   def update
     if @work && @work.update(work_params)
       redirect_to work_path(@work.id)
@@ -58,7 +58,7 @@ class WorksController < ApplicationController
 
   def show
     # Troubleshoot later
-    @work_votes = @work.votes
+    # @work_votes = @work.votes
   end
 
   def destroy
