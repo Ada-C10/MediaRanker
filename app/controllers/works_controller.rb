@@ -24,8 +24,10 @@ require 'pry'
     is_successful_save = work.save
     #if not successful re-render form, else  show all
     if is_successful_save
+      flash[:success] = "Work #{work.title} successfully added."
       redirect_to works_path
     else
+      flash.now[:failure] = "Work #{work.title} was not added."
       render :new
     end
   end
@@ -36,17 +38,29 @@ require 'pry'
 
   def update
     work = Work.find_by(id: params[:id])
-    passenger.update
-    redirect_to works_path
+    is_successful_update = passenger.update
+    if is_successful_update
+      flash[:success] = "Work #{work.title} was successfully updated."
+      redirect_to works_path
+    else
+      flash.now[:failure] = "Work #{work.title} was not updated."
+      render :edit
+    end
     #if successful save vs not, .update returns boolean?
     #redirect to show page
   end
 
   def destroy
     work = Work.find_by(id: params[:id])
-    work.destroy
-    redirect_to works_path
-    #redirect to work#index (with partial rendered?)
+    is_successful_deletion = work.destroy
+    if is_successful_deletion
+      flash[:success] = "Work #{work.title} successfully deleted."
+      redirect_to works_path
+    else
+      flash[:failure] = "Work #{work.title} not destroyed."
+      #flash back
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
