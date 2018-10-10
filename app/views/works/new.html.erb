@@ -2,15 +2,6 @@
 <p>Find me in app/views/works/new.html.erb</p>
 
 <%= form_with model: @work do |f| %>
-  <% if @work.errors.any? %>
-  <ul class="errors">
-    <% @work.errors.each do | col, msg | %>
-    <li>
-      <strong><%= col.capitalize %></strong> <%= msg %>
-    </li>
-    <% end %>
-  </ul>
-  <% end %>
 
   <%= f.label :title, 'Title' %>
   <%= f.text_field :title, placeholder: 'Title', required: true, maxlength: 40 %>

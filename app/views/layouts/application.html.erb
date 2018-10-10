@@ -41,16 +41,17 @@
 
       <section class="flash flash-alert">
         <% flash.each do |name, message| %>
-          <% if message.class == Array %>
+          <% if message.class == ActiveModel::Errors %>
             <div class="alert-warning">
-            <% msg.each do |msg| %>
-              <p><strong><%= "#{name}:" %></strong><%= "#{msg}" %></p>
+            <% message.each do |nme, msg| %>
+              <strong><%= "#{nme}".capitalize %>:</strong> <%= "#{msg}" %>
             <% end %>
             </div>
           <% else %>
-            <div class="alert-<%= name %>"><%= message %></div>
+            <div class="alert-warning alert-<%= name %>"><strong><%= "#{name}".capitalize %>:</strong> <%= "#{message}" %></div>
           <% end %>
         <% end %>
+        </ul>
       </section>
     </header>
 

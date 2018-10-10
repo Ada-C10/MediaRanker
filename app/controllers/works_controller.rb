@@ -34,7 +34,10 @@ class WorksController < ApplicationController
       flash[:success] = "Succesfully created new #{@work.category}: #{@work.title}!"
       redirect_to work_path(@work.id)
     else
-      render :new
+      flash[:failure] = "There was a problem saving the new work. Try again?"
+      flash[:errors] = @work.errors
+      redirect_to new_work_path
+      # render :new
     end
   end
 
@@ -42,7 +45,7 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    return params.require(:work).permit(:title, :creator, :publication, :category)
+    return params.require(:work).permit(:title, :creator, :publication, :category, :description)
   end
 
 end
