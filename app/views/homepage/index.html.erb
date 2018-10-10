@@ -8,7 +8,7 @@
   <section>
     <ul>
       <% @movies.each do |movie| %>
-        <li><%= link_to movie.title, work_path(movie.id) %></li>
+        <li><%= link_to movie.title, work_path(movie.id) %> by <%= movie.creator %></li>
       <% end %>
     </ul>
   </section>
@@ -19,7 +19,7 @@
   <section>
     <ul>
       <% @books.each do |book| %>
-        <li><%= link_to book.title, work_path(book.id) %></li>
+        <li><%= link_to book.title, work_path(book.id) %> by <%= book.creator %></li>
       <% end %>
     </ul>
   </section>
@@ -30,7 +30,7 @@
   <section>
     <ul>
       <% @albums.each do |album| %>
-        <li><%= link_to album.title, work_path(album.id) %></li>
+        <li><%= link_to album.title, work_path(album.id) %> by <%= album.creator %></li>
       <% end %>
     </ul>
   </section>
