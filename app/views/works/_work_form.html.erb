@@ -3,7 +3,7 @@
 <%= form_with model: model do |f| %>
 
   <%= f.label :category %>
-  <%= f.text_field :category %>
+  <%= f.select :category, ["movie", "book", "album"] %>
   <br>
 
   <%= f.label :title %>
