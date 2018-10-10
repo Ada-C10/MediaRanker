@@ -21,7 +21,7 @@
             <div class="site_navigation">
               <li><%= link_to "View top media", root_path %></li>
               <li><%= link_to "View all media", works_path %></li>
-              <li>add new work link</li>
+              <li><%= link_to "Add a new work", new_work_path %></li>
               <li>all users link</li>
             </div>
             <div class="login_logout">
@@ -32,6 +32,13 @@
         </nav>
       </div>
     </header>
+
+    <section class="flash_messages">
+      <% flash.each do |key, message| %>
+        <%= message %>
+      <% end %>
+    </section>
+    
     <%= yield %>
   </body>
 </html>
