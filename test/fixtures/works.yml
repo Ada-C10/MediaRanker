@@ -1,15 +1,42 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  pub_year: MyString
-  description: MyString
-
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  pub_year: MyString
-  description: MyString
+nemo:
+  category: Movie
+  title: Finding Nemo
+  creator: Pixar
+  pub_year: 2001
+  description: daddy issues
+sunshine:
+  category: Movie
+  title: Secret Sunshine
+  creator: Lee Chang-dong
+  pub_year: 2007
+  description: korean culture and cinema at its most depressing
+marie:
+  category: Movie
+  title: Marie Antoinette
+  creator: Sofia Coppola
+  pub_year: 2006
+  description: Kristen Dunst pre-beheading
+heartburn:
+  category: Book
+  title: Heartburn
+  creator: Nora Ephron
+  pub_year: 1983
+  description: don't marry men
+headless:
+  category: Book
+  title: Headless Pumpkin Monster
+  creator: Headless Nick
+  pub_year: 1000
+  description: boo
+beyonce:
+  category: Album
+  title: Beyonce
+  creator: Beyonce
+  pub_year: 2016
+  description: self-titled album
+prince:
+  category: Album
+  title: Purple Rain
+  creator: Prince
+  pub_year: 1980
+  description: purple raaaaaain
