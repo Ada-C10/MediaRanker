@@ -5,6 +5,10 @@ class VotesController < ApplicationController
 
   def show
     @vote = Vote.find_by(id: params[:id])
+
+    if @vote.nil?
+      head :not_found
+    end
   end
 
   def new
@@ -12,10 +16,14 @@ class VotesController < ApplicationController
   end
 
   def create
-    @vote = Vote.new(vote_params)
+    if params[:user_id]
+      @vote = Vote.new(vote_params)
 
-    if @vote.save
-      redirect_to votes_path
+      if @vote.save
+        redirect_to votes_path
+      else
+        render :new, status: :bad_request
+      end
     else
       render :new, status: :bad_request
     end
@@ -38,7 +46,7 @@ class VotesController < ApplicationController
     @vote = Vote.find_by(id: params[:id])
     @vote.destory
 
-    redirect_to votes_path 
+    redirect_to votes_path
   end
 
   private
