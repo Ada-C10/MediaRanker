@@ -32,6 +32,14 @@
    color: red;
  }
 
-.header_nav_list {
-  text-decoration: none;
+ .header_nav a{
+   color: #00796B;
+ }
+
+ .login-info a{
+   color: white;
+ }
+
+ul {
+  list-style: none;
 }

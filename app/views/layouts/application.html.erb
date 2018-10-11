@@ -15,21 +15,23 @@
       <small>Ranking the Best of Everything</small>
     </h1>
     <nav class="header_nav">
-      <ul class="header_nav_list">
-        <li class="header_nav_items"><a href="/">View top media</a></li>
+      <ul class="nav_list">
+        <li class="nav_items"><a href="/">View top media</a></li>
         <li class="header_nav_items"><a href="/works">View all media</a></li>
         <li class="header_nav_items"><a href="/works/new">Add a new work</a></li>
         <li class="header_nav_items"><a href="/users">View all users</a></li>
-
+        <li class="header_nav_items">
         <section class="login-info">
           <% if @logged_in_user %>
-            <p>
-              Currently logged in as
-              <%= @logged_in_user.username %>
-              <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
-            </p>
+
+            <button type="button" class="btn btn-info">Logged in as <%= @logged_in_user.username %>
+              </button>
+              <button type="button" class="btn btn-info"><%= link_to "Log out", logout_path, method: :post%>
+            </button>
           <% else %>
-            <%= link_to "Log in", new_session_path, class: "btn btn-outline-info" %>
+          <button type="button" class="btn btn-info">
+            <%= link_to "Log In", new_session_path%>
+          </button>
           <% end %>
         </section>
         </li>
