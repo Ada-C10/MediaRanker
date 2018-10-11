@@ -12,8 +12,6 @@ class UsersController < ApplicationController
       head :not_found
     end
   end
-<<<<<<< Updated upstream
-=======
 
   def new
     @user = User.new
@@ -29,11 +27,11 @@ class UsersController < ApplicationController
     end
   end
 
+
   private
 
   def find_work
     @work = Work.find_by(id: params[:id])
   end
 
->>>>>>> Stashed changes
 end
