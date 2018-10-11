@@ -45,10 +45,19 @@ nav a:visited, nav a:link, nav a:hover {
   text-decoration: none;
 }
 
+main {
+  margin: 2em;
+}
+
 h2, h3 {
   color: teal;
 }
 
 ul {
   list-style: none;
+}
+
+.btn a:visited, .btn a:link, .btn a:hover {
+  text-decoration: none;
+  color: white;
 }
