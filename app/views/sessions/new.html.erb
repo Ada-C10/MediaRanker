@@ -1,0 +1,6 @@
+<%= form_with method: :post, url: sessions_path do |f| %>
+  <%= f.label :user_name %>
+  <%= f.text_field :user_name %>
+
+  <%= f.submit "Log in"%>
+<% end %>
