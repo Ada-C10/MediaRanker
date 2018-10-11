@@ -13,21 +13,21 @@ require 'csv'
 CSV.open('db/media_seeds.csv', "w", :write_headers=> true,
   :headers => ["category", "title", "creator", "publication_year", "description"]) do |csv|
 
-    75.times do
-      category = %w(album book movie).sample
-      if category == "book"
-        title = Faker::HitchhikersGuideToTheGalaxy.starship + Faker::HitchhikersGuideToTheGalaxy.planet
+    30.times do |i|
+      category = %w(Album Book Movie).sample
+      if category == "Book"
+        title = Faker::HitchhikersGuideToTheGalaxy.starship + " " +  Faker::HitchhikersGuideToTheGalaxy.planet + " #{i}"
         creator = Faker::HitchhikersGuideToTheGalaxy.character
         publication_year = rand(Date.today.year-100..Date.today.year)
         description = Faker::HitchhikersGuideToTheGalaxy.quote
       end
-      if category == "album"
-        title = Faker::Music.album
+      if category == "Album"
+        title = Faker::Music.album + " in " + Faker::Music.key
         creator = Faker::Music.band
         publication_year = rand(Date.today.year-100..Date.today.year)
         description = (Faker::Music.genre + " " + Faker::Music.instrument)
       end
-      if category == "movie"
+      if category == "Movie"
         title = Faker::StarWars.call_squadron + " " + Faker::StarWars.specie + " " +  Faker::StarWars.vehicle
         creator = Faker::StarWars.character
         publication_year = rand(Date.today.year-100..Date.today.year)
