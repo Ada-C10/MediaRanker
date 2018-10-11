@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update]
+
   def index
     @movies = Work.category_list("movie")
     @books = Work.category_list("book")
@@ -6,8 +8,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id].to_i)
-
     if @work.nil?
       render :notfound, status: :not_found
     end
@@ -27,11 +27,10 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id].to_i)
+
   end
 
   def update
-    @work = Work.find_by(id: params[:id].to_i)
     if @work.update(work_params)
       redirect_to work_path(@work.id)
     else
@@ -61,5 +60,9 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id].to_i)
   end
 end

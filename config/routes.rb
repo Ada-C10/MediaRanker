@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'sessions/login'
-  get 'sessions/new'
-  get 'sessions/destroy'
+  get 'sessions/login', to: 'sessions#new'
+  post 'sessions/login', to: 'sessions#login', as: 'login'
+  delete 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
 
-  get 'users/index'
-  get 'users/show'
+  get 'users/index', to: 'users#index', as: 'users'
+  get 'users/show', to: 'users#show', as: 'user'
 
   root 'welcome#index'
 

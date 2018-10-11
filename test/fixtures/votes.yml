@@ -11,15 +11,3 @@ vote2:
 vote3:
   user: bob
   work: book1
-
-vote4:
-  user: bob
-  work: movie2
-
-vote5:
-  user: ada
-  work: movie2
-
-vote6:
-  user: cal
-  work: movie2
