@@ -2,13 +2,12 @@
 
 <table>
 <tr><strong><td>Votes</td><td>Title</td><td>Created by</td><td>Published</td><td>Upvote</td></strong></tr>
-<% @books.each do |book| %>
+<% @works.each do |book| %>
   <tr>
-   <td><%= work.votes.length %></td>
+   <td><%= book.votes.length %></td>
    <td><%= link_to "#{book.title}", work_path(book.id) %></td>
    <td><%= book.creator %></td>
    <td><%= book.publication_year %></td>
-
  </tr>
 <% end %>
 </table>

@@ -16,8 +16,8 @@ class UsersController < ApplicationController
     user = User.find_by(id: params[:user][:id])
 
     if user.nil?
-      # Create a new author
-      user = User.create(id: params[:user][:id])
+
+      user = User.create(name: params[:user][:name])
     end
 
     session[:user_id] = user.id
@@ -34,5 +34,7 @@ class UsersController < ApplicationController
     flash[:success] = 'Successfully logged out'
     redirect_back fallback_location: root_path
   end
+
+
 
 end

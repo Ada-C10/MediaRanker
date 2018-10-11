@@ -5,10 +5,11 @@ class Work < ApplicationRecord
   validates :title, uniqueness: true
   validates :category, presence: true
 
+
   def self.by_category(input)
      raise ArgumentError if input != "Movie" && input != "Book" && input != "Album"
 
-     return Work.all.select {|work| work.category == input}
+      result = Work.all.order(:id).select {|work| work.category == input}
 
   end
 end

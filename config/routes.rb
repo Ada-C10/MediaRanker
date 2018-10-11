@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   get 'users/login', to: 'users#new'
   delete 'users/destroy', to: 'users#destroy', as: 'logout'
 
-  resources :works
 
   resources :users, only:[:index, :show]
 
-
+  resources :works do
+    resources :votes, only: [:create]
+  end
 
 end
