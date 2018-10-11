@@ -54,26 +54,24 @@ class WorksController < ApplicationController
       flash[:success] = "Upvote successful."
       redirect_to @work
     else
-      flash[:error] = 'A user can only vote for each work once.'
+      flash[:error] = 'A user can only vote on each work once.''
       redirect_to @work
     end
-
-
   end
 
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_work
-      @work = Work.find(params[:id])
-      if @work.nil?
-        flash.now[:error] = 'Work not found'
-        render :not_found
-      end
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def work_params
-      params.require(:work).permit(:title, :creator, :description, :category, :publication_year)
+  def set_work
+    @work = Work.find(params[:id])
+    if @work.nil?
+      flash.now[:error] = 'Work not found'
+      render :not_found
     end
   end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def work_params
+    params.require(:work).permit(:title, :creator, :description, :category, :publication_year)
+  end
+end

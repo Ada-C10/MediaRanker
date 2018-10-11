@@ -5,8 +5,7 @@ class VotesController < ApplicationController
     @vote = Vote.new
   end
 
-  def destroy
-  end
+  def destroy; end
 
   def index
     @votes = Vote.all
@@ -15,8 +14,7 @@ class VotesController < ApplicationController
   def show; end
 
   def create
-     @vote = Vote.new(vote_params)
-
+    @vote = Vote.new(vote_params)
     respond_to do |format|
       if @vote.save
         flash[:success] = 'vote successfully created'
@@ -33,15 +31,14 @@ class VotesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_work
-      @votr = Vote.find(params[:id])
-      if @vote.nil?
-        flash.now[:warning] = 'Work not found'
-        redirect_to rooth_path
-    end
+  def set_work
+    @vote = Vote.find(params[:id])
+    if @vote.nil?
+      flash.now[:warning] = 'Work not found'
+      redirect_to rooth_path
+  end
 
-    def vote_params
-      params.require(:vote).permit(:user_id, :work_id)
-    end
-    
+  def vote_params
+    params.require(:vote).permit(:user_id, :work_id)
+  end
 end
