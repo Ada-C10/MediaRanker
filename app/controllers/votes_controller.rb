@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
-  def index
-    @votes = (Vote.all).sort_by do |vote|
-      vote.id
-    end
+  def create
+  end
+
+  def edit
   end
 end
