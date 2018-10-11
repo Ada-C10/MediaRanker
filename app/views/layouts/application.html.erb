@@ -54,21 +54,33 @@
       <% if flash.any? %>
         <section class="flash">
            <% flash.each do |name, message| %>
-                <div class="alert-<%= name %>">
-                   <span><%= message %></span>
-                   <% if @work %>
+            <% if name == 'warning' || name == 'success' %>
+              <div class="alert-<%= name %>">
+                <span><%= message %></span>
+
+                   <%if @work %>
                      <% if @work.errors.any? %>
                        <ul>
-                         <% @work.errors.each do |column, message| %>
+                         <% @work.errors.full_messages.each do |message| %>
                            <li>
-                             <%= "#{column}: #{message}" %>
+                             <%= "#{message}" %>
                            </li>
                          <% end %>
                        </ul>
                      <% end %>
-                    <% end %>
+                   <%end%>
+
+                   <% if flash[:vote_errors] %>
+                       <ul>
+                           <li>
+                             <%= "#{flash[:vote_errors]}" %>
+                           </li>
+                       </ul>
+                   <% end %>
+
                </div>
-           <% end %>
+            <% end %>
+          <%end%>
          </section>
       <% end%>
     </section>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'votes/create'
   post '/login', to: 'sessions#login', as: 'login'
   get '/login', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
