@@ -57,8 +57,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    # Troubleshoot later
-    # @work_votes = @work.votes
+    @work_votes = @work.votes
   end
 
   def destroy

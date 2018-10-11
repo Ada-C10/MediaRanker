@@ -21,6 +21,10 @@
   font-family: 'Gudea', sans-serif;
 }
 
+main {
+  padding: 2rem;
+}
+
 h1, h2, h3, h4, h5 {
   font-family: 'Hammersmith One', sans-serif;
 }
@@ -47,4 +51,24 @@ header h1 a {
 
 header h2 {
   font-weight: 500;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+nav a {
+  color: #00796B;
+  padding: 0.5rem 1rem;
+  display: block; 
+}
+
+.top_ten_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
 }

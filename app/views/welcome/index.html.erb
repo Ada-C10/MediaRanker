@@ -4,26 +4,44 @@
   <h1><%= "Media Spotlight:" %> </h1>
 </section>
 
-<div class="main_work_container">
+<div class="top_ten_container">
 
-  <section class="single_work_container">
+  <section class="top_ten_list_container">
     <h2>Movies</h2>
-    <% @movies.each do |movie| %>
-      <p><%= link_to "#{movie.title}", work_path(movie.id) %> <%=" by #{movie.creator}" %></p>
-    <% end %>
+    <ul class="list-group top_ten_list">
+      <% @movies.each do |movie| %>
+        <li class="list-group-item">
+          <h4><%= link_to "#{movie.title}", work_path(movie.id) %></h4>
+          <small class="top_ten_creator"><%=" by #{movie.creator}" %></small>
+          <p><%= "#{movie.votes.length} votes" %></p>
+        </li>
+      <% end %>
+    </ul>
   </section>
 
-  <section class="single_work_container">
+  <section class="top_ten_list_container">
     <h2>Albums</h2>
+    <ul class="list-group top_ten_list">
     <% @albums.each do |album| %>
-      <p><%= link_to "#{album.title}", work_path(album.id) %> <%= " by #{album.creator}" %></p>
+      <li class="list-group-item">
+        <h4><%= link_to "#{album.title}", work_path(album.id) %></h4>
+        <small class="top_ten_creator"><%= " by #{album.creator}" %></small>
+        <p><%= "#{album.votes.length} votes" %></p>
+      </li>
     <% end %>
+    </ul>
   </section>
 
-  <section class="single_work_container">
+  <section class="top_ten_list_container">
     <h2>Books</h2>
+    <ul class="list-group top_ten_list">
     <% @books.each do |book| %>
-      <p><%= link_to "#{book.title}", work_path(book.id) %> <%= " by #{book.creator}" %></p>
+      <li class="list-group-item">
+        <h4><%= link_to "#{book.title}", work_path(book.id) %></h4>
+        <small class="top_ten_creator"><%= " by #{book.creator}" %></small>
+        <p><%= "#{book.votes.length} votes" %></p>
+      </li>
     <% end %>
+    </ul>
   </section>
 </div>

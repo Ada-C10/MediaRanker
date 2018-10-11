@@ -11,6 +11,12 @@ class Work < ApplicationRecord
   validates :description, presence: true
   validates :title, presence: true, uniqueness: true
 
+  def self.top_movie_list
+    movies = Work.all.select { |work| work.category.downcase == "movie" }
+    #returns a array 
+    @votes_per_movie_count = Vote.joins(:work).group(:work).order('count_all DESC').limit(10).count
+  end
+
   # Can do work.votes for an array of all votes associated with the work
   # Can push votes via work.votes << vote_object
   # work.votes.where(conditions) to get votes for the work with the condition
