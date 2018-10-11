@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def vote_count
     return self.votes.length
   end
+
+  def eligible_to_vote?(work)
+    return !(works.include? work) # true if work not already in users votes
+  end
 end

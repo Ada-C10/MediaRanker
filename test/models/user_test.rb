@@ -1,4 +1,5 @@
 require "test_helper"
+require 'pry'
 
 describe User do
   let(:user) { users(:jackie) }
@@ -131,6 +132,30 @@ describe User do
 
       # Assert
       expect(count).must_equal 0
+    end
+  end
+
+  describe 'eligible_to_vote' do
+    let(:work2) { Work.new(category: "movie", title: "Up") }
+
+    it 'must return true unless a user has already voted on a work (then false)' do
+      # Act
+      eligible = users(:dan).eligible_to_vote? work2
+
+      # Assert
+      expect(eligible).must_equal true
+    end
+
+    it 'must return false if a user has already voted on a work' do
+      # Arrange
+      new_vote = Vote.new(user: users(:dan), work: work2, date: Date.today)
+      new_vote.save
+
+      # Act
+      eligible = users(:dan).eligible_to_vote? work2
+
+      # Assert
+      expect(eligible).must_equal false
     end
   end
 end

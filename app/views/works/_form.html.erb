@@ -1,7 +1,7 @@
 <h2><%= action_name %></h2>
 
 <section>
-  <%= form_with model: @work do |f|%>
+  <%= form_with model: @work, locals: true do |f|%>
       <%= f.label :category %>
       <%= f.select :category, ["album", "book", "movie"] %>
 
