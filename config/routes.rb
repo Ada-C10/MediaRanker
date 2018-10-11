@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'works#top'
 
-  resources :works
+  resources :works do
+    post 'upvote'
+  end
 
   resources :users
 

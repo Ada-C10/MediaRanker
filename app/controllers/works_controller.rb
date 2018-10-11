@@ -48,14 +48,43 @@ class WorksController < ApplicationController
   def top
   end
 
-  private
+  def upvote
+    @work = Work.find_by(id: params[:work_id])
+
+    if @work.nil?
+      head :not_found
+    end
+
+    @user = User.find_by(id: session[:user_id])
+
+    if @user.nil?
+      flash[:error] = "Must be logged in to vote"
+      redirect_back(fallback_location: root_path)
+    else
+      @vote = Vote.new(user: @user, work:
+        @work)
+
+        if @vote.save
+          flash[:success] = "Successfully voted for this work."
+          redirect_to work_path(@work)
+        else
+          flash[:error] = "You alredy voted for this work, can't vote for this again!"
+            redirect_back(fallback_location: root_path)
+        end
+      end
+    end
+
+
+
+    private
   def work_params
     return params.require(:work).permit(
-      :title,
-      :category,
-      :creator,
-      :publication_year,
-      :description
-    )
+        :title,
+        :category,
+        :creator,
+        :publication_year,
+        :description
+      )
   end
+
 end
