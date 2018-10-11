@@ -16,7 +16,7 @@ CSV.open('db/media_seeds.csv', "w", :write_headers=> true,
     75.times do
       category = %w(album book movie).sample
       if category == "book"
-        title = Faker::HitchhikersGuideToTheGalaxy.starship
+        title = Faker::HitchhikersGuideToTheGalaxy.starship + Faker::HitchhikersGuideToTheGalaxy.planet
         creator = Faker::HitchhikersGuideToTheGalaxy.character
         publication_year = rand(Date.today.year-100..Date.today.year)
         description = Faker::HitchhikersGuideToTheGalaxy.quote
