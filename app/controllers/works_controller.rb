@@ -33,6 +33,16 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
   end
 
+  def update
+    @work = Work.find_by(id: params[:id])
+
+    if @work.update(work_params)
+      redirect_to works_path
+    else
+      render :edit
+    end
+  end
+
 
   private
 
