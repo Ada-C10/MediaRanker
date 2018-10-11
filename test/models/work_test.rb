@@ -147,7 +147,7 @@ describe Work do
 
   end
 
-  describe 'custom method: movies' do
+  describe 'custom method: list(media_category) for movies' do
 
     it 'returns an array if there is only one movie' do
       expect(Work.list('movie')).must_be_instance_of Array
