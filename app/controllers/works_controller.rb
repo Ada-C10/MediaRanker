@@ -54,7 +54,7 @@ class WorksController < ApplicationController
       flash[:success] = "Upvote successful."
       redirect_to @work
     else
-      flash[:error] = 'A user can only vote on each work once.''
+      flash[:error] = 'A user can only vote on each work once.'
       redirect_to @work
     end
   end
