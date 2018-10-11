@@ -4,11 +4,12 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:user][:name])
     # Check if this person exists, if not create them
     if user.nil?
-      # Create a new author if one doesn't exist
+      # Create a new user if one doesn't exist
       user = User.create(name: params[:user][:name])
-      user.date_joined = user.date_created.to_date.to_s
+      # binding.pry
+      user.date_joined = user.created_at.to_date
     else
-      user.date_joined = user.date_created.to_date.to_s
+      user.date_joined = user.created_at.to_date
       # Log in the existing user
       # No code needed
     end

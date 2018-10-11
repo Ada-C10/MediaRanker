@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :destroy]
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   def upvote
     # Vote doesn't need a controller
     # find the work -troubleshoot - start with the show page
