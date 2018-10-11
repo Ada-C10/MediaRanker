@@ -16,3 +16,55 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+main {
+  padding: 2rem;
+}
+
+.app-header {
+  padding: 2rem 1rem 0.5rem 1rem;
+  background-color: #B2DFDB;
+}
+
+.app-header h1 {
+  margin: 1.5rem auto 3rem auto;
+  text-align: center;
+}
+
+.app-header h1 > a {
+  padding-right: 1.5rem;
+  border-right: 2px solid;
+  margin-right: 1rem;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.site-nav-container .nav-item {
+  margin-top: 1rem;
+  margin-right: 2rem;
+}
+
+.user-nav-container .nav-item {
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+
+.votes-container {
+  margin-top: 2rem;
+}
+
+h2.top-ten {
+  border-bottom: 2px solid #B2DFDB;
+}
+
+a, h2 {
+  color: #26A69A;
+}
+
+.card, .list-group-item {
+  border: none;
+}
