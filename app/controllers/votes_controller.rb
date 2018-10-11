@@ -36,6 +36,7 @@ class VotesController < ApplicationController
     if @vote.nil?
       flash.now[:warning] = 'Work not found'
       redirect_to rooth_path
+    end
   end
 
   def vote_params
