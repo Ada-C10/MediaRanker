@@ -1,24 +1,16 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
   def upvote
-    # Vote doesn't need a controller
-    # find the work -troubleshoot - start with the show page
-      # then attempt from index page
-    # Create new instance of vote Vote.new (if they haven't already voted)
-    # In new vote, set date created to update date
-    # User id = from session (current user.id)
-    # Work id = work.id
-    # Push new vote into @work.votes << vote, @user.votes ? Give it a try
-    @work.votes.create(
-      {
-        user_id: @current_user.id,
-        date_created: Date.today
-      }
-    )
-    # Might not need this
-    # Should be able to grab the current user
-    # Should be able to link to current work
-    # date created = today
+    # Create new vote
+    vote = Vote.new
+    # Add attributes
+    vote.work_id = @work.id
+    vote.user_id = @current_user.id
+    vote.date_created = Date.today
+    # Shovel into work and user vote collections
+    @work.votes << vote
+    @current_user.votes << vote
+    redirect_to work_path
 
   end
 

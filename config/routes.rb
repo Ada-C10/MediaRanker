@@ -16,6 +16,7 @@ delete 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
 
   resources :works
 
+  put '/works/:id/upvote', to: 'works#upvote', as: 'upvote'
   # Custom route to upvote in works controller
     # Reference TaskList completed/incomplete
     # Nested under works

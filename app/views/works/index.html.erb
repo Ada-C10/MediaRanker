@@ -24,7 +24,7 @@
         <tr>
           <td>
             <p>
-              <%= "Movie Votes Here" %>
+              <%= "#{movie.votes.count}" %>
             </p>
           </td>
           <td>
@@ -44,7 +44,7 @@
           </td>
           <td>
             <p>
-              <%= "UPVOTE button here, link to upvote path" %>
+              <%= link_to 'Upvote', upvote_path(movie.id), method: :put, class: 'btn btn-primary' %>
             </p>
           </td>
         </tr>
