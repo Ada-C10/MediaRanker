@@ -1,6 +1,6 @@
 <h1>Users Details: <%= @user.username %></h1>
 <p>
-  Joined site <%= @user.created_at %>
+  Joined site <%= "#{@user.created_at.strftime("%a, %B %e, %Y")}" %>
 </p>
 
 
@@ -15,7 +15,7 @@
       <th>Voted On</th>
     <tr>
 
-      <% @vote.each do |vote_details| %>
+
     <tr>
       <td><%="title"%></td>
       <td><%="date"%></td>
@@ -23,7 +23,7 @@
       <td><%="book"%></td>
       <td><%="date" %></td>
     </tr>
-    <% end %>
+
   </table>
 </section>
 
