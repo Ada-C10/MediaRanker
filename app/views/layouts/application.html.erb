@@ -38,17 +38,16 @@
       <%= link_to "Log in", new_session_path, class: "btn btn-primary" %>
       <% end %>
 
+    </section>
 
+    <section class="flash-messages">
+      <% flash.each do |key, message| %>
+      <div class="alert alert-<%= key %>">
+        <%= message %>
+      </div>
+      <% end %>
     </section>
   </header>
-
-  <section class="flash-messages">
-    <% flash.each do |key, message| %>
-    <div class="alert alert-<%= key %>">
-       <%= message %>
-    </div>
-    <% end %>
-  </section>
 
   <main>
     <%= yield %>
