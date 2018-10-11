@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root "main#index"
+
   post 'sessions/login', to: 'sessions#login', as: 'login' #or just user login?
-  get 'sessions/new', to: 'sessions#new'
+  get 'sessions/login', to: 'sessions#new'
   get 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
+
   get 'main/index', as: 'main'
 
   resources :works
