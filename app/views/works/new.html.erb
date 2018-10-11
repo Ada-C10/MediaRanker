@@ -15,7 +15,7 @@
 
 <%= form_with model: @work do |f| %>
 <%= f.label :category %>
-<%= f.select :category, Work::CATEGORY, prompt: "Pick Category" %>
+<%= f.select :category, Work::CATEGORY %>
 <br>
 <%= f.label :title %>
 <%= f.text_field :title %>

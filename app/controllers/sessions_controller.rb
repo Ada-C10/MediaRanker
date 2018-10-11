@@ -10,10 +10,11 @@ class SessionsController < ApplicationController
     if user
       flash[:success] = "Successfully logged in as #{name}"
       session[:user_id] = user.id
-      redirect_to user_path(user)
+      redirect_to root_path
     else
       user = User.new(username: name)
       user.save
+
       if user.save
         flash[:success] = "Successfully created new user #{name}"
         session[:user_id] = user.id

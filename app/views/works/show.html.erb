@@ -15,3 +15,5 @@
 <%= link_to "Delete", work_path(@work.id), class: "btn btn-primary" %>
 
 <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary" %>
+
+<%= link_to "Upvote", upvote_path, method: :post, class: "btn btn-primary" %>

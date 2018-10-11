@@ -2,6 +2,7 @@ require "test_helper"
 
 describe Work do
   describe 'validations' do
+
     it 'has a title' do
       work = works(:beatles)
 
@@ -41,6 +42,25 @@ describe Work do
       is_valid = work.valid?
 
       expect( is_valid ).must_equal true
+
+    end
+
+    it 'is only valid with a correct category' do
+      work = works(:greys)
+
+      work.category = "podcast"
+
+      is_valid = work.valid?
+
+      expect( is_valid ).must_equal false
+
+      Work::CATEGORY.each do |c|
+        work.category = c
+
+        still_valid = work.valid?
+
+        expect( still_valid ).must_equal true
+      end
 
     end
 

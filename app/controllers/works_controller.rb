@@ -1,4 +1,9 @@
 class WorksController < ApplicationController
+
+  def welcome
+    @works = Work.all
+  end
+
   def index
     @works = Work.all
   end
@@ -59,9 +64,35 @@ class WorksController < ApplicationController
     end
   end
 
+  def upvote
+    @work = Work.find_by(id: params[:id])
 
-  def welcome
-    @works = Work.all
+    if @work.nil?
+      head :not_found
+    end
+
+    @user = User.find_by(id: session[:user_id])
+
+    if @user.nil?
+      flash[:error] = "A problem occurred: You must be logged in to do that"
+      redirect_back(fallback_location: root_path)
+
+    else
+      @vote = Vote.new(user: @user, work: @work)
+
+    # add another conditional here for checking if vote already exists for user
+
+      if @vote.save
+        flash[:success] = "Successfully upvoted!"
+        redirect_to works_path
+      else
+        flash[:error] = "Something went wrong - cannot vote same one"
+        redirect_back(fallback_location: root_path)
+      end
+
+    end
+
+
   end
 
 
