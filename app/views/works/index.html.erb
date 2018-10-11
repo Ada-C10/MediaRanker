@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <% Work.albums.each do |work| %>
+      <% Work.list_of("album").each do |work| %>
         <tr>
           <td><%= work.votes.length %></td>
           <td><%= link_to "#{work.title}", work_path(work.id) %></td>
@@ -41,7 +41,7 @@
       </tr>
     </thead>
     <tbody>
-      <% Work.books.each do |work| %>
+      <% Work.list_of("book").each do |work| %>
         <tr>
           <td><%= work.votes.length %></td>
           <td><%= link_to "#{work.title}", work_path(work.id) %></td>
@@ -69,7 +69,7 @@
       </tr>
     </thead>
     <tbody>
-      <% Work.movies.each do |work| %>
+      <% Work.list_of("movie").each do |work| %>
         <tr>
           <td><%= work.votes.length %></td>
           <td><%= link_to "#{work.title}", work_path(work.id) %></td>

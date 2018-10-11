@@ -2,8 +2,8 @@
 
 jackie:
   username: jackie
-  joined: 2018-10-08
+  joined: '2018-10-08'
 
 dan:
   username: dan
-  joined: 2018-10-09
+  joined: '2018-10-09'

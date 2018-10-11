@@ -8,24 +8,20 @@ class Work < ApplicationRecord
   validates :title, uniqueness: { scope: :category }
 
   def self.spotlight
-    return Work.all.max_by { |work| work.votes.length }
+    return sort_by_votes(Work.all).first
   end
 
-  def self.albums
-    return sort_by_votes(Work.all.select { |work| work.category == "album" })
+  def self.list_of(work_category)
+    return sort_by_votes(Work.all.select { |work| work.category == work_category })
   end
 
-  def self.books
-    return sort_by_votes(Work.all.select { |work| work.category == "book" })
-  end
-
-  def self.movies
-    return sort_by_votes(Work.all.select { |work| work.category == "movie" })
+  def vote_count
+    return self.votes.length
   end
 
   private
 
-    def self.sort_by_votes(work_list)
-      return work_list.sort_by { |work| -work.votes.length }
+    def self.sort_by_votes(work_list) # ties are displayed in alphabetical order
+      return work_list.sort_by { |work| [-work.votes.length, work.title] }
     end
 end

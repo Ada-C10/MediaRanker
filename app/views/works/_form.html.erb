@@ -1,17 +1,7 @@
 <h2><%= action_name %></h2>
 
 <section>
-  <% if @work.errors.any? %>
-    <ul class="errors">
-      <% @work.errors.each do |column, message| %>
-      <li>
-        <strong><%= column.capitalize %></strong> <%= message %>
-      </li>
-      <% end %>
-    </ul>
-  <% end %>
-
-  <%= form_with model: @work do |f|%>
+  <%= form_with model: @work, locals: true do |f|%>
       <%= f.label :category %>
       <%= f.select :category, ["album", "book", "movie"] %>
 

@@ -1,26 +1,13 @@
 class WorksController < ApplicationController
-  def index
-    @current_user = User.find_by(id: session[:user_id])
-    # user id will be nil if not logged in or whole author model if they are logged in
+  before_action :find_work, except: [:index, :new, :create]
 
+  def index
     @works = Work.all
   end
 
-  def show
-    @current_user = User.find_by(id: session[:user_id])
-    # user id will be nil if not logged in or whole author model if they are logged in
-
-    @work = Work.find_by(id: params[:id].to_i)
-
-    if @work.nil?
-      render :notfound, status: :not_found
-    end
-  end
+  def show; end
 
   def new
-    @current_user = User.find_by(id: session[:user_id])
-    # user id will be nil if not logged in or whole author model if they are logged in
-
     @work = Work.new
   end
 
@@ -28,88 +15,50 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      flash[:success] = "Work added"
-      redirect_to work_path(@work.id)
+      success_redirect("Work added", work_path(@work.id))
     else
-      flash.now[:error] = "Error: Work not added"
-
-      @work.errors.messages.each do |field, messages|
-        flash.now[field] = messages
-      end
-
-      render :new
+      error_render(:new)
     end
   end
 
-  def edit
-    @current_user = User.find_by(id: session[:user_id])
-    # user id will be nil if not logged in or whole author model if they are logged in
-
-    @work = Work.find_by(id: params[:id].to_i)
-  end
+  def edit; end
 
   def update
-    @work = Work.find_by(id: params[:id].to_i)
     if @work.update(work_params)
-      flash[:success] = "Changes saved"
-      redirect_to work_path(@work.id)
+      success_redirect("Changes saved", work_path(@work.id))
     else
-      flash.now[:error] = "Error: Changes not saved"
-
-      @work.errors.messages.each do |field, messages|
-        flash.now[field] = messages
-      end
-
-      render :edit
+      error_render(:edit)
     end
   end
 
   def destroy
-    work = Work.find_by(id: params[:id].to_i)
-    deleted_work = work.destroy
+    unless @work.nil?
+      @work.votes.each do |vote|
+        vote.destroy
+      end
 
-    flash[:success] = "#{deleted_work.title} deleted"
+      deleted_work = @work.destroy
 
-    redirect_to root_path
+      success_redirect("#{deleted_work.title} deleted", root_path)
+    end
   end
 
   def upvote
-    work = Work.find_by(id: params[:id].to_i)
     user = User.find_by(id: session[:user_id])
 
     if user.nil?
-      flash[:error] = "A problem occurred: You must log in to vote"
-
-      work.errors.messages.each do |field, messages|
-        flash[field] = messages
-      end
-
-      redirect_back(fallback_location: root_path)
-
-    elsif !user.works.include? work # user eligible to vote
-      vote = Vote.new(work: work, user: user, date: Date.today)
+      error_redirect("A problem occurred: You must log in to vote")
+    elsif user.eligible_to_vote?(@work)
+      vote = Vote.new(work: @work, user: user, date: Date.today)
 
       if vote.save
         flash[:success] = "Successfully upvoted!"
         redirect_back(fallback_location: root_path)
       else
-        flash[:error] = "Error: Could not process vote"
-
-        work.errors.messages.each do |field, messages|
-          flash[field] = messages
-        end
-
-        redirect_back(fallback_location: root_path)
+        error_redirect("Error: Could not process vote")
       end
-
-    else # user.votes.works.include? work # user ineligible to vote
-      flash[:error] = "A problem occurred: You've already voted on this work"
-
-      work.errors.messages.each do |field, messages|
-        flash[field] = messages
-      end
-
-      redirect_back(fallback_location: root_path)
+    else # user logged in but ineligible to vote
+      error_redirect("A problem occurred: You've already voted on this work")
     end
   end
 
@@ -117,5 +66,41 @@ class WorksController < ApplicationController
 
     def work_params
       return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+    end
+
+    def find_work
+      @work = Work.find_by(id: params[:id].to_i)
+
+      if @work.nil?
+        flash.now[:warning] = "Cannot find the work"
+        render :notfound, status: :not_found
+      end
+    end
+
+    def success_redirect(message, path)
+      flash[:success] = message
+      redirect_to path
+    end
+
+    def error_redirect(message)
+      find_work
+      flash[:warning] = message
+
+      @work.errors.messages.each do |field, messages|
+        flash[field] = messages
+      end
+
+      redirect_back(fallback_location: root_path)
+    end
+
+    def error_render(view)
+      find_work
+      flash.now[:warning] = "Error: Work not saved"
+
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
+
+      render view
     end
 end
