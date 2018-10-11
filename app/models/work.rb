@@ -8,12 +8,14 @@ class Work < ApplicationRecord
     return self.id
   end
 
-  def total_votes
+  def votes_for_this_work
     work_id = find_work_id
-
     array_of_votes = Vote.where(work_id: work_id)
-    num_of_votes = array_of_votes.count
+    return array_of_votes
+  end
 
+  def total_votes
+    num_of_votes = votes_for_this_work.count
     return num_of_votes
   end
 
