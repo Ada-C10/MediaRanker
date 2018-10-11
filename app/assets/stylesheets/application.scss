@@ -17,6 +17,8 @@
 /* Import scss content */
 @import "**/*";
 
+$dark-teal: #26A69A;
+
 main {
   padding: 2rem;
 }
@@ -62,7 +64,17 @@ h2.top-ten {
 }
 
 a, h2 {
-  color: #26A69A;
+  color: $dark-teal;
+  font-weight: 700;
+}
+
+.btn-primary {
+  background-color: $dark-teal;
+  border-color: $dark-teal;
+}
+
+body {
+  font-family: "Gudea", sans-serif;
 }
 
 .card, .list-group-item {
