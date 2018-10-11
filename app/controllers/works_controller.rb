@@ -5,7 +5,7 @@ class WorksController < ApplicationController
 
   def show
     id = params[:id].to_i
-    @works = vote.find(params[:id].to_i)
+    @work = Work.find(params[:id].to_i)
 
     if id.nil?
       render :notfound
@@ -69,4 +69,4 @@ class WorksController < ApplicationController
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :published_year, :description)
   end
-end  
+end
