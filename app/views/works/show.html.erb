@@ -1,12 +1,27 @@
-<h1> Here is info on one piece of media </h1>
+
 <section>
 <h2><%=@work.title %></h2>
   <h3> <%= "Created by: #{@work.creator}"%></h>
   <h3> <%= "Published: #{@work.publication_year}"%> </h3>
-  <h3> <%= "Number of Votes: #{@work.votes.length}"%> </h3>
   <h3> <%= @work.description %></h3>
 
-  <%= link_to "Edit", edit_work_path(@work.id) %>
-  <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure? This cannot be undone!'} %>
-  <%= link_to "Upvote", upvote_path(@work.id), method: :post, class: 'btn btn primary'%>
+  <%= link_to "Return to media rankings", root_path,class: 'btn btn-primary', role: "button" %>
+  <%= link_to "Edit", edit_work_path(@work.id),class: 'btn btn-primary', role: "button" %>
+  <%= link_to "Delete", work_path(@work.id), method: :delete,class: 'btn btn-danger', role: "button", data: { confirm: 'Are you sure? This cannot be undone!'} %>
+  <%= link_to "Upvote", upvote_path(@work.id), method: :post, class: 'btn btn-primary', role: "button"%>
 </section>
+
+<table class="table">
+<h2> <%= "#{@work.votes.length} Votes for this #{@work.category}"%></h2>
+  <thead>
+    <tr>
+      <th> User </th>
+      <th> Date </th>
+    </tr>
+  </thead>
+  <tbody>
+<tr> <% @work.votes.each do |vote| %>
+  <td><%= link_to "#{vote.user.name}", user_path(vote.user.id) %></td>
+  <td> <%= vote.created_at  %></td>
+</tbody>
+<% end %>
