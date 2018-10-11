@@ -12,4 +12,17 @@ class UsersController < ApplicationController
       head :not_found
     end
   end
+
+  def new
+  end
+
+  def create
+  end
+
+  private
+  
+  def find_work
+    @work = Work.find_by(id: params[:id])
+  end
+
 end

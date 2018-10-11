@@ -7,11 +7,11 @@
 
   <div class="links-bar">
     <%= link_to "Back to all users", users_path, class: "all_users" %>
-    <%= link_to "Edit", edit_user_path(@user.id), class: "edit-link" %>
-    <%= link_to "Delete", user_path(@user.id), method: :delete, data: {confirm: "Are you sure you want to get rid of user #{@user.username}?" } %>
+    <%= link_to "Return to all media", root_path, class: "homepage" %>
   </div>
 </section>
 
+<div class="user-table-container"
 <table class="user_table">
   <h3>Votes</h3>
   <tr>
@@ -25,9 +25,4 @@
 
   </tr>
 </table>
-
-<div class="Homepage">
-  <h3>
-    <%= link_to "Return to all media", root_path, class: "homepage" %>
-  </h3>
 </div>

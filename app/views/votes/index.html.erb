@@ -1,0 +1,72 @@
+<div class="container">
+
+  <div class="div1">
+    <h3>
+      <%= link_to "new works", new_work_path, class: "new-work" %>
+    </h3>
+  </div>
+
+  <div class="div2">
+    <h3>
+      <%= link_to "all works", works_path, class: "homepage" %>
+    </h3>
+  </div>
+
+  <div class="div5">
+    <h3>your works</h3>
+  </div>
+
+  <div class="div6">
+    <h2>BOOKS</h2>
+    <ol class="book">
+      <% @works.each do |work| %>
+      <% if work.category == "book" %>
+      <li>
+        <p>
+          <strong><%=link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
+        </p>
+        <p>
+          <%= "#{work.votes.count}" %> votes
+        </p>
+      </li>
+      <% end %>
+    </ol>
+    <% end %>
+  </div>
+
+  <div class="album">
+    <h2>ALBUMS</h2>
+    <ol class="album">
+      <% @works.each do |work| %>
+      <% if work.category == "book" %>
+      <li>
+        <p>
+          <strong><%=link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
+        </p>
+        <p>
+          <%= "#{work.votes.count}" %> votes
+        </p>
+      </li>
+      <% end %>
+    </ol>
+    <% end %>
+  </div>
+
+  <div class="album">
+    <h2>MOVIES</h2>
+    <ol class="album">
+      <% @works.each do |work| %>
+      <% if work.category == "movie" %>
+      <li>
+        <p>
+          <strong><%=link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
+        </p>
+        <p>
+          <%= "#{work.votes.count}" %> votes
+        </p>
+      </li>
+      <% end %>
+    </ol>
+    <% end %>``
+
+  </div>

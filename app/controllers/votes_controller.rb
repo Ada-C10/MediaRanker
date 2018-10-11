@@ -1,12 +1,9 @@
 class VotesController < ApplicationController
 
-  def create
-    # if params[:user_id]
-    #   user = User.find_by(id: params[:user_id])
-    # end
+  def index
   end
 
 
-  def edit
+  def create
   end
 end
