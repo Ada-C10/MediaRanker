@@ -4,7 +4,7 @@
 <%= form_with model: @work do |f| %>
 
   <%= f.label :category %><br>
-  <%= f.text_field :category %>
+  <%= f.select :category, ['Movie', 'Book', 'Album'] %>
   <br>
   <br>
   <%= f.label :title %><br>
