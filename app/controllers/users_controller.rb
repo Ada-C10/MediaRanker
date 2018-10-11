@@ -1,23 +1,14 @@
 class UsersController < ApplicationController
   def index
+    @users = User.all.order(join_date: :asc)
   end
 
   def show
-  end
+    @user = User.find_by(id: params[:id])
 
-  def new
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def create
-
-  end
-
-  def destroy
+    if @user.nil?
+      flash.now[:danger] = "Cannot find the user #{params[:id]}"
+      render :notfound, status: :not_found
+    end
   end
 end

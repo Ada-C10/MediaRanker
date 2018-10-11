@@ -16,7 +16,7 @@
       <th>Date</th>
     </tr>
     <tbody>
-      <%= render partial: "votelist", collection: @work.votes %>
+      <%= render partial: "votelist", collection: @work.votes.order(date: :desc) %>
     </tbody>
   </table>
 </section>

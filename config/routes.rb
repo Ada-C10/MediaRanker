@@ -10,5 +10,5 @@ Rails.application.routes.draw do
 
   # Restful Routes
   resources :works
-  resources :users
+  resources :users, only: [:index, :show]
 end

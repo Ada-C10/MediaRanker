@@ -86,5 +86,12 @@ describe Vote do
         expect(record).must_equal false
       end
     end
+
+    describe "destroy_votes" do
+      it "will destroy all votes that match a work_id" do
+        work.destroy_votes
+        expect(work.votes.count).must_equal 0
+      end
+    end
   end
 end
