@@ -9,7 +9,7 @@
   </thead>
   <tr>
     <%@users.each do |user| %>
-    <td scope="row"><%=user.username%></td>
+    <td scope="row"><%=link_to user.username, user_path(user)%></td>
   </tr>
   <%end%>
 </table>
