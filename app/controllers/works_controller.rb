@@ -56,14 +56,35 @@ class WorksController < ApplicationController
   # end
 
   def upvote
-    @vote = Vote.new(quantity: 1, user_id: @current_user.id, work_id: @work.id)
-    raise
-    if @vote.save
-      redirect_back fallback_location: works_path
+    if @current_user.nil?
+      # puts session of flash warning?
+      puts "Error!"
+
+
+    elsif @current_user.votes.find_by(work_id: @work.id).nil?
+
+      @vote = Vote.new(quantity: 1, user_id: @current_user.id, work_id: @work.id)
+
+      if @vote.save
+        redirect_back fallback_location: works_path
+      else
+        puts "#{@vote.errors}"
+      end
     else
-      puts "#{@vote.errors}"
+      puts "Error!"
+      # flash.now[:warning] = "Cannot vote twice"
     end
   end
+
+  # def upvote
+  #   @vote = Vote.new(quantity: 1, user_id: @current_user.id, work_id: @work.id)
+  #
+  #   if @vote.save
+  #     redirect_back fallback_location: works_path
+  #   else
+  #     puts "#{@vote.errors}"
+  #   end
+  # end
 
 
   private
