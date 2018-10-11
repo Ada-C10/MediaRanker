@@ -1,36 +1,54 @@
 <h1>List of Works</h1>
 
    <br />
-   <table>
-      <tr>
+<table>
+     <colgroup span="5"> </colgroup>
+     <tr>
         <h3>Albums</h3>
         <% @albums.each do |album| %>
-         <td>Title: <%= album.title %></td>
-         <td>Created by: <%= album.creator %></td>
-         <td>Published: <%= album.publication_year %></td>
-         <% end %>
-      </tr>
+         <th>Title</th>
+         <th>Created by</th>
+         <th>Published</th>
+     </tr>
+     <tr>
+       <td><%= link_to album.title, work_path(album.id) %> </td>
+       <td><%= album.creator %></td>
+       <td><%= album.publication_year %></td>
+       <% end %>
+     </tr>
+</table>
 
-
-      <br />
-      <tr>
+<table>
+     <tr>
         <h3>Books</h3>
         <% @books.each do |book| %>
-         <td>Title: <%= link_to book.title, work_path(book.id) %> </td>
-         <td>Created by: <%= book.creator %></td>
-         <td>Published: <%= book.publication_year %></td>
-         <% end %>
-      </tr>
+         <th>Title</th>
+         <th>Created by</th>
+         <th>Published</th>
+     </tr>
 
 
-      <br />
-      <tr>
+     <td><%= link_to book.title, work_path(book.id) %> </td>
+     <td><%= book.creator %></td>
+     <td><%= book.publication_year %></td>
+
+     <% end %>
+</table>
+
+
+<table>
+     <tr>
         <h3>Movies</h3>
         <% @movies.each do |movie| %>
-         <td>Title: <%= link_to movie.title, work_path(movie.id) %></td>
-         <td>Created by: <%= movie.creator %></td>
-         <td>Published: <%= movie.publication_year %></td>
-         <% end %>
-      </tr>
+         <thead>Title</thead>
+         <thead>Created by</thead>
+         <thead>Published</thead>
+     </tr>
+
+
+     <td><%= link_to movie.title, work_path(movie.id) %> </td>
+     <td><%= movie.creator %></td>
+     <td><%= movie.publication_year %></td>
+     <% end %>
 
 </table>
