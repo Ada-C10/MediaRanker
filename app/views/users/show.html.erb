@@ -15,13 +15,17 @@
       </tr>
     </thead>
     <tbody>
-        
+      <% @user.votes.each do |vote| %>
+      <% works = Work.where(id: vote.work_id) %>
+        <%works.each do |work| %>
         <tr>
-          <td><a href="/works/10">Winter Mug</a></td>
-          <td>Tia Weissnat II</td>
-          <td>1990</td>
-          <td>Album</td>
-          <td>Oct 10, 2018</td>
+          <td><%= link_to "#{work.title}", works_path(work.id) %></a></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= work.category %></td>
+          <td><%= vote.created_at %></td>
         </tr>
+        <%end%>
+      <%end%>
     </tbody>
   </table>
