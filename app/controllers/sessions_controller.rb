@@ -6,13 +6,12 @@ class SessionsController < ApplicationController
     if user.nil?
       #create new user
       user = User.create(name: params[:user][:name])
+    end
 
-    else
       #log in the existing user
       session[:user_id] = user.id #where does :user_id come from?
       flash[:success] = "#{user.name} Successfully logged in!"
       redirect_to root_path
-    end
   end
 
   def new

@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   def index
     @users = User.order(:name)
-
+    
     @current_user = User.find_by(id: session[:user_id])
     #this finds the current user in the session so i can display it where i need
+
   end
 
   def show
