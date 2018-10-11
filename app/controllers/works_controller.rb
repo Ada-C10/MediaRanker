@@ -37,10 +37,17 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work.update(work_params)
-      redirect_to works_path
+      redirect_to work_path(@work.id)
     else
       render :edit
     end
+  end
+
+  def destroy
+      @work = Work.find_by(id: params[:id])
+
+      @work.destroy
+      redirect_to works_path
   end
 
 
