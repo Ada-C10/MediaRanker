@@ -22,8 +22,14 @@ class Work < ApplicationRecord
     return (WORKS)
   end
 
+  # Sort method - Apply to works index pagew 
+  def self.sort_by_vote
+
+
+  end
+
   # find top work for media Spotlight
-  
+
 
   # Method to sort by category
   # Handle if there are no works
