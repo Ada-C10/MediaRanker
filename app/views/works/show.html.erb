@@ -9,8 +9,8 @@
   <section>
     <li class="btn btn-primary"><%=link_to "View top media", root_path%></li>
     <li class="btn btn-primary"><%= link_to "Edit", edit_work_path(@work.id)%></li>
-    <a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/25/upvote">Upvote</a>
-    <%#= if %>
+    <li class="btn btn-primary" ><%= link_to "Upvote", work_votes_path(@work.id), method: :post%></li>
+
     <li class="btn btn-danger"><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Please confirm you would like to be deleted as a driver"} %>
   </section>
 </section>

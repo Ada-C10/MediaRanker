@@ -6,4 +6,16 @@ class Work < ApplicationRecord
   validates :creator, presence: true
   validates :publication_year, numericality: { greater_than: 999, less_than: 10000 }
   validates :description, presence: true
+
+
+  def upvote(arg)
+    if arg[:user_id].present?
+      vote = Vote.new(work_id: self.id, user_id: arg[:user_id])
+      self.votes << vote
+      vote.save
+    else
+      raise ArugmentError, "User Id doesnt exsist"
+    end
+  end
+
 end

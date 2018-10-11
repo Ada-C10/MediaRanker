@@ -5,16 +5,16 @@ class UsersController < ApplicationController
     @users = User.all.order(:id)
   end
 
-  def show; end
+  def show
   #uses the filter to find user
-  #   id = params[:id]
-  #   @user = User.find_by(id: id)
-  #
-  #   if id == nil
-  #     render :not_found, status: :not_found
-  #   end
-  #
-  # end
+    id = params[:id]
+    @user = User.find_by(id: id)
+
+    if id == nil
+      render :not_found, status: :not_found
+    end
+
+  end
 
   def edit; end
   #uses the filter to find user

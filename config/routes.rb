@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :votes, only: [:create]
   end
 
-  # post 'works/upvote', to: 'works#upvote', as 'upvote'
+  post 'works/:id/upvote', to: 'works#upvote', as: 'upvote'
 
 
 # get 'sessions/new to: session#new sessions

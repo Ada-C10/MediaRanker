@@ -14,46 +14,11 @@
   <tbody>
       <tr>
         <% @users.each do |user| %>
-        <td><%= link_to user.username, user_path(user.id) %></td>
-        <td> vote method </td>
+        <td><%= link_to user.username, user_path(user.id)%></td>
+        <td><%= user.votes.length %></td>
+        <td><%= Date.parse(user[:created_at].to_s)%></td>
+      </tr>
         <% end %>
-      </tr>
-      <tr>
-        <td><a href="/users/1">dee</a></td>
-        <td>3</td>
-        <td>Oct  6, 2018</td>
-      </tr>
-      <tr>
-        <td><a href="/users/2">hello</a></td>
-        <td>0</td>
-        <td>Oct  7, 2018</td>
-      </tr>
-      <tr>
-        <td><a href="/users/3">Totoro</a></td>
-        <td>2</td>
-        <td>Oct  7, 2018</td>
-      </tr>
-      <tr>
-        <td><a href="/users/4">adfdf </a></td>
-        <td>0</td>
-        <td>Oct  8, 2018</td>
-      </tr>
-      <tr>
-        <td><a href="/users/5">Chris</a></td>
-        <td>2</td>
-        <td>Oct  8, 2018</td>
-      </tr>
-      <tr>
-        <td><a href="/users/6">royalfro</a></td>
-        <td>4</td>
-        <td>Oct  8, 2018</td>
-      </tr>
-      <tr>
-        <td><a href="/users/7">amanda</a></td>
-        <td>5</td>
-        <td>Oct  8, 2018</td>
-      </tr>
-
   </tbody>
 </table>
 

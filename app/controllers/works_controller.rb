@@ -57,6 +57,14 @@ class WorksController < ApplicationController
     end
   end
 
+  def upvote
+    id = params[:id]
+    @work = Work.find_by(id: id)
+    @work.upvote(user_id: @current_user.id)
+    redirect_to works_path
+  end
+
+
   def destroy
     id = params[:id]
     @work = Work.find_by(id: id)
@@ -68,7 +76,7 @@ class WorksController < ApplicationController
 
   private
   def work_params
-    return params.require(:work).permit(:title, :publication_year, :creator, :description, :user_id)
+    return params.require(:work).permit(:title, :category, :publication_year, :creator, :description, :user_id)
   end
 
 end
