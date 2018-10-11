@@ -5,4 +5,12 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create]
   post '/sessions/logout', to: 'sessions#logout', as: 'logout'
+
+  resources :users do
+    resources :votes, include: [:index]
+  end
+
+  resources :works do
+    resources :votes, include: [:index]
+  end
 end
