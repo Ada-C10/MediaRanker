@@ -26,10 +26,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class = "table_grid">user name</td>
-          <td class = "table_grid">date voted</td>
-        </tr>
+
+        <% users = @work.users_that_voted_on_this_work %>
+        <% users.each do |user| %>
+          <tr>
+            <td class = "table_grid">
+              <%= user.username %>
+            </td>
+            <td class = "table_grid">
+              date here
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
 </section>

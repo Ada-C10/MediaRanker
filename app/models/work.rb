@@ -16,4 +16,22 @@ class Work < ApplicationRecord
 
     return num_of_votes
   end
+
+  def users_that_voted_on_this_work
+    work_id = find_work_id
+    array_of_votes = Vote.where(work_id: work_id)
+    users_ids = []
+
+    array_of_votes.each do |vote|
+      users_ids << vote.user_id
+    end
+
+    array_of_users = []
+    users_ids.each do |x|
+      user = User.find_by(id: x)
+      array_of_users << user
+    end
+
+    return array_of_users
+  end
 end
