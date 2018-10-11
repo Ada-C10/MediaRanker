@@ -1,6 +1,13 @@
+<%= render partial: 'work_form',
+locals: {
+  model: @work
+}
+%>
 
 <%= form_with model: @work, class: 'work-form' do |f| %>
+
 <h3><%= form_title %></h3>
+
 <div class="work-form">
   <%= f.label :title %>
   <%= f.text_field :title %>

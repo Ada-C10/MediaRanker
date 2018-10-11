@@ -1,0 +1,17 @@
+<%= render partial: 'user_form',
+locals: {
+  model: @user
+}
+%>
+
+<%= form_with model: @user, class: 'user-form' do |f| %>
+
+<h3><%= form_title %></h3>
+
+<div class="user-form">
+  <%= f.label :username%>
+  <%= f.text_field :username %>
+
+  <%= f.submit action_type, class: "user btn" %>
+  <% end %>
+</div>
