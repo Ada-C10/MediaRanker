@@ -19,7 +19,7 @@
       <% @works.top_ten(category).each do |work| %>
       <tbody>
         <tr>
-          <td>NUM VOTES HERE</td>
+          <td><%=Work.get_num_votes(work)%> votes</td>
           <td><%=link_to work.title, work_path(work)%></td>
           <td><%=work.creator%></td>
           <td><%=work.publication_year%></td>

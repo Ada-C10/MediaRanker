@@ -24,5 +24,28 @@
     </button>
 
   </div>
-    <h1>ADD VOTES FOR THIS WORK YADA YADA</h1>
+    <h1><%=Work.get_num_votes(@work)%> Votes for this <%=@work.category%></h1>
+    <table class="table">
+      <thead>
+        <th scope="col">
+          User
+        </th>
+        <th scope="col">
+          Date
+        </th>
+      </thead>
+      <% @work.votes.each do |vote| %>
+      <tbody>
+        <tr>
+          <td>
+            <%=User.find_by(id: vote.user_id).username%>
+          </td>
+          <td>
+            <%=Vote.get_date(vote)%>
+          </td>
+        </tr>
+      </tbody>
+      <%end%>
+
+    </table>
 </div>
