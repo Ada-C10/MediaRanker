@@ -18,7 +18,7 @@ describe Work do
       valid_work = @work.valid?
 
       # Assert
-      # expect(valid_work).must_be_instance_of Work
+      expect(@work).must_be_instance_of Work
       expect(valid_work).must_equal true
     end
 
@@ -47,27 +47,33 @@ describe Work do
     end
 
     it 'has one of three valid categories' do
-      # Arrange
-      @work.category = Work.first.category
+      @work.category = "album"
+      expect(@work.valid?).must_equal true
 
-      # Act
-      is_valid = @work.valid?
+      @work.category = "movie"
+      expect(@work.valid?).must_equal true
 
-      # Assert
-      expect(is_valid).must_equal true
+      @work.category = "book"
+      expect(@work.valid?).must_equal true
 
-      # Expected true (TrueClass) to respond to #category.
-      # test/models/work_test.rb:58:in `block (3 levels) in <main>'?????
-      # expect(is_valid).must_respond_to :category
+      @work.category = "FAKE"
+      expect(@work.valid?).must_equal false
     end
 
-    it 'has a publication year that has only integers' do
+    it 'only accepts publication year as an integer' do
+      @work.publication_year = 1234
+      expect(@work.valid?).must_equal true
 
+      @work.publication_year = "1234"
+      expect(@work.valid?).must_equal true
+
+      @work.publication_year = "abcd"
+      expect(@work.valid?).must_equal false
     end
 
-    # it 'has a description' do
-    #
-    # end
+    it 'responds to votes' do
+
+    end
 
   end
 end
