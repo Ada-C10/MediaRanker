@@ -7,6 +7,8 @@ harrypotter:
   category: movie
   description: magical movie
 
+
+
 poodrbook:
   title: Practical OOD in Ruby
   creator: metz
