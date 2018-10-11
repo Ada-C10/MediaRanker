@@ -27,6 +27,9 @@ class WorksController < ApplicationController
         flash[:success] = "Successfully created #{@work.category} #{@work.id}"
         redirect_to work_path(@work.id)
     else
+        flash[:warning] = "A problem occurred: Could not create #{@work.category}"
+        flash.now
+
         render :new
     end
   end
@@ -43,7 +46,8 @@ class WorksController < ApplicationController
 
   def destroy
     @work.destroy
-      redirect_to works_url, notice: 'Work was successfully deleted.'
+      flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
+      redirect_to works_path
   end
 
 
