@@ -8,9 +8,12 @@ class Work < ApplicationRecord
 
   CATEGORIES = %w[album book movie]
 
+  def self.get_works_of_type(category)
+      return Work.where(category: category).sort_by { |work| work.votes.count}.reverse
+  end
 
   def self.top_ten(category)
-    return Work.where(category: category)
+    return get_works_of_type(category)[0..9]
   end
 
   def self.get_categories

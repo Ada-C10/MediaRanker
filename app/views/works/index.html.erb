@@ -1,5 +1,3 @@
-<%= render partial: 'layouts/form_errors', locals: { model: @works } %>
-
 <div id="works-index">
 
   <h2>List of Works</h2>
@@ -18,7 +16,7 @@
           <th scope="col">Upvote</th>
         </tr>
       </thead>
-      <% @works.top_ten(category).each do |work| %>
+      <% @works.get_works_of_type(category).each do |work| %>
       <tbody>
         <tr>
           <td><%=Work.get_num_votes(work)%> votes</td>

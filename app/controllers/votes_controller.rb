@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  include VotesHelper
 
   def create
     @vote = Vote.new(
@@ -14,10 +15,9 @@ class VotesController < ApplicationController
 
     else
 
-      flash[:error] = "A problem occured: Could not upvote"
+      flash[:error] = "A problem occured: Could not upvote. " + get_error_message(@vote)
 
-      redirect_back
-      # redirect_back(fallback_location: home_path)
+      redirect_back(fallback_location: home_path)
     end
 
 
