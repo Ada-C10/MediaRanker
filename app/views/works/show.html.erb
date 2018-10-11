@@ -5,3 +5,8 @@ Creator: <%= @work.creator %>
 Published: <%= @work.publication_year %>
 <br>
 Description: <%= @work.description %>
+
+
+    <div><%= link_to "Edit Work Info", edit_work_path(@work.id) %> </div>
+
+<div><%= link_to "Delete Work", work_path(@work), method: :delete, data: { confirm: "are you sure you want to delete #{@work.title}"} %></div>
