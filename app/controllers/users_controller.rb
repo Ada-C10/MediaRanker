@@ -13,10 +13,9 @@ class UsersController < ApplicationController
   end
 
   def login
-    user = User.find_by(id: params[:user][:id])
+    user = User.find_by(name: params[:user][:name])
 
     if user.nil?
-
       user = User.create(name: params[:user][:name])
     end
 
