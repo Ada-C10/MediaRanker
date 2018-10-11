@@ -9,14 +9,20 @@ class SessionsController < ApplicationController
 
     if @user
       flash[:success] = "Successfully logged in as existing user #{name}"
-      session[:user_id] = @user.id
 
     else
       user = User.create(username: name)
-      flash.now[:error] = "Successfully created new user #{name} with ID #{user.id}"
+      flash[:error] = "Successfully created new user #{name} with ID #{user.id}"
     end
-
+    
+    session[:user_id] = @user.id
     redirect_to works_path
+  end
+
+  def logout
+    session[:user_id] = nil
+    flash[:success] = "Successfully logged out"
+    redirect_to home_path
   end
 
   private
