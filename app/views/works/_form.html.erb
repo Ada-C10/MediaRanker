@@ -1,42 +1,31 @@
-<%= form_with(model: work, local: true) do |form| %>
-  <% if work.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(work.errors.count, "error") %> prohibited this work from being saved:</h2>
+<%= form_with model: @work do |form| %>
 
-      <ul>
-      <% work.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :category %>
     <%= form.select :category, ['album', 'book', 'movie'] %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :creator %>
     <%= form.text_field :creator %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :publication_year %>
     <%= form.text_field :publication_year %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit class: 'btn btn-primary'%>
   </div>
 <% end %>

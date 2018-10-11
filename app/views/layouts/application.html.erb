@@ -56,6 +56,17 @@
            <% flash.each do |name, message| %>
                 <div class="alert-<%= name %>">
                    <span><%= message %></span>
+                   <% if @work %>
+                     <% if @work.errors.any? %>
+                       <ul>
+                         <% @work.errors.each do |column, message| %>
+                           <li>
+                             <%= "#{column}: #{message}" %>
+                           </li>
+                         <% end %>
+                       </ul>
+                     <% end %>
+                    <% end %>
                </div>
            <% end %>
          </section>
