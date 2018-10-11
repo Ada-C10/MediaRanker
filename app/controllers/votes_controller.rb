@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
   def create
     if !session[:user_id]
-      flash[:error] = "You must log in to do that"
+      flash[:warning] = "A problem occurred: You must log in to do that"
     else
       Vote.create(work_id: params[:id], user_id: session[:user_id])
     end

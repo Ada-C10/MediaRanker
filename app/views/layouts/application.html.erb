@@ -50,6 +50,20 @@
       </nav>
     </header>
 
+    <section class='alert__container'>
+      <% if flash.any? %>
+        <section class="flash">
+           <% flash.each do |name, message| %>
+                <div class="alert-<%= name %>">
+                   <span><%= message %></span>
+               </div>
+           <% end %>
+         </section>
+      <% end%>
+    </section>
+
+
+
     <%= yield %>
   </body>
 </html>
