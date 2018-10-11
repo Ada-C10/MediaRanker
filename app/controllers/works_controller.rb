@@ -29,6 +29,7 @@ class WorksController < ApplicationController
       @user_id =  params[:user_id]
       @work.user_id = @user_id
     end
+
   end
 
   def update

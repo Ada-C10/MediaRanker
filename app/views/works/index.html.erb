@@ -1,14 +1,18 @@
 
+<main>
+  <h2>List of Works</h2>
+  <section class="media-table">
 
 <%['movie', 'book', 'album'].each do |category| %>
-<h2><%=category%>s </h2>
-<table style="width:100%">
-  <tr class="header_font">
-    <th>Votes</th>
+<h4><%="#{category.upcase}"%>S </h4>
+<table class="table">
+  <thead>
+  <tr>
+    <th width="80">Votes</th>
     <th>Title</th>
     <th>Created By</th>
-    <th>Published</th>
-    <th>Upvote</th>
+    <th width="100">Published</th>
+    <th width="100">Upvote</th>
   </tr>
 
   <% @works.each do |work| %>
@@ -23,6 +27,9 @@
     <%end%>
   </tr>
 </table>
-
-
 <%end%>
+
+<a class="btn btn-secondary" href="/">View top media</a>
+<a class="btn btn-primary" href="/works/new">Add a new work</a>
+
+  </main>

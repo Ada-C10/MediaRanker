@@ -19,16 +19,16 @@
         <nav class="app-header__nav">
           <ul class="nav app-header__site-nav-container">
             <li class="nav-item app-header__nav_item">
-            <li class="nav-link" ><%=link_to "View top media", root_path%></li>
+            <%=link_to "View top media", root_path, class: "nav-link" %>
             </li>
             <li class="nav-item app-header__nav_item">
-              <li class="nav-link" ><%=link_to "View all media", works_path%></li>
+            <%=link_to "View all media", works_path, class: "nav-link"%>
             </li>
             <li class="nav-item app-header__nav_item">
-              <li class="nav-link" ><%=link_to "Add a new work", new_work_path%></li>
+            <%=link_to "Add a new work", new_work_path, class: "nav-link"%>
             </li>
             <li class="nav-item app-header__nav_item">
-              <li class="nav-link" ><%=link_to "View all users", users_path %></li>
+            <%=link_to "View all users", users_path, class: "nav-link" %>
             </li>
           </ul>
           <ul class="nav app-header__user-nav-container">
@@ -44,8 +44,9 @@
 
           </ul>
         </nav>
+      </header>
 
-        <section class="flash">
+        <section class= "alert__container">
            <% flash.each do |name, message| %>
              <% if message.class == Array %>
              <div class="alert-warning">
@@ -65,7 +66,7 @@
            <% end %> -->
          </section>
 
-    </header>
+
 
 
   <main>
