@@ -36,7 +36,6 @@ describe User do
         expect(valid).must_equal false
         expect(other_user.errors.messages).must_include :name
       end
-      # Can you access the name property?
 
   end
 

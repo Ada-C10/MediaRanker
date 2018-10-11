@@ -15,9 +15,6 @@ describe Vote do
   end
 
   describe 'relations' do
-    it 'must relate to a work' do
-
-    end
 
     it 'belongs to a work' do
       expect(@vote).must_respond_to :work
