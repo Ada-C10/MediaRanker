@@ -14,6 +14,27 @@
     <h1><a href="/">Media Ranker</a>
       <small>Ranking the Best of Everything</small>
     </h1>
+    <nav class="header_nav">
+      <ul class="header_nav_list">
+        <li class="header_nav_items"><a href="/">View top media</a></li>
+        <li class="header_nav_items"><a href="/works">View all media</a></li>
+        <li class="header_nav_items"><a href="/works/new">Add a new work</a></li>
+        <li class="header_nav_items"><a href="/users">View all users</a></li>
+
+        <section class="login-info">
+          <% if @logged_in_user %>
+            <p>
+              Currently logged in as
+              <%= @logged_in_user.username %>
+              <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
+            </p>
+          <% else %>
+            <%= link_to "Log in", new_session_path, class: "btn btn-outline-info" %>
+          <% end %>
+        </section>
+        </li>
+      </ul>
+    </nav>
   </header>
 
   <%= yield %>
