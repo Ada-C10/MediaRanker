@@ -1,11 +1,8 @@
 class WorksController < ApplicationController
   def index
-    if params[:title]
-      work = Work.find_by(id: params[:title])
-      @works = work.titles
-    else
-      @works = Work.all
-    end
+    @movies = Work.where(category: "movie")
+    @albums = Work.where(category: "album")
+    @books = Work.where(category: "book")
   end
 
   def show

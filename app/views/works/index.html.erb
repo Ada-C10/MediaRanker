@@ -1,56 +1,73 @@
 <h2 class="headliner">List of Works</h2>
 
+<h3>Movies</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Votes</th>
+      <th scope="col">Title</th>
+      <th scope="col">Created By</th>
+      <th scope="col">Published</th>
+      <th scope="col">Upvote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |work| %>
+      <tr>
+        <td>a vote</td>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td>Upvote!</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<!-- <% albums = Work.where(category: "album") %>
-<h1>Albums</h1>
-<% albums.each do |album, info| %>
+<h3>Books</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Votes</th>
+      <th scope="col">Title</th>
+      <th scope="col">Created By</th>
+      <th scope="col">Published</th>
+      <th scope="col">Upvote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |work| %>
+      <tr>
+        <td>a vote</td>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td>Upvote!</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<li>
-<%= album.title %>
-</li>
-
-<% end %>
-
-<% movies = Work.where(category: "movie") %>
-<h1>Movies</h1>
-<% movies.each do |movie, info| %>
-
-<li>
-<%= movie.title %>
-</li>
-<% end %> -->
-
-<div>
-  <% ['album', 'book', 'movie'].each do |category| %>
-      <table class="table">
-        <thead>
-          <h3><%= "#{category}s".capitalize %></h3>
-          <tr>
-            <th scope="col">Votes</th>
-            <th scope="col">Title</th>
-            <th scope="col">Created By</th>
-            <th scope="col">Published</th>
-            <th scope="col">Upvote</th>
-          </tr>
-        </thead>
-          <% @works.each do |work| %>
-        <tbody>
-          <tr>
-            <!-- <th scope="row">1</th> -->
-            <td>a vote</td>
-            <td><%= link_to work.title, work_path(work.id) %></td>
-            <td><%= work.creator %></td>
-            <td><%= work.publication_year %></td>
-            <td>Upvote!</td>
-            <!-- <td><%= link_to work.title, work_path(work.id) %></td> -->
-          </tr>
-        </tbody>
-          <!-- <% if work.category == 'album' %> -->
-          <!-- <% elsif work.category == 'book' %> -->
-          <!-- <% elsif work.category == 'movie' %> -->
-          <% end %>
-        <% end %>
-      </ul>
-    </table>
-  <% end %>
-</div>
+<h3>Albums</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Votes</th>
+      <th scope="col">Title</th>
+      <th scope="col">Created By</th>
+      <th scope="col">Published</th>
+      <th scope="col">Upvote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @albums.each do |work| %>
+      <tr>
+        <td>a vote</td>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td>Upvote!</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
