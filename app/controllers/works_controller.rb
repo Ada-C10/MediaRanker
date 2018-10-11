@@ -84,7 +84,7 @@ class WorksController < ApplicationController
 
     def error_redirect(message)
       find_work
-      flash[:error] = message
+      flash[:warning] = message
 
       @work.errors.messages.each do |field, messages|
         flash[field] = messages
@@ -95,7 +95,7 @@ class WorksController < ApplicationController
 
     def error_render(view)
       find_work
-      flash.now[:error] = "Error: Work not saved"
+      flash.now[:warning] = "Error: Work not saved"
 
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages

@@ -37,10 +37,10 @@
         <% flash.each do |name, message| %>
           <% if message.class == Array %>
             <% message.each do |msg| %>
-              <div class="alert-warning"><%= "#{name}: #{msg}" %></div>
+              <div class="alert-<%= name %>"><%= "#{name}: #{msg}" %></div>
             <% end %>
           <% else %>
-            <div class="alert-warning"><%= message %></div>
+            <div class="alert-<%= name %>"><%= message %></div>
           <% end %>
         <% end %>
       </section>
