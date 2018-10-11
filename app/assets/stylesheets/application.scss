@@ -64,11 +64,17 @@ nav {
 nav a {
   color: #00796B;
   padding: 0.5rem 1rem;
-  display: block; 
+  display: block;
 }
 
 .top_ten_container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 2em;
+}
+
+.btn-primary {
+  background-color: #26A69A;
+  color: white;
+  border-color: #26A69A;
 }

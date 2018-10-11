@@ -9,7 +9,12 @@ class WorksController < ApplicationController
     # User id = from session (current user.id)
     # Work id = work.id
     # Push new vote into @work.votes << vote, @user.votes ? Give it a try
-
+    @work.votes.create(
+      {
+        user_id: @current_user.id,
+        date_created: Date.today
+      }
+    )
     # Might not need this
     # Should be able to grab the current user
     # Should be able to link to current work
@@ -44,7 +49,6 @@ class WorksController < ApplicationController
     end
   end
 
-# Has issue with update/creating a new work, .work_id method not found
   def update
     if @work && @work.update(work_params)
       redirect_to work_path(@work.id)
@@ -68,8 +72,6 @@ class WorksController < ApplicationController
       redirect_to root_path
     end
   end
-
-  # TODO Create an upvote method ?
 
   private
 

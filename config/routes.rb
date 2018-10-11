@@ -15,8 +15,6 @@ delete 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
   end
 
   resources :works
-    # resources :votes, only:[:index]
-
 
   # Custom route to upvote in works controller
     # Reference TaskList completed/incomplete
@@ -26,7 +24,6 @@ delete 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
 
 # Don't need to delete users, instead we log them out
   resources :users, except:[:destroy]
-    # resources :votes, only:[:index]
 
 
 end
