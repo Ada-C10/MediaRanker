@@ -41,8 +41,14 @@ describe User do
       expect(valid).must_equal false
       expect(user.errors.messages).must_include :name
     end
-  end
 
-  describe "Custom Methods" do
+    it "must have a join date" do
+      user.join_date = nil
+
+      valid = user.valid?
+
+      expect(valid).must_equal false
+      expect(user.errors.messages).must_include :join_date
+    end
   end
 end

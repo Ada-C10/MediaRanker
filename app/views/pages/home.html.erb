@@ -1,6 +1,7 @@
 <section class='page'>
   <section class='section spotlight'>
-    <h3>Media Spotlight</h3>
+    <h3>Media Spotlight: <%= "#{@top_work.title} by #{@top_work.creator}" %></h3>
+    <p><%= "#{@top_work.votes.count} votes - #{@top_work.description}" %></p>
   </section>
   <section class='section movies'>
     <strong class="section-header">Top Movies</strong>

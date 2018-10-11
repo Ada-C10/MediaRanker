@@ -4,4 +4,5 @@ class User < ApplicationRecord
 
   # Did not validate uniqueness since user will be logged in automatically
   validates :name, presence: true
+  validates :join_date, presence: true
 end

@@ -3,6 +3,7 @@ require "test_helper"
 describe Vote do
   let(:vote) { votes(:one) }
   let(:park) { works(:park) }
+  let(:kings) { works(:kings) }
   let(:laura) { users(:laura) }
 
   describe "Validations" do
@@ -13,6 +14,33 @@ describe Vote do
 
     it "will be valid given a user_id and work_id" do
       expect(vote).must_be :valid?
+    end
+
+    it "must have a user_id" do
+      vote.user_id = nil
+
+      valid = vote.valid?
+
+      expect(valid).must_equal false
+      expect(vote.errors.messages).must_include :user
+    end
+
+    it "must have a work_id" do
+      vote.work_id = nil
+
+      valid = vote.valid?
+
+      expect(valid).must_equal false
+      expect(vote.errors.messages).must_include :work
+    end
+
+    it "must have a date" do
+      vote.date = nil
+
+      valid = vote.valid?
+
+      expect(valid).must_equal false
+      expect(vote.errors.messages).must_include :date
     end
   end
 
@@ -47,5 +75,16 @@ describe Vote do
   end
 
   describe "Custom Methods" do
+    describe "vote_allowed" do
+      it "returns true if a user has never voted on a specific work" do
+        record = Vote.vote_allowed?(laura, park)
+        expect(record).must_equal true
+      end
+
+      it "returns false if a user has already voted on a specific work" do
+        record = Vote.vote_allowed?(laura, kings)
+        expect(record).must_equal false
+      end
+    end
   end
 end
