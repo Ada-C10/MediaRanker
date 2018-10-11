@@ -24,69 +24,63 @@ class WorksController < ApplicationController
   end
 
   def create
+    filtered_work_params = work_params()
+    @work = Work.new(filtered_work_params)
 
-    if params[:user_id]
-      user = User.find_by(id: params[:user_id])
+    is_successful_save = @work.save
 
-      filtered_work_params = work_params()
-      @work = Work.new(filtered_work_params)
-
-      is_successful_save = @work.save
-
-      if is_successful_save
-
-        user.vote << @work
-        flash[:success] = "Successfully created new work with title \"#{@work.title}\""
-        redirect_to works_path
-      else
-        flash.now[:error] = "Invalid work data"
-        render :new, status: :bad_request
-      end
-    end
-  end
-
-  def edit
-    find_work
-  end
-
-  def update
-    if @work.update(work_params)
-      flash[:success] = "Successfully updated work \"#{@work.title}\""
-      redirect_to work_path(@work.id)
+    if is_successful_save
+      flash[:success] = "Successfully created new work with title \"#{@work.title}\""
+      redirect_to works_path
     else
       flash.now[:error] = "Invalid work data"
-      render(:edit, status: :bad_request)
+      render :new, status: :bad_request
     end
   end
+end
 
-  def destroy
-    if @work.user_id == session[:user_id]
-      @work.destroy
+def edit
+  find_work
+end
 
-      flash[:success] = "Successfully destroyed work \"#{@work.title}\""
-      redirect_to works_path
-
-    else
-      flash[:error] = "You must be logged in as a work's user in order to delete it!"
-
-      redirect_back(fallback_location: root_path)
-    end
+def update
+  if @work.update(work_params)
+    flash[:success] = "Successfully updated work \"#{@work.title}\""
+    redirect_to work_path(@work.id)
+  else
+    flash.now[:error] = "Invalid work data"
+    render(:edit, status: :bad_request)
   end
+end
 
-  private
+def destroy
+  if @work.user_id == session[:user_id]
+    @work.destroy
 
-  # Strong params: only let certain attributes
-  # through
-  def work_params
-    return params.require(:work).permit(
-      :title,
-      :creator,
-      :description,
-      :publication_year
-    )
+    flash[:success] = "Successfully destroyed work \"#{@work.title}\""
+    redirect_to works_path
+
+  else
+    flash[:error] = "You must be logged in as a work's user in order to delete it!"
+
+    redirect_back(fallback_location: root_path)
   end
+end
 
-  def find_work
-    @work = Work.find_by(id: params[:id])
-  end
+private
+
+# Strong params: only let certain attributes
+# through
+def work_params
+  return params.require(:work).permit(
+    :title,
+    :creator,
+    :description,
+    :publication_year,
+    :category
+  )
+end
+
+def find_work
+  @work = Work.find_by(id: params[:id])
 end

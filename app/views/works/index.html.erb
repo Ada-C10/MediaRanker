@@ -52,4 +52,21 @@
     <% end %>
   </div>
 
-</div>
+  <div class="album">
+    <h2>MOVIES</h2>
+    <ol class="album">
+      <% @works.each do |work| %>
+      <% if work.category == "movie" %>
+      <li>
+        <p>
+          <strong><%= "#{work.title}" %></strong> by <%= "#{work.creator}" %>
+        </p>
+        <p>
+          <%= "#{work.votes.count}" %> votes
+        </p>
+      </li>
+      <% end %>
+    </ol>
+    <% end %>``
+
+  </div>
