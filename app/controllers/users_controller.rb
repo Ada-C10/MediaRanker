@@ -4,4 +4,12 @@ class UsersController < ApplicationController
       user.id
     end
   end
+
+  def show
+    user_id = params[:id]
+    @user = User.find_by(id: user_id)
+    if @user.nil?
+      head :not_found
+    end
+  end
 end

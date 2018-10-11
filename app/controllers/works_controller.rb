@@ -35,6 +35,7 @@ class WorksController < ApplicationController
 
       if is_successful_save
 
+        user.vote << @work
         flash[:success] = "Successfully created new work with title \"#{@work.title}\""
         redirect_to works_path
       else
@@ -88,6 +89,4 @@ class WorksController < ApplicationController
   def find_work
     @work = Work.find_by(id: params[:id])
   end
-end
-
 end

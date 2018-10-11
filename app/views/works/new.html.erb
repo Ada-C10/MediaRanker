@@ -1,0 +1,38 @@
+<div class="work-container">
+  <%= form_with model: @work, class: 'work-form' do |f| %>
+
+  <p>Please provide the following information to save a new work to our database:</p>
+
+  <h2>New Work Form</h2>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "edit-title" %>
+
+  <%= f.label :creator %>
+  <%= f.text_field :creator, class: "edit-creator" %>
+
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year, class: "edit-publication_year" %>
+
+  <%= f.label :category %>
+  <%= f.text_field :category, class: "edit-category" %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description, class: "edit-description" %>
+
+  <%= f.submit "Submit Edit", class: "edit-button" %>
+  <% end %>
+
+</div>
+
+<div class="return-all_works">
+  <h3>
+    <%= link_to "Return Home", works_path, class: "all-works" %>
+  </h3>
+</div>
+
+<div class="return-home">
+  <h3>
+    <%= link_to "Return Home", root_path, class: "homepage" %>
+  </h3>
+</div>
