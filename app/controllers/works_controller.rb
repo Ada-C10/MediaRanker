@@ -31,9 +31,10 @@ class WorksController < ApplicationController
 
   def update
     if @work && @work.update(work_params)
+      flash[:success] = "#{@work.title} was edited."
       redirect_to work_path(@work.id)
     elsif @work
-      flash.now[:warning]  = @work.errors.messages
+      flash.now[:warning] = @work.errors.messages
       render :edit
     end
   end
@@ -47,7 +48,6 @@ class WorksController < ApplicationController
   end
 
   def top_media
-    redirect_to top_media
   end
 
   private

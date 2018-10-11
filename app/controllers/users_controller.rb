@@ -22,23 +22,24 @@ class UsersController < ApplicationController
   end
 
   def update
-   if @users.update(users_params)
-     redirect_to users_path
-   else
+   if @user && @user.update(user_params)
+     redirect_to user_path(@user.id)
+   else @user
+     flash.now[:warning]  = @user.errors.messages
      render :edit
    end
  end
 
   def edit; end
 
-  def destroy
-    user = User.find_by(id: params[:id].to_i)
-    @deleted_user = user.destroy
-
-    if @deleted_user
-      redirect_to users_path
-    end
-  end
+  # def destroy
+  #   user = User.find_by(id: params[:id].to_i)
+  #   @deleted_user = user.destroy
+  #
+  #   if @deleted_user
+  #     redirect_to users_path
+  #   end
+  # end
 
   def upvote
 

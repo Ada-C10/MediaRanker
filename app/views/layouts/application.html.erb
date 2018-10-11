@@ -14,16 +14,35 @@
       <h1>Media Ranker</h1>
       <h1>Ranking the best of everything</h1>
 
+      <section class="flash">
+        <% flash.each do |name, message| %>
+          <% if message.class == Array %>
+            <% message.each do |msg| %>
+              <div class="alert-<%= name %>">
+                <strong><%= "#{name}:" %></strong><%= " #{msg}" %></div>
+            <% end %>
+          <% else %>
+            <div class="alert-<%= name %>">
+                <%= message %>
+            </div>
+          <% end %>
+        <% end %>
+
+        <% if @current_user %>
+          <h2>Welcome <%= @current_user.name %> </h2>
+        <% end %>
+      </section>
+
       <nav>
         <ul class="navbar">
           <li class="nav-item"><%= link_to  "View All Media", works_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to  "Add New Work", new_work_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to  "View All Users", users_path, class: "nav-link" %></li>
-          <!-- <% if @current_user %>
-          <li class=".btn"><%= link_to  "Log Out", new_user_path, class: "nav-link" %></li>
-           <% else %> -->
-            <li class=".btn"><%= link_to  "Login", new_user_path, class: "nav-link" %></li>
-            <!-- <% end %>  -->
+          <% if session[:user_id] %>
+            <%= link_to "Log Out", logout_path, method: :delete %>
+          <% else %>
+            <%= link_to "Log In", login_path %>
+          <% end %>
         </ul>
       </nav>
     </header>
