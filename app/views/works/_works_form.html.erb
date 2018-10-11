@@ -7,7 +7,7 @@ model: @work } %>
 <h2> <%= form_title %> </h2>
 <p>
 <%= f.label :category %>
-<%= f.text_field :category, placeholder: "book" %>
+<%=f.select :category, selections: Work::VALID_CATEGORIES%>
 
 <%= f.label :title %>
 <%= f.text_field :title, placeholder: "A Game of Thrones" %>
