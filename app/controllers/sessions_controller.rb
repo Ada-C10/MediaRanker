@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       user = User.create(name: params[:user][:name])
       # binding.pry
       user.date_joined = user.created_at.to_date
+      user.save
     else
       user.date_joined = user.created_at.to_date
       # Log in the existing user
