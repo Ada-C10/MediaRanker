@@ -14,11 +14,10 @@ class VotesController < ApplicationController
         @vote = Vote.new(user_id: session[:user_id], work_id: params[:work_id])
         @vote.save
         flash[:sucess] = "Successfully upvoted"
-        redirect_to work_path(params[:work_id])
-
+        redirect_back fallback_location: '/', allow_other_host: false
       else
         flash[:error] = "A problem occurred: Could not upvote. You've already upvoted this work."
-        redirect_to work_path(params[:work_id])
+        redirect_back fallback_location: '/', allow_other_host: false
       end
     else
       flash[:error] = "You must be logged in to vote"
