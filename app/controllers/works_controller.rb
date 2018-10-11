@@ -34,8 +34,8 @@ class WorksController < ApplicationController
   end
 
   def create
-    @work = Work.new(vote_params)
-    if @vote.save # save returns true if the database insert succeeds
+    @work = Work.new(work_params)
+    if @work.save # save returns true if the database insert succeeds
       redirect_to root_path # for now
     else # save failed :(
       render :new # show the new work from view again
