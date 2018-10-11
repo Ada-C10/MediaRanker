@@ -24,8 +24,8 @@ class SessionsController < ApplicationController
     # wipe the user id for the session
     session[:user_id] = nil
     # flash msg to user confirming logout
-    flash[:success] = 'Goodbye'
+    flash[:notice] = 'Goodbye'
     # go back to prev page or use fallback location to root
-    redirect_back fallback_location: root_path
+    redirect_to root_path
   end
 end

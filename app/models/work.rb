@@ -12,29 +12,5 @@ class Work < ApplicationRecord
   # pub year must be number in year range 0 - 2018
   validates :publication_year, numericality: true, inclusion: 0..2018
 
-  def total_votes
-    # votes.sum(:vote)
-    if self.votes == []
-      return 0
-    else
-      total = self.votes.count
-    end
-    
-    return total
-  end
-
-  def disp_votes
-    work_votes = self.votes
-
-    return work_votes
-  end
-
-
- 
-
-  def self.upvote(t)
-    self.votes.create(:vote => t.to_i)
-  end
-
 end
 

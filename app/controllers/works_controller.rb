@@ -49,11 +49,13 @@ class WorksController < ApplicationController
 
   def upvote
     work, user = @work.id, @current_user.id
-    if @work.votes.create(work_id: work, user_id: user)
-      flash[:notice] = "Upvote Successful"
+    if @current_user.votes.where(work_id: work).empty?
+      @work.votes.create(work_id: work, user_id: user)
+      flash[:success] = "Upvote successful."
       redirect_to @work
     else
-      flash.now[:error] = 'A user can only vote for each work once.'
+      flash[:error] = 'A user can only vote for each work once.'
+      redirect_to @work
     end
 
 

@@ -4,10 +4,4 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  def disp_votes
-    user_votes = self.votes
-
-    return user_votes
-  end
-  
 end

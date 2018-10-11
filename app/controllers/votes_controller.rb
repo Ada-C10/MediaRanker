@@ -8,22 +8,6 @@ class VotesController < ApplicationController
   def destroy
   end
 
-#  def upvote(work, user)
-#     votes = user.votes
-#     # binding.pry
-#     if votes.where(work_id: work).exists?
-#       flash[:notice] =  "You have already upvoted this!"
-#       redirect_to :back
-#     else
-#       upvote = Vote.new(work_id: work, user_id: user)
-#       upvote.save
-#     end
-
-#     return upvote
-#   end
-
-  
-
   def index
     @votes = Vote.all
   end
@@ -50,8 +34,8 @@ class VotesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_work
-      @work = Work.find(params[:id])
-      if @work.nil?
+      @votr = Vote.find(params[:id])
+      if @vote.nil?
         flash.now[:warning] = 'Work not found'
         redirect_to rooth_path
     end
