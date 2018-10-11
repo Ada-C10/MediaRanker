@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :users
   resources :votes
   resources :works
+  resources :sessions, only: [:new, :create, :delete]
+  post '/sessions/logout', to: 'sessions#logout', as: 'logout'
 
   get '/home', to: 'works#homepage', as: 'home'
 end

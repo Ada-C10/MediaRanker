@@ -3,28 +3,33 @@
   <h3>List of Works</h3>
 </section>
 <br>
+
+<% @works.each do |c, works| %> 
+<strong><%= c.titleize %></strong>
+
 <table cellpadding="5">
 
-  <thead>
-    <tr>
-      <td>Votes</td>
-      <td>Title</td>
-      <td>Created By</td>
-      <td>Published</td>
-      <td>Upvote</td>
-    </tr>
-  </thead>
+    <thead>
+      <tr>
+        <td>Votes</td>
+        <td>Title</td>
+        <td>Created By</td>
+        <td>Published</td>
+        <td>Upvote</td>
+      </tr>
+    </thead>
 
-  <tbody>
+    <tbody>
 
-    <% @works.each do  |w| %>
-    <tr>
-      <td><%="vote count" %></td>
-      <td><%= link_to "#{w.title}", work_path(w.id)%></td>
-      <td><%= w.creator %></td>
-      <td><%= w.publication_year %></td>
-      <td><%= "Upvote" %></td>
-      <% end   %>
-    </tr>
-  </tbody>
-</table>
+      <% works.each do  |w| %>
+      <tr>
+        <td><%="vote count" %></td>
+        <td><%= link_to "#{w.title}", work_path(w.id)%></td>
+        <td><%= w.creator %></td>
+        <td><%= w.publication_year %></td>
+        <td><%= "Upvote" %></td>
+        <% end   %>
+      </tr>
+    </tbody>
+  </table>
+<% end   %>

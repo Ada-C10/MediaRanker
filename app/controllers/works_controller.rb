@@ -4,7 +4,9 @@ class WorksController < ApplicationController
   end
 
   def index
-     @works = Work.all.order(category: :asc)
+    #makes a hash grouped by category
+     @works = Work.all.order(category: :asc).group_by(&:category)
+
     # @works = Work.all
   end
 
