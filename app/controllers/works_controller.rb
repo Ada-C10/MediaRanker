@@ -54,6 +54,16 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
+  def upvote
+    vote = Vote.new(user_id: session[:user_id], work_id: params[:work_id])
+    if vote.save
+      flash[:success] = "Successfully voted!"
+    else
+      flash[:error] = "Could not record vote, sowry!"
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
   private
   def work_params
     return params.require(:work).permit(
