@@ -1,12 +1,12 @@
 class WorksController < ApplicationController
-  before_action :set_work, only: [:show, :edit, :update, :destroy]
+  before_action :set_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def index
     @works = Work.all
   end
 
   def show; end
-
+    
   def new
     @work = Work.new
   end
@@ -47,6 +47,19 @@ class WorksController < ApplicationController
     end
   end
 
+  def upvote
+    work, user = @work.id, @current_user.id
+    if @work.votes.create(work_id: work, user_id: user)
+      flash[:notice] = "Upvote Successful"
+      redirect_to @work
+    else
+      flash.now[:error] = 'A user can only vote for each work once.'
+    end
+
+
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_work
@@ -61,4 +74,4 @@ class WorksController < ApplicationController
     def work_params
       params.require(:work).permit(:title, :creator, :description, :category, :publication_year)
     end
-end
+  end

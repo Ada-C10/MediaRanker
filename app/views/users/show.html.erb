@@ -5,5 +5,13 @@
   <%= @user.name %>
 </p>
 
+<p>
+  <strong>Works Voted on:</strong>
+  <% @user.votes.each do |vote| %>
+    <% work = Work.find(vote.work_id) %>
+    <%= work.title %><br>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

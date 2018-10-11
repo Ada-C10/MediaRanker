@@ -25,5 +25,27 @@
   <%= @work.publication_year %>
 </p>
 
+<p>
+  <strong>Votes:</strong>
+  <%= @work.votes.count %>
+</p>
+
+
+<p>
+  <strong>User Votes:</strong>
+  <% @work.votes.each do |vote| %>
+    <% user = User.find(vote.user_id) %>
+    <%= user.name %><br>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_work_path(@work) %> |
 <%= link_to 'Back', works_path %>
+
+<section class="upvote">
+  <div class="upvote">
+    <strong class="btn btn-secondary"><%= link_to "Upvote", works_upvote_path(@work.id), method: :patch %></strong>
+  </div>
+</section>
+
+
