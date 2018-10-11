@@ -1,9 +1,45 @@
 require "test_helper"
 
 describe User do
-  let(:user) { User.new }
+  let(:user) { users(:ada) }
 
-  it "must be valid" do
-    value(user).must_be :valid?
+  describe 'validations' do
+    it 'is valid when all fields are present' do
+      result = user.valid?
+      expect(result).must_equal true
+    end
+
+    it 'must have a username' do
+      user.username = nil
+      result = user.valid?
+
+      expect(result).must_equal false
+    end
+
+    it 'must have a unique username' do
+      other_user = User.new(username: user.username)
+      result = other_user.save
+
+      expect(result).must_equal false
+    end
+
+  end
+
+  describe 'relationships' do
+    it 'can have many votes' do
+      votes = user.votes
+
+      expect(votes.length).must_equal 2
+      votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end
+    end
+
+    it 'can have zero votes' do
+      new_user = User.new(username: "newbie")
+      votes = new_user.votes
+
+      expect(votes.length).must_equal 0
+    end
   end
 end
