@@ -10,20 +10,36 @@
   </head>
 
   <body>
-    
+
     <header>
+
+      <section class="flash alert"/>
+      <% flash.each do |name, message| %>
+      <div class="alert"-<%=name %> <%=message %> </div>
+      <% end %>
+    </section>
+
       <section class="flash">
         <% flash.each do |name, message| %>
           <% if message.class == Array %>
+          <div class="alert-warning">
             <% message.each do |msg| %>
-              <div class="alert-warning"><%= "#{name}: #{msg}" %></div>
+                <p><strong><%= "#{name}:" %></strong><%= " #{msg}" %></p>
             <% end %>
+          </div>
           <% else %>
-            <div class="alert-warning"><%= message %></div>
+            <div class="alert-<%= name %>">
+                <%= message %>
+            </div>
           <% end %>
         <% end %>
+
+        <% if @current_user %>
+          <h2>Welcome <%= @current_user.name %> </h2>
+        <% end %>
       </section>
-    </header>
+
+
 
     <nav>
       <ul id="menu">
@@ -33,7 +49,8 @@
           <li>View all users<%# link_to "View all users", users_path %></li>
         </ul>
     </nav>
-
+    
+    </header>
     <main>
     <%= yield %>
     </main>
