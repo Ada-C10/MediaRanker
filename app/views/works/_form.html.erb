@@ -1,4 +1,4 @@
-<section class = "work-form"
+<section class = "work-form">
   <%= form_with model: @work, class: 'task-form' do |f| %>
     <p><%= f.label :category %>:
       <%= f.select :category, Work::WORK_CATEGORIES%></p>
