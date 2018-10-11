@@ -1,2 +1,27 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<main>
+  <h2>User Summary: <%= @user.user_name %></h2>
+  <p>Joined site <%= @user.created_at %></p>
+
+  <section class="user-votes__container">
+  <h3 class="user-votes__header">Votes</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Media Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+          <td><a href="/works/10">Winter Mug</a></td>
+          <td>Tia Weissnat II</td>
+          <td>1990</td>
+          <td>Album</td>
+          <td>Oct 10, 2018</td>
+        </tr>
+    </tbody>
+  </table>
