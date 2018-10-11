@@ -5,7 +5,10 @@ describe Work do
   let(:secret) {works(:secret)}
   let(:remember) {works(:remember)}
   let(:billy) {works(:billy)}
-  let(:marshall_billy) {votes(:marshall_billy)}
+  let(:marshall_secret) {votes(:marshall_secret)}
+  let(:lily_remember) {votes(:lily_remember)}
+  let(:lily_secret) {votes(:lily_secret)}
+
   let(:media_categories) {['movie', 'book', 'album']}
 
   it "allows completely valid entries" do
@@ -98,6 +101,28 @@ describe Work do
       expect(remember.errors.messages).must_include :title
     end
   end
+
+  describe 'custom method: most votes' do
+    it 'retrieves a single work' do
+      expect(Work.most_votes).must_be_instance_of Work
+    end
+
+    it 'finds the work with the most votes' do
+      expect(Work.most_votes).must_equal secret
+    end
+
+    it 'returns the first work in the list if no votes exist' do
+      marshall_secret.destroy
+      lily_secret.destroy
+      lily_remember.destroy
+
+      expect(Work.most_votes).must_equal secret
+
+    end
+
+
+  end
+
 
   describe 'custom method: list(media_category) for books' do
 

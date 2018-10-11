@@ -3,6 +3,7 @@ class WorksController < ApplicationController
   after_action :return_to, only: [:main, :index, :show, :new, :edit]
 
   def main
+    @spotlight = Work.most_votes
     @top_ten_lists = Work.top_ten_lists
   end
 

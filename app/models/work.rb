@@ -8,6 +8,11 @@ class Work < ApplicationRecord
 
 #  scope :by_category, -> (category) { where(category: category) }
 
+  def self.most_votes
+    return Work.all.max_by {|work| work.votes.count}
+
+  end
+
   def self.list(media_category)
     list = Work.select {|work| work.category == media_category}
     return list.sort_by { |work| work.votes.count }.reverse!
