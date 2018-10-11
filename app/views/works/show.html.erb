@@ -21,5 +21,12 @@
         <th scope="col">Date</th>
       </tr>
     </thead>
+  </table>
+
+  <% @work.users.each do |user| %>
+    <p>
+      <%= user.user_name %>
+    </p>
+  <% end %>
 
   </div>
