@@ -3,12 +3,10 @@ class Vote < ApplicationRecord
   belongs_to :user
   # Gives the option to do vote.user to get the user associated with the vote
   belongs_to :work
-  # Gives the option to do vote.work to get the work associated with the vote
-  # Validate user is not voting twice
-    # validates :work_id, uniqueness: { scope: :user_id, message: "You can only vote once for this work" }
 
-  # Method to check if vote can be made
-  # Check user id to see if they've already voted
+  # I think this prevents voting more than once
+  # https://www.reddit.com/r/rails/comments/2su4ib/please_share_any_resources_related_to_modifying/
+  validates :user, uniqueness: { scope: :work, message: "You can only vote once for this work" }
+  validates :work, uniqueness: { scope: :user, message: "You can only vote once for this work" }
 
-  # works/4/upvote? Custom route
 end
