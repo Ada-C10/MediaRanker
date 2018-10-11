@@ -11,17 +11,19 @@ class Work < ApplicationRecord
   validates :description, presence: true
   validates :title, presence: true, uniqueness: true
 
-  def self.top_movie_list
-    movies = Work.all.select { |work| work.category.downcase == "movie" }
-    #returns a array 
-    @votes_per_movie_count = Vote.joins(:work).group(:work).order('count_all DESC').limit(10).count
+  def self.top_ten_list(category)
+    # Select all of category
+    work_by_category = Work.all.select { |work| work.category.downcase == "#{category}" }
+    # Return max by vote count for top 10
+    return work_by_category.max_by(10) { |work| work.votes.length }
   end
 
-  # Can do work.votes for an array of all votes associated with the work
-  # Can push votes via work.votes << vote_object
-  # work.votes.where(conditions) to get votes for the work with the condition
-  # Method to upvote a work. Will need to make sure user/work is unique
-  # User can only vote once per work
+  def self.categories
+    return (WORKS)
+  end
+
+  # find top work for media Spotlight
+  
 
   # Method to sort by category
   # Handle if there are no works

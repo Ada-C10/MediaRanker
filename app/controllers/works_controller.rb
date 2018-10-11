@@ -1,17 +1,22 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
   def upvote
-    # Create new vote
-    vote = Vote.new
-    # Add attributes
-    vote.work_id = @work.id
-    vote.user_id = @current_user.id
-    vote.date_created = Date.today
-    # Shovel into work and user vote collections
-    @work.votes << vote
-    @current_user.votes << vote
-    redirect_to work_path
-
+    # Not working :(
+    if @current_user.nil?
+      flash[:danger] = "Must be logged in to vote"
+      redirect_to root_path
+    else
+      # Create new vote
+      vote = Vote.new
+      # Add attributes
+      vote.work_id = @work.id
+      vote.user_id = @current_user.id
+      vote.date_created = Date.today
+      # Shovel into work and user vote collections
+      @work.votes << vote
+      @current_user.votes << vote
+      redirect_to work_path
+    end
   end
 
   def index
