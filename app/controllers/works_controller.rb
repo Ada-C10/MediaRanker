@@ -8,14 +8,19 @@ class WorksController < ApplicationController
   end
 
   def create
-    @work = Work.new(work_params)
-
-    if @work.save
-      flash[:success] = "#{@work.title} added sucessfully"
-      redirect_to works_path
+    does_work_exist = Work.find_by(title: params[:title])
+    if does_work_exist
+      flash[:error] = "A problem occurred: Could not create #{params[:category]}"
     else
-      flash.now[:error] = "Invalid media entry"
-      render :new, status: :bad_request
+      @work = Work.new(work_params)
+
+      if @work.save
+        flash[:success] = "#{@work.title} added sucessfully"
+        redirect_to works_path
+      else
+        flash.now[:error] = "Invalid media entry"
+        render :new, status: :bad_request
+      end
     end
   end
 
