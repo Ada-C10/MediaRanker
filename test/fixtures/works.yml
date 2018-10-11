@@ -5,11 +5,11 @@ rambo:
   title: rambo
   creator: cassy
   publication_year: 2018
-  description: crazy boxing movie 
+  description: crazy boxing movie
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+reputation:
+  category: album
+  title: reputation
+  creator: taylor swift
+  publication_year: 2018
+  description: new pop album by taylor swift 

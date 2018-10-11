@@ -1,6 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+vote:
+  work_id: Work.first.id
+  user_id: User.first.id
   date_created: 2018-10-08
 
 two:

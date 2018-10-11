@@ -3,11 +3,6 @@ require "test_helper"
 describe User do
   let(:user) { users(:cassy) }
   describe 'validations' do
-    before do
-
-      # Arrange - Create valid user
-
-    end
       # Does it pass with all fields?
       it 'is valid when all fields are present' do
         #Act
@@ -43,7 +38,11 @@ describe User do
   end
 
   describe 'relations' do
+    it 'can have many votes' do
 
+
+
+    end
   end
 
   describe 'custom methods' do

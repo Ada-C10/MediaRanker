@@ -3,7 +3,9 @@ class Work < ApplicationRecord
   has_many :votes
   # has_many :users :through :votes
 
-  validates :category, presence: true
+  WORKS = ['movie', 'album', 'book']
+
+  validates :category, presence: true, inclusion: { in: WORKS }
   validates :creator, presence: true
   validates :publication_year, presence: true
   validates :description, presence: true
