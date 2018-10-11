@@ -1,7 +1,11 @@
 require "test_helper"
 
 describe Work do
-  let(:work) {works(:rambo) }
+  let(:work) { works(:rambo) }
+  before do
+    @user = User.first
+  end
+
   describe 'validations' do
 
     it 'is valid when all fields are present' do
@@ -36,7 +40,19 @@ describe Work do
 
   describe 'relations' do
     it 'can have many votes' do
+      # Adding a vote
+      work.votes <<
+        Vote.new(
+            date_created: Date.today,
+            user_id: @user.id
+        )
 
+      votes = work.votes
+
+      expect(votes.length).must_be :>=, 1
+      votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end
     end
   end
 
