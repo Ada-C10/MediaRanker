@@ -1,0 +1,9 @@
+<h2><%= @work.title %></h2>
+<h3><%=work.creator %></h3>
+<h3><%=work.published_year %></h3>
+<p><%=work.description %></p>
+
+<div class="buttonContainer"><%= link_to "Back to media ranks", root_path %></div>
+<div class="buttonContainer"><%= link_to "Edit", edit_work_path(@work.id) %></div>
+<div class="buttonContainer"><%= link_to "Upvote", work_path(@work.id) %></div>
+<div class="buttonContainer"><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Please confirm you would like to delete." } %></div>
