@@ -12,16 +12,17 @@
 
 <body>
   <header>
-      <h1>
-        Media Ranker <span> Ranking the best in everything </span>
-      </h1>
+    <h1>
+      Media Ranker <span> Ranking the best in everything </span>
+    </h1>
 
 
-      <nav>
+    <nav>
       <ul>
         <li><%= link_to "View top media", main_works_path %></li>
         <li><%= link_to "View all media", works_path %></li>
         <li><%= link_to "Add a new work", new_work_path %></li>
+        <li><%= link_to "View all users", users_path %></li>
       </ul>
     </nav>
 
@@ -29,12 +30,12 @@
 
       <% if @user %>
 
-        <p>
-          Logged in as user <strong> <%= @user.name %> </strong>
-        </p>
-        <%= link_to "Log out", logout_path, class: "btn btn-primary", method: :post %>
+      <p>
+        Logged in as <strong> <%= @user.name %> </strong>
+      </p>
+      <%= link_to "Log out", logout_path, class: "btn btn-primary", method: :post %>
       <% else %>
-        <%= link_to "Log in", new_session_path, class: "btn btn-primary" %>
+      <%= link_to "Log in", new_session_path, class: "btn btn-primary" %>
       <% end %>
 
 
@@ -43,9 +44,9 @@
 
   <section class="flash-messages">
     <% flash.each do |key, message| %>
-    <p class="<%= key %>">
-      <%= message %>
-    </p>
+    <div class="alert alert-<%= key %>">
+       <%= message %>
+    </div>
     <% end %>
   </section>
 

@@ -51,19 +51,20 @@ class WorksController < ApplicationController
   end
 
   def upvote
+
     if session[:user_id]
       user = User.find_by(id: session[:user_id])
       vote = Vote.find_by(user: user, work: @work)
 
       if vote
-        flash[:already_vote] = "Cannot upvote the same media twice."
+        flash[:warning] = "Cannot upvote the same media twice."
       else
-        flash[:success] = "Successfully voted for #{work.title}"
+        flash[:success] = "Successfully voted for #{@work.title}"
         Vote.create(user: user, work: @work)
       end
 
     else
-      flash[:failure] = "Must be logged in to vote!"
+      flash[:danger] = "Must be logged in to vote!"
     end
     redirect_back(fallback_location: root_path)
   end

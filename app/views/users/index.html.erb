@@ -7,11 +7,11 @@
     <th>Votes</th>
     <th>Joined</th>
   </tr>
-  
+
 <% @users.each do |user| %>
 
   <tr>
-    <td> <%= user.name %> </td>
+    <td> <%= link_to user.name, user_path(user.id) %> </td>
     <td> <%= user.votes.length %> </td>
     <td> <%= user.created_at %> </td>
   </tr>

@@ -4,12 +4,13 @@ locals: {
 }
 %>
 
+<div class="media-form">
 <%= form_with model: @work, class: 'work-form' do |f| %>
 
 <h2><%= form_title %></h2>
 
 <%= f.label :category %>
- <%= f.select :category, Work.categories %>
+<%= f.select :category, Work.categories %>
 
 <%= f.label :title %>
 <%= f.text_field :title %>
@@ -26,3 +27,4 @@ locals: {
 <%= f.submit action_type, class: "work-form-submit-button" %>
 
 <% end %>
+</div>
