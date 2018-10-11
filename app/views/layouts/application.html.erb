@@ -33,9 +33,11 @@
         <li class="login-link">
           <% logged_in_user = User.find_by(id: session[:user_id]) %>
           <% if logged_in_user %>
-            <p>
-                Currently logged in as user
+            <p class="btn btn-info">
+                Logged in as
               <%= logged_in_user.name %>
+            </p>
+            <p>
               <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
             </p>
           <% else %>
@@ -44,14 +46,11 @@
         </li>
       </ul>
     </nav>
-
   </header>
 
-
-
-  <section class="flash-messages">
+  <section>
       <% flash.each do |key, message| %>
-        <p class="<%= key %>">
+        <p class="alert alert-success" role="alert">
           <%= message %>
         </p>
       <% end %>
