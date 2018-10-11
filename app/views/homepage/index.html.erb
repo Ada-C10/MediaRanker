@@ -19,7 +19,7 @@
   <section>
     <ul>
       <% @books.each do |book| %>
-        <li><%= link_to book.title, work_path(book.id) %> by <%= book.creator %></li>
+        <li><%= link_to book.title, work_path(book.id) %> by <%= book.creator %><br> <%= book.total_votes %> votes</li>
       <% end %>
     </ul>
   </section>
@@ -30,7 +30,7 @@
   <section>
     <ul>
       <% @albums.each do |album| %>
-        <li><%= link_to album.title, work_path(album.id) %> by <%= album.creator %></li>
+        <li><%= link_to album.title, work_path(album.id) %> by <%= album.creator %><br> <%= album.total_votes %> votes</li>
       <% end %>
     </ul>
   </section>

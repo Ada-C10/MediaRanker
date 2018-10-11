@@ -55,7 +55,9 @@
               <td class = "table_grid"><%= link_to work.title, work_path(work.id) %></td>
               <td class = "table_grid"><%= work.creator %></td>
               <td class = "table_grid"><%= work.publication_year %></td>
-              <td class = "table_grid">UPVOTE link here</td>
+              <td class = "table_grid">
+                <button type="button"><%= link_to "Upvote", work_votes_path(work.id), method: :post %></button>
+              </td>
             </tr>
           <% end %>
         <% end %>
@@ -85,7 +87,9 @@
               <td class = "table_grid"><%= link_to work.title, work_path(work.id) %></td>
               <td class = "table_grid"><%= work.creator %></td>
               <td class = "table_grid"><%= work.publication_year %></td>
-              <td class = "table_grid">UPVOTE link here</td>
+              <td class = "table_grid">
+                <button type="button"><%= link_to "Upvote", work_votes_path(work.id), method: :post %></button>
+              </td>
             </tr>
           <% end %>
         <% end %>
