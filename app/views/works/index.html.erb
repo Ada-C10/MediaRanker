@@ -19,7 +19,7 @@
         <% @works.each do |work| %>
           <% if work.category == "album" %>
             <tr>
-              <td class = "table_grid">Votes here</td>
+              <td class = "table_grid"><%= work.total_votes %></td>
               <td class = "table_grid"><%= link_to work.title, work_path(work.id) %></td>
               <td class = "table_grid"><%= work.creator %></td>
               <td class = "table_grid"><%= work.publication_year %></td>
@@ -49,7 +49,7 @@
         <% @works.each do |work| %>
           <% if work.category == "book" %>
             <tr>
-              <td class = "table_grid">Votes here</td>
+              <td class = "table_grid"><%= work.total_votes %></td>
               <td class = "table_grid"><%= link_to work.title, work_path(work.id) %></td>
               <td class = "table_grid"><%= work.creator %></td>
               <td class = "table_grid"><%= work.publication_year %></td>
@@ -79,7 +79,7 @@
         <% @works.each do |work| %>
           <% if work.category == "movie" %>
             <tr>
-              <td class = "table_grid">Votes here</td>
+              <td class = "table_grid"><%= work.total_votes %></td>
               <td class = "table_grid"><%= link_to work.title, work_path(work.id) %></td>
               <td class = "table_grid"><%= work.creator %></td>
               <td class = "table_grid"><%= work.publication_year %></td>
