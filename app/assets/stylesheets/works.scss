@@ -9,3 +9,12 @@ thead {
 .delete {
   color: white;
 }
+.top_ten_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+}
+
+button a{
+  color: white;
+}

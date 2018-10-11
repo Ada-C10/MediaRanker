@@ -16,30 +16,42 @@
 
   <form>
 
+    <div class="row">
+      <div class="control-label col-sm-12">
+        <div class="form-group">
+          <label>Category</label>
+          <select class="form-control">
+            <option>Album</option>
+            <option>Book</option>
+            <option>Movie</option>
+          </select>
+        </div>
 
-    <div class="form-group">
-      <label>Category</label>
-      <%= f.select :category, Work.all.map{ |w| [w.category]}.uniq%>
-    </div>
+        <div class="form-group">
+          <%= f.label :title %><br>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :creator %><br>
+          <%= f.text_field :creator, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :publication_year %><br>
+          <%= f.text_field :publication_year, class: "form-control" %>
+        </div>
 
-    <div class="form-group">
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </div>
-    <%= f.label :creator %><br>
-    <%= f.text_field :creator %>
-    <br>
-    <br>
-    <%= f.label :publication_year %><br>
-    <%= f.text_field :publication_year %>
-    <br>
-    <br>
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+        <div class="form-group">
+          <%= f.label :description %><br>
+          <%= f.text_field :description, class: "form-control" %>
+        </div>
+
+
+          <%= f.submit action_name  %>
+
+        </div>
+        </form>
+      </section>
+      <% end %>
 
   </div>
-
-  <%= f.submit action_name %>
-</form>
-</section>
-<% end %>
+</div>

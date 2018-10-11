@@ -19,7 +19,12 @@
     <td scope="row"><%= link_to work.title, work_path(work.id)%></td>
     <td scope="row"><%=work.creator%></td>
     <td scope="row"><%=work.publication_year%></td>
-    <td scope="row">upvote</td>
+    <td scope="row">
+      <button type="button" class="btn btn-info">
+        <div><%= link_to "Upvote", work_upvote_path(work), method: :post%>
+        </div>
+      </button>
+    </td>
     <%end%>
   </tr>
   <%end%>
@@ -43,7 +48,12 @@
     <td scope="row"><%=link_to work.title, work_path(work.id)%></td>
     <td scope="row"><%=work.creator%></td>
     <td scope="row"><%=work.publication_year%></td>
-    <td scope="row">upvote</td>
+    <td scope="row">
+      <button type="button" class="btn btn-info">
+        <div><%= link_to "Upvote", works_path, method: :post%>
+        </div>
+      </button>
+    </td>
     <%end%>
   </tr>
   <%end%>
@@ -67,7 +77,12 @@
     <td scope="row" ><%=link_to work.title, work_path(work.id)%></td>
     <td scope="row"><%=work.creator%></td>
     <td scope="row"><%=work.publication_year%></td>
-    <td scope="row">upvote</td>
+    <td scope="row">
+      <button type="button" class="btn btn-info">
+        <div><%= link_to "Upvote", works_path, method: :post%>
+        </div>
+      </button>
+    </td>
     <%end%>
   </tr>
   <%end%>
