@@ -1,0 +1,43 @@
+<h1> User Summary: <%= link_to "#{@user.username}", user_path(@user.id) %> </h1>
+<p> Joined site Oct 10, 2018 </p>
+
+<h1>Votes </h1>
+<table class="table">
+  <tr>
+    <th>
+      Media Title
+    </th>
+    <th>
+      Created By
+    </th>
+    <th>
+      Published
+    </th>
+    <th>
+      Category
+    </th>
+    <th>
+      Voted On
+    </th>
+  </tr>
+    <% @user.votes.each do |vote| %>
+      <tr>
+        <% @work = vote.get_work %>
+        <td>
+          <%= link_to "#{@work.title}", work_path(@work.id) %>
+        </td>
+        <td>
+          <p> <%= @work.creator %> </p>
+        </td>
+        <td>
+          <p> <%= @work.published %> </p>
+        </td>
+        <td>
+          <p><%= @work.category %></p>
+        </td>
+        <td>
+          <p><%= vote.created_at.strftime('%b %d, %Y') %></p>
+        </td>
+      </tr>
+    <% end %>
+</table>
