@@ -42,6 +42,7 @@ describe Vote do
 
       expect(@arbitrary_vote.valid?).must_equal false
       expect(@arbitrary_vote.errors.messages).must_include :work
+      expect(@valid_unique_vote.valid?).must_equal true
     end
 
     it 'is valid if different users vote for same work' do
