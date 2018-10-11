@@ -1,20 +1,4 @@
-<h3><%= page_title %></h3>
 
-<% if model.errors.messages.any? %>
-  <section class="form-errors">
-    <h3>There were some problems. Please fix them.</h3>
-    <ul>
-      <% model.errors.messages.each do |field, problem_list| %>
-        <% problem_list.each do |problem| %>
-          <li>
-            <strong><%= field %></strong>
-            <%= problem %>
-          </li>
-        <% end %>
-      <% end %>
-    </ul>
-  </section>
-<% end %>
 
 <%= form_with model: @user, class: 'user-form', data: { remote: false } do |f| %>
 <div>

@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :works
-  resources :users
+
+  resources :users, except:[:destroy]
+
   resources :votes
+
+  resources :sessions
+  post '/sessions/logout', to: 'sessions#logout', as: 'logout'
+
 end
