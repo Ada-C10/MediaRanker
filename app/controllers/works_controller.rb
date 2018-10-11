@@ -1,13 +1,13 @@
 class WorksController < ApplicationController
 
+before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def homepage
   end
 
   def index
     #makes a hash grouped by category
      @works = Work.all.order(category: :asc).group_by(&:category)
-
-    # @works = Work.all
   end
 
   def new
@@ -15,7 +15,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
     end
@@ -34,21 +33,16 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
     end
   end
 
   def update
-    @work = Work.find(params[:id])
-
     if @work.nil?
       head :not_found
     end
-
     is_updated = @work.update(work_params)
-
     if is_updated
       redirect_to work_path(@work)
     else
@@ -57,22 +51,33 @@ class WorksController < ApplicationController
   end
 
   def destroy
-      work = Work.find_by(id: params[:id])
-
-      if work.nil?
+      if @work.nil?
         head :not_found
       end
 
-      if work.destroy
+      if @work.destroy
         redirect_to works_path
       else
         render :show
       end
     end
+
+
+  def upvote
+    @work = Work.find(params[:id])
+    @work.vote.create
+    redirect_to(works_path)
+  end
+
   private
 
     def work_params
       return params.require(:work).permit(
         :category, :title, :creator, :description, :publication_year)
     end
+
+    def find_work
+      @work = Work.find_by(id: params[:id])
+    end
+
 end

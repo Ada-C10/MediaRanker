@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         flash[:success] = "Successfully logged in as #{name}"
       else
-        render :new
+        render :new, status: :bad_request
       end
       redirect_to root_path
     end
