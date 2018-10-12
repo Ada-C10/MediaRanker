@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     if user
       flash[:success] = "Successfully logged in as #{name}"
       session[:user_id] = user.id
+      session[:username] = name
       redirect_to home_path
     elsif name.empty?
       flash.now[:error] = "Missing username. Try again."
@@ -19,6 +20,7 @@ class SessionsController < ApplicationController
       if @user.save
         flash[:success] = "Successfully logged in as #{@user.username}"
         session[:user_id] = @user.id
+        session[:username] = name
         redirect_to home_path
       else
         render :new

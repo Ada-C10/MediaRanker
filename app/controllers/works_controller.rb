@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :destroy]
+  before_action :find_work, only: [:show, :edit, :update, :upvote, :destroy]
 
   def index
     @works = Work.all
@@ -49,6 +49,17 @@ class WorksController < ApplicationController
   def destroy
     @work.destroy
     redirect_to works_path
+  end
+
+  def upvote
+    @vote = Vote.new
+    @vote.work_id = @work.id
+    @vote.user_id = session[:user_id]
+    @user = User.find_by(id: @vote.user_id)
+
+    if @vote.save
+      redirect_to work_path(@vote.work_id)
+    end
   end
 
   private
