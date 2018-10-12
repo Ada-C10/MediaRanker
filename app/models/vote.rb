@@ -9,9 +9,10 @@ class Vote < ApplicationRecord
   validates :user_id, uniqueness: { scope: :work,
      message: "should only be one user_id per work" }
 
-# Media Title	Created By	Published	Category	Voted On
-     def user_votes_table_row
-       work = self.work
-       return [work.title, work.creator, work.publication, self.created_at, work.id]
-     end
+# Media Title;	Created By;	Published;	Category;	Voted On; work id for work_path
+# Should this array go in the model or the controller?
+    def user_votes_table_row
+      work = self.work
+      return [work.title, work.creator, work.publication, self.created_at, work.id]
+    end
 end
