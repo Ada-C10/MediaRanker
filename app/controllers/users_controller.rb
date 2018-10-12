@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
+
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
+
   def index
     @users = User.all
   end
 
   def show
     @work = Work.where(user_id: params[:id])
-    @user = User.find_by(id: params[:id])
 
     if @user.nil?
       head :not_found
@@ -28,12 +30,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: params[:id])
   end
 
   def update
-    @user = User.find_by(id: params[:id])
-
     if @user.update(user_params)
       redirect_to user_path(user.id)
     else
@@ -42,7 +41,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by(id: params[:id])
     @user.destory
 
     redirect_to users_path
@@ -54,5 +52,9 @@ class UsersController < ApplicationController
     return params.require(:user).permit(
       :username
     )
+  end
+
+  def find_user
+    @user = User.find_by(id: params[:id])
   end
 end

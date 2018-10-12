@@ -1,11 +1,11 @@
 class VotesController < ApplicationController
+  before_action :find_vote, only: [:show, :edit, :update, :destroy]
+
   def index
     @votes = Vote.all
   end
 
   def show
-    @vote = Vote.find_by(id: params[:id])
-
     if @vote.nil?
       head :not_found
     end
@@ -30,11 +30,9 @@ class VotesController < ApplicationController
   end
 
   def edit
-    @vote = Vote.find_by(id: params[:id])
   end
 
   def update
-    @vote = Vote.find_by(id: params[:id])
     if @vote.update(vote_params)
       redirect_to vote_path(vote.id)
     else
@@ -43,7 +41,6 @@ class VotesController < ApplicationController
   end
 
   def destroy
-    @vote = Vote.find_by(id: params[:id])
     @vote.destory
 
     redirect_to votes_path
@@ -57,5 +54,9 @@ class VotesController < ApplicationController
       :user_id,
       :work_id
     )
+  end
+
+  def find_vote
+    @vote = Vote.find_by(id: params[:id])
   end
 end
