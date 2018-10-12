@@ -55,7 +55,7 @@ describe Work do
       Work.find_by(title: "Album 1").delete
       Work.find_by(title: "Album 2").delete
 
-      expect(Work.top_media).must_equal nil
+      expect(Work.top_media).must_be_nil
     end
 
     it 'will return first media available when no votes overall' do

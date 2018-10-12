@@ -8,8 +8,10 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  post 'works/:id/upvote', to: 'works#upvote', as: 'upvote'
   resources :works
-  get 'works/:id/upvote', to: 'works#upvote', as: 'upvote_work'
+
+
   resources :users, only: [:index, :show, :new]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
