@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  validates :work_id, presence: true, uniqueness: { scope: :user_id, message: "has already voted for this work" }
+  
   # def index
   #   @votes = Votes.all.order(:title)
   # end
