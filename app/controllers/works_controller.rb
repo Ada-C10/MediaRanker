@@ -1,12 +1,11 @@
 class WorksController < ApplicationController
-require 'pry'
+before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def index
     @works = Work.all
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
 
     if @work == nil
       flash.now[:failure] = "Work not found. Please use one of the options above."
@@ -15,7 +14,6 @@ require 'pry'
   end
 
   def new
-    #add something in to find
     @work = Work.new()
   end
 
@@ -32,32 +30,29 @@ require 'pry'
     end
   end
 
-  def edit
-    @work = Work.find_by(id: params[:id])
-  end
+  def edit; end
 
   def update
-    work = Work.find_by(id: params[:id])
-    is_successful_update = work.update(work_params)
+    is_successful_update = @work.update(work_params)
 
     if is_successful_update
-      flash[:success] = "Work #{work.title} was successfully updated."
-      redirect_to works_path
+      flash[:success] = "Work #{@work.title} was successfully updated."
+      redirect_to work_path(@work)
     else
-      flash.now[:failure] = "Work #{work.title} was not updated."
+      flash.now[:failure] = "Work #{@work.title} was not updated."
       render :edit
     end
   end
 
   def destroy
-    work = Work.find_by(id: params[:id])
-    is_successful_deletion = work.destroy
+
+    is_successful_deletion = @work.destroy
 
     if is_successful_deletion
-      flash[:success] = "Work #{work.title} successfully deleted."
+      flash[:success] = "Work #{@work.title} successfully deleted."
       redirect_to works_path
     else
-      flash[:failure] = "Work #{work.title} not destroyed."
+      flash[:failure] = "Work #{@work.title} not destroyed."
       #flash back
       redirect_back fallback_location: root_path
     end
@@ -74,5 +69,9 @@ require 'pry'
       :publication_year,
       :description
     )
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 end
