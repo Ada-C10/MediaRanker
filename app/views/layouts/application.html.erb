@@ -28,9 +28,18 @@
         <li>
           <%= link_to "View all users", users_path %>
         </li>
+        <% logged_in_user = User.find_by(id: session[:user_id]) %>
+        <% if logged_in_user %>
+          <li>
+            Currently logged in as author
+            <%= logged_in_user.username %>
+            <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
+          </li>
+        <% else %>
         <li>
           <%= link_to "Log In", new_session_path %>
         </li>
+        <% end %>
       </ul>
     </nav>
 
