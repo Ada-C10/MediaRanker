@@ -38,7 +38,7 @@
       <tbody>
         <tr>
           <td>
-            <%=User.find_by(id: vote.user_id).username%>
+            <%=link_to vote.user.username, user_path(vote.user)%>
           </td>
           <td>
             <%=vote.get_date%>
