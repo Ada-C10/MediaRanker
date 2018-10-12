@@ -10,17 +10,17 @@
     <th>Category</th>
   </tr>
 
-  <% @user.votes.each do |vote| %>
+  <% @user.upvoted_works.each do |work| %>
   <tr>
     <td>
-      <%= link_to work_path(vote.work.id) do %>
-      <%= vote.work.title %>
+      <%= link_to work_path(work.id) do %>
+      <%= work.title %>
       <% end %>
     </td>
-    <td><%= vote.work.creator %></td>
-    <td><%= vote.work.publication_year %></td>
-    <td><%= vote.work.category %></td>
-    <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+    <td><%= work.creator %></td>
+    <td><%= work.publication_year %></td>
+    <td><%= work.category %></td>
+    <td><%= work.created_at.strftime("%b %d, %Y") %></td>
   </tr>
   <% end %>
   </table>
