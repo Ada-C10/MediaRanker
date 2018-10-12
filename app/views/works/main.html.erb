@@ -1,4 +1,3 @@
-<main>
 <section class="spotlight">
     <h2 class="spotlight__header">
       <span class="spotlight__header--prefix">Media Spotlight: </span>
@@ -16,7 +15,7 @@
   <% [@books, @albums, @movies].each do |type| %>
   <section class="top-ten__list-container">
     <h2 class="top-ten__header">
-      Top Media
+      Top <%= type.first.category.capitalize %>s
     </h2>
     <% type.each do |book| %>
       <ul class="list-group top-ten__list">
