@@ -1,6 +1,7 @@
 class Medium < ApplicationRecord
   has_many :votes
   validates :title, uniqueness: true, presence: true
+  validates :creator, presence: true
   validates :publication_year, numericality: true, presence: true
   validates :category, presence: true
 
