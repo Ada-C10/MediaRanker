@@ -30,8 +30,4 @@ class UsersController < ApplicationController
 
   private
 
-  def find_work
-    @work = Work.find_by(id: params[:id])
-  end
-
 end

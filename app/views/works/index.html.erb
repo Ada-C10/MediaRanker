@@ -23,7 +23,7 @@
       <% if work.category == "book" %>
       <li>
         <p>
-          <strong><%= "#{work.title}" %></strong> by <%= "#{work.creator}" %>
+          <strong><%= link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
         </p>
         <p>
           <%= "#{work.votes.count}" %> votes
@@ -41,7 +41,7 @@
       <% if work.category == "book" %>
       <li>
         <p>
-          <strong><%= "#{work.title}" %></strong> by <%= "#{work.creator}" %>
+          <strong><%= link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
         </p>
         <p>
           <%= "#{work.votes.count}" %> votes
@@ -59,7 +59,7 @@
       <% if work.category == "movie" %>
       <li>
         <p>
-          <strong><%= "#{work.title}" %></strong> by <%= "#{work.creator}" %>
+          <strong><%= link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
         </p>
         <p>
           <%= "#{work.votes.count}" %> votes

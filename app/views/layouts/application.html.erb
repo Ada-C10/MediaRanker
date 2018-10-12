@@ -13,7 +13,7 @@
   <header>
     <nav>
       <% flash.each do |key, value| %>
-      <%= key %> | <%= value %>
+      <%= value %>
       <% end %>
       <ul>
         <li><%= link_to "View all media", works_path, class: "all_works-link" %></li>
