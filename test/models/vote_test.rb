@@ -1,7 +1,9 @@
 require "test_helper"
-
+require 'pry'
 describe Vote do
   let(:vote) { votes(:vote1) }
+  let(:vote2) { votes(:vote2) }
+
 
   it "must not be valid when created without user_id and work_id" do
     value(vote.valid?).must_equal true
@@ -39,12 +41,22 @@ describe Vote do
       expect(valid).must_equal false
     end
 
-  end
+    it 'must be associated with only one user_id (aka each user can only vote on a work once)' do
+      #arrange
+      vote.user_id = "user1"
 
+      #act
+      vote.save
+      vote.user_id = "user1"
+      valid = vote.save
+
+      #assert
+      expect(valid).must_equal false
+
+    end
+
+  end
 end
 
 
-# belongs_to :user
-# belongs_to :work
-# #vote can only be created on the same work by the same user once aka   #each user can only upvote a work once
 # validates :user_id, uniqueness: {scope: :work_id, message:"You can only vote once"}
