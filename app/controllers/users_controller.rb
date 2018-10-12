@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: params[:id])
+    @votes = Vote.find(@user.votes.ids) # returns Array of Votes
   end
 
   private

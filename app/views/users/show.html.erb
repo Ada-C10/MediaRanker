@@ -1,2 +1,17 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+
+<h1>User Summary: <%= @user.name %></h1>
+<h2><%= @user.created_at.to_date.strftime("Joined site %m/%d/%Y") %></h2>
+<h2>Votes</h2>
+<% @votes.each do |vote| %>
+  <% row = vote.user_votes_table_row %>
+<ul>
+  <li><h3><%= row[0] %></h3></li>
+    <ul>
+      <li><h4><%= row[1] %></h4></li>
+      <li><h4><%= row[2] %></h4></li>
+      <li><h4><%= row[3].to_date.strftime("%m/%d/%Y") %></h4></li>
+    </ul>
+  <% end %>
+</ul>

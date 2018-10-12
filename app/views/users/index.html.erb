@@ -6,7 +6,7 @@
   <% @users.each do |user| %>
     <ul>
       <li><h3><%= link_to user.name, user_path(user.id) %></h3></li>
-      <li><h4><%= (user.created_at).to_date.strftime("User since %m/%d/%Y") %></h4></li>
+      <li><h4><%= (user.created_at).to_date.strftime("Joined site %m/%d/%Y") %></h4></li>
     </ul>
   <% end %>
 </ul>
