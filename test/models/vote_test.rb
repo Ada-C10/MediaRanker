@@ -23,24 +23,4 @@ describe Vote do
     end
   end
 
-  describe 'validations' do
-    it "must be an integer for quantity" do
-      vote.quantity = 'seaweed'
-
-      valid = vote.valid?
-
-      expect(valid).must_equal false
-      expect(vote.errors.messages).must_include :quantity
-    end
-
-    it 'must have a vote count greater than 0' do
-      vote.quantity = 1
-
-      valid = vote.valid?
-
-      expect(valid).must_equal false
-      expect(vote.errors.messages).must_include :quantity
-
-    end
-  end
 end
