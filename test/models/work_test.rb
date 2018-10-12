@@ -150,6 +150,20 @@ describe Work do
       expect(Work.list('book').length).must_equal 0
     end
 
+    it 'sorts the books by votes in descending order' do
+      new_book = Work.create(title: 'a title',
+                  category: 'book',
+                  creator: 'someone',
+                  publication_year: 1111,
+                  description: 'a fake book')
+
+      10.times do
+        Vote.create(work: new_book, user: User.create(name: rand(1..99999)))
+      end
+
+      expect(Work.list('book')).must_equal [new_book, secret]
+    end
+
   end
 
   describe 'custom method: list(media_category) for albums' do
@@ -174,6 +188,20 @@ describe Work do
           expect(Work.list('album').length).must_equal 0
         end
 
+        it 'sorts the albums by votes in descending order' do
+          new_album = Work.create(title: 'a title',
+                      category: 'album',
+                      creator: 'someone',
+                      publication_year: 1111,
+                      description: 'a fake album')
+
+          10.times do
+            Vote.create(work: new_album, user: User.create(name: rand(1..99999)))
+          end
+
+          expect(Work.list('album')).must_equal [new_album, remember]
+        end
+
   end
 
   describe 'custom method: list(media_category) for movies' do
@@ -196,6 +224,20 @@ describe Work do
       billy.update(category: 'album')
       expect(Work.list('movie')).must_be_instance_of Array
       expect(Work.list('movie').length).must_equal 0
+    end
+
+    it 'sorts the movies by votes in descending order' do
+      new_movie = Work.create(title: 'a title',
+                  category: 'movie',
+                  creator: 'someone',
+                  publication_year: 1111,
+                  description: 'a fake movie')
+
+      10.times do
+        Vote.create(work: new_movie, user: User.create(name: rand(1..99999)))
+      end
+
+      expect(Work.list('movie')).must_equal [new_movie, billy]
     end
   end
 
