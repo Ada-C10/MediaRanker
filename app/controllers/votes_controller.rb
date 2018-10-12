@@ -1,19 +1,17 @@
 class VotesController < ApplicationController
 
   def index
-    @vote = Vote.all
+    @works = Work.all
   end
 
-  def new
-    @vote = Vote.new
-  end
 
   def create
-    @vote = Vote.new(vote_params)
+    @vote = @current_user.votes.new(vote_params)
     if @vote.save
       redirect_to votes_path
     else
-      render :new
+      flash[:error] = "cant save vote"
+      redirect_to votes_path
     end
   end
 
@@ -21,8 +19,6 @@ class VotesController < ApplicationController
 
   def vote_params
     return params.require(:vote).permit(
-      :vote_date,
-      :user_id,
       :work_id
     )
   end

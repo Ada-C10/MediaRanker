@@ -1,7 +1,6 @@
 class WorksController < ApplicationController
 
   before_action :find_work, only: [:show, :edit, :update, :destroy]
-  before_action :find_user
 
     def index
       @works = Work.all
