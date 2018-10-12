@@ -1,11 +1,17 @@
 class UsersController < ApplicationController
-  before_action :find_users, only: [:show, :edit, :update, :destroy]
+  before_action :find_users, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all.order(:username)
   end
 
-  def show; end
+  def show
+    id = params[:id].to_i
+    @user = User.find_by(id: id)
+
+    if @author.nil?
+      render :notfound, status: :note_found
+  end
 
   def new
     @users = User.new
@@ -32,14 +38,14 @@ class UsersController < ApplicationController
 
   def edit; end
 
-  # def destroy
-  #   user = User.find_by(id: params[:id].to_i)
-  #   @deleted_user = user.destroy
-  #
-  #   if @deleted_user
-  #     redirect_to users_path
-  #   end
-  # end
+  def destroy
+    user = User.find_by(id: params[:id].to_i)
+    @deleted_user = user.destroy
+
+    if @deleted_user
+      redirect_to users_path
+    end
+  end
 
   def upvote
 

@@ -3,6 +3,10 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.all #.order(:votes)
+
+    @albums = Work.albums
+    @books = Work.books
+    @movies = Work.movies
   end
 
   def show; end
@@ -34,7 +38,7 @@ class WorksController < ApplicationController
       flash[:success] = "#{@work.title} was edited."
       redirect_to work_path(@work.id)
     elsif @work
-      flash.now[:warning] = @work.errors.messages
+      # flash.now[:warning] = @work.errors.messages
       render :edit
     end
   end

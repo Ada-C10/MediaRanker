@@ -10,8 +10,8 @@
   </head>
 
   <body>
-    <header>
-      <h1>Media Ranker</h1>
+    <header class= "app-header__header">
+      <h1>Media Ranke</h1>
       <h1>Ranking the best of everything</h1>
 
       <section class="flash">
@@ -38,6 +38,7 @@
           <li class="nav-item"><%= link_to  "View All Media", works_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to  "Add New Work", new_work_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to  "View All Users", users_path, class: "nav-link" %></li>
+
           <% if session[:user_id] %>
             <%= link_to "Log Out", logout_path, method: :delete %>
           <% else %>
@@ -47,6 +48,8 @@
       </nav>
     </header>
 
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
