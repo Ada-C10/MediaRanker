@@ -1,20 +1,12 @@
 class WorksController < ApplicationController
   def index
-    if params[:user_id]
-      user = User.find_by(id: params[:user_id])
-      # How do we handle if the user is not found?
-      #  If the user is not found, we would have a conditional to check
-      # that the user was found.
-      # Redirect to a 404 page
-      # Redirect to another existing page (the home page?) (new user form?)
-      # Show an error message saying that the user was not found
-      @works = user.works
-    else
-      @works = Work.all
-    end
+    @works = Work.all
   end
 
+
   def show
+    work_id = params[:id]
+    find_work
     if @work.nil?
       head :not_found
     end
@@ -46,7 +38,9 @@ class WorksController < ApplicationController
     end
   end
 
+
   def edit
+    @work = Work.find_by(id: params[:id])
   end
 
   def update
@@ -56,6 +50,25 @@ class WorksController < ApplicationController
     else
       flash.now[:error] = "Invalid work data"
       render(:edit, status: :bad_request)
+    end
+  end
+
+  def upvote
+    if user_id != session[:user_id]
+      flash[:error] = "Must be logged in to vote!"
+    elsif
+      user_id == session[:user_id]
+      @votes = []
+      vote = Vote.new
+      vote.work_id = params[:id]
+      vote.user_id = user_id
+      @votes << vote
+      @votes.each do |vote|
+        if session[:user_id] == vote.user_id
+          flash[:error] = "Cannot Vote on a work twice!"
+          render :new
+        end
+      end
     end
   end
 
@@ -73,7 +86,6 @@ class WorksController < ApplicationController
     end
   end
 
-
   private
 
   # Strong params: only let certain attributes
@@ -81,9 +93,9 @@ class WorksController < ApplicationController
   def work_params
     return params.require(:work).permit(
       :title,
-      :publication_year,
-      :description,
       :creator,
+      :description,
+      :publication_year,
       :category
     )
   end

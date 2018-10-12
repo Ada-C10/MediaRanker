@@ -1,0 +1,102 @@
+<div class="container">
+
+  <div class="div1">
+    <h3>
+      <%= link_to "new works", new_work_path, class: "new-work" %>
+    </h3>
+  </div>
+
+  <div class="div2">
+    <h3>
+      <%= link_to "all works", works_path, class: "homepage" %>
+    </h3>
+  </div>
+
+  <div class="div5">
+    <h3>your works</h3>
+  </div>
+
+  <div class="div6">
+    <h2>BOOKS</h2>
+    <table class="book">
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+        <%= link_to work_path(work.id) %>
+      </tr>
+      <% @works.each do |work| %>
+      <% if work.category == "book" %>
+      <tr>
+        <% votes = [] %>
+        <%  @votes.each do |vote| %>
+        <% if vote.work_id == work.id %>
+        <% votes << vote %>
+        <th><%= votes.count %></th>
+        <% end %>
+        <th><%= work.title %></th>
+        <th><%= work.creator %></th>
+        <th><%= work.publication_year %></th>
+        <th><%= link_to work_path(work.id) %></th>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="album">
+    <h2>ALBUMS</h2>
+    <table class="book">
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+        <%= link_to work_path(work.id) %>
+      </tr>
+      <% @works.each do |work| %>
+      <% if work.category == "book" %>
+      <tr>
+        <% votes = [] %>
+        <%  @votes.each do |vote| %>
+        <% if vote.work_id == work.id %>
+        <% votes << vote %>
+        <th><%= votes.count %></th>
+        <% end %>
+        <th><%= work.title %></th>
+        <th><%= work.creator %></th>
+        <th><%= work.publication_year %></th>
+        <th><%= link_to work_path(work.id) %></th>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+
+  <div class="album">
+    <h2>MOVIES</h2>
+    <table class="book">
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+        <%= link_to work_path(work.id) %>
+      </tr>
+      <% votes = [] %>
+      <%  @votes.each do |vote| %>
+      <% if vote.work_id == work.id %>
+      <% votes << vote %>
+      <th><%= votes.count %></th>
+      <% end %>
+        <th><%= work.title %></th>
+        <th><%= work.creator %></th>
+        <th><%= work.publication_year %></th>
+        <th><%= link_to work_path(work.id) %></th>
+      </tr>
+    </table>
+  </div>
+</div>
