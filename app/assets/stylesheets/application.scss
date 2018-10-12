@@ -16,3 +16,82 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+body {
+  font-family: "Gudea", sans-serif;
+}
+
+#banner {
+  margin-bottom: 0.5rem;
+  padding: 3.5rem 1rem 0rem 1rem;
+  color: white;
+}
+
+#banner, .navbar {
+  background-color: #B2DFDB;
+}
+
+.brand h1>a {
+  text-decoration: none;
+  color: #FF5722;
+  padding-right: 25px;
+  margin-right: 15px;
+  border-right: white 2px solid;
+  font-weight: bolder;
+}
+
+.brand h1 {
+  text-align: center;
+}
+
+.brand {
+  margin-bottom: 3rem;
+}
+
+// .brand h1>a::after {
+//   content: '|';
+// }
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.nav-link {
+  color: #00796B;
+  display: block;
+  padding: 0.5em 1em;
+}
+
+.btn-info {
+  background-color: #26A69A;
+}
+
+li {
+  list-style: none;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.login {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  // justify-content: flex-start;
+  // text-align: justify;
+  // align-items: stretch;
+  // align-content: flex-start;
+}
+
+.login li {
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
