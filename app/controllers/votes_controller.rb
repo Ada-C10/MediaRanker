@@ -9,7 +9,7 @@ class VotesController < ApplicationController
 
     # redirect_to root_path
 
-    if find_logged_in_user()
+    if find_logged_in_user() # hi, are you logged in?
 
       # @work_id = Work.find_by(id: params[:work])
       @work_id = Work.find_by(id: params[:work_id])
@@ -23,7 +23,7 @@ class VotesController < ApplicationController
         flash[:success] = "Successfully upvoted!"
         redirect_to root_path
       else
-        flash[:alert] = " work id #{@work_id} and user id #{@user_id} something went wrong: #{@vote.work_id} and #{result}"
+        flash[:alert] = "something went wrong"
         redirect_to work_path(1)
       end
 

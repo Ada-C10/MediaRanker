@@ -4,12 +4,12 @@ class Work < ApplicationRecord
 
   validates :title, presence: true
   # , uniqueness: true
-  validates_uniqueness_of :work, scope: :category
+  # validates_uniqueness_of :work, scope: :category
   # validates_inclusion_of :category, :in => CATEGORIES
 
 
   #QUESTION: uniqueness: really?? depends on media type, no?
 def categories
-  @categories = ["album", "book", "movie"] 
+  @categories = ["album", "book", "movie"]
 end
 end
