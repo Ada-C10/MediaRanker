@@ -20,6 +20,24 @@
         <%= f.submit %>
         <% end %>
       </nav>
+
+      <section>
+
+        <!-- move this - controller filter? -->
+        <% logged_in_user = User.find_by(id: session[:test]) %>
+        <% if logged_in_user %>
+        <p>
+          Currently logged in as <%= logged_in_user.username %>
+          <%= link_to "Log out", logout_path, method: :post %>
+        </p>
+        <% else %>
+        <%= link_to "Log in", new_user_path %>
+        <% end %>
+
+
+
+      </section>
+
     </header>
 
     <section class = "flash-message">
