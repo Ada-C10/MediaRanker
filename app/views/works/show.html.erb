@@ -1,9 +1,12 @@
-
-<p>
+<section>
   <h2><%= @work.title%></h2>
-  <ul>
-    <li>Created by: <%= @work.created_by%></li>
-    <li>Published: <%= @work.year_published%></li>
-    <li><%= @work.description%></li>
-  </ul>
-</p>
+  <p>Created by: <%= @work.created_by%></p>
+  <p>Published: <%= @work.year_published%></p>
+  <p></p>
+</section>
+<section>
+  <%= link_to "Back to media ranks", works_path, class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_work_path, class: "btn btn-primary" %>
+  <a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/:id/upvote">Upvote</a>
+  <%= link_to "Delete", work_path, method: "delete", class: "btn btn-danger" %>
+</section>

@@ -1,5 +1,7 @@
 class WorksController < ApplicationController
 
+  # before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def homepage
 
   end
@@ -34,6 +36,32 @@ class WorksController < ApplicationController
     end
   end
 
+  def edit
+    @work = Work.find_by(id: params[:id])
+  end
+
+  def update
+    @work = Work.find_by(id: params[:id])
+
+    if @work.update(work_params)
+      flash[:success] = "Successfully updated \"#{@work.title}\""
+      redirect_to work_path(@work.id)
+    else
+      flash.now[:error] = "Invalid data"
+      render :edit, status: :bad_request
+    end
+  end
+
+  def destroy
+    @work = Work.find_by(id: params[:id])
+    if @work.destroy
+      flash[:success] = "Successfully destroyed \"#{@work.title}\""
+      redirect_to works_path
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   private
 
   def work_params
@@ -45,5 +73,9 @@ class WorksController < ApplicationController
       :category
     )
   end
+
+  # def find_work
+  #   @work = Work.find_by(id: params[:id])
+  # end
 
 end
