@@ -24,10 +24,17 @@
       </nav>
     </header>
     <main>
-      <section class="flash">
+      <section class="flash alert-warning">
         <% flash.each do |name, message| %>
-        <div class="<%= name %>"><%= message %></div>
-        <% end %>
+        <section class="alert-<%= name %> flashmessage">
+          <%= message %></div>
+          <% if @work && @work.errors.any? %>
+          <% @work.errors.each do |column, descr| %>
+            <strong><%column.capitalize %> </strong><%= message %>
+          <% end %>
+          <% end %>
+          <% end %>
+        </section>
       </section>
       <%= yield %>
     </main>
