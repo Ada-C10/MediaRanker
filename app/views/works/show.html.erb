@@ -40,4 +40,13 @@ btn-danger">
       <th scope="col">User</th>
       <th scope="col">Date</th>
     </tr>
+
   </thead>
+
+  <tr>
+    <%@work.votes.each do |vote| %>
+    <td scope="row"><%= link_to vote.user.username, user_path(vote.user)%></td>
+    <td scope="row"><%=(vote.created_at).strftime("%b %e, %Y")%></td>
+  </tr>
+  <%end%>
+</table>

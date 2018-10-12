@@ -15,13 +15,14 @@
       <th scope="col">Voted On</th>
     </tr>
   </thead>
+
     <%@user.votes.each do |vote|%>
     <tr>
-    <td scope="row"><%=link_to vote.work.title, work_path(vote.work.id)%></td>
+    <td scope="row"><%=link_to vote.work.title, work_path(vote.work)%></td>
     <td scope="row"><%=vote.work.creator%></td>
     <td scope="row"><%=vote.work.publication_year%></td>
     <td scope="row"><%=vote.work.category%></td>
-    <td scope="row"><%=vote.created_at%></td>
+    <td scope="row"><%=(vote.created_at).strftime("%b %e, %Y")%></td>
   </tr>
 <%end%>
 </table>
