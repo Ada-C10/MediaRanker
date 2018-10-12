@@ -59,12 +59,12 @@
     <section class="alert__container">
       <% flash.each do |name, message| %>
         <% if message.class == Array %>
-          <div class="alert alert-<%= name %>">
-            <!-- <ul> -->
-              <%# message.each do |msg| %>
-                <!-- <li><%#= "#{name}: #{msg}\n" %></li> -->
-              <%# end %>
-            <!-- </ul> -->
+          <div class="alert alert-warning">
+            <ul>
+              <% message.each do |msg| %>
+                <li class="alert alert-warning"><%= "#{name.capitalize}: #{msg}\n" %></li>
+              <% end %>
+            </ul>
           </div>
         <% else %>
           <div class="alert-<%= name %>"><%= message %></div>
