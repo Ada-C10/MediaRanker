@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>GP MediaRanker</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>GP MediaRanker</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-<link href="https://fonts.googleapis.com/css?family=Muli:200" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Muli:200" rel="stylesheet">
+</head>
 
-  </head>
-
-  <body>
-    <header class="app-header header">
+<body>
+  <header class="app-header header">
     <h1>
       <a href="/">Media Ranker</a>
       <small> Ranking the Best of Everything</small>
@@ -35,13 +34,17 @@
         </li>
         <li class="nav-item app-header nav_item">
           <a class="btn btn-primary" href="/login">Log In</a>
-      </li>
+        </li>
       </ul>
-
     </nav>
   </header>
 
 
-    <%= yield %>
-  </body>
+  <%= yield %>
+
+  <footer>
+    don't steal me, k thnx
+  </footer>
+</body>
+
 </html>

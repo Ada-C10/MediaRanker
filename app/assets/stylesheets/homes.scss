@@ -1,3 +1,21 @@
-// Place all the styles related to the Homes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.spotlight{
+  padding: 75px;
+}
+
+.media-spotlight{
+  font-weight: bolder;
+}
+
+
+.top-media-columns{
+  display: grid;
+  grid-column: 1fr 1fr 1fr;
+}
+
+.books-container{
+grid-column: 2 / 3;
+}
+
+.albums-container{
+grid-column: 3 / 4;
+}

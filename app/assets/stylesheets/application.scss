@@ -2,8 +2,20 @@
 /* Import scss content */
 @import "**/*";
 
+
+// APPLICATION WIDE STYLING
 body{
-  font-family: 'Muli', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a{
+  color: rgb(168, 82, 11);
+}
+
+a:hover{
+  color: rgb(140, 68, 8);
+  text-decoration: none;
+  font-weight: bold;
 }
 
 
@@ -11,12 +23,13 @@ body{
 
 header{
   background-color: rgba(203, 160, 139, 0.74);
+  font-family: 'Muli', sans-serif;
 }
 
 header h1{
   text-align: center;
+  padding: 50px;
   padding-top: 100px;
-  padding-bottom: 50px;
   text-decoration: none;
   font-size: 3em;
 }
@@ -25,14 +38,6 @@ header h1 small{
   padding-left: 10px;
 }
 
-header a{
-  color: rgb(168, 82, 11);
-}
-
-header a:hover{
-  color: rgb(140, 68, 8);
-  text-decoration: none;
-}
 
 header small{
   color: white;
@@ -55,4 +60,8 @@ header .btn-primary:hover{
 
 .nav{
   margin: 20px;
+}
+
+footer{
+  padding-top: 200px;
 }
