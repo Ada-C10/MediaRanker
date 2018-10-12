@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create]
 
+  post 'works/:id/upvote', to: 'works#upvote', as: 'upvote'
   post '/sessions/logout', to: 'sessions#logout', as: 'logout'
 
   # get '/works', to: 'works#index', as: 'all_works'
