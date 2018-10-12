@@ -1,10 +1,18 @@
   <section class="spotlight">
     <h2 class="spotlight__header">
       <span class="spotlight__header--prefix">Media Spotlight:</span>
-      <%= link_to "#{@spotlight.title}", work_path(@spotlight.id), class: "spotlight__link-to"%> by <%="#{@spotlight.creator}"%>
+      <% if @spotlight %>
+        <%= link_to "#{@spotlight.title}", work_path(@spotlight.id), class: "spotlight__link-to"%> by <%="#{@spotlight.creator}"%>
+      <% else %>
+        <small>There's nothing to rank yet. <small>
+      <% end %>
     </h2>
     <p class="spotlight__description">
-      <%="#{@spotlight.votes.count}"%> votes - <%="#{@spotlight.description}"%>
+      <% if @spotlight %>
+        <%="#{@spotlight.votes.count}"%> votes - <%="#{@spotlight.description}"%>
+      <% else %>
+        <small>Add some works to get started!<small>
+      <% end %>
     </p>
 </section>
 
@@ -17,6 +25,7 @@
     <h2 class="top-ten__header">
       Top <%="#{works.first.category.capitalize}s"%>
     </h2>
+
       <ul class="list-group top-ten__list">
         <% works.each do |work| %>
           <li class="list-group-item">
@@ -28,6 +37,7 @@
           </li>
         <%end%>
       </ul>
+      
   </section>
 <%end%>
 </section>
