@@ -13,12 +13,11 @@ class SessionsController < ApplicationController
         # raise
         redirect_to root_path
       else
-        flash[:warning] = "no"
+        flash[:warning] = "Not able to log in "
         redirect_to root_path
       end
 
     else
-      raise
       session[:user_id] = user.id #where does :user_id come from?
       flash[:success] = "#{user.name} Successfully logged in!"
       redirect_to root_path
