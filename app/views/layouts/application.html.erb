@@ -1,15 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MediaRanker</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>MediaRanker</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
+<body>
+  <header class="app-header_header">
+    <h1>
+      <a class="nav-link">MediaRanker</a></a><small>Ranking the Best of Everything</small> </h1>
+      <nav class="app-header_nav">
+        <ul class="nav_header_site-nav-container">
+          <li class="nav-item app_header_nav_item">
+            <a class="nav-link" href="/works">View top media</a>
+            </li>
+            <li class="nav-item app-app_header_nav_item">
+              <a class="nav-link" href="/works">View all media </a>
+            </li>
+            <li class="nav-item app_header_nav_item">
+              <a class="nav-link" href="/works/new">Add a new work</a>
+            </li>
+            <li class="nav-item app_header_nav_item">
+              <a class="nav-link" href="/users/index">View all users</a>
+            </li>
+          </ul>
+          <ul class="nav app-header_user-nav-container">
+            <li class=""nav-item app-header_nav_item>
+              <a class="btn btn-primary" href="/users/9">Logged in as ... </a>
+            </li>
+            <li class="nav-item app-header__nav_item">
+          <a class="btn btn-primary" rel="nofollow" data-method="post" href="/logout">Log Out</a>
+        </li>
+          </ul>
+        </nav>
+      </header>
+
+    </header>
     <%= yield %>
   </body>
-</html>
+  </html>

@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
+
+CSV.foreach(Rails.root.join('db/media_seeds.csv'), :headers => true, encoding: "UTF-8") do |row|
+   Work.create(row.to_hash)#Model is the name of your model
+end

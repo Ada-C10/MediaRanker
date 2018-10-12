@@ -1,0 +1,13 @@
+<%= form_with model: @user do |f| %>
+<p>Please fill out the following :</p>
+<div class="ufbox">
+  <div class="uformbox">
+    <%= f.label :user_name %>
+    <%= f.text_field :name%>
+  </div>
+  <div class="boxa"
+</div>
+<div class="npbutton">
+  <%= f.submit "Create", class: "user-button" %>
+</div>
+<% end %>
