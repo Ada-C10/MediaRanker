@@ -1,3 +1,13 @@
 <h1>Works#show</h1>
 <p>Find me in app/views/works/show.html.erb</p>
-<h1><%= @work.title %></h1>, by <%= @work.creator %>
+<h1><%= @work.title %></h1>
+<p>Created by: <%= @work.creator %></p>
+<p>Published: <%= @work.publication %></p>
+<p><%= @work.description %></p>
+
+<ul>
+  <li><%= link_to "Back to media ranks", root_path %></li>
+  <li><%= link_to "Edit", edit_work_path(@work.id) %></li>
+  <li><%= link_to "Upvote", votes_path, method: :post %></li>
+  <li><%= link_to "Delete", work_path(@work.id), method: :delete %></li>
+</ul>

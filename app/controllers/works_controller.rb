@@ -60,7 +60,7 @@ class WorksController < ApplicationController
 
 # Filter
   def list_works
-    # ...should THIS go in the model or the controller?
+    # ...should this hash go in the model or the controller?
     @works = Hash.new
   # Find project constants in config/initializers/constants.rb
     VALID_WORK_CATEGORIES.each do |category|
