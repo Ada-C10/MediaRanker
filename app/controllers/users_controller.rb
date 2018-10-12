@@ -24,14 +24,6 @@ class UsersController < ApplicationController
       redirect_to users_path
     else
       render :new, status: :bad_request
-
-      filtered_user = user_params()
-      @user = User.new(filtered_user)
-      if @user.save
-        redirect_to users_path
-      else
-        render :new
-      end
     end
   end
 
