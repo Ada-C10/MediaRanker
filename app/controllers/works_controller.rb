@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
 
-before_action :find_work, only: [:show, :edit, :update, :destroy]
+before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def homepage
   end
@@ -64,7 +64,7 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
 
 
   def upvote
-    @work = Work.find(params[:id])
+    # @work = Work.find(params[:id])
     @work.vote.create
     redirect_to(works_path)
   end

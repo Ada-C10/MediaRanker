@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   post '/sessions/logout', to: 'sessions#logout', as: 'logout'
 
   get '/home', to: 'works#homepage', as: 'home'
+
+  post '/works/:id/upvote(.:format)', to 'works#upvote'
 end
