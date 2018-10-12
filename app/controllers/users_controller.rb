@@ -10,6 +10,10 @@ class UsersController < ApplicationController
     if @user.nil?
       head :not_found
     end
+
+    @votes = Vote.where(user: @user)
+
+
   end
 
   def new

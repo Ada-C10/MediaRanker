@@ -1,4 +1,32 @@
 <h1><%= "User Summary: #{@user.username}" %></h1>
 
-<!-- put info for votes  -->
-<!-- Media title, created by, published, category, voted on -->
+<p><%= "Joined site #{@user.created_at.strftime("%b %d %Y")}" %></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Media Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Category</th>
+      <th>Voted On</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <% @votes.each do |v| %>
+      <td><%= link_to "#{v.work.title}", work_path(v.work.id)%></td>
+      <td><%= v.work.creator %></td>
+      <td><%= v.work.publication_year %></td>
+      <td><%= v.work.category.capitalize %></td>
+      <td><%= v.created_at.strftime("%b %d %Y") %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to "See all Users", users_path, class: "btn btn-primary" %>
+
+<%= link_to "Back to Media List", root_path, class: "btn btn-primary" %>
