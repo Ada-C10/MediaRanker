@@ -3,6 +3,13 @@ home users page
 displays lists of users
 <p>
 <table>
+  <thead>
+    <tr>
+      <th width=80>User ID</th>
+      <th>Name</th>
+      <th>Joined Date</th>
+    </tr>
+  </thead>
   <% @users.each do |user| %>
     <tr>
       <td><%= user.id %></td>
