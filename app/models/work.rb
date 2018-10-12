@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  validates :title, presence: true, length: { in: 5..100 }
+  validates :title, presence: true, uniqueness: true
   validates :creator, presence: true, length: { in: 5..100 }
   validates_inclusion_of :category, in: %w(book album movie)
   validates :publication_year, presence: true

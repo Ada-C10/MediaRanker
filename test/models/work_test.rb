@@ -22,6 +22,12 @@ describe Work do
       end
     end
 
+    it 'is not valid when the title of the media is not unique' do
+      work_copy = work.dup
+
+      assert_not work_copy.valid?
+    end
+
   end
 
   describe 'Relationships' do
