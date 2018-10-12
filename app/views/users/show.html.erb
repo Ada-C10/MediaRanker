@@ -15,14 +15,17 @@
       <th>Voted On</th>
     <tr>
 
-
+<% @votes.each do |vote| %>
     <tr>
-      <td><%="title"%></td>
-      <td><%="date"%></td>
-      <td><%="person"%></td>
-      <td><%="book"%></td>
-      <td><%="date" %></td>
+
+      <td><%= vote.work.title %></td>
+      <td><%= vote.user.username %></td>
+      <td><%= vote.work.publication_year %></td>
+      <td><%= vote.work.category %></td>
+      <td><%= "#{vote.created_at.strftime("%B %e, %Y")}" %></td>
+
     </tr>
+      <% end %>
 
   </table>
 </section>

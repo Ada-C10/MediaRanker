@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @work = Work.where(user_id: params[:id])
+    @votes = Vote.where(user_id: params[:id])
 
     if @user.nil?
       head :not_found
