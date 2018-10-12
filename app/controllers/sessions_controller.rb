@@ -5,13 +5,24 @@ class SessionsController < ApplicationController
 
     if user.nil?
       #create new user
-      user = User.create(name: params[:user][:name])
-    end
+      user = User.new(name: params[:user][:name])
+      if user.save
+        #log in the existing user
+        session[:user_id] = user.id #where does :user_id come from?
+        flash[:success] = "#{user.name} Successfully logged in!"
+        # raise
+        redirect_to root_path
+      else
+        flash[:warning] = "no"
+        redirect_to root_path
+      end
 
-      #log in the existing user
+    else
+      raise
       session[:user_id] = user.id #where does :user_id come from?
       flash[:success] = "#{user.name} Successfully logged in!"
       redirect_to root_path
+    end
   end
 
   def new
