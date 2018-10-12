@@ -7,9 +7,7 @@ class Work < ApplicationRecord
 
 
   def self.by_category(input)
-     raise ArgumentError if input != "Movie" && input != "Book" && input != "Album"
-
-      result = Work.all.order(:id).select {|work| work.category == input}
-
+      result = Work.all.select {|work| work.category == input}
+      return result
   end
 end
