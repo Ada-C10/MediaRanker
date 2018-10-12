@@ -46,7 +46,11 @@ describe Vote do
 
     it 'can get work with \'work\'' do
       expect(@vote.work).must_equal Work.find(@work.id)
+    end
+
+    it 'can get user with \'user\'' do
       expect(@vote.user).must_equal User.find(@user.id)
     end
+
   end
 end

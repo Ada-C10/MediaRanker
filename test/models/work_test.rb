@@ -25,6 +25,7 @@ describe Work do
         expect(another_work.errors.messages).must_include :title
     end
 
+# Unique title scope CATEGORY!! need to change
     it 'is invalid when category is not included in valid categories array' do
       VALID_WORK_CATEGORIES.each do |category|
         @work.category = category

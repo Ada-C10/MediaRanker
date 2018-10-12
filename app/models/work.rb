@@ -1,6 +1,8 @@
 class Work < ApplicationRecord
-  has_many :votes
+  has_many :votes, dependent: :destroy
   has_many :users, through: :votes
+
+  # Unique title scope CATEGORY!! need to change
   validates :title, presence: true, uniqueness: { case_sensitive: false },
     length: { maximum: 40 }
   validates :category, presence: true, inclusion: { in: VALID_WORK_CATEGORIES,
