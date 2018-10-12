@@ -1,4 +1,5 @@
 class Work < ApplicationRecord
+  has_many :votes
   CATEGORIES = %w(album book movie)
   validates :title, presence: true
   validates :creator, presence: true, uniqueness: true
