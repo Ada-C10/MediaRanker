@@ -2,7 +2,7 @@
   <section class="card">
     <div class="card-body">
       <h2 class="header card-title">
-        Media Spotlight:
+        <span class="header spotlight-prefix">Media Spotlight:</span>
           <%= link_to Work.spotlight.title, work_path(Work.spotlight.id) %>
         by <%= Work.spotlight.creator %>
       </h2>
@@ -24,7 +24,7 @@
           <li class="list-group-item">
             <h4>
               <%= link_to movie.title, work_path(movie.id) %>
-            by <%= movie.creator %>
+            <small class="top-ten creator">by <%= movie.creator %></small>
             </h4>
             <p>
               <%= movie.votes.length %> votes
@@ -41,7 +41,7 @@
           <li class="list-group-item">
             <h4>
               <%= link_to book.title, work_path(book.id) %>
-            by <%= book.creator %>
+            <small class="top-ten creator">by <%= book.creator %></small>
             </h4>
             <p>
               <%= book.votes.length %> votes
@@ -58,7 +58,7 @@
           <li class="list-group-item">
             <h4>
               <%= link_to album.title, work_path(album.id) %>
-            by <%= album.creator %>
+            <small class="top-ten creator">by <%= album.creator %></small>
             </h4>
             <p>
               <%= album.votes.length %> votes
