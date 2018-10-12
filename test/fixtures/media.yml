@@ -3,13 +3,13 @@
 one:
   title: MyString
   description: MyString
-  ccategory: MyString
+  category: MyString
   creator: MyString
-  publication_year: 
+  publication_year:
 
 two:
   title: MyString
   description: MyString
-  ccategory: MyString
+  category: MyString
   creator: MyString
-  publication_year: 
+  publication_year:
