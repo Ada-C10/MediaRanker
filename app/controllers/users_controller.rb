@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
 
     if @user.nil?
-      flash.now[:danger] = "Cannot find the user #{params[:id]}"
       render :notfound, status: :not_found
     end
   end

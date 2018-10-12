@@ -90,6 +90,11 @@ a {
   background-color: transparent;
 }
 
+a:hover {
+  text-decoration: none;
+  color: #00796B;
+}
+
 a, h2, h3 {
   color: #26A69A;
 }
@@ -124,6 +129,11 @@ main {
   list-style: none;
 }
 
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+}
+
 .alert {
   position: relative;
   padding: 0.75rem 1.25rem;
@@ -132,12 +142,8 @@ main {
   border-radius: 0.25rem;
 }
 
-// .alert__container {
-//   margin: 2rem 0 1rem 0;
-// }
-
 .alert__container {
-  margin: 0;
+  margin: 2rem 0 1rem 0;
 }
 
 .alert-warning {
@@ -181,6 +187,10 @@ main {
 
 .app-header__site-nav-container .app-header__nav_item {
   margin-right: 2rem;
+}
+
+.app-header__nav_item .nav-link {
+  color: #00796B;
 }
 
 .app-header__user-nav-container .nav-item {
@@ -273,4 +283,8 @@ hr {
   background-color: #26A69A;
   color: white;
   border-color: #26A69A;
+}
+
+.btn-primary:hover {
+  background-color: #00796B;
 }

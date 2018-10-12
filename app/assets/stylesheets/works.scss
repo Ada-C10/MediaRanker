@@ -7,6 +7,10 @@ a, h2, h3 {
   color: #26A69A;
 }
 
+h3 {
+  font-size: 1.75rem;
+}
+
 h4 {
   font-size: 1.5rem;
 }
@@ -89,6 +93,24 @@ tbody {
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
+}
+
+.works-votes__container {
+  margin-top: 2rem;
+}
+
+.works-votes__header {
+  color: black;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #00796B;
 }
 
 div.field_with_errors {
