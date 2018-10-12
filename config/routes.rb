@@ -10,5 +10,5 @@ Rails.application.routes.draw do
 
   get '/home', to: 'works#homepage', as: 'home'
 
-  post '/works/:id/upvote(.:format)', to 'works#upvote'
+  post '/works/:id/upvote', to: 'works#upvote', as: 'upvote_work'
 end
