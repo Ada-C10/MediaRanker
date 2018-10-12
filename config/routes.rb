@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :works do
     resources :votes, only: [:create]
   end
-  #need to use except for the user routes you're not using
-  resources :users
+
+  resources :users, except: [:new, :update, :edit, :destroy]
 
 end

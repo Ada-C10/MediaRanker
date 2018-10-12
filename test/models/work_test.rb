@@ -23,7 +23,7 @@ describe Work do
       value(album.errors.messages).must_include :published
     end
 
-
+    it 'votes related to a work are destroyed when a work is deleted' do
 
     #test that votes related to a work are destroyed when work is deleted
   end
