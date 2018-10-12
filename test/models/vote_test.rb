@@ -14,6 +14,8 @@ describe Vote do
     it "validates uniqueness of user voting for the same work" do
       same_vote = Vote.create(user: marshall, work: secret)
       expect(same_vote.valid?).must_equal false
+      expect(same_vote.errors.messages).must_include :user
+
     end
 
     it "creates new votes and adds to the total vote count" do
@@ -26,17 +28,24 @@ describe Vote do
     it "must have a user in the database" do
       bad_vote = Vote.new(work: billy)
       expect(bad_vote.valid?).must_equal false
+      expect(bad_vote.errors.messages).must_include :user
 
       bad_vote = Vote.new(user_id: 5, work: billy)
       expect(bad_vote.valid?).must_equal false
+      expect(bad_vote.errors.messages).must_include :user
+
     end
 
     it "must have a work in the database" do
       bad_vote = Vote.new(user: marshall)
       expect(bad_vote.valid?).must_equal false
+      expect(bad_vote.errors.messages).must_include :work
+
 
       bad_vote = Vote.new(user: marshall, work_id: 5)
       expect(bad_vote.valid?).must_equal false
+      expect(bad_vote.errors.messages).must_include :work
+
     end
 
     it "does not destroy user or work if vote is destroyed" do #can only destroy a vote by destroying its work in this implementation

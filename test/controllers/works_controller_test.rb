@@ -42,6 +42,6 @@ describe WorksController do
       delete work_url(work)
     }.must_change "Work.count", -1
 
-    must_redirect_to works_path
+    must_redirect_to root_path
   end
 end
