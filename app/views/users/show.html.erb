@@ -1,2 +1,26 @@
-<h2><%= @user.name %></h2>
+<h2>User Summary: <%= @user.name %></h2>
 <p>Joined site: <%= @user.created_at.strftime("%b %d, %Y") %></li>
+
+<h3>Votes</h3>
+<table>
+  <tr>
+    <th>Media Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Category</th>
+  </tr>
+
+  <% @user.votes.each do |vote| %>
+  <tr>
+    <td>
+      <%= link_to work_path(vote.work.id) do %>
+      <%= vote.work.title %>
+      <% end %>
+    </td>
+    <td><%= vote.work.creator %></td>
+    <td><%= vote.work.publication_year %></td>
+    <td><%= vote.work.category %></td>
+    <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+  </tr>
+  <% end %>
+  </table>
