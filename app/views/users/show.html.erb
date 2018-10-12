@@ -20,7 +20,7 @@
     <tbody>
     <% @user.votes.each do |vote| %>
     <tr>
-      <td scope="row"><%= Work.find_by(id: vote.work_id).title %></td>
+      <td scope="row"><%= link_to Work.find_by(id: vote.work_id).title, work_path(vote.work_id) %></td>
       <td><%= Work.find_by(id: vote.work_id).created_at %></td>
       <td><%= Work.find_by(id: vote.work_id).publication_year %></td>
       <td><%= Work.find_by(id: vote.work_id).category %></td>
