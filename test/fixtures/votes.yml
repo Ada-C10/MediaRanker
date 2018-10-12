@@ -22,3 +22,21 @@ vote_three:
 vote_four:
   user: user_two
   work: princess
+vote_five:
+  user: user_three
+  work: moana
+vote_six:
+  user: user_two
+  work: moana
+vote_seven:
+  user: user_one
+  work: moana
+vote_eight:
+  user: user_four
+  work: herosix
+vote_nine:
+  user: user_five
+  work: herosix
+vote_ten:
+  user: user_six
+  work: moana

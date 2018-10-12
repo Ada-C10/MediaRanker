@@ -86,6 +86,85 @@ describe Work do
       end
     end
 
+    it 'returns a maximum 10 works' do
+      ['movie', 'album', 'book'].each do |category|
+        works = Work.top_ten(category)
+        expect(works.count).must_be :<=, 10
+      end
+    end
+
+    it 'returns a list of works in order of decreasing vote count' do
+      works = Work.top_ten('movie')
+      vote_count = works.first.votes.count
+      9.times do |place_num|
+        next_vote_count = works[place_num + 1].votes.count
+        expect(vote_count >= next_vote_count).must_equal true
+        vote_count = next_vote_count
+      end
+    end
+  end
+
+  describe 'get_works_of_type method' do
+    it 'returns a collection of works' do
+      ['movie', 'album', 'book'].each do |category|
+        works = Work.get_works_of_type(category)
+        expect(works).must_respond_to :each
+      end
+    end
+
+    it 'returns the entire collection of works for each category' do
+      ['movie', 'album', 'book'].each do |category|
+
+        actual_count = Work.where(category: category).count
+
+        works = Work.get_works_of_type(category)
+
+        expect(works.count).must_equal actual_count
+      end
+    end
+  end
+
+  describe 'get_categories' do
+    it 'returns the list of media categories' do
+      expected_array =['album', 'book', 'movie'].sort
+
+      given_array = Work.get_categories.sort
+
+      expect(given_array).must_equal expected_array
+    end
+  end
+
+  describe 'top_media' do
+    it 'returns the work with the most votes' do
+      expected_top = works(:moana)
+
+      given_top = Work.top_media
+
+      expect(given_top).must_equal expected_top
+    end
+  end
+
+  describe 'get_num_votes' do
+    before do
+      @work = Work.new(
+        title: 'test work',
+        creator: 'test author',
+        category: 'book',
+        publication_year: 1988,
+        description: 'description here'
+      )
+    end
+
+    it 'returns the number of votes for a given work' do
+      work = Work.top_media
+
+      expected_count = work.votes.count
+
+      given_count = Work.get_num_votes(work)
+
+      expect(expected_count).must_equal given_count
+    end
+
   end
 
 end

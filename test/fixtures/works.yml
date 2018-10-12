@@ -22,6 +22,60 @@ stars:
   publication_year: 2017
   description: Almost Romeo and Juliet
   category: movie
+graffiti:
+  title: American Graffiti
+  creator: George Lucas
+  publication_year: 1973
+  description: plot plot plot
+  category: movie
+moana:
+  title: Moana
+  creator: Disney
+  publication_year: 2016
+  description: How far one girl will go to save her people
+  category: movie
+hercules:
+  title: Hercules
+  creator: Disney
+  publication_year: 1997
+  description: Demigod stuff
+  category: movie
+mermaid:
+  title: The Litte Mermaid
+  creator: Disney
+  publication_year: 1989
+  description: Based on Hans Christian Anderson but much happier
+  category: movie
+frozen:
+  title: Frozen
+  creator: Disney
+  publication_year: 2013
+  description: Ice powers, Power of love, Ana is an underrated hero who really loves her sister and it still bothers some people how little love she gets compared to super-cool Elsa, many songs
+  category: movie
+zootopia:
+  title: Zootopia
+  creator: Disney
+  publication_year: 2016
+  description: Talking animals, rabbit and a fox, possible singing
+  category: movie
+herosix:
+  title: Big Hero 6
+  creator: Disney
+  publication_year: 2014
+  description: STEMS, tragedy, recovery, San Fransokyo
+  category: movie
+dory:
+  title: Finding Dory
+  creator: Disney
+  publication_year: Dory
+  description: Dory is now lost
+  category: movie
+brave:
+  title: Brave
+  creator: Disney
+  publication_year: 2012
+  description: Mother-daughter relationship
+  category: movie
 parable:
   title: Parable of the Sower
   creator: Octavia Butler

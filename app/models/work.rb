@@ -20,10 +20,6 @@ class Work < ApplicationRecord
     return CATEGORIES
   end
 
-  def self.get_plural_categories
-    return CATEGORIES.map { |category| category.pluralize }
-  end
-
   def self.top_media
     return Work.all.max_by { |work| work.votes.count }
   end
