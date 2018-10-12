@@ -1,9 +1,22 @@
 require "test_helper"
 
 describe Work do
-  let(:work) { Work.new }
+  describe 'validations' do
+    before do
+      # Arrange
+      @work = Work.new(title: 'test')
+    end
 
-  it "must be valid" do
-    value(work).must_be :valid?
+    it 'is invalid without a title' do
+    # Arrange
+    @work.title = nil
+
+    # Act
+    result = @work.valid?
+
+    # Assert
+    expect(result).must_equal false
+    expect(@work.errors.messages).must_include :title
+    end
   end
 end

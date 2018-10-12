@@ -41,6 +41,13 @@ class WorksController < ApplicationController
       render :new
     end
   end
+
+  def vote
+    @work = Work.find(params[:id])
+    @work.votes.create
+    redirect_to(works_path)
+  end
+
   private
 
   def work_params
@@ -50,6 +57,7 @@ class WorksController < ApplicationController
       :description,
       :publication_year,
       :category,
+      :vote
     )
   end
 
