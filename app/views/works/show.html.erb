@@ -26,3 +26,21 @@
 <section>
   <strong><%= "#{@work.votes.size}" %> Votes for this <%= "#{@work.category.capitalize}" %></strong>
 </section>
+<section>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">User</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @work.votes.each do |vote| %>
+    <tr>
+      <th scope="row"><%= User.find_by(id: vote.user_id).name %></th>
+      <td><%= vote.created_at %></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
