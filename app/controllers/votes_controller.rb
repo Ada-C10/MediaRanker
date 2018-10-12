@@ -1,20 +1,37 @@
 class VotesController < ApplicationController
 
-  def new
-    @vote = Vote.new
-  end
+  # def new
+  #   @vote = Vote.new
+  # end
 
   def create # TODO: add checks from destroy for sessions + flash
     # @vote = Vote.new(work_id: params[:work_id])
 
-    @vote = Vote.upvote(work_id: params[:work_id])
+    # redirect_to root_path
 
-    result = @vote.save
+    if find_logged_in_user()
 
-    if result
-       flash[:success] = "Successfully upvoted!"
-       redirect_to root_path
+      # @work_id = Work.find_by(id: params[:work])
+      @work_id = Work.find_by(id: params[:work_id])
+      @user_id = find_logged_in_user()
+
+      @vote = Vote.new(work: @work_id, user: @user_id)
+
+      result = @vote.save
+
+      if result
+        flash[:success] = "Successfully upvoted!"
+        redirect_to root_path
+      else
+        flash[:alert] = " work id #{@work_id} and user id #{@user_id} something went wrong: #{@vote.work_id} and #{result}"
+        redirect_to work_path(1)
+      end
+
+    else flash[:alert] = "you must be logged in to vote"
+      redirect_to work_path(1)
     end
+
+    # redirect_to root_path
 
     # if result
     #   flash[:success] = "Successfully created #{@work.category} #{@work.id}"
@@ -29,7 +46,7 @@ class VotesController < ApplicationController
 
   # def vote_params
   #   return params.require(:vote).permit(
-  #     :user_id,
+  #     # :user_id,
   #     :work_id
   #   )
   # end
