@@ -15,36 +15,32 @@
     <small>Ranking the Best of Everything </small> </h1>
     <nav class="app-header__nav">
       <ul class="nav app-header__site-nav-container">
-        <li class="nav-item app-header__nav_item"> View top media </li>
+        <li class="nav-item app-header__nav_item"> <%= link_to "View top media", home_path %></li>
         <li class="nav-item app-header__nav_item"> <%= link_to "View all media", works_path %> </li>
         <li class="nav-item app-header__nav_item"> <%= link_to "Add a new work", new_work_path %> </li>
         <li class="nav-item app-header__nav_item"> <%= link_to "View all users", users_path %> </li>
-        <li>
+      </ul>
+      <ul class="nav app-header__user-nav-container">
+        <li class="nav-item app-header__nav_item">
           <% if @current_user %>
-            <%= link_to "Log Out", logout_path, method: :delete, class: 'btn btn-info'%>
-          <% else %>
-            <%= link_to "Login", login_path, class: 'btn btn-info'%>
+            <%= link_to "Signed in as #{@current_user.username}", user_path(@current_user.id), class: 'btn btn-primary' %> </h2>
           <% end %>
         </li>
-        <li>
+        <li class="nav-item app-header__nav_item">
           <% if @current_user %>
-            <%= link_to "Signed in as #{@current_user.username}", user_path(@current_user.id), class: 'btn btn-info' %> </h2>
+            <%= link_to "Log Out", logout_path, method: :delete, class: 'btn btn-primary'%>
+          <% else %>
+            <%= link_to "Log in", login_path, class: 'btn btn-primary'%>
           <% end %>
         </li>
       </ul>
     </nav>
   </header>
+
       <section class="flash alert-warning">
         <% flash.each do |name, message| %>
-          <% if message.class == Array %>
-          <section class="alert-warning flashmessage">
-              <% message.each do |msg| %>
-                <p><strong><%="#{name}:" %></strong><%= " #{msg}" %> </p>
-              <% end %>
-          </section>
-          <% else %>
-            <section class="alert-<% name %> flashmessage">
-              <%= message %>
+          <section class="alert-<%= name %> flashmessage">
+                <p><%= message %> </p>
               <% if @work && @work.errors.any? %>
                 <ul>
                   <% @work.errors.each do |column, message| %>
@@ -55,9 +51,11 @@
                 </ul>
               <% end %>
             </section>
-          <% end %>
         <% end %>
+
       </section>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

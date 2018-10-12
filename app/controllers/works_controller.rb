@@ -2,9 +2,9 @@ class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
 
   def index
-    @books = Work.get_books
-    @albums = Work.get_albums
-    @movies = Work.get_movies
+    @books = Work.get_media("book")
+    @albums = Work.get_media("album")
+    @movies = Work.get_media("movie")
   end
 
   def show; end
@@ -19,7 +19,7 @@ class WorksController < ApplicationController
       flash[:success] = "#{@work.title} has been added to MediaRanker."
       redirect_to work_path(@work.id)
     else
-      flash.now[:danger] = "Work was not created because of the following errors:"
+      flash.now[:warning] = "Work was not created because of the following errors:"
       render :new
     end
   end
@@ -32,6 +32,13 @@ class WorksController < ApplicationController
     elsif @work
       render :edit
     end
+  end
+
+  def main
+    @books = Work.top_ten("book")
+    @albums = Work.top_ten("album")
+    @movies = Work.top_ten("movie")
+    @top_work = Work.top_work
   end
 
   def destroy
