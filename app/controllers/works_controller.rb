@@ -54,6 +54,7 @@ class WorksController < ApplicationController
   end
 
   def upvote
+<<<<<<< HEAD
     work = params[:id]
     if user_id = session[:user_id]
       vote.user_id = user_id
@@ -61,6 +62,23 @@ class WorksController < ApplicationController
     else
       flash.now[:error] = "Must be logged in to vote!"
       render :new
+=======
+    if user_id != session[:user_id]
+      flash[:error] = "Must be logged in to vote!"
+    elsif
+      user_id == session[:user_id]
+      @votes = []
+      vote = Vote.new
+      vote.work_id = params[:id]
+      vote.user_id = user_id
+      @votes << vote
+      @votes.each do |vote|
+        if session[:user_id] == vote.user_id
+          flash[:error] = "Cannot Vote on a work twice!"
+          render :new
+        end
+      end
+>>>>>>> controllers
     end
   end
 
@@ -95,3 +113,7 @@ class WorksController < ApplicationController
   def find_work
     @work = Work.find_by(id: params[:id])
   end
+<<<<<<< HEAD
+=======
+end
+>>>>>>> controllers

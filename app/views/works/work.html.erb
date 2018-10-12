@@ -30,7 +30,16 @@
       <% @works.each do |work| %>
       <% if work.category == "book" %>
       <tr>
+<<<<<<< HEAD
         <th>Votes</th>
+=======
+        <% votes = [] %>
+        <%  @votes.each do |vote| %>
+        <% if vote.work_id == work.id %>
+        <% votes << vote %>
+        <th><%= votes.count %></th>
+        <% end %>
+>>>>>>> controllers
         <th><%= work.title %></th>
         <th><%= work.creator %></th>
         <th><%= work.publication_year %></th>
@@ -55,7 +64,16 @@
       <% @works.each do |work| %>
       <% if work.category == "book" %>
       <tr>
+<<<<<<< HEAD
         <th>Votes</th>
+=======
+        <% votes = [] %>
+        <%  @votes.each do |vote| %>
+        <% if vote.work_id == work.id %>
+        <% votes << vote %>
+        <th><%= votes.count %></th>
+        <% end %>
+>>>>>>> controllers
         <th><%= work.title %></th>
         <th><%= work.creator %></th>
         <th><%= work.publication_year %></th>
@@ -76,10 +94,19 @@
         <th>Upvote</th>
         <%= link_to work_path(work.id) %>
       </tr>
+<<<<<<< HEAD
       <% @works.each do |work| %>
       <% if work.category == "book" %>
       <tr>
         <th>Votes</th>
+=======
+      <% votes = [] %>
+      <%  @votes.each do |vote| %>
+      <% if vote.work_id == work.id %>
+      <% votes << vote %>
+      <th><%= votes.count %></th>
+      <% end %>
+>>>>>>> controllers
         <th><%= work.title %></th>
         <th><%= work.creator %></th>
         <th><%= work.publication_year %></th>

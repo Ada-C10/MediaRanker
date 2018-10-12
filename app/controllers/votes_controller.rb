@@ -1,8 +1,10 @@
 class VotesController < ApplicationController
-  def new
+  def index
     @votes = Vote.all
+    end
   end
 
   def create
+    @vote = Vote.new
   end
 end
