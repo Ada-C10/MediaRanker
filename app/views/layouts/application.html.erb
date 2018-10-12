@@ -24,12 +24,24 @@
            </div>
         <%end%>
       <%end%>
+
+      <% if @current_user %>
+          <h2>Welcome <%= @current_user.name %> </h2>
+        <% end %>
+
       </section>
     <h1><%= link_to "Media Ranker", root_path %></h1>
     <nav>
       <ul>
         <li><%= link_to "Add a New Work", "/works/new" %></li>
         <li><%= link_to "View all Works", "/works" %></li>
+        <li>
+        <% if @current_user %>
+          <%= link_to "Log Out", logout_path, method: :delete, class: 'btn btn-primary' %>
+       <% else %>
+          <%= link_to "Login", login_path, class: 'btn btn-primary' %>
+       <% end %>
+         </li>
       </ul>
     </nav>
   </header>

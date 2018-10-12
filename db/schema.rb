@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_11_013240) do
+ActiveRecord::Schema.define(version: 2018_10_12_034910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,10 @@ ActiveRecord::Schema.define(version: 2018_10_11_013240) do
   create_table "votes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "work_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+    t.index ["work_id"], name: "index_votes_on_work_id"
   end
 
   create_table "works", force: :cascade do |t|
@@ -35,11 +39,10 @@ ActiveRecord::Schema.define(version: 2018_10_11_013240) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.bigint "vote_id"
     t.index ["user_id"], name: "index_works_on_user_id"
-    t.index ["vote_id"], name: "index_works_on_vote_id"
   end
 
+  add_foreign_key "votes", "users"
+  add_foreign_key "votes", "works"
   add_foreign_key "works", "users"
-  add_foreign_key "works", "votes"
 end
