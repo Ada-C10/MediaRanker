@@ -1,24 +1,25 @@
 <main>
   <section class="spotlight">
-  <h2 class="spotlight__header">
-    <span class="spotlight__headerprefix">Media Spotlight</span>
-    <%= link_to "#{@spotlight.title}", work_path(@spotlight.id)%> by <%="#{@spotlight.creator}"%>
-  </h2>
-  <p class="spotlight__description">
-    <%="#{@spotlight.votes.count}"%> votes - <%="#{@spotlight.description}"%>
-  </p>
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight</span>
+      <%= link_to "#{@spotlight.title}", work_path(@spotlight.id)%> by <%="#{@spotlight.creator}"%>
+    </h2>
+    <p class="spotlight__description">
+      <%="#{@spotlight.votes.count}"%> votes - <%="#{@spotlight.description}"%>
+    </p>
 </section>
 
 <hr class="root__hr" />
 
 <section class="top-ten__container">
-<% @top_ten_lists.each do |works| %>
+<%# @top_ten_lists.each do |works| %>
+<% [@top_movies, @top_books, @top_albums].each do |works| %>
   <section class="top-ten__list-container">
     <h2 class="top-ten__header">
       Top <%="#{works.first.category.capitalize}s"%>
     </h2>
-    <% works.each do |work| %>
       <ul class="list-group top-ten__list">
+        <% works.each do |work| %>
           <li class="list-group-item">
             <h4>
               <%=link_to "#{work.title}", work_path(work.id)%>
@@ -26,8 +27,8 @@
             </h4>
             <p><%="#{work.votes.count}"%> votes</p>
           </li>
+        <%end%>
       </ul>
-    <%end%>
   </section>
 <%end%>
 </section>

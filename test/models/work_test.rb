@@ -221,55 +221,55 @@ describe Work do
     end
   end
 
-  describe 'media_lists' do
-
-    let(:lists) {Work.media_lists}
-
-    it 'returns an array of arrays' do
-      expect(lists).must_be_instance_of Array
-      lists.each do |list|
-        expect(list).must_be_instance_of Array
-        expect(list.count).must_equal 1   #1 of each category in fixtures
-      end
-    end
-
-    it 'returns an array of empty arrays if there are no works' do
-      secret.destroy
-      remember.destroy
-      billy.destroy
-
-      expect(lists).must_be_instance_of Array
-
-      lists.each do |list|
-        expect(list).must_be_instance_of Array
-        expect(list.empty?).must_equal true   #0 of each category in fixtures
-      end
-    end
-  end
-
-  describe 'top_ten_lists' do
-    let(:lists) {Work.top_ten_lists}
-    it 'returns an array of arrays' do
-      expect(lists).must_be_instance_of Array
-      lists.each do |list|
-        expect(list).must_be_instance_of Array
-        expect(list.count).must_equal 1   #1 of each category in fixtures
-      end
-    end
-
-    it 'returns an array of empty arrays if there are no works' do
-      secret.destroy
-      remember.destroy
-      billy.destroy
-
-      expect(lists).must_be_instance_of Array
-
-      lists.each do |list|
-        expect(list).must_be_instance_of Array
-        expect(list.empty?).must_equal true   #0 of each category in fixtures
-      end
-    end
-  end
+  # describe 'media_lists' do
+  #
+  #   let(:lists) {Work.media_lists}
+  #
+  #   it 'returns an array of arrays' do
+  #     expect(lists).must_be_instance_of Array
+  #     lists.each do |list|
+  #       expect(list).must_be_instance_of Array
+  #       expect(list.count).must_equal 1   #1 of each category in fixtures
+  #     end
+  #   end
+  #
+  #   it 'returns an array of empty arrays if there are no works' do
+  #     secret.destroy
+  #     remember.destroy
+  #     billy.destroy
+  #
+  #     expect(lists).must_be_instance_of Array
+  #
+  #     lists.each do |list|
+  #       expect(list).must_be_instance_of Array
+  #       expect(list.empty?).must_equal true   #0 of each category in fixtures
+  #     end
+  #   end
+  # end
+  #
+  # describe 'top_ten_lists' do
+  #   let(:lists) {Work.top_ten_lists}
+  #   it 'returns an array of arrays' do
+  #     expect(lists).must_be_instance_of Array
+  #     lists.each do |list|
+  #       expect(list).must_be_instance_of Array
+  #       expect(list.count).must_equal 1   #1 of each category in fixtures
+  #     end
+  #   end
+  #
+  #   it 'returns an array of empty arrays if there are no works' do
+  #     secret.destroy
+  #     remember.destroy
+  #     billy.destroy
+  #
+  #     expect(lists).must_be_instance_of Array
+  #
+  #     lists.each do |list|
+  #       expect(list).must_be_instance_of Array
+  #       expect(list.empty?).must_equal true   #0 of each category in fixtures
+  #     end
+  #   end
+  # end
 
   describe 'a work has many votes' do
     it 'retrieves a list of votes' do

@@ -4,11 +4,17 @@ class WorksController < ApplicationController
 
   def main
     @spotlight = Work.most_votes
-    @top_ten_lists = Work.top_ten_lists
+    @top_movies = Work.top_ten('movie')
+    @top_books = Work.top_ten('book')
+    @top_albums = Work.top_ten('album')
+    # @top_ten_lists = Work.top_ten_lists
   end
 
   def index
-    @media_lists = Work.media_lists
+    @movies = Work.list('movie')
+    @books = Work.list('book')
+    @albums = Work.list('album')
+    # @media_lists = Work.media_lists
   end
 
   def show
