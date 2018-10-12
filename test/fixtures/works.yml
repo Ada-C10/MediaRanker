@@ -5,18 +5,39 @@ album:
   creator: Warner Music Group
   published: 2002
   description: Spooky music, oooooooooo
-  category: Album
+  category: album
 
 book:
   title: The Alchemist
   creator: Paulo Coelho
   published: 1988
   description: A spiritual parable
-  category: Book
+  category: book
 
 movie:
   title: Worst Movie Ever
   creator: Jackie FahmBomb
   published: 1200
   description: Yuck yuck yuck
-  category: Movie
+  category: movie
+
+movie2:
+  title: New York Minute
+  creator: MOnique Maria
+  published: 2003
+  description: Some stuff happens
+  category: movie
+
+album2:
+  title: Lorem Ipsum
+  creator: Fox Corp.
+  published: 2004
+  description: Blah blah blah
+  category: album
+
+album3:
+  title: Pancake Party
+  creator: Pink
+  published: 2000
+  description: Warner Brothers
+  category: album

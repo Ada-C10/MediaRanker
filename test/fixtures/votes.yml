@@ -9,3 +9,11 @@ vote2:
 vote3:
   user: user3
   work: book
+
+vote4:
+  user: user4
+  work: album2
+
+vote5:
+  user: user5
+  work: album2
