@@ -23,7 +23,7 @@
 
       <% works.each do  |w| %>
       <tr>
-        <td><%= "votes"%></td>
+        <td><%= pluralize(w.votes.count, "vote")%></td>
         <td><%= link_to "#{w.title}", work_path(w.id)%></td>
         <td><%= w.creator %></td>
         <td><%= w.publication_year %></td>
