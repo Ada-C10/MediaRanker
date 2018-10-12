@@ -6,6 +6,6 @@
 
 <ul class="list-group">
   <% @users.each do |user| %>
-  <li class="list-group-item"><strong><%= user.name %><strong></li>
+  <li class="list-group-item"><strong><%= link_to user.name, user_path(user.id) %><strong></li>
   <% end %>
 </ul>

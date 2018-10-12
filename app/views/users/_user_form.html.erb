@@ -1,4 +1,8 @@
-
+<%= render partial: 'layouts/form_errors',
+locals: {
+  model: @user
+}
+%>
 
 <%= form_with model: @user, class: 'user-form', data: { remote: false } do |f| %>
 <div>
