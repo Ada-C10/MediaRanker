@@ -8,7 +8,11 @@ class WorksController < ApplicationController
   def index
   end
 
-  def show; end
+  def show
+    if session[:user_id]
+      @vote = @work.votes.find_by(user_id: session[:user_id])
+    end
+  end
 
   def new
     @work = Work.new
@@ -56,7 +60,11 @@ class WorksController < ApplicationController
 
 # Filter
   def find_work
-    @work = Work.find(params[:id].to_i)
+    if params[:id]
+      @work = Work.find_by(id: params[:id].to_i)
+    elsif params[:work_id]
+      @work = Work.find_by(id: params[:work_id].to_i)
+    end
     if @work.nil?
       flash.now[:warning] = 'Cannot find the work'
       render :notfound, status: :not_found

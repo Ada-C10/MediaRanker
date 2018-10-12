@@ -12,6 +12,10 @@
 
 <% if @current_user && @work.has_no_vote_by?(@current_user) %>
   <li><%= link_to "Upvote", work_votes_path(@work.id), method: :post %></li>
+<% elsif @current_user %>
+  <li><%= link_to "Remove Your Upvote", work_vote_path(@work.id, @vote.id), method: :delete %></li>
+<% else %>
+  <li>Please log in to upvote.</li>
 <% end %>
   <li><%= link_to "Delete", work_path(@work.id), method: :delete %></li>
 </ul>
