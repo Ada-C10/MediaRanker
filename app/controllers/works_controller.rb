@@ -61,8 +61,12 @@ class WorksController < ApplicationController
   def upvote
     id = params[:id]
     @work = Work.find_by(id: id)
-    @work.upvote(user_id: @current_user.id)
-    redirect_to works_path
+    if @current_user
+      @work.upvote(user_id: @current_user.id)
+      redirect_to works_path
+    else
+      flash[:warning] = "You must be works controller in to vote"
+    end
   end
 
 

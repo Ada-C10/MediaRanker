@@ -47,8 +47,12 @@ class VotesController < ApplicationController
   def create
     id = params[:work_id].to_i
     @work = Work.find_by(id: id)
+    if @current_user
     @work.upvote(user_id: @current_user.id)
     redirect_to work_path(@work.id)
+    else
+      flash[:warning] = "You must be votes controller to vote"
+    end
   end
 
 

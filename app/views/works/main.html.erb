@@ -15,8 +15,9 @@
   <section class="top-ten__list-container">
   <h2 class="top-ten__header">Top Movies</h2>
   <ul class="list-group top-ten__list">
-    <%['movie', 'book', 'album'].each do |category| %>
-    <% @works.each do |work| %>
+    <% @works.sort_by { |work| -work.votes.count}.each do |work| %>
+
+    <%# @works.each do |work| %>
     <%if work.category == "movie" %>
       <li class="list-group-item">
         <h4>
@@ -25,6 +26,8 @@
         </h4>
         <p><%= work.votes.length %></p>
       </li>
+       <%end%>
+       <%end%>
   </ul>
 </section>
 
@@ -32,7 +35,8 @@
   <h2 class="top-ten__header">Top Books</h2>
 
   <ul class="list-group top-ten__list">
-      <%elsif work.category == "book"%>
+    <% @works.sort_by { |work| -work.votes.count}.each do |work| %>
+    <%if work.category == "book" %>
       <li class="list-group-item">
         <h4>
           <%=link_to work.title, work_path(work.id) %>
@@ -40,13 +44,16 @@
         </h4>
         <p><%= work.votes.length %></p>
       </li>
+      <%end%>
+      <%end%>
   </ul>
   </section>
 
   <section class="top-ten__list-container">
   <h2 class="top-ten__header">Top Albums</h2>
   <ul class="list-group top-ten__list">
-    <%else work.category == "albums" %>
+      <% @works.sort_by { |work| -work.votes.count}.each do |work| %>
+    <%if work.category == "album" %>
       <li class="list-group-item">
         <h4>
           <%=link_to work.title, work_path(work.id) %>
@@ -54,10 +61,10 @@
         </h4>
         <p><%= work.votes.length %></p>
       </li>
+      <%end%>
+      <%end%>
   </ul>
-  <%end%>
-  <%end%>
-  <%end%>
+
 
 
   </section>

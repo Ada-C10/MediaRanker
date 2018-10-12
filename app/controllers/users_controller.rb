@@ -33,6 +33,7 @@ class UsersController < ApplicationController
       user = User.create(username: params[:user][:username])
       if user.valid? == false
         flash[:danger] = "Login Unsuccessful"
+        # redirect_back(fallback_location: new_user_path)
       end
     end
 

@@ -3,7 +3,7 @@
 
 <main>
     <h2>User Summary: <%= @user.username %></h2>
-<p>Joined <%= Date.parse(@current_user[:created_at].to_s) %></p>
+<p>Joined <%= Date.parse(@user[:created_at].to_s) %></p>
 <section class="user-votes__container">
   <h3 class="user-votes__header">Votes</h3>
   <table class="table">
@@ -23,7 +23,7 @@
           <td><%= vote.work.creator %></td>
           <td><%= vote.work.publication_year %></td>
           <td><%= vote.work.category %></td>
-          <td><%= Date.parse(vote.created_at.to_s) %></td>
+          <td><%= vote.created_at.strftime('%b %d, %Y') %></td>
         </tr>
         <% end %>
     </tbody>

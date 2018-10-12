@@ -5,8 +5,8 @@
 # below each fixture, per the syntax in the comments below
 #
  vote1:
-   user: jazz
-   work: book
+   user: jazztaz
+   work: 3
 
 # column: value
 #
