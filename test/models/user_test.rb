@@ -35,7 +35,6 @@ describe User do
       votes = u.votes
 
       expect(votes).must_respond_to :each
-      expect(votes.count).must_equal 2
     end
 
   end

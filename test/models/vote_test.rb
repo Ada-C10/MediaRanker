@@ -38,7 +38,20 @@ describe Vote do
 
   describe 'relations' do
     before do
-      @vote = Vote.first
+      @work = Work.create(
+        title: 'test work',
+        creator: 'test author',
+        category: 'book',
+        publication_year: 1988,
+        description: 'description here'
+      )
+      @user = User.create(
+        username: 'test user'
+      )
+      @vote = Vote.new(
+        user_id: User.find_by(username: 'test user').id,
+        work_id: Work.find_by(title: 'test work').id
+      )
     end
 
     it 'belongs to a user' do
@@ -54,9 +67,9 @@ describe Vote do
     end
   end
 
-  describe 'Vote.get_date method' do
+  describe 'get_date method' do
     it 'returns a date formatted Mmm D, YYYY' do
-      date = Vote.get_date(Vote.first)
+      date = Vote.first.get_date
 
       # regex for Mmm DD, YYYY , ex: Oct 10, 2010
       matches_format = (/[A-Z][a-z]{2}\s\d{2},\s\d{1,4}/) =~ date

@@ -41,7 +41,7 @@
             <%=User.find_by(id: vote.user_id).username%>
           </td>
           <td>
-            <%=Vote.get_date(vote)%>
+            <%=vote.get_date%>
           </td>
         </tr>
       </tbody>

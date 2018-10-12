@@ -4,7 +4,7 @@ class Vote < ApplicationRecord
 
   validates :work_id, uniqueness: {scope: :user_id, :message => "User has already voted for this work"}
 
-  def self.get_date(vote)
-    return vote.created_at.strftime('%h %d, %Y')
+  def get_date
+    return self.created_at.strftime('%h %d, %Y')
   end
 end
