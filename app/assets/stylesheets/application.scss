@@ -121,6 +121,16 @@ main {
   padding: 2rem;
 }
 
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
 .nav {
   display: flex;
   flex-wrap: wrap;
@@ -219,16 +229,6 @@ main {
 
 .spotlight__description {
     margin-bottom: 0;
-}
-
-hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border: 0;
-  border-top: 1px solid rgba(0,0,0,0.1);
 }
 
 .root__hr {
