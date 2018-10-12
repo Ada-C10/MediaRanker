@@ -37,50 +37,61 @@ class WorksController < ApplicationController
       render :new, status: :bad_request
     end
   end
-end
 
-def edit
-  find_work
-end
 
-def update
-  if @work.update(work_params)
-    flash[:success] = "Successfully updated work \"#{@work.title}\""
-    redirect_to work_path(@work.id)
-  else
-    flash.now[:error] = "Invalid work data"
-    render(:edit, status: :bad_request)
+  def edit
+    @work = Work.find_by(id: params[:id])
   end
-end
 
-def destroy
-  if @work.user_id == session[:user_id]
-    @work.destroy
-
-    flash[:success] = "Successfully destroyed work \"#{@work.title}\""
-    redirect_to works_path
-
-  else
-    flash[:error] = "You must be logged in as a work's user in order to delete it!"
-
-    redirect_back(fallback_location: root_path)
+  def update
+    if @work.update(work_params)
+      flash[:success] = "Successfully updated work \"#{@work.title}\""
+      redirect_to work_path(@work.id)
+    else
+      flash.now[:error] = "Invalid work data"
+      render(:edit, status: :bad_request)
+    end
   end
-end
 
-private
+  def upvote
+    work = params[:id]
+    if user_id = session[:user_id]
+      vote.user_id = user_id
 
-# Strong params: only let certain attributes
-# through
-def work_params
-  return params.require(:work).permit(
-    :title,
-    :creator,
-    :description,
-    :publication_year,
-    :category
-  )
-end
+    else
+      flash.now[:error] = "Must be logged in to vote!"
+      render :new
+    end
+  end
 
-def find_work
-  @work = Work.find_by(id: params[:id])
-end
+  def destroy
+    if @work.user_id == session[:user_id]
+      @work.destroy
+
+      flash[:success] = "Successfully destroyed work \"#{@work.title}\""
+      redirect_to works_path
+
+    else
+      flash[:error] = "You must be logged in as a work's user in order to delete it!"
+
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  private
+
+  # Strong params: only let certain attributes
+  # through
+  def work_params
+    return params.require(:work).permit(
+      :title,
+      :creator,
+      :description,
+      :publication_year,
+      :category
+    )
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
+  end
