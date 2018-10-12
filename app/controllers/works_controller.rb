@@ -60,11 +60,7 @@ class WorksController < ApplicationController
 
 # Filter
   def find_work
-    if params[:id]
-      @work = Work.find_by(id: params[:id].to_i)
-    elsif params[:work_id]
-      @work = Work.find_by(id: params[:work_id].to_i)
-    end
+    @work = Work.find_by(id: params[:id].to_i)
     if @work.nil?
       flash.now[:warning] = 'Cannot find the work'
       render :notfound, status: :not_found

@@ -20,7 +20,7 @@ class Work < ApplicationRecord
   end
 
   def has_no_vote_by?(current_user)
-    raise ArgumentError if current_user == nil
+    raise ArgumentError if current_user == false
     return !self.votes.any? { |vote| vote.user == current_user }
   end
 end

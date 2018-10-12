@@ -1,7 +1,6 @@
 class VotesController < ApplicationController
   before_action :find_work, only: [:create, :destroy]
 
-# This might not work at all
   def create
     if session[:user_id] && @work.has_no_vote_by?(@current_user)
       if Vote.create(user_id: session[:user_id], work_id: params[:work_id])
@@ -38,11 +37,7 @@ class VotesController < ApplicationController
 
 # Filter
   def find_work
-    if params[:id]
-      @work = Work.find_by(id: params[:id].to_i)
-    elsif params[:work_id]
-      @work = Work.find_by(id: params[:work_id].to_i)
-    end
+    @work = Work.find_by(id: params[:work_id].to_i)
     if @work.nil?
       flash.now[:warning] = 'Cannot find the work'
       render :notfound, status: :not_found
