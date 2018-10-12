@@ -7,6 +7,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
+
   </head>
 
   <body>
@@ -52,10 +54,9 @@
 
     <% if flash.any? %>
       <section class='alert__container'>
-        <section class="flash">
            <% flash.each do |name, message| %>
             <% if name == 'warning' || name == 'success' %>
-              <div class="alert-<%= name %>">
+              <div class="alert alert-<%= name %>">
                 <span><%= message %></span>
 
                    <%if @work %>
@@ -81,8 +82,7 @@
                </div>
             <% end %>
           <%end%>
-         </section>
-       </section>
+        </section>
       <% end%>
 
 

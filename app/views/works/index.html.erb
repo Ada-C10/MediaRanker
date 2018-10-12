@@ -5,7 +5,7 @@
 <% [@albums, @books, @movies].each do |works| %>
   <section class="media-table">
     <h4><%="#{works.first.category.capitalize}s"%></h4>
-    <table>
+    <table class="table">
       <thead>
         <tr>
           <th width=80>Votes</th>
@@ -32,4 +32,4 @@
 </section>
 
 <%= link_to 'View top media', root_path, class: 'btn btn-secondary' %>
-<%= link_to 'New Work', new_work_path, class: 'btn btn-primary' %>
+<%= link_to 'Add a new work', new_work_path, class: 'btn btn-primary' %>
