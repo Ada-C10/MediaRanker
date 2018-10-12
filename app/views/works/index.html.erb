@@ -23,11 +23,17 @@
       <% if work.category == "book" %>
       <li>
         <p>
+<<<<<<< HEAD
           <strong><%= link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
+=======
+          <strong><%=link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
+>>>>>>> tests
         </p>
         <p>
           <%= "#{work.votes.count}" %> votes
         </p>
+        <%= link_to "Edit", edit_work_path(work.id), class: "edit-link" %> |
+        <%= link_to "Delete", work_path(work.id), method: :delete, data: {confirm: "Are you sure you want to get rid of work #{work.title}?" } %>
       </li>
       <% end %>
     </ol>
@@ -41,11 +47,17 @@
       <% if work.category == "book" %>
       <li>
         <p>
+<<<<<<< HEAD
           <strong><%= link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
+=======
+          <strong><%=link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
+>>>>>>> tests
         </p>
         <p>
           <%= "#{work.votes.count}" %> votes
         </p>
+        <%= link_to "Edit", edit_work_path(work.id), class: "edit-link" %> |
+        <%= link_to "Delete", work_path(work.id), method: :delete, data: {confirm: "Are you sure you want to get rid of work #{work.title}?" } %>
       </li>
       <% end %>
     </ol>
@@ -59,11 +71,17 @@
       <% if work.category == "movie" %>
       <li>
         <p>
+<<<<<<< HEAD
           <strong><%= link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
+=======
+          <strong><%=link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
+>>>>>>> tests
         </p>
         <p>
           <%= "#{work.votes.count}" %> votes
         </p>
+        <%= link_to "Edit", edit_work_path(work.id), class: "edit-link" %> |
+        <%= link_to "Delete", work_path(work.id), method: :delete, data: {confirm: "Are you sure you want to get rid of work #{work.title}?" } %>
       </li>
       <% end %>
     </ol>

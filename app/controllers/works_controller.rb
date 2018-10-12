@@ -38,6 +38,7 @@ class WorksController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
 
   def edit
     @work = Work.find_by(id: params[:id])
@@ -98,6 +99,38 @@ class WorksController < ApplicationController
 
   private
 
+=======
+  def edit
+    @work= Work.find_by(id: params[:id])
+  end
+
+  def update
+    work = Work.find_by(id: params[:id])
+    work.update(work_params)
+
+    is_successful = work.save
+
+    if is_successful # save returns true if the database insert succeeds
+      redirect_to works_path(work.id) # go to the index so we can see the book in the list
+    else # save failed :(
+      render :new # show the new book form view again
+    end
+
+  end
+
+
+  def destroy
+    work = Work.find_by(id: params[:id])
+
+    work.destroy
+
+    redirect_to works_path(work.id)
+  end
+
+
+  private
+
+>>>>>>> tests
   # Strong params: only let certain attributes
   # through
   def work_params
@@ -114,6 +147,10 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
   end
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> tests
 end
 >>>>>>> controllers

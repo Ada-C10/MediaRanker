@@ -1,17 +1,18 @@
-<div class="work-edit-container">
-  <div class="notice">
-    <%= flash[:notice] %>
-  </div>
+<%= form_with model: @work, class: 'work-form' do |f| %>
 
-  <%= render partial: "work_form", locals: {
-    action_type: "Create New Work",
-    form_title: "New Work Form"
-    } %>
+<h3>Create New Media Form</h3>
 
-  </div>
-
-  <div class="return-home">
-    <h3>
-      <%= link_to "Return Home", works_path, class: "homepage" %>
-    </h3>
-  </div>
+<div class="work-form">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :category %>
+  <%= f.select :category, Work::CATEGORIES %>
+  <%= f.submit action_name, class: "work btn" %>
+  <% end %>
+</div>

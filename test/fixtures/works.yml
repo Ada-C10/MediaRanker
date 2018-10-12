@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  title: Clueless
   publication_year: 1
-  description: MyString
-  creator: MyString
-  category: MyString
+  description: awesomeness
+  creator: Holly Wood
+  category: movie
 
-two:
-  title: MyString
-  publication_year: 1
-  description: MyString
-  creator: MyString
-  category: MyString
+  # two:
+  #   title: Good Times
+  #   publication_year: 2
+  #   description: sweetness
+  #   creator: Limon Brothas
+  #   category: book

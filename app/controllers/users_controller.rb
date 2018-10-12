@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
 =======
 >>>>>>> controllers
   def new
@@ -65,4 +66,18 @@ class UsersController < ApplicationController
     return params.require(:user).permit(:username)
   end
 >>>>>>> controllers
+=======
+  def new
+  end
+
+  def create
+  end
+
+  private
+  
+  def find_work
+    @work = Work.find_by(id: params[:id])
+  end
+
+>>>>>>> tests
 end
