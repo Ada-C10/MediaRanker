@@ -67,6 +67,9 @@ describe Work do
       expect(first_user).must_equal "junie"
     end
 
+    it 'returns the vote that connects a user to an upvoted work' do
+
+    end
 
   end
 end
