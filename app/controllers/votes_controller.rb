@@ -5,9 +5,16 @@ class VotesController < ApplicationController
   end
 
   def create # TODO: add checks from destroy for sessions + flash
-    @vote = Vote.new(work_params)
+    # @vote = Vote.new(work_id: params[:work_id])
+
+    @vote = Vote.upvote(work_id: params[:work_id])
 
     result = @vote.save
+
+    if result
+       flash[:success] = "Successfully upvoted!"
+       redirect_to root_path
+    end
 
     # if result
     #   flash[:success] = "Successfully created #{@work.category} #{@work.id}"
@@ -18,12 +25,12 @@ class VotesController < ApplicationController
     # end
   end
 
-  private
+  # private
 
-  def vote_params
-    return params.require(:vote).permit(
-      :user_id,
-      :work_id
-    )
-  end
+  # def vote_params
+  #   return params.require(:vote).permit(
+  #     :user_id,
+  #     :work_id
+  #   )
+  # end
 end

@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
 
-
-
     def index
-      # @user = User.all.order(:due_date)
         @users = User.all.order(:created_at)
     end
 
@@ -16,6 +13,8 @@ class UsersController < ApplicationController
       end
     end
 
+    # QUESTION: why does this work without new or create methods?
+    # why is it ok to just create the new user from the sessions controller?
     # def new
     #   @user = User.new()
     # end
@@ -23,7 +22,6 @@ class UsersController < ApplicationController
     # def create
     #   @user = User.new(user_params)
     #   @user.save
-    #   # TODO: if/else
     # end
 
     private

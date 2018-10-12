@@ -9,17 +9,29 @@ class SessionsController < ApplicationController
 
     if @user
       flash[:success] = "Successfuly logged in as existing user #{username}"
+
+      user_success_plus_redirect()
+      # TODO: dry up code; repeat below
+      # session[:user_id] = @user.id
+      # redirect_to root_path
     else
-      @user = User.new(username: username) # if user not found, create a new one
+      # if user not found, create a new one
+      @user = User.new(username: username)
+      result = @user.save
+      # if/else depending on successful save
+      if result
+        flash[:success] = "Successfully created new user #{username} with ID #{@user.id}"
 
-      @user.save
-      #?????
-      # QUESTION: create if/else if not saved successfully??
-      flash[:success] = "Successfully created new user #{username} with ID #{@user.id}"
+        user_success_plus_redirect()
+        #TODO: dry up code; repeat below
+        # session[:user_id] = @user.id
+        # redirect_to root_path
+      else
+        # QUESTION: fix alert?
+        flash[:alert] = "something went wrong"
+        redirect_to new_login_path
+      end
     end
-
-    session[:user_id] = @user.id
-    redirect_to root_path
   end
 
   def destroy
@@ -27,4 +39,12 @@ class SessionsController < ApplicationController
     flash[:success] = "Successfully logged out"
     redirect_to root_path
   end
+
+  private
+
+  def user_success_plus_redirect
+    session[:user_id] = @user.id
+    redirect_to root_path
+  end
+
 end

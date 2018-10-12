@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :works do
     # resources :votes, only: [:create]
-    get '/upvote', to: 'votes#create', as: 'vote'
+    post '/upvote', to: 'votes#create', as: 'vote'
   end
 
 
