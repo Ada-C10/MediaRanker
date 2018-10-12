@@ -5,10 +5,10 @@
 # below each fixture, per the syntax in the comments below
 #
 vote1:
-  user: Kay
-  work: book
+  user: user1
+  work: work1
 
 vote2:
-  user: Nelson
-  work: movie
+  user: user2
+  work: work2
 # column: value

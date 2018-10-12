@@ -1,8 +1,8 @@
 require "test_helper"
 require "pry"
 describe Work do
-  let(:work) { works(:harry_potter) }
-  let(:work2) { works(:lord_of_the_rings) }
+  let(:work) { works(:work1) }
+  let(:work2) { works(:work2) }
 
 
 

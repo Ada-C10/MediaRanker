@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-harry_potter:
+work1:
   title: Harry Potter
   publication_year: 1999
   creator: JK Rowling
   description: A book about magic
   category: book
 
-lord_of_the_rings:
+work2:
   title: Lord of The Rings
   publication_year: 1954
   creator: JRR Tolkien
