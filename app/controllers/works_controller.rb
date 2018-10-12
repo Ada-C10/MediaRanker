@@ -65,10 +65,13 @@ before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def upvote
     # @work = Work.find(params[:id])
-    @work.votes.create
+    @work.votes.create(user_id: session[:user_id])
 
-    # redirect_to(works_path)
+    redirect_to(works_path)
   end
+
+
+
 
   private
 
