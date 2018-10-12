@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   get '/home', to: 'home#index'
   root to: 'home#index'
 
-  resources :works
+  resources :works do
+    resources :votes
+  end
 
   resources :users, except:[:destroy]
 
-  resources :votes
-
-  resources :sessions
+  resources :sessions, only: [:new, :create]
   post '/sessions/logout', to: 'sessions#logout', as: 'logout'
 
 end

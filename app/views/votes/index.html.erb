@@ -1,1 +1,8 @@
 <h1>Votes</h1>
+
+
+<ul class="list-group">
+  <% @votes.each do |vote| %>
+  <li class="list-group-item"><strong><%= link_to vote.id %><strong></li>
+  <% end %>
+</ul>

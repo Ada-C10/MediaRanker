@@ -1,15 +1,3 @@
-<h2 class="my-class"><%= page_title %></h2>
-
-<% if @work.errors.any? %>
-<ul>
-  <% @work.errors.each do |field, message| %>
-  <li>
-    <strong><%= field.capitalize %>: </strong><%= message %>
-  </li>
-  <% end %>
-</ul>
-<% end %>
-
 <%= form_with model: @work, class: 'work-form', data: { remote: false } do |f| %>
 <div>
   <%= f.label :category %>

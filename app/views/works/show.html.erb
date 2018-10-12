@@ -11,7 +11,13 @@
 
 <section>
   <div>
+    <%= link_to "Back to media ranks", root_path %>
+  </div>
+  <div>
     <%= link_to "Edit", edit_work_path(@work.id) %>
+  </div>
+  <div>
+    <%= link_to "Upvote", work_votes_path(@work.id), method: :create %>
   </div>
   <div>
     <%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title}?" } %>
