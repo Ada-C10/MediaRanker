@@ -8,8 +8,17 @@ class SessionsController < ApplicationController
     end
 
     session[:user_id] = user.id
-    flash[:success] = "#{user.username} successfully logged in"
-    redirect_to root_path
+
+    if user.valid?
+      flash[:success] = "#{user.username} successfully logged in"
+      redirect_to root_path
+    else
+      flash[:warning] = "A problem occurred: Could not log in"
+      user.errors.messages.each do |field, messages|
+        flash[field] = messages
+      end
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def new

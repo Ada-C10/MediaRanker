@@ -20,3 +20,10 @@ sgtpepper:
   creator: Beatles
   publication_year: '1967'
   description: The 8th studio album by The Beatles. Lauded by critics for its innovations in production, songwriting and graphic design, for bridging a cultural divide between popular music and high art, and for providing a musical representation of its generation and the contemporary counterculture. It won four Grammy Awards in 1968, including Album of the Year, the first rock LP to receive this honour.
+
+startrek:
+  category: movie
+  title: Star Trek
+  creator: JJ Abrams
+  publication_year: '2009'
+  description: Aboard the USS Enterprise, the most-sophisticated starship ever built, a novice crew embarks on its maiden voyage. Their path takes them on a collision course with Nero (Eric Bana), a Romulan commander whose mission of vengeance threatens all mankind.

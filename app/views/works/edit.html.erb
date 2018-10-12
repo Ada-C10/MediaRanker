@@ -1,2 +1,3 @@
-<!-- TODO: Find out how to make it say edit this album/movie/etc instead -->
-<%= render partial: "form", locals: { action_name: "Edit this work", button_title: 'Update Work' } %>
+<h2>Edit this <%= @work.category %></h2>
+
+<%= render partial: "form", locals: { button_title: 'Update Work' } %>

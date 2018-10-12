@@ -9,3 +9,18 @@ vote_two:
   date: '2018-10-06'
   user: jackie
   work: sgtpepper
+
+vote_three:
+  date: '2018-10-06'
+  user: garrett
+  work: sgtpepper
+
+vote_four:
+  date: '2018-10-06'
+  user: jackie
+  work: startrek
+
+vote_five:
+  date: '2018-10-06'
+  user: garrett
+  work: startrek

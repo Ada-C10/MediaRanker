@@ -35,19 +35,27 @@
         </ul>
       </nav>
     </header>
+
     <% if flash.count > 0 %>
       <section class="flash">
-        <% flash.each do |name, message| %>
-          <% if message.class == Array %>
-            <% message.each do |msg| %>
-              <div class="alert alert-<%= name %>"><%= "#{name}: #{msg}" %></div>
+        <% type = "warning" if flash[:warning] %>
+        <% type = "success" if flash[:success] %>
+        <div class="alert alert-<%= type %>">
+          <% flash.each do |name, message| %>
+            <% if message.class == Array %>
+              <ul id="error-messages">
+                <% message.each do |msg| %>
+                  <li><%= "#{name}: #{msg}" %></li>
+                <% end %>
+              </ul>
+            <% else %>
+              <%= message %>
             <% end %>
-          <% else %>
-            <div class="alert alert-<%= name %>"><%= message %></div>
           <% end %>
-        <% end %>
+        </div>
       </section>
     <% end %>
+    
     <main>
       <%= yield %>
     </main>

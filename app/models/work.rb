@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  has_many :votes
+  has_many :votes, dependent: :delete_all
   has_many :users, through: :votes
 	# belongs_to :user # optional
 
@@ -12,7 +12,8 @@ class Work < ApplicationRecord
   end
 
   def self.list_of(work_category)
-    return sort_by_votes(Work.all.select { |work| work.category == work_category })
+    work_list = Work.all.select { |work| work.category == work_category }
+    return sort_by_votes(work_list)
   end
 
   def vote_count

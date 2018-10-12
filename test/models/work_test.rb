@@ -1,12 +1,16 @@
 require "test_helper"
+require 'pry'
 
 describe Work do
-  let(:work) { works(:hp) }
   let(:vote) { votes(:vote_one) }
   let(:user) { users(:jackie) }
+  let(:hp) { works(:hp) }
+  let(:startrek) { works(:startrek) }
+  let(:interstellar) { works(:interstellar) }
+  let(:sgtpepper) { works(:sgtpepper) }
 
   it "must be valid" do
-    value(work).must_be :valid?
+    value(hp).must_be :valid?
   end
 
   it 'has required fields' do
@@ -14,7 +18,7 @@ describe Work do
       :description, :votes]
 
     fields.each do |field|
-      expect(work).must_respond_to field
+      expect(hp).must_respond_to field
     end
   end
 
@@ -23,10 +27,10 @@ describe Work do
       # Arrange is done with let
 
       # Act
-      votes = work.votes
+      votes = hp.votes
 
       # Assert
-      expect(work).must_be_instance_of Work
+      expect(hp).must_be_instance_of Work
 
       expect(votes.length).must_be :>=, 1
       votes.each do |vote|
@@ -34,14 +38,23 @@ describe Work do
       end
     end
 
-    it 'has many users through votes' do
-      # Arrange is done with let
-
+    it 'can have 0 votes' do
       # Act
-      votes = work.votes
+      votes = interstellar.votes
 
       # Assert
-      expect(work).must_be_instance_of Work
+      expect(interstellar).must_be_instance_of Work
+
+      expect(votes.length).must_equal 0
+      expect(interstellar.valid?).must_equal true
+    end
+
+    it 'has many users through votes' do
+      # Act
+      votes = hp.votes
+
+      # Assert
+      expect(hp).must_be_instance_of Work
 
       expect(votes.length).must_be :>=, 1
       votes.each do |vote|
@@ -53,21 +66,21 @@ describe Work do
   describe 'validations' do
     it 'must have a category' do
       # Arrange
-      work.category = nil
+      hp.category = nil
 
       # Act
-      valid = work.valid? # run validations
+      valid = hp.valid? # run validations
 
       # Assert
       expect(valid).must_equal false
-      expect(work.errors.messages).must_include :category
-      expect(work.errors.messages[:category]).must_equal ["can't be blank"]
+      expect(hp.errors.messages).must_include :category
+      expect(hp.errors.messages[:category]).must_equal ["can't be blank"]
 
       # Rearrange
-      work.category = "books"
+      hp.category = "books"
 
       # Re-Act
-      valid = work.valid? # run validations
+      valid = hp.valid? # run validations
 
       # Reassert
       expect(valid).must_equal true
@@ -75,34 +88,42 @@ describe Work do
 
     it 'must have a title' do
       # Arrange
-      work.title = nil
+      hp.title = nil
 
       # Act
-      valid = work.valid? # run validations
+      valid = hp.valid? # run validations
 
       # Assert
       expect(valid).must_equal false
-      expect(work.errors.messages).must_include :title
-      expect(work.errors.messages[:title]).must_equal ["can't be blank"]
+      expect(hp.errors.messages).must_include :title
+      expect(hp.errors.messages[:title]).must_equal ["can't be blank"]
 
       # Rearrange
-      work.title = "Harry Potter"
+      hp.title = "Harry Potter"
 
       # Re-Act
-      valid = work.valid? # run validations
+      valid = hp.valid? # run validations
 
       # Reassert
       expect(valid).must_equal true
     end
 
-    it 'requires a unique title' do
-      other_work = Work.new title: work.title, category: 'book'
+    it 'requires a unique title within a category' do
+      other_work = Work.new title: hp.title, category: 'book'
 
       valid = other_work.valid?
 
       expect(valid).must_equal false
       expect(other_work.errors.messages).must_include :title
       expect(other_work.errors.messages[:title]).must_equal ["has already been taken"]
+    end
+
+    it 'can have the same title as a work in a different category' do
+      other_work = Work.new title: hp.title, category: 'movie'
+
+      valid = other_work.valid?
+
+      expect(valid).must_equal true
     end
   end
 
@@ -115,43 +136,27 @@ describe Work do
       expect(work).must_be_instance_of Work
     end
 
-    it 'should have the most votes of all work objects' do
-      # Arrange
-      10.times do
-        Work.first.votes << Vote.new(user: user, work: work)
-      end
-
+    it 'should return a work with the most votes of all work objects' do
       # Act
       top_work = Work.spotlight
       vote_count = top_work.votes.length
 
       # Assert
+      expect(top_work).must_be_instance_of Work
       expect(vote_count).must_equal Work.all.max_by { |work| work.votes.length }.votes.length
     end
 
     it 'should return the first work alphabetically if there is a vote tie' do
       # Arrange
-      15.times do
-        works(:sgtpepper).votes << Vote.new(user: user, work: work)
-      end
+      # sgtpepper and startrek tied for votes in fixtures
 
       # Act
       top_work = Work.spotlight
 
       # Assert
-      expect(top_work).must_equal works(:sgtpepper)
-
-      # Re-Arrange
-      # 16 times because sgtpepper has existing extra vote from fixture
-      16.times do
-        works(:interstellar).votes << Vote.new(user: user, work: work)
-      end
-      # Act
-      top_work = Work.spotlight
-
-      # Assert
-      expect(top_work).must_equal works(:interstellar)
+      expect(top_work).must_equal sgtpepper
     end
+
 
     it 'should return nil if there are no works' do
       # Arrange
@@ -208,34 +213,18 @@ describe Work do
 
     it 'should return the works ordered by vote count and then alphabetically' do
       # Arrange
-      works(:sgtpepper).category = "book"
-      works(:sgtpepper).save
-      works(:interstellar).category = "book"
-      works(:interstellar).save
+      hp.update(category: "movie")
+      sgtpepper.update(category: "movie")
 
       # Act
-      works = Work.list_of("book")
+      works = Work.list_of("movie")
 
       # Assert
       expect(works[0].vote_count >= works[1].vote_count).must_equal true
       expect(works[1].vote_count >= works[2].vote_count).must_equal true
-
-      # Re-Arrange
-      15.times do
-        works(:sgtpepper).votes << Vote.new(user: user, work: work)
-      end
-
-      # 16 times because sgtpepper has existing extra vote from fixture
-      16.times do
-        works(:interstellar).votes << Vote.new(user: user, work: work)
-      end
-      # Act
-      works = Work.list_of("book")
-
-      # Assert
-      expect(works.first).must_equal works(:interstellar)
-      expect(works[0].vote_count >= works[1].vote_count).must_equal true
-      expect(works[1].vote_count >= works[2].vote_count).must_equal true
+      expect(works.first).must_equal sgtpepper
+      expect(works[1]).must_equal startrek
+      expect(works[2]).must_equal hp
     end
 
     it 'should return an empty array when there are none of the designated type of work' do
@@ -262,7 +251,7 @@ describe Work do
     it 'must return the total number of votes on a work' do
       # Arrange in fixture
       # Act
-      count = work.vote_count
+      count = hp.vote_count
 
       # Assert
       expect(count).must_equal 1

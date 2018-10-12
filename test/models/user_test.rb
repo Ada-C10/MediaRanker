@@ -33,6 +33,20 @@ describe User do
       end
     end
 
+    it 'can have 0 votes' do
+      # Arrange
+      dan = users(:dan)
+
+      # Act
+      votes = dan.votes
+
+      # Assert
+      expect(dan).must_be_instance_of User
+
+      expect(votes.length).must_equal 0
+      expect(dan.valid?).must_equal true
+    end
+
     it 'has many works through votes' do
       # Arrange is done with let
 
@@ -120,7 +134,7 @@ describe User do
       count = user.vote_count
 
       # Assert
-      expect(count).must_equal 2
+      expect(count).must_equal 3
     end
 
     it 'returns 0 when the user has not voted on anything' do
