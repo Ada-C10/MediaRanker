@@ -28,24 +28,24 @@
 
       </section>
       <section class="flash-messages">
-            <% flash.each do |key, message| %>
+          <% flash.each do |key, message| %>
               <p class="<%= key %>">
                 <%= message %>
               </p>
             <% end %>
           </section>
 
-      <section class="login-info">
+    <section class="login-info">
 
-        <% if @logged_in_user %>
-          <p>
-            Currently logged in as
-            <%= @logged_in_user.user_name %>
-            <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
-          </p>
-        <% else %>
+      <% if @logged_in_user %>
+        <p>
+          Currently logged in as
+          <%= @logged_in_user.user_name %>
+          <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
+        </p>
+      <% else %>
           <%= link_to "Log in", new_session_path, class: "btn btn-outline-info" %>
-        <% end %>
+      <% end %>
       </section>
 
     <%= yield %>

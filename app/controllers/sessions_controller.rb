@@ -12,6 +12,8 @@ class SessionsController < ApplicationController
       flash[:success] = "Welcome back, successfully logged in as #{name}"
       session[:user_id] = user.id
 
+      redirect_to root_path
+
     else # create a new user if doesn't exist
       user = User.new(user_name: name)
       is_successful_save = user.save
