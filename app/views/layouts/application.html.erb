@@ -7,6 +7,30 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <nav>
+      <ul>
+        <li>
+          <%= link_to  "Home", "/", id: "home-link" %>
+        </li>
+        <li>
+          <%= link_to "View all media", works_path %>
+        </li>
+        <li>
+          <%= link_to "View all users", users_path %>
+        </li>
+        <li>
+          <%= link_to "Add a new work", new_work_path %>
+        </li>
+        <li>
+            <% if @current_user %>
+            <%= link_to "Log Out", logout_path, method: :delete, class: 'btn btn-primary' %>
+            <% else %>
+            <%= link_to "Login", login_path, class: 'btn btn-primary' %>
+            <% end %>
+        </li>
+      </ul>
+    </nav>
   </head>
 
   <body>
@@ -24,9 +48,9 @@
         <% end %>
       <% end %>
 
-      <!-- <% if @current_user %>
+      <% if @current_user %>
         <h2>Welcome <%= @current_user.name %> </h2>
-      <% end %> -->
+      <% end %>
     </section>
     <%= yield %>
   </body>
