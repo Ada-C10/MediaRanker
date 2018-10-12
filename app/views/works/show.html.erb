@@ -17,14 +17,14 @@
     <th>User</th>
     <th>Date</th>
   </tr>
-  <% @work.votes.each do |vote| %>
+  <% @work.upvoted_users.each do |user| %>
 <tr>
   <td>
-    <%= link_to user_path(vote.user.id) do %>
-    <%= vote.user.name %>
+    <%= link_to user_path(user.id) do %>
+    <%= user.name %>
     <% end %>
   </td>
-  <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+  <td><%= user.created_at.strftime("%b %d, %Y") %></td>
 </tr>
 <% end %>
 </table>
