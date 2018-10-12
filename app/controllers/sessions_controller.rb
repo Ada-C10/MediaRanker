@@ -4,17 +4,17 @@ class SessionsController < ApplicationController
 
     if @user.nil?
       @user = User.create(name: params[:user][:name], join_date: Date.current)
+      if @user.valid?
+        flash[:success] = "Successfully created new user #{@user.name} with ID #{@user.id}"
+        session[:user_id] = @user.id
+        redirect_to root_path
+      else
+        render :new
+      end
     else
       flash[:success] = "Successfully logged in as existing user #{@user.name}"
-    end
-
-    #FIX THIS - it keeps creating new user
-    if @user.valid?
-      flash[:success] = "Successfully created new user #{@user.name} with ID #{@user.id}"
       session[:user_id] = @user.id
       redirect_to root_path
-    else
-      render :new
     end
   end
 
