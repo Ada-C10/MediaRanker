@@ -22,7 +22,8 @@
           <td><%= work.creator %></td>
           <td><%= work.publication_year %></td>
           <td><%= work.category %></td>
-          <td>z</td>
+          <% vote = work.date_work_upvoted_by_user(work, @user.id) %>
+          <td><%= vote[0].created_at.strftime("%b %d,%Y") %></td>
         </tr>
       <% end %>
     </tbody>

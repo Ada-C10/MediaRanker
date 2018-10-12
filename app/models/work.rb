@@ -36,4 +36,11 @@ class Work < ApplicationRecord
 
     return array_of_users
   end
+
+  def date_work_upvoted_by_user(work, user_id)
+    work_id = work.id
+    vote = Vote.where(user_id: user_id, work_id: work_id)
+
+    return vote
+  end
 end
