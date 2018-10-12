@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users, only:[:index, :show]
 
   resources :works do
-    resources :votes, only: [:create]
+    post 'upvote', :on => :member
   end
 
 end

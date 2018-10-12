@@ -16,12 +16,21 @@ class UsersController < ApplicationController
     user = User.find_by(name: params[:user][:name])
 
     if user.nil?
-      user = User.create(name: params[:user][:name])
-    end
+       user = User.new(name: params[:user][:name])
 
-    session[:user_id] = user.id
-    flash[:success] = "#{user.name} Successfully logged in!"
-    redirect_to root_path
+       if user.save
+         session[:user_id] = user.id
+         flash[:success] = "#{user.name} Successfully logged in!"
+         redirect_to root_path
+       else
+         flash[:warning] = "A problem occurred: Could not log in"
+         redirect_back fallback_location: root_path
+         end
+       else
+       session[:user_id] = user.id
+       flash[:success] = "#{user.name} Successfully logged in!"
+       redirect_to root_path
+    end
   end
 
   def new
@@ -33,7 +42,5 @@ class UsersController < ApplicationController
     flash[:success] = 'Successfully logged out'
     redirect_back fallback_location: root_path
   end
-
-
 
 end
