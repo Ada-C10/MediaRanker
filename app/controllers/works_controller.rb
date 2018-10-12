@@ -32,8 +32,14 @@ class WorksController < ApplicationController
       def create
         @work = Work.new(work_params)
         if @work.save
+          flash[:success] = 'Media Added!'
           redirect_to work_path(@work.id)
         else
+          flash.now[:danger] = 'Media NOT added!'
+          @work.errors.messages.each do |field, messages|
+            flash.now[field] = messages
+          end
+
           render :new
         end
       end
@@ -47,11 +53,12 @@ class WorksController < ApplicationController
       def upvote
         work = Work.find_by(id: params[:id].to_i)
         user = User.find_by(id: session[:user_id])
-        if ![:user_id]
-          flash.now[:error] = "A problem occured, you must log in to upvote"
-        else
-          vote = Vote.new(work: work, user: user)
-          vote.save
+        if @current_user
+          @vote = Vote.new(work: work, user: user)
+          @vote.save
+          flash[:success] = "Upvoted!"
+          else
+          flash[:danger] = "A problem occured, you are not able to vote for this!"
         end
         redirect_back fallback_location: root_path
       end

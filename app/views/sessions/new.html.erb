@@ -2,7 +2,7 @@
 
   <%= form_with model: @user, url: login_path, method: :post do |f| %>
   <%= f.label :name, 'Username'%>
-  <%=f.text_field :name, placeholder: 'username' %>
+  <%=f.text_field :name %>
   <%= f.submit 'Login'%>
 
   <% end %>
