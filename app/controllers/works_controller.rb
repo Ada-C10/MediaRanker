@@ -45,8 +45,12 @@ class WorksController < ApplicationController
     @albums = (@albums.sort_by { |album| album.total_votes()}).reverse!
 
 
-    @works = Work.all.to_a
-    @works = (@works.sort_by { |work| work.total_votes()}).reverse!
+    @books = Work.where(category: "book")
+    @books = (@books.sort_by { |book| book.total_votes()}).reverse!
+
+    #
+    # @works = Work.all.to_a
+    # @works = (@works.sort_by { |work| work.total_votes()}).reverse!
   end
 
   def show
