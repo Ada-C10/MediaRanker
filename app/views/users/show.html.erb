@@ -1,6 +1,18 @@
-<h1 class="headliner"> User Summary: </h1>
-<!-- <%= @user.name %>  -->
+<h1 class="headliner"> User Summary: <%= @user.user_name %> </h1>
 
-<div> Joined site </div>
 
-<!-- <%= @user.created_at %> -->
+<p> Joined site <%= @user.created_at.strftime("%b %d, %Y") %></p>
+
+<h3>Votes</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Media Title</th>
+      <th scope="col">Created By</th>
+      <th scope="col">Published</th>
+      <th scope="col">Category</th>
+      <th scope="col">Voted On</th>
+    </tr>
+  </thead>
+</table>

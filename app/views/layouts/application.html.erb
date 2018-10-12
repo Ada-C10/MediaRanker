@@ -10,34 +10,33 @@
   </head>
 
   <body>
-    <header>
+    <header class="app__header">
       <h1 class="title"><span class="ranker"><%= link_to "Media Ranker", root_path %></span><span id="subtext">Ranking the Best of Everything</span></h1>
 
-      <div class="top-navbar">
-        <nav>
-          <ul>
-            <li class="nav-list"><%= link_to "View All Media", works_path%>
-            </li>
-            <li class="nav-list"><%= link_to "Add A New Work", new_work_path %></li>
-          </ul>
-        </nav>
+      <nav class="app-header">
+        <ul class="nav">
+          <li class="nav-list"><%= link_to "View top media" %></li>
+          <li class="nav-list"><%= link_to "View all media", works_path%></li>
+          <li class="nav-list"><%= link_to "Add a new work", new_work_path %></li>
+          <li class="nav-list"><%= link_to "View all users", users_path %></li>
+        </ul>
 
-        <!-- <section class="login-info"> -->
-          <!-- Oh gosh this logic should probably be in a controller filter -->
-          <ul>
-            <% logged_in_user = User.find_by(id: session[:user_id]) %>
-            <% if logged_in_user %>
-            <p>
-              Currently logged in as user
-              <%= logged_in_user.user_name %>
-              <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
-            </p>
-            <% else %>
-            <%= link_to "Log in", new_session_path, class: "btn btn-outline-info" %>
-            <% end %>
-          </ul>
-        <!-- </section> -->
-      </div>
+        <% logged_in_user = User.find_by(id: session[:user_id]) %>
+        <% if logged_in_user %>
+        <ul class="app-header">
+          <li class="nav-list">
+            <button class="btn btn-primary">Currently logged in as <%= logged_in_user.user_name %> </button>
+          </li>
+          <li class="nav-list">
+            <%= link_to "Log out", logout_path, method: :post, class: "btn btn-primary" %>
+          </li>
+          <% else %>
+          <li class="nav-list">
+            <%= link_to "Log in", new_session_path, class: "btn btn-primary" %>
+          </li>
+        </ul>
+        <% end %>
+      </nav>
     </header>
 
     <section class="flash-messages">
