@@ -10,18 +10,18 @@ class WorksController < ApplicationController
 
     def new
       if params[:user_id]
-            user = User.find_by(id: params[:user_id])
-            # How do we handle if the author is not found?
-            #  If the author is not found, we would have a conditional to check
-            # that the author was found.
-            # Redirect to a 404 page
-            # Redirect to another existing page (the home page?) (new author form?)
-            # Show an error message saying that the author was not found
-            @works= user.works.new
-          else
-            @works = Work.new
-          end
-        end
+        user = User.find_by(id: params[:user_id])
+        # How do we handle if the author is not found?
+        #  If the author is not found, we would have a conditional to check
+        # that the author was found.
+        # Redirect to a 404 page
+        # Redirect to another existing page (the home page?) (new author form?)
+        # Show an error message saying that the author was not found
+        @work = user.works.new
+      else
+        @work = Work.new
+      end
+    end
 
     def create
       @work = Work.new(work_params)

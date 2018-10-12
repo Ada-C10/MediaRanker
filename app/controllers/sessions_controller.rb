@@ -11,8 +11,11 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
-      flash.now[:error] = "No such user \"#{name}\""
-      render :new
+
+      user = User.create(name: name)
+      session[:user_id] = user.id
+
+      redirect_to user_path(user)
     end
   end
 
@@ -21,4 +24,7 @@ class SessionsController < ApplicationController
     flash[:success] = "Successfully logged out"
     redirect_to root_path
   end
+
+  private
+
 end
