@@ -100,34 +100,31 @@ describe Work do
       expect(valid).must_equal true
     end
 
-  it 'must have a category' do
-    work.category = nil
+    it 'must have a category' do
+      work.category = nil
 
-    # Act
-    valid = work.valid?
+      # Act
+      valid = work.valid?
 
-    # Assert
-    expect(valid).must_equal false
-    expect(work.errors.messages).must_include :category
+      # Assert
+      expect(valid).must_equal false
+      expect(work.errors.messages).must_include :category
+    end
+
+    it 'has one of the allowed categories' do
+      work.category = "music"
+      expect(work).wont_be :valid?
+
+      Work::CATEGORIES.each do | category |
+        work.category = category
+        expect(work).must_equal :valid?
+      end
+    end
+
+
+
+
   end
-
-
-  end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
