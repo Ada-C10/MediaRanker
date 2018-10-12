@@ -15,7 +15,7 @@ class Work < ApplicationRecord
 
   def self.list(media_category)
     list = Work.select {|work| work.category == media_category}
-    return list.sort_by { |work| work.votes.count }.reverse
+    return list.sort_by { |work| -work.votes.count }
   end
 
   def self.top_ten(media_category)
