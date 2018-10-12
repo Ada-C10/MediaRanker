@@ -63,7 +63,8 @@ describe Vote do
       expect(@work.votes.find_by(user_id: @second_user.id)).must_equal @second_vote
       @work.destroy!
       expect(@work.votes.length).must_equal 0
-      expect(@work.votes.find_by(user_id: @second_user.id || @user.id)).must_equal nil
+      expect(@work.votes.find_by(user_id: @user.id)).must_equal nil
+      expect(@work.votes.find_by(user_id: @second_user.id)).must_equal nil
     end
 
   end
