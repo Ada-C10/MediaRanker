@@ -53,7 +53,7 @@ class WorksController < ApplicationController
   def destroy
     @work.destroy
       flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
-      redirect_to works_path
+      redirect_to root_path
   end
 
 
