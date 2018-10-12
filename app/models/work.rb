@@ -4,18 +4,19 @@ class Work < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :category, presence: true
 
-  def find_work_id
-    return self.id
-  end
+  # def find_work_id
+  #   return self.id
+  # end
 
   # self.votes is returning the votes for the specific work
+  # the 'has_many :votes' is doing the work of finding votes whose work_id is equal to the work that is being passed in
   def total_votes
     num_of_votes = self.votes.count
     return num_of_votes
   end
 
   def users_that_voted_on_this_work
-    work_id = find_work_id
+    # work_id = find_work_id
     # array_of_votes = Vote.where(work_id: work_id)
     array_of_votes = self.votes
     users_ids = []
@@ -33,9 +34,9 @@ class Work < ApplicationRecord
     return array_of_users
   end
 
-  def date_work_upvoted_by_user(work, user_id)
-    work_id = work.id
-    vote = Vote.where(user_id: user_id, work_id: work_id)
+  def date_work_upvoted_by_user(user_id)
+    # vote = Vote.where(user_id: user_id, work_id: work_id)
+    vote = Vote.where(user_id: user_id, work_id: self.id)
 
     return vote
   end
