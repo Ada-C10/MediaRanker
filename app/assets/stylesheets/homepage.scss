@@ -42,3 +42,22 @@
   color: slategrey;
   font-weight: bold;
 }
+
+.spotlight {
+  padding: 0 2em;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.card-title {
+  color: #424242;
+  font-weight: bold;
+}
+
+.card-title span {
+  color: #26A69A;
+}
+
+.card-title .title{
+  border-bottom: 1px solid #26A69A;
+}

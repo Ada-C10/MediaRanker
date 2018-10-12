@@ -2,7 +2,8 @@
 
   <section class="spotlight card">
     <div class="card-body">
-      <h3 class="card-title">Media Spotlight: <%=Work.top_media.title%> by <%=Work.top_media.creator%></h3>
+      <h3 class="card-title">Media Spotlight:
+        <span><span class="title"><%=Work.top_media.title%></span> by <%=Work.top_media.creator%></span></h3>
       <p class="card-text">
         <%=Work.top_media.description%>
       </p>
@@ -16,8 +17,8 @@
       <% Work.top_ten(category).each do |work| %>
       <ul>
         <li>
-          <%=link_to work.title, work_path(work), class: "work-title"%> by
-          <%=work.creator%>
+          <%=link_to work.title, work_path(work)%>
+          <span>by <%=work.creator%></span>
         </li>
         <li>
           <%=Work.get_num_votes(work)%> votes
