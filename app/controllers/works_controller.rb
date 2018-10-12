@@ -25,6 +25,8 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
+      # flash[:success] = "Successfuly created #{@work.category} #{@work.id}"
+
       redirect_to works_path
     else
       puts "#{@work.errors}"
@@ -39,21 +41,6 @@ class WorksController < ApplicationController
       render :edit
     end
   end
-
-  # def upvote
-  #   if Vote.find_by(user_id: @current_user.id) == nil
-  #
-  #     @vote = Vote.new(quantity: 1, user_id: @current_user.id, work_id: @work.id)
-  #
-  #     if @vote.save
-  #       redirect_back fallback_location: works_path
-  #     else
-  #       puts "#{@vote.errors}"
-  #     end
-  #   else
-  #     flash.now[:warning] = "Cannot vote twice"
-  #   end
-  # end
 
   def upvote
     if @current_user.nil?
@@ -75,17 +62,6 @@ class WorksController < ApplicationController
       # flash.now[:warning] = "Cannot vote twice"
     end
   end
-
-  # def upvote
-  #   @vote = Vote.new(quantity: 1, user_id: @current_user.id, work_id: @work.id)
-  #
-  #   if @vote.save
-  #     redirect_back fallback_location: works_path
-  #   else
-  #     puts "#{@vote.errors}"
-  #   end
-  # end
-
 
   private
 
