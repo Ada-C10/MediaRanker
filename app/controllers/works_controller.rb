@@ -14,6 +14,7 @@ class WorksController < ApplicationController
 
 
   def new
+    @work = Work.new
   end
 
 
@@ -61,8 +62,9 @@ class WorksController < ApplicationController
 
   def upvote
     ##search for the user via session id - error if logged out user
-    # session[:test] = user.id
-    # @user = User.find_by(username: username)
+
+    session[:user_id] = user.id
+    user = User.find(session[:user_id])
 
     ##search for work via param
     @work = Work.find_by(id: params[:id])
