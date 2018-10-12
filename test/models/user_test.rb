@@ -24,7 +24,7 @@ describe User do
 
     it "is invalid if the username is not between 5 and 20 characters" do
       user1 = User.create(username: "ksaksadkjfalladfkjafdlajfkasdlkjfjasdlfkjadslfjk")
-      user2 = User.create(username: "tttt")
+      user2 = User.create(username: "")
 
       value(user1.errors.messages).must_include :username
       value(user2.errors.messages).must_include :username

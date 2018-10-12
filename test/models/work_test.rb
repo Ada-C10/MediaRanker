@@ -51,7 +51,7 @@ describe Work do
   end
 
   describe 'Work#top_ten' do
-    it "will return collection of 10 works of given category" do
+    it "will return collection of 10 works of given category organized by votes" do
 
       12.times do
         Work.create(title: "Test thing", creator: "Fox Corp.", published: 2004, description: "Blah blah blah", category: "album")
@@ -61,9 +61,14 @@ describe Work do
       expect(Work.top_ten("album").first.category).must_equal "album"
       expect(Work.top_ten("album").first.title).must_equal "Lorem Ipsum"
       expect(Work.top_ten("album").second.title).must_equal "Queen Of The Damned Soundtrack"
+      #This work has no votes, but still shows up (edge case)
       expect(Work.top_ten("album").last.title).must_equal "Test thing"
     end
 
+    it "will return an empty collection if there are no works for a category" do
+      expect(Work.top_ten("pineapple").length).must_equal 0
+      expect(Work.top_ten("pineapple")).must_be_empty
+    end
   end
 
   describe 'Work#top_work' do
@@ -74,4 +79,5 @@ describe Work do
     end
   end
 
+end
 end

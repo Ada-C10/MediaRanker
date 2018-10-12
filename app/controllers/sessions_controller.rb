@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
   def login
-    user = User.find_by(username: params[:user][:username])
+    @user = User.find_by(username: params[:user][:username])
 
-    if user.nil?
+    if @user.nil?
       @user = User.new(username: params[:user][:username])
       if @user.save
-        session[:user_id] = user.id
+        session[:user_id] = @user.id
         flash[:success] = "Pleased to meet you #{@user.username}! Start voting!"
         redirect_to root_path
       else
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         render :new
       end
     else
-      session[:user_id] = user.id
+      session[:user_id] = @user.id
       flash[:success] = "Welcome back #{user.username}!"
       redirect_to root_path
     end
