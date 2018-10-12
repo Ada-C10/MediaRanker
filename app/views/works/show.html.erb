@@ -1,0 +1,13 @@
+<% if @work.nil? %>
+  <h1> 404 Not found</h1>
+<% else %>
+  <h1><%=@work.title%></h1>
+  <p>Created by:<%= @work.creator%> </p>
+  <p>Published:<%= @work.publication_year%> </p>
+  <p><%= @work.description%> </p>
+
+  <p><%= button_to "Edit", edit_work_path(@work.id), method: :get %></p>
+  <p><%= button_to "Delete", work_path(@work.id), method: :delete , data: {confirm: "Are you sure?"}%></p>
+
+
+<% end %>

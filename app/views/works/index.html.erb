@@ -1,0 +1,14 @@
+<h1>List of Works</h1>
+
+<table>
+<tr><strong><td>Votes</td><td>Title</td><td>Created by</td><td>Published</td><td>Upvote</td></strong></tr>
+<% @works.each do |work| %>
+  <tr>
+   <td><%= work.votes.length %></td>
+   <td><%= link_to "#{work.title}", work_path(work.id) %></td>
+   <td><%= work.creator %></td>
+   <td><%= work.publication_year %></td>
+  
+ </tr>
+<% end %>
+</table>
