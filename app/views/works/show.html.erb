@@ -29,16 +29,16 @@
 </ul>
 
 <section class="">
-  <h3> <%= @vote.length %> Votes for this <%= @work.category %> </h3>
+  <h3> <%= @votes.length %> Votes for this <%= @work.category %> </h3>
   <table id="">
     <tr>
       <th>User</th>
       <th>Date</th>
     <tr>
 
-    <% @vote.each do |vote_details| %>
+    <% @votes.each do |vote_details| %>
     <tr>
-      <td><%= vote_details.user_id %></td>
+      <td><%= vote_details.user.username %></td>
       <td><%= "#{vote_details.created_at.strftime("%B %e, %Y")}" %></td>
     </tr>
     <% end %>

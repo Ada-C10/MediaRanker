@@ -6,7 +6,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    @vote = Vote.where(work_id: params[:id])
+    @votes = Vote.where(work_id: params[:id])
 
     if @work.nil?
       head :not_found
@@ -58,6 +58,7 @@ class WorksController < ApplicationController
     @user = User.find_by(id: @vote.user_id)
 
     if @vote.save
+      flash[:success] = "Successfully upvoted!"
       redirect_to work_path(@vote.work_id)
     end
   end
