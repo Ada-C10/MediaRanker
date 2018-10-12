@@ -4,11 +4,11 @@ class WorksController < ApplicationController
   def index
     @works = Work.all.order(:title)
 
-    medias = ['albums','movies','books']
 
-    medias.each do |media|
-      media = Work.all.order(:title).select {|work| work.category == media}
-    end
+    @albums = Work.category('album')
+    @movies = Work.category('movie')
+    @books = Work.category('book')
+
 
 
   end

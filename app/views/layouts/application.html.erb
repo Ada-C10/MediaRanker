@@ -20,12 +20,20 @@
           <li><%= link_to  "View all users", users_path , id: "home-link" %></li>
         </ul>
       </nav>
+      <% if @current_user %>
       <nav>
         <ul>
-          <li>Logged in as Danielle</li>
-          <li>Logout</li>
+          <li>Logged in as <%= @current_user.username %></li>
+          <li><%= link_to "Log Out", logout_path, method: :delete, class: 'btn btn-primary' %></li>
         </ul>
       </nav>
+      <% else %>
+      <nav>
+        <ul>
+          <li><%= link_to "Login", new_user_path, class: 'btn btn-primary' %></li>
+        </ul>
+      </nav>
+      <% end %>
       <section class="flash">
         <% flash.each do |name, message| %>
           <% if message.class == Array %>

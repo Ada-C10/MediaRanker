@@ -59,6 +59,20 @@ describe Work do
       expect(work.errors.messages[:title]).must_equal ["can't be blank"]
     end
 
+    it 'must have category movie, album or book' do
+      # Arrange
+      work = works(:harrypotter)
+      work.category = 'art'
+
+      # Act
+      #valid = book.valid?
+      valid = work.save
+
+      # Assert
+      expect(valid).must_equal false
+      expect(work.errors.messages).must_include :category
+    end
+
 
     it 'requires a unique title in category' do
       #other_book = book.clone
