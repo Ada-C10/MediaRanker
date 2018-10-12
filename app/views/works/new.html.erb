@@ -1,23 +1,12 @@
 <h1>Works#new</h1>
 <p>Find me in app/views/works/new.html.erb</p>
 
-<%= form_with model: @work do |f| %>
-
-  <%= f.label :title, 'Title' %>
-  <%= f.text_field :title, placeholder: 'Title', required: true, maxlength: 40 %>
-
-  <%= f.label :creator, 'Creator' %>
-  <%= f.text_field :creator, placeholder: 'Creator', required: true, maxlength: 30 %>
-
-  <%= f.label :category, "Category" %>
-  <%= f.select :category, VALID_WORK_CATEGORIES %>
-
-  <%= f.label :publication, 'Year Published' %>
-  <%= f.text_field :publication, placeholder: 'Year', required: true, maxlength: 4 %>
-
-  <%= f.label :description, 'Description' %>
-  <%= f.text_area :description, cols: 20, rows: 2, placeholder: 'Description', maxlength: 50 %>
-
-  <%= f.submit 'Save Me!' %>
-
-<% end %>
+<%= render partial: "layouts/form",
+      locals: { action_name: 'Create a new work',
+                this_model: @work,
+                title_placeholder: 'Title',
+                creator_placeholder: 'Creator',
+                description_placeholder: 'Description',
+                selected_category: VALID_WORK_CATEGORIES.first,
+                publication_placeholder: 'Year',
+                button_title: 'Save Me!' } %>
