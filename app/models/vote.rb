@@ -15,9 +15,4 @@ class Vote < ApplicationRecord
       return false
     end
   end
-
-  def destroy_votes
-    votes = Vote.all.where(work_id: self.id)
-    votes.each { |vote| vote.destroy }
-  end
 end

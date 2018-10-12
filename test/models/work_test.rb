@@ -57,6 +57,13 @@ describe Work do
   end
 
   describe "Custom Methods" do
+    describe "destroy_votes" do
+      it "will destroy all votes that match a work_id" do
+        work.destroy_votes
+        expect(work.votes.count).must_equal 0
+      end
+    end
+    
     describe "all_sorted" do
       it "will return a collection of works" do
         works = Work.all_sorted
