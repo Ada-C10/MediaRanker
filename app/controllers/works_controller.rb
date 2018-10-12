@@ -5,9 +5,16 @@ class WorksController < ApplicationController
 
   def home
     #filter by movies, books, and albums--then call .soryby!
-
     @albums = Work.where(category: "album")
-    @albums = (@albums.sort_by { |album| album.total_votes()}).reverse!
+    @albums = ((@albums.sort_by { |album| album.total_votes()}).reverse!).take(10)
+
+
+    @books = Work.where(category: "book")
+    @books = ((@books.sort_by { |book| book.total_votes()}).reverse!).take(10)
+
+
+    @movies = Work.where(category: "movie")
+    @movies = ((@movies.sort_by { |movie| movie.total_votes()}).reverse!).take(10)
 
     # users.sort_by { |user| [user.age, user.name] }
 
@@ -41,7 +48,6 @@ class WorksController < ApplicationController
   end
 
   def index
-
 
     @albums = Work.where(category: "album")
     @albums = (@albums.sort_by { |album| album.total_votes()}).reverse!
