@@ -1,9 +1,12 @@
 class SessionsController < ApplicationController
+  before_action
+
   def new
     @user = User.new()
   end
 
   def login
+    @user = User.new()
     user = User.find_by(name: params[:user][:name])
     if !user
       user = User.create(name: params[:user][:name])
