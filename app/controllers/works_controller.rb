@@ -17,10 +17,15 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-    if @work.save
-      redirect_to works_path
+
+    is_successful_save = @work.save
+
+    if is_successful_save
+      flash[:success] = "Successfully added new media: #{@work.title}"
+      redirect_to work_path(@work)
     else
-      render :new
+      flash.now[:error] = "did not save"
+      render :new, status: :bad_request
     end
   end
 
@@ -32,7 +37,11 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work.update(work_params)
-      redirect_to work_path(@work)
+      flash[:success] = "work #{@work.title} has been successfully updated."
+      redirect_to work_path(@work.id)
+    else
+      flash.now[:error] = "could not be updated"
+      render :edit, status: :bad_request
     end
   end
 
@@ -40,6 +49,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
     @work.destroy
 
+    flash[:success] = "successfully deleted work \"#{@work.title}\""
     redirect_to works_path
   end
 
