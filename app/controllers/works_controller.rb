@@ -7,7 +7,8 @@ before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def index
     #makes a hash grouped by category
-     @works = Work.all.order(category: :asc).group_by(&:category)
+     @works = Work.left_joins(:votes).group(:id).order("category asc, count(votes.work_id) desc").group_by(&:category)
+     #Work.all.order(category: :asc).group_by(&:category)
   end
 
   def new
@@ -65,8 +66,8 @@ before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def upvote
     # @work = Work.find(params[:id])
+    # pass in user_id to find user
     @work.votes.create(user_id: session[:user_id])
-
     redirect_to(works_path)
   end
 
