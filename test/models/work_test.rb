@@ -41,11 +41,23 @@ describe Work do
   end
 
   describe 'custom_methods' do
+
     it 'returns the work id' do
       work = Work.find_by(title: "sound of music")
       work_id = work.find_work_id
       expect(work_id).must_be_kind_of Integer
     end
-  end
 
+    it 'returns the total number of votes for a work' do
+      user1 = User.create!(username: "junie")
+      user2 = User.create!(username: "penelope")
+      work = Work.create!(title: "Storks", category: "book")
+
+      vote1 = Vote.create!(user_id: user1.id, work_id: work.id)
+      vote2 = Vote.create!(user_id: user2.id, work_id: work.id)
+
+      total_votes = work.total_votes
+      expect(total_votes).must_equal 2
+    end
+  end
 end
