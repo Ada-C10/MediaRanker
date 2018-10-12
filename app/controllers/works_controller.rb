@@ -64,12 +64,19 @@ before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
     end
 
 
-  def upvote
-    # @work = Work.find(params[:id])
-    # pass in user_id to find user
-    @work.votes.create(user_id: session[:user_id])
-    redirect_to(works_path)
-  end
+    def upvote
+      # @work = Work.find(params[:id])
+      # pass in user_id to find user
+      # @work.votes.create(user_id: session[:user_id])
+
+      if @work.votes.count == 0
+        @work.votes.create(user_id: session[:user_id])
+        redirect_to(works_path)
+      else flash[:error] = "User has already voted for this work"
+        redirect_to(works_path)
+
+      end
+    end
 
 
 
