@@ -15,10 +15,8 @@ describe Medium do
     end
 
     it 'is valid when title is present and unique, creator and category are present, and publication_year is both numerical and present' do
-
       is_valid = @medium.valid?
       expect( is_valid ).must_equal true
-
     end
 
     it 'is invalid without a title' do
@@ -84,9 +82,9 @@ describe Medium do
       medium_id = @medium.id
 
       # create 3 vote instances for @medium
-      Vote.create!(user_id: users(:one).id, medium_id: medium_id)
-      Vote.create!(user_id: users(:two).id, medium_id: medium_id)
-      Vote.create!(user_id: users(:three).id, medium_id: medium_id)
+      Vote.create!( user_id: users(:one).id, medium_id: medium_id )
+      Vote.create!( user_id: users(:two).id, medium_id: medium_id )
+      Vote.create!( user_id: users(:three).id, medium_id: medium_id )
     end
 
     it 'can access votes through instance method' do
@@ -106,13 +104,13 @@ describe Medium do
       medium2_id = @medium2.id
 
       # create 2 vote instances for @medium
-      Vote.create!(user_id: users(:one).id, medium_id: medium_id)
-      Vote.create!(user_id: users(:two).id, medium_id: medium_id)
+      Vote.create!( user_id: users(:one).id, medium_id: medium_id )
+      Vote.create!( user_id: users(:two).id, medium_id: medium_id )
 
       # create 3 vote instances for @medium2
-      Vote.create!(user_id: users(:two).id, medium_id: medium2_id)
-      Vote.create!(user_id: users(:three).id, medium_id: medium2_id)
-      Vote.create!(user_id: users(:one).id, medium_id: medium2_id)
+      Vote.create!( user_id: users(:two).id, medium_id: medium2_id )
+      Vote.create!( user_id: users(:three).id, medium_id: medium2_id )
+      Vote.create!( user_id: users(:one).id, medium_id: medium2_id )
     end
 
     it 'returns the Medium instance with the most votes' do
