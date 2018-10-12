@@ -7,7 +7,12 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:user][:name])
     if !user
       user = User.create(name: params[:user][:name])
-      flash[:success] = "Successfully created new user #{user.name} with ID #{user.id}"
+      if user.valid?
+        flash[:success] = "Successfully created new user #{user.name} with ID #{user.id}"
+      else
+        flash[:warning] = "A problem occurred: Could not log in"
+        flash[:validation_errors] = user.errors.full_messages.first
+      end
     else
       flash[:success] = "Successfully logged in as existing user #{user.name}"
     end
