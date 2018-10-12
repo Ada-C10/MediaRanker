@@ -3,6 +3,10 @@ class WorksController < ApplicationController
     @works = Work.all
   end
 
+  def home
+    @works = Work.all
+  end
+
 
   def show
     work_id = params[:id]

@@ -2,29 +2,33 @@
   <div class="description-container">
 
     <h2><%= @work.title %> </h2>
-    <p>Created by <%= @work.creator %></p>
 
-    <p class="description-text"><%= @work.category %></p>
-    <p class="description-text"><%= @work.publication_year %></p>
+    <p class="description-text">Created by:<%= @work.creator %></p>
+    <p class="description-text">Published:<%= @work.publication_year %></p>
     <p class="description-text"><%= @work.description %></p>
   </div>
 
   <div class="links-bar">
     <%= link_to "Back to media ranks", works_path, class: "all_works" %>
     <%= link_to "Edit", edit_work_path(@work.id), class: "edit-link" %>
+    <!-- upvote goes here -->
     <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to get rid of work #{@work.title}?" } %>
   </div>
 </section>
 
-<table class="work_table">
-  <tr>
-    <th>User</th>
-    <th>Date</th>
-  </tr>
-</table>
+<h3>Votes for this <%= @work.category %></h3>
 
-<div class="Homepage">
-  <h3>
-    <%= link_to "Return to all media", root_path, class: "homepage" %>
-  </h3>
-</div>
+<section class="work-table-section" %>
+
+  <table class="work_table">
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+
+    <tr>
+      <th>User who have voted on it</th>
+      <th>The date they voted</th>
+    </tr>
+  </table>
+</section>

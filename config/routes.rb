@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'works#index'
+  root 'works#home'
 
   resources :works do
     resources :votes, only: [:new, :create]
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :sessions, only: [:new, :create]
+
   post '/sessions/logout', to: 'sessions#logout', as: 'logout'
 
   # get '/works', to: 'works#index', as: 'all_works'

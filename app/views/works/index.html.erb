@@ -1,43 +1,7 @@
 <div class="container">
 
-  <div class="div1">
-    <h3>
-      <%= link_to "new works", new_work_path, class: "new-work" %>
-    </h3>
-  </div>
-
-  <div class="div2">
-    <h3>
-      <%= link_to "all works", works_path, class: "homepage" %>
-    </h3>
-  </div>
-
   <div class="div5">
-    <h3>your works</h3>
-  </div>
-
-  <div class="div6">
-    <h2>BOOKS</h2>
-    <ol class="book">
-      <% @works.each do |work| %>
-      <% if work.category == "book" %>
-      <li>
-        <p>
-<<<<<<< HEAD
-          <strong><%= link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
-=======
-          <strong><%=link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
->>>>>>> tests
-        </p>
-        <p>
-          <%= "#{work.votes.count}" %> votes
-        </p>
-        <%= link_to "Edit", edit_work_path(work.id), class: "edit-link" %> |
-        <%= link_to "Delete", work_path(work.id), method: :delete, data: {confirm: "Are you sure you want to get rid of work #{work.title}?" } %>
-      </li>
-      <% end %>
-    </ol>
-    <% end %>
+    <h3>List of Works</h3>
   </div>
 
   <div class="album">
@@ -47,11 +11,7 @@
       <% if work.category == "book" %>
       <li>
         <p>
-<<<<<<< HEAD
           <strong><%= link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
-=======
-          <strong><%=link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
->>>>>>> tests
         </p>
         <p>
           <%= "#{work.votes.count}" %> votes
@@ -64,18 +24,36 @@
     <% end %>
   </div>
 
-  <div class="album">
+  
+  <div class="book">
+    <h2>BOOKS</h2>
+    <ol class="book">
+      <% @works.each do |work| %>
+      <% if work.category == "book" %>
+      <li>
+        <p>
+          <strong><%= link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
+        </p>
+        <p>
+          <%= "#{work.votes.count}" %> votes
+        </p>
+        <%= link_to "Edit", edit_work_path(work.id), class: "edit-link" %> |
+        <%= link_to "Delete", work_path(work.id), method: :delete, data: {confirm: "Are you sure you want to get rid of work #{work.title}?" } %>
+      </li>
+      <% end %>
+    </ol>
+    <% end %>
+  </div>
+
+
+  <div class="movie">
     <h2>MOVIES</h2>
-    <ol class="album">
+    <ol class="movie">
       <% @works.each do |work| %>
       <% if work.category == "movie" %>
       <li>
         <p>
-<<<<<<< HEAD
           <strong><%= link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
-=======
-          <strong><%=link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
->>>>>>> tests
         </p>
         <p>
           <%= "#{work.votes.count}" %> votes

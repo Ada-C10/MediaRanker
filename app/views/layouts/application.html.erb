@@ -19,11 +19,19 @@
         <li><%= link_to "View all media", works_path, class: "all_works-link" %></li>
         <li><%= link_to "Add a new work", new_work_path, class: "new_work-link" %></li>
         <li><%= link_to "View all users", users_path, class: "new_work-link" %></li>
-        <li><%= link_to "Log in", new_session_path, class: "login-link" %></li>
+        <% if session[:user_id] %>
+        <% user = User.find_by(id: session[:user_id]) %>
+        <li><%= link_to "Logged in as #{user.username}", new_session_path, class: "login-link" %></li>
+        <% end %>
+        <li><%= link_to "Log out", logout_path, class: "logout-link" %></li>
       </ul>
     </nav>
   </header>
-  <%= yield %>
+
+  <main>
+    <%= yield %>
+  </main>
+
   <footer>
   </footer>
 </body>
