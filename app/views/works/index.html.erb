@@ -1,26 +1,34 @@
-<h1 class="title">List of Works</h1>
+<h2>List of Works</h2>
 
-<h2 class="sub-header">Albums</h2>
-<table class="index-table">
-  <%= render partial: "headers" %>
+<h4>Albums</h4>
+<table class="table">
+  <thead>
+    <%= render partial: "headers" %>
+  </thead>
   <tbody>
     <%= render partial: "categorytable", collection: @albums %>
   </tbody>
 </table>
 
-<h2 class="sub-header">Books</h2>
-<table class="index-table">
-  <%= render partial: "headers" %>
+<h4>Books</h4>
+<table class="table">
+  <thead>
+    <%= render partial: "headers" %>
+  </thead>
   <tbody>
     <%= render partial: "categorytable", collection: @books %>
   </tbody>
 </table>
 
-
-<h2 class="sub-header">Movies</h2>
-<table class="index-table">
-  <%= render partial: "headers" %>
+<h4>Movies</h4>
+<table class="table">
+  <thead>
+    <%= render partial: "headers" %>
+  </thead>
   <tbody>
     <%= render partial: "categorytable", collection: @movies %>
   </tbody>
 </table>
+
+<%= link_to "View top media", root_path, class: "btn btn-secondary" %>
+<%= link_to "Add a new work", new_work_path, class: "btn btn-primary" %>

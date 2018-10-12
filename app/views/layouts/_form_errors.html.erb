@@ -1,0 +1,12 @@
+<section class="alert__container">
+  <div class="alert alert-warning">
+    <span><%= problem %></span>
+    <ul class="errors">
+      <% model.errors.messages.each do |column, message| %>
+        <% message.each do |msg| %>
+          <li><%= "#{column}: #{msg}\n" %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</section>

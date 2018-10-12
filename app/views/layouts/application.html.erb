@@ -49,23 +49,35 @@
         </ul>
       </nav>
     </header>
-    <section class="alert__container">
-        <% flash.each do |name, message| %>
-          <div class="alert alert-<%= @status %>">
-            <% if message.class == Array %>
-              <ul>
-                <% message.each do |msg| %>
-                  <li><%= "#{name}: #{msg}\n" %></li>
-                <% end %>
-              </ul>
-            <% else %>
-              <span><%= message %></span>
+    <% if !flash.empty? %>
+      <section class="alert__container">
+        <% if flash.count == 1 %>
+          <div class="alert alert-success">
+            <span><%= flash[:success] %></span>
+          </div>
+        <% else %>
+          <div class="alert alert-warning">
+            <% flash.each do |name, message| %>
+              <% if message.class == Array %>
+                <ul>
+                  <% message.each do |msg| %>
+                    <li><%= "#{name}: #{msg}\n" %></li>
+                  <% end %>
+                </ul>
+              <% else %>
+                <span><%= message %></span>
+              <% end %>
             <% end %>
           </div>
         <% end %>
-    </section>
+      </section>
+    <% end %>
     <main>
       <%= yield %>
     </main>
   </body>
 </html>
+
+div warning
+warning -> msg
+title -> [msg, msg2]
