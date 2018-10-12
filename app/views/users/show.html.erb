@@ -15,4 +15,19 @@
       <th scope="col">Voted On</th>
     </tr>
   </thead>
+
+  <% @user.votes.each do |vote| %>
+  <tbody>
+    <tr>
+      <td><%= link_to vote.work.title, work_path(vote.work.id) %></td>
+      <td><%= vote.work.creator %></td>
+      <td><%= vote.work.publication_year %></td>
+      <td><%= vote.work.category %></td>
+      <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+    </tr>
+    <% end %>
+  </thead>
 </table>
+
+<%= link_to "See all users", users_path, class: "btn btn-info" %>
+<%= link_to "Back to media list", works_path, class: "btn btn-info" %>

@@ -12,8 +12,9 @@
   <%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure you want to delete this entry #{@work.title}?" }, class: "btn btn-danger" %>
 
   <h2 class="votes">
-    <strong>Votes for this <%= @work.category.capitalize %></strong>
+    <strong><%= @work.votes_count %> votes for this <%= @work.category.capitalize %></strong>
   </h2>
+
   <table class="table">
     <thead>
       <tr>
@@ -21,13 +22,15 @@
         <th scope="col">Date</th>
       </tr>
     </thead>
-  </table>
 
-  <% @work.users.each do |user| %>
-    <p>
-      <%= user.user_name %>
-      
-    </p>
-  <% end %>
+    <tbody>
+      <% @work.users.each do |user| %>
+      <tr>
+        <td><%= user.user_name %></td>
+        <td><%= user.votes_count %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 
   </div>
