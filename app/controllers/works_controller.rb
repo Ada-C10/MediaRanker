@@ -1,10 +1,10 @@
 class WorksController < ApplicationController
 
   def index
-      # we separate/list works by category type
-      @albums = Work.where(category: 'album')
-      @books = Work.where(category: 'book')
-      @movies = Work.where(category: 'movie')
+    # we separate/list works by category type
+    @albums = Work.where(category: 'album')
+    @books = Work.where(category: 'book')
+    @movies = Work.where(category: 'movie')
   end
 
   def show
@@ -44,6 +44,7 @@ class WorksController < ApplicationController
 
     # can't update something if it doesn't exist
     if !@work
+      # TODO: add flash error message
       return head :not_found
     end
 
@@ -59,25 +60,22 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    # TODO: add flash error message
 
     @work = Work.find_by(id: params[:id])
 
-    if @work && session[:user_id] # TODO: CHECK THIS B/C NOW WE HAVE SESSIONS IN THA MIX
+    if @work
       result = @work.destroy
       if result
-        flash[:success] = "Successfully destroyed #{@work.category} #{work.id}"
+        flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
         redirect_to root_path
       else
         flash.now[:alert] = "something went wrong" #QUESTION: how to flash error messages??? error.messages?????
         render :show
       end
 
-    elsif !@work && session[:user_id]
-      #QUESTION: add flash alert not found???
-      return head :not_found
-
-    elsif @work && !session[:user_id] # QUESTION: needed???
-      flash[:error] = "You must be logged in to delete something!" #NOTE: this isn't true on the model site...
+    else # TODO: error messages
+      flash[:error] = "not found"
       redirect_back(fallback_location: root_path)
     end
   end

@@ -1,6 +1,6 @@
 class Work < ApplicationRecord
   # CATEGORIES = ["album", "book", "movie"]
-  has_many :votes
+  has_many :votes, dependent: :delete_all
 
   validates :title, presence: true
   # , uniqueness: true

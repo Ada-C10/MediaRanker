@@ -1,6 +1,6 @@
 <main>
-    <h2>User Summary: <a href="/users/29">!!!guy who made the movie &#39;titanic&#39; (you sould watch its a great flick) &quot;jambes cameron&quot;</a></h2>
-<p>Joined site !!!Oct  8, 2018</p>
+    <h2>User Summary: <%= link_to @user.username, user_path(@user.id) %></a></h2>
+<p>Joined site <%= @user.created_at %></p>
 
 <section class="user-votes__container">
   <h3 class="user-votes__header">Votes</h3>
@@ -15,6 +15,7 @@
       </tr>
     </thead>
     <tbody>
+
         <tr>
           <td><a href="/works/42">!!!titanic soundtrack HD 2018 remaster re-release</a></td>
           <td>!!!jambes cameron</td>
