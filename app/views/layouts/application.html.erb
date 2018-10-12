@@ -34,7 +34,13 @@
       </ul>
     </nav>
 
-    
+    <section class="flash-messages">
+      <% flash.each do |key, message| %>
+        <p class="<%= key %>">
+          <%= message %>
+        </p>
+      <% end %>
+    </section>
     <%= yield %>
   </body>
 </html>

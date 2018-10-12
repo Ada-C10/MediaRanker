@@ -24,8 +24,13 @@ class WorksController < ApplicationController
     is_successful_save = @work.save
 
     if is_successful_save
+      flash[:success] = "Successfully created new work with title \"#{@work.title}\""
       redirect_to works_path
+    elsif @work.title.empty?
+      flash.now[:error] = "Missing title. Try again."
+      render :new, status: :bad_request
     else
+      flash.now[:error] = "Invalid work data. Unable to save."
       render :new, status: :bad_request
     end
   end

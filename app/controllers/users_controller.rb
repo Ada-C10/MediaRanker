@@ -23,8 +23,10 @@ class UsersController < ApplicationController
     @user = User.new(filtered_user_params)
 
     if @user.save
+      flash[:success] = "Successfully created new user,  \"#{@user.username}\""
       redirect_to users_path
     else
+      flash.now[:error] = "Invalid user data. Unable to save."
       render :new, status: :bad_request
     end
   end

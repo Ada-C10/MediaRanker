@@ -1,0 +1,15 @@
+<% if model.errors.messages.any? %>
+  <section class="form-errors">
+    <strong><h3>Error(s):</h3></strong>
+    <ul>
+      <% model.errors.messages.each do |field, problem_list| %>
+        <% problem_list.each do |problem| %>
+          <li>
+            <strong><%= field %></strong>
+            <%= problem %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
