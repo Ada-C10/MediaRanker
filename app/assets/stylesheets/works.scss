@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
 .work-main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -65,4 +64,9 @@ ul {
 
 .index-table-header{
   font-size: 1.2rem;
+}
+
+.media-form {
+  display: flex;
+  flex-direction: column;
 }

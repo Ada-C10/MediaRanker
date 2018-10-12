@@ -4,27 +4,37 @@ locals: {
 }
 %>
 
+<%= form_with model: @work, class: 'work-form form-group' do |f| %>
 <div class="media-form">
-<%= form_with model: @work, class: 'work-form' do |f| %>
 
 <h2><%= form_title %></h2>
-
+<section>
 <%= f.label :category %>
-<%= f.select :category, Work.categories %>
+<%= f.select :category, Work.categories, {}, {:class => 'form-control'} %>
+</section>
 
+<section>
 <%= f.label :title %>
-<%= f.text_field :title %>
+<%= f.text_field :title, class: 'form-control' %>
+</section>
 
+<section>
 <%= f.label :creator %>
-<%= f.text_field :creator %>
+<%= f.text_field :creator, class: 'form-control' %>
+</section>
 
+<section>
 <%= f.label 'Publication Year' %>
-<%= f.text_field :pub_year %>
+<%= f.text_field :pub_year, class: 'form-control' %>
+</section>
 
+<section>
 <%= f.label :description %>
-<%= f.text_field :description %>
+<%= f.text_area :description, class: 'form-control' %>
+</section>
 
-<%= f.submit action_type, class: "work-form-submit-button" %>
-
-<% end %>
+<section>
+<%= f.submit action_type, class: "work-form-submit-button btn btn-primary" %>
+</section>
 </div>
+<% end %>
