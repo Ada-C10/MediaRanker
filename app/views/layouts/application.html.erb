@@ -1,16 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MediaRanker</title>
+    <title>GP MediaRanker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+<link href="https://fonts.googleapis.com/css?family=Muli:200" rel="stylesheet">
+
   </head>
 
   <body>
+    <header class="app-header header">
+    <h1>
+      <a href="/">Media Ranker</a>
+      <small> Ranking the Best of Everything</small>
+    </h1>
+
+    <nav class="app-header nav">
+      <ul class="nav app-header site-nav-container">
+        <li class="nav-item app-header nav_item">
+          <a class="nav-link" href="/">View top media</a>
+        </li>
+        <li class="nav-item app-header nav_item">
+          <a class="nav-link" href="/works">View all media</a>
+        </li>
+        <li class="nav-item app-header nav_item">
+          <a class="nav-link" href="/works/new">Add a new work</a>
+        </li>
+        <li class="nav-item app-header nav_item">
+          <a class="nav-link" href="/users">View all users</a>
+        </li>
+        <li class="nav-item app-header nav_item">
+          <a class="btn btn-primary" href="/login">Log In</a>
+      </li>
+      </ul>
+
+    </nav>
+  </header>
+
+
     <%= yield %>
   </body>
 </html>
