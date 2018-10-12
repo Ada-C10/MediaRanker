@@ -1,11 +1,24 @@
 class WorksController < ApplicationController
 
   def index
-    @works = Work.all.order(:title)
     @albums = Work.albums
     @books = Work.books
     @movies = Work.movies
     end
+
+    def home
+      @albums_home = Work.albums[0...10]
+      @books_home = Work.books[0...10]
+      @movies_home = Work.movies[0...10]
+
+      @top_work = Work.sort_by{ |work| work.votes.length}.reverse.first
+      end
+
+
+
+
+
+
 
     def show
         id = params[:id].to_i
