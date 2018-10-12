@@ -15,9 +15,11 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
     @work = Work.new(work_params)
 
     if @work.save
+      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
       redirect_to works_path
     else
-      render :new
+      flash.now[:error] = "A problem occurred: Could not create #{@work.category}"
+      render :new, status: :bad_request
     end
   end
 
@@ -41,6 +43,8 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @work.destroy
+
+    flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
     redirect_to works_path
   end
 
