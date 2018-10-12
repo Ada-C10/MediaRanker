@@ -16,6 +16,11 @@ class WorksController < ApplicationController
     @movies = Work.where(category: "movie")
     @movies = ((@movies.sort_by { |movie| movie.total_votes()}).reverse!).take(10)
 
+
+
+    @works = Work.all.to_a
+    @works = (@works.sort_by { |work| work.total_votes()}).reverse!
+
     # users.sort_by { |user| [user.age, user.name] }
 
   end
@@ -61,9 +66,7 @@ class WorksController < ApplicationController
     @movies = (@movies.sort_by { |movie| movie.total_votes()}).reverse!
 
 
-    #
-    # @works = Work.all.to_a
-    # @works = (@works.sort_by { |work| work.total_votes()}).reverse!
+
   end
 
   def show
