@@ -1,0 +1,19 @@
+<h1>new work show page</h1>
+
+<p>Title: <%= @work.title %></p>
+
+<p>Creator: <%= @work.creator %></p>
+
+<p>Category: <%= @work.category %></p>
+
+<p>Description: <%= @work.description %></p>
+
+<p>Pub Year: <%= @work.publication_year %></p>
+
+<p>
+<h4><%= link_to "Back to media ranks", votes_path %></h4>
+</p>
+<%= link_to "(Edit Media Details)", edit_work_path %>
+<%= link_to "(Upvote)", edit_work_path %>
+
+<%= link_to "(Delete This Work)", work_path(@work), method: :delete, data: { confirm: "Are you 1000% sure you want to delete the work: #{@work.title}?" } %>
