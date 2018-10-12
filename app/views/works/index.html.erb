@@ -50,7 +50,7 @@
     <td scope="row"><%=work.publication_year%></td>
     <td scope="row">
       <button type="button" class="btn btn-info">
-        <div><%= link_to "Upvote", works_path, method: :post%>
+        <div><%= link_to "Upvote", work_upvote_path(work), method: :post%>
         </div>
       </button>
     </td>
@@ -79,7 +79,7 @@
     <td scope="row"><%=work.publication_year%></td>
     <td scope="row">
       <button type="button" class="btn btn-info">
-        <div><%= link_to "Upvote", works_path, method: :post%>
+        <div><%= link_to "Upvote", work_upvote_path(work), method: :post%>
         </div>
       </button>
     </td>

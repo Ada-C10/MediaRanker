@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
 
   def index
-    @works = Work.all.order(:title)
+    @works = Work.featured
   end
 
   def show
