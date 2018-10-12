@@ -86,9 +86,13 @@ describe Work do
       expect(secret_copy.valid?).must_equal false
       expect(secret_copy.errors.messages).must_include :title
 
+    end
+
+    it "allows the same title for different categories" do
       #copy secret's title, but use a different category
       billy.title = secret.title
       expect(billy.valid?).must_equal true
+
     end
 
     it "must have a title" do
@@ -221,6 +225,27 @@ describe Work do
     end
   end
 
+  describe 'a work has many votes' do
+    it 'retrieves a list of votes' do
+      expect(secret.votes.count).must_equal 2
+    end
+
+    it 'only retrieves votes for that work' do
+      expect(secret.votes.all?{|vote| vote.work == secret}).must_equal true
+    end
+
+    it 'deletes votes if the work gets deleted' do
+      expect(Vote.select{|vote| vote.work == secret}.length).must_equal 2
+      secret.destroy
+      expect(Vote.select{|vote| vote.work == secret}.length).must_equal 0
+    end
+
+    it 'returns an empty collection if there are no votes' do
+      expect(billy.votes.count).must_equal 0
+    end
+
+  end
+
   # describe 'media_lists' do
   #
   #   let(:lists) {Work.media_lists}
@@ -271,25 +296,6 @@ describe Work do
   #   end
   # end
 
-  describe 'a work has many votes' do
-    it 'retrieves a list of votes' do
-      expect(secret.votes.count).must_equal 2
-    end
 
-    it 'only retrieves votes for that work' do
-      expect(secret.votes.all?{|vote| vote.work == secret}).must_equal true
-    end
-
-    it 'deletes votes if the work gets deleted' do
-      expect(Vote.select{|vote| vote.work == secret}.length).must_equal 2
-      secret.destroy
-      expect(Vote.select{|vote| vote.work == secret}.length).must_equal 0
-    end
-
-    it 'returns an empty collection if there are no votes' do
-      expect(billy.votes.count).must_equal 0
-    end
-
-  end
 
 end
