@@ -4,7 +4,7 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def home
-    @works = Work.all.order('votes_count DESC')
+    @works = Work.all
   end
 
 
@@ -32,10 +32,9 @@ class WorksController < ApplicationController
     redirect_to root_path
   end
 
-
-
   def index
-    @works = Work.all
+    @works = Work.all.to_a
+    @works = (@works.sort_by { |work| work.total_votes()}).reverse!
   end
 
   def show
