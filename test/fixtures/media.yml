@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyString
-  category: MyString
-  creator: MyString
-  publication_year:
+  title: Space Ghost Coast to Coast
+  description: great show about a ghost that lives in space
+  category: movie
+  creator: Adult Swim
+  publication_year: 2001
 
 two:
-  title: MyString
-  description: MyString
-  category: MyString
-  creator: MyString
-  publication_year:
+  title: Platinum Breaks Vol 1
+  description: compilation of Metalheadz tracks from the late-nineties techstep era
+  category: album
+  creator: Goldie
+  publication_year: 1999
+
+three:
+  title: The Illuminatus! Trilogy
+  description: wacky books about conspiracies and magic
+  category: book
+  creator: Robert Anton Wilson
+  publication_year: 1975
