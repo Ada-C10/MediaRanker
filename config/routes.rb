@@ -9,7 +9,12 @@ Rails.application.routes.draw do
 
   post '/logout', to: 'users#logout', as: 'logout'
 
-  resources :works
+  resources :works do
+    member do
+      post 'upvote'
+    end
+  end
+
 
   resources :users
 

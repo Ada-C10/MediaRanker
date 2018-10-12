@@ -9,6 +9,8 @@ Published: <%= @work.publication_year %>
 Description: <%= @work.description %>
 
 
-    <div><%= link_to "Edit Work Info", edit_work_path(@work.id) %> </div>
+<div><%= link_to "Edit Work Info", edit_work_path(@work.id) %> </div>
 
 <div><%= link_to "Delete Work", work_path(@work), method: :delete, data: { confirm: "are you sure you want to delete #{@work.title}"} %></div>
+
+<div><%= link_to "Upvote", upvote_work_path(@work), method: :post %></div>

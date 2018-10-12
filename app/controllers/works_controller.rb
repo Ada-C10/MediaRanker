@@ -4,6 +4,7 @@ class WorksController < ApplicationController
     @works = Work.all
   end
 
+
   def show
     @work = Work.find_by(id: params[:id])
     if @work.nil?
@@ -11,9 +12,10 @@ class WorksController < ApplicationController
     end
   end
 
+
   def new
-    @work = Work.new
   end
+
 
   def create
     @work = Work.new(work_params)
@@ -29,9 +31,11 @@ class WorksController < ApplicationController
     end
   end
 
+
   def edit
     @work = Work.find_by(id: params[:id])
   end
+
 
   def update
     @work = Work.find_by(id: params[:id])
@@ -45,12 +49,38 @@ class WorksController < ApplicationController
     end
   end
 
+
   def destroy
     @work = Work.find_by(id: params[:id])
     @work.destroy
 
     flash[:success] = "successfully deleted work \"#{@work.title}\""
     redirect_to works_path
+  end
+
+
+  def upvote
+    ##search for the user via session id - error if logged out user
+    # session[:test] = user.id
+    # @user = User.find_by(username: username)
+
+    ##search for work via param
+    @work = Work.find_by(id: params[:id])
+
+    ##Vote.new(user id, work id)
+    @vote = @work.votes.new(user: @user, work: @work)
+
+    ##if success, flash "Successfully upvoted!" and stay on page
+    if @vote.save
+      flash[:success] = "Successfully upvoted!"
+      render :new
+
+    ##else "you can only upvote a piece of media one time"
+    else
+      flash[:error] = "an error has occurred with either the user #{@user} or work #{@work}"
+      render 'works/show/'
+    end
+
   end
 
 

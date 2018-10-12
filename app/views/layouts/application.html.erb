@@ -19,7 +19,7 @@
       <section>
 
         <!-- move this - controller filter? -->
-        <% logged_in_user = User.find_by(id: session[:test]) %>
+        <% logged_in_user = User.find_by(id: session[:user_id]) %>
         <% if logged_in_user %>
         <p>
           Currently logged in as <%= logged_in_user.username %>
