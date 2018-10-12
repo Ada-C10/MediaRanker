@@ -27,18 +27,9 @@ require 'pry'
       flash[:success] = "The #{@work.category} '#{@work.title}' was successfully added."
       redirect_to works_path
     else
-      # flash.now[:failure] = "The work #{@work.title} was not added."
-      # render :new
-
-      errors = @work.errors.messages.reduce("") do |statement, (attribute, problem_list)|
-        statement + attribute.to_s + problem_list.to_s
-      end
-
-
-      flash[:failure] = "The work #{@work.title} was not added. Please fix these errors: #{errors}"
-      redirect_to new_work_path
+      flash.now[:failure] = "The work #{@work.title} was not added."
+      render :new, status: 400
     end
-
   end
 
   def edit
