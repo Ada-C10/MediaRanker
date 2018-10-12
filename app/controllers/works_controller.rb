@@ -38,7 +38,7 @@ require 'pry'
 
   def update
     work = Work.find_by(id: params[:id])
-    is_successful_update = passenger.update
+    is_successful_update = work.update(work_params)
 
     if is_successful_update
       flash[:success] = "Work #{work.title} was successfully updated."
