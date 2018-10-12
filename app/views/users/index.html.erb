@@ -1,0 +1,24 @@
+<div id="users-index">
+
+  <h2>List of Users</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Votes</th>
+        <th scope="col">Joined</th>
+      </tr>
+    </thead>
+    <% @users.each do |user| %>
+    <tbody>
+      <tr>
+        <td><%=link_to user.username, user_path(user)%></td>
+        <td><%=user.get_num_votes%></td>
+        <td><%=user.get_joindate%></td>
+      </tr>
+    </tbody>
+    <%end%>
+  </table>
+
+</div>

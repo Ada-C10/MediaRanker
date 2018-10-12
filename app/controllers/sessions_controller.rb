@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       user = User.create(username: name)
       flash[:error] = "Successfully created new user #{name} with ID #{user.id}"
     end
-    
+
     session[:user_id] = @user.id
     redirect_to works_path
   end
