@@ -33,8 +33,13 @@ class WorksController < ApplicationController
 
   def update
     if @work && @work.update(work_params)
+        flash[:success] = "Succesfully edited #{@work.category} \"#{@work.title}!\""
       redirect_to work_path(@work.id)
     elsif @work
+      flash[:error] = "Work edits not saved!"
+      @work.errors.messages.each do |field, messages|
+        flash[field] = messages
+      end
       render :edit
     end
   end
