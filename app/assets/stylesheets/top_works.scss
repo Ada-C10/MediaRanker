@@ -1,3 +1,11 @@
 // Place all the styles related to the TopWorks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.toplist-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr
+}
+
+.toplist-list li {
+  padding: 1em;
+}
