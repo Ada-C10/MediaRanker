@@ -7,71 +7,38 @@
     <% end %>
   </ul>
 <% end %>
-<h1><%= page_title %></h1>
-<div class="new-work">
-  <%= form_with model: @work, local: false do |f| %>
-
-    <p>
-      <%=f.label :category %>
-      <!-- Could do the following, but will need to create a method in work
-      to be able to handle if one category is not yet posted -->
-      <%#=f.select :category, Work.all.map { |work| [work.category]}.uniq %>
-      <%= f.select :category, ['album', 'book', 'movie'] %>
-    </p>
-    <p>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </p>
-    <p>
-      <%= f.label :publication_year %>
-      <%= f.text_field :publication_year %>
-    </p>
-    <p>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
-    </p>
-    <p>
-      <%= f.submit %>
-    </p>
-  <% end %>
-</div>
-<!-- To edit -->
 <main>
-  <h2>Add a new work</h2>
-  <section>
-  <form action="/works" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="4+yDVV+AWmfHBhr+t36IBa6Ln482pXkBcyvX0zoyT7UMBaBH7f/P5ziYpSJubPq2iwNeO+PJDYg+Oia6RpwVXg==" />
-    <div class="form-group">
-      <label>Category</label>
-      <select class="form-control" name="work[category]"><option value="album">album</option>
-  <option value="book">book</option>
-  <option value="movie">movie</option></select>
-    </div>
+  <h1><%= page_title %></h1>
+  <div class="new-work">
+    <%= form_with model: @work, local: false do |f| %>
 
-    <div class="form-group">
-      <label>Title</label>
-      <input class="form-control" type="text" name="work[title]" />
-    </div>
-
-    <div class="form-group">
-      <label>Creator</label>
-      <input class="form-control" type="text" name="work[creator]" />
-    </div>
-
-    <div class="form-group">
-      <label>Publication year</label>
-      <input class="form-control" type="text" name="work[publication_year]" />
-    </div>
-
-    <div class="form-group">
-      <label>Description</label>
-      <textarea class="form-control" name="work[description]">
-  </textarea>
-    </div>
-
-    <div class="form-group">
-      <input type="submit" name="commit" value="Create Work" class="btn btn-primary" data-disable-with="Create Work" />
-    </div>
-  </form></section>
-
-
+      <div class="form-group">
+        <%=f.label :category %>
+        <!-- Could do the following, but will need to create a method in work
+        to be able to handle if one category is not yet posted -->
+        <%#=f.select :category, Work.all.map { |work| [work.category]}.uniq %>
+        <%#= f.select :category, ['album', 'book', 'movie'], class: "form-control" %>
+        <select class="form-control" name="work[category]">
+          <option value="album">album</option>
+          <option value="book">book</option>
+          <option value="movie">movie</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :publication_year %>
+        <%= f.text_field :publication_year, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary"  %>
+      </div>
+    <% end %>
+  </div>
 </main>

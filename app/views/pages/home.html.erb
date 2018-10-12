@@ -1,31 +1,61 @@
-<body>
-  <section class="media_spotlight">
-    <h2>Media Spotlight</h2>
-  </section>
-  <section class="movies">
-    <h2>Top Movies</h2>
-    <% movies = Work.where(category: "movie") %>
-    <% if movies.nil? %>
-      <%= puts "No movies" %>
-    <% else %>
-      <% movies.each do |movie| %>
-        <p><%= movie.title %></p>
-      <% end %>
-    <% end %>
-  </section>
-  <section class="books">
-    <h2>Top Books</h2>
-    <% movies = Work.where(category: "book") %>
-    <% movies.each do |movie| %>
-      <p><%= movie.title %></p>
-    <% end %>
-  </section>
-  <section class="albums">
-    <h2>Top Albums</h2>
-    <% movies = Work.where(category: "album") %>
-    <% movies.each do |movie| %>
-      <p><%= movie.title %></p>
-    <% end %>
-  </section>
+<main>
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight</span>
 
-</body>
+      <a class="spotlight__link-to" href="/works/10"><%= link_to "#{Work.top_work.title}", work_path(Work.top_work.id) %></a> by <%= Work.top_work.creator %>
+    </h2>
+    <p class="spotlight__description"><%= Work.top_work.votes.count %> votes - <%= Work.top_work.description %>
+    </p>
+  </section>
+  <hr class="root__hr" />
+  <section class="top-ten__container">
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Movies
+    </h2>
+    <ul class="list-group top-ten__list">
+        <li class="list-group-item">
+        <% Work.top_movies.each do |movie| %>
+          <h4>
+           <p><%= link_to "#{movie.title}", work_path(movie.id) %></p>
+           <small class="top-ten__creator"><%= movie.creator %></small>
+         </h4>
+         <p><%= movie.votes.count %></p>
+        <% end %>
+       </li>
+    </ul>
+  </section>
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Books
+    </h2>
+    <ul class="list-group top-ten__list">
+        <li class="list-group-item">
+        <% Work.top_books.each do |book| %>
+          <h4>
+           <p><%= link_to "#{book.title}", work_path(book.id) %></p>
+           <small class="top-ten__creator"><%= book.creator %></small>
+         </h4>
+         <p><%= book.votes.count %></p>
+        <% end %>
+       </li>
+    </ul>
+  </section>
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Albums
+    </h2>
+    <ul class="list-group top-ten__list">
+        <li class="list-group-item">
+        <% Work.top_albums.each do |album| %>
+          <h4>
+           <p><%= link_to "#{album.title}", work_path(album.id) %></p>
+           <small class="top-ten__creator"><%= album.creator %></small>
+         </h4>
+         <p><%= album.votes.count %></p>
+        <% end %>
+       </li>
+    </ul>
+  </section>
+</main>
