@@ -56,15 +56,12 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    #how do i figure out if a user has voted on a piece?
-    #i need to put in a validation to make sure a vote can only be created on the same work by the same user once
-    # vote = Vote.new 
-    #if vote.save
-    #  upvote = Vote.new
-    #  flash message success!
-    #else
-    #  user has already voted for this work
-    #  flash message could not upvote
+    vote = Vote.new
+    if vote.save
+      flash[:success] = "Successfully upvoted"
+    else
+      flash[:error] = "A problem occurred: Could not upvote"
+    end 
   end
 
   private
