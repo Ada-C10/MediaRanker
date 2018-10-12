@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
+  root 'votes#index'
+
+  resources :votes
+  resources :users
+  resources :works
+
+  # post '/works/:id/upvote' to: 'votes#upvote', as: 'upvote'
+
+  resources :sessions, only: [:new, :create]
+  post '/sessions/logout', to: 'sessions#logout', as: 'logout'
+
 end
