@@ -9,15 +9,19 @@ class SessionsController < ApplicationController
       user = User.create(name: params[:user][:name])
       if user.valid?
         flash[:success] = "Successfully created new user #{user.name} with ID #{user.id}"
+        session[:user_id] = user.id
+        redirect_to session[:return_to]
       else
         flash[:warning] = "A problem occurred: Could not log in"
         flash[:validation_errors] = user.errors.full_messages
+        render :new
       end
     else
       flash[:success] = "Successfully logged in as existing user #{user.name}"
+      session[:user_id] = user.id
+      redirect_to session[:return_to]
     end
-    session[:user_id] = user.id
-    redirect_to session[:return_to]
+
   end
 
   def destroy
