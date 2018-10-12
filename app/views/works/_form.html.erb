@@ -10,7 +10,7 @@
 
 <h1> <%= action_name %> </h1>
 
-<%= form_with model: @work, class: "work-form"  do |f|%>
+<%= form_with model: @work, class: "work-form", local: true  do |f|%>
   <p>Please provide the following information to save your book to our database:</p>
 
   <%= f.label :title %>

@@ -38,8 +38,8 @@ class WorksController < ApplicationController
       flash[:success] = "#{@work.title} was edited."
       redirect_to work_path(@work.id)
     elsif @work
-      # flash.now[:warning] = @work.errors.messages
-      render :edit
+      flash.now[:warning] = @work.errors.messages
+      render :edit, status: :bad_request
     end
   end
 
