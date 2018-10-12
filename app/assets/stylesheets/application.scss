@@ -63,6 +63,12 @@ table th:nth-of-type(4), table th:nth-of-type(5) {
     padding: 2rem 1rem 0.5rem 1rem;
 }
 
+.app-header__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .app-header__header h1 {
     text-align: center;
     margin: 25px auto 40px auto;
