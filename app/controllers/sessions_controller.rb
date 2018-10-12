@@ -5,13 +5,13 @@ class SessionsController < ApplicationController
     # in ada books example it was name: params[:author][:name]
     user = User.find_by(user_name: params[:user][:user_name])
     if user.nil?
-
       user = User.create(user_name: params[:user][:user_name])
-
+      flash["success"] = "Successfully created new user #{user.user_name} with ID #{user.id}"
+    else
+      flash["success"] = "Successfully logged in as existing user #{user.user_name}"
     end
 
     session[:user_id] = user.id
-    flash["success"] = "#{user.user_name} successfully logged in!"
     redirect_to root_path
   end
 

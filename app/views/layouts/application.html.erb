@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body cz-shortcut-listen="true">
     <!-- <header>
       <h1>Media Ranker</h1>
       <h2>| Ranking the Best of Everything</h2>
@@ -63,6 +63,21 @@
         </ul>
       </nav>
     </header>
+    <section class="alert__container">
+      <% flash.each do |name, message| %>
+        <% if message.class == Array %>
+          <div class="alert alert-<%= name %>">
+            <ul>
+              <% message.each do |msg| %>
+                <li><%= "#{name}: #{msg}\n" %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% else %>
+          <div class="alert-<%= name %>"><%= message %></div>
+        <%end%>
+      <% end %>
+  </section>
     <%= yield %>
   </body>
 </html>
