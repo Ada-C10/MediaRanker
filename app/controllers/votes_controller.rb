@@ -9,7 +9,7 @@ class VotesController < ApplicationController
 
       else
         flash[:warning] = "A problem occurred: Could not upvote"
-        flash[:validation_errors] = @vote.errors.full_messages.first
+        flash[:validation_errors] = @vote.errors.full_messages
       end
     end
     redirect_back fallback_location: root_path

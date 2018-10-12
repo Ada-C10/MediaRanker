@@ -35,6 +35,7 @@ class WorksController < ApplicationController
         redirect_to work_path(@work.id)
     else
         flash.now[:warning] = "A problem occurred: Could not create #{@work.category}"
+        flash.now[:validation_errors] = @work.errors.full_messages
         render :new
     end
   end
@@ -46,6 +47,7 @@ class WorksController < ApplicationController
         redirect_to work_path(@work.id)
     else
         flash.now[:warning] = "A problem occurred: Could not update #{@work.category}"
+        flash.now[:validation_errors] = @work.errors.full_messages
         render :edit
     end
   end

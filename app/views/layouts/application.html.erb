@@ -58,23 +58,13 @@
               <div class="alert alert-<%= name %>">
                 <span><%= message %></span>
 
-                   <%if @work %>
-                     <% if @work.errors.any? %>
-                       <ul>
-                         <% @work.errors.full_messages.each do |message| %>
-                           <li>
-                             <%= "#{message}" %>
-                           </li>
-                         <% end %>
-                       </ul>
-                     <% end %>
-                   <%end%>
-
                    <% if flash[:validation_errors] %>
                        <ul>
+                          <% flash[:validation_errors].each do |message|%>
                            <li>
-                             <%= "#{flash[:validation_errors]}" %>
+                             <%= message %>
                            </li>
+                          <%end%>
                        </ul>
                    <% end %>
 
