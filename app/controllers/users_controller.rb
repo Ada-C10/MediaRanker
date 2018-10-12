@@ -12,4 +12,24 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def new
+  end
+
+
+  def create
+    username = params[:username]
+    user = User.find_by(username: username)
+
+    if user
+      flash[:success] = "logged in as #{username}"
+      session[:test] = user.id
+      redirect_to user_path(user)
+    else
+      flash.now[:error] = "user doesn't exist"
+      render :new
+    end
+
+  end
+
 end

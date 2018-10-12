@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
+  get '/login', to: 'users#new', as: 'login'
+
+  post '/login', to: 'users#create'
+
   resources :works
 
   resources :users
