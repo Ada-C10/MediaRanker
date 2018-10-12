@@ -8,6 +8,7 @@ class Work < ApplicationRecord
     return self.id
   end
 
+  # self.votes is returning the votes for the specific work
   def total_votes
     num_of_votes = self.votes.count
     return num_of_votes
@@ -15,7 +16,8 @@ class Work < ApplicationRecord
 
   def users_that_voted_on_this_work
     work_id = find_work_id
-    array_of_votes = Vote.where(work_id: work_id)
+    # array_of_votes = Vote.where(work_id: work_id)
+    array_of_votes = self.votes
     users_ids = []
 
     array_of_votes.each do |vote|
