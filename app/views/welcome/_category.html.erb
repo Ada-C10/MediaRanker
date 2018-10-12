@@ -2,7 +2,7 @@
   <h2><%= category_name %></h2>
   <ul>
     <% category.each do |work| %>
-      <li><h4><%= link_to "#{work.title} ", work_path(work.id) %><small class="creator"><%= "by #{work.creator}" %></small></h4></li>
+      <li><h4><%= link_to "#{work.title} ", work_path(work.id) %><small><%= "by #{work.creator}" %></small></h4></li>
       <%= "#{work.vote_count} votes" %>
     <% end %>
   </ul>

@@ -24,7 +24,7 @@
         <% @work.votes.each do |vote| %>
         <tr>
           <td><%= vote.user.username %> </td>
-          <%# vote.date %>
+          <td><%= vote.created_at.strftime("%B %d, %Y") %>
         </tr>
         <% end %>
       </tbody>
