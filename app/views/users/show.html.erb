@@ -19,9 +19,9 @@
       <% works.each do |work| %>
         <tr>
           <td><%= work.title %></td>
-          <td>w</td>
-          <td>x</td>
-          <td>y</td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= work.category %></td>
           <td>z</td>
         </tr>
       <% end %>
