@@ -17,15 +17,17 @@ class WorksController < ApplicationController
   def upvote
     work = Work.find_by(id: params[:id])
 
-    if session[:user_id] == nil
+# session[:user_id](integer) == @logged_in_user (user object)
+
+    if @logged_in_user == nil
       flash[:error] = "You must be logged in"
-    elsif session[:user_id]
-      user = User.find(session[:user_id])
-      already_voted = Vote.find_by(work_id: work.id, user_id: user.id)
+    else
+      # user = User.find(session[:user_id])
+      already_voted = Vote.find_by(work_id: work.id, user_id: @logged_in_user.id)
       if already_voted
         flash[:error] = "You can't vote for the same source again"
       elsif
-        vote = Vote.new(work_id: work.id, user_id: user.id)
+        vote = Vote.new(work_id: work.id, user_id: @logged_in_user.id)
         is_successful_save = vote.save
         if is_successful_save
           flash[:success] = "Successfully Voted"
@@ -47,6 +49,11 @@ class WorksController < ApplicationController
 
     @books = Work.where(category: "book")
     @books = (@books.sort_by { |book| book.total_votes()}).reverse!
+
+
+    @movies = Work.where(category: "movie")
+    @movies = (@movies.sort_by { |movie| movie.total_votes()}).reverse!
+
 
     #
     # @works = Work.all.to_a
