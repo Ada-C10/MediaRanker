@@ -32,32 +32,32 @@
         </h1>
 
 
-      <nav class="navbar">
-      <ul class="nav app-header_site-nav-containe">
-        <li class="nav app-header_site-nav_item">
-          <%= link_to  "View top media", "/" %>
+      <nav class="nav">
+      <ul class="nav site-nav-containe">
+        <li class="nav_item">
+          <%= link_to  "View top media", "/",class: "btn btn-link", role: "button" %>
         </li>
-        <li class="nav app-header_site-nav_item" >
-          <%= link_to  "View all media  ", works_path %>
+        <li class="nav_item" >
+          <%= link_to  "View all media  ", works_path, class: "btn btn-link", role: "button" %>
         </li>
-        <li class="nav app-header_site-nav_item">
-          <%= link_to "Add a new work", new_work_path %>
+        <li class="nav_item">
+          <%= link_to "Add a new work", new_work_path,class: "btn btn-link", role: "button" %>
         </li>
-        <li class="nav app-header_site-nav_item">
-          <%= link_to "View all Users", users_path %>
+        <li class="nav_item">
+          <%= link_to "View all Users", users_path,class: "btn btn-link", role: "button" %>
         </li>
 
         <li >
           <% if @current_user %>
-          <%= link_to "#{@current_user.name} is logged in", user_path(@current_user.id), class: "btn btn-primary" %>
+          <%= link_to "#{@current_user.name} is logged in", user_path(@current_user.id), class: "btn btn-link", role: "button" %>
           <% end %>
         </li>
 
         <li >
           <% if @current_user %>
-          <%= link_to "log out", logout_path, method: :delete, class: "btn btn-primary" %>
+          <%= link_to "log out", logout_path, method: :delete, class: "btn btn-primary", role: "button" %>
           <% else %>
-          <%= link_to "Login", login_path,class: "btn btn-primary" %>
+          <%= link_to "Login", login_path,class: "btn btn-primary" , role: "button"%>
           <% end %>
         </li>
           </ul>
