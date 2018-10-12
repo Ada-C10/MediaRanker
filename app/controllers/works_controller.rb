@@ -52,10 +52,10 @@ class WorksController < ApplicationController
     if @current_user.votes.where(work_id: work).empty?
       @work.votes.create(work_id: work, user_id: user)
       flash[:success] = "Upvote successful."
-      redirect_to @work
+      redirect_back(fallback_location: root_path)
     else
       flash[:error] = 'A user can only vote on each work once.'
-      redirect_to @work
+      redirect_back(fallback_location: root_path)
     end
   end
 

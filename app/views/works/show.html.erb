@@ -27,7 +27,7 @@
 
 <p>
   <strong>Votes:</strong>
-  <%= @work.votes.count %>
+  <%= @work.votes_count %>
 </p>
 
 <p>
@@ -38,12 +38,13 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_work_path(@work) %> |
-<%= link_to 'Back', works_path %>
+<%= link_to 'Edit', edit_work_path(@work), class: "btn btn-primary" %> |
+<%= link_to 'Destroy', @work, method: :delete, class: "btn btn-primary", data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', works_path, class: "btn btn-primary" %>
 
 <section class="upvote">
   <div class="upvote">
-    <strong class="btn btn-secondary"><%= link_to "Upvote", works_upvote_path(@work.id), method: :patch %></strong>
+    <strong class="btn btn-secondary"><%= link_to "Upvote", works_upvote_path(@work.id), method: :patch, class: "btn btn-primary" %></strong>
   </div>
 </section>
 
