@@ -13,12 +13,7 @@
 
     <header>
       <nav>
-        <%= form_with method: :post, url: login_path do |f| %>
-        <%= f.label :username %>
-        <%= f.text_field :username %>
 
-        <%= f.submit %>
-        <% end %>
       </nav>
 
       <section>
@@ -31,7 +26,7 @@
           <%= link_to "Log out", logout_path, method: :post %>
         </p>
         <% else %>
-        <%= link_to "Log in", new_user_path %>
+        <%= link_to "Log in", login_path %>
         <% end %>
 
 
