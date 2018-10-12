@@ -1,19 +1,43 @@
-<h1>Show Work</h1>
+<h2><%= "#{@work.title}" %></h2>
 
-<%= @work.category.capitalize %>
-<br>
-<%= @work.title %>
-<br>
-<%= @work.creator %>
-<br>
-<%= @work.publication_year %>
-<br>
-<%= @work.description %>
+
+<p><%= "Created by: #{@work.creator}"%></p>
+<p><%= "Published: #{@work.publication_year}" %></p>
+<p><%= @work.description %></p>
+
+
+
 
 <%= link_to "Back to media ranks", root_path, class: "btn btn-primary" %>
-
-<%= link_to "Delete", work_path(@work.id), class: "btn btn-primary" %>
 
 <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary" %>
 
 <%= link_to "Upvote", upvote_path(@work.id), method: :post, class: "btn btn-primary" %>
+
+<%= link_to "Delete", work_path(@work.id), class: "btn btn-primary" %>
+
+<br>
+<br>
+
+<h3><%= "#{@work.votes.count} Votes for this #{@work.category.capitalize}" %></h3>
+
+
+
+<table class="table">
+
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <% @work.votes.each do |v| %>
+      <td><%= v.user.username %></td>
+      <td><%= v.created_at.strftime("%b %d, %Y") %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
