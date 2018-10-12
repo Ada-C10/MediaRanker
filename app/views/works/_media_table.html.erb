@@ -1,0 +1,27 @@
+
+<table class="table index-table">
+
+  <tr class="index-table-header">
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created by</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+
+  <% model.each do |media| %>
+    <tr>
+      <td> <%= media.votes.length %> </td>
+      <td>
+        <%= link_to work_path(media.id) do %>
+          <%= media.title %>
+        <% end %>
+      </td>
+      <td> <%= media.creator %></td>
+      <td> <%= media.pub_year %></td>
+      <td> <%= link_to "Upvote", upvote_work_path(media.id), class: "btn btn-primary", method: :post %> </td>
+    </tr>
+
+  <% end %>
+
+</table>

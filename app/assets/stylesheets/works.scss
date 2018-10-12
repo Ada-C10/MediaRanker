@@ -1,0 +1,71 @@
+// Place all the styles related to the works controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.work-main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.media-spotlight {
+  text-align: left;
+  grid-column: 1 / 4;
+  padding: 2% 5% 1% 5%;
+  border-bottom: 1px solid rgb(189, 189, 189);
+}
+
+.media-spotlight span {
+  font-size: 2.5rem;
+  color: black;
+}
+
+.media-spotlight .by-creator {
+  font-size: 1.8rem;
+}
+
+.work-main section:not(.media-spotlight) h2 {
+  text-align: center;
+  padding: 5% 0 2% 0;
+  border-bottom: 2px solid rgb(246, 166, 30);
+  margin: 0 5% 0 5%;
+}
+
+.work-main section:not(.media-spotlight) {
+}
+
+.by-creator {
+  color: rgb(189, 189, 189);
+}
+
+a {
+  color: rgb(246, 166, 30);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+
+ul {
+  list-style-type: none;
+}
+
+
+.index-media h3 {
+  border-bottom: none;
+  color: black;
+}
+
+.index-media h2 {
+  padding: 1% 0 0 0;
+  font-size: 2.3rem;
+}
+
+.index-table-header{
+  font-size: 1.2rem;
+}
+
+.media-form .btn {
+  margin-top: 2%;
+}

@@ -1,0 +1,97 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+
+// * {
+//   border: 1px solid red;
+// }
+
+main {
+  background-color: white;
+  padding: 0 5% 0 5%;
+}
+
+span {
+  font-size: 2rem;
+  color: white;
+}
+
+h2, h3, h4, h5, h6 {
+  color: rgb(246, 166, 30);
+}
+
+body {
+
+  font-family: "Gudea", sans-serif;
+}
+
+header {
+  background-color: rgb(246, 166, 30);
+  width: 100%;
+  padding-top: 2%;
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+}
+
+nav a {
+  color: black;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  grid-column: 1 / 3;
+}
+
+.login-info {
+  grid-column-start: 2;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.login-info > * {
+  margin: 1% 1% 1% 1%;
+}
+
+.login-info p {
+  order: 2;
+}
+
+nav {
+  grid-column: 1 / 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  align-items: flex-end;
+  margin-bottom: 2.2%;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.alert {
+  margin: 1% 5% 1% 5%;
+}
