@@ -79,6 +79,10 @@ a:hover {
     list-style: none;
 }
 
+.app-header__user-nav-container .nav-item {
+    margin-left: 2rem;
+}
+
 .app-header__site-nav-container .app-header__nav_item {
     margin-right: 2rem;
 }
@@ -163,4 +167,12 @@ textarea.form-control {
 
 .user-votes__header {
     color: black;
+}
+
+.work-votes__header {
+  color: black;
+}
+
+.works-votes__container {
+    margin-top: 2rem;
 }

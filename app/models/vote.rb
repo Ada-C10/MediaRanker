@@ -7,4 +7,8 @@ class Vote < ApplicationRecord
   def get_work
     @work = Work.find(self.work_id)
   end
+
+  def get_user
+    @user = User.find(self.user_id)
+  end
 end
