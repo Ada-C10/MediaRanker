@@ -37,7 +37,7 @@ body {
   padding-right: 25px;
   margin-right: 15px;
   border-right: white 2px solid;
-  font-weight: bolder;
+  font-weight: 1000;
 }
 
 .brand h1 {
@@ -85,10 +85,6 @@ li {
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
-  // justify-content: flex-start;
-  // text-align: justify;
-  // align-items: stretch;
-  // align-content: flex-start;
 }
 
 .login li {

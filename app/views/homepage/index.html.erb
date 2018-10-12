@@ -16,7 +16,7 @@
       <% Work.top_ten(category).each do |work| %>
       <ul>
         <li>
-          <%=link_to work.title, work_path(work)%> by
+          <%=link_to work.title, work_path(work), class: "work-title"%> by
           <%=work.creator%>
         </li>
         <li>

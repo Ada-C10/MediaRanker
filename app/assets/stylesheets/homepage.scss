@@ -1,3 +1,44 @@
 // Place all the styles related to the Homepage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.homepage {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  margin: 2em;
+}
+
+.top-media {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 2em;
+  margin-top: 2em;
+}
+
+.top-media a {
+  text-decoration: none;
+  color: #26A69A;
+}
+
+.top-media > section {
+  // color: #26A69A;
+
+}
+
+.top-media h3 {
+  color: #26A69A;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #B2DFDB;
+  text-transform: capitalize;
+}
+
+.top-media li a {
+  font-size: 1.5rem;
+}
+
+.top-media li:first-child {
+  color: slategrey;
+  font-weight: bold;
+}
