@@ -1,6 +1,5 @@
 class Work < ApplicationRecord
-  has_many :votes
-  # has_many :user, through: :votes
+  has_many :votes, dependent: :delete_all
 
   validates :title, :description, :creator, :category, presence: true
   validates :published, numericality: true
@@ -13,7 +12,7 @@ class Work < ApplicationRecord
 
   def self.top_ten(type)
     works = Work.all.where(category: type)
-    works.sort_by {|work| work.votes.count}.reverse!
+    works = works.sort_by {|work| work.votes.count}.reverse!
     works[0..9]
   end
 

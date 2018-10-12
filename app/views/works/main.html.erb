@@ -12,12 +12,12 @@
 <hr class="root__hr" />
 
 <section class="top-ten__container">
-  <% [@books, @albums, @movies].each do |type| %>
+  <% [[@books, "Books"], [@albums, "Albums"], [@movies, "Movies"]].each do |works, category| %>
   <section class="top-ten__list-container">
     <h2 class="top-ten__header">
-      Top Media
+      Top <%= category %>
     </h2>
-    <% type.each do |book| %>
+    <% works.each do |book| %>
       <ul class="list-group top-ten__list">
         <li class="list-group-item">
           <h4>

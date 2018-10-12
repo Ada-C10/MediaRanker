@@ -22,6 +22,10 @@ describe Work do
 
       value(album.errors.messages).must_include :published
     end
+
+
+
+    #test that votes related to a work are destroyed when work is deleted
   end
 
   describe 'Relationships' do
@@ -39,12 +43,6 @@ describe Work do
 
   describe 'Work#get_media' do
     it "will return collection of given category of work sorted by vote" do
-      album = works(:album)
-      album2 = works(:album2)
-      album3 = works(:album3)
-      vote2 = votes(:vote2)
-      vote4 = votes(:vote4)
-      vote5 = votes(:vote5)
 
       expect(Work.get_media("album").length).must_equal 3
       expect(Work.get_media("album").first).must_be_instance_of Work
@@ -54,33 +52,26 @@ describe Work do
 
   describe 'Work#top_ten' do
     it "will return collection of 10 works of given category" do
-      album = works(:album)
-      album2 = works(:album2)
-      album3 = works(:album3)
 
-      # expect(Work.top_ten("album").length).must_equal 10
-      # expect(Work.top_ten("album").first.category).must_equal "album"
-      # expect(Work.top_ten("album").first.title).must_equal "Lorem Ipsum"
-      # expect(Work.top_ten("album").last.title).must_equal "Lorem Ipsum"
+      12.times do
+        Work.create(title: "Test thing", creator: "Fox Corp.", published: 2004, description: "Blah blah blah", category: "album")
+      end
+
+      expect(Work.top_ten("album").length).must_equal 10
+      expect(Work.top_ten("album").first.category).must_equal "album"
+      expect(Work.top_ten("album").first.title).must_equal "Lorem Ipsum"
+      expect(Work.top_ten("album").second.title).must_equal "Queen Of The Damned Soundtrack"
+      expect(Work.top_ten("album").last.title).must_equal "Test thing"
     end
 
   end
 
   describe 'Work#top_work' do
     it "will return the work with the most votes" do
-      book = works(:book)
-      album = works(:album)
-      movie = works(:movie)
-      movie2 = works(:movie2)
-      album2 = works(:album2)
-      album3 = works(:album3)
+
+      expect(Work.top_work.title).must_equal "The Alchemist"
+      expect(Work.top_work).must_be_instance_of Work
     end
   end
 
-
 end
-
-# def self.get_media(type)
-#   works = Work.all.where(category: type)
-#   works.sort_by {|work| work.votes.count}.reverse!
-# end

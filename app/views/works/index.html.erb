@@ -1,8 +1,8 @@
 <h2> List of Works </h2>
 
 
-<% [@albums, @books, @movies].each do |type| %>
-<h4> Media </h4>
+<% [[@albums, "Albums"], [@books, "Books"], [@movies, "Movies"]].each do |work, category| %>
+<h4> <%=category %> </h4>
 
   <table class="table">
     <tr>
@@ -12,7 +12,7 @@
       <th> Published </th>
       <th> Upvote </th>
     </tr>
-  <% type.each do |work| %>
+  <% work.each do |work| %>
     <tr>
       <td>
         <%= work.votes.count %>
@@ -33,71 +33,6 @@
   <% end %>
   </table>
 <% end %>
-<!--
-  </table>
-
-  <table class="table">
-    <tr>
-      <th> Votes </th>
-      <th> Title </th>
-      <th> Created By </th>
-      <th> Published </th>
-      <th> Upvote </th>
-    </tr>
-<% @albums.each do |album| %>
-  <tr>
-    <td>
-      <%= album.votes.count %>
-    </td>
-    <td>
-      <%= link_to "#{album.title}", work_path(album.id) %>
-    </td>
-    <td>
-      <%= album.creator %>
-    </td>
-    <td>
-      <%= album.published.to_s %>
-    </td>
-    <td>
-      <button class="btn btn-info">
-        <p> <%= link_to "Upvote", work_votes_path(album.id), method: :post %></p>
-      </button>
-    </td>
-  </tr>
-<% end %>
-
-</table>
-
-<table class="table">
-    <tr>
-      <th> Votes </th>
-      <th> Title </th>
-      <th> Created By </th>
-      <th> Published </th>
-      <th> Upvote </th>
-    </tr>
-  <% @movies.each do |movie| %>
-    <tr>
-      <td>
-        <%= movie.votes.count %>
-      </td>
-      <td>
-        <%= link_to "#{movie.title}", work_path(movie.id) %>
-      </td>
-      <td>
-        <%= movie.creator %>
-      </td>
-      <td>
-        <%= movie.published.to_s %>
-      </td>
-      <td>
-        <button class="btn btn-info">
-          <p> <%= link_to "Upvote", work_votes_path(movie.id), method: :post %></p>
-        </button>
-      </td>
-    </tr>
-  <% end %>
-</table> -->
 
 <%= link_to "View top media", works_path, class: "btn btn-secondary" %>
 <%= link_to "Add a new work", new_work_path, class: "btn btn-info" %>

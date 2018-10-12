@@ -24,14 +24,11 @@ describe Vote do
     end
 
     it 'will not allow a user to create a vote for the same work twice' do
-      vote2 = votes(:vote2)
-
       user = users(:user2)
       work = works(:album)
 
       dup_vote = Vote.create(user_id: user.id, work_id: work.id)
 
-      value(vote2.valid?).must_equal true
       value(dup_vote.valid?).must_equal false
       expect(dup_vote.errors.messages).must_include :work_id
     end
@@ -39,7 +36,6 @@ describe Vote do
     it 'will allow multiple users to vote on the same work' do
       user3 = users(:user3)
       user2 = users(:user2)
-
       work = works(:book)
 
       first_vote = Vote.create(user_id: user3.id, work_id: work.id)
