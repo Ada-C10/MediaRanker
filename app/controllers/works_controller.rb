@@ -59,6 +59,17 @@ class WorksController < ApplicationController
     end
   end
 
+  def top
+    @albums = Work.top?("album")
+    @books = Work.top?("book")
+    @movies = Work.top?("movie")
+  end
+
+  def spotlight
+    @spot = Work.spotlight?
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

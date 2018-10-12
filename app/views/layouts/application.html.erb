@@ -13,14 +13,44 @@
   </head>
 
   <body>
-    <nav class="navbar">
-      <%# if session[:user_id] %>
-        <%# link_to "Logged in as: #{session[:user_name]}", user_path(session[:user_id]), class: "btn btn-primary" %>
+    <header class="app-header__header">
+      <h1>
+        <%= link_to "Media Ranker", root_path, id: "home-link" %> |
+        <small>Ranking the Best of Everything</small>
+      </h1>
+    <nav class="app-header__nav">
+      <%# <ul class="nav app-header__site-nav-container">%>
+       <%# <li class="nav-item app-header__nav_item">%>
+       <%#   <% lname = ['View Top Media', 'View all Work', 'View a New Work', 'View all Users'] %>
+        <%#  <% links = ['works/top', 'works/index', 'works/newest', 'users/index'] %>
+         <%# <% lname.each_with_index do |lname, i| %>
+         <%#   <%= link_to "#{lname}", render links[i], class: "nav-link" %>
+       <%# <li>%>
+       <%# <% end </ul> %>
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
+        <%= link_to "View Top Media", works_top_path, class: "nav-link" %> 
+        </li>
+        <li class="nav-item app-header__nav_item">
+        <%= link_to "View All Work", works_path, class: "nav-link" %> 
+        </li>
+        <li class="nav-item app-header__nav_item">
+        <%= link_to "Add a New Work", new_work_path, class: "nav-link" %> 
+        </li>
+        <li class="nav-item app-header__nav_item">
+        <%= link_to "View All Users", users_path, class: "nav-link" %> 
+        </li>
+
+      </ul>
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
         <% if @current_user %>
-        <%= link_to "Logged in as: #{@current_user.name}", user_path(@current_user.id), class: "btn btn-primary" %>
-        <%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary" %>
+          <%= link_to "Logged in as: #{@current_user.name}", user_path(@current_user.id), class: "btn btn-primary" %></li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary" %></li>
       <% else %>
-        <%= link_to "Log In", login_path, class: "btn btn-primary" %>
+        <li class="nav-item app-header__nav_item">
+        <%= link_to "Log In", login_path, class: "btn btn-primary" %></li>
       <% end %> 
     </nav>
 
