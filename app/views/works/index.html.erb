@@ -1,7 +1,32 @@
-<h1> All Works </h1>
+<h1> All Movies </h1>
 
 <ul>
-  <% @works.reverse.each do |work| %>
+  <% @movies.each do |work| %>
+    <li><strong><%=link_to "#{work.title}", work_path(work.id)%></strong>
+    <%=work.created_by %>
+    <%=work.year_published %>
+    <br></br>
+    </li>
+  <% end %>
+</ul>
+
+<h1> All Books </h1>
+
+<ul>
+  <% @books.each do |work| %>
+    <li><strong><%=link_to "#{work.title}", work_path(work.id)%></strong>
+    <%=work.created_by %>
+    <%=work.year_published %>
+    <br></br>
+    </li>
+  <% end %>
+</ul>
+
+
+<h1> All Albums </h1>
+
+<ul>
+  <% @albums.each do |work| %>
     <li><strong><%=link_to "#{work.title}", work_path(work.id)%></strong>
     <%=work.created_by %>
     <%=work.year_published %>
