@@ -1,13 +1,1 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  user_id: one
-  medium_id: one
-
-two:
-  user_id: two
-  medium_id: one
-
-three:
-  user_id: three
-  medium_id: one
