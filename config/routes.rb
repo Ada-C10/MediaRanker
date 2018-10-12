@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
    root 'welcome#index'
    resources :works
-   resources :user
+   resources :users
    #[:index, :new, :show, :create, :edit, :update, :delete]
-   
+
 end
