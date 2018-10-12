@@ -20,5 +20,17 @@ describe Vote do
     expect(vote2.errors.messages).must_include :work
   end
 
+  it "must not allow two votes by one user for a single work" do
+    vote2.user = users(:two)
+    vote2.work = works(:ten)
+    expect(vote2.valid?).must_equal false
+    expect(vote2.errors.messages).must_include :work_id
+  end
+
+  it "must be able to have two different users vote for the same work" do
+    vote2.work = works(:ten)
+    expect(vote2.valid?).must_equal true
+  end
+
 
 end

@@ -56,6 +56,8 @@ class WorksController < ApplicationController
         if @current_user
           @vote = Vote.new(work: work, user: user)
           @vote.save
+        end
+          if @vote.save
           flash[:success] = "Upvoted!"
           else
           flash[:danger] = "A problem occured, you are not able to vote for this!"
