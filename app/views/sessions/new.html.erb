@@ -1,0 +1,12 @@
+<div class="session-container">
+
+  <div class="session-form">
+    <%= form_with method: :post, url: sessions_path do |f| %>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+
+      <%= f.submit %>
+      <% end %>
+    </div>
+
+  </div>

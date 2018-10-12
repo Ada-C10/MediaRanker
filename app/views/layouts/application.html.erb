@@ -12,11 +12,14 @@
 <body>
   <header>
     <nav>
+      <% flash.each do |key, value| %>
+      <%= key %> | <%= value %>
+      <% end %>
       <ul>
         <li><%= link_to "View all media", works_path, class: "all_works-link" %></li>
         <li><%= link_to "Add a new work", new_work_path, class: "new_work-link" %></li>
         <li><%= link_to "View all users", users_path, class: "new_work-link" %></li>
-        <li><p>Login</p></li>
+        <li><%= link_to "Log in", new_session_path, class: "login-link" %></li>
       </ul>
     </nav>
   </header>
