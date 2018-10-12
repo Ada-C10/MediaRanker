@@ -49,10 +49,13 @@ class WorksController < ApplicationController
   def upvote
     work = Work.find_by(id: params[:id])
     user = @logged_in_user
-    if @logged_in_user.nil?
+    if user.nil?
       flash[:error] = "A problem occured. You must be logged in to vote."
       redirect_back(fallback_location: root_path)
-    elsif session[:user_id] == @logged_in_user.id
+    elsif user.works.include? (work)
+      flash[:error] = "You already voted for this work."
+      redirect_to works_path
+    elsif session[:user_id] == user.id
       @vote = Vote.create(
         work: work,
         user: user
@@ -60,6 +63,7 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully upvoted!"
       redirect_to works_path
     end
+
   end
 
   private
