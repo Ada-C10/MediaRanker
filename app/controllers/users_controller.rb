@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :find_user, :find_work
+  
   def index
     @users = (User.all).sort_by do |user|
       user.id

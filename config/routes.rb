@@ -7,17 +7,13 @@ Rails.application.routes.draw do
     resources :votes, only: [:new, :create]
   end
 
-  resources :users do
-    resources :works, except: [:index, :show]
+  resources :users, except: [:edit, :update, :destroy] do
     resources :votes, only: [:new, :create]
   end
 
-  resources :votes do
-    resources :works, only: [:index, :show]
-    resources :users, only: [:index, :show]
-  end
-
   resources :sessions, only: [:new, :create]
+
+  post 'works/:id/upvote', to: 'works#upvote', as: 'upvote'
 
   post '/sessions/logout', to: 'sessions#logout', as: 'logout'
 
