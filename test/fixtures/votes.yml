@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 harry_votes:
-  quantity: 2
+  quantity: 1
   user: hannah
   work: harry_potter
 
 wheel_votes:
-  quantity: 5
-  user: 2
-  work: 2
+  quantity: 1
+  user: bonanza
+  work: wheel_of_time

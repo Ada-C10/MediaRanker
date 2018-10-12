@@ -34,7 +34,7 @@ describe Vote do
     end
 
     it 'must have a vote count greater than 0' do
-      vote.quantity = -5
+      vote.quantity = 1
 
       valid = vote.valid?
 
