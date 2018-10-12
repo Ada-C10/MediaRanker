@@ -14,11 +14,17 @@
       </tr>
     </thead>
     <tbody>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+    </tbody>
+      <% works = @user.works_voted_on %>
+      <% works.each do |work| %>
+        <tr>
+          <td><%= work.title %></td>
+          <td>w</td>
+          <td>x</td>
+          <td>y</td>
+          <td>z</td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
   <button type="button">
