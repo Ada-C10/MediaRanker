@@ -55,6 +55,18 @@ class WorksController < ApplicationController
     redirect_to root_path
   end
 
+  def upvote
+    #how do i figure out if a user has voted on a piece?
+    #i need to put in a validation to make sure a vote can only be created on the same work by the same user once
+    # vote = Vote.new 
+    #if vote.save
+    #  upvote = Vote.new
+    #  flash message success!
+    #else
+    #  user has already voted for this work
+    #  flash message could not upvote
+  end
+
   private
   def work_params
     return params.require(:work).permit(:title, :creator, :description, :category, :publication_year) #this data is coming from the form
