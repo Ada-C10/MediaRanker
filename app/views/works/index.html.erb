@@ -1,6 +1,6 @@
 <!-- consider incorporating conditional statment if albums books of movies is empty -->
-<body>
-  <main>
+
+<main>
   <h2>List of Works</h2>
   <section class="media-table">
     <h4>Albums</h4>
@@ -80,3 +80,6 @@
       </tbody>
     </table>
   </section>
+  <%= link_to "View top media", root_path, class: "btn btn-secondary" %>
+  <%= link_to "Add a new work", new_work_path, class: "btn btn-primary" %>
+</main>

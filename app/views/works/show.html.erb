@@ -9,10 +9,10 @@
       <p><%= @work.description %></p>
     </section>
     <section>
-      <p><%= link_to "Back to media ranks", root_path %></p>
-      <p><%= link_to "Edit", edit_work_path(@work.id, class: "btn btn-primary")%></p>
-      <p><%= link_to "Upvote", upvote_path(@work.id), class: "btn btn-primary", rel: "nofollow", method: "post" %></p>
-      <p><%= link_to "Delete", work_path(@work.id), method: :delete, class: "btn btn-primary", data: {confirm: "Are you sure?"} %></p>
+      <%= link_to "Back to media ranks", root_path, class: "btn btn-primary" %>
+      <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary"%>
+      <%= link_to "Upvote", upvote_path(@work.id), class: "btn btn-primary", rel: "nofollow", method: "post" %>
+      <%= link_to "Delete", work_path(@work.id), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
     </section>
   </body>
   <!-- Will want to change it to #of votes for this media category -->
