@@ -10,7 +10,8 @@
   </head>
 
   <body>
-    <%= link_to "login", sessions_login_path %>
+    <%= link_to "login", login_path %>
+    <%= link_to "logout", logout_path, :method => :delete, :data => {:confirm => "You Sure?"}%>
     <%= yield %>
   </body>
 </html>
