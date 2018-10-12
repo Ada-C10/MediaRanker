@@ -6,12 +6,16 @@ body {
 
 header {
   background-color: #B2DFDB;
-  padding: 3rem 2rem;
+  padding-top: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .title {
   border-right: solid;
+  border-width: .1rem;
   margin: 1rem 1rem;
+  padding: 0 1.5rem;
 }
 
 h1 {
@@ -28,6 +32,9 @@ h1 a:link, h1 a:visited {
 nav {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 3rem;
+  padding-bottom: .5rem;
 }
 
 .nav-link {
@@ -43,6 +50,7 @@ nav {
   background-color: #26A69A;
   border-color: #26A69A;
   color: white;
+  margin-left: 1rem;
 }
 
 .btn-primary:hover {
@@ -64,4 +72,12 @@ ul {
 
 h2 {
   font-weight: bold;
+}
+
+.flash {
+  padding-top: 2rem;
+}
+
+main {
+  padding: 1rem 2rem;
 }
