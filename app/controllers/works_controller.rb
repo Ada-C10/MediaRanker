@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :user_logged_in?, only: [:upvote]
+
 
   def index
     @books = Work.where(category: 'book')
@@ -58,21 +58,6 @@ class WorksController < ApplicationController
       flash[:notice] = "You can't vote for the same work twice."
       redirect_to works_path
     end
-    # if user.nil?
-    #   flash[:error] = "A problem occured. You must be logged in to vote."
-    #   redirect_back(fallback_location: root_path)
-    # elsif user.works.include? (work)
-    #   flash[:error] = "You already voted for this work."
-    #   redirect_to works_path
-    # elsif session[:user_id] == user.id
-    #   @vote = Vote.create(
-    #     work: work,
-    #     user: user
-    #   )
-    #   flash[:success] = "Successfully upvoted!"
-    #   redirect_to works_path
-    # end
-
   end
 
   private
@@ -87,11 +72,6 @@ class WorksController < ApplicationController
     )
   end
 
-  def user_logged_in?
-    if @logged_in_user.nil?
-      flash[:error] = "A problem occured. You must be logged in to vote."
-      redirect_back(fallback_location: root_path)
-    end
-  end
+
 
 end
