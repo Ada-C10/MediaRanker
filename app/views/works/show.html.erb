@@ -37,7 +37,7 @@
     <tbody>
     <% @work.votes.each do |vote| %>
     <tr>
-      <th scope="row"><%= User.find_by(id: vote.user_id).name %></th>
+      <th scope="row"><%= link_to User.find_by(id: vote.user_id).name, user_path(vote.user_id) %></th>
       <td><%= vote.created_at %></td>
     </tr>
     <% end %>
