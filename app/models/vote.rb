@@ -12,6 +12,6 @@ class Vote < ApplicationRecord
 # Media Title	Created By	Published	Category	Voted On
      def user_votes_table_row
        work = self.work
-       return [work.title, work.creator, work.publication, self.created_at]
+       return [work.title, work.creator, work.publication, self.created_at, work.id]
      end
 end

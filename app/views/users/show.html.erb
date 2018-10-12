@@ -7,7 +7,7 @@
 <% @votes.each do |vote| %>
   <% row = vote.user_votes_table_row %>
 <ul>
-  <li><h3><%= row[0] %></h3></li>
+  <li><h3><%= link_to row[0], work_path(row[4]) %></h3></li>
     <ul>
       <li><h4><%= row[1] %></h4></li>
       <li><h4><%= row[2] %></h4></li>
