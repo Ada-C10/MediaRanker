@@ -47,13 +47,15 @@
       </ul>
 
     </nav>
+
+
   </header>
 
-    <section class="flash">
-      <% flash.each do |key_word, message| %>
-      <div class="<%= key_word %>"><%=message%></div>
-      <% end %>
-    </section>
+  <section class="flash">
+    <% flash.each do |key_word, message| %>
+    <div class="<%= key_word %>"><%=message%></div>
+    <% end %>
+  </section>
 
     <main>
 

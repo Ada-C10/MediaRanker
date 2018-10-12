@@ -15,22 +15,30 @@ require 'pry'
   end
 
   def new
-    @work = Work.new
+    #add something in to find
+    @work = Work.new()
   end
 
   def create
-
     filtered_params = work_params()
     @work = Work.new(filtered_params)
-    is_successful_save = @work.save
 
-    if is_successful_save
+    if @work.save
       flash[:success] = "The #{@work.category} '#{@work.title}' was successfully added."
       redirect_to works_path
     else
-      flash.now[:failure] = "The work was not added."
-      render :new
+      # flash.now[:failure] = "The work #{@work.title} was not added."
+      # render :new
+
+      errors = @work.errors.messages.reduce("") do |statement, (attribute, problem_list)|
+        statement + attribute.to_s + problem_list.to_s
+      end
+
+
+      flash[:failure] = "The work #{@work.title} was not added. Please fix these errors: #{errors}"
+      redirect_to new_work_path
     end
+
   end
 
   def edit

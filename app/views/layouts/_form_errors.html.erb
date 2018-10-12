@@ -1,10 +1,13 @@
+
+
 <% if model.errors.messages.any? %>
-  <section class="form-errors">
+
+  <section class="form_errors">
     <h3>Please fix these errors:</h3>
     <ul>
       <% model.errors.messages.each do |attribute, problem_list| %>
         <% problem_list.each do |problem| %>
-          <li>
+          <li><
             <strong><%= attribute %></strong>
             <%= problem %>
           </li>
