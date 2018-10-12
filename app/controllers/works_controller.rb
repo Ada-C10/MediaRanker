@@ -63,14 +63,14 @@ class WorksController < ApplicationController
   def upvote
     ##search for the user via session id - error if logged out user
 
-    session[:user_id] = user.id
-    user = User.find(session[:user_id])
+
+    @user = User.find(session[:user_id])
 
     ##search for work via param
     @work = Work.find_by(id: params[:id])
 
     ##Vote.new(user id, work id)
-    @vote = @work.votes.new(user: @user, work: @work)
+    @vote = @work.votes.new(user: @user)
 
     ##if success, flash "Successfully upvoted!" and stay on page
     if @vote.save
