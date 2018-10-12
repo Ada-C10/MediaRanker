@@ -19,12 +19,15 @@
     <div class="row">
       <div class="control-label col-sm-12">
         <div class="form-group">
+
           <label>Category</label>
-          <select class="form-control">
-            <option>Album</option>
-            <option>Book</option>
-            <option>Movie</option>
+          <select name=work[category] class="form-control">
+            <option value="album">Album</option>
+            <option value="book">Book</option>
+            <option value="movie">Movie</option>
           </select>
+
+
         </div>
 
         <div class="form-group">
@@ -46,12 +49,12 @@
         </div>
 
 
-          <%= f.submit action_name  %>
+        <%= f.submit action_name  %>
 
-        </div>
-        </form>
-      </section>
-      <% end %>
+      </div>
+    </form>
+  </section>
+  <% end %>
 
-  </div>
+</div>
 </div>

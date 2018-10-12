@@ -17,7 +17,7 @@
   </thead>
     <%@user.votes.each do |vote|%>
     <tr>
-    <td scope="row"><%=vote.work.title%></td>
+    <td scope="row"><%=link_to vote.work.title, work_path(vote.work.id)%></td>
     <td scope="row"><%=vote.work.creator%></td>
     <td scope="row"><%=vote.work.publication_year%></td>
     <td scope="row"><%=vote.work.category%></td>
