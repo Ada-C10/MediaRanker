@@ -35,8 +35,10 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def update
     if @work.update(work_params)
+      flash[:success] = "Successfully updated book #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
     else
+      flash.now[:error] = "A problem occurred: Could not update #{@work.category}"
       render :edit, status: :bad_request
     end
   end
