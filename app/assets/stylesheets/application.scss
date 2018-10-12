@@ -33,6 +33,16 @@ main {
     padding: 2rem;
 }
 
+a:hover {
+  color: #00796B;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #00796B;
+}
+
+
 .btn-primary {
     background-color: #26A69A;
     color: white;
@@ -88,6 +98,18 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.app-header__user-nav-container .nav-item {
+    margin-left: 2rem;
+}
+
+.app-header__nav_item {
+    margin-top: 1rem;
+}
+
+.app-header__nav_item .nav-link {
+    color: #00796B;
 }
 
 .works-votes__container {
