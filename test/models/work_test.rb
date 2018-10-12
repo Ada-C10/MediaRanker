@@ -17,7 +17,14 @@ describe Work do
       expect(@work.errors.messages).must_include :publication
     end
 
-    it 'is invalid unless title is unique (case-insensitive)' do
+    it 'is valid when title is not unique in different category (case-insensitive)' do
+      @work.save!
+      another_work = Work.new(title: 'TeSt bOoK', category: :movie,
+        creator: 'test creator', publication: 1700, description: nil)
+        expect(another_work.valid?).must_equal true
+    end
+
+    it 'is invalid when title is not unique in same category (case-insensitive)' do
       @work.save!
       another_work = Work.new(title: 'TeSt bOoK', category: :album,
         creator: 'test creator', publication: 1700, description: nil)
@@ -25,7 +32,6 @@ describe Work do
         expect(another_work.errors.messages).must_include :title
     end
 
-# Unique title scope CATEGORY!! need to change
     it 'is invalid when category is not included in valid categories array' do
       VALID_WORK_CATEGORIES.each do |category|
         @work.category = category
