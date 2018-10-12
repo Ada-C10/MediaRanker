@@ -31,11 +31,10 @@
       </ul>
       <ul class="nav">
         <li class="login-link">
-          <% logged_in_user = User.find_by(id: session[:user_id]) %>
-          <% if logged_in_user %>
+          <% if @logged_in_user %>
             <p class="btn btn-info">
                 Logged in as
-              <%= logged_in_user.name %>
+              <%= @logged_in_user.name %>
             </p>
             <p>
               <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
