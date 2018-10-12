@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   root 'works#index'
 
   resources :works do
-    resources :votes, only: [:create]
+    resources :votes, only: [:new, :create]
   end
 
   resources :users do
     resources :works, except: [:index, :show]
-    resources :votes, only: [:create]
+    resources :votes, only: [:new, :create]
   end
 
   resources :votes do
