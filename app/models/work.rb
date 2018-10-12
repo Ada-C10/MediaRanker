@@ -9,15 +9,17 @@ class Work < ApplicationRecord
 
 
 
+  def total_votes
+    # Vote.count(work_id: work_id)
+    total_votes = Vote.where(work_id: id)
+    total_votes = total_votes.length
+    return total_votes
+  end
 
 
-    def total_votes
-      # Vote.count(work_id: work_id)
-      total_votes = Vote.where(work_id: id)
-      total_votes = total_votes.length
-      return total_votes
-    end
-
+  # def category
+  #   cat = Work.where(category: category)
+  # end
 
 
 

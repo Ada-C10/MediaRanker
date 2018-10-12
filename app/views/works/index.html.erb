@@ -1,3 +1,6 @@
+
+
+
 <h1>Works index page</h1>
 
 
@@ -13,13 +16,13 @@
   </thead>
   <tbody>
 
-    <% @works.each do |work| %>
+    <% @albums.each do |album| %>
     <tr>
-    <th scope="row"><%= "#{work.total_votes}"%></th>
-    <td><%= link_to "(#{work.title})", work_path(work.id) %></td>
-    <td><%= "#{work.creator}"%></td>
-    <td><%= "#{work.publication_year}"%></td>
-    <td><%= link_to "Upvote", upvote_work_path(work.id), method: :post, class: "btn btn-outline-info"
+    <th scope="row"><%= "#{album.total_votes}"%></th>
+    <td><%= link_to "(#{album.title})", work_path(album.id) %></td>
+    <td><%= "#{album.creator}"%></td>
+    <td><%= "#{album.publication_year}"%></td>
+    <td><%= link_to "Upvote", upvote_work_path(album.id), method: :post, class: "btn btn-outline-info"
  %></td>
     <p>
     <% end %>

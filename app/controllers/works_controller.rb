@@ -4,7 +4,13 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def home
-    @works = Work.all
+    #filter by movies, books, and albums--then call .soryby!
+
+    @albums = Work.where(category: "album")
+    @albums = (@albums.sort_by { |album| album.total_votes()}).reverse!
+
+    # users.sort_by { |user| [user.age, user.name] }
+
   end
 
 
@@ -33,6 +39,12 @@ class WorksController < ApplicationController
   end
 
   def index
+
+
+    @albums = Work.where(category: "album")
+    @albums = (@albums.sort_by { |album| album.total_votes()}).reverse!
+
+
     @works = Work.all.to_a
     @works = (@works.sort_by { |work| work.total_votes()}).reverse!
   end
