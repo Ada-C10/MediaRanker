@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :destroy]
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def index
     @works = Work.all.order(:title)
@@ -14,8 +14,21 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    if 
+    if @current_user.nil?
+      flash.now[:warning] = 'You must log in to do that'
+    else
+      vote = Vote.new(user_id: @current_user.id, work_id: @work.id)
+      if vote.save
+        flash[:success] = 'Successfully upvoted!'
+      else
+        flash[:error] = 'Could not upvote'
+      end
+
+    end
+
+    redirect_back fallback_location: work_path(@work)
   end
+
 
   def main
     @works = Work.all.order(:title)
@@ -76,4 +89,5 @@ class WorksController < ApplicationController
   def work_params
     return params.require(:work).permit(:title,:category,:publication_year,:description)
   end
+
 end

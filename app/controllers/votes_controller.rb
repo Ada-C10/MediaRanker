@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  
+
   # def index
   #   @votes = Votes.all.order(:title)
   # end
@@ -13,18 +13,18 @@ class VotesController < ApplicationController
   #   end
   # end
 
-  def new
-    @vote = Vote.new
-  end
-
-  def create
-    @vote = Votes.new(vote_params)
-    if @vote.save
-      redirect_to vote_path(@vote.id)
-    else
-      render :new
-    end
-  end
+  # def new
+  #   @vote = Vote.new
+  # end
+  #
+  # def create
+  #   @vote = Votes.new(vote_params)
+  #   if @vote.save
+  #     redirect_to vote_path(@vote.id)
+  #   else
+  #     render :new
+  #   end
+  # end
 
   # def edit
   #   @vote = Votes.find_by(id: params[:id])
@@ -44,9 +44,9 @@ class VotesController < ApplicationController
   #   redirect_to votes_path
   # end
 
-  private
-
-  def vote_params
-    return params.require(:vote).permit(:title)
-  end
+  # private
+  #
+  # def vote_params
+  #   return params.require(:vote).permit(:title)
+  # end
 end
