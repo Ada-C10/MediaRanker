@@ -6,10 +6,10 @@ class WorksController < ApplicationController
   end
 
   def index
-    # @books = Work.by_category("Book")
-    # @albums = Work.by_category("Album")
-    # @movies = Work.by_category("Movie")
-    @works = Work.all
+    @books = Work.by_category("book")
+    @albums = Work.by_category("album")
+    @movies = Work.by_category("movie")
+
   end
 
   def show; end
