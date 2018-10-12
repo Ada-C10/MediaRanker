@@ -13,17 +13,6 @@ class UsersController < ApplicationController
       end
     end
 
-    # QUESTION: why does this work without new or create methods?
-    # why is it ok to just create the new user from the sessions controller?
-    # def new
-    #   @user = User.new()
-    # end
-    #
-    # def create
-    #   @user = User.new(user_params)
-    #   @user.save
-    # end
-
     private
 
     def user_params
