@@ -62,14 +62,14 @@ class WorksController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       @vote = Vote.new(user: @user, work:
-        @work)
+        @work) #:date Date.today)
 
         if @vote.save
           flash[:success] = "Successfully voted for this work."
           redirect_to work_path(@work)
         else
-          flash[:error] = "You alredy voted for this work, can't vote for this again!"
-            redirect_back(fallback_location: root_path)
+          flash[:error] = "You already voted for this work, can't vote for it again!"
+          redirect_back(fallback_location: root_path)
         end
       end
     end
@@ -77,14 +77,14 @@ class WorksController < ApplicationController
 
 
     private
-  def work_params
-    return params.require(:work).permit(
+    def work_params
+      return params.require(:work).permit(
         :title,
         :category,
         :creator,
         :publication_year,
         :description
       )
-  end
+    end
 
-end
+  end

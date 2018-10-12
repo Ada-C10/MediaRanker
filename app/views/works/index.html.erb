@@ -15,7 +15,7 @@
   <tr>
     <%@works.each do |work| %>
     <%if work.category == "album"%>
-    <td scope="row">some votes</td>
+    <td scope="row"><%=work.votes.count%></td>
     <td scope="row"><%= link_to work.title, work_path(work.id)%></td>
     <td scope="row"><%=work.creator%></td>
     <td scope="row"><%=work.publication_year%></td>
@@ -44,7 +44,7 @@
   <tr>
     <%@works.each do |work| %>
     <%if work.category == "book"%>
-    <td scope="row">some votes</td>
+    <td scope="row"><%=work.votes.count%></td>
     <td scope="row"><%=link_to work.title, work_path(work.id)%></td>
     <td scope="row"><%=work.creator%></td>
     <td scope="row"><%=work.publication_year%></td>
@@ -73,7 +73,7 @@
   <tr>
     <%@works.each do |work| %>
     <%if work.category == "movie"%>
-    <td scope="row">some votes</td>
+    <td scope="row"><%=work.votes.count%></td>
     <td scope="row" ><%=link_to work.title, work_path(work.id)%></td>
     <td scope="row"><%=work.creator%></td>
     <td scope="row"><%=work.publication_year%></td>

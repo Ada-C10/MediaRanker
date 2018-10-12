@@ -15,5 +15,13 @@
       <th scope="col">Voted On</th>
     </tr>
   </thead>
-
+    <%@user.votes.each do |vote|%>
+    <tr>
+    <td scope="row"><%=vote.work.title%></td>
+    <td scope="row"><%=vote.work.creator%></td>
+    <td scope="row"><%=vote.work.publication_year%></td>
+    <td scope="row"><%=vote.work.category%></td>
+    <td scope="row"><%=vote.created_at%></td>
+  </tr>
+<%end%>
 </table>
