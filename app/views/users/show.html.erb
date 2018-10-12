@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <section class="user-detail-summary">
   <div class="description-container">
 
@@ -26,29 +26,28 @@
 
   </tr>
 </table>
-<<<<<<< HEAD
+
 
 <div class="Homepage">
   <h3>
     <%= link_to "Return to all media", root_path, class: "homepage" %>
-=======
-<div class="description-container">
 
-  <h2><%= @user.title %> </h2>
-  <h4>Created by <%= @user.username %></h4>
+    <div class="description-container">
 
-  <p class="description-text"><%= @user.votes %></p>
-</div>
-<div class="return-to-users">
-  <h3>
-    <%= link_to "Return Home", all_users_path, class: "all-users" %>
-  </h3>
-</div>
-<div class="return-home">
-  <h3>
-    <%= link_to "Return Home", root_path, class: "homepage" %>
->>>>>>> controllers
-  </h3>
-=======
->>>>>>> tests
-</div>
+      <h2><%= @user.title %> </h2>
+      <h4>Created by <%= @user.username %></h4>
+
+      <p class="description-text"><%= @user.votes %></p>
+    </div>
+    <div class="return-to-users">
+      <h3>
+        <%= link_to "Return Home", all_users_path, class: "all-users" %>
+      </h3>
+    </div>
+    <div class="return-home">
+      <h3>
+        <%= link_to "Return Home", root_path, class: "homepage" %>
+
+      </h3>
+
+    </div>

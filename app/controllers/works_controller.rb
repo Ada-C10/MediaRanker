@@ -38,8 +38,6 @@ class WorksController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-
   def edit
     @work = Work.find_by(id: params[:id])
   end
@@ -55,15 +53,6 @@ class WorksController < ApplicationController
   end
 
   def upvote
-<<<<<<< HEAD
-    work = params[:id]
-    if user_id = session[:user_id]
-      vote.user_id = user_id
-
-    else
-      flash.now[:error] = "Must be logged in to vote!"
-      render :new
-=======
     if user_id != session[:user_id]
       flash[:error] = "Must be logged in to vote!"
     elsif
@@ -79,7 +68,6 @@ class WorksController < ApplicationController
           render :new
         end
       end
->>>>>>> controllers
     end
   end
 
@@ -99,38 +87,6 @@ class WorksController < ApplicationController
 
   private
 
-=======
-  def edit
-    @work= Work.find_by(id: params[:id])
-  end
-
-  def update
-    work = Work.find_by(id: params[:id])
-    work.update(work_params)
-
-    is_successful = work.save
-
-    if is_successful # save returns true if the database insert succeeds
-      redirect_to works_path(work.id) # go to the index so we can see the book in the list
-    else # save failed :(
-      render :new # show the new book form view again
-    end
-
-  end
-
-
-  def destroy
-    work = Work.find_by(id: params[:id])
-
-    work.destroy
-
-    redirect_to works_path(work.id)
-  end
-
-
-  private
-
->>>>>>> tests
   # Strong params: only let certain attributes
   # through
   def work_params
@@ -146,11 +102,5 @@ class WorksController < ApplicationController
   def find_work
     @work = Work.find_by(id: params[:id])
   end
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
 
->>>>>>> tests
 end
->>>>>>> controllers
