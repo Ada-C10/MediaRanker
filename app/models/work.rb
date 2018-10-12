@@ -7,12 +7,15 @@ class Work < ApplicationRecord
   # validates_uniqueness_of :work, scope: :category
   # validates_inclusion_of :category, :in => CATEGORIES
 
-    CATEGORIES = ["album", "book", "movie"]
+  def self.work_categories
+    @categories = ["album", "book", "movie"]
+  end
 
 
 
   def self.sort_works(works)
-    works_by_vote = works.sort{|work| work.votes.length}.reverse
+    works_by_vote = works.sort_by{|work| work.votes.length}.reverse
+    return works_by_vote
   end
 
   def self.gen_top_ten_works(works_by_category)
@@ -23,14 +26,14 @@ class Work < ApplicationRecord
     #   end
     # end
 
-    works_by_vote = sort_works(works_by_category)
+    works_by_vote = self.sort_works(works_by_category)
     @top_ten = works_by_vote.first(10)
     return @top_ten
   end
 
 
   def self.gen_top_work(all_works)
-    works_by_vote = sort_works(all_works)
+    works_by_vote = self.sort_works(all_works)
     @top_work = works_by_vote.first
     return @top_work
   end

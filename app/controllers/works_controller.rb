@@ -1,9 +1,16 @@
 class WorksController < ApplicationController
 
   def index
-    # we separate/list works by category type
+    # TODO: DRY THIS UP - REPEAT W WELCOME CONTROLLER!!
+
+    albums = Work.where(category: 'album')
+    books = Work.where(category: 'book')
+    movies = Work.where(category: 'movie')
 
 
+    @albums = Work.sort_works(albums)
+    @books = Work.sort_works(books)
+    @movies = Work.sort_works(movies)
 
   end
 

@@ -41,7 +41,7 @@
         <%= link_to book.title, work_path(book.id) %>
         <small class="top-ten__creator">by <%= book.creator %></small>
       </h4>
-      <p><%= movie.votes.length%> votes</p>
+      <p><%= book.votes.length%> votes</p>
     </li>
 </ul>
 <% end %>
