@@ -1,0 +1,7 @@
+<ul>
+<%= model.errors.messages.each do |col, msg| %>
+<li>
+<strong><%= col.capitalize %></strong><%= msg %>
+</li>
+<%= end %>
+</ul>
