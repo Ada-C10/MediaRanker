@@ -1,7 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+jim:
+  name: Jim Bob
 
-two:
-  name: MyString
+nancy:
+  name: Nancy Drew
+
+yoyo:
+  name: YoYo Ma

@@ -1,20 +1,18 @@
 require "test_helper"
-
+require "pry"
 describe Work do
   describe 'validations' do
     before do
       @work = Work.new(
-        title: 'Beanstock',
+        title: 'Buttercup',
         description: 'this is a test',
         year_published: 1999,
-        #this creator will be replaced by User
-        created_by: 'Carly',
+        created_by: 'Betty',
         category: 'Movie'
       )
     end
 
     it 'is valid when title, creator, and category are present' do
-
       is_valid = @work.valid?
       expect(is_valid ).must_equal true
 
@@ -46,6 +44,15 @@ describe Work do
       expect( is_valid ).must_equal false
       expect( @work.errors.messages ).must_include :category
     end
+
+    it 'is invalid with a non-unique title' do
+    @work.title = Work.first.title
+
+    is_valid = @work.valid?
+
+    expect( is_valid ).must_equal false
+    expect( @work.errors.messages ).must_include :title
+  end
 
   end
 end
