@@ -33,11 +33,14 @@
             <td class = "table_grid">
               <%= user.username %>
             </td>
+
             <td class = "table_grid">
-              date here
+              <% vote = user.vote(@work.id) %>
+              <%= vote[0].created_at.strftime("%b %d,%Y") %>
             </td>
           </tr>
         <% end %>
+
       </tbody>
     </table>
 </section>
