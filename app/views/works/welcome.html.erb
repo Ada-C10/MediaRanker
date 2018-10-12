@@ -1,20 +1,21 @@
 <section>
-  <h2>Media Spotlight: title by </h2>
-  <p>
-    7 votes - Description here
-  </p>
+  <h2><%= "Media Spotlight: "%>
+    <%= link_to "#{@works.first.title}", work_path(@works.first)%>
+    <%= "by #{@works.first.creator}" %>
+  </h2>
+
+  <p><%= "#{@works.first.votes.count} votes - #{@works.first.description}" %></p>
 </section>
+
 
 <section>
   <h2>Top Movies</h2>
   <ul>
-    <h2><%= "Top Movies" %></h2>
     <% @works.each do |work| %>
     <% if work.category == "movie" %>
-
-    <li><%= work.title %></li>
-    <li><%= work.creator %></li>
-    <li><%= work.votes.count %></li>
+    <li><%= link_to "#{work.title}", work_path(work.id)%></li>
+    <li><%= "by #{work.creator}" %></li>
+    <li><%= "#{work.votes.count} votes"%></li>
     <br>
     <br>
     <% end %>
@@ -25,13 +26,12 @@
 <section>
   <h2>Top Books</h2>
   <ul>
-    <h2><%= "Top Books" %></h2>
     <% @works.each do |work| %>
     <% if work.category == "book" %>
 
-    <li><%= work.title %></li>
-    <li><%= work.creator %></li>
-    <li><%= work.votes.count %></li>
+    <li><%= link_to "#{work.title}", work_path(work.id)%></li>
+    <li><%= "by #{work.creator}" %></li>
+    <li><%= "#{work.votes.count} votes"%></li>
     <br>
     <br>
   </ul>
@@ -42,12 +42,11 @@
 <section>
   <h2>Top Albums</h2>
   <ul>
-    <h2><%= "Top Albums" %></h2>
     <% @works.each do |work| %>
     <% if work.category == "album" %>
-    <li><%= work.title %></li>
-    <li><%= work.creator %></li>
-    <li><%= work.votes.count %></li>
+    <li><%= link_to "#{work.title}", work_path(work.id)%></li>
+    <li><%= "by #{work.creator}" %></li>
+    <li><%= "#{work.votes.count} votes"%></li>
     <br>
     <% end %>
     <% end %>

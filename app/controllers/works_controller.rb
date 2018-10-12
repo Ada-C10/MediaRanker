@@ -1,11 +1,12 @@
 class WorksController < ApplicationController
 
   def welcome
-    @works = Work.all
+    @works = Work.joins('LEFT JOIN votes ON work_id = works.id')
+                 .group('works.id')
+                 .order('count(votes.id) DESC')
   end
 
   def index
-    # @works = Work.joins(:votes).group('works.id').order('count(votes.id) DESC')
     @works = Work.joins('LEFT JOIN votes ON work_id = works.id')
                  .group('works.id')
                  .order('count(votes.id) DESC')
