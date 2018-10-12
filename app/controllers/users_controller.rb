@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  
+
   def index
     @users = User.all.order(:username)
   end
@@ -13,11 +15,14 @@ class UsersController < ApplicationController
 
     if user.nil?
       user = User.create(username: params[:user][:username])
-    end
-
       session[:user_id] = user.id
       flash[:success] = "Successfully created new user #{ user.username } with ID #{user.id}"
       redirect_to root_path
+    else
+      session[:user_id] = user.id
+      flash[:success] = "Successfully logged in as existing user #{ user.username }"
+      redirect_to root_path
+    end
   end
 
 

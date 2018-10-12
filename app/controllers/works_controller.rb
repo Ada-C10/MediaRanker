@@ -13,6 +13,10 @@ class WorksController < ApplicationController
 
   end
 
+  def upvote
+    if 
+  end
+
   def main
     @works = Work.all.order(:title)
   end
