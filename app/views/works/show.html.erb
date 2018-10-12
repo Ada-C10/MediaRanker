@@ -6,9 +6,9 @@
 </ul>
 <ul>
   <li><%= link_to 'Back to media ranks', root_path %></li>
-    <li><%= link_to 'Edit', edit_work_path(@work.id) %></li>
-  <li>Upvote</li>
-    <li><%= link_to 'Delete', work_path(@work.id), method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title}?" } %></li>
+  <li><%= link_to 'Edit', edit_work_path(@work.id) %></li>
+  <li><%= link_to 'Upvote', upvote_path(@work.id) %></li>
+  <li><%= link_to 'Delete', work_path(@work.id), method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title}?" } %></li>
 </ul>
 <h3>To Do</h3>
 <ul>

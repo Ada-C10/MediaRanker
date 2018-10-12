@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 
   root to: 'pages#index'
 
-  resources :works
+  resources :works do
+  end
   resources :users
   resources :sessions
 
   get '/pages', to: 'pages#index', as: 'pages'
   post '/logout', to: 'sessions#logout', as: 'logout'
+  get '/works/:id/upvote', to: 'works#upvote', as: 'upvote'
 end

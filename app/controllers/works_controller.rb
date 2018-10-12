@@ -46,6 +46,22 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
+  def upvote
+    work = Work.find_by(id: params[:id])
+    user = @logged_in_user
+    if session[:user_id] == @logged_in_user.id
+      @vote = Vote.create(
+        work: work,
+        user: user
+      )
+      flash[:success] = "Successfully upvoted!"
+      redirect_to works_path
+    else
+      flash[:error] = "A problem occured. You must be logged in to vote."
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   private
 
   def work_params
