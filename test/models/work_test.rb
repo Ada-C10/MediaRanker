@@ -27,5 +27,15 @@ describe Work do
       expect( is_valid ).must_equal false
       expect( @work.errors.messages ).must_include :title
     end
+
+    it 'is invalid with a missing title' do
+      @work.title = nil
+
+      is_valid = @work.valid?
+
+      expect( is_valid ).must_equal false
+
+      expect ( @work.errors.messages ).must_include :title
+    end
   end
 end
