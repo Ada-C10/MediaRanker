@@ -87,9 +87,9 @@ class WorksController < ApplicationController
   end
 
   def sorted_media
-      @albums = sort_by_votes(Work.where(category: 'album'))
-      @books = sort_by_votes(Work.where(category: 'book'))
-      @movies = sort_by_votes(Work.where(category: 'movie'))
+      @albums = Work.sort_by_votes('album')
+      @books = Work.sort_by_votes('book')
+      @movies = Work.sort_by_votes('movie')
   end
 
   def find_work

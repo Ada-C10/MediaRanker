@@ -1,6 +1,12 @@
 titanic:
-  category: Movie
+  category: movie
   title: Titanic
   creator: James Cameron
   pub_year: 1993
   description: A sad movie about a ship
+bonito:
+  category: movie
+  title: Bonito Generation
+  creator: bono
+  pub_year: 2017
+  description: an upbeat movie! 

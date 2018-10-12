@@ -23,23 +23,49 @@ describe Work do
   describe 'Relations' do
     before do
       @user = User.first
-      @work = Work.first
+      @work = Work.find_by(title: 'Bonito Generation')
     end
 
     it 'can add a vote using method votes' do
       vote = Vote.new(user: @user)
 
       @work.votes << vote
-      expect( @work.votes.first ).must_equal vote
+      expect( @work.votes.last ).must_equal vote
     end
 
     it 'deleting the vote removes it from work' do
-      vote = Vote.create(work: @work, user: @user)
+      initial_votes = @work.votes.length
 
-      expect( @work.votes.length ).must_equal 1
+      vote = Vote.new(work: @work, user: @user)
+      vote.save
+
+      @work.reload
+      expect( @work.votes.length - initial_votes ).must_equal 1
+
       vote.destroy
-      expect( Work.first.votes.length ).must_equal 0
 
+      @work.reload
+      expect( @work.votes.length - initial_votes ).must_equal 0
+
+    end
+  end
+
+  describe 'custom methods' do
+    describe 'sort by votes' do
+
+      it 'only accepts a valid category' do
+        expect{
+          Work.sort_by_votes('pets')
+        }.must_raise(ArgumentError)
+      end
+
+      it 'sorts works by number of votes in descending order' do
+        sorted_movies = Work.sort_by_votes('movie')
+
+  
+        expect( sorted_movies.first.title ).must_equal 'Titanic'
+        expect( sorted_movies.last.title ).must_equal 'Bonito Generation'
+      end
     end
   end
 end
