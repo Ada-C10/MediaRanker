@@ -1,7 +1,17 @@
 <h1>Works#edit</h1>
 <p>Find me in app/views/works/edit.html.erb</p>
 
-<%= render partial: "form",
-      locals: { action_name: 'Edit a work',
+<h1><%= @work.title %></h1>
+<p>Created by: <%= @work.creator %></p>
+<p>Published: <%= @work.publication %></p>
+<p><%= @work.description %></p>
+
+<%= render partial: "layouts/form",
+      locals: { action_name: 'Edit work',
                 this_model: @work,
-                button_title: 'Edit' } %>
+                title_placeholder: @work.title,
+                creator_placeholder: @work.creator,
+                description_placeholder: @work.description,
+                selected_category: @work.category,
+                publication_placeholder: @work.publication,
+                button_title: 'Save Your Edits!' } %>
