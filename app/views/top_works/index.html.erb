@@ -3,5 +3,22 @@
   <p> No votes - some description</p>
 </section>
 
-<section class = "topten">
+<section class = "toplists">
+  <ul class = "toplist-list">
+    <% Work::WORK_CATEGORIES.each do |category| %>
+
+    <li>
+      <h2> Top <%= category.capitalize%>s</h2>
+      <% list = Work.where(category: category) %>
+
+      <% list.each do |work , info| %>
+      <section class = "toplist-entry">
+        <p><h4><%= link_to "#{work.title}", work_path(work.id) %></h4> by <%= work.creator %></p>
+        <p> <%= work.votes.count %></p>
+        <% end %>
+
+      </section>
+    </li>
+    <% end %>
+  </ul>
 </section>
