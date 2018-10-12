@@ -1,7 +1,9 @@
 require "test_helper"
-
+require "pry"
 describe Work do
   let(:work) { works(:harry_potter) }
+  let(:work2) { works(:lord_of_the_rings) }
+
 
 
   it "must be valid" do
@@ -39,7 +41,19 @@ describe Work do
 
       #assert
       expect(valid).must_equal false
-    end 
+    end
+
+    it 'title must be unique to its category' do
+      #arrange
+      work2.title = 'Harry Potter'
+
+      #act
+      valid = work2.save
+
+      #assert
+      expect(valid).must_equal false
+    end
+
   end
 
   describe 'Custom Methods' do
