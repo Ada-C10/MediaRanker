@@ -13,6 +13,15 @@ describe Vote do
     it 'is valid when all fields are present' do
       expect(@vote.valid?).must_equal true
     end
+
+    it 'has unique user_id within scope work' do
+      @vote.save
+      expect(@vote.valid?).must_equal true
+      another_vote = Vote.new(user_id: @user.id, work_id: @work.id)
+      expect(another_vote.valid?).must_equal false
+      expect(@vote.user_id).must_equal another_vote.user_id
+      expect(@vote.work_id).must_equal another_vote.work_id
+    end
   end
 
   describe 'Vote relations' do
