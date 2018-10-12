@@ -1,2 +1,7 @@
-<p class="work-title"><%= link_to topworks.title, work_path(topworks.id) %> by <%= topworks.creator %></p>
-<p><%= topworks.votes.count %> votes</p>
+<li class="list-group-item">
+  <h4>
+    <%= link_to topworks.title, work_path(topworks.id) %>
+    <small class="top-ten__creator">by <%= topworks.creator %></small>
+  </h4>
+  <p><%= topworks.votes.count %> votes</p>
+</li>

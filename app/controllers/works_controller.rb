@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
+  before_action :error_msg, only: [:create, :update, :upvote]
 
   def index
     @albums = Work.by_category("album")
@@ -20,7 +21,7 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully created #{@work.category} #{@work.id}"
       redirect_to works_path
     else
-      flash.now[:warning] = "A problem occured: Could not create #{@work.category}"
+      flash.now[@status] = "A problem occured: Could not create #{@work.category}"
 
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
@@ -36,7 +37,7 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path
     elsif @work
-      flash.now[:warning] = "A problem occured: Could not update #{@work.category}"
+      flash.now[@status] = "A problem occured: Could not update #{@work.category}"
 
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
@@ -63,7 +64,7 @@ class WorksController < ApplicationController
         flash[:success] = "Successfully upvoted!"
         redirect_back(fallback_location: root_path)
       else
-        flash[:warning] = "A problem occured: Could not upvote"
+        flash[@status] = "A problem occured: Could not upvote"
         @work.errors.add(:user, "has already voted for this work")
         @work.errors.messages.each { |field, messages| flash[field] = messages }
         redirect_back(fallback_location: root_path)
@@ -83,5 +84,9 @@ class WorksController < ApplicationController
       flash.now[:danger] = "Cannot find the work #{params[:id]}"
       render :notfound, status: :not_found
     end
+  end
+
+  def error_msg
+    @status = :warning
   end
 end

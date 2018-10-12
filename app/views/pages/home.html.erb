@@ -1,18 +1,41 @@
-<section class='page'>
-  <section class='section spotlight'>
-    <h3>Media Spotlight: <%= "#{@top_work.title} by #{@top_work.creator}" %></h3>
-    <p><%= "#{@top_work.votes.count} votes - #{@top_work.description}" %></p>
+<section class='spotlight'>
+  <h2 class="spotlight__header">
+    <span class="spotlight__header--prefix">Media Spotlight</span>
+    <%= link_to @top_work.title, work_path(@top_work.id), class: "spotlight__link-to"%> by <%= @top_work.creator %>
+  </h2>
+  <p class="spotlight__description">
+    <%= "#{@top_work.votes.count} votes - #{@top_work.description}." %>
+  </p>
   </section>
-  <section class='section movies'>
-    <strong class="section-header">Top Movies</strong>
-    <%= render partial: "topworks", collection: @movies %>
+
+  <hr class="root__hr">
+
+  <section class="top-ten__container">
+    <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Movies
+    </h2>
+    <ul class="list-group top-ten__list">
+      <%= render partial: "topworks", collection: @movies %>
+    </ul>
   </section>
-  <section class='section books'>
-    <strong class="section-header">Top Books</strong>
-    <%= render partial: "topworks", collection: @books %>
+
+  <section class="top-ten__container">
+    <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Books
+    </h2>
+    <ul class="list-group top-ten__list">
+      <%= render partial: "topworks", collection: @books %>
+    </ul>
   </section>
-  <section class='section albums'>
-    <strong class="section-header">Top Albums</strong>
-    <%= render partial: "topworks", collection: @albums %>
+
+  <section class="top-ten__container">
+    <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Albums
+    </h2>
+    <ul class="list-group top-ten__list">
+      <%= render partial: "topworks", collection: @albums %>
+    </ul>
   </section>
-</section>
