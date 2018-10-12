@@ -8,7 +8,6 @@
 
 <ul>
   <li><%= link_to "Back to media ranks", root_path %></li>
-  <!-- These don't work yet -->
   <li><%= link_to "Edit", edit_work_path(@work.id) %></li>
   <li><%= link_to "Upvote", votes_path, method: :post %></li>
   <li><%= link_to "Delete", work_path(@work.id), method: :delete %></li>

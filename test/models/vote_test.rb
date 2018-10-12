@@ -52,5 +52,19 @@ describe Vote do
       expect(@vote.user).must_equal User.find(@user.id)
     end
 
+# TODO: prune this down
+    it 'deleting a work deletes the associated vote(s)' do
+      @vote.save
+      @second_user = User.create!(name: 'user two')
+      @second_vote = Vote.create(user_id: @second_user.id, work_id: @work.id)
+      expect(@work.votes[1].user_id).must_equal @second_user.id
+      expect(@work.votes.length).must_equal 2
+      expect(@work.votes.find_by(user_id: @user.id)).must_equal @vote
+      expect(@work.votes.find_by(user_id: @second_user.id)).must_equal @second_vote
+      @work.destroy!
+      expect(@work.votes.length).must_equal 0
+      expect(@work.votes.find_by(user_id: @second_user.id || @user.id)).must_equal nil
+    end
+
   end
 end
