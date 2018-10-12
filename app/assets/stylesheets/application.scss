@@ -38,6 +38,7 @@ header.app-header {
   border-right: 2px solid white;
   margin-right: 1rem;
   color: #FF5722;
+  font-weight: 700;
 }
 
 .nav {
@@ -68,11 +69,6 @@ h2.top-ten {
   border-bottom: 2px solid #B2DFDB;
 }
 
-a, h2 {
-  color: $dark-teal;
-  font-weight: 700;
-}
-
 .btn-primary {
   background-color: $dark-teal;
   border-color: $dark-teal;
@@ -94,6 +90,10 @@ body {
   color: #424242;
 }
 
+a, h2 {
+  color: $dark-teal;
+}
+
 small {
   font-size: 80%;
   font-weight: 400;
@@ -105,4 +105,13 @@ h1 > small {
 
 small.creator {
   color: slategrey;
+}
+
+h2, h3, h4.media-table, h4 > a {
+  font-weight: 700;
+}
+
+section.flash {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }

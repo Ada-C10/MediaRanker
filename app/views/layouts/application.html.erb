@@ -34,18 +34,20 @@
           <% end %>
         </ul>
       </nav>
+    </header>
+    <% if flash.count > 0 %>
       <section class="flash">
         <% flash.each do |name, message| %>
           <% if message.class == Array %>
             <% message.each do |msg| %>
-              <div class="alert-<%= name %>"><%= "#{name}: #{msg}" %></div>
+              <div class="alert alert-<%= name %>"><%= "#{name}: #{msg}" %></div>
             <% end %>
           <% else %>
-            <div class="alert-<%= name %>"><%= message %></div>
+            <div class="alert alert-<%= name %>"><%= message %></div>
           <% end %>
         <% end %>
       </section>
-    </header>
+    <% end %>
     <main>
       <%= yield %>
     </main>
