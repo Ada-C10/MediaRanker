@@ -60,11 +60,11 @@
       <% flash.each do |name, message| %>
         <% if message.class == Array %>
           <div class="alert alert-<%= name %>">
-            <ul>
-              <% message.each do |msg| %>
-                <li><%= "#{name}: #{msg}\n" %></li>
-              <% end %>
-            </ul>
+            <!-- <ul> -->
+              <%# message.each do |msg| %>
+                <!-- <li><%#= "#{name}: #{msg}\n" %></li> -->
+              <%# end %>
+            <!-- </ul> -->
           </div>
         <% else %>
           <div class="alert-<%= name %>"><%= message %></div>
