@@ -1,6 +1,2 @@
-<h1> Please log in. </h1>
-<%= form_with model: @user, url: login_path, method: :post do |f| %>
-<%= f.label :name, 'Username'%>
-<%=f.text_field :name, placeholder: 'Username'%>
-<%= f.submit 'Login' %>
-<%end%>
+
+<%= render partial: "formlogin", locals: {method: :post, action_button: 'Log in'} %>

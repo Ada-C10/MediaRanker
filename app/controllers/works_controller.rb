@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :find_work, only:[:show, :edit, :update, :destroy]
+  before_action :find_work, only:[:show, :edit, :update, :destroy, :upvote]
 
   def main
     @works = Work.all
@@ -48,10 +48,25 @@ end
     end
   end
 
-  private
-  def find_work
-    @work= Work.find_by(id: params[:id].to_i)
+  def upvote
+    if @current_user.nil?
+      flash[:warning] = "You must be logged in to vote"
+      redirect_to root_path
+    else
+      @upvote = Vote.new(user_id: @current_user.id, work_id: @work.id)
+      if @upvote.save
+        flash[:message] = "Vote added to #{@work.title}"
+      else
+        flash[:warning] = "Could not vote for title"
+        redirect_to work_path
+      end
+    end
+  end
 
+private
+
+  def find_work
+    @work = Work.find_by(id:params[:id].to_i)
     if @work.nil?
       flash.now[:warning] = 'Cannot find work'
       render :notfound

@@ -26,7 +26,7 @@
       <%end%>
 
       <% if @current_user %>
-          <h2>Welcome <%= @current_user.name %> </h2>
+          <h2>Welcome <%= @current_user.username %> </h2>
         <% end %>
 
       </section>
@@ -35,6 +35,7 @@
       <ul>
         <li><%= link_to "Add a New Work", "/works/new" %></li>
         <li><%= link_to "View all Works", "/works" %></li>
+        <li><%= link_to "View all Users", "/users" %></li>
         <li>
         <% if @current_user %>
           <%= link_to "Log Out", logout_path, method: :delete, class: 'btn btn-primary' %>

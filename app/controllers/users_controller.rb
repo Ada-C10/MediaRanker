@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id].to_i)
-    if id == nil
-      render :not_found, status: :not_found
-    end
+    # if id == nil
+    #   render :not_found, status: :not_found
+    # end
   end
 
   def index

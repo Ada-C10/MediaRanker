@@ -8,16 +8,15 @@ class VotesController < ApplicationController
   end
 
   def create
-    @vote = Vote.new
-    if @vote.save
-      flash[:success] = 'Vote added!'
-      redirect_to work_path(@work.id)
+    @work = Work.find_by(id: params[:id])
+    vote = Vote.new(user_id: @current_user.id, work_id: @work.id)
+    if @current_user.nil?
+      flash[:warning] = "You must be logged in to vote"
+      redirect_to root_path
     else
-      flash.now[:error] = 'Work not added'
-      @vote.errors.messages.each do |field, messages|
-        flash.now[field] = messages
-      end
-      render :new
+      upvote = Vote.new(user_id: @current_user.id, work_id: @work.id)
+      vote.save
+      flash[:message] = "Vote added to #{@work.title}"
     end
   end
 

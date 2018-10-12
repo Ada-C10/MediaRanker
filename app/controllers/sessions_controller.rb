@@ -3,13 +3,20 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:user][:username])
 
     if user.nil?
-      # Create a new author
-      user = User.create(username: params[:user][:username])
-    end
-
-    session[:user_id] = user.id
-    flash[:success] = "#{user.username} Successfully logged in!"
-    redirect_to root_path
+      user = User.new(username: params[:user][:username])
+      if user.save
+        session[:user_id] = user.id
+        flash[:success] = "#{user.username} Successfully logged in!"
+        redirect_to root_path
+      else
+        flash[:warning] = "User was not successfully added"
+        redirect_to login_path
+     end
+   else
+     session[:user_id] = user.id
+     flash[:success] = "#{user.username} Successfully logged in!"
+     redirect_to root_path
+   end
   end
 
   def new

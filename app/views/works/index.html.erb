@@ -1,5 +1,5 @@
-<%['movie', 'book', 'album'].each do |category| %>
-<h2><%=category%>s </h2>
+<!-- <%#['movie', 'book', 'album'].each do |category| %>
+<h2><%=#category%>s </h2> -->
 <table style="width:100%">
   <tr class="header_font">
     <th>Votes</th>
@@ -8,16 +8,14 @@
     <th>Published</th>
     <th>Upvote</th>
   </tr>
-
+<%@works = Work.sort_by_category('movies')%>
   <% @works.each do |work| %>
   <tr>
-    <%if category == work.category%>
     <td>VOTES</td>
     <td><%=link_to work.title, work_path(work.id) %></td>
     <td><%=work.creator%></td>
     <td><%=work.publication_year%></td>
-    <td><%= link_to "Upvote", work_upvote_path(work.id) %></td>
-    <%end%>
+    <td><%= link_to "Upvote", upvote_path(work.id), method: :post, class: "btn btn-primary" %></td>
     <%end%>
   </tr>
 </table>
