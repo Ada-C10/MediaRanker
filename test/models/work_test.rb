@@ -46,13 +46,25 @@ describe Work do
     end
 
     it 'is invalid with a non-unique title' do
-    @work.title = Work.first.title
+      @work.title = Work.first.title
 
-    is_valid = @work.valid?
+      is_valid = @work.valid?
 
-    expect( is_valid ).must_equal false
-    expect( @work.errors.messages ).must_include :title
+      expect( is_valid ).must_equal false
+      expect( @work.errors.messages ).must_include :title
+    end
+
   end
 
+  describe 'relations' do
+    it "has a vote " do
+
+      v = Vote.first
+
+      user = v.user
+
+      expect(user).must_be_instance_of User
+    end
   end
+
 end
