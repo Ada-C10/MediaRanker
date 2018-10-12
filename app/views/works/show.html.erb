@@ -23,3 +23,6 @@
     <%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title}?" } %>
   </div>
 </section>
+<section>
+  <strong><%= "#{@work.votes.size}" %> Votes for this <%= "#{@work.category.capitalize}" %></strong>
+</section>
