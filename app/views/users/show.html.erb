@@ -1,7 +1,4 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-
-<h1>User Summary: <%= @user.name %></h1>
+<h1>User Summary: <%= link_to @user.name, user_path(@user.id) %></h1>
 <sub><%= @user.created_at.to_date.strftime("Joined site %b %d, %Y") %></sub>
 <h2>Votes</h2>
 <% @votes.each do |vote| %>
