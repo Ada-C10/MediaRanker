@@ -28,10 +28,15 @@
     <header>
       <h1><%= link_to "MediaRanker", root_path %></h1>
       <sub>Ranking the Best of Everything</sub>
-      <% if @current_user %>
       <section class="flash flash-session">
-        <div class="alert-info"><%= "#{session[:salutation]} #{@current_user.name}! You're logged in!" %></div>
+        <% if @current_user %>
+          <div class="alert-info">
+          <%= "#{session[:salutation]} #{@current_user.name}! You're logged in!" %>
+        <% else %>
+          <div class="alert-warning">
+          <%= "You are not logged in. Please log in to vote." %>
         <% end %>
+          </div>
       </section>
 
       <section class="flash">
