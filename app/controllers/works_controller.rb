@@ -53,20 +53,21 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    # @work = Work.find_by (id: params[:id])
-    # @user = User.find_by (id: sessions[:user_id])
-    #
-    # if @user
-    #   vote = Vote.new
-    #   # vote.work_id = @work.id
-    #   vote.work = @work
-    #   vote.user = @user
-    #   vote.save
-    #   @user.votes << vote
-    # else
-    #   flash[:erro] = "you are not logged in"
-    #   redirect_to session_path
-    # end
+    @work = Work.find_by(id: params[:id].to_i)
+    @user = User.find_by(id: session[:user_id].to_i)
+
+    if @user
+      vote = Vote.new
+      # vote.work_id = @work.id same with user
+      vote.work = @work
+      vote.user = @user
+      @user.votes << vote
+      vote.save
+      @user.save
+    else
+      flash[:error] = "you are not logged in"
+      redirect_to sessions_login_path
+    end
   end
 
   private
