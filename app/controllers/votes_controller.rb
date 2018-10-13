@@ -1,11 +1,19 @@
 class VotesController < ApplicationController
 
   def index
-    @votes = Vote.all
+    if params[:work_id]
+      work = Work.find_by(id: params[:work_id])
+      @votes = work.votes
+    elsif params[:user_id]
+      user = User.find_by(id: params[:user_id])
+      @votes = user.votes
+    else
+      @votes = Vote.all
+    end
   end
 
   def show
-    @vote = Trip.find_by(id: params[:id])
+    @vote = Vote.find_by(id: params[:id])
     if @vote.nil?
       head :not_found
     end
@@ -16,12 +24,20 @@ class VotesController < ApplicationController
   end
 
   def create
-    @vote = Vote.new
-    if @vote.save
-      redirect_to votes_path
+    work = Work.find_by(id: params[:work_id])
+
+    if work
+      @vote = Vote.new
+
+      if @vote.save
+        redirect_to votes_path
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to root_path
     end
+
   end
 
 end

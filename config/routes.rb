@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'works#homepage'
 
-  resources :votes
+  resources :votes, only: [:index, :show, :new, :create]
 
   resources :works do
     resources :votes, only: [:index, :create, :update]
