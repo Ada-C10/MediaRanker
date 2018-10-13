@@ -1,10 +1,9 @@
 <h1>Media Spotlight:
   <% spotlight = @works.sample%>
-  <%= spotlight.title%> by <%=spotlight.creator%></h1>
+  <%=link_to spotlight.title, work_path(spotlight.id)%> by <%=spotlight.creator%></h1>
   <p><%=spotlight.votes.count%> votes - <%=spotlight.description%></p>
-<%categories = ['movie', 'book', 'album']%>
-<%categories.each do |category|%>
-  <h1>Top 10 <%=category%>s</h1>
+<%['movie', 'book', 'album'].each do |category|%>
+  <h1>Top <%=category.capitalize%>s</h1>
   <%@works = Work.sort_by_votes(category)%>
     <% @works.first(10).each do |work| %>
         <%if category == work.category%>

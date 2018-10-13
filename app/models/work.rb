@@ -5,7 +5,6 @@ class Work < ApplicationRecord
   validates :title, presence: true, uniqueness: {scope: :category}
   validates :publication_year, numericality: true, length: {is: 4}
   validates :creator, presence: true
-CATEGORIES = ['movie', 'album', 'book']
 
   def self.sort_by_category(category)
     selected_works = []
