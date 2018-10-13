@@ -40,6 +40,20 @@ describe User do
       expect(user.errors.messages).must_include :user_name
     end
 
+    it 'must have a title with a min of 5 letters' do
+      #arrange
+      user.user_name = ''
+      4.times do
+        user.user_name += 'a'
+
+        valid = user.valid?
+
+        expect(valid).must_equal false
+        expect(user.errors.messages).must_include :user_name
+      end
+
+    end
+
     it 'must be no longer than 20 characters for username' do
       user.user_name = 'kljsdfh99999999999khb3209843209834234'
 
