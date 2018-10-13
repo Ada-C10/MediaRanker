@@ -3,7 +3,7 @@ class WorksController < ApplicationController
     @album = Work.select { |item| item.category == "album"}
     @movie = Work.select { |item| item.category == "movie"}
     @book = Work.select { |item| item.category == "book"}
-    @current_user = User.find_by (id:session[:user_id])
+    @current_user = User.find_by(id:session[:user_id])
   end
 
   # we should actually make them inactive instead of deleting them
