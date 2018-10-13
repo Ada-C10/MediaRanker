@@ -24,9 +24,10 @@ class UsersController < ApplicationController
          redirect_to root_path
        else
          flash[:warning] = "A problem occurred: Could not log in"
+
          redirect_back fallback_location: root_path
-         end
-       else
+       end
+    else
        session[:user_id] = user.id
        flash[:success] = "#{user.name} Successfully logged in!"
        redirect_to root_path

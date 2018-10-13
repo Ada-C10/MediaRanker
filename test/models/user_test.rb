@@ -12,6 +12,7 @@ describe User do
     expect(user).must_respond_to field
   end
 
+
   describe 'Relationships' do
     it 'can have many votes' do
 
@@ -26,15 +27,34 @@ describe User do
   end
 
   describe 'validations' do
-    it 'must have a name' do
 
+    it 'must have a name' do
       user.name = nil
 
       valid = user.save
 
       expect(valid).must_equal false
       expect(user.errors.messages).must_include :name
-      expect(user.errors.messages[:name]).must_equal ["can't be blank"]
+      expect(user.errors.messages[:name]).must_equal ["can't be blank","is too short (minimum is 3 characters)"]
+    end
+
+    it 'must have a title with a min of 3 letters' do
+      user.name = ''
+      2.times do
+        # Arrange
+        user.name += 'a'
+
+        # Act
+        valid = user.valid?
+
+        # Assert
+        expect(valid).must_equal false
+        expect(user.errors.messages).must_include :name
+      end
+
+      user.name += 'a'
+      valid = user.valid?
+      expect(valid).must_equal true
     end
 
 
@@ -48,6 +68,5 @@ describe User do
       expect(valid).must_equal false
       expect(other_user.errors.messages).must_include :name
     end
-
   end
 end

@@ -5,11 +5,10 @@ Rails.application.routes.draw do
   get 'users/login', to: 'users#new'
   delete 'users/destroy', to: 'users#destroy', as: 'logout'
 
-
+  resources :works
   resources :users, only:[:index, :show]
 
-  resources :works do
-    post 'upvote', :on => :member
-  end
+  post '/works/:id/upvote', to: 'works#upvote', as: 'upvote'
+
 
 end
