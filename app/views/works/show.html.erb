@@ -1,4 +1,9 @@
 <section>
+<%= flash[:failure] %>
+<%= flash[:success] %>
+ </section>
+
+<section>
  <h2><%=@work.title%></h2>
  <p>Created by: <%=@work.creator%></p>
  <p>Published: <%=@work.publication_year%></p>
@@ -6,10 +11,17 @@
  </section>
 
  <section>
-   TO DO: ADD LINK TO UPVOTE BUTTON
-   <a class="btn btn-primary" href="/">Back to media ranks</a>
+   TEST VOTES: <% @work.votes.each do |vote| %>
+   <p><%= vote.user.username %></p>
+   <p><%= vote.work.id %></p>
+   <%end%>
+
+ </section>
+
+ <section>
+   <%=link_to "Back to media ranks", root_path, class: "btn btn-primary" %>
    <%=link_to "Edit", edit_work_path(@work),{ :class=>"btn btn-primary" }%>
-   <%=link_to "Upvote", root_path, { :class=>"btn btn-primary" }%>
+   <%= link_to 'UpVote', work_votes_path(@work), method: :post, class: "btn btn-primary" %>
    <%=link_to "Delete", work_path(@work),{ :class=>"btn btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete this #{@work.category} '#{@work.title}'?"} }%>
  </section>
 
