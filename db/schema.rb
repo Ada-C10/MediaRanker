@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2018_10_11_023724) do
     t.string "user_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "votes_count"
+    t.integer "votes_count", default: 0
   end
 
   create_table "votes", force: :cascade do |t|
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2018_10_11_023724) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "votes_count"
+    t.integer "votes_count", default: 0
   end
 
   add_foreign_key "votes", "users"

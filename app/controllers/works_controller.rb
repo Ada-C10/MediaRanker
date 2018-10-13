@@ -1,8 +1,9 @@
 class WorksController < ApplicationController
   def index
-    @movies = Work.where(category: "movie")
-    @albums = Work.where(category: "album")
+    @movies = (Work.where(category: "movie")).ordering
+    @albums = (Work.where(category: "album")).ordering
     @books = Work.where(category: "book")
+    @books.ordering
   end
 
   def show
@@ -24,7 +25,7 @@ class WorksController < ApplicationController
         flash[:success] = "Successfully created #{@work.category}!"
         redirect_to works_path
     else
-      flash.now[:error] = "Invalid work data"
+      flash.now[:error] = "Could not create #{@work.category}"
       render :new, status: :bad_request
     end
   end

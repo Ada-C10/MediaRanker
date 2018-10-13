@@ -15,7 +15,7 @@
 
       <nav class="app-header">
         <ul class="nav">
-          <li class="nav-list"><%= link_to "View top media" %></li>
+          <li class="nav-list"><%= link_to "View top media", root_path %></li>
           <li class="nav-list"><%= link_to "View all media", works_path%></li>
           <li class="nav-list"><%= link_to "Add a new work", new_work_path %></li>
           <li class="nav-list"><%= link_to "View all users", users_path %></li>
@@ -39,11 +39,19 @@
       </nav>
     </header>
 
-    <section class="flash-messages">
+    <!-- <section class="flash-messages">
       <% flash.each do |name, msg| %>
       <ul>
         <li> <%= msg %> </li>
       </ul>
+      <% end %>
+    </section> -->
+    <section class="flash-messages">
+      <% flash.each do |key, message| %>
+        <% alert_class = key == "error" ? "danger" : key %>
+        <p class="alert alert-<%= alert_class %>">
+          <%= message %>
+        </p>
       <% end %>
     </section>
 

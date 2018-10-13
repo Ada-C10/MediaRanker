@@ -1,6 +1,6 @@
 class AddVoteCountToUserAndWork < ActiveRecord::Migration[5.2]
   def change
-    add_column :works, :votes_count, :integer
-    add_column :users, :votes_count, :integer
+    add_column :works, :votes_count, :integer, default: 0
+    add_column :users, :votes_count, :integer, default: 0
   end
 end
