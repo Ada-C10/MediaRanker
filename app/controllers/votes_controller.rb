@@ -6,6 +6,6 @@ class VotesController < ApplicationController
 
 
   def create
-    @vote = Vote.new(user_id: current_user, work_id: params[:id])
+    @vote = Vote.create(user_id: @current_user.id, work_id: params[:id])
   end
 end

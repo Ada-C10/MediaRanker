@@ -1,5 +1,6 @@
 class Work < ApplicationRecord
   has_many :votes
+  has_many :users, through: :votes
 
   CATEGORIES = %w(movie book album)
 
@@ -8,4 +9,8 @@ class Work < ApplicationRecord
   validates :publication_year, presence: true, :numericality => {:less_than => Date.today.year, :greater_than => 1700}
   validates :description, presence: true
   validates :category, inclusion: { in: CATEGORIES }
+
+
+c = Work.first
+c.votes
 end

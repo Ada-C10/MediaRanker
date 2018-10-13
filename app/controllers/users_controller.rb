@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :find_user, :find_work
-  
+  before_action :find_user
+
   def index
     @users = (User.all).sort_by do |user|
       user.id
@@ -30,15 +30,12 @@ class UsersController < ApplicationController
   end
 
   private
+  def find_user
+    @user = User.find_by(id: params[:user_id] )
+  end
 
   def user_params
     return params.require(:user).permit(:username)
-  end
-
-  private
-
-  def find_work
-    @work = Work.find_by(id: params[:id])
   end
 
 end

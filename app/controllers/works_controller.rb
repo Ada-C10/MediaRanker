@@ -1,20 +1,17 @@
+
 class WorksController < ApplicationController
-  before_action :find_work
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
-  def index
-    @works = Work.all
+  before_action :find_all_work
+
+  def index;
   end
 
-  def home
-    @works = Work.all
+  def home;
   end
 
 
-  def show
-    work_id = params[:id]
-    if @work.nil?
-      head :not_found
-    end
+  def show;
   end
 
   def new
@@ -34,7 +31,7 @@ class WorksController < ApplicationController
     is_successful_save = @work.save
 
     if is_successful_save
-      flash[:success] = "Successfully created new work with title \"#{@work.title}\""
+      flash[:success] = "Successfully created new work with title \"#{work.title}\""
       redirect_to works_path
     else
       flash.now[:error] = "Invalid work data"
@@ -42,7 +39,7 @@ class WorksController < ApplicationController
     end
   end
 
-  def edit
+  def edit;
   end
 
   def update
@@ -56,26 +53,20 @@ class WorksController < ApplicationController
   end
 
   def upvote
-<<<<<<< Updated upstream
-    if user_id != session[:user_id]
-      flash[:error] = "Must be logged in to vote!"
-    else
-      vote = Vote.new
-      vote.work_id = params[:id]
-      vote.user_id = current_user.id
-=======
-    if @current_user.already_voted?
-      flash[:error] = "Already voted on this work"
-    else
-      vote = Vote.new
-      vote.user_id = @current_user.id
-      vote.work_id = @work.id
-      vote.save
+    @vote = Vote.create(user_id: @current_user.id, work_id: params[:id])
 
+    is_successful_save = @vote.save
+    @current_user.votes << @vote
+    work = Work.find_by(id: params[:id])
+    work.votes << @vote
 
->>>>>>> Stashed changes
+    if is_successful_save
+      flash[:success] = "Successfully voted on \"#{work.title}\""
+      redirect_to user_path(@current_user)
+    else
+      flash[:error] = "Invalid vote"
+      redirect_to works_path, status: :bad_request
     end
-
   end
 
 
@@ -85,7 +76,6 @@ class WorksController < ApplicationController
 
       flash[:success] = "Successfully destroyed work \"#{@work.title}\""
       redirect_to works_path
-
     else
       flash[:error] = "You must be logged in as a work's user in order to delete it!"
 
@@ -107,8 +97,16 @@ class WorksController < ApplicationController
     )
   end
 
+
   def find_work
     @work = Work.find_by(id: params[:id])
+    if @work.nil?
+      flash.now[:error] = "Work not found"
+    end
+  end
+
+  def find_all_work
+    @works = Work.all
   end
 
 end

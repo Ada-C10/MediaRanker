@@ -3,17 +3,14 @@ Rails.application.routes.draw do
 
   root 'works#home'
 
-  resources :works do
-    resources :votes, only: [:new, :create]
-  end
+  resources :works
+
+  post '/works/:id/upvote', to: 'works#upvote', as: 'upvote'
 
   resources :users, except: [:edit, :update, :destroy] do
-    resources :votes, only: [:new, :create]
   end
 
   resources :sessions, only: [:new, :create]
-
-  post 'works/:id/upvote', to: 'works#upvote', as: 'upvote'
 
   post '/sessions/logout', to: 'sessions#logout', as: 'logout'
 

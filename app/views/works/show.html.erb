@@ -13,10 +13,11 @@
     <%= link_to "Edit", edit_work_path(@work.id), class: "edit-link" %>
     <!-- upvote goes here -->
     <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to get rid of work #{@work.title}?" } %>
+    <li><%= link_to "Upvote", upvote_path(@work.id), method: :post, class: "upvote-link" %></li>
   </div>
 </section>
 
-<h3>Votes for this <%= @work.category %></h3>
+<h3><%= @work.votes.count %> Votes for this <%= @work.category %></h3>
 
 <section class="work-table-section" %>
 
@@ -27,8 +28,11 @@
     </tr>
 
     <tr>
-      <th>User who have voted on it</th>
-      <th>The date they voted</th>
-    </tr>
-  </table>
+      <% @work.votes.each do |vote| %>
+      <th><%= vote.user.username %></th>
+      <th><%= vote.created_at.strftime("%B %d, %Y") %></th>
+    </br>
+  </tr>
+  <% end %>
+</table>
 </section>

@@ -19,12 +19,12 @@
         <%= link_to "Edit", edit_work_path(work.id), class: "edit-link" %> |
         <%= link_to "Delete", work_path(work.id), method: :delete, data: {confirm: "Are you sure you want to get rid of work #{work.title}?" } %>
       </li>
-      <% end %>
     </ol>
     <% end %>
   </div>
+  <% end %>
 
-  
+
   <div class="book">
     <h2>BOOKS</h2>
     <ol class="book">
@@ -40,11 +40,10 @@
         <%= link_to "Edit", edit_work_path(work.id), class: "edit-link" %> |
         <%= link_to "Delete", work_path(work.id), method: :delete, data: {confirm: "Are you sure you want to get rid of work #{work.title}?" } %>
       </li>
-      <% end %>
     </ol>
     <% end %>
   </div>
-
+  <% end %>
 
   <div class="movie">
     <h2>MOVIES</h2>
@@ -60,9 +59,11 @@
         </p>
         <%= link_to "Edit", edit_work_path(work.id), class: "edit-link" %> |
         <%= link_to "Delete", work_path(work.id), method: :delete, data: {confirm: "Are you sure you want to get rid of work #{work.title}?" } %>
+        <%= link_to "Upvote", upvote_path(work.id), method: :post, class: "upvote-link" %>
       </li>
-      <% end %>
     </ol>
-    <% end %>``
+    <% end %>
 
   </div>
+  <% end %>
+</div>
