@@ -1,18 +1,218 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- */
+.turbolinks-progress-bar {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #0076ff;
+  z-index: 9999;
+  transition: width 300ms ease-out, opacity 150ms 150ms ease-in;
+  transform: translate3d(0, 0, 0);
+}
 
 /* Custom bootstrap variables must be set or imported *before* bootstrap. */
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+
+.app-header__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header__user-nav-container .nav-item {
+    margin-left: 2rem;
+}
+
+.app-header__user-nav-container .nav-item {
+    margin-left: 2rem;
+}
+
+.app-header__nav_item {
+    margin-top: 1rem;
+}
+
+.top-ten__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2em;
+}
+
+.spotlight {
+    padding: 0 2rem 2rem 2rem;
+}
+
+
+main {
+    padding: 2rem;
+}
+
+.app-header__header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
+}
+
+.app-header__header h1 a {
+    color: #FF5722;
+    padding-right: 25px;
+    margin-right: 15px;
+    border-right: white 2px solid;
+}
+
+.app-header__header h1 {
+    text-align: center;
+    margin: 25px auto 40px auto;
+}
+
+.app-header__header h1 small {
+    color: white;
+}
+
+.app-header__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.app-header__site-nav-container .app-header__nav_item {
+    margin-right: 2rem;
+}
+
+.app-header__nav_item .nav-link {
+    color: #00796B;
+}
+
+.spotlight__header--prefix {
+    color: #424242;
+}
+
+.spotlight__header {
+    color: #26A69A;
+}
+
+.spotlight__description {
+    margin-bottom: 0;
+}
+
+.root__hr {
+    margin: 0px auto 3rem auto;
+    color: #EEEEEE;
+}
+
+.top-ten__header {
+    color: #26A69A;
+    border-bottom: 2px solid;
+    border-bottom-color: #B2DFDB;
+}
+
+.top-ten__list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.list-group-item {
+    border: none;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    // border: 1px solid rgba(0,0,0,0.125);
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: bold;
+}
+
+a, h2, h3 {
+    color: #26A69A;
+}
+
+.top-ten__creator {
+    color: slategrey;
+}
+
+section {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+button, input {
+    overflow: visible;
+}
+
+.btn-primary {
+    background-color: #26A69A;
+    color: white;
+    border-color: #26A69A;
+}
+
+.alert__container {
+    margin: 2rem 0 1rem 0;
+}
+
+h4, .h4 {
+    font-size: 1.5rem;
+}
+
+.works-votes__container {
+    margin-top: 2rem;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}

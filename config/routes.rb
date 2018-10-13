@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root "main#index"
-  resources :works
+
+  resources :works do
+  resources :votes, only: [:create, :new, :show]
+end
   resources :main, only: [:index]
+  post 'works/:id/upvote', to: 'works#upvote', as: 'upvote'
   post 'sessions/login', to: 'sessions#login', as: 'login'
   get 'sessions/login', to: 'sessions#new'
   delete 'sessions/destroy', to: 'sessions#destroy', as: 'logout'

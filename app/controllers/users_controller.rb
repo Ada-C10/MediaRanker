@@ -20,9 +20,12 @@ def create
 
     render :new # show the new book form view again
   end
-end
+
+
 
 private
 def user_params
   return params.require(:user).permit(:name)
+end
+
 end

@@ -1,6 +1,7 @@
 <h1>Main#index</h1>
 <p>Find me in app/views/main/index.html.erb</p>
 
+
 <h1>Spotlight</h1>
 <%=link_to @spotlight.title, work_path(@spotlight.id) %>
 
@@ -20,4 +21,39 @@
 <% @movies.each do |movie| %>
     <br>
     <%=link_to movie.title, work_path(movie.id) %>
-<% end %>
+    <%= link_to "upvote", work_votes_path(movie.id), method: :post %>
+    (<%= movie.votes.count %> Votes)
+    <% end %>
+
+    <main>
+          <section class="spotlight">
+        <h2 class="spotlight__header">
+          <span class="spotlight__header--prefix">Media Spotlight</span>
+          <a class="spotlight__link-to" href="/works/134">The Hipster and the Beast</a> by Hipper T
+        </h2>
+        <p class="spotlight__description">
+          21 votes - eating gummy vites for breakfast :(
+        </p>
+      </section>
+
+    <hr class="root__hr">
+
+      <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        Top Albums
+      </h2>
+      <ul class="list-group top-ten__list">
+          <li class="list-group-item">
+            <h4>
+              <a href="/works/19">Winter Been</a>
+              <small class="top-ten__creator">by Mackenzie Wilkinson</small>
+            </h4>
+            <p>17 votes</p>
+          </li>
+
+      </ul>
+      <!-- <a href="/works.albums">View More Albums</a> -->
+    </section>
+  </section>
+
+</main>
