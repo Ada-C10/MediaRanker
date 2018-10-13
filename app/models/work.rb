@@ -20,7 +20,7 @@ CATEGORIES = ['movie', 'album', 'book']
 
   def self.sort_by_votes(category)
     @works = self.sort_by_category(category)
-    #return top_10 = @works.sort_by{|work| work.votes}(10)
+    return top_10 = @works.sort_by{|work| work.votes.count}.reverse!
   end
 
 

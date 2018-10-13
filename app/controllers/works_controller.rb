@@ -18,7 +18,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
-      flash[:success] = 'Work added!'
+      flash[:success] = "Successfully created #{@work.category} #{@work.title}!"
       redirect_to work_path(@work.id)
     else
       flash.now[:error] = 'Work not added'
@@ -56,8 +56,9 @@ end
       @upvote = Vote.new(user_id: @current_user.id, work_id: @work.id)
       if @upvote.save
         flash[:message] = "Vote added to #{@work.title}"
+        redirect_to works_path
       else
-        flash[:warning] = "Could not vote for title"
+        flash[:warning] = "A problem occurred: #{@current_user.username.capitalize} has already voted for this work"
         redirect_to work_path
       end
     end

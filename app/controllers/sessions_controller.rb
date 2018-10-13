@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       user = User.new(username: params[:user][:username])
       if user.save
         session[:user_id] = user.id
-        flash[:success] = "#{user.username} Successfully logged in!"
+        flash[:success] = "Successfully created account and logged in as #{user.username}!"
         redirect_to root_path
       else
         flash[:warning] = "User was not successfully added"
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
      end
    else
      session[:user_id] = user.id
-     flash[:success] = "#{user.username} Successfully logged in!"
+     flash[:success] = "Successfully logged in as existing user #{user.username}!"
      redirect_to root_path
    end
   end

@@ -1,10 +1,32 @@
 <% if @user.nil? %>
   <h1> 404 Not found</h1>
 <% else %>
-  <h1><%=@user.username %></h1>
+
+  <h1>User Summary: <%=@user.username.capitalize%></h1>
+  <p> Joined site <%=@user.created_at%></p>
+  <h2>Votes</h2>
+  <table style="width:100%">
+    <tr class="header_font">
+      <th>Media Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Category</th>
+      <th>Voted on</th>
+    </tr>
+    <%@user.votes.each do |vote| %>
+      <% work = Work.find_by(id: vote.work_id.to_i)%>
+    <tr>
+      <td><%=link_to work.title, work_path(work.id) %></td>
+      <td><%=work.creator%></td>
+      <td><%=work.publication_year%></td>
+      <td><%=work.category%></td>
+      <td><%=vote.created_at%></td>
+    </tr>
+    <%end%>
+  </table>
+  <br>
   <ul>
-    <li> Number of upvotes: <%=@user.votes.length%> votes </li>
-  </ul>
-  <div></div>
-  <%= link_to "Delete #{@user.username}", user_path(@user.id), method: :delete %>
+    <li><%= link_to "See all Users", users_path, class: "btn btn-primary"%></li>
+    <li><%= link_to "Back to Media List", works_path, class: "btn btn-primary"%></li>
+
 <% end %>

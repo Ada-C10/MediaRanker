@@ -8,6 +8,4 @@ Rails.application.routes.draw do
   get 'sessions/login', to: 'sessions#new'
   delete 'sessions/destroy', to: 'sessions#destroy', as: 'logout'
 
-  resources :works
-  resources :users
 end

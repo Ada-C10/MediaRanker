@@ -3,6 +3,7 @@
 <% else %>
 <h1> <%= @work.title %></h1>
 <ul>
+  <li>Format:<%=@work.category%></li>
   <li>Created by: <%= @work.creator %></li>
   <li>Published: <%= @work.publication_year%></li>
   <li> <%= @work.description%></li>
