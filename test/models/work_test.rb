@@ -7,49 +7,85 @@ describe Work do
     value(work).must_be :valid?
   end
 
-  describe "Presence of required attributes" do
+  describe 'work_list' do
+    it 'should return an array' do
+      # Act
+      works = Work.work_list
 
-  it "has required fields" do
-    fields = [:category, :title, :creator, :published_year, :description]
+      # Assert
+      expect(works).must_be_instance_of Array
 
-    fields.each do |field|
-      expect(work).must_respond_to field
+      works.each do |work_array|
+        current_work = Work.find(work_array[1])
+        work_title = work_array[0]
+        expect(work_title).must_equal current_work.title
+      end
     end
 
+    it 'should return an empty array when there are no works' do
+      # Act
+      Work.all.each do |work|
+        work.votes.each do |vote|
+          vote.destroy
+        end
+
+        work.destroy
+      end
+      works = Work.work_list
+
+      # Assert
+      expect(works).must_be_instance_of Array
+      expect(works.length).must_equal 0
+    end
   end
+
+  describe "Presence of required attributes" do
+    let(:work) { works(:book) } #arrange
+
+    it "has required fields" do #act
+      fields = [:category, :title, :creator, :published_year, :description]
+
+      fields.each do |field| #assert
+        expect(work).must_respond_to field
+      end
+    end
 
   describe "Relationships" do #work has many votes
     it "can have many votes"
     #Arrange done with let
 
     #Act
-    work.votes << Vote.first
-    votes = work.votes
+      work.votes << Vote.first
+      votes = work.votes
 
     #Assert
-    expect(votes).must_equal :>=, 1
-    votes.each do |vote|
-      expect(vote).must_be_instance of Integer
+      expect(votes).must_equal :>=, 1
+      votes.each do |vote|
+        expect(vote).must_be_instance of Vote
+      end
     end
-  end
 
-  it "can have many users through votes" #work belongs to user
-  #Arrange done with let
+    it "can have many users through votes" #work has many users through votes
+    #Arrange done with let
 
-  #Act
-  #work <== add users through votes
-  @work.users << User.find(user_id)
-
-  user.works.select(vote.id)includes(:vote).each so |work|
-  vote = Work.vote
-
-  user.vote_works.each do |vote_work|
-    vote_work.username
+    #Act
+    #work <== add user through votes
+    #   works.votes.each do |vote|
+    #     vote.each do |user_id|
+    #       user_id
+    # @work.users << User.find(user_id)
+    #
+    # user.works.select(vote.id)includes(:vote).each do |work|
+    # vote = Work.vote
+    #
+    # user.vote_works.each do |vote_work|
+    # vote_work.username
 
 
     #work <== add users through votes
-    @work.users << User.find(user_id)
+    # @work.users << User.find(user_id)
     #Assert
+    end 
   end
 
   describe 'validations' do

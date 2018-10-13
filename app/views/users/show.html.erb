@@ -1,0 +1,19 @@
+<% if @user.nil? %>
+  <h1> 404 Not found</h1>
+<% else %>
+
+    <%= link_to "User's Summary: #{@user.username}", user_path(@user.id) %>
+    <br>
+    <%= "Joined site #{Time.now.getutc}" %>
+  <% end %>
+
+<h2>Votes</h2>
+
+<table style="width:100%" class="table">
+  <tr class="header_font">
+    <th>Media Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Category</th>
+    <th>Voted On</th>
+  </tr>

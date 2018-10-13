@@ -1,9 +1,25 @@
 <h2><%= @work.title %></h2>
-<h3><%= @work.creator %></h3>
-<h3><%= @work.published_year %></h3>
+<h3><%= "Created by: #{@work.creator}" %></h3>
+<h3><%= "Published: #{@work.published_year}" %></h3>
 <p><%= @work.description %></p>
 
-<div class="buttonContainer"><%= link_to "Back to media ranks", root_path %></div>
-<div class="buttonContainer"><%= link_to "Edit", edit_work_path(@work.id) %></div>
-<div class="buttonContainer"><%= link_to "Upvote", work_path(@work.id) %></div>
-<div class="buttonContainer"><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Please confirm you would like to delete." } %></div>
+<div class="btn btn-primary"><%= link_to "Back to media ranks", root_path %></div>
+<div class="btn btn-primary"><%= link_to "Edit", edit_work_path(@work.id) %></div>
+<div class="btn btn-primary"><%= link_to "Upvote", work_path(@work.id) %></div>
+<div class="btn btn-danger"><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Please confirm you would like to delete." } %></div>
+
+
+
+<table style="width:100%" class="table">
+  <tr class="header_font">
+    <th>User</th>
+    <th>Date</th>
+  </tr>
+<% @work.votes.each do |vote| %>
+  <tr>
+    <td>"Total votes goes here"</td>
+    <td><%= link_to vote.user.username, user_path(vote.user) %></td>
+    <td><%= vote.vote_time %></td>
+  </tr>
+<% end %>
+</table>

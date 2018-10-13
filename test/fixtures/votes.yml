@@ -10,8 +10,8 @@
 # two: {}
 # column: value
 vote_1:
-  work_id: 21
-  user_id: 31
+  work: song
+  user: sam
   vote_time: '05-15-25'
 
   vote_2:

@@ -1,19 +1,14 @@
 class VotesController < ApplicationController
-  def create #work's vote
-    @vote = Vote.new(vote_params)
-    if @vote.save # save returns true if the database insert succeeds
-      redirect_to root_path
-    else # save failed :(
-      show error message#stay at work's show page
+  def create
+    id = params[:work_id].to_i
+    @work = Work.find(id)
+    ## Figure out how to get a user of a session.
+    ## user =
+    if @work.upvote(user) == false
+      flash[:error] = "A problem occurred: Could not create #{@work.category} #{@work.title}: has already been taken"
+    else
+      flash[:sucess] = "Successfully created #{@work.category} #{@work.id}"
+      redirect_to work_path
     end
-  end
-
-
-
-
-  private
-
-  def vote_params
-    return params.require(:work).permit(:category, :title, :creator, :published_year, :description)
   end
 end
