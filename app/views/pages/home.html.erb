@@ -1,11 +1,12 @@
-<section class='spotlight'>
-  <h2 class="spotlight__header">
-    <span class="spotlight__header--prefix">Media Spotlight</span>
-    <%= link_to @top_work.title, work_path(@top_work.id), class: "spotlight__link-to"%> by <%= @top_work.creator %>
-  </h2>
-  <p class="spotlight__description">
-    <%= "#{@top_work.votes.count} votes - #{@top_work.description}." %>
-  </p>
+<% if !@works.empty? %>
+  <section class='spotlight'>
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight</span>
+      <%= link_to @top_work.title, work_path(@top_work.id), class: "spotlight__link-to"%> by <%= @top_work.creator %>
+    </h2>
+    <p class="spotlight__description">
+      <%= "#{@top_work.votes.count} votes - #{@top_work.description}." %>
+    </p>
   </section>
 
   <hr class="root__hr">
@@ -38,3 +39,36 @@
       </ul>
     </section>
   </section>
+<% else %>
+  <section class='spotlight'>
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight</span>
+      <%= "To Be Determined" %>
+    </h2>
+  </section>
+
+  <hr class="root__hr">
+
+  <section class="top-ten__container">
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        Top Movies
+      </h2>
+      <%= link_to "Add a work!", new_work_path, class: "no-works-link"%>
+    </section>
+
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        Top Books
+      </h2>
+      <%= link_to "Add a work!", new_work_path, class: "no-works-link"%>
+    </section>
+
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        Top Albums
+      </h2>
+      <%= link_to "Add an work!", new_work_path, class: "no-works-link"%>
+    </section>
+  </section>
+<% end %>

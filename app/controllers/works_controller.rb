@@ -39,7 +39,7 @@ class WorksController < ApplicationController
     if !@work.nil?
       @work.destroy_votes
       @work.destroy
-      redirect_to works_path
+      redirect_to root_path
     end
   end
 
