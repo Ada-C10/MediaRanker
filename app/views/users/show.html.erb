@@ -23,7 +23,7 @@
           <td><%= work.publication_year %></td>
           <td><%= work.category %></td>
           <% vote = work.find_vote_where_work_upvoted_by_user(@user.id) %>
-          <td><%= vote[0].created_at.strftime("%b %d,%Y") %></td>
+          <td><%= vote.created_at.strftime("%b %d,%Y") %></td>
         </tr>
       <% end %>
     </tbody>
