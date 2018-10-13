@@ -37,10 +37,10 @@
 
       <ul class ="nav app-header__user-nav-container">
         <% if @current_user %>
-        <li class="nav-item app-header__nav_item">Logged in as: <%=link_to "#{@current_user.username}", user_path(@current_user)%>
+        <li class="nav-item app-header__nav_item">Logged in as: <%=link_to "#{@current_user.username}", user_path(@current_user) %>
         </li>
         <li class="nav-item app-header__nav_item">
-        <%=link_to "Logout", logout_path, class: "btn btn-primary"%>
+        <%=link_to "Logout", logout_path, method: :delete,  class: "btn btn-primary",data: { confirm: "Are you sure you want to logout?"} %>
       </li>
         <% else %>
         <li class="nav-item app-header__nav_item">
@@ -48,9 +48,7 @@
       </li>
       <% end %>
       </ul>
-
     </nav>
-
 
   </header>
 
