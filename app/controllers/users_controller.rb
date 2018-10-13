@@ -30,5 +30,15 @@ class UsersController < ApplicationController
     flash[:success] = "Ur logged tf out, bro!! high five!"
     redirect_to root_path
   end
-  
+
+  def upvote
+    if Vote.create(user_id: session[:user_id], medium_id: params[:id])
+      flash[:success] = "bro nice upvote! i saw that!! high five for the positivity bro.."
+      redirect_to medium_path(params[:id])
+    else
+      flash.now[:error] = "uh bro something did not work sorry :/"
+      render :template => "media/show(#{params[:id]})"
+    end
+  end
+
 end
