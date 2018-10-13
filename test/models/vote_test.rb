@@ -1,45 +1,29 @@
 require "test_helper"
+require 'pry'
 
 describe Vote do
 
-  # before do
-  #   @work1 = works(:blue)
-  #   @work2 = works(:joe)
-  #   @work3 = works(:green)
-  #
-  #   @user1 = users(:house)
-  #   @user2 = users(:jones)
-  #   @user3 = users(:ada)
-# end
+  before do
+    @vote = votes(:vote1)
+    @vote1 = votes(:vote2)
+    # binding.pry
+  end
 
-# vote = Vote.new(work_id: work.id, user_id: @logged_in_user.id)
+  it "must be valid when a vote is made" do
+    is_valid = @vote.valid?
+    expect( is_valid ).must_equal true
+  end
 
-
-it "must be valid when a vote is made" do
-  # @vote = Vote.new(work_id: @work1.id, user_id: @user1.id)
-  @vote = votes(:vote1)
-
-  is_valid = @vote.valid?
-  expect( is_valid ).must_equal true
-end
+  it "must not be valid when a vote is made for the same work by the same user" do
 
 
+  # vote = Vote.new(work_id: work.id, user_id: @logged_in_user.id)
 
-# it "must not be valid when it is made by the same user for the same work" do
-#
-#   @vote = Vote.new(work_id: @work1.id, user_id: @user1.id)
-#   @vote1 = @vote = Vote.new(work_id: @work1.id, user_id: @user1.id)
-#
-#   is_valid = @vote1.valid?
-#   expect( is_valid ).must_equal false
-# end
+    repeat_vote = Vote.new(user_id: @vote.user.id, work_id: @vote.work.id)
+    # binding.pry
+    is_valid = repeat_vote.valid?
+    expect( is_valid ).must_equal false
 
-
-
-
-
-
-
-
+  end
 
 end
