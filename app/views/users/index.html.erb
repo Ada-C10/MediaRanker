@@ -1,0 +1,10 @@
+<div class="wrapper_index">
+  <h2>List of users</h2>
+  <ul>
+    <% @users.each_with_index do |user, index| %>
+    <li class="users">
+      <%=link_to "#{index +1}. " + user.username, user_path(user.id)%>
+    </li>
+  <% end %>
+</ul>
+</div>

@@ -8,4 +8,10 @@ Rails.application.routes.draw do
 
   resources :votes
 
+  resources :sessions, only: [:new, :create]
+  post '/sessions/logout', to: 'sessions#logout', as: 'logout'
+
+  resources :users
+
+  get '/login', to: 'users#new'
 end

@@ -1,53 +1,26 @@
 class UsersController < ApplicationController
-  def create
-    @vote = Vote.new(vote_params)
-    @vote.work = Work.find(params[:work_id])
-    if @vote.save
-      respond_to do |format|
-        format.html { redirect_to @vote.work }
-      end
-    end
-  end
-
-
-  # def create
-  #   vote = Vote.new(vote_params)
-  #   if vote.save
-  #     #do something
-  #   else
-  #     # flash that something went wrong
-  #   end
-  # end
-
   def index
-    @votes = Vote.all
+    @users = User.all
   end
 
   def edit
-    @vote = Vote.find_by(id: params[:id])
-  end
-
-  def new
-    @vote = Vote.new
+    @user = User.find_by(id: params[:id])
   end
 
   def destroy
-    vote = Vote.find_by(id: params[:id])
-    vote.destroy
+    @user = User.find_by(id: params[:id])
+    @user.destroy
     redirect_to root_path
   end
 
   def show
-    vote_id = params[:id]
-    @vote= Vote.find_by(id: work_id)
-    if @vote.nil?
-      head :not_found
-    end
+    @user = User.find_by(id: params[:id])
+    user_id = params[:id]
   end
 
   def update
-    @vote = Vote.find(params[:id])
-    @vote.update(work_params)
+    @user = User.find(params[:id])
+    @user.update(work_params)
     redirect_to works_path
   end
 
@@ -55,6 +28,6 @@ class UsersController < ApplicationController
 
   def user_params
     return params.require(:user).permit(
-      :vote)
+      :username)
     end
   end

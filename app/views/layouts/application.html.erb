@@ -15,9 +15,30 @@
       <%= link_to "View top media ", root_path %>
       <%= link_to "View all media ", root_path %>
       <%= link_to "Add a new work", new_work_path %>
-      <%= link_to "View all users", root_path %>
+      <%= link_to "View all users", users_path %>
     </nav>
   </header>
+    <section class="login-info">
+      <% if @logged_in_user %>
+        <p>
+          Currently logged in as user
+          <%= @logged_in_user.username %>
+          <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
+        </p>
+      <% else %>
+        <%= link_to "Log in", new_session_path, class: "btn btn-outline-info" %>
+      <% end %>
+    </section>
+  </header>
+
+  <section class="flash-messages">
+    <% flash.each do |key, message| %>
+      <% alert_class = key == "error" ? "danger" : key %>
+      <p class="alert alert-<%= alert_class %>">
+        <%= message %>
+      </p>
+    <% end %>
+  </section>
   <main>
     <%= yield %>
   </main>
