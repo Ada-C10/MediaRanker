@@ -4,16 +4,18 @@ describe User do
 
   describe 'validations' do
     before do
-      @user = User.new(name: 'valgidzi')
+      @user = users(:val)
     end
 
     it 'is valid when all required field are present' do
       expect(@user.valid?).must_equal true
+      expect(@user.errors.messages).must_be_empty
     end
 
     it 'is invalid without category' do
       @user.name = nil
       expect(@user.valid?).must_equal false
+      expect(@user.errors.messages).must_include :name
     end
 
   end
