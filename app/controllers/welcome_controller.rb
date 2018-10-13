@@ -12,6 +12,8 @@ class WelcomeController < ApplicationController
     @spotlight = top_work
   end
 
+  private 
+
   def top_work
     # TODO What if there's no works?
     # Access array of works
@@ -28,6 +30,6 @@ class WelcomeController < ApplicationController
     # Select all of category from work instances
     work_by_category = Work.all.select { |work| work.category == "#{category}" }
     # Return max by vote count for top 10
-    return work_by_category.max_by(10) { |work| work.votes.length }
+    return work_by_category.max_by(10) { |work| work.votes_count }
   end
 end

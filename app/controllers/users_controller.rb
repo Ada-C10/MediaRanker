@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 before_action :find_user, only: [:show]
-# Not setting date joined... 
+# Not setting date joined...
 after_action :set_date_joined, only: [:create]
 
 
@@ -20,8 +20,8 @@ after_action :set_date_joined, only: [:create]
   end
 
   # Do I need this?
-  def create
-  end
+  # def create
+  # end
 
 
   private
