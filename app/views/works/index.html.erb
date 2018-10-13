@@ -4,7 +4,7 @@
   <% @works.each_key do |category| %>
   <h2><%= category.capitalize %>s</h2>
     <% @works[category].each do |work| %>
-      <ul class = "works-index-table-row">
+      <ul>
         <li><%= work.print_number_of_votes %></li>
         <li><%= link_to work.title, work_path(work.id) %></li>
         <li><%= work.creator %></li>
