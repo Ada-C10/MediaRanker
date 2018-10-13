@@ -12,7 +12,8 @@ class Work < ApplicationRecord
   validates :description, length: { maximum: 50 }
 
   def self.by_category(category)
-    return Work.where(category: category).order(:title)
+    works = Work.where(category: category).order(title: :desc)
+    return works.sort_by { |work| work.number_of_votes }.reverse!
   end
 
   def self.spotlight
