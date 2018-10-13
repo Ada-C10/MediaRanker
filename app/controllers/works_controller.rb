@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.all
+    @works = Work.all.order(total_votes: :desc)
   end
 
   def new
