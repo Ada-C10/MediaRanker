@@ -5,16 +5,12 @@ class User < ApplicationRecord
 
   def vote(input_work_id)
     vote = Vote.where(user_id: self.id, work_id: input_work_id)
+    # vote = Vote.find_by(user_id: self.id, work_id: input_work_id)
     return vote
   end
 
   def array_of_votes
-    # votes = self.votes
-    # vote_ids = []
     votes = Vote.where(user_id: self.id)
-    # votes.each do |vote|
-    #   vote_ids << vote.id
-    # end
     return votes
   end
 
