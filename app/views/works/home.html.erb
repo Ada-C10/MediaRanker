@@ -6,7 +6,7 @@
 <h4><%= "#{@spotlight.print_number_of_votes} - #{@spotlight.description}" %></h4>
 <% end %>
   <% @works.each_key do |category| %>
-<h2>TOP <%= category.upcase %>S</h2>
+<h2>TOP 10 <%= category.upcase %>S</h2>
       <ul>
         <% @works[category].each do |work| %>
           <li><h3><%= link_to work.title, work_path(work.id) %></h3></li>
