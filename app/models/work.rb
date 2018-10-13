@@ -16,7 +16,12 @@ class Work < ApplicationRecord
   end
 
   def self.spotlight
-    return Work.all.max_by {|work| work.number_of_votes}
+    spotlight = Work.all.max_by {|work| work.number_of_votes}
+    if spotlight.number_of_votes < 1
+      return nil
+    else
+      return spotlight
+    end
     # tie breaking?
   end
 
@@ -27,5 +32,13 @@ class Work < ApplicationRecord
 
   def number_of_votes
     return self.votes.size
+  end
+
+  def print_number_of_votes
+    if self.votes.size != 1
+      return "#{self.votes.size} votes"
+    else
+      return "#{self.votes.size} vote"
+    end
   end
 end
