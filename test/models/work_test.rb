@@ -17,6 +17,7 @@ describe Work do
     it 'is invalid if title is blank' do
       work = works(:album)
       expect(work.valid?).must_equal false
+      expect(work.errors.messages).must_include :title
     end
 
     it 'is invalid if title is not unique' do
@@ -24,27 +25,31 @@ describe Work do
       work = Work.new(title: "Harry Potter and the Goblet of Fire" )
 
       expect(work.valid?).must_equal false
+      expect(work.errors.messages).must_include :title
     end
 
     it 'is invalid if title is not longer than 5 char' do
       work = works(:movie)
-
       expect(work.valid?).must_equal false
+      expect(work.errors.messages).must_include :title
     end
 
     it 'is invalid if creator is not present' do
       work = works(:creator)
       expect(work.valid?).must_equal false
+      expect(work.errors.messages).must_include :creator
     end
 
     it 'is invalid if publication year is not a number' do
       work = works(:publication)
       expect(work.valid?).must_equal false
+      expect(work.errors.messages).must_include :publication_year
     end
 
-    it 'is invalid if description is not a blank' do
+    it 'is invalid if description is blank' do
       work = works(:publication)
       expect(work.valid?).must_equal false
+      expect(work.errors.messages).must_include :description
     end
 
     it 'is invalid if publication_year is less than 999 and greater than 10000' do

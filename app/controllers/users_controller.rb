@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
     if user.nil?
       user = User.create(username: params[:user][:username])
-      if user.valid? == false
+      if !user.valid?
         flash[:danger] = "Login Unsuccessful"
         redirect_to new_user_path
       end
