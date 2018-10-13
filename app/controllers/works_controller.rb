@@ -1,13 +1,12 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
-  before_action :list_works, only: [:home, :index]
+  before_action :list_top_works, only: [:home, :index]
 
   def home
     @spotlight = Work.spotlight
   end
 
-  def index
-  end
+  def index; end
 
   def show
     if session[:user_id]
@@ -69,7 +68,7 @@ class WorksController < ApplicationController
   end
 
 # Filter
-  def list_works
+  def list_top_works
     # ...should this hash go in the model or the controller?
     @works = Hash.new
   # Find project constants in config/initializers/constants.rb

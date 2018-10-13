@@ -26,8 +26,25 @@ class Work < ApplicationRecord
     # tie breaking?
   end
 
+  def upvote_button
+    if !@current_user
+      return nil
+    elsif self.has_no_vote_by?(@current_user)
+      return "Upvote"
+    else
+      return "Remove Upvote"
+    end
+  end
+
+  def vote_by_current_user
+    if @current_user
+      return self.votes.find_by(user_id: @current_user.id)
+    else
+      return nil
+    end
+  end
+
   def has_no_vote_by?(current_user)
-    raise ArgumentError if current_user == false
     return !self.votes.any? { |vote| vote.user == current_user }
   end
 
