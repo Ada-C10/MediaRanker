@@ -3,6 +3,13 @@ class WorksController < ApplicationController
 before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def homepage
+  works_albums = Work.left_joins(:votes).group(:id).order("category asc, count(votes.work_id) desc").where({ category: "album" }).limit(10)
+
+  works_books = Work.left_joins(:votes).group(:id).order("category asc, count(votes.work_id) desc").where({ category: "book" }).limit(10)
+
+  works_movies = Work.left_joins(:votes).group(:id).order("category asc, count(votes.work_id) desc").where({ category: "movie" }).limit(10)
+
+  @works = [works_albums, works_books, works_movies].flatten.group_by(&:category)
   end
 
   def index
@@ -72,7 +79,7 @@ before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
       if @work.votes.count == 0
         @work.votes.create(user_id: session[:user_id])
         redirect_to(works_path)
-      else flash[:error] = "User has already voted for this work"
+      else flash[:error] = "A problem occurred: Could not upvote. User has already voted for this work"
         redirect_to(works_path)
 
       end

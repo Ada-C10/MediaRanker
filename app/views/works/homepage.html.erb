@@ -4,7 +4,20 @@
   <h3>Media Spotlight</h3>
 </section>
 
+<% @works.each do |c, works| %> <!-- iterate over the works hash that was created in in index by group_by -->
+<strong> Top </strong>
+<strong><%= c.titleize.pluralize%></strong>
 
-<h5>Top Movies</h5>
-<h5>Top Books</h5>
-<h5>Top Albums</h5>
+<table cellpadding="5">
+    <tbody>
+      <% works.each do  |w| %>
+      <tr>
+
+        <td><%= link_to "#{w.title}", work_path(w.id)%></td>
+        <td><%= w.creator %></td>
+        <% end   %>
+      </tr>
+    </tbody>
+  </table>
+
+<% end   %>
