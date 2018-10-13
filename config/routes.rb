@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   resources :users
   resources :works do
     # resources :votes, only: [:create]
-    post 'upvote', to: 'works#upvote', as: 'upvote' #  # work_update path custom action replaces creates
+    post 'upvote'#  # work_update path custom action replaces creates
   end
 end
