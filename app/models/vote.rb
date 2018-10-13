@@ -13,6 +13,6 @@ class Vote < ApplicationRecord
 # Should this array go in the model or the controller? Move to controller!
     def user_votes_table_row
       work = self.work
-      return [work.title, work.creator, work.publication, self.created_at, work.id]
+      return [work.title, work.creator, work.publication, work.category.capitalize, self.created_at, work.id]
     end
 end

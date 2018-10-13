@@ -2,16 +2,16 @@
 <p>Find me in app/views/users/show.html.erb</p>
 
 <h1>User Summary: <%= @user.name %></h1>
-<h2><%= @user.created_at.to_date.strftime("Joined site %m/%d/%Y") %></h2>
+<sub><%= @user.created_at.to_date.strftime("Joined site %b %d, %Y") %></sub>
 <h2>Votes</h2>
-<ul>
 <% @votes.each do |vote| %>
   <% row = vote.user_votes_table_row %>
-  <li><h3><%= link_to row[0], work_path(row[4]) %></h3></li>
     <ul>
-      <li><h4><%= row[1] %></h4></li>
-      <li><h4><%= row[2] %></h4></li>
-      <li><h4><%= row[3].to_date.strftime("%m/%d/%Y") %></h4></li>
+      <li><%= link_to row[0], work_path(row[5]) %></li>
+      <li><%= row[1] %></li>
+      <li><%= row[2] %></li>
+      <li><%= row[3] %></li>
+      <li><%= row[4].to_date.strftime("%m/%d/%Y") %></li>
     </ul>
   <% end %>
 </ul>
