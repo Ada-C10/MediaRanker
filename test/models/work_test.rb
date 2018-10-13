@@ -1,11 +1,11 @@
 require "test_helper"
 
 describe Work do
+  before do
+    @work = works(:harry_potter)
+  end
 
   describe 'validations' do
-    before do
-      @work = works(:harry_potter)
-    end
 
     it 'is valid when all required field are present' do
       expect(@work.valid?).must_equal true
@@ -37,9 +37,12 @@ describe Work do
     end
   end
 
-  # desribe 'relations' do
-  #   before do
-  #   end
-  #   it 'responds to '
-  # end
+  describe 'relations' do
+    it 'responds to votes method' do
+      expect(@work.votes).must_respond_to :each
+    end
+    it 'responds to upvoted_users method' do
+      expect(@work.upvoted_users).must_respond_to :each
+    end
+  end
 end
