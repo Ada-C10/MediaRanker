@@ -62,13 +62,13 @@ describe Work do
     end
 
     it 'can get votes with "votes"' do
-      user = User.create!(name: 'test name')
+      user = User.create!(name: 'test_name')
       vote = Vote.create!(user_id: user.id, work_id: @work.id)
       expect(@work.votes.ids).must_equal [vote.id]
     end
 
     it 'can get users with "users" through votes' do
-      user = User.create!(name: 'test name')
+      user = User.create!(name: 'test_name')
       expect(@work.users.ids).must_equal []
       vote = Vote.create!(user_id: user.id, work_id: @work.id)
       expect(@work.users.ids).must_equal [user.id]

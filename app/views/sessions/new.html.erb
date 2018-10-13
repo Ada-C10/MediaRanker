@@ -5,6 +5,6 @@
 
 <%= form_with model: @user, url: login_path, method: :post do |f| %>
   <%= f.label :name, 'Username (6-20 characters)' %>
-  <%= f.text_field :name, placeholder: 'Username', required: true, pattern: '(\w|-){6,20}' %>
+  <%= f.text_field :name, placeholder: 'Username', required: true, pattern: '(\w|-){6,20}', oninvalid: "this.setCustomValidity('Only letters, numbers, spaces, underscores, and dashes allowed.')", oninput: "this.setCustomValidity('')" %>
   <%= f.submit 'Login' %>
 <% end %>

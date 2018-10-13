@@ -3,7 +3,7 @@ require "test_helper"
 describe Vote do
   describe 'Vote validations' do
     before do
-      @user = User.create!(name: 'test name')
+      @user = User.create!(name: 'test_name')
       @work = Work.create!(title: 'test book', category: :album,
         creator: 'test creator', publication: 2018,
         description: 'test description')
@@ -26,7 +26,7 @@ describe Vote do
 
   describe 'Vote relations' do
     before do
-      @user = User.create!(name: 'test name')
+      @user = User.create!(name: 'test_name')
       @work = Work.create!(title: 'test book', category: :album,
         creator: 'test creator', publication: 2018,
         description: 'test description')
@@ -55,7 +55,7 @@ describe Vote do
 # TODO: prune this down
     it 'deleting a work deletes the associated vote(s)' do
       @vote.save
-      @second_user = User.create!(name: 'user two')
+      @second_user = User.create!(name: 'user_two')
       @second_vote = Vote.create(user_id: @second_user.id, work_id: @work.id)
       expect(@work.votes[1].user_id).must_equal @second_user.id
       expect(@work.votes.length).must_equal 2
