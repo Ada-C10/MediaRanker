@@ -46,6 +46,7 @@ class WorksController < ApplicationController
   end
 
   def top
+    @works = Work.featured
   end
 
   def upvote
@@ -62,7 +63,7 @@ class WorksController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       @vote = Vote.new(user: @user, work:
-        @work) #:date Date.today)
+        @work)
 
         if @vote.save
           flash[:success] = "Successfully voted for this work."

@@ -1,15 +1,59 @@
 
+<section>
 
 
-<section class="top_ten_grid">
-  <section>
-    <h2>Top Movies</h2>
-  </section>
-  <section>
-    <h2>Top Books</h2>
-  </section>
-  <section>
-    <h2>Top Album</h2>
+  <section class="spotlight">
+    <h2 class="spot_header"><span class="spot_pref"> Media Spotlight</span></h2>
+    <p class="spot_description">
+      Something something something something something </p>
   </section>
 
+  <section class="top_ten_grid">
+      <section>
+        <h2>Top Movies</h2>
+        <% @works.each do |work| %>
+        <% if work.category == "movie"%>
+        <ul>
+          <li><h4><%= link_to work.title, work_path(work.id)%></h4>
+            <p>by <%= work.creator%></p>
+            <p><%=work.votes_count%> votes</p>
+            <%end%></li>
+        </ul>
+        <%end%>
+      </section>
+
+
+
+      <section>
+        <h2>Top Books</h2>
+        <% @works.each do |work| %>
+        <% if work.category == "book"%>
+        <ul>
+          <li><h4><%= link_to work.title, work_path(work.id)%></h4>
+            <p>by <%= work.creator%></p>
+            <p><%=work.votes_count%> votes</p>
+            <%end%>
+          </li>
+        </ul>
+        <%end%>
+      </section>
+
+
+      <section>
+        <h2>Top Albums</h2>
+        <% @works.each do |work| %>
+        <% if work.category == "album"%>
+        <ul>
+          <li><h4><%= link_to work.title, work_path(work.id)%></h4>
+            <p>by <%= work.creator%></p>
+            <p><%=work.votes_count%> votes</p>
+            <%end%>
+          </li>
+        </ul>
+        <%end%>
+      </section>
+
+
+
+  </section>
 </section>
