@@ -33,11 +33,14 @@ describe User do
       expect(@user.errors.messages).must_include :name
     end
 
-    it 'is invalid unless name is only letters, numbers, spaces, dashes, and underscores' do
-      @user.name = ("test_user")
+    it 'is invalid unless name is only letters, numbers, dashes, and underscores' do
+      @user.name = ("123testuser")
       expect(@user.valid?).must_equal true
 
       @user.name = ("test-user")
+      expect(@user.valid?).must_equal true
+
+      @user.name = ("test_user")
       expect(@user.valid?).must_equal true
 
       @user.name = ("test.user")
@@ -47,10 +50,6 @@ describe User do
       @user.name = ("test!user")
       expect(@user.valid?).must_equal false
       expect(@user.errors.messages).must_include :name
-
-      @user.name = ("123testuser")
-      expect(@user.valid?).must_equal true
-      # expect(@user.errors.messages).must_include :name
     end
    end
 
