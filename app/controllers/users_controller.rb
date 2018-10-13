@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 before_action :find_user, only: [:show]
+# Not setting date joined... 
+after_action :set_date_joined, only: [:create]
+
 
   def index
     # Current user will be that model, else it will be nil (not logged in)
@@ -36,4 +39,8 @@ before_action :find_user, only: [:show]
     end
   end
 
+  private
+  def set_date_joined
+    @user.date_joined = @user.date_created.to_date
+  end
 end
