@@ -4,6 +4,8 @@ require 'test_helper'
 describe Work do
 
   describe 'relations' do
+
+    # note to self: .where returns a collection whereas find_by returns a single record
     it 'each work can have many votes' do
       votes = Vote.where(work_id: "sound_of_music")
       expect(votes.count).must_equal 2
@@ -16,6 +18,7 @@ describe Work do
       @work = Work.new(title: 'casper babypants', category: 'album')
     end
 
+    # note to self: .valid? checks against yaml file
     it 'is valid when title is unique and category are present' do
       is_valid = @work.valid?
       expect(is_valid).must_equal true
@@ -42,6 +45,7 @@ describe Work do
 
   describe 'custom_methods' do
 
+    # note to self: .new does not save the object that is made versus create! will save the object that is created.
     before do
       @user1 = User.create!(username: "junie")
       @user2 = User.create!(username: "penelope")
