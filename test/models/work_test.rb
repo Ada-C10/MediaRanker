@@ -19,7 +19,13 @@ describe Work do
       end
 
       it 'is invalid without a title' do
-        w = works(:nemo)
+        w = Work.new(
+          category: 'movie',
+          title: nil,
+          creator: 'Pixar',
+          pub_year: 2001,
+          description: 'daddy issues',
+        )
         w.title = nil
         is_valid = w.valid?
 
@@ -29,7 +35,7 @@ describe Work do
 
       it 'is invalid with a non-unique title' do
         repeat = Work.new(
-          category: 'Movie',
+          category: 'movie',
           title: 'Finding Nemo',
           creator: 'Pixar',
           pub_year: 2001,
