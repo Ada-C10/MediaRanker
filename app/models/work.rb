@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  has_many :votes
+  has_many :votes, dependent: :delete_all
 
   validates :title, presence: true, uniqueness: true
   validates :category, presence: true
