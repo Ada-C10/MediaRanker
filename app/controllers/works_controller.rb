@@ -54,7 +54,7 @@ class WorksController < ApplicationController
   def create
     if @current_user.nil?
       flash[:warning] = "You must be logged in to vote"
-    elsif
+    end
     @work = Work.new(work_params)
       if @work.save
         flash[:success] = "New work created"
