@@ -17,16 +17,22 @@
 /* Import scss content */
 @import "**/*";
 
+body{
+  font-family: "Gudea", sans-serif;
+}
+
 .body_content{
   padding: 30px;
 }
 
 .title{
-  color: #ff4500;
+  color: #FF5722;
+  font-size: 2.5rem
 }
 
 #subtitle{
   color: white;
+  font-size: 80%
 }
 
 header{
@@ -36,6 +42,7 @@ header{
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+
 }
 
 .header_title{
@@ -51,12 +58,15 @@ header{
 }
 
 .site_navigation{
-  color: #00a99a;
   width: 50vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.site_navigation > li > a{
+  color: #007b6c;
 }
 
 .login_logout{
@@ -87,4 +97,9 @@ ul {
 button{
   border-radius: 3px;
   padding: 4px;
+  background-color: #00a99a;
+}
+
+button > a{
+  color: white;
 }
