@@ -11,4 +11,11 @@
   <%= link_to "Edit", edit_work_path(@work.id) %>
   <br />
   <%= link_to "Delete #{@work.title}", work_path(@work.id), method: :delete %>
+  <br />
+  <%= button_to "Upvote", upvote_path(@work.id), method: :put%>
+
 <% end %>
+
+<br />
+<br />
+<h3><%= @work.votes.count %> Votes for this <%= @work.category.capitalize %></h3>

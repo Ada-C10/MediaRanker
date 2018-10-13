@@ -4,14 +4,851 @@
 <h3>Albums</h3>
 <% @albums.each do |album|%>
     <li><%= link_to "#{album.title}", work_path(album.id) %></li>
+    <%= link_to "Upvote", upvote_path(album.id) %>
 <% end %>
 
 <h3>Books</h3>
 <% @books.each do |book|%>
     <li><%= link_to "#{book.title}", work_path(book.id) %></li>
+    <%= link_to "Upvote", upvote_path(book.id) %>
 <% end %>
 
 <h3>Movies</h3>
 <% @movies.each do |movie|%>
     <li><%= link_to "#{movie.title}", work_path(movie.id) %></li>
+    <%= link_to "Upvote", upvote_path(movie.id) %>
 <% end %>
+
+<!-- <main>
+    <h2>List of Works</h2>
+
+  <section class="media-table">
+    <h4>Albums</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="80">Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td>6</td>
+            <td><a href="/works/19">Winter Been</a></td>
+            <td>Mackenzie Wilkinson</td>
+            <td>1932</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/19/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><a href="/works/52">no creator</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/52/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><a href="/works/142">qwqw</a></td>
+            <td>wqw</td>
+            <td>0</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/142/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><a href="/works/149">what is an invalid value????</a></td>
+            <td>jlsjldfjslfj01902-e9</td>
+            <td>0</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/149/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/18">Express Extract</a></td>
+            <td>Dorothy Jast I</td>
+            <td>1969</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/18/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/38">Back to Black</a></td>
+            <td>Amy Winehouse</td>
+            <td>2013</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/38/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/141">testing </a></td>
+            <td>mary</td>
+            <td>2015</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/141/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/98">Dogs</a></td>
+            <td>Person</td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/98/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/93">-12</a></td>
+            <td>12qw</td>
+            <td>-1234124</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/93/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/95">!2131</a></td>
+            <td></td>
+            <td>0</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/95/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/76">test two </a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/76/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/108">Harry Potter and the Prisoner of Azkaban </a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/108/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/125">qwr</a></td>
+            <td>qwe</td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/125/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/3">Kreb-Full-o Been</a></td>
+            <td>Ms. Trevion Buckridge</td>
+            <td>2016</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/3/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/102">12234</a></td>
+            <td></td>
+            <td>12345</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/102/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/68">Lighthouse</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/68/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/155">sdfs</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/155/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/84">Whoa</a></td>
+            <td></td>
+            <td>0</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/84/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/87">kjkl</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/87/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/89">read a book</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/89/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/148">just a title</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/148/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/97">this is the title</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/97/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/100">-1</a></td>
+            <td>-1</td>
+            <td>-1</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/100/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/103">true</a></td>
+            <td>true</td>
+            <td>0</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/103/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/104">To</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/104/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/106">test test test </a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/106/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/107">Crytanic</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/107/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/79">aaaaaaaakdfjalkfdjad</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/79/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/112">Hey THer</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/112/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/131">Hi</a></td>
+            <td>Hi </td>
+            <td>2018</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/131/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/132">Ho</a></td>
+            <td>Santa </td>
+            <td>0</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/132/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/151">Blue Breaker 9</a></td>
+            <td>kd</td>
+            <td>1998</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/151/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/7">Holiday Choice</a></td>
+            <td>Alexandria Lehner</td>
+            <td>1940</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/7/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/145">sdfsd</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/145/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/124">!</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/124/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/138">dsds</a></td>
+            <td>dsd</td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/138/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/139">dsdsds</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/139/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/143">sdf</a></td>
+            <td>adf</td>
+            <td>0</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/143/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/144">title</a></td>
+            <td></td>
+            <td>0</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/144/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/150">k</a></td>
+            <td></td>
+            <td>0</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/150/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/146">word</a></td>
+            <td></td>
+            <td>0</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/146/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/152">The Secret</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/152/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/156">,m, ,m ,,</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/156/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/158">test</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/158/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/160">it's a movie</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/160/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/162">Piglet</a></td>
+            <td>Warner Brothers</td>
+            <td>2001</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/162/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/165">Cheese</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/165/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/169">Bitte Orca</a></td>
+            <td>Dirty Projectors</td>
+            <td>2009</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/169/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/135">mary</a></td>
+            <td>mary</td>
+            <td>2005</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/135/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/12">Major Equinox</a></td>
+            <td>Queen Satterfield</td>
+            <td>1997</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/12/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/16">Green Select</a></td>
+            <td>Berneice Jenkins</td>
+            <td>1957</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/16/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/21">Blue Treat</a></td>
+            <td>Eliseo Gorczany</td>
+            <td>1979</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/21/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/23">Blacktop Choice</a></td>
+            <td>Casey Feil</td>
+            <td>2008</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/23/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/25">Eer</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/25/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/49">A</a></td>
+            <td>B</td>
+            <td>1990</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/49/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/65">a work</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/65/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/37">test100</a></td>
+            <td>test a </td>
+            <td>23123</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/37/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/51">a</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/51/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/56">To delte</a></td>
+            <td>the destroyer</td>
+            <td>1990</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/56/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/61">yyyyyy</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/61/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/62">ttttttttttt</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/62/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/69">I have no creator I am lawless</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/69/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/70">an album from the future</a></td>
+            <td></td>
+            <td>29999</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/70/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/71">AN ALBUM FROM THE FUTURE</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/71/upvote">Upvote</a></td>
+          </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="media-table">
+    <h4>Books</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="80">Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td>16</td>
+            <td><a href="/works/134">The Hipster and the Beast</a></td>
+            <td>Hipper T</td>
+            <td>2016</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/134/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><a href="/works/111">Harry Potter and the Gorblet of Fire</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/111/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><a href="/works/99">Cutting for hash</a></td>
+            <td>Abraham Verghese</td>
+            <td>2009</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/99/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><a href="/works/60">The Fetamorphosis</a></td>
+            <td>Franz Kafka</td>
+            <td>1915</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/60/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><a href="/works/67">Twenty Thousand Leagues Under the Brie</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/67/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><a href="/works/36">Harray Porter and the Prisoner of Azkabern </a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/36/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><a href="/works/30">Call of the Mild</a></td>
+            <td>Jack Cheddar</td>
+            <td>1971</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/30/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><a href="/works/14">Winter Pie</a></td>
+            <td>Mr. Syble Kuhn</td>
+            <td>-9</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/14/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><a href="/works/110">Let gets even lazier</a></td>
+            <td>Sandi</td>
+            <td>2018</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/110/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><a href="/works/57">The Swissterhood Of The Traveling Pants</a></td>
+            <td>Ann Brasharesdacheese</td>
+            <td>2001</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/57/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/90">Read a book</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/90/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/154">hhhhhhhhhh</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/154/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/63">How Betsy Changed Me</a></td>
+            <td>Anon Addie</td>
+            <td>2018</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/63/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/13">Melty Breaker</a></td>
+            <td>Montana Dickinson Sr.</td>
+            <td>1991</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/13/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/129">this is a test</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/129/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/46">Totally Not Twilight Fan Fiction</a></td>
+            <td>E.L. Yames</td>
+            <td>2016</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/46/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/74">test</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/74/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/9">Green Forrester</a></td>
+            <td>Raquel Hirthe</td>
+            <td>1933</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/9/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/20">Heart Mug</a></td>
+            <td>Orpha Douglas</td>
+            <td>2009</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/20/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/22">Hello Town</a></td>
+            <td>Laury Walter</td>
+            <td>2005</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/22/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/28">Mars</a></td>
+            <td>Gustav</td>
+            <td>2010</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/28/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/66">a work</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/66/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/8">Postmodern Blend</a></td>
+            <td>Meredith Brekke</td>
+            <td>1970</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/8/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/83">Willy Wonka</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/83/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/88">read a book</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/88/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/92">YOLO</a></td>
+            <td>God</td>
+            <td>0</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/92/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/105">To</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/105/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/136">mary</a></td>
+            <td>mary</td>
+            <td>2005</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/136/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/157">Bee Movie</a></td>
+            <td>hollywood shmullywood</td>
+            <td>2007</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/157/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/166">Crytanic</a></td>
+            <td>James Cameron</td>
+            <td>1998</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/166/upvote">Upvote</a></td>
+          </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="media-table">
+    <h4>Movies</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="80">Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td>14</td>
+            <td><a href="/works/43">i told you so</a></td>
+            <td></td>
+            <td>1984</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/43/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><a href="/works/167">The Craft</a></td>
+            <td>Andrew Fleming</td>
+            <td>1996</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/167/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><a href="/works/77">Bee Movie</a></td>
+            <td>hey kids, whats the deal with homework? youre not working on your home</td>
+            <td>2007</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/77/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/119">womp</a></td>
+            <td>Jambes Cameron</td>
+            <td>2009</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/119/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/55">Eternal sunshine of the spotless mind</a></td>
+            <td>Michel Gondry</td>
+            <td>2004</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/55/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/50">The Adventures of Priscilla, Queen of the Desert</a></td>
+            <td>Stephan Elliott</td>
+            <td>80</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/50/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><a href="/works/130">flipping out</a></td>
+            <td>jeff lewis</td>
+            <td>2010</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/130/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/118">Abatar</a></td>
+            <td>Jambes Cameron</td>
+            <td>2009</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/118/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/163">Game of Thrones</a></td>
+            <td>GRRM</td>
+            <td>2010</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/163/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/168">scream</a></td>
+            <td>horror films</td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/168/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/113">Alice in Wonderland</a></td>
+            <td>Person</td>
+            <td>121212</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/113/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/40">it's a movie</a></td>
+            <td>it's a person</td>
+            <td>0</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/40/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/73">test</a></td>
+            <td>hi</td>
+            <td>1990</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/73/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/81">Willy Wonka</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/81/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/120">wompw</a></td>
+            <td>Jambes Camerow</td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/120/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/121">wompww</a></td>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/121/upvote">Upvote</a></td>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td><a href="/works/58">Venom</a></td>
+            <td>Marvel</td>
+            <td>2018</td>
+            <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/58/upvote">Upvote</a></td>
+          </tr>
+      </tbody>
+    </table>
+  </section>
+
+<a class="btn btn-secondary" href="/">View top media</a>
+<a class="btn btn-primary" href="/works/new">Add a new work</a>
+
+  </main> -->

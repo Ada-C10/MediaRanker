@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :destroy]
+  before_action :find_work, only: [:show, :edit, :update, :upvote, :destroy]
 
   def index
     @works = Work.all #.order(:votes)
@@ -49,6 +49,19 @@ class WorksController < ApplicationController
       flash[:success] = "#{@work.title} deleted"
       redirect_to works_path
     end
+  end
+
+  def upvote
+
+    # if @current_user
+      vote = Vote.new(user_id: @current_user, work_id: @work.id)
+      @work.votes << vote
+      flash[:success] = "Vote successful."
+      # redirect_to(work_path)
+    # else
+    #   flash[:warning] = "Unable to submit vote"
+    #   # redirect_to(work_path)
+    # end
   end
 
   def top_media
