@@ -8,10 +8,15 @@ class Work < ApplicationRecord
   validates_inclusion_of :category, :in => ['book', 'album','movie']
 
   def self.book_list
-    Work.all.order(:created_at).select {|work| work.category = "book"}
-
+     return Work.all.select {|work| work.category == "book"}.sort_by {|e| e.votes.count}.reverse
 
   end
 
+  def self.album_list
+     return Work.all.select {|work| work.category == "album"}.sort_by {|e| e.votes.count}.reverse
+  end
 
+  def self.movie_list
+     return Work.all.select {|work| work.category == "movie"}.sort_by {|e| e.votes.count}.reverse
+  end
 end
