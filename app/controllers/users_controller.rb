@@ -3,8 +3,7 @@ class UsersController < ApplicationController
     @users = User.order(:name)
 
     @current_user = User.find_by(id: session[:user_id])
-    #this finds the current user in the session so i can display it where i need
-
+    
   end
 
   def show
@@ -20,6 +19,13 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.new(user_params)
+
+    if @user.save
+      redirect_to users_path(@user_id)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -30,6 +36,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def user_params
+    return params.require(:user).permit(:name) #this data is coming from the form
   end
 
 

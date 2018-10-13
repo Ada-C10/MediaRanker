@@ -6,6 +6,9 @@ class WorksController < ApplicationController
     @books = Work.books
     @movies = Work.movies
 
+    @current_user = User.find_by(id: session[:user_id])
+
+
   end
 
   def show
@@ -58,20 +61,20 @@ class WorksController < ApplicationController
   def upvote
     vote = Vote.new
     work = Work.find_by(id: params[:id].to_i)
-    user = User.find_by(id: params[:id].to_i)
     vote.work_id = work.id
-    vote.user_id = user.id
+    vote.user_id = User.find_by(id: session[:user_id]).id #change this up to @current_user variable later
 
     if vote.save
       flash[:success] = "Successfully upvoted"
     else
       flash[:error] = "A problem occurred: Could not upvote"
     end
+    redirect_to works_path
   end
 
   private
   def work_params
-    return params.require(:work).permit(:title, :creator, :description, :category, :publication_year) #this data is coming from the form
+    return params.require(:work).permit(:id, :title, :creator, :description, :category, :publication_year) #this data is coming from the form
   end
 
 
