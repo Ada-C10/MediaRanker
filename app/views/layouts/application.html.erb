@@ -32,6 +32,23 @@
         </ul>
         <section class = "login-info">
           <ul class="nav app-header__user-nav-container">
+            <% if @user %>
+                <li class="btn btn-outline-info">
+                  Logged in as <%= @user.name %>
+                </li>
+                <li class="nav-item app-header__nav_item">
+                <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %></li>
+              <% else %>
+                <li class="nav-item app-header__nav_item"><%= link_to "Log in", new_session_path, class: "btn btn-outline-info" %></li>
+                <li class="nav-item app-header__nav_item">
+                <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %></li>
+              <% end %>
+            </ul>
+        </section>
+
+
+
+          <!-- <ul class="nav app-header__user-nav-container">
             <li class="nav-item app-header__nav_item">'
               <% if @logged_in_user %>
                 Logged in as
@@ -46,12 +63,12 @@
               <%= link_to "Log out", logout_path, method: :post, class: "btn btn-primary" %>
             </li>
           </ul>
-        </section>
+        </section> -->
 
       </nav>
     </header>
     <main>
-      <section class= "flash">
+      <section class= "flash-messages">
         <%flash.each do |key, message| %>
           <%=message%>
         <% end %>
