@@ -33,7 +33,17 @@ describe User do
   end
 
   describe 'relations' do
-  end
+      before(:each) do
+        user = users(:jazz)
+        work = works(:book2)
+        user.works << work
+      end
 
+      it "should have created a relationship" do
+        Vote.first.user.must_be_instance_of User
+        Vote.first.work.must_be_instance_of Work
+      end
+
+    end
 
 end

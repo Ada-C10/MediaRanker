@@ -62,7 +62,37 @@ describe Work do
     end
 
     describe 'relations' do
+      before(:each) do
+        user = users(:jazz)
+        work = works(:book2)
+        user.works << work
+      end
+
+      it "should have created a relationship" do
+        Vote.first.user.must_be_instance_of User
+        Vote.first.work.must_be_instance_of Work
+      end
+
     end
 
+    describe 'custom methods' do
+      let (:book) {works(:book)}
+      let (:book2) {works(:book2)}
+      let (:book3) {works(:book3)}
+      let (:album1) {works(:album1)}
+      let (:blank) {works(:blank)}
+
+      it "sorts work by vote count" do
+        expect(Work.list_by_votes("book").first.title).must_equal book2.title
+        expect(Work.list_by_votes("book").last.title).must_equal book.title
+        expect(Work.list_by_votes("album").first.title).must_equal album1.title
+      end
+
+      it "expects nil is no work is listed" do
+        expect(Work.list_by_votes("dvd")).must_be :empty? 
+      end
+    end
+
+
+    end
   end
-end

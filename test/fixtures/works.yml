@@ -9,10 +9,24 @@ book:
     creator: Jk Rowling
     publication_year: 1999
     description: One of the hottest books in the series
-    category: Book
+    category: book
 
 # column: value
 #
+book2:
+    title: Eat, Love, Pray
+    creator: Susan Smith
+    publication_year: 1999
+    description: A memoir about love, life and the joy of moving on
+    category: book
+
+book3:
+    title: Hotel Motel
+    creator: Susan Smith
+    publication_year: 1999
+    description: A memoir about love, life and the joy of moving on
+    category: book
+
 album:
       title:
       creator: Biggie Smalls
@@ -20,6 +34,12 @@ album:
       description: One of the hottest books in the series
       category: album
 
+album1:
+      title: The Nat BIG
+      creator: Biggie Smalls
+      publication_year: 1999
+      description: One of the hottest books in the series
+      category: album
 # column: value
 movie:
       title: A
@@ -41,3 +61,10 @@ publication:
       publication_year: twenty
       description:
       category: movie
+
+creator:
+      title: You are my sunshine
+      creator: from the 90s
+      publication_year: 1999
+      description: One of the hottest books in the series
+      category: dvd

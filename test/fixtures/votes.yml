@@ -8,10 +8,28 @@
    user: jazz
    work: book
 
-# column: value
-#
  vote2:
    user: tierney
-   work: album
+   work: album1
+
+ vote3:
+   user: griffin
+   work: book2
+
+ vote4:
+   user: leanne
+   work: book2
+
+ vote5:
+   user: katherine
+   work: book2
+
+ vote6:
+   user: catlady
+   work: book3
+
+ vote7:
+   user: cheezitman
+   work: book3
 
 # column: value
