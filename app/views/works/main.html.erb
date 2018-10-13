@@ -1,12 +1,13 @@
 <main>
-      <section class="spotlight">
+  <section class="spotlight">
     <h2 class="spotlight__header">
-      <span class="spotlight__header--prefix">Media Spotlight</span>
-      <a class="spotlight__link-to" href="/works/109">🐶🐱🐶</a> by WHO DELETED HTE JAMBES CAMBERON ALBUM ????
+      <span class="spotlight__header--prefix">Media Spotlight:</span>
+      <%= link_to @top_work.title, work_path(@top_work) %>
     </h2>
     <p class="spotlight__description">
-      17 votes - do NOT delete my things - sincerly, jambes (guy from titanic)
+      <%= @top_work.votes.count %> votes - <%= @top_work.description %>
     </p>
+
   </section>
 
 <hr class="root__hr">
@@ -15,10 +16,7 @@
   <section class="top-ten__list-container">
   <h2 class="top-ten__header">Top Movies</h2>
   <ul class="list-group top-ten__list">
-    <% @works.sort_by { |work| -work.votes.count}.each do |work| %>
-
-    <%# @works.each do |work| %>
-    <%if work.category == "movie" %>
+    <% @movies.first(10).each do |work| %>
       <li class="list-group-item">
         <h4>
           <%=link_to work.title, work_path(work.id) %>
@@ -26,17 +24,14 @@
         </h4>
         <p><%= work.votes.length %></p>
       </li>
-       <%end%>
        <%end%>
   </ul>
 </section>
 
   <section class="top-ten__list-container">
   <h2 class="top-ten__header">Top Books</h2>
-
+  <% @books.first(10).each do |work| %>
   <ul class="list-group top-ten__list">
-    <% @works.sort_by { |work| -work.votes.count}.each do |work| %>
-    <%if work.category == "book" %>
       <li class="list-group-item">
         <h4>
           <%=link_to work.title, work_path(work.id) %>
@@ -44,7 +39,6 @@
         </h4>
         <p><%= work.votes.length %></p>
       </li>
-      <%end%>
       <%end%>
   </ul>
   </section>
@@ -52,8 +46,7 @@
   <section class="top-ten__list-container">
   <h2 class="top-ten__header">Top Albums</h2>
   <ul class="list-group top-ten__list">
-      <% @works.sort_by { |work| -work.votes.count}.each do |work| %>
-    <%if work.category == "album" %>
+      <% @albums.first(10).each do |work| %>
       <li class="list-group-item">
         <h4>
           <%=link_to work.title, work_path(work.id) %>
@@ -62,13 +55,10 @@
         <p><%= work.votes.length %></p>
       </li>
       <%end%>
-      <%end%>
   </ul>
 
 
-
   </section>
-
 </section>
 
 

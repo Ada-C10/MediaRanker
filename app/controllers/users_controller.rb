@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :new_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all.order(:id)
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       user = User.create(username: params[:user][:username])
       if user.valid? == false
         flash[:danger] = "Login Unsuccessful"
-        # redirect_back(fallback_location: new_user_path)
+        redirect_to new_user_path
       end
     end
 
@@ -41,8 +41,9 @@ class UsersController < ApplicationController
 
     if user.valid?
       flash[:success] = "#{user.username} is successfully logged in"
+      redirect_to root_path
     end
-    redirect_to root_path
+
   end
 
   # def update
@@ -71,7 +72,7 @@ class UsersController < ApplicationController
     # if @user.destroy
       session[:user_id] = nil
       flash[:success] = "Successfully logged out"
-      redirect_back fallback_location: root_path
+      redirect_to new_user_path
     end
 
 
@@ -80,7 +81,7 @@ end
 
 private
 
-  def find_user
+  def new_user
     id = params[:id]
     @user = User.find_by(id: id)
 

@@ -7,6 +7,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/owl.jpg">
+
   </head>
 
   <body>
@@ -31,15 +33,17 @@
             <%=link_to "View all users", users_path, class: "nav-link" %>
             </li>
           </ul>
-          <ul class="nav app-header__user-nav-container">
 
-            <li class="nav-item app-header__nav_item">
+          <ul class="nav app-header__user-nav-container">
               <% if @current_user %>
-              <li><%= link_to "Log Out", user_path(session[:user_id]), method: :delete, class: 'btn btn-secondary' %></li>
+
+
+              <li class="nav-item app-header__nav_item"><%= link_to "Login #{@current_user.username}", user_path(@current_user.id), class: 'btn btn-primary' %></li>
+              <li class="nav-item app-header__nav_item"><%= link_to "Log Out", user_path(session[:user_id]), method: :delete, class: 'btn btn-primary' %></li>
               <% else %>
-              <li><%= link_to "Login", new_user_path, class: 'btn btn-primary' %></li>
+              <li class="nav-item app-header__nav_item"> <%= link_to "Login", new_user_path, class: 'btn btn-primary' %></li>
               <% end %>
-            </li>
+
 
 
           </ul>

@@ -1,4 +1,4 @@
-<%= form_with model: @work do |f|%>
+<%= form_with model: @work, local: true do |f|%>
   <h2>Add New Work</h2>
   <div class="form-group">
   <%= f.label :category, "Category"%>
