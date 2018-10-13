@@ -34,7 +34,7 @@ class Work < ApplicationRecord
     end
   end
 
-  # Sort method - Apply to works index pagew
+  # Sort method - Apply to works index page?
   def self.sort_by_vote
 
 

@@ -16,7 +16,7 @@ class WelcomeController < ApplicationController
     if @works.all? {|work| work.votes.empty? }
       return @works[ rand(0..( works.length-1 )) ]
     else
-      @works.max_by { |work| work.votes.length }
+      @works.max_by { |work| work.votes_count}
     end
 end
 end

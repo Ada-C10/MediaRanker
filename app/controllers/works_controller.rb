@@ -14,12 +14,14 @@ class WorksController < ApplicationController
       vote.work_id = @work.id
       vote.user_id = @current_user.id
       vote.date_created = Date.today
+      vote.save
       # Shovel into work and user vote collections
       @work.votes << vote
       # Could not make votes_count update properly :(.
       #Tried starting it at 0/adding one each time there's a vote
       # And a few other techniques
-      @work.votes_count = @work.votes.length
+      # Works in pry but doesn't seem to work in browser
+      @work.votes_count += 1
       # @work.votes_count = Vote.count(:conditions => "work_id = #{@work.id}"
       # Might not need this line as it's alread attached to
       # The user via foreign key
@@ -30,10 +32,10 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.all
-    # This sorts the works but it would have been nice to do it by the vote_count attribute 
-    @movies = @works.select { |work| work.category == "movie" }.sort_by { |work| work.votes.count }.reverse
-    @albums = @works.select { |work| work.category == "album" }.sort_by { |work| work.votes.count }.reverse
-    @books = @works.select { |work| work.category == "book" }.sort_by { |work| work.votes.count }.reverse
+    # This sorts the works but it would have been nice to do it by the vote_count attribute
+    @movies = @works.select { |work| work.category == "movie" }.sort_by { |work| work.votes_count }.reverse
+    @albums = @works.select { |work| work.category == "album" }.sort_by { |work| work.votes_count }.reverse
+    @books = @works.select { |work| work.category == "book" }.sort_by { |work| work.votes_count }.reverse
   end
 
 
