@@ -66,11 +66,41 @@ nav a {
   padding: 0.5rem 1rem;
   display: block;
 }
-
+small {
+  font-size: 80%;
+  font-weight: 400;
+}
 .top_ten_container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 2em;
+}
+
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-group-item {
+  border: none;
+  padding: 0.75rem 1.25rem;
+}
+
+.list-group-item a {
+  color: #26A69A;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.top_ten_creator {
+  color: slategrey;
+}
+
+.top_ten_list_container h2 {
+  color: #26A69A;
+  font-weight: bold;
+  border-bottom: 2px solid #B2DFDB;
 }
 
 .btn-primary {
@@ -97,4 +127,29 @@ input, select, textarea {
 textarea {
   overflow: auto;
   resize: vertical;
+}
+
+#spotlight {
+  padding: 0 2rem 2rem 2rem;
+}
+
+#spotlight h2 {
+  color: #26A69A;
+}
+
+#spotlight span {
+  color: #424242;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+#spotlight a {
+  border-bottom: 2px solid;
+  color: #26A69A;
+  font-weight: bold;
+
+}
+
+#spotlight p {
+  margin-bottom: 0;
 }
