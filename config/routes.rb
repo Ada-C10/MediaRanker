@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     resources :votes, only: [:index, :create]
   end
 
+  resources :sessions, only: [:new, :create]
+  post '/sessions/logout', to: 'sessions#logout', as: 'logout'
+
   get '/home', to: 'works#homepage', as: 'home'
 
 
