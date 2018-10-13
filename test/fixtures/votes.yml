@@ -4,3 +4,15 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+vote1:
+ user: house
+ work: blue
+vote2:
+  user: house
+  work: joe
+vote3:
+  user: ada
+  work: green
+vote4:
+  user: ada
+  work: blue
