@@ -1,4 +1,5 @@
 require "test_helper"
+require 'pry'
 
 describe Work do
   let(:work) { Work.new(title: 'test') }
@@ -37,5 +38,21 @@ describe Work do
 
       expect ( @work.errors.messages ).must_include :title
     end
+  end
+
+  describe 'works_by_category' do
+
+    it 'correctly filters the list for a category' do
+      book_list = Work.works_by_category('book')
+      expect ( book_list.first.category ).must_equal 'book'
+    end
+
+    # it 'correctly collects all the books of a category' do
+    #   book_list = Work.works_by_category('book')
+    #   expect ( book_list.length ).must_equal 2
+    # end
+    # 2 books
+    # 1 move
+    # 1 album
   end
 end
