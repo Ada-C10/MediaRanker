@@ -1,4 +1,7 @@
 <h1>List of Users</h1>
+<% if @users.size == 0 %>
+<p><%= "No users yet!" %></p>
+<% else %>
   <% @users.each do |user| %>
     <ul>
       <li><%= link_to user.name, user_path(user.id) %></li>
@@ -6,6 +9,7 @@
       <li><%= (user.created_at).to_date.strftime("%b %d, %Y") %></li>
     </ul>
   <% end %>
+<% end %>
 
 <ul>
   <li><%= link_to "Back to Top Media (Home)", root_path %></li>
