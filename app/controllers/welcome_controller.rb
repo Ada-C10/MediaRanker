@@ -10,6 +10,7 @@ class WelcomeController < ApplicationController
   end
 
   def top_work
+    # TODO What if there's no works? 
     # Access array of works
     # Select work with most votes
     # If no votes for any works, select random work
