@@ -17,7 +17,6 @@ class WorksController < ApplicationController
     @movies = ((@movies.sort_by { |movie| movie.total_votes()}).reverse!).take(10)
 
 
-
     @works = Work.all.to_a
     @works = (@works.sort_by { |work| work.total_votes()}).reverse!
 

@@ -1,1 +1,14 @@
-<h1>Individual User detail page</h1>
+<h1>User Summary: user</h1>
+
+
+
+
+
+
+  <% @user.votes.each do |vote| %></p>
+  <%= link_to "#{vote.work.title}", work_path(vote.work.id) %>
+  <%= vote.work.creator %>
+  <%= vote.work.publication_year %>
+
+
+  <% end %>
