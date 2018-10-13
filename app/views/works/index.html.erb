@@ -1,21 +1,25 @@
 <h1>List of Works</h1>
   <% @works.each_key do |category| %>
-  <h2><%= category.capitalize %>s</h2>
-    <% @works[category].each do |work| %>
-      <ul>
-        <li><%= work.print_number_of_votes %></li>
-        <li><%= link_to work.title, work_path(work.id) %></li>
-        <li><%= work.creator %></li>
-        <li><%= work.publication %></li>
-        <% if @current_user && work.has_no_vote_by?(@current_user) %>
-          <li><%= link_to "Upvote", work_votes_path(work.id), method: :post %></li>
-        <% elsif @current_user %>
-        <% vote = work.votes.find_by(user_id: @current_user.id) %>
-          <li><%= link_to "Remove Your Upvote", work_vote_path(work.id, vote.id), method: :delete %></li>
-        <% else %>
-          <li>Please log in to upvote.</li>
-        <% end %>
-      </ul>
+    <h2><%= category.capitalize %>s</h2>
+    <% if @works[category].size == 0 %>
+      <p><%= "No #{category}s yet!" %></p>
+    <% else %>
+      <% @works[category].each do |work| %>
+        <ul>
+          <li><%= work.print_number_of_votes %></li>
+          <li><%= link_to work.title, work_path(work.id) %></li>
+          <li><%= work.creator %></li>
+          <li><%= work.publication %></li>
+          <% if @current_user && work.has_no_vote_by?(@current_user) %>
+            <li><%= link_to "Upvote", work_votes_path(work.id), method: :post %></li>
+          <% elsif @current_user %>
+          <% vote = work.votes.find_by(user_id: @current_user.id) %>
+            <li><%= link_to "Remove Your Upvote", work_vote_path(work.id, vote.id), method: :delete %></li>
+          <% else %>
+            <li>Please log in to upvote.</li>
+          <% end %>
+        </ul>
+      <% end %>
     <% end %>
   <% end %>
 
