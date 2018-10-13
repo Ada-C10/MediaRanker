@@ -5,8 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def login
-    user = User.find_by(name: session_params[:name])
-
+    user = User.where("name ILIKE?", session_params[:name]).first
       if user.nil?
         # Create a new user
         user = User.create(name: session_params[:name])
@@ -20,7 +19,7 @@ class SessionsController < ApplicationController
       else
         flash[:warning] = "User not created."
       end
-      
+
       redirect_to root_path
   end
 
