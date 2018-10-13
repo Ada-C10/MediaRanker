@@ -53,19 +53,21 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    @vote = Vote.create(user_id: @current_user.id, work_id: params[:id])
-
-    is_successful_save = @vote.save
-    @current_user.votes << @vote
-    work = Work.find_by(id: params[:id])
-    work.votes << @vote
-
-    if is_successful_save
-      flash[:success] = "Successfully voted on \"#{work.title}\""
-      redirect_to user_path(@current_user)
+    if @current_user
+      @vote = Vote.create(user_id: @current_user.id, work_id: params[:id])
+      if @vote.save
+        work = Work.find_by(id: params[:id])
+        flash[:success] = "Successfully voted on \"#{work.title}\""
+        redirect_to user_path(@current_user)
+      else
+        @vote.errors.full_messages.each do |message|
+          flash[:error] = message
+        end
+        redirect_back(fallback_location: works_path)
+      end
     else
-      flash[:error] = "Invalid vote"
-      redirect_to works_path, status: :bad_request
+      flash[:error] = "You must be logged in to vote"
+      redirect_back(fallback_location: works_path)
     end
   end
 
