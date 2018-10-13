@@ -1,17 +1,85 @@
-<h1>Index of all works</h1>
+<section>
+  <h2>List of all works</h2>
+  <h3>Albums</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @works.sort.each do |work| %>
+      <% if work.category == "album" %>
+      <tr>
+        <th scope="row"> <%=work.id %> </th>
+        <td> <%=link_to work.title, work_path(work.id) %> </td>
+        <td> <%=work.creator %> </td>
+        <td> <%=work.pub_year %> </td>
+        <td> (button here) </td>
+      </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <br >
 
-<ul>
-  <% @works.sort.each do |work| %>
-    <li><strong>#<%=work.id %>: <%=work.title %></strong></li>
-    type: <%=work.category %>
-    <br />
-    description: <%=work.description %>
-    <br />
-    publication year: <%=work.pub_year %>
-    <br>
-    <%=link_to "View Details", work_path(work.id) %> |
+  <h3>Books</h3>
+  <br >
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @works.sort.each do |work| %>
+      <% if work.category == "book" %>
+      <tr>
+        <th scope="row"> <%=work.id %> </th>
+        <td> <%=link_to work.title, work_path(work.id) %> </td>
+        <td> <%=work.creator %> </td>
+        <td> <%=work.pub_year %> </td>
+        <td> (button here) </td>
+      </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <br />
 
-    <%= link_to "Edit work", edit_work_path(work) %> |    <%= link_to "Delete work", work_path(work), method: :delete, data: { confirm: "Are you sure you want to delete this work?" } %>
-    <br> </br>
-  <% end %>
-</ul>
+  <h3>Movies</h3>
+  <br >
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @works.sort.each do |work| %>
+      <% if work.category == "movie" %>
+      <tr>
+        <th scope="row"> <%=work.id %> </th>
+        <td> <%=link_to work.title, work_path(work.id) %> </td>
+        <td> <%=work.creator %> </td>
+        <td> <%=work.pub_year %> </td>
+        <td> (button here) </td>
+      </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+</section>

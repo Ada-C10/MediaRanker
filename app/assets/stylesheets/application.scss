@@ -43,20 +43,20 @@ header small{
   color: white;
 }
 
-header .btn-primary{
+.btn-primary{
   background-color: rgb(168, 82, 11);
   border-color: rgb(168, 82, 11);
 }
 
-header .btn-primary:hover{
+.btn-primary:hover{
   background-color: rgb(140, 68, 8);
   border-color: rgb(140, 68, 8);
 }
 
-.btn{
-  position: absolute;
-  right: 20px;
-}
+// .btn{
+//   position: absolute;
+//   right: 20px;
+// }
 
 .nav{
   margin: 20px;

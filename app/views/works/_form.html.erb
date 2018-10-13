@@ -1,0 +1,45 @@
+<%= form_with model: @work do |f| %>
+
+<div class="form-group">
+  <%= f.label :title%>
+  <div class="col-md-8">
+    <%= f.text_field :title, class: "form-control"%>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="cateogory">Category</label>
+  <div class="col-md-8">
+    <select class="form-control" id="exampleSelect1">
+      <option>movie</option>
+      <option>album</option>
+      <option>book</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :creator%>
+  <div class="col-md-8">
+    <%= f.text_field :creator, class: "form-control"%>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :pub_year%>
+  <div class="col-md-8">
+    <%= f.text_field :pub_year, class: "form-control"%>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :description%>
+  <div class="col-md-8">
+    <%= f.text_area :description, class: "form-control"%>
+  </div>
+</div>
+<br />
+
+<button type="submit" class="btn btn-primary">  <%= action_button%> </button>
+
+<% end %>

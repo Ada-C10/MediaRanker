@@ -10,6 +10,7 @@
 .top-media-columns{
   display: grid;
   grid-column: 1fr 1fr 1fr;
+  padding: 20px;
 }
 
 .books-container{
@@ -18,4 +19,8 @@ grid-column: 2 / 3;
 
 .albums-container{
 grid-column: 3 / 4;
+}
+
+.top-ten-header{
+  padding-left: 10px;
 }

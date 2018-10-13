@@ -1,0 +1,9 @@
+<section>
+  <h2>Edit media</h2>
+
+  <%= render partial: 'layouts/form_errors',
+  locals: {model: @work}  %>
+  
+  <%= render partial: "form", locals: {directions: "Complete this form to edit media:", action_button: "Edit Media"} %>
+
+</section>

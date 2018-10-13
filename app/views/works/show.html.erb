@@ -1,2 +1,24 @@
+<section>
 
-<h1> Detail of Work </h1>
+  <h2>    <% if  @work.category == "album"%>
+    🎙
+    <% elsif  @work.category == "movie"%>
+    🎬
+    <% else  @work.category == "book"%>
+    📖
+    <% end %>
+    <br />
+    <%= @work.title %>
+  </h2>
+
+  <p><b>Created by:</b> <%=@work.creator %></p>
+  <p><b>Published:</b> <%=@work.pub_year %></p>
+  <p><b>Description:</b> <%=@work.description %></p>
+
+  <a class="btn btn-primary" href="/">Back to media ranks</a>
+  <a class="btn btn-primary" href=<%= edit_work_path %>>Edit</a>
+  <!-- <a class="btn btn-primary" rel="nofollow" data-method="post" href=>Upvote</a> -->
+
+  <%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title}?" }, class: "btn btn-outline-danger" %>
+
+</section>

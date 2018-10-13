@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :destory]
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def index
     @works = Work.all
@@ -33,7 +33,7 @@ class WorksController < ApplicationController
 
 
   def update
-    if @work.update(user_params)
+    if @work.update(work_params)
       redirect_to work_path
     else
       render :edit , status: :bad_request
@@ -43,7 +43,7 @@ class WorksController < ApplicationController
 
   def destroy
     @work.destroy
-    redirect_to works_path
+    redirect_to homes_path
   end
 
 
@@ -56,5 +56,4 @@ class WorksController < ApplicationController
   def find_work
     @work = Work.find_by(id: params[:id])
   end
-
 end
