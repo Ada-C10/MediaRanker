@@ -57,13 +57,12 @@ class WorksController < ApplicationController
     @vote.user_id = session[:user_id]
     @user = User.find_by(id: @vote.user_id)
 
-
     @votes = Vote.where(user_id: @vote.user_id, work_id: @vote.work_id)
 
     if @votes.empty?
       if @vote.save
         flash[:success] = "Successfully upvoted!"
-        redirect_to work_path(@vote.work_id)
+        redirect_to request.referrer
       end
     else
       flash[:error] = "A problem occurred: user has already voted this work."
