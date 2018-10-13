@@ -9,13 +9,17 @@ class SessionsController < ApplicationController
       if user.nil?
         # Create a new user
         user = User.create(name: session_params[:name])
+        salutation = "Welcome"
+        session[:salutation] = "Hi"
       else
         # Log in the existing user
+        salutation = "Welcome back"
+        session[:salutation] = "Welcome back"
       end
 
       session[:user_id] = user.id
       if session[:user_id]
-        flash[:success] = "Succesfully logged in. Welcome #{user.name}!"
+        flash[:success] = "Succesfully logged in. #{salutation} #{user.name}!"
       else
         flash[:warning] = "User not created."
       end
