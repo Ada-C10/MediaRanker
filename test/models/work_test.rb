@@ -1,10 +1,10 @@
 require "test_helper"
 
 describe Work do
-  let(:work) { Work.new }
+  let(:work) { works(:one) }
 
   it "must be valid" do
-    value(work).must_be :valid?
+    expect(work).must_be :valid?
   end
 
   it 'has required fields' do

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-#  has_many :works
+  has_many :works
 
-validates :user_name, presence: true
+validates :user_name, :id, presence: true
 
 
 end

@@ -1,17 +1,17 @@
 require "test_helper"
 
 describe User do
-  let(:user) { User.new }
+  let(:user) { users(:simple) }
 
-  # it "must be valid" do
-  #   value(user).must_be :valid?
-  # end
+   it "must be valid" do
+    value(user).must_be :valid?
+   end
 
-  it 'has required fields' do
+  it 'user has the required fields' do
     fields = [:user_name ]
 
     fields.each do |field|
-      expect(user).must_respond_to field
+      expect(field).must_equal :user_name
     end
   end
 end
