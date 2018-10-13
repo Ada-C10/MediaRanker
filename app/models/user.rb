@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  # self note: the dependent: :delete_all allows for a work to be deleted even though a user and a work are connected using foreign keys in the votes table
   has_many :votes, dependent: :delete_all
 
   validates :username, presence: true, uniqueness: true
