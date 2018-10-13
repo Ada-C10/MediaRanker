@@ -7,5 +7,7 @@ class HomepageController < ApplicationController
 
     @albums = Work.where(category: "album").order(total_votes: :desc).take(10)
     # @albums = Work.where(category: "album")
+
+    @media_spotlight = Work.order(total_votes: :desc).first
   end
 end
