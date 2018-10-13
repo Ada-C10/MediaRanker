@@ -38,7 +38,7 @@ describe User do
   end
 
   describe 'custom methods' do
-
+    # self note: the users(:june) is accessing the users yaml file and locating the object whose key is 'june'
     before do
       @user1 = users(:june)
       @work1 = works(:sound_of_music)
