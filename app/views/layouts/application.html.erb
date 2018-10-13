@@ -8,7 +8,7 @@
     <title>Media Ranker 2.0</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= favicon_link_tag asset_path('owl.jpg'), :rel => 'shortcut icon' %>
+    <%= favicon_link_tag asset_path('owl.png'), :rel => 'shortcut icon' %>
   </head>
 
   <body cz-shortcut-listen="true">
@@ -72,6 +72,7 @@
         <% end %>
       </section>
     <% end %>
+
     <main>
       <%= yield %>
     </main>
