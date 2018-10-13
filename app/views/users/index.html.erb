@@ -1,0 +1,19 @@
+<section class="users">
+  <h2>List of Users</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @users.each do |user| %>
+        <td><%= link_to "#{user.username}", user_path(user.id) %></td>
+      </tr>
+      <% end %>
+  </table>
+
+  <button type="button" class="btn btn-info"><%= link_to "Back to Media List", top_works_path %></button>
+</section>
