@@ -16,6 +16,8 @@ class SessionsController < ApplicationController
       # redirect_to signup_path
       user = User.new(username: params[:username])
       if user.save
+        #login user / assign session user_id as current user
+        session[:user_id] = user.id
         flash[:success] = "User '#{user.username}' signed up and logged in."
         redirect_to user_path(user)
       else
@@ -26,6 +28,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session[:user_id] = user.id
+    flash[:success] = "Successfully logged out."
+    redirect_to root_path
   end
 
 end
