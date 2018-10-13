@@ -51,7 +51,7 @@
     </header>
     <% if !flash.empty? %>
       <section class="alert__container">
-        <% if flash.count == 1 %>
+        <% if flash.count == 1 && flash.first[0] == "success"%>
           <div class="alert alert-success">
             <span><%= flash[:success] %></span>
           </div>
