@@ -45,20 +45,33 @@ nav {
 .nav-link:hover {
   color: #00796B;
 }
-
+.user {
+  margin-right: 1.5rem;
+}
 .btn-primary {
   background-color: #26A69A;
   border-color: #26A69A;
   color: white;
-  margin-left: 1rem;
 }
 
 .btn-primary:hover {
   background-color: #00796B;
 }
 
+.btn-secondary:hover {
+  background-color: #00796B;
+}
+
+.btn-danger:hover {
+  background-color: #00796B;
+}
+
 h2, h3 {
   color: #26A69A;
+  font-weight: bold;
+}
+
+h4 {
   font-weight: bold;
 }
 
@@ -121,4 +134,8 @@ main {
 
 .top-ten-creator {
   color: gray;
+}
+
+.media-vote {
+  margin-top: 2rem;
 }
