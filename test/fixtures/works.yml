@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  publication_year: 1
-  description: MyString
-  category: MyString
+work_one:
+  title: work_one
+  publication_year: 2000
+  description: A description of my work
+  category: Album
 
-two:
-  title: MyString
-  publication_year: 1
-  description: MyString
-  category: MyString
+work_two:
+  title: work_two
+  publication_year: 2001
+  description: A description of my second work
+  category: Movie
