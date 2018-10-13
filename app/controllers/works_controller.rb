@@ -56,23 +56,33 @@ class WorksController < ApplicationController
     end
   end
 
-  # def create
-  #   if params[:work_id]
-  #     work = Work.find_by(id: params[:work_id])
-  #
-  #     @vote = work.votes.new
-  #     @vote.user_id = @current_user.id
-  #
-  #   else
-  #     @vote = Vote.new
-  #   end
-  #
-  #   if @vote.save
-  #     redirect_to work_path(id: work.id)
-  #   else
-  #     redirect_back fallback_location: root_path
-  #   end
-  # end
+  def upvote
+
+    if !session[:user_id]
+      flash[:warning] = "A problem occurred: You must log in to do that"
+
+    else
+
+      work = Work.find_by(id: params[:id].to_i)
+
+      if Vote.duplicated_votes( @current_user.id, work.id) == false
+         vote = Vote.new
+         vote.user_id = @current_user.id
+         vote.work_id = work.id
+
+         if vote.save
+           flash[:success] = "Successfully upvoted!"
+
+         else
+           flash[:warning] = "Cannot save, try again!"
+
+        end
+      else
+        flash[:warning]= "Already upvoted!"
+     end
+   end
+   redirect_to works_path
+  end
 
 
 private
