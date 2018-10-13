@@ -3,14 +3,17 @@ class WelcomeController < ApplicationController
     @works = Work.all
     # SELECT all works for EACH category
     # SHOW work title, publisher, votes
-    @movies = @works.select { |work| work.category == "movie" }
-    @albums = @works.select { |work| work.category == "album" }
-    @books = @works.select { |work| work.category == "book" }
+    @movies = top_ten_list("movie")
+    # @works.select { |work| work.category == "movie" }
+    @albums = top_ten_list("album")
+    # @works.select { |work| work.category == "album" }
+    @books = top_ten_list("book")
+    # @works.select { |work| work.category == "book" }
     @spotlight = top_work
   end
 
   def top_work
-    # TODO What if there's no works? 
+    # TODO What if there's no works?
     # Access array of works
     # Select work with most votes
     # If no votes for any works, select random work
@@ -19,5 +22,12 @@ class WelcomeController < ApplicationController
     else
       @works.max_by { |work| work.votes_count}
     end
-end
+  end
+
+  def top_ten_list(category)
+    # Select all of category from work instances
+    work_by_category = Work.all.select { |work| work.category == "#{category}" }
+    # Return max by vote count for top 10
+    return work_by_category.max_by(10) { |work| work.votes.length }
+  end
 end

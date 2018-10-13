@@ -12,8 +12,8 @@ class Work < ApplicationRecord
   validates :description, presence: true
   validates :title, presence: true, uniqueness: true
 
-  def self.top_ten_list(category)
-    # Select all of category
+  def top_ten_list(category)
+    # Select all of category from work instances 
     work_by_category = Work.all.select { |work| work.category.downcase == "#{category}" }
     # Return max by vote count for top 10
     return work_by_category.max_by(10) { |work| work.votes.length }
