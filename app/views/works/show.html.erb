@@ -4,7 +4,7 @@
 <p><%= @work.description %></p>
 
 <ul>
-  <li><%= link_to "Back to media ranks", root_path %></li>
+  <li><%= link_to "Back to Media Ranks", root_path %></li>
   <li><%= link_to "Edit", edit_work_path(@work.id) %></li>
 
 <% if @current_user && @work.has_no_vote_by?(@current_user) %>
@@ -16,3 +16,13 @@
 <% end %>
   <li><%= link_to "Delete", work_path(@work.id), method: :delete %></li>
 </ul>
+
+<!-- TODO: table of all votes for this work -->
+
+<h2><%= "#{@work.print_number_of_votes} for this #{@work.category.capitalize}" %></h2>
+<% @work.votes.each do |vote| %>
+  <ul>
+    <li><%= link_to vote.user.name, user_path(vote.user.id) %></li>
+    <li><%= vote.created_at.to_date.strftime("%b %d, %Y") %></li>
+  </ul>
+<% end %>
