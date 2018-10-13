@@ -47,9 +47,11 @@
     </header>
 
     <section class="flash_messages">
-      <% flash.each do |key, message| %>
-        <%= message %>
-      <% end %>
+        <p>
+          <% flash.each do |key, message| %>
+            <%= message %>
+          <% end %>
+        </p>
     </section>
 
     <section class = "body_content">

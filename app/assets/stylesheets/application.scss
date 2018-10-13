@@ -17,6 +17,11 @@
 /* Import scss content */
 @import "**/*";
 
+.flash_messages{
+  background-color: #ceeed8;
+  margin-top: 25px;
+}
+
 body{
   font-family: "Gudea", sans-serif;
 }
@@ -102,4 +107,12 @@ button{
 
 button > a{
   color: white;
+}
+
+.flash_text{
+  padding-right: 20px;
+}
+
+.flash_messages > p{
+  padding-left: 30px;
 }
