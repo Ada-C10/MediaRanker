@@ -1,6 +1,5 @@
 class WorksController < ApplicationController
   before_action :find_work
-  before_action :find_user
 
   def index
     @works = Work.all
@@ -13,7 +12,6 @@ class WorksController < ApplicationController
 
   def show
     work_id = params[:id]
-    find_work
     if @work.nil?
       head :not_found
     end
@@ -21,7 +19,6 @@ class WorksController < ApplicationController
 
   def new
     if params[:user_id]
-      user = User.find_by(id: params[:user_id])
       @work = user.works.new
       # Same thing as above:
       # @work = Work.new(user: user)
@@ -46,7 +43,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
   end
 
   def update
@@ -60,13 +56,26 @@ class WorksController < ApplicationController
   end
 
   def upvote
+<<<<<<< Updated upstream
     if user_id != session[:user_id]
       flash[:error] = "Must be logged in to vote!"
     else
       vote = Vote.new
       vote.work_id = params[:id]
       vote.user_id = current_user.id
+=======
+    if @current_user.already_voted?
+      flash[:error] = "Already voted on this work"
+    else
+      vote = Vote.new
+      vote.user_id = @current_user.id
+      vote.work_id = @work.id
+      vote.save
+
+
+>>>>>>> Stashed changes
     end
+
   end
 
 
