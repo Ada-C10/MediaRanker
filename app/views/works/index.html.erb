@@ -11,7 +11,7 @@
   <th>Published</th>
   <th>Upvote</th>
 </tr>
-  <% @works.each do |work| %>
+  <% @sorted_works.each do |work| %>
   <% if work.category == 'book' %>
     <tr>
       <td><%= work.votes.length %></td>
@@ -27,26 +27,50 @@
 <strong>
   Albums
 </strong>
-<ul>
-  <% @works.each do |work| %>
-  <% if work.category == 'album' %>
-  <li>
-    <%= link_to "#{work.title}  #{work.creator} #{work.publication_year} #{work.description}", work_path(work.id)%>
-  </li>
-    <% end %>
+
+<table id="">
+<tr>
+  <th>Votes</th>
+  <th>Title</th>
+  <th>Created By</th>
+  <th>Published</th>
+  <th>Upvote</th>
+</tr>
+<% @sorted_works.each do |work| %>
+<% if work.category == 'album' %>
+  <tr>
+    <td><%= work.votes.length %></td>
+    <td><%= link_to "#{work.title} ", work_path(work.id)%></td>
+    <td><%= work.creator %></td>
+    <td><%= work.publication_year %></td>
+    <td><%= link_to "Upvote", upvote_path(work.id), method: :post %></td>
   <% end %>
-</ul>
+  </tr>
+<% end %>
+</table>
 
 
 <strong>
   Movies
 </strong>
-<ul>
-  <% @works.each do |work| %>
-  <% if work.category == 'movie' %>
-  <li>
-    <%= link_to "#{work.title}  #{work.creator} #{work.publication_year} #{work.description}", work_path(work.id)%>
-  </li>
-    <% end %>
+
+<table id="">
+<tr>
+  <th>Votes</th>
+  <th>Title</th>
+  <th>Created By</th>
+  <th>Published</th>
+  <th>Upvote</th>
+</tr>
+<% @sorted_works.each do |work| %>
+<% if work.category == 'movie' %>
+  <tr>
+    <td><%= work.votes.length %></td>
+    <td><%= link_to "#{work.title} ", work_path(work.id)%></td>
+    <td><%= work.creator %></td>
+    <td><%= work.publication_year %></td>
+    <td><%= link_to "Upvote", upvote_path(work.id), method: :post %></td>
   <% end %>
-</ul>
+  </tr>
+<% end %>
+</table>
