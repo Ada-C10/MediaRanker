@@ -4,20 +4,17 @@
 <p><%= @work.description %></p>
 
 <ul>
-  <li><%= link_to "Back to Media Ranks", root_path %></li>
+  <li><%= link_to "Back to Top Media (Home)", root_path %></li>
   <li><%= link_to "Edit", edit_work_path(@work.id) %></li>
-
-<% if @current_user && @work.has_no_vote_by?(@current_user) %>
-  <li><%= link_to "Upvote", work_votes_path(@work.id), method: :post %></li>
-<% elsif @current_user %>
-  <li><%= link_to "Remove Your Upvote", work_vote_path(@work.id, @vote.id), method: :delete %></li>
-<% else %>
-  <li>Please log in to upvote.</li>
-<% end %>
+  <% if @current_user && @work.has_no_vote_by?(@current_user) %>
+    <li><%= link_to "Upvote", work_votes_path(@work.id), method: :post %></li>
+  <% elsif @current_user %>
+    <li><%= link_to "Remove Your Upvote", work_vote_path(@work.id, @vote.id), method: :delete %></li>
+  <% else %>
+    <li>Please log in to upvote.</li>
+  <% end %>
   <li><%= link_to "Delete", work_path(@work.id), method: :delete %></li>
 </ul>
-
-<!-- TODO: table of all votes for this work -->
 
 <h2><%= "#{@work.print_number_of_votes} for this #{@work.category.capitalize}" %></h2>
 <% @work.votes.each do |vote| %>
