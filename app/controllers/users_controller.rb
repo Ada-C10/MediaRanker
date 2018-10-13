@@ -32,13 +32,24 @@ class UsersController < ApplicationController
   end
 
   def upvote
-    if Vote.create(user_id: session[:user_id], medium_id: params[:id])
-      flash[:success] = "bro nice upvote! i saw that!! high five for the positivity bro.."
-      redirect_to medium_path(params[:id])
+    if Vote.find_by(user_id: session[:user_id], medium_id: params[:id])
+      flash[:error] = "bro lol you can't vote for the same thing twice! lmao dude ur a TRIP!"
+      show_redirect
     else
-      flash.now[:error] = "uh bro something did not work sorry :/"
-      render :template => "media/show(#{params[:id]})"
+      if Vote.create(user_id: session[:user_id], medium_id: params[:id])
+        flash[:success] = "bro nice upvote! i saw that!! high five for the positivity bro.."
+        show_redirect
+      else
+        flash[:error] = "uh bro something did not work sorry :/"
+        show_redirect
+      end
     end
+  end
+
+  private
+
+  def show_redirect
+    return redirect_to medium_path(params[:id])
   end
 
 end
