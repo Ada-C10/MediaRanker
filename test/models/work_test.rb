@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe Work do
-  let(:work) { Work.new }
+  let(:work) { works(:alanis) }
 
   it "must be valid" do
     value(work).must_be :valid?
@@ -28,7 +28,7 @@ describe 'validations' do
     # Assert
     expect(valid).must_equal false
     expect(work.errors.messages).must_include :title
-    expect(work.errors.messages[:title]).must_equal ["can't be blank"]
+    expect(work.errors.messages[:title]).must_equal ["can't be blank", "has already been taken"]
   end
 
 

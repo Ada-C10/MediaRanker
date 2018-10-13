@@ -33,8 +33,9 @@ class WorksController < ApplicationController
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
-    end
       render :new # show the new book form view again
+    end
+
   end
 
   def sort_category #sorting categories for view

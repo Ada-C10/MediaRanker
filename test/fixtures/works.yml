@@ -6,11 +6,16 @@
 #
 alanis:
   creator: Alanis Morisette
-  year: '1995'
+  year: 1995
   category: album
   title: Jagged Little Pill
-  description: classic 90's 
+  description: classic 90's
 # column: value
 #
-two: {}
+pygmalion:
+  creator: Ovid
+  year: 8
+    category: literature
+    title: Metamorphoses
+    description: the greek poet's mangum opus
 # column: value
