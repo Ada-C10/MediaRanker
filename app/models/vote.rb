@@ -3,6 +3,6 @@ class Vote < ApplicationRecord
   belongs_to :user
   belongs_to :work
 
-  # validates :vote, uniqueness: true
+  validates :user_id, uniqueness: { scope: :work_id, message: "only one vote"}
 
 end
