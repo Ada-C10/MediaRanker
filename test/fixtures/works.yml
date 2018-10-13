@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+work_1:
   category: Album
   title: MyAlbum
   creator: MyCat
   publication_year: 2018-11-08
   description: Fatty Catty
 
-two:
+work_2:
   category: Book
   title: MySBook
   creator: MyPup

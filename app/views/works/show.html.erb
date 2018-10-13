@@ -17,6 +17,9 @@
   <thead>
     <tr>
       <th>User</th>
+      <% @book.users.each do |user| %>
+        <%= user.name %>
+      <% end %>
       <th>Date</th>
     </tr>
   </thead>

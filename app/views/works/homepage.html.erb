@@ -2,6 +2,12 @@
 
 <section>
   <h3>Media Spotlight</h3>
+  <strong> <%= @top_work.title %> </strong>
+  <section>
+    <%= @top_work.description %>
+    <div><%= @top_work.votes.count %> votes</div>
+    <div> created by: <%= @top_work.creator %></div>
+  </section>
 </section>
 
 <% @works.each do |c, works| %> <!-- iterate over the works hash that was created in in index by group_by -->
@@ -12,9 +18,9 @@
     <tbody>
       <% works.each do  |w| %>
       <tr>
-
         <td><%= link_to "#{w.title}", work_path(w.id)%></td>
         <td><%= w.creator %></td>
+          <td><%= pluralize(w.votes.count, "vote")%></td>
         <% end   %>
       </tr>
     </tbody>

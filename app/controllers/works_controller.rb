@@ -9,7 +9,12 @@ before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   works_movies = Work.left_joins(:votes).group(:id).order("category asc, count(votes.work_id) desc").where({ category: "movie" }).limit(10)
 
-  @works = [works_albums, works_books, works_movies].flatten.group_by(&:category)
+  work = [works_albums, works_books, works_movies].flatten
+
+  @top_work = work.max_by { |w| w.votes.count }
+
+  @works = work.group_by(&:category)
+
   end
 
   def index
