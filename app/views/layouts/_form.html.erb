@@ -18,7 +18,7 @@
   <%= f.label :category, "Category" %>
   <%= f.select :category, VALID_WORK_CATEGORIES, selected: selected_category %>
 
-  <%= f.label :publication, 'Year Published' %>
+  <%= f.label :publication, 'Publication Year' %>
   <%= f.text_field :publication, placeholder: publication_placeholder, required: true, maxlength: 4 %>
 
   <%= f.submit button_title, class: "#{this_model}-button btn btn-primary" %>
