@@ -3,6 +3,8 @@ require "test_helper"
 
 describe Work do
   let(:work) { works(:hello) }
+  let(:work2) { works(:pride) }
+  let(:work3) { works(:taken) }
 
   it "must be valid" do
     value(work).must_be :valid?
@@ -62,29 +64,116 @@ describe Work do
 
       expect(valid).must_equal false
       expect(work.errors.messages).must_include :category
-      expect(work.errors.messages[:category]).must_equal ["can't be blank"]
+      expect(work.errors.messages[:category]).must_equal ["can't be blank", "is not included in the list"]
+    end
+
+    it 'must have a category of book, album or movie' do
+       work.category = "boo"
+       valid = work.valid?
+       expect(valid).must_equal false
+
+       work.category = "book"
+       valid = work.valid?
+       expect(valid).must_equal true
+
+       work.category = "albu"
+       valid = work.valid?
+       expect(valid).must_equal false
+
+       work.category = "album"
+       valid = work.valid?
+       expect(valid).must_equal true
+
+       work.category = "movie"
+       valid = work.valid?
+       expect(valid).must_equal true
     end
   end
 
-  # describe 'self.by_category' do
-  #   it 'returns an array ' do
-  #     expect(Work.by_category("Album")).must_be_instance_of Array
-  #
-  #   end
-  #
-  #   it 'includes instances of work' do
-  #      expect(Work.by_category("Album").first).must_be_instance_of Work
-  #
-  #   end
-  #
-  #   it 'returns an empty array when no works in one category' do
-  #     work.category = "Book"
-  #     work.save
-  #
-  #     expect(Work.by_category("Album")).must_equal []
-  #
-  #   end
-  #
-  # end
+  describe 'self.book_list' do
+    it 'returns an array ' do
+      expect(Work.book_list).must_be_instance_of Array
+    end
 
+    it 'includes instances of work with the category of book' do
+      expect(Work.book_list.first).must_be_instance_of Work
+      expect(Work.book_list.first.category).must_equal 'book'
+    end
+
+    it 'return the right number of books' do
+      expect(Work.book_list.count).must_equal 1
+    end
+
+    it 'return the books ordered by votes' do
+      work3.category = "book"
+      work3.save
+      expect(Work.book_list.first).must_equal work2
+    end
+
+    it 'returns an empty array when no works in book category' do
+      work2.category = "movie"
+      work2.save
+      expect(Work.book_list).must_equal []
+    end
+  end
+
+  describe 'self.album_list' do
+    it 'returns an array ' do
+      expect(Work.album_list).must_be_instance_of Array
+    end
+
+    it 'includes instances of work with the category of album' do
+      expect(Work.album_list.first).must_be_instance_of Work
+      expect(Work.album_list.first.category).must_equal 'album'
+    end
+
+    it 'return the right number of albums' do
+      expect(Work.album_list.count).must_equal 1
+    end
+
+    it 'return the albums ordered by votes' do
+      work3.category = "album"
+      work3.save
+      expect(Work.album_list.first).must_equal work
+    end
+
+    it 'returns an empty array when no works in album' do
+      work.category = "movie"
+      work.save
+      expect(Work.album_list).must_equal []
+    end
+  end
+
+  describe 'self.movie_list' do
+
+
+    it 'returns an array ' do
+      expect(Work.movie_list).must_be_instance_of Array
+    end
+
+    it 'includes instances of work with the category of movie' do
+      expect(Work.movie_list.first).must_be_instance_of Work
+      expect(Work.movie_list.first.category).must_equal 'movie'
+    end
+
+    it 'return the right number of movies' do
+      work2.category = "movie"
+      work2.save
+      expect(Work.movie_list.count).must_equal 2
+    end
+
+    it 'return the movies ordered by votes' do
+      work2.category = "movie"
+      work2.save
+      expect(Work.movie_list.first).must_equal work2
+    end
+
+    it 'returns an empty array when no works in movie category' do
+      work3.category = "album"
+      work3.save
+      expect(Work.movie_list).must_equal []
+    end
+
+
+  end
 end
