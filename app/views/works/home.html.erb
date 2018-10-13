@@ -2,15 +2,13 @@
 <section class="spotlight">
     <h2 class="spotlight__header">
       <span class="spotlight__header--prefix">Media Spotlight</span>
-      <a class="spotlight__link-to">
+      <a class="spotlight__link-to"> <%= link_to @works.first.title, work_path(@works.first.id)%> by
+        <%= @works.first.total_votes %> votes -
+
     </h2>
     <p class="spotlight__description">
     </p>
   </section>
-
-
-
-<h1>Works index page</h1>
 
 <h4> Albums </h4>
 
@@ -21,7 +19,6 @@
       <th scope="col">Title</th>
       <th scope="col">Created By</th>
       <th scope="col">Published</th>
-      <th scope="col">Upvote</th>
     </tr>
   </thead>
   <tbody>
@@ -32,8 +29,6 @@
       <td><%= link_to "(#{album.title})", work_path(album.id) %></td>
       <td><%= "#{album.creator}"%></td>
       <td><%= "#{album.publication_year}"%></td>
-      <td><%= link_to "Upvote", upvote_work_path(album.id), method: :post, class: "btn btn-outline-info"
-      %></td>
       <p>
         <% end %>
       </tr>
@@ -52,7 +47,6 @@
         <th scope="col">Title</th>
         <th scope="col">Created By</th>
         <th scope="col">Published</th>
-        <th scope="col">Upvote</th>
       </tr>
     </thead>
     <tbody>
@@ -63,9 +57,8 @@
         <td><%= link_to "(#{book.title})", work_path(book.id) %></td>
         <td><%= "#{book.creator}"%></td>
         <td><%= "#{book.publication_year}"%></td>
-        <td><%= link_to "Upvote", upvote_work_path(book.id), method: :post, class: "btn btn-outline-info"
-        %></td>
-        <p>
+
+
           <% end %>
         </tr>
       </tbody>
@@ -82,7 +75,6 @@
           <th scope="col">Title</th>
           <th scope="col">Created By</th>
           <th scope="col">Published</th>
-          <th scope="col">Upvote</th>
         </tr>
       </thead>
       <tbody>
@@ -93,9 +85,7 @@
           <td><%= link_to "(#{movie.title})", work_path(movie.id) %></td>
           <td><%= "#{movie.creator}"%></td>
           <td><%= "#{movie.publication_year}"%></td>
-          <td><%= link_to "Upvote", upvote_work_path(movie.id), method: :post, class: "btn btn-outline-info"
-          %></td>
-          <p>
+
             <% end %>
           </tr>
         </tbody>
