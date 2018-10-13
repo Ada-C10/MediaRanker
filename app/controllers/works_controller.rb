@@ -27,9 +27,14 @@ class WorksController < ApplicationController
       def update
         @work = Work.find_by(id: params[:id].to_i)
         if @work.update(work_params)
+          flash[:success] = 'Media Edited!'
           redirect_to work_path(@work.id)
         else
-          render :edit
+          flash.now[:danger] = 'ERROR!'
+          @work.errors.messages.each do |field, messages|
+            flash.now[field] = messages
+          end
+            render :edit
         end
       end
 
@@ -43,7 +48,7 @@ class WorksController < ApplicationController
           flash[:success] = 'Media Added!'
           redirect_to work_path(@work.id)
         else
-          flash.now[:danger] = 'Media NOT added!'
+          flash.now[:danger] = 'ERROR!'
           @work.errors.messages.each do |field, messages|
             flash.now[field] = messages
           end
