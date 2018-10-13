@@ -1,6 +1,6 @@
 <article>
-  <h1>Media Spotlight: <%= @media_spotlight.title %></h1>
-  <h4><%= @media_spotlight.total_votes %> votes--<%= @media_spotlight.description %></h4>
+  <h1>Media Spotlight: <span id = "entire_title"><span id="spotlight"><%= @media_spotlight.title %></span> by <%= @media_spotlight.creator %></span></h1>
+  <p><%= @media_spotlight.total_votes %> votes - <%= @media_spotlight.description %></p>
 </article>
 
 <div class="media_body">
@@ -9,7 +9,7 @@
     <section>
       <ul>
         <% @movies.each do |movie| %>
-          <li><%= link_to movie.title, work_path(movie.id) %> by <%= movie.creator %><br> <%= movie.total_votes %> votes</li>
+          <li><span class = "title_link"><%= link_to movie.title, work_path(movie.id) %></span> <span class = "creator">by <%= movie.creator %></span><br> <%= movie.total_votes %> votes</li>
         <% end %>
       </ul>
     </section>
@@ -20,7 +20,7 @@
     <section>
       <ul>
         <% @books.each do |book| %>
-          <li><%= link_to book.title, work_path(book.id) %> by <%= book.creator %><br> <%= book.total_votes %> votes</li>
+          <li><span class = "title_link"><%= link_to book.title, work_path(book.id) %></span> </span> <span class = "creator">by <%= book.creator %></span><br> <%= book.total_votes %> votes</li>
         <% end %>
       </ul>
     </section>
@@ -31,7 +31,7 @@
     <section>
       <ul>
         <% @albums.each do |album| %>
-          <li><%= link_to album.title, work_path(album.id) %> by <%= album.creator %><br> <%= album.total_votes %> votes</li>
+          <li><span class = "title_link"><%= link_to album.title, work_path(album.id) %></span> </span> <span class = "creator">by <%= album.creator %></span><br> <%= album.total_votes %> votes</li>
         <% end %>
       </ul>
     </section>
