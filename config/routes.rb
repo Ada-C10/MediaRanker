@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   root 'top_works#index'
 
   resources :works, :users, :votes
+  resources :sessions, only: [:new]
+  get '/sessions/login', to: 'sessions#login', as: "login"
+  post '/sessions/logout', to: "sessions#logout", as: "logout"
 end
