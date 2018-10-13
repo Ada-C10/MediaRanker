@@ -1,5 +1,3 @@
-<h1>Add a new work</h1>
-
 <% if @work.errors.messages.any? %>
 <ul class="errors">
   <% @work.errors.each do |column, message| %>
@@ -12,8 +10,8 @@
 </ul>
 <% end %>
 
+<h1>Add a new work</h1>
 
-<form action="/works" method="post">
 
   <%= form_with model: @work do |f| %>
 
@@ -47,5 +45,3 @@
   </div>
 
   <% end  %>
-
-</form>

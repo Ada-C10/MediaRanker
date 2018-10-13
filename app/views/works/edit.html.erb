@@ -1,5 +1,3 @@
-<h1>Editing Work</h1>
-
 <% if @work.errors.messages.any? %>
 <ul class="errors">
   <% @work.errors.each do |column, message| %>
@@ -12,25 +10,37 @@
 </ul>
 <% end %>
 
+<h1>Editing Work</h1>
 
-<%= form_with model: @work do |f| %>
-<%= f.label :category %>
-<%= f.select :category, Work::CATEGORY, prompt: "Pick Category" %>
-<br>
-<%= f.label :title %>
-<%= f.text_field :title %>
-<br>
-<%= f.label :creator %>
-<%= f.text_field :creator %>
-<br>
-<%= f.label :publication_year %>
-<%= f.text_field :publication_year %>
-<br>
-<%= f.label :description %>
-<%= f.text_area :description, cols: 25, rows:10 %>
-<br>
-<%= f.submit %>
-<% end  %>
+  <%= form_with model: @work do |f| %>
 
+  <div class="form-group">
+      <%= f.label :category %>
+      <%= f.select :category, [['album', 'album'], ['book', 'book'], ['movie', 'movie']], {}, {class: "form-control"} %>
+  </div>
 
-<%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure you want to delete this beautiful piece of work? "} %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :creator %>
+    <%= f.text_field :creator, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :publication_year %>
+    <%= f.text_field :publication_year, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, cols: 5, rows:2, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Update Work", class: "btn btn-primary"  %>
+  </div>
+
+  <% end  %>

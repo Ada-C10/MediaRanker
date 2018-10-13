@@ -1,17 +1,16 @@
 class WorksController < ApplicationController
 
   def welcome
-    @ordered_works = Work.joins('LEFT JOIN votes ON work_id = works.id')
-                 .group('works.id')
-                 .order('count(votes.id) DESC')
-
-    @works = @ordered_works
+    @albums = Work.top_media('album')
+    @books = Work.top_media('book')
+    @movies = Work.top_media('movie')
+    @spotlight = Work.spotlight
   end
 
   def index
-    @works = Work.joins('LEFT JOIN votes ON work_id = works.id')
-                 .group('works.id')
-                 .order('count(votes.id) DESC')
+    @albums = Work.get_all_works('album')
+    @books = Work.get_all_works('book')
+    @movies = Work.get_all_works('movie')
   end
 
   def show
@@ -26,8 +25,10 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      redirect_to works_path
+      flash[:success] = "Successfully created #{@work.category} #{@work.id}!"
+      redirect_to work_path(@work.id)
     else
+      flash.now[:error] = "A problem occurred: Could not create #{@work.category}"
       render :new, status: :bad_request
     end
   end
@@ -49,8 +50,10 @@ class WorksController < ApplicationController
     end
 
     if @work.update(work_params)
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}!"
       redirect_to work_path(@work.id)
     else
+      flash.now[:error] = "A problem occurred: Could not update #{@work.category}"
       render :edit, status: :bad_request
     end
   end
@@ -62,6 +65,9 @@ class WorksController < ApplicationController
       head :not_found
     end
 
+    work.destroy
+
+    flash[:success] = "Successfully destroyed #{work.category} #{work.id}!"
     redirect_to root_path
   end
 
@@ -81,13 +87,11 @@ class WorksController < ApplicationController
     else
       @vote = Vote.new(user: @user, work: @work)
 
-    # add another conditional here for checking if vote already exists for user
-
       if @vote.save
         flash[:success] = "Successfully upvoted!"
         redirect_to works_path
       else
-        flash[:error] = "Something went wrong - cannot vote same one"
+        flash[:error] = "Something went wrong - cannot upvote on work more than once"
         redirect_back(fallback_location: root_path)
       end
 
