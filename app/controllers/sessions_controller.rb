@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    name = params[:username]
-    user = User.find_by(username: name)
+    name = params[:name]
+    user = User.find_by(name: name)
 
     if user
       flash[:success] = "Successfully logged in as #{name}"
@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
       redirect_to user_path(user)
 
     else
-      user = User.new(username: name)
+      name = params[:name]
+      user = User.new(name: name)
       is_successful_save = user.save
 
       if is_successful_save
