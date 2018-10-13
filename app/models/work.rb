@@ -17,7 +17,7 @@ class Work < ApplicationRecord
 
   def users_that_voted_on_this_work
     # work_id = find_work_id
-    # array_of_votes = Vote.where(work_id: work_id)
+    # array_of_votes = Vote.find_by(work_id: work_id)
     array_of_votes = self.votes
     users_ids = []
 
@@ -35,8 +35,8 @@ class Work < ApplicationRecord
   end
 
   def find_vote_where_work_upvoted_by_user(user_id)
-    # vote = Vote.where(user_id: user_id, work_id: work_id)
-    vote = Vote.where(user_id: user_id, work_id: self.id)
+    # vote = Vote.find_by(user_id: user_id, work_id: work_id)
+    vote = Vote.find_by(user_id: user_id, work_id: self.id)
 
     return vote
   end
