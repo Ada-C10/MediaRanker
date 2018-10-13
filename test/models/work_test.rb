@@ -3,6 +3,7 @@ require "test_helper"
 describe Work do
   before do
     @work = works(:harry_potter)
+    @works = Work.all
   end
 
   describe 'validations' do
@@ -43,6 +44,13 @@ describe Work do
     end
     it 'responds to upvoted_users method' do
       expect(@work.upvoted_users).must_respond_to :each
+    end
+  end
+
+  describe '#sort_by_votes' do
+    it 'sorts works by votes in descending order' do
+      expect(sort_by_votes).must_respond_to :each
+      # expect(@works.sort_by_votes.first.title).must_equal 'Harry Potter'
     end
   end
 end

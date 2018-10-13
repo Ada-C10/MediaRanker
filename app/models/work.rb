@@ -5,4 +5,8 @@ class Work < ApplicationRecord
   validates :publication_year, numericality: { only_integer: true }
   has_many :votes
   has_many :upvoted_users, through: :votes, source: :user
+
+  def sort_by_votes
+
+  end
 end
