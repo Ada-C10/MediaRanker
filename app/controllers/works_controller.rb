@@ -48,7 +48,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    
     @work.destroy
     redirect_to works_path
   end
