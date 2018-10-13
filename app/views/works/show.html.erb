@@ -16,11 +16,16 @@
 
   <thead>
     <tr>
-      <th>User</th>
-      <% @book.users.each do |user| %>
-        <%= user.name %>
+      <th>Users</th>
+      <% @work.votes.each do |vote| %>
+        <li>
+        <%= vote.user.user_name%>
+        </li>
       <% end %>
       <th>Date</th>
+      <% @work.votes.each do |date| %>
+        <%= date.user.created_at %>
+      <% end %>
     </tr>
   </thead>
 

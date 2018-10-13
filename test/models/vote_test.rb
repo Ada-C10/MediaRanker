@@ -1,5 +1,6 @@
 require "test_helper"
 
+#confused by let syntax
 describe Vote do
   let(:vote) { votes(:vote_one) }
 
