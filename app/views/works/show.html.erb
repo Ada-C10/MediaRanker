@@ -3,6 +3,9 @@
 <% if @work.nil? %>
   <h1> 404 Not found</h1>
 <% else %>
+<section class='vote-for'>
+  <%= link_to "Vote!", vote_path(@work.id), method: :create %>
+</section>
  <ul>
    <li> <%= @work.title %> </li>
    <li> <%= @work.creator %> </li>
