@@ -1,72 +1,37 @@
 <div class="container">
 
-  <div class="div1">
-    <h3>
-      <%= link_to "new works", new_work_path, class: "new-work" %>
-    </h3>
+  <section class="highlight-section">
+    <h2>Media Spotlight: </h2>
+  </section>
+
+  <div class="movie">
+    <h2>Top Movies</h2>
+    <% @works.each do |work| %>
+    <% if work.category == "movie" %>
+    <p><%= link_to work.title, work_path(work.id) %> by <%= work.creator %></p>
+    <p><%= work.votes.count %></p>
+    <% end %>
+    <% end %>
   </div>
 
-  <div class="div2">
-    <h3>
-      <%= link_to "all works", works_path, class: "homepage" %>
-    </h3>
-  </div>
-
-  <div class="div5">
-    <h3>your works</h3>
-  </div>
-
-  <div class="div6">
-    <h2>BOOKS</h2>
-    <ol class="book">
-      <% @works.each do |work| %>
-      <% if work.category == "book" %>
-      <li>
-        <p>
-          <strong><%=link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
-        </p>
-        <p>
-          <%= "#{work.votes.count}" %> votes
-        </p>
-      </li>
-      <% end %>
-    </ol>
+  <div class="book">
+    <h2>Top Books</h2>
+    <% @works.each do |work| %>
+    <% if work.category == "book" %>
+    <p><%= link_to work.title, work_path(work.id) %> by <%= work.creator %></p>
+    <p><%= work.votes.count %></p>
+    <% end %>
     <% end %>
   </div>
 
   <div class="album">
-    <h2>ALBUMS</h2>
-    <ol class="album">
-      <% @works.each do |work| %>
-      <% if work.category == "book" %>
-      <li>
-        <p>
-          <strong><%=link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
-        </p>
-        <p>
-          <%= "#{work.votes.count}" %> votes
-        </p>
-      </li>
-      <% end %>
-    </ol>
+    <h2>Top Albums</h2>
+    <% @works.each do |work| %>
+    <% if work.category == "album" %>
+    <p><%= link_to work.title, work_path(work.id) %> by <%= work.creator %></p>
+    <p><%= work.votes.count %></p>
+    <% end %>
     <% end %>
   </div>
 
-  <div class="album">
-    <h2>MOVIES</h2>
-    <ol class="album">
-      <% @works.each do |work| %>
-      <% if work.category == "movie" %>
-      <li>
-        <p>
-          <strong><%=link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
-        </p>
-        <p>
-          <%= "#{work.votes.count}" %> votes
-        </p>
-      </li>
-      <% end %>
-    </ol>
-    <% end %>``
-
-  </div>
+</div>

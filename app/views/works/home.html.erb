@@ -6,7 +6,8 @@
 
   <div class="movie">
     <h2>Top Movies</h2>
-    <% @works.each do |work| %>
+    <% works = @works.sort_by { |work| -work.votes.count } %>
+    <% works.each do |work| %>
     <% if work.category == "movie" %>
     <p><%= link_to work.title, work_path(work.id) %> by <%= work.creator %></p>
     <p><%= work.votes.count %></p>
@@ -16,7 +17,8 @@
 
   <div class="book">
     <h2>Top Books</h2>
-    <% @works.each do |work| %>
+    <% works = @works.sort_by { |work| -work.votes.count } %>
+    <% works.each do |work| %>
     <% if work.category == "book" %>
     <p><%= link_to work.title, work_path(work.id) %> by <%= work.creator %></p>
     <p><%= work.votes.count %></p>
@@ -26,7 +28,8 @@
 
   <div class="album">
     <h2>Top Albums</h2>
-    <% @works.each do |work| %>
+    <% works = @works.sort_by { |work| -work.votes.count } %>
+    <% works.each do |work| %>
     <% if work.category == "album" %>
     <p><%= link_to work.title, work_path(work.id) %> by <%= work.creator %></p>
     <p><%= work.votes.count %></p>

@@ -10,7 +10,29 @@ class Work < ApplicationRecord
   validates :description, presence: true
   validates :category, inclusion: { in: CATEGORIES }
 
+  def top_movies
+    movies = []
+    @works.each do |work|
+      if work.category == "movie"
+        movies << work
+      end
+    end
+    movies.sort_by do |movie|
+      -movie.votes.count
+    end
+    return movies
+  end
 
-c = Work.first
-c.votes
+  def top_books
+    books = []
+    @works.each do |work|
+      if work.category == "book"
+        books << work
+      end
+    end
+    movies.sort_by do |movie|
+      -books.votes.count
+    end
+    return books
+  end
 end
