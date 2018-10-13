@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'votes/create'
   root 'works#index'
 
   get 'sessions/login', to: 'sessions#login', as: 'login'
