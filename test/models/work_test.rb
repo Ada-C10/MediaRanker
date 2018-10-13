@@ -4,7 +4,7 @@ describe Work do
 
   describe 'validations' do
     before do
-      @work = Work.new(category: 'book', title: 'Harry Potter', creator: 'JK Rowling', publication_year: 1999)
+      @work = works(:harry_potter)
     end
 
     it 'is valid when all required field are present' do
