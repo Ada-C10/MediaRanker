@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/works/welcome', to: 'works#welcome', as: 'welcome'
   post '/works/:id/upvote', to: 'works#upvote', as: 'upvote'
 
-  resources :users, only:[:index, :show] do
+  resources :users, except:[:create, :edit, :update] do
     resources :votes
   end
 

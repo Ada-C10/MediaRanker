@@ -1,9 +1,11 @@
 class WorksController < ApplicationController
 
   def welcome
-    @works = Work.joins('LEFT JOIN votes ON work_id = works.id')
+    @ordered_works = Work.joins('LEFT JOIN votes ON work_id = works.id')
                  .group('works.id')
                  .order('count(votes.id) DESC')
+
+    @works = @ordered_works
   end
 
   def index
@@ -60,12 +62,7 @@ class WorksController < ApplicationController
       head :not_found
     end
 
-    if work.destroy
-      # TODO change this to root path (for the homepage)
-      redirect_to works_path
-    else
-      render :show
-    end
+    redirect_to root_path
   end
 
   def upvote

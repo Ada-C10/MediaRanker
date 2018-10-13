@@ -1,10 +1,10 @@
 <section>
   <h2><%= "Media Spotlight: "%>
-    <%= link_to "#{@works.first.title}", work_path(@works.first)%>
-    <%= "by #{@works.first.creator}" %>
+    <%= link_to "#{@ordered_works.first.title}", work_path(@ordered_works.first)%>
+    <%= "by #{@ordered_works.first.creator}" %>
   </h2>
 
-  <p><%= "#{@works.first.votes.count} votes - #{@works.first.description}" %></p>
+  <p><%= "#{@ordered_works.first.votes.count} votes - #{@ordered_works.first.description}" %></p>
 </section>
 
 

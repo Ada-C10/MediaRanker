@@ -4,6 +4,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def new
+    @user = User.new
+  end
+
   def show
     @user = User.find_by(id: params[:id])
 
@@ -12,12 +16,7 @@ class UsersController < ApplicationController
     end
 
     @votes = Vote.where(user: @user)
-
-
   end
 
-  def new
-    @user = User.new
-  end
 
 end
