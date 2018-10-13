@@ -15,7 +15,17 @@ describe Work do
       expect(votes.length).must_be :>=, 0
       votes.each do |vote|
         expect(vote).must_be_instance_of Vote
-      end 
+      end
+    end
+
+    it 'can have many users through votes' do
+      work.users << User.first
+      users = work.users
+
+      expect(work.users.length).must_be :>=, 0
+      work.users.each do |user|
+        expect(user).must_be_instance_of User
+      end
     end
   end
 
@@ -84,6 +94,41 @@ describe Work do
       expect(valid).must_equal false
       expect(work.errors.messages).must_include :description
     end
+  end
 
+  describe "top albums, books, and movies" do
+
+    it "sorts the works in descending order by votes" do
+      sorted = Work.top_books
+      first = sorted.first.votes.count
+      last = sorted.last.votes.count
+
+      expect(first).must_be :>=, last
+    end
+    it "displays only ten pieces of work" do
+      sorted = Work.top_books
+
+      expect(sorted.length).must_be :<=, 10
+    end
+    it "will post nothing if there are no works in a category" do
+      sorted = Work.top_albums
+
+      expect(sorted.length).must_equal 0
+
+    end
+    it "will post only book if there is only one work in category" do
+      sorted = Work.top_movies
+
+      expect(sorted.length).must_equal 1
+    end
+  end
+
+  describe "top media" do
+    it "must select work with highest work as top work" do
+      sorted = Work.top_work
+      max = Work.all.max_by { |work| work.votes.count }
+
+      expect(sorted.votes.count).must_equal max.votes.count
+    end
   end
 end

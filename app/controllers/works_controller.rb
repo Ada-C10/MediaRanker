@@ -15,10 +15,11 @@ class WorksController < ApplicationController
 
   def destroy
     unless @work.nil?
+      @work.votes.destroy_all
       @work.destroy
       flash[:success] = "#{@work.title} deleted"
 
-      redirect_to work_path(@word.id)
+      redirect_to root_path
     end
   end
 
@@ -58,7 +59,7 @@ class WorksController < ApplicationController
       redirect_back fallback_location: work_path(@work.id)
 
     elsif @current_user.votes.find_by(work_id: @work.id).nil?
-      @vote = Vote.new(quantity: 1, user_id: @current_user.id, work_id: @work.id)
+      @vote = Vote.new(user_id: @current_user.id, work_id: @work.id)
 
       if @vote.save
         flash[:success] = "Successfully upvoted!"

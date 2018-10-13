@@ -6,13 +6,22 @@ class SessionsController < ApplicationController
     user = User.find_by(user_name: params[:user][:user_name])
     if user.nil?
       user = User.create(user_name: params[:user][:user_name])
-      flash["success"] = "Successfully created new user #{user.user_name} with ID #{user.id}"
+      if user.valid? == false
+        flash[:warning] = "Unsuccessful Login"
+        # why don't my error messages pop up for validations?
+        user.errors.messages.each do |field, messages|
+          flash.now[field] = messages
+        end
+
+        redirect_to login_path
+      end
     else
       flash["success"] = "Successfully logged in as existing user #{user.user_name}"
+      session[:user_id] = user.id
+      redirect_to root_path
     end
 
-    session[:user_id] = user.id
-    redirect_to root_path
+
   end
 
   def new

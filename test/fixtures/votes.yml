@@ -7,3 +7,7 @@ harry_votes:
 wheel_votes:
   user: bonanza
   work: wheel_of_time
+
+vote_3:
+  user: hannah
+  work: wheel_of_time

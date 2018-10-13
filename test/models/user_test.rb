@@ -17,6 +17,17 @@ describe User do
         expect(vote).must_be_instance_of Vote
       end
     end
+
+    it 'can have many works through through' do
+      user.works << Work.first
+      works = user.works
+
+      expect(user.works.length).must_be :>=, 0
+
+      user.works.each do |work|
+        expect(work).must_be_instance_of Work
+      end
+    end
   end
 
   describe 'validations' do
