@@ -2,19 +2,16 @@
 
 <div class="form-group">
   <%= f.label :title%>
-  <div class="col-md-8">
+  <div class="col-md-8" >
     <%= f.text_field :title, class: "form-control"%>
   </div>
 </div>
 
 <div class="form-group">
-  <label for="cateogory">Category</label>
+  <%= f.label :category %>
   <div class="col-md-8">
-    <select class="form-control" id="exampleSelect1">
-      <option>movie</option>
-      <option>album</option>
-      <option>book</option>
-    </select>
+    <%= f.select(:category, options_for_select([['Movie', 'movie'], ['Album', 'album'], ['Book', 'book']]))%>
+
   </div>
 </div>
 
@@ -26,7 +23,7 @@
 </div>
 
 <div class="form-group">
-  <%= f.label :pub_year%>
+  <%= f.label "Publication year"%>
   <div class="col-md-8">
     <%= f.text_field :pub_year, class: "form-control"%>
   </div>
