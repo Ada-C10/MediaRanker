@@ -43,7 +43,13 @@ class WorksController < ApplicationController
 
   def destroy
     work = Work.find_by(id: params[:id].to_i)
+
+    work.votes.each do |vote|
+      vote.destroy
+    end
+
     @deleted_work = work.destroy
+
     flash[:success] = "Successfully destroyed #{@deleted_work.category} #{@deleted_work.id}"
 
     redirect_to works_path
