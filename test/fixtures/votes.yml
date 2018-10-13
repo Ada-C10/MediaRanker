@@ -1,0 +1,23 @@
+vote1:
+  user: user1
+  work: book
+
+vote2:
+  user: user2
+  work: album
+
+vote3:
+  user: user3
+  work: book
+
+vote4:
+  user: user4
+  work: album2
+
+vote5:
+  user: user5
+  work: album2
+
+vote6:
+  user: user6
+  work: book

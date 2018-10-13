@@ -1,0 +1,46 @@
+<h2> User Summary: <%= link_to "#{@user.username}", user_path(@user.id) %> </h2>
+<p> Joined site Oct 10, 2018 </p>
+
+<h3 class="user-votes__header">Votes </h3>
+<table class="table">
+  <tr>
+    <th>
+      Media Title
+    </th>
+    <th>
+      Created By
+    </th>
+    <th>
+      Published
+    </th>
+    <th>
+      Category
+    </th>
+    <th>
+      Voted On
+    </th>
+  </tr>
+    <% @user.votes.each do |vote| %>
+      <tr>
+        <% @work = vote.work %>
+        <td>
+          <%= link_to "#{@work.title}", work_path(@work.id) %>
+        </td>
+        <td>
+          <p> <%= @work.creator %> </p>
+        </td>
+        <td>
+          <p> <%= @work.published %> </p>
+        </td>
+        <td>
+          <p><%= @work.category %></p>
+        </td>
+        <td>
+          <p><%= vote.created_at.strftime('%b %d, %Y') %></p>
+        </td>
+      </tr>
+    <% end %>
+</table>
+
+<%= link_to "See all Users", users_path, class: "btn btn-secondary" %>
+<%= link_to "Back to Media List", works_path, class: "btn btn-primary" %>
