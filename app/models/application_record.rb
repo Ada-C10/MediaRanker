@@ -1,6 +1,7 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
+private
 
   #application-wide method to format dates
   def self.format_date(given_date)
