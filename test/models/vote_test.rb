@@ -55,6 +55,20 @@ describe Vote do
 
     end
 
+    it 'must be associated with only one work_id ' do
+      #arrange
+      vote.work_id = "work1"
+
+      #act
+      vote.save
+      vote.work_id = "work1"
+      valid = vote.save
+
+      #assert
+      expect(valid).must_equal false
+
+    end
+
   end
 end
 
