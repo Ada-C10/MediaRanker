@@ -1,18 +1,21 @@
 <section>
   <h2>
-    Media Spotlight:
+    Media Spotlight: <%= link_to "#{@sorted_works.first.title}", work_path(@sorted_works.first.id)%> by <%= @sorted_works.first.creator %>
   </h2>
+  <p><%= @sorted_works.first.votes.length %> votes - <%= @sorted_works.first.description %></p>
+
 </section>
 
-<h1> List of Works </h1>
+<h2> List of Works </h2>
 <strong>
   Books
 </strong>
 <ul>
   <% @books[0..9].each do |book| %>
   <li>
-    <%= link_to "#{book.title}  #{book.creator} #{book.publication_year} #{book.description}", work_path(book.id)%>
+    <%= link_to "#{book.title}", work_path(book.id)%> by <%= book.creator %>
   </li>
+  <p><%= book.votes.length %> votes</p>
   <% end %>
 </ul>
 
@@ -22,8 +25,9 @@
 <ul>
   <% @albums[0..9].each do |album| %>
   <li>
-    <%= link_to "#{album.title}  #{album.creator} #{album.publication_year} #{album.description}", work_path(album.id)%>
+    <%= link_to "#{album.title}", work_path(album.id)%> by <%= album.creator %>
   </li>
+  <p><%= album.votes.length %> votes</p>
   <% end %>
 </ul>
 
@@ -34,7 +38,8 @@
 <ul>
   <% @movies[0..9].each do |movie| %>
   <li>
-    <%= link_to "#{movie.title}  #{movie.creator} #{movie.publication_year} #{movie.description}", work_path(movie.id)%>
+    <%= link_to "#{movie.title}", work_path(movie.id)%> by <%= movie.creator %>
   </li>
+  <p><%= movie.votes.length %> votes</p>
   <% end %>
 </ul>
