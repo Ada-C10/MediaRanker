@@ -1,8 +1,13 @@
 <h1>Works#home</h1>
 <p>Find me in app/views/works/home.html.erb</p>
-<% spotlight = Work.spotlight %>
-<h1>Media Spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %> by <%= spotlight.creator %></h1>
-<h4><%= spotlight.description %></h4>
+<% @spotlight %>
+<h1>Media Spotlight: <%= link_to @spotlight.title, work_path(@spotlight.id) %> by <%= @spotlight.creator %></h1>
+<h4><%= @spotlight.number_of_votes %>
+<% if @spotlight.number_of_votes != 1 %>
+<%= "votes" %>
+<% else %>
+<%= "vote" %>
+<% end %> - <%= @spotlight.description %></h4>
 
 <ul>
   <% @works.each_key do |category| %>

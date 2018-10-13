@@ -11,7 +11,6 @@
 
   <nav>
     <ul>
-      <li><%= link_to "MediaRanker", root_path %></li>
       <li><%= link_to "View Top Media", root_path %></li>
       <li><%= link_to "View All Media", works_path %></li>
       <li><%= link_to "Add A New Work", new_work_path %></li>
@@ -27,6 +26,8 @@
   <body>
 
     <header>
+      <h1><%= link_to "MediaRanker", root_path %></h1>
+      <sub>Ranking the Best of Everything</sub>
       <% if @current_user %>
       <section class="flash flash-session">
         <div class="alert-info"><%= "#{session[:salutation]} #{@current_user.name}! You're logged in!" %></div>

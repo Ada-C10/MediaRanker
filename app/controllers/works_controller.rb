@@ -3,6 +3,7 @@ class WorksController < ApplicationController
   before_action :list_works, only: [:home, :index]
 
   def home
+    @spotlight = Work.spotlight
   end
 
   def index

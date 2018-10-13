@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     flash[:success] = "Successfully logged out"
-    redirect_back fallback_location: root_path # required argument
+    redirect_to root_path # required argument
   end
 
   private

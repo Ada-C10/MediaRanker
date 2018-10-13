@@ -16,11 +16,16 @@ class Work < ApplicationRecord
   end
 
   def self.spotlight
-    return Work.first
+    return Work.all.max_by {|work| work.number_of_votes}
+    # tie breaking?
   end
 
   def has_no_vote_by?(current_user)
     raise ArgumentError if current_user == false
     return !self.votes.any? { |vote| vote.user == current_user }
+  end
+
+  def number_of_votes
+    return self.votes.size
   end
 end
