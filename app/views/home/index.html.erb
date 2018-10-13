@@ -9,14 +9,10 @@
   Books
 </strong>
 <ul>
-
-  <% @sorted_works.each do |work| %>
-  <% if work.category == 'book' %>
-
+  <% @books[0..9].each do |book| %>
   <li>
-    <%= link_to "#{work.title}  #{work.creator} #{work.publication_year} #{work.description}", work_path(work.id)%>
+    <%= link_to "#{book.title}  #{book.creator} #{book.publication_year} #{book.description}", work_path(book.id)%>
   </li>
-    <% end %>
   <% end %>
 </ul>
 
@@ -24,12 +20,10 @@
   Albums
 </strong>
 <ul>
-  <% @sorted_works.each do |work| %>
-  <% if work.category == 'album' %>
+  <% @albums[0..9].each do |album| %>
   <li>
-    <%= link_to "#{work.title}  #{work.creator} #{work.publication_year} #{work.description}", work_path(work.id)%>
+    <%= link_to "#{album.title}  #{album.creator} #{album.publication_year} #{album.description}", work_path(album.id)%>
   </li>
-    <% end %>
   <% end %>
 </ul>
 
@@ -38,11 +32,9 @@
   Movies
 </strong>
 <ul>
-  <% @sorted_works.each do |work| %>
-  <% if work.category == 'movie' %>
+  <% @movies[0..9].each do |movie| %>
   <li>
-    <%= link_to "#{work.title}  #{work.creator} #{work.publication_year} #{work.description}", work_path(work.id)%>
+    <%= link_to "#{movie.title}  #{movie.creator} #{movie.publication_year} #{movie.description}", work_path(movie.id)%>
   </li>
-    <% end %>
   <% end %>
 </ul>
