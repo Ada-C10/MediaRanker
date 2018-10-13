@@ -1,4 +1,5 @@
 class Work < ApplicationRecord
+  # before_save :calculate_vote_total
   # Many votes can be associated with a single work
   has_many :votes
   # has_many :users :through :votes
@@ -22,7 +23,18 @@ class Work < ApplicationRecord
     return (WORKS)
   end
 
-  # Sort method - Apply to works index pagew 
+  # Updates vote count on save
+  def calculate_vote_total
+    if self.votes.length == 0
+      # If no votes, set to 0
+      self.vote_count = 0
+    else
+      # Otherwise set vote count
+    self.vote_count = self.votes.length
+    end
+  end
+
+  # Sort method - Apply to works index pagew
   def self.sort_by_vote
 
 
