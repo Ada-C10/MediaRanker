@@ -4,3 +4,9 @@
 article:nth-of-type(1){
   border-bottom: none;
 }
+
+article > h2{
+  color: #00a99a;
+  font-size: 2.0rem;
+  font-weight: bold;
+}

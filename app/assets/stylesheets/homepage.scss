@@ -40,6 +40,15 @@ article > h1{
   font-size: 1.5rem;
 }
 
+#spotlight > a{
+  color: #00a99a;
+}
+
+#spotlight > a:hover{
+  text-decoration: none;
+  color: #02827c;
+}
+
 .media_votes{
   color: #00a99a;
 }
