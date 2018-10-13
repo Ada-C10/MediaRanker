@@ -1,0 +1,48 @@
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight:</span>
+      <% if @spotlight %>
+        <%= link_to "#{@spotlight.title}", work_path(@spotlight.id), class: "spotlight__link-to"%> by <%="#{@spotlight.creator}"%>
+      <% else %>
+        <small>There's nothing to rank yet. <small>
+      <% end %>
+    </h2>
+    <p class="spotlight__description">
+      <% if @spotlight %>
+        <%="#{@spotlight.votes.count}"%> votes - <%="#{@spotlight.description}"%>
+      <% else %>
+        <small>Add some works to get started!<small>
+      <% end %>
+    </p>
+</section>
+
+<hr class="root__hr" />
+
+<section class="top-ten__container">
+<%# @top_ten_lists.each do |works| %>
+<% [@top_movies, @top_books, @top_albums].each do |works| %>
+  <section class="top-ten__list-container">
+
+    <% if works.first %>
+      <h2 class="top-ten__header">
+        Top <%="#{works.first.category.capitalize}s"%>
+      </h2>
+
+        <ul class="list-group top-ten__list">
+          <% works.each do |work| %>
+            <li class="list-group-item">
+              <h4>
+                <%=link_to "#{work.title}", work_path(work.id)%>
+                <small class="top-ten__creator">by <%="#{work.creator}"%></small>
+              </h4>
+              <p><%="#{work.votes.count}"%> votes</p>
+            </li>
+          <%end%>
+        </ul>
+    <% else %>
+      <small>No works in this category yet!</small>
+    <% end %>
+
+  </section>
+<%end%>
+</section>

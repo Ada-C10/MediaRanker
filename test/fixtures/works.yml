@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+secret:
+  category: book
+  title: The Secret Adversary
+  creator: Agatha Christie
+  publication_year: 1922
+  description: Tommy and Tuppence's first adventure together
+
+remember:
+  category: album
+  title: Remember Two Things
+  creator: Dave Matthews Band
+  publication_year: 1993
+  description: The bestest album
+
+billy:
+  category: movie
+  title: Billy Madison
+  creator: Adam Sandler
+  publication_year: 1995
+  description: I thought this was a good movie in 1995

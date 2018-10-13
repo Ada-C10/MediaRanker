@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One">
+    <%= favicon_link_tag(source='owl.png', options={}) %>
+  </head>
+
+  <body>
+    <header class="app-header__header">
+      <h1>
+        <%= link_to "Media Ranker", root_path%>
+        <small>Ranking the Best of Everything</small>
+      </h1>
+
+      <nav class="app-header__nav">
+        <ul class="nav app-header__site-nav-container">
+          <li class="nav-item app-header__nav_item">
+            <%=link_to "View top media", root_path, class: 'nav-link'%>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%=link_to "View all media", works_path, class: 'nav-link'%>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%=link_to "Add a new work", new_work_path, class: 'nav-link'%>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%=link_to "View all users", users_path, class: 'nav-link'%>
+          </li>
+        </ul>
+        <ul class="nav app-header__user-nav-container">
+
+          <% if @current_user %>
+            <li class="nav-item app-header__nav_item">
+              <%= link_to "Logged in as #{@current_user.name}", user_path(@current_user.id), class: "btn btn-primary"%>
+            </li>
+          <% end %>
+
+          <li class="nav-item app-header__nav_item">
+            <% if !@current_user %>
+              <%=link_to "Log In", login_path, class: "btn btn-primary"%>
+            <% else %>
+              <%= link_to "Log Out", logout_path, class: "btn btn-primary", method: :delete%>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <% if flash.any? %>
+      <section class='alert__container'>
+           <% flash.each do |name, message| %>
+            <% if name == 'warning' || name == 'success' %>
+              <div class="alert alert-<%= name %>">
+                <span><%= message %></span>
+
+                   <% if flash[:validation_errors] %>
+                       <ul>
+                          <% flash[:validation_errors].each do |message|%>
+                           <li>
+                             <%= message %>
+                           </li>
+                          <%end%>
+                       </ul>
+                   <% end %>
+
+               </div>
+            <% end %>
+          <%end%>
+        </section>
+      <% end%>
+
+
+  <main>
+    <%= yield %>
+  </main>
+  </body>
+</html>

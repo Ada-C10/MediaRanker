@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+marshall_secret:
+  user: marshall
+  work: secret
+
+lily_secret:
+  user: lily
+  work: secret
+
+lily_remember:
+  user: lily
+  work: remember
