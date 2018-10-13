@@ -9,6 +9,10 @@ Rails.application.routes.draw do
    get '/login', to: 'sessions#new'
    post '/login', to: 'sessions#create'
    delete '/logout', to: 'sessions#destroy'
+
+   resources :works do
+     resources :votes, only: :create
+   end
    #[:index, :new, :show, :create, :edit, :update, :delete]
 
 end
