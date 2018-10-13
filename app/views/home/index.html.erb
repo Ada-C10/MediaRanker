@@ -10,7 +10,7 @@
 </strong>
 <ul>
 
-  <% @works.each do |work| %>
+  <% @sorted_works.each do |work| %>
   <% if work.category == 'book' %>
 
   <li>
@@ -24,7 +24,7 @@
   Albums
 </strong>
 <ul>
-  <% @works.each do |work| %>
+  <% @sorted_works.each do |work| %>
   <% if work.category == 'album' %>
   <li>
     <%= link_to "#{work.title}  #{work.creator} #{work.publication_year} #{work.description}", work_path(work.id)%>
@@ -38,7 +38,7 @@
   Movies
 </strong>
 <ul>
-  <% @works.each do |work| %>
+  <% @sorted_works.each do |work| %>
   <% if work.category == 'movie' %>
   <li>
     <%= link_to "#{work.title}  #{work.creator} #{work.publication_year} #{work.description}", work_path(work.id)%>
