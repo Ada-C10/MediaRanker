@@ -2,4 +2,6 @@
   <%= render partial: "layouts/form_errors", locals: { model: @work, problem: "A problem occurred: Could not create #{@work.category}" } %>
 <% end %>
 
-<%= render partial: "form", locals: { action_name: "Add a new work" } %>
+<main>
+  <%= render partial: "form", locals: { action_name: "Add a new work" } %>
+</main>
