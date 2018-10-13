@@ -5,12 +5,20 @@ class Work < ApplicationRecord
   has_many :users, through: :votes
   has_many :votes
 
+  #this one is working to sort by title 
+  default_scope {order(title: :asc)}
+
+
+  # , -> {group 'works.id'} default_scope {order(title: :desc)}
+  # default_scope where(color: 'red')`, please use `default_scope { where(color: 'red') }
+  # has_many :votes, -> {group 'works.id'}.order('count(works.id) DESC', 'title ASC')
+
 
   def self.albums
     # Company.joins(:jobs).group("companies.id").order("count(companies.id) DESC")
-    # return Work.where(category: 'album') # Work is the table
+    return Work.where(category: 'album') # Work is the table
     # return Work.joins(:votes).group("works.id").order("count(works.id) DESC")
-    return Work.joins(:votes).group('works.id').order('count(works.id) DESC', 'title ASC')
+    # return Work.joins(:votes).group('works.id').order('count(works.id) DESC', 'title ASC')
     #i want to return a list of albums that are sorted by vote count and title
   end
 
