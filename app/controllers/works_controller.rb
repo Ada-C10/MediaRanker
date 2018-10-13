@@ -11,13 +11,8 @@ class WorksController < ApplicationController
       @books_home = Work.books[0...10]
       @movies_home = Work.movies[0...10]
 
-      @top_work = Work.sort_by{ |work| work.votes.length}.reverse.first
+      @top_work = Work.all.sort_by{ |work| work.votes.length}.last
       end
-
-
-
-
-
 
 
     def show
