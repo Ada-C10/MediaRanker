@@ -13,6 +13,13 @@ class VotesController < ApplicationController
       if does_vote_exist == []
         @vote = Vote.new(user_id: session[:user_id], work_id: params[:work_id])
         @vote.save
+
+        work_upvoted = Work.find_by(id: params[:work_id])
+        current_vote_count = work_upvoted.total_votes
+        new_vote_count = current_vote_count + 1
+        work_upvoted.total_votes = new_vote_count
+        work_upvoted.save
+
         flash[:sucess] = "Successfully upvoted"
         redirect_back fallback_location: '/', allow_other_host: false
       else
