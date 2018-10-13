@@ -9,53 +9,71 @@
     </p>
   </section>
 
-<div class="top-media-columns">
-  <section class="movies-container">
-    <h2 class="top-ten-header">
-      🎬 Top Movies
-    </h2>
-    <ul class="list-group top-ten-list">
-      <li class="list-group-item">
-        <h4>
-          <a href="/works/19">Winter Been</a>
-          <small class="top-ten__creator">by Mackenzie Wilkinson</small>
-        </h4>
-        <p>6 votes</p>
-      </li>
-    </ul>
-  </section>
+  <div class="top-media-columns">
 
-  <section class="books-container">
-    <h2 class="top-ten-header">
-      📖 Top Books
-    </h2>
-    <ul class="list-group top-ten-list">
-      <li class="list-group-item">
-        <h4>
-          <a href="/works/19">Winter Been</a>
-          <small class="top-ten__creator">by Mackenzie Wilkinson</small>
-        </h4>
-        <p>6 votes</p>
-      </li>
-    </ul>
-  </section>
+    <section class="movies-container">
+      <h2 class="top-ten-header">
+        🎬 Top Movies
+      </h2>
 
-  <section class="albums-container">
-    <h2 class="top-ten-header">
-      🎙 Top Albums
-    </h2>
-    <ul class="list-group top-ten-list">
-      <li class="list-group-item">
-        <h4>
-          <a href="/works/19">Winter Been</a>
-          <small class="top-ten__creator">by Mackenzie Wilkinson</small>
-        </h4>
-        <p>6 votes</p>
-      </li>
-    </ul>
-  </section>
+      <ul class="list-group top-ten-list">
+        <% i = 0 %>
+        <% @works.each do |work| %>
+        <% if work.category == 'movie' && i < 10 %>
+        <li class="list-group-item">
+          <h4>
+            <%=link_to work.title, work_path(work.id) %>
+            <small class="top-ten-creator">by <%= work.creator %></small>
+          </h4>
+          <p># votes</p>
+        </li>
+        <% i += 1 %>
+        <% end %>
+        <% end %>
+      </ul>
+    </section>
 
-</div>
+    <section class="books-container">
+      <h2 class="top-ten-header">
+        📖 Top Books
+      </h2>
+      <ul class="list-group top-ten-list">
+        <% i = 0 %>
+        <% @works.each do |work| %>
+        <% if work.category == 'book' && i < 10 %>
+        <li class="list-group-item">
+          <h4>
+            <%=link_to work.title, work_path(work.id) %>
+            <small class="top-ten-creator">by <%= work.creator %></small>
+          </h4>
+          <p># votes</p>
+        </li>
+        <% i += 1 %>
+        <% end %>
+        <% end %>
+      </ul>
+    </section>
 
+    <section class="albums-container">
+      <h2 class="top-ten-header">
+        🎙 Top Albums
+      </h2>
+      <ul class="list-group top-ten-list">
+        <% i = 0 %>
+        <% @works.each do |work| %>
+        <% if work.category == 'album' && i < 10 %>
+        <li class="list-group-item">
+          <h4>
+            <%=link_to work.title, work_path(work.id) %>
+            <small class="top-ten-creator">by <%= work.creator %></small>
+          </h4>
+          <p># votes</p>
+        </li>
+        <% i += 1 %>
+        <% end %>
+        <% end %>
+      </ul>
+    </section>
 
+  </div>
 </main>
