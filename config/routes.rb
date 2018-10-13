@@ -4,6 +4,11 @@ Rails.application.routes.draw do
    root 'welcome#index'
    resources :works
    resources :users, except: [:new, :edit, :update, :delete]
+   get '/signup', to: 'users#new'
+
+   get '/login', to: 'sessions#new'
+   post '/login', to: 'sessions#create'
+   delete '/logout', to: 'sessions#destroy'
    #[:index, :new, :show, :create, :edit, :update, :delete]
 
 end

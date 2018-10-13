@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def new
+    @user = User.new()
+  end
+
   def index
     @users = User.all
   end
@@ -14,11 +18,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    filtered_user_params = user_params
+    filtered_user_params = user_params()
     @user = User.new(filtered_user_params)
 
     if @user.save
       flash[:success] = "User #{@user.username} has successfully signed up!"
+      redirect_to user_path(@user)
     else
       flash.now[:failure] = "Error: user could not be saved."
       render :new, status: 400
@@ -29,7 +34,7 @@ class UsersController < ApplicationController
 
   #strong params
   def user_params
-    return params.require(:work).permit(
+    return params.require(:user).permit(
       :username
     )
   end
