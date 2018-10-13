@@ -57,11 +57,16 @@ class WorksController < ApplicationController
 
   def upvote
     vote = Vote.new
+    work = Work.find_by(id: params[:id].to_i)
+    user = User.find_by(id: params[:id].to_i)
+    vote.work_id = work.id
+    vote.user_id = user.id
+
     if vote.save
       flash[:success] = "Successfully upvoted"
     else
       flash[:error] = "A problem occurred: Could not upvote"
-    end 
+    end
   end
 
   private
