@@ -53,17 +53,26 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    @work = Work.find_by(id: params[:id].to_i)
-    @user = User.find_by(id: session[:user_id].to_i)
+    @work = Work.find_by(id: params[:work_id])
+    @user = User.find_by(id: session[:user_id])
 
     if @user
       vote = Vote.new
-      # vote.work_id = @work.id same with user
-      vote.work = @work
-      vote.user = @user
-      @user.votes << vote
+      #(work_id:@work.id, user_id:@user.id)
+      vote.work_id = @work.id #same with user
+      #vote.work = @work
+      vote.user_id = @user.id
+      #@user.votes << vote
       vote.save
-      @user.save
+      #@user.save
+      if vote.save
+        flash[:sucess] = "sucessfully upvoted"
+        redirect_to works_path(@work)
+      else
+        flash[:sucess] = "you already voted for this item"
+        redirect_to works_path(@work)
+      end
+
     else
       flash[:error] = "you are not logged in"
       redirect_to sessions_login_path
