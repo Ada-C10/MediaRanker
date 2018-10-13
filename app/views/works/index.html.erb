@@ -1,23 +1,55 @@
-<h1>List of Works</h1>
+<h2>List of Works</h2>
 
+<section class="media-table">
+  <h4>Albums</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th width="80">Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width="100">Published</th>
+        <th width="100">Upvote</th>
+      </tr>
+  </thead>
+  <tbody>
+      <% @albums.each do |album|%>
+        <li><%= link_to "#{album.title}", work_path(album.id) %></li>
+        <%= button_to "Upvote", upvote_path(album.id), method: :post %>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+</section>
 
-<h3>Albums</h3>
-<% @albums.each do |album|%>
-    <li><%= link_to "#{album.title}", work_path(album.id) %></li>
-    <%= link_to "Upvote", upvote_path(album.id) %>
-<% end %>
+<section class="media-table">
+  <h4>Books</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th width="80">Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width="100">Published</th>
+        <th width="100">Upvote</th>
+      </tr>
+  </thead>
+  <tbody>
+  <% @books.each do |book|%>
+      <li><%= link_to "#{book.title}", work_path(book.id) %></li>
+      <%= button_to "Upvote", upvote_path(book.id), method: :post %>
+  <% end %>
+  </tbody>
+  </table>
+</section>
 
-<h3>Books</h3>
-<% @books.each do |book|%>
-    <li><%= link_to "#{book.title}", work_path(book.id) %></li>
-    <%= link_to "Upvote", upvote_path(book.id) %>
-<% end %>
-
+<section class="media-table">
 <h3>Movies</h3>
 <% @movies.each do |movie|%>
     <li><%= link_to "#{movie.title}", work_path(movie.id) %></li>
-    <%= link_to "Upvote", upvote_path(movie.id) %>
+    <%= button_to "Upvote", upvote_path(movie.id), method: :post %>
 <% end %>
+
 
 <!-- <main>
     <h2>List of Works</h2>

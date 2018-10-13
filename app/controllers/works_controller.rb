@@ -52,16 +52,16 @@ class WorksController < ApplicationController
   end
 
   def upvote
+      vote = Vote.new(user_id: @current_user.id, work_id: @work.id)
 
-    # if @current_user
-      vote = Vote.new(user_id: @current_user, work_id: @work.id)
-      @work.votes << vote
-      flash[:success] = "Vote successful."
-      # redirect_to(work_path)
-    # else
-    #   flash[:warning] = "Unable to submit vote"
-    #   # redirect_to(work_path)
-    # end
+      if vote.save
+        flash[:success] = "Vote successful."
+        redirect_back fallback_location: works_path
+      else
+        raise
+        flash[:warning] = "Unable to submit vote"
+        redirect_back fallback_location: works_path
+    end
   end
 
   def top_media

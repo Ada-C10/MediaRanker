@@ -17,7 +17,6 @@ class SessionsController < ApplicationController
 
     else
       session[:user_id] = user.id
-      flash[:warning] = 'this ran'
       flash[:success] = "#{ user.username } Successfully logged in!"
       redirect_to root_path
     end
