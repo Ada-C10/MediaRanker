@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user
       #login user / assign session user_id as current user
       session[:user_id] = user.id
-      flash[:success] = "Existing user '#{user.username}' successfully logged in."
+      flash[:success] = "Existing user '#{user.username}' logged in!"
       #redirect to user's show page
       redirect_to user_path(user)
     else
@@ -18,10 +18,10 @@ class SessionsController < ApplicationController
       if user.save
         #login user / assign session user_id as current user
         session[:user_id] = user.id
-        flash[:success] = "User '#{user.username}' signed up and logged in."
-        redirect_to user_path(user)
+        flash[:success] = "User '#{user.username}' signed up and logged in!"
+        redirect_to root_path
       else
-        flash[:failure] = "Username invalid or does not exist. Please sign up here."
+        flash[:failure] = "Username invalid or does not exist. Please sign up below."
         redirect_to signup_path
       end
     end

@@ -22,8 +22,9 @@ class UsersController < ApplicationController
     @user = User.new(filtered_user_params)
 
     if @user.save
-      flash[:success] = "User #{@user.username} has successfully signed up!"
-      redirect_to user_path(@user)
+      session[:user_id] = @user.id
+      flash[:success] = "User #{@user.username} has successfully signed up and logged in!"
+      redirect_to root_path
     else
       flash.now[:failure] = "Error: user could not be saved."
       render :new, status: 400

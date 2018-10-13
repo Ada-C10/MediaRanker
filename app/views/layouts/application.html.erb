@@ -35,13 +35,18 @@
         </li>
       </ul>
 
-<ul class="nav app-header__user-nav-container">
-        <li class="nav-item app-header__nav_item">
-          <a class="btn btn-primary" href="/users/27">User Setttings [DROPDOWN LINK TO EDIT USER, DELETE, ETC?]</a>
+      <ul class ="nav app-header__user-nav-container">
+        <% if @current_user %>
+        <li class="nav-item app-header__nav_item">Logged in as: <%=link_to "#{@current_user.username}", user_path(@current_user)%>
         </li>
         <li class="nav-item app-header__nav_item">
-          <a class="btn btn-primary" rel="nofollow" data-method="post" href="/logout">Log Out</a>
-        </li>
+        <%=link_to "Logout", logout_path, class: "btn btn-primary"%>
+      </li>
+        <% else %>
+        <li class="nav-item app-header__nav_item">
+        <%=link_to "Login", login_path, class: "btn btn-primary"%>
+      </li>
+      <% end %>
       </ul>
 
     </nav>
