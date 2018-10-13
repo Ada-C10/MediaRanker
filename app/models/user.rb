@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :works
+has_many :works
 
 validates :user_name, :id, presence: true
 

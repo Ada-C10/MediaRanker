@@ -1,11 +1,10 @@
-<h2>spotlight</h2>
+<h2>Media spotlight</h2>
 <div class="spotlight">
 <% @random_work = @works.sample %>
   <%= "#{@random_work.title}: #{@random_work.description} " %>
-
 </div>
 
 <h1>These are the works!</h1>
 <% @works.each do |work| %>
-<%= "#{work.title}" %>
+<%= "#{work.title}: #{work.description}" %>
 <% end %>
