@@ -1,6 +1,7 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
-  before_action :list_top_works, only: [:home, :index]
+  before_action :list_top_works, only: [:home]
+  before_action :list_all_works, only: [:index]
 
   def home
     @spotlight = Work.spotlight
@@ -69,6 +70,18 @@ class WorksController < ApplicationController
 
 # Filter
   def list_top_works
+    # ...should this hash go in the model or the controller?
+    @works = Hash.new
+  # Find project constants in config/initializers/constants.rb
+    VALID_WORK_CATEGORIES.each do |category|
+      @works[category] = []
+      Work.by_category(category)[0..9].each do |work|
+        @works[category] << work
+      end
+    end
+  end
+
+  def list_all_works
     # ...should this hash go in the model or the controller?
     @works = Hash.new
   # Find project constants in config/initializers/constants.rb
