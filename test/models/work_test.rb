@@ -32,5 +32,8 @@ describe Work do
       expect(is_valid).must_equal false
       expect(@work.errors.messages).must_include :title
     end
+    it 'is invalid with non-unique title' do
+
+    end
   end
 end

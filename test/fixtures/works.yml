@@ -1,20 +1,18 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
+one_work:
   title: I will always love you
   category: album
   creator: Whitney Houston
   publication_year: 2018
   description: The body guard sound track Original song is by Dolly Parton
-two:
+two_work:
   title: Cutting for Stone
   category: book
   creator: Abraham Verghese
   publication_year: 2009
   description: Is a novel written by Ethiopian-born Indian-American medical doctor and author Abraham Verghese It is a saga of twin brothers orphaned by their mother's death at their births and forsaken by their father
-three:
+three_work:
   title: The Notebook
-  category: Nick Cassavetes
-  creator: movie
+  category: movie
+  creator: Nick Cassavetes
   publication_year: 2004
   description: A poor yet passionate young man falls in love with a rich young woman, giving her a sense of freedom but they are soon separated because of their social differences
