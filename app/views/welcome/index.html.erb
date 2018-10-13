@@ -1,5 +1,5 @@
 <section class="spotlight">
-  <h2>Media Spotlight: <%="#{@top_media.title} by #{@top_media.creator}"%></h2>
+  <h2><span class="spotlight-header">Media Spotlight: </span><%= link_to "#{@top_media.title}", work_path(@top_media.id), class: "spotlight-title" %><%= " by #{@top_media.creator}"%></h2>
   <%= "#{@top_media.vote_count} votes - #{@top_media.description}" %>
 </section>
 <section class="table_container">

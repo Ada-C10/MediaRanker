@@ -11,6 +11,7 @@ class WorksController < ApplicationController
     if @work.nil?
       render :notfound, status: :not_found
     end
+
   end
 
   def new
@@ -43,6 +44,7 @@ class WorksController < ApplicationController
   def destroy
     work = Work.find_by(id: params[:id].to_i)
     @deleted_work = work.destroy
+    flash[:success] = "Successfully destroyed #{@deleted_work.category} #{@deleted_work.id}"
 
     redirect_to works_path
   end
