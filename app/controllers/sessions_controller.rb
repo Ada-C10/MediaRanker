@@ -13,10 +13,11 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
         render :new
-        
-        if user.save
-        flash[:sucess] = "Successfully created new user #{user.username} with ID #{user.id}"
-        redirect_to root_path
+
+        # if user.save
+        #   flash[:sucess] = "Successfully created new user #{user.username} with ID #{user.id}"
+        #   redirect_to root_path
+        # end
     end
   end
 
