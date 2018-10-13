@@ -1,56 +1,170 @@
 <div class="main_work_container">
 
-  <section class="single_work_container">
+  <section class="media-table">
     <h3><%="Movies"%></h3>
-    <table>
-      <tr>
-        <th>
-          <%= "Votes" %>
-        </th>
-        <th>
-          <%= "Title" %>
-        </th>
-        <th>
-          <%= "Created By" %>
-        </th>
-        <th>
-          <%= "Year Published" %>
-        </th>
-        <th>
-          <%= "Upvote" %>
-        </th>
-      </tr>
-      <% @movies.each do |movie| %>
+    <table class="table">
+      <thead>
         <tr>
-          <td>
-            <p>
-              <%= "#{movie.votes.count}" %>
-            </p>
-          </td>
-          <td>
-            <p>
-              <%= link_to "#{movie.title}", work_path(movie.id) %>
-            </p>
-          </td>
-          <td>
-            <p>
-              <%= "#{movie.creator}" %>
-            </p>
-          </td>
-          <td>
-            <p>
-              <%= "#{movie.publication_year}" %>
-            </p>
-          </td>
-          <td>
-            <p>
-              <%= link_to 'Upvote', upvote_path(movie.id), method: :put, class: 'btn btn-primary' %>
-            </p>
-          </td>
+          <th>
+            <%= "Votes" %>
+          </th>
+          <th>
+            <%= "Title" %>
+          </th>
+          <th>
+            <%= "Created By" %>
+          </th>
+          <th>
+            <%= "Year Published" %>
+          </th>
+          <th>
+            <%= "Upvote" %>
+          </th>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% @movies.each do |movie| %>
+          <tr>
+            <td>
+              <p>
+                <%= "#{movie.votes.count}" %>
+              </p>
+            </td>
+            <td>
+              <p>
+                <%= link_to "#{movie.title}", work_path(movie.id) %>
+              </p>
+            </td>
+            <td>
+              <p>
+                <%= "#{movie.creator}" %>
+              </p>
+            </td>
+            <td>
+              <p>
+                <%= "#{movie.publication_year}" %>
+              </p>
+            </td>
+            <td>
+              <p>
+                <%= link_to 'Upvote', upvote_path(movie.id), method: :put, class: 'btn btn-primary' %>
+              </p>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
-
   </section>
 
+  <section class="media-table">
+    <h3><%="Albums"%></h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            <%= "Votes" %>
+          </th>
+          <th>
+            <%= "Title" %>
+          </th>
+          <th>
+            <%= "Created By" %>
+          </th>
+          <th>
+            <%= "Year Published" %>
+          </th>
+          <th>
+            <%= "Upvote" %>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @albums.each do |album| %>
+          <tr>
+            <td>
+              <p>
+                <%= "#{album.votes.count}" %>
+              </p>
+            </td>
+            <td>
+              <p>
+                <%= link_to "#{album.title}", work_path(album.id) %>
+              </p>
+            </td>
+            <td>
+              <p>
+                <%= "#{album.creator}" %>
+              </p>
+            </td>
+            <td>
+              <p>
+                <%= "#{album.publication_year}" %>
+              </p>
+            </td>
+            <td>
+              <p>
+                <%= link_to 'Upvote', upvote_path(album.id), method: :put, class: 'btn btn-primary' %>
+              </p>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="media-table">
+    <h3><%="Books"%></h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            <%= "Votes" %>
+          </th>
+          <th>
+            <%= "Title" %>
+          </th>
+          <th>
+            <%= "Created By" %>
+          </th>
+          <th>
+            <%= "Year Published" %>
+          </th>
+          <th>
+            <%= "Upvote" %>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @books.each do |book| %>
+          <tr>
+            <td>
+              <p>
+                <%= "#{book.votes.count}" %>
+              </p>
+            </td>
+            <td>
+              <p>
+                <%= link_to "#{book.title}", work_path(book.id) %>
+              </p>
+            </td>
+            <td>
+              <p>
+                <%= "#{book.creator}" %>
+              </p>
+            </td>
+            <td>
+              <p>
+                <%= "#{book.publication_year}" %>
+              </p>
+            </td>
+            <td>
+              <p>
+                <%= link_to 'Upvote', upvote_path(book.id), method: :put, class: 'btn btn-primary' %>
+              </p>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>  
 </div>
