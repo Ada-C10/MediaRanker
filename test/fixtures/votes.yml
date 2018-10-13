@@ -1,0 +1,19 @@
+one:
+  date: 2018-10-08
+  user: alice
+  work: kings
+
+two:
+  date: 2018-10-08
+  user: alice
+  work: happiness
+
+three:
+  date: 2018-10-08
+  user: alice
+  work: park
+
+four:
+  date: 2018-10-08
+  user: laura
+  work: kings

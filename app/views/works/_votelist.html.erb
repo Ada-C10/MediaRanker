@@ -1,0 +1,4 @@
+<tr>
+  <td><%= link_to User.find_by(id: votelist.user_id).name, user_path(votelist.user_id) %></td>
+  <td><%= votelist.date.strftime("%b %d, %Y") %></td>
+</tr>

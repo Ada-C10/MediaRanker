@@ -1,0 +1,7 @@
+<% if !@work.errors.empty? %>
+  <%= render partial: "layouts/form_errors", locals: { model: @work, problem: "A problem occurred: Could not update #{@work.category}" } %>
+<% end %>
+
+<main>
+  <%= render partial: "form", locals: { action_name: "Edit this #{@work.category.capitalize}" } %>
+</main>

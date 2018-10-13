@@ -1,0 +1,36 @@
+<main>
+  <h2>List of Works</h2>
+
+  <h4>Albums</h4>
+  <table class="table">
+    <thead>
+      <%= render partial: "headers" %>
+    </thead>
+    <tbody>
+      <%= render partial: "categorytable", collection: @albums %>
+    </tbody>
+  </table>
+
+  <h4>Books</h4>
+  <table class="table">
+    <thead>
+      <%= render partial: "headers" %>
+    </thead>
+    <tbody>
+      <%= render partial: "categorytable", collection: @books %>
+    </tbody>
+  </table>
+
+  <h4>Movies</h4>
+  <table class="table">
+    <thead>
+      <%= render partial: "headers" %>
+    </thead>
+    <tbody>
+      <%= render partial: "categorytable", collection: @movies %>
+    </tbody>
+  </table>
+
+  <%= link_to "View top media", root_path, class: "btn btn-secondary" %>
+  <%= link_to "Add a new work", new_work_path, class: "btn btn-primary" %>
+</main>

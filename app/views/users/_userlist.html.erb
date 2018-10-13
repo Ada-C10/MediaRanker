@@ -1,0 +1,5 @@
+<tr>
+  <td><%= link_to userlist.name, user_path(userlist.id) %></td>
+  <td><%= userlist.votes.count %></td>
+  <td><%= userlist.join_date.strftime("%b %d, %Y") %></td>
+</tr>

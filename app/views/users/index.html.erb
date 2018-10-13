@@ -1,0 +1,16 @@
+<main>
+  <h2>List of Users</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th width="100">Votes</th>
+        <th width="100">Joined</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "userlist", collection: @users %>
+    </tbody>
+  </table>
+  <%= link_to "Back to Media List", root_path, class: "btn btn-secondary" %>
+</main>

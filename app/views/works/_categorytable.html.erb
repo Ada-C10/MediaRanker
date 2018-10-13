@@ -1,0 +1,7 @@
+<tr>
+  <td><%= categorytable.votes.count %></td>
+  <td><%= link_to categorytable.title, work_path(categorytable.id) %></td>
+  <td><%= categorytable.creator %></td>
+  <td><%= categorytable.publication_year %></td>
+  <td><%= link_to "Upvote", upvote_path(categorytable.id), class: "btn btn-primary" %></td>
+</tr>
