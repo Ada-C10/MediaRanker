@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 pride:
-  category: Book
+  category: book
   title: Pride and Prejudice
   creator: Jane Austin
   publication_year: 1813
   description: Master piece comedy
 
 hello:
-  category: Album
+  category: album
   title: Hello
   creator: Adele Adkins
   publication_year: 2015

@@ -5,9 +5,10 @@ class Work < ApplicationRecord
   validates :title, uniqueness: true, length: { in: 3..100}
   validates :category, presence: true
 
+  validates_inclusion_of :category, :in => ['book', 'album','movie']
 
-  def self.by_category(input)
-
+  def self.book_list
+    Work.all.order(:created_at).select {|work| work.category = "book"}
 
 
   end

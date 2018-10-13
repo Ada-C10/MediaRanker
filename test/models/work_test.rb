@@ -62,7 +62,29 @@ describe Work do
 
       expect(valid).must_equal false
       expect(work.errors.messages).must_include :category
-      expect(work.errors.messages[:category]).must_equal ["can't be blank"]
+      expect(work.errors.messages[:category]).must_equal ["can't be blank", "is not included in the list"]
+    end
+
+    it 'must have a category of book, album or movie' do
+       work.category = "boo"
+       valid = work.valid?
+       expect(valid).must_equal false
+
+       work.category = "book"
+       valid = work.valid?
+       expect(valid).must_equal true
+
+       work.category = "albu"
+       valid = work.valid?
+       expect(valid).must_equal false
+
+       work.category = "album"
+       valid = work.valid?
+       expect(valid).must_equal true
+
+       work.category = "movie"
+       valid = work.valid?
+       expect(valid).must_equal true
     end
   end
 
