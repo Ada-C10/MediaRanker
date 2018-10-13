@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :new_user, only: [:show, :edit, :update, :destroy]
 
+#user category votes
   def index
   end
 
