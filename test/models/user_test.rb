@@ -59,6 +59,19 @@ describe User do
       expect(user_votes.count).must_equal 2
     end
 
+    it 'returns an array of work ids upvoted by a user' do
+      upvoted_work_ids = @user1.works_upvoted_ids
+      work_id = @work1.id
+      expect(upvoted_work_ids.first).must_equal work_id
+    end
+
+    it 'returns an array of works upvoted by a user' do
+      upvoted_work = @user1.works_voted_on
+      upvoted_work_title = upvoted_work[0].title
+      work_title = @work1.title
+      expect(upvoted_work_title).must_equal work_title
+    end
+
   end
 
 end
