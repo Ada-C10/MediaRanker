@@ -30,4 +30,5 @@ class UsersController < ApplicationController
     flash[:success] = "Ur logged tf out, bro!! high five!"
     redirect_to root_path
   end
+  
 end

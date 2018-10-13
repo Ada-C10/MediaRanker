@@ -10,7 +10,17 @@
   </head>
 
   <body>
-    <%= link_to "logout", logout_path, method: :post %>
+    <section class="login-info">
+        <% if @existing_user %>
+          <p>
+            Bro:
+            <%= @existing_user.name %>
+            <%= link_to "tag out bro", logout_path, method: :post %>
+          </p>
+        <% else %>
+          <%= link_to "tag in bro", new_user_path %>
+        <% end %>
+      </section>
 
     <section class="flash-messages">
       <% flash.each do |key, message| %>
