@@ -1,11 +1,19 @@
 class WorksController < ApplicationController
 
   def index
-    @works = Work.all.order(:title)
     @albums = Work.albums
     @books = Work.books
     @movies = Work.movies
     end
+
+    def home
+      @albums_home = Work.albums[0...10]
+      @books_home = Work.books[0...10]
+      @movies_home = Work.movies[0...10]
+
+      @top_work = Work.all.sort_by{ |work| work.votes.length}.last
+      end
+
 
     def show
         id = params[:id].to_i
@@ -19,9 +27,14 @@ class WorksController < ApplicationController
       def update
         @work = Work.find_by(id: params[:id].to_i)
         if @work.update(work_params)
+          flash[:success] = 'Media Edited!'
           redirect_to work_path(@work.id)
         else
-          render :edit
+          flash.now[:danger] = 'ERROR!'
+          @work.errors.messages.each do |field, messages|
+            flash.now[field] = messages
+          end
+            render :edit
         end
       end
 
@@ -35,7 +48,7 @@ class WorksController < ApplicationController
           flash[:success] = 'Media Added!'
           redirect_to work_path(@work.id)
         else
-          flash.now[:danger] = 'Media NOT added!'
+          flash.now[:danger] = 'ERROR!'
           @work.errors.messages.each do |field, messages|
             flash.now[field] = messages
           end
@@ -56,6 +69,8 @@ class WorksController < ApplicationController
         if @current_user
           @vote = Vote.new(work: work, user: user)
           @vote.save
+        end
+          if @vote.save
           flash[:success] = "Upvoted!"
           else
           flash[:danger] = "A problem occured, you are not able to vote for this!"

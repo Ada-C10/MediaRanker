@@ -18,6 +18,22 @@
 @import "**/*";
 
 
-.logout{
-  text-align: right;
+.top-ten__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2em;
+}
+
+
+  .list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+
+  .top-ten__list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
 }
