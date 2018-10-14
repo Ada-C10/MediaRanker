@@ -160,7 +160,7 @@ describe Work do
 
       expected_count = work.votes.count
 
-      given_count = Work.get_num_votes(work)
+      given_count = work.get_num_votes
 
       expect(expected_count).must_equal given_count
     end

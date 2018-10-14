@@ -19,7 +19,7 @@
       <% @works.get_works_of_type(category).each do |work| %>
       <tbody>
         <tr>
-          <td><%=Work.get_num_votes(work)%> votes</td>
+          <td><%=work.get_num_votes%> votes</td>
           <td><%=link_to work.title, work_path(work)%></td>
           <td><%=work.creator%></td>
           <td><%=work.publication_year%></td>

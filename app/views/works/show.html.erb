@@ -24,7 +24,7 @@
     </button>
 
   </div class="votes-summary">
-    <h3><%=Work.get_num_votes(@work)%> Votes for this <%=@work.category%></h3>
+    <h3><%=@work.get_num_votes%> Votes for this <%=@work.category%></h3>
     <table class="table">
       <thead>
         <th scope="col">
