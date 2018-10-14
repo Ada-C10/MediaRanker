@@ -45,4 +45,14 @@ describe Work do
       expect(@work.upvoted_users).must_respond_to :each
     end
   end
+
+  describe '#sort_by_votes' do
+    it 'is valid' do
+      expect(Work).must_respond_to :sort_by_votes
+    end
+    it 'sorts by votes in descending order' do
+      expect(Work.sort_by_votes.first.title).must_equal 'Harry Potter'
+    end
+  end
+
 end
