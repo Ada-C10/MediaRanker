@@ -81,11 +81,7 @@ table th:nth-of-type(4), table th:nth-of-type(5) {
     border-right: white 2px solid;
 }
 
-
-section .failure {
-  color: #856404;
-  background-color: #fff3cd;
-  border-color: #ffeeba;
+section .success, section .form_errors, section .failure {
   text-align: center;
   padding: 0.75rem 1.25rem;
   margin: 1em;
@@ -97,19 +93,10 @@ section .success {
   color: #155724;
   background-color: #d4edda;
   border-color: #c3e6cb;
-  text-align: center;
-  padding: 0.75rem 1.25rem;
-  margin: 1em;
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
 }
 
-
-// nav .app-header__nav {
-//     display: flex;
-//     flex-wrap: wrap;
-//     padding-left: 0;
-//     margin-bottom: 0;
-//     list-style: none;
-//
-// }
+section .failure, section .form_errors{
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
