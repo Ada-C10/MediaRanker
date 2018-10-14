@@ -122,6 +122,18 @@ describe Work do
         expect(works.count).must_equal actual_count
       end
     end
+
+    it 'returns [] if the category does not match any of the media categories' do
+      works = Work.get_works_of_type('no match')
+      expect(works).must_equal []
+    end
+
+    it 'returns [] if given nil category' do
+      works = Work.get_works_of_type(nil)
+      expect(works).must_equal []
+    end
+
+
   end
 
   describe 'get_categories' do
