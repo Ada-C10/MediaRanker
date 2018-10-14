@@ -1,7 +1,7 @@
 <h2 class='top-ten-header'><%= list_name %></h2>
 <ul class='top-ten'>
 
-  <% model.first(10).each do |work| %>
+  <% model.sort_by_votes.first(10).each do |work| %>
   <li>
     <%= link_to work_path(work.id) do %>
     <%= work.title %>
