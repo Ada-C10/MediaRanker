@@ -12,7 +12,7 @@ private
       return self.where(user_id: given_user_id)
     end
 
-    def self.find_votes_by_work(given_user_id)
-      return self.where(user_id: given_user_id)
+    def self.find_votes_by_work(given_work_id)
+      return self.where(work_id: given_work_id)
     end
 end

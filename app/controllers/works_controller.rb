@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
 before_action :find_work, only: [:show, :edit, :update, :destroy]
+before_action :find_work_votes, only: :show
 
   def index
     @works = Work.all
@@ -73,5 +74,9 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def find_work
     @work = Work.find_by(id: params[:id])
+  end
+
+  def find_work_votes
+    @work_votes = @votes.find_votes_by_work(params[:id])
   end
 end

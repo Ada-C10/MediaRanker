@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-
-  before_action :find_user_works
+  before_action :find_work, only: [:show]
+  before_action :find_user_works, only: :show
 
   def new
     @user = User.new()
@@ -40,6 +40,10 @@ class UsersController < ApplicationController
     return params.require(:user).permit(
       :username
     )
+  end
+
+  def find_user
+      @user = User.find_by(id: params[:id])
   end
 
   def find_user_works

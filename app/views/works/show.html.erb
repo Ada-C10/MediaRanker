@@ -11,14 +11,6 @@
  </section>
 
  <section>
-   TEST VOTES: <% @work.votes.each do |vote| %>
-   <p><%= vote.user.username %></p>
-   <p><%= vote.work.id %></p>
-   <%end%>
-
- </section>
-
- <section>
    <%=link_to "Back to media ranks", root_path, class: "btn btn-primary" %>
    <%=link_to "Edit", edit_work_path(@work),{ :class=>"btn btn-primary" }%>
    <%= link_to 'UpVote', work_votes_path(@work), method: :post, class: "btn btn-primary" %>
@@ -26,7 +18,7 @@
  </section>
 
 <section class="works-votes__container">
-  <h3 class="works-votes__header">[NUMBER] Votes for this <%=@work.category%></h3>
+  <h3 class="works-votes__header"> <%= "#{@work_votes.length}"%> Votes for this <%=@work.category%></h3>
   <table class="table">
     <thead>
       <tr>
@@ -35,7 +27,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr> TO DO: POPULATE WITH ERB
-        <td><a href="/users/[NUM]"> LOOP THROUGH VOTES.USER_ID</a></td>
-        <td>LOOP THROUGH VOTES.CREATION_DATE</td>
+      <% @work_votes.each do |vote| %>
+      <% user = User.find_by(id: vote.user_id) %>
+      <tr>
+      <td><%=link_to "#{user.username}", user_path(user)%></td>
+        <td><%= Vote.format_date(vote.created_at)%></td>
+        <%end%>
+      </tr>
+      </tbody>
 </section>
