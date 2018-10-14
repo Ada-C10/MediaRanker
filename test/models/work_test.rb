@@ -3,6 +3,7 @@ require "test_helper"
 describe Work do
   before do
     @work = works(:harry_potter)
+    @works = Work.all
   end
 
   describe 'validations' do

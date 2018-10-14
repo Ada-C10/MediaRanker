@@ -7,3 +7,33 @@
 vote:
   work: :harry_potter
   user: :val
+vote1:
+  work: :harry_potter
+  user: :test1
+vote2:
+  work: :harry_potter
+  user: :test2
+vote4:
+  work: :harry_potter
+  user: :test3
+vote5:
+  work: :road
+  user: :val
+vote6:
+  work: :road
+  user: :test1
+vote5:
+  work: :road
+  user: :test2
+vote6:
+    work: :secondhand
+    user: :val
+vote7:
+    work: :secondhand
+    user: :test1
+vote8:
+    work: :stand
+    user: :val
+vote9:
+    work: :stand
+    user: :test1
