@@ -1,0 +1,17 @@
+<h2>List of Bros</h2>
+<table class="table">
+  <thead>
+    <th>Broname</th>
+    <th>Votes</th>
+    <th>Joined</th>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to "#{user.name}", user_path(user) %></td>
+      <td><%= user.votes.length %></td>
+      <td><%= user.created_at.to_date %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
