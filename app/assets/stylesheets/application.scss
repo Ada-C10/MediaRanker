@@ -47,4 +47,9 @@ header {
 
 .user-nav-item {
   margin-left: 2rem;
+  list-style: none;
+}
+
+a:hover {
+  text-decoration: none;
 }
