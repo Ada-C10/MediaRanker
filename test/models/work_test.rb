@@ -146,7 +146,6 @@ describe Work do
 
   describe 'self.movie_list' do
 
-
     it 'returns an array ' do
       expect(Work.movie_list).must_be_instance_of Array
     end
@@ -174,6 +173,26 @@ describe Work do
       expect(Work.movie_list).must_equal []
     end
 
+  end
+
+  describe 'self.top_one' do
+
+    it 'returns a work ' do
+      expect(Work.top_one).must_be_instance_of Work
+    end
+
+    it 'return the work with most votes' do
+      work3.category = "book"
+      work3.save
+      tony = users(:tony)
+      Vote.create(user:tony, work:work2)
+      expect(Work.top_one).must_equal work2
+    end
+
+    it 'pick just one work if two works tie in the most votes' do
+      expect(Work.top_one).must_equal work
+    end
 
   end
+
 end

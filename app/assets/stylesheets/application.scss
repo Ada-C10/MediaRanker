@@ -16,3 +16,83 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  font-family: "Gudea", sans-serif;
+}
+
+header {
+    display: block;
+}
+
+.app-header__header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
+}
+
+.app-header__header h1 {
+  text-align: center;
+  margin: 25px auto 40px auto;
+
+}
+
+h1 {
+  line-height: 1.2;
+  color: inherit;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+small{
+    font-size: 80%;
+    font-weight: 400;
+}
+
+.app-header__header h1 small {
+    color: white;
+  }
+
+.app-header__header h1 a {
+    color: #FF5722;
+    padding-right: 25px;
+    margin-right: 15px;
+    border-right: white 2px solid;
+}
+
+a {
+  text-decoration: none;
+  background-color: transparent;
+
+}
+
+a:-webkit-any-link {
+  cursor: pointer;
+}
+
+main {
+    padding: 2rem;
+    display: block;
+}
