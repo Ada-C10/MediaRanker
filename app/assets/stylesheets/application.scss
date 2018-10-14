@@ -100,6 +100,37 @@ html {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 2em;
+    border: none;
+}
+
+.top-ten__list-container {
+  border-style: none;
+}
+
+.top-ten__header {
+    color: #26A69A;
+    border-bottom: 2px solid;
+    border-bottom-color: #B2DFDB;
+}
+
+ul .top-ten__list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    border-style: none;
+}
+
+.list_group {
+  border-style: none;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+ul {
+  border-style: none;
 }
 
 .root__hr {

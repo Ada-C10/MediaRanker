@@ -29,7 +29,7 @@
         <% @work.votes.each do |vote| %>
         <tr>
           <!-- Should I create a find_by method in model or is this okay? -->
-          <td><%=link_to "#{User.find_by(id: vote.user_id).user_name}", user_path(vote.user_id) %></td>
+          <td><%=link_to "#{vote.user.user_name}", user_path(vote.user_id) %></td>
           <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
         <tr>
         <%end%>

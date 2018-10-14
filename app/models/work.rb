@@ -29,6 +29,13 @@ class Work < ApplicationRecord
     return descending_movies[0..9]
   end
 
+  def self.top_ten(category)
+    works = Work.where(category: category)
+    sorted_works = works.sort_by { |work| work.votes.count }
+    descending_works = sorted_works.reverse
+    return descending_works[0..9]
+  end
+
   def self.top_work
     works = Work.all
     sorted_works = works.sort_by { |work| work.votes.count }
