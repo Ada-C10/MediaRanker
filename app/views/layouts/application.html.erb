@@ -20,13 +20,13 @@
       <div class="links">
         <nav>
           <ul>
-            <div class="site_navigation">
+            <section class="site_navigation">
               <li><%= link_to "View top media", root_path %></li>
               <li><%= link_to "View all media", works_path %></li>
               <li><%= link_to "Add a new work", new_work_path %></li>
               <li><%= link_to "View all users", users_path %></li>
-            </div>
-            <div class="login_logout">
+            </section>
+            <section class="login_logout">
               <% logged_in_user = User.find_by(id: session[:user_id]) %>
               <% if logged_in_user %>
                 <button type="button" class="Login_logout_button">
@@ -40,7 +40,7 @@
                   <%= link_to "Log In", new_session_path%>
                 </button>
               <% end %>
-            </div>
+            </section>
           </ul>
         </nav>
       </div>
