@@ -32,7 +32,7 @@ describe Work do
     end
 
     it "will be valid with unique title" do
-      new_work = Work.new(title: "workworkworkworkwork", category: "movie", creator: "memyselfandI", publication_year: 1, description: "test-description")
+      new_work = Work.new(title: "workworkworkworkwork", category: "movie", creator: "memyselfandI", publication_year: 1999, description: "test-description")
 
       new_result = new_work.valid?
 
