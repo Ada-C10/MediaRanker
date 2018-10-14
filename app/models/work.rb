@@ -5,13 +5,13 @@ class Work < ApplicationRecord
   # validate for unique title
   validates :title, presence: true, uniqueness: true
 
-  def self.works_by_category(category)
-    filtered_work_list = []
+  def self.list_works_by_category(category)
+    works_by_category = []
     work = Work.all
     work.each do |work|
-      filtered_work_list <<
+      works_by_category <<
      work unless work[:category] != category
     end
-    return filtered_work_list
+    return works_by_category
   end
 end

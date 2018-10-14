@@ -43,12 +43,12 @@ describe Work do
   describe 'list_works_by_category' do
 
     it 'correctly filters the list for a category' do
-      book_list = Work.works_by_category('book')
+      book_list = Work.list_works_by_category('book')
       expect ( book_list.first.category ).must_equal 'book'
     end
 
     it 'correctly collects all the works in a category' do
-      book_list = Work.works_by_category('book')
+      book_list = Work.list_works_by_category('book')
       expect ( book_list.length ).must_equal 2
     end
   end
