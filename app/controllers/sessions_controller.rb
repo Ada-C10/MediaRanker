@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def new
     @session = Session.new
   end
-  
+
   def login
     user = User.find_by(name: params[:user_name])
 
