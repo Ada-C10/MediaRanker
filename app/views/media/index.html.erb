@@ -1,8 +1,8 @@
 <section class="media-table">
   <h4>Books</h4>
-  <%= render partial: "media_table", locals: {collection: @books} %>
+  <%= render partial: "media_table", locals: {collection: order_by_votes(@books) } %>
   <h4>Movies</h4>
-  <%= render partial: "media_table", locals: {collection: @movies} %>
+  <%= render partial: "media_table", locals: {collection: order_by_votes(@movies) } %>
   <h4>Albums</h4>
-  <%= render partial: "media_table", locals: {collection: @albums} %>
+  <%= render partial: "media_table", locals: {collection: order_by_votes(@albums) } %>
 </section>

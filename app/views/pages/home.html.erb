@@ -6,20 +6,13 @@
     <%= link_to @media_spotlight.title, medium_path(@media_spotlight) %>
   </h2>
   <p>
-    <%= @media_spotlight.votes.length  %>
-    <% if @media_spotlight.votes.length == 1 %>
-      vote
-    <% else %>
-      votes
-    <% end %>
-     -
-    <%= @media_spotlight.description %>
+    <%= media_spotlight_text(@media_spotlight) %>
   </p>
 </section>
 
 <h4>Books</h4>
-<%= render partial: "media/media_table", locals: {collection: @books} %>
+<%= render partial: "media/media_table", locals: {collection: first_ten_by_votes(@books) } %>
 <h4>Movies</h4>
-<%= render partial: "media/media_table", locals: {collection: @movies} %>
+<%= render partial: "media/media_table", locals: {collection: first_ten_by_votes(@movies) } %>
 <h4>Albums</h4>
-<%= render partial: "media/media_table", locals: {collection: @albums} %>
+<%= render partial: "media/media_table", locals: {collection: first_ten_by_votes(@albums) } %>

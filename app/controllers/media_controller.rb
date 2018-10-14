@@ -1,4 +1,5 @@
 class MediaController < ApplicationController
+  
   def index
     @movies = Medium.where(category: "movie")
     @books = Medium.where(category: "book")
@@ -58,4 +59,5 @@ class MediaController < ApplicationController
       :publication_year
     )
   end
+
 end

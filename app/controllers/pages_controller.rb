@@ -1,13 +1,11 @@
 class PagesController < ApplicationController
-  def show
-    if params[:page] == "home"
-      @movies = Medium.where(category: "movie")
-      @books = Medium.where(category: "book")
-      @albums = Medium.where(category: "album")
-      
-      @media_spotlight = Medium.spotlight
-    end
+  
+  def home
+    @movies = Medium.where(category: "movie")
+    @books = Medium.where(category: "book")
+    @albums = Medium.where(category: "album")
 
-    render template: "pages/#{params[:page]}"
+    @media_spotlight = Medium.spotlight
   end
+
 end
