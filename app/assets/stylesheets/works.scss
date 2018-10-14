@@ -2,6 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#works-index, #edit-work, #new-work {
-  padding: 1em;
+#works-index, #edit-work, #new-work, #work-details {
+  padding: 2em;
+}
+
+.btn-danger:hover {
+  background-color: rgb(149, 28, 21);
+  border-color: rgb(149, 28, 21);
+}
+
+.options-bar .btn-danger {
+  border-color: red;
+}
+
+.btn > a {
+  color: white;
+  text-decoration: none;
+}
+
+h3 {
+  margin-top: 1.5em;
 }

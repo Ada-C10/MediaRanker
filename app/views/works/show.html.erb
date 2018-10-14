@@ -1,11 +1,11 @@
-<div id="work_details">
+<div id="work-details">
   <h2><%=@work.title%></h2>
   <ul>
     <li>Created by: <%=@work.creator%></li>
     <li>Published: <%=@work.publication_year%></li>
     <li><p><%=@work.description%></p></li>
   </ul>
-  <div class="options_bar">
+  <div class="options-bar">
 
     <button type="button" class="btn btn-info">
       <%= link_to "Back to media ranks", works_path%>
@@ -23,8 +23,8 @@
       <%= link_to "Delete", work_path(@work), method: :delete%>
     </button>
 
-  </div>
-    <h1><%=Work.get_num_votes(@work)%> Votes for this <%=@work.category%></h1>
+  </div class="votes-summary">
+    <h3><%=Work.get_num_votes(@work)%> Votes for this <%=@work.category%></h3>
     <table class="table">
       <thead>
         <th scope="col">

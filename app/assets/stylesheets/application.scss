@@ -48,10 +48,6 @@ body {
   margin-bottom: 3rem;
 }
 
-// .brand h1>a::after {
-//   content: '|';
-// }
-
 .navbar {
   display: flex;
   flex-direction: row;
@@ -64,8 +60,18 @@ body {
   padding: 0.5em 1em;
 }
 
+.btn {
+  border-color: #26A69A;
+  text-decoration: none;
+}
+
 .btn-info {
   background-color: #26A69A;
+}
+
+.btn:not(.btn-danger):hover {
+  background-color: #186a62;
+  border-color: #186a62;
 }
 
 li {
@@ -96,7 +102,7 @@ h2 {
   color: #26A69A;
 }
 
-h2, h4 {
+h2, h3, h4, table th {
   font-weight: bold;
 }
 
@@ -104,11 +110,16 @@ h4 {
   text-transform: capitalize;
 }
 
-.card-title span > a:hover, .top-media a:hover, .table-category a:hover {
+.card-title span > a:hover, .top-media a:hover, .table-category a:hover, btn:hover, .nav-link:hover {
   color: rgb(3, 85, 72);
 }
 
 a {
   text-decoration: none;
   color: #26A69A;
+}
+
+.btn-primary {
+  background-color: #26A69A;
+  border-color: #26A69A;
 }

@@ -5,7 +5,7 @@
 .homepage {
   display: grid;
   grid-template-rows: 1fr auto;
-  margin: 2em;
+  margin: 1em 2em 2em 2em;
 }
 
 .top-media {
@@ -19,11 +19,6 @@
   text-decoration: none;
   color: #26A69A;
   font-size: 1.5rem;
-}
-
-.top-media > section {
-  // color: #26A69A;
-
 }
 
 .top-media h3 {

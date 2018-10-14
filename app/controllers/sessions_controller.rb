@@ -9,8 +9,10 @@ class SessionsController < ApplicationController
 
     if @user
       flash[:success] = "Successfully logged in as existing user #{name}"
+      puts "SUCCESSFUL LOGIN"
 
     else
+      puts "NOT SUCCESSFUL LOGIN"
       user = User.create(username: name)
       flash[:error] = "Successfully created new user #{name} with ID #{user.id}"
     end

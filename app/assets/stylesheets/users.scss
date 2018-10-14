@@ -2,10 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#users-index {
-  padding: 1em;
+#users-index, #user-details {
+  padding: 2em;
 }
 
 span {
   background-color: white;
+}
+
+.user-votes {
+  margin-top: 2.5em;
 }
