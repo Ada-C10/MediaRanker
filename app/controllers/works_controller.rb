@@ -74,7 +74,7 @@ class WorksController < ApplicationController
     @vote.work_id = @work.id
 
     if @vote.save
-      flash[:success] = "Successfully voted!"
+      flash[:success] = "Successfully voted for #{@work.title}!"
       redirect_to works_path
     else
       flash[:error] = "Snap! Your vote wasn't counted.  What else is new in Amercia..."
