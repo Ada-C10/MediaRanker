@@ -18,6 +18,7 @@ describe Work do
 
     before do
       @work = works(:blue)
+      @work.save
     end
 
     it "must be valid when all fields are present" do

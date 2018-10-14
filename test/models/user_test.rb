@@ -7,14 +7,7 @@ describe User do
   before do
     @user1 = users(:house)
     @user2 = users(:jones)
-    # binding.pry
   end
-
-  #
-  # has_many :votes
-  #
-  # validates :username, presence: true, uniqueness: true, allow_nil: true
-  #
 
   it "must be valid" do
     value(@user1).must_be :valid?
@@ -37,25 +30,29 @@ describe User do
   end
 
 
-  #not sure why this test is true should be false based on model user realtionship
+  it "It is not valid when username is not unique" do
 
-  # it "It is not valid when username is not unique" do
-  #
-  #   same_username = User.new(username: @user1.username)
+    same_username = User.new(username: @user1.username)
+    same_username.save
 
-  #   binding.pry
-  #   expect(same_username).must_equal false
-  #
-  #
-  # end
+    is_valid = same_username.valid?
+
+    expect(is_valid).must_equal false
 
 
-#not sure why this test is running, even though on website it does not allow it to be blank 
-  # it "It is not valid when the username is blank" do
-  #   blank_username = User.new()
-  #   binding.pry
-  #   expect(blank_username).must_equal false
-  # end
+  end
+
+
+  it "It is not valid when the username is blank" do
+    blank_username = User.new()
+
+    blank_username.save
+
+    is_valid = blank_username.valid?
+
+    expect(is_valid).must_equal false
+
+  end
 
 
 

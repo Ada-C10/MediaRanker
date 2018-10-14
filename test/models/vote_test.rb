@@ -21,6 +21,7 @@ describe Vote do
     # vote = Vote.new(work_id: work.id, user_id: @logged_in_user.id)
 
     repeat_vote = Vote.new(user_id: @vote1.user.id, work_id: @vote1.work.id)
+    repeat_vote.save
 
     is_valid = repeat_vote.valid?
     expect( is_valid ).must_equal false
@@ -31,6 +32,7 @@ describe Vote do
     @vote3 = votes(:vote3)
 
     same_work_vote = Vote.new(user_id: @vote1.user.id, work_id: @vote3.work.id)
+    same_work_vote.save
 
     is_valid = same_work_vote.valid?
     expect( is_valid ).must_equal true
