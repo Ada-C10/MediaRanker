@@ -115,11 +115,16 @@ ul {
   text-decoration: none;
 }
 
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+.btn-primary, .btn-primary:active, .btn-primary:visited {
   background-color: #26A69A !important;
   border: #26A69A;
   color: #fff;
 }
+
+.btn-primary:hover {
+  background-color: #00796B !important;
+}
+
 .headliner {
   color: #26A69A;
   margin-top: 30px;
