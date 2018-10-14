@@ -75,7 +75,7 @@ class WorksController < ApplicationController
     ##if success, flash "Successfully upvoted!" and stay on page
     if @vote.save
       flash[:success] = "Successfully upvoted!"
-      render :new
+      # render :new
 
     ##else "you can only upvote a piece of media one time"
     else

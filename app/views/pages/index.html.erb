@@ -1,28 +1,32 @@
 here is the main page
-<br>
-<%= link_to "Works", works_path %>
-<br>
-<%= link_to "Users", users_path %>
+
 
 <h2>MEDIA SPOTLIGHT</h2>
 
 <h2>Top Books</h2>
 <ul>
-  <% all_books.each do |book| %>
-  <li><%= book.title %></li>
+
+  <% @all_books.each do |book, votes| %>
+  <li><%= book %></li>
+  <li>Votes: <%= votes %></li>
+  <br>
   <% end %>
 </ul>
 
 <h2>Top Movies</h2>
 <ul>
-  <% all_movies.each do |movie| %>
-  <li><%= movie.title %></li>
+  <% @all_movies.each do |movie, votes| %>
+  <li><%= movie %></li>
+  <li>Votes: <%= votes %></li>
+  <br>
   <% end %>
 </ul>
 
 <h2>Top Albums</h2>
 <ul>
-    <% all_albums.each do |album| %>
-    <li><%= album.title %></li>
+    <% @all_albums.each do |album, votes| %>
+    <li><%= album %></li>
+    <li>Votes: <%= votes %></li>
+    <br>
     <% end %>
 </ul>
