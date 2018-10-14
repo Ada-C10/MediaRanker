@@ -10,4 +10,8 @@ class Work < ApplicationRecord
   def self.sort_by_votes
     return self.all.sort_by { |work| work.votes.count }.reverse
   end
+
+  def self.spotlight
+    return Work.sort_by_votes.first
+  end
 end

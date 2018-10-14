@@ -60,4 +60,10 @@ describe Work do
     end
   end
 
+  describe '.spotlight' do
+    it 'returns highest voted work' do
+      expect(Work.spotlight.title).must_equal 'Harry Potter'
+    end
+  end
+
 end
