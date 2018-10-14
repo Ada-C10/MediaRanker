@@ -1,5 +1,7 @@
 class Work < ApplicationRecord
 belongs_to :user
+has_many :votes, dependent: :destroy
+
 
 validates :category, presence: true
 validates :title, presence: true
