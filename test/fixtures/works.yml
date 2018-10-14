@@ -1,15 +1,43 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+work1:
   title: Clueless
   publication_year: 1999
   description: awesomeness
   creator: Holly Wood
   category: movie
 
-  # two:
-  #   title: Good Times
-  #   publication_year: 2
-  #   description: sweetness
-  #   creator: Limon Brothas
-  #   category: book
+work2:
+  title: The Edge
+  publication_year: 2000
+  description: test-description
+  creator: Jolly Good
+  category: book
+
+work3:
+  title: Words
+  publication_year: 2010
+  description: another description
+  creator: Molly Hood
+  category: album
+
+work4:
+  title: The Count of Monte Cristo
+  publication_year: 1890
+  description: some description
+  creator: Wally Nood
+  category: book
+
+work5:
+  title: Casper
+  publication_year: 1996
+  description: a ghostly tale
+  creator: Disney
+  category: movie
+
+work6:
+  title: The Ring
+  publication_year: 2011
+  description: Japanese horror
+  creator: Shimokitezawa
+  category: movie

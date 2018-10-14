@@ -1,13 +1,33 @@
 require "test_helper"
 
 describe User do
-  let(:user) { users(:one) }
+  let(:user) { users(:two) }
 
   it "must be valid" do
     expect(user).must_be :valid?
   end
 
   describe "validations" do
+    describe "relationships" do
+      it "has relationship to votes" do
+        user = users(:one)
+
+        result = user.votes.first
+
+        expect(result).must_be_kind_of Vote
+
+      end
+
+      it "can have one vote per work" do
+        user = users(:two)
+        work = works(:work1)
+        vote = Vote.create(work: work, user: user)
+
+        result = vote.valid?
+        expect(result).wont_equal true
+      end
+    end
+
     it "won't be valid without username" do
       user = users(:one)
       user.username = nil
@@ -37,6 +57,7 @@ describe User do
 
       expect(new_result).must_equal true
     end
-
   end
+
+
 end
