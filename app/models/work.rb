@@ -19,7 +19,8 @@ class Work < ApplicationRecord
   def users_that_voted_on_this_work
     # work_id = find_work_id
     # array_of_votes = Vote.find_by(work_id: work_id)
-    array_of_votes = self.votes
+    # array_of_votes = self.votes
+    array_of_votes = self.votes.order(created_at: :desc)
     users_ids = []
 
     array_of_votes.each do |vote|
