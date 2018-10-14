@@ -1,18 +1,4 @@
-<% if @work.errors.messages.any? %>
-  <section class="form-errors">
-    <h3>There were some problems. Please fix them.</h3>
-    <ul>
-      <% @work.errors.messages.each do |field, problem_list| %>
-        <% problem_list.each do |problem| %>
-          <li>
-            <strong><%= field %></strong>
-            <%= problem %>
-          </li>
-        <% end %>
-      <% end %>
-    </ul>
-  </section>
-<% end %>
+<%= render partial: 'layouts/form_errors', locals: { model: @work } %>
 
 <%= form_with model: @work, class: 'form' do |f| %>
   <h2><%= form_title %></h2>
