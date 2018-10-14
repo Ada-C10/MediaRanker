@@ -9,15 +9,15 @@ class Work < ApplicationRecord
   has_many :users, through: :votes
 
   def self.albums
-    return Work.where(category: 'album')
+    where(category: 'album')
   end
 
   def self.books
-    return Work.where(category: 'book')
+    where(category: 'book')
   end
 
   def self.movies
-    return Work.where(category: 'movie')
+    where(category: 'movie')
   end
 
   def self.work_with_max_votes

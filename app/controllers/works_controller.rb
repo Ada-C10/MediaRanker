@@ -2,11 +2,11 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :upvote, :destroy]
 
   def index
-    @works = Work.all #.order(:votes)
+    @works = Work.all.order(:votes)
 
-    @albums = Work.albums
-    @books = Work.books
-    @movies = Work.movies
+    @albums = Work.albums.order(:votes)
+    @books = Work.books.order(:votes)
+    @movies = Work.movies.order(:votes)
   end
 
   def show; end
