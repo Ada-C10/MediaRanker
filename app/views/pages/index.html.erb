@@ -1,0 +1,24 @@
+<section class='spotlight'>
+  <h2>Media Spotlight:
+    <%= link_to work_path(@works.first.id) do %>
+    <%= @works.first.title %>
+    <% end %>
+     by <%= @works.first.creator %></h2>
+     <p>
+       <%= @works.first.votes_count %> votes - <%= @works.first.description %>
+     </p>
+</section>
+
+<section class='top-ten-container'>
+  <section class='top-ten-list-container'>
+    <%= render partial: "top_works_list", locals: { model: @movies, list_name: "Top Movies" } %>
+  </section>
+
+  <section class='top-ten-list-container'>
+    <%= render partial: "top_works_list", locals: { model: @books, list_name: "Top Books" } %>
+  </section>
+
+  <section class='top-ten-list-container'>
+    <%= render partial: "top_works_list", locals: { model: @albums, list_name: "Top Albums" } %>
+  </section>
+</section>

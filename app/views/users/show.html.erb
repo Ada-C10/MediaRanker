@@ -1,0 +1,31 @@
+<h2>User Summary: <%= @user.name %></h2>
+<p>Joined site: <%= @user.created_at.strftime("%b %d, %Y") %></li>
+
+<h3>Votes</h3>
+<table>
+  <tr>
+    <th>Media Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Category</th>
+  </tr>
+
+  <% @user.upvoted_works.each do |work| %>
+  <tr>
+    <td>
+      <%= link_to work_path(work.id) do %>
+      <%= work.title %>
+      <% end %>
+    </td>
+    <td><%= work.creator %></td>
+    <td><%= work.publication_year %></td>
+    <td><%= work.category %></td>
+    <td><%= work.created_at.strftime("%b %d, %Y") %></td>
+  </tr>
+  <% end %>
+</table>
+
+<section class='nav-links'>
+  <%= link_to 'See all Users', users_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Back to media list', root_path, class: 'btn btn-primary' %>
+</section>

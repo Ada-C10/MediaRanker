@@ -1,0 +1,42 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+harry_potter:
+  category: book
+  title: 'Harry Potter'
+  creator: JK Rowling
+  publication_year: 1999
+  description: Muggles, magic, mysteries
+road:
+  category: book
+  title: On the Road
+  creator: Jack Kerouac
+  publication_year: 1957
+  description: Jazz, drugs, travel, and the original hipsters
+secondhand:
+  category: album
+  title: Secondhand Rapture
+  creator: MS MR
+  publication_year: 2013
+  description: Great study tunes
+hotfuss:
+  category: album
+  title: Hot Fuss
+  creator: The Killers
+  publication_year: 2004
+  description: Throwback makes you want to dance
+stand:
+  category: movie
+  title: Stand By Me
+  creator: Rob Reiner
+  publication_year: 1986
+  description: Awesome 80s flick, even though it only has one of the Coreys
+lost:
+  category: movie
+  title: The Lost Boys
+  creator: Joel Schumacher
+  publication_year: 1987
+  description: Amazingly campy, has both Coreys PLUS Kiefer Sutherland

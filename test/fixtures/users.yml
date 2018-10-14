@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+val:
+  name: valgidzi
+test1:
+  name: test one
+test2:
+  name: test two
+test3:
+  name: test three
