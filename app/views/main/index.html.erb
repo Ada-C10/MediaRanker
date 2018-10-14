@@ -5,11 +5,7 @@
 <h1>Spotlight</h1>
 <%=link_to @spotlight.title, work_path(@spotlight.id) %>
 
-<h1>Top Albums:</h1>
-<% @albums.each do |album| %>
-    <br>
-    <%=link_to album.title, work_path(album.id) %>
-<% end %>
+
 
 <h1>Top Book:</h1>
 <% @books.each do |book| %>
@@ -38,6 +34,12 @@
 
     <hr class="root__hr">
 
+
+    <% @albums.each do |album| %>
+        <br>
+        <%=link_to album.title, work_path(album.id) %>
+    <% end %>
+
       <section class="top-ten__list-container">
       <h2 class="top-ten__header">
         Top Albums
@@ -45,15 +47,20 @@
       <ul class="list-group top-ten__list">
           <li class="list-group-item">
             <h4>
-              <a href="/works/19">Winter Been</a>
-              <small class="top-ten__creator">by Mackenzie Wilkinson</small>
+              <% @albums.each do |album| %>
+                  <br>
+                  <%=link_to album.title, work_path(album.id) %>
+                  <%= link_to "upvote", work_votes_path(album.id), method: :post %>
+                  <p><%= album.votes.count %> Votes</p>
+
+              <small class="top-ten__creator"><%=link_to album.creator, work_path(album.id) %></small>
+              <% end %>
             </h4>
-            <p>17 votes</p>
           </li>
 
       </ul>
       <!-- <a href="/works.albums">View More Albums</a> -->
     </section>
-  </section>
+
 
 </main>
