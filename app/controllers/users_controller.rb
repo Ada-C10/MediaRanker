@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :find_user_works
+
   def new
     @user = User.new()
   end
@@ -38,5 +40,9 @@ class UsersController < ApplicationController
     return params.require(:user).permit(
       :username
     )
+  end
+
+  def find_user_works
+    @user_votes = @votes.find_votes_by_user(params[:id])
   end
 end

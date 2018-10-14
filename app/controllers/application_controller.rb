@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   end
 
   def find_votes
-    @votes || = Vote.all
+    @votes ||= Vote.all
   end
 end
