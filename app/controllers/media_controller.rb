@@ -1,5 +1,5 @@
 class MediaController < ApplicationController
-  
+
   def index
     @movies = Medium.where(category: "movie")
     @books = Medium.where(category: "book")

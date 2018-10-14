@@ -12,11 +12,10 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      user = User.create(name: name)
+      user = User.new(name: name)
 
       if user.save
         flash[:success] = "New account created. Welcome tf to our site, #{name} (also ur my bro now, js)"
-
         session[:user_id] = user.id
         redirect_to root_path
       else
@@ -33,11 +32,15 @@ class UsersController < ApplicationController
   end
 
   def upvote
-    if Vote.find_by(user_id: session[:user_id], medium_id: params[:id])
-      flash[:error] = "bro lol you can't vote for the same thing twice! lmao dude ur a TRIP!"
+    preexisting = Vote.find_by(user_id: session[:user_id], medium_id: params[:id])
+    
+    if preexisting
+      flash[:error] = "bro lol you can't vote for the same thing twice! smh dude u r a TRIP!"
       show_redirect
     else
-      if Vote.create(user_id: session[:user_id], medium_id: params[:id])
+      vote = Vote.new(user_id: session[:user_id], medium_id: params[:id])
+
+      if vote.save
         flash[:success] = "bro nice upvote! i saw that!! high five for the positivity bro.."
         show_redirect
       else
