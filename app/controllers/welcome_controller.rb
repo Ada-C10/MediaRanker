@@ -1,18 +1,14 @@
 class WelcomeController < ApplicationController
   def index
     @works = Work.all
-    # SELECT all works for EACH category
-    # SHOW work title, publisher, votes
+    # Show top ten for each category to view 
     @movies = top_ten_list("movie")
-    # @works.select { |work| work.category == "movie" }
     @albums = top_ten_list("album")
-    # @works.select { |work| work.category == "album" }
     @books = top_ten_list("book")
-    # @works.select { |work| work.category == "book" }
     @spotlight = top_work
   end
 
-  private 
+  private
 
   def top_work
     # TODO What if there's no works?

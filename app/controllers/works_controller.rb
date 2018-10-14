@@ -1,9 +1,8 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
-  # Update vote total after upvote
-  # after_action :calculate_vote_total, only: [:upvote, :create]
 
   def upvote
+    # Must be logged in to vote
     if @current_user.nil?
       flash[:danger] = "Must be logged in to vote"
       redirect_to login_path
@@ -15,24 +14,20 @@ class WorksController < ApplicationController
       vote.user_id = @current_user.id
       vote.date_created = Date.today
       vote.save
-      # Shovel into work and user vote collections
+      # Shovel into work collection of votes
       @work.votes << vote
-      # Could not make votes_count update properly :(.
-      #Tried starting it at 0/adding one each time there's a vote
-      # And a few other techniques
-      # Works in pry but doesn't seem to work in browser
+      # Add one to works vote count
       @work.votes_count += 1
       # @work.votes_count = Vote.count(:conditions => "work_id = #{@work.id}"
-      # Might not need this line as it's alread attached to
-      # The user via foreign key
+      # Shovel vote to user collection of votes
       @current_user.votes << vote
+      # Send user back to where they were or to root path
       redirect_back fallback_location: root_path
     end
   end
 
   def index
     @works = Work.all
-    # This sorts the works but it would have been nice to do it by the vote_count attribute
     @movies = @works.select { |work| work.category == "movie" }.sort_by { |work| work.votes_count }.reverse
     @albums = @works.select { |work| work.category == "album" }.sort_by { |work| work.votes_count }.reverse
     @books = @works.select { |work| work.category == "book" }.sort_by { |work| work.votes_count }.reverse
@@ -48,7 +43,7 @@ class WorksController < ApplicationController
     # @work.vote_count = Vote.count(:conditions => "work_id = #{@work.id}"
     if @work.save # save returns true if the database insert succeeds
       flash[:success] = 'Work Created!'
-      redirect_to root_path # go to the index so we can see the book in the list
+      redirect_to works_path # go to the index so we can see the work in the list
     else # save failed :(
       flash.now[:danger] = 'Work not created!'
       @work.errors.messages.each do |field, messages|
@@ -59,9 +54,11 @@ class WorksController < ApplicationController
   end
 
   def update
+    # If it updates, go to the work show page
     if @work && @work.update(work_params)
       redirect_to work_path(@work.id)
     elsif @work
+    # If not, render the edit page
       render :edit
     end
   end
@@ -105,6 +102,7 @@ class WorksController < ApplicationController
     end
   end
 
+  # Decided to default to 0/add one for each upvote instead 
   # def calculate_vote_total
   #   if self.votes.length == 0
   #     # If no votes, set to 0

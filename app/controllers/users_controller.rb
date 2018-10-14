@@ -5,9 +5,6 @@ after_action :set_date_joined, only: [:create]
 
 
   def index
-    # Current user will be that model, else it will be nil (not logged in)
-    # Use a filter here - Run this method every time
-    # Always find the user or always find the top 10
     @users = User.all.order(:name)
   end
 
@@ -18,11 +15,6 @@ after_action :set_date_joined, only: [:create]
   def new
     @user = User.new
   end
-
-  # Do I need this?
-  # def create
-  # end
-
 
   private
 
@@ -39,7 +31,6 @@ after_action :set_date_joined, only: [:create]
     end
   end
 
-  private
   def set_date_joined
     @user.date_joined = @user.date_created.to_date
   end
