@@ -9,7 +9,7 @@
     <th>Upvote</th>
   </tr>
 
-  <% model.sort_by_votes.each do |work|%>
+  <% model.each do |work|%>
   <tr>
     <td><%= work.votes.count %></td>
     <td>
