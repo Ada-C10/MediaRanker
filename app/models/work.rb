@@ -19,4 +19,29 @@ class Work < ApplicationRecord
   def self.movies
     return Work.where(category: 'movie')
   end
+
+  def self.work_with_max_votes
+    max_work = work
+
+    return max_work
+  end
+
+  def self.top_albums
+    top_albums = []
+
+    return top_albums
+  end
+
+  def self.top_books
+    top_albums = []
+
+    return top_books
+  end
+
+  def self.top_movies
+    top_albums = []
+
+    return top_movies
+  end
+
 end

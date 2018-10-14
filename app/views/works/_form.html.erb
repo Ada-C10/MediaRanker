@@ -1,34 +1,46 @@
 <% if @work.errors.any? %>
-   <ul>
-     <% @work.errors.each do |column, message| %>
+  <ul>
+    <% @work.errors.each do |column, message| %>
       <li>
         <strong><%= column.capitalize %></strong> <%= message %>
       </li>
     <% end %>
-   </ul>
+  </ul>
 <% end %>
 
-<h1> <%= action_name %> </h1>
-
+<h2><%= action_name %></h2>
 <%= form_with model: @work, class: "work-form", local: true  do |f|%>
-  <p>Please provide the following information to save your book to our database:</p>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :creator %>
-  <%= f.text_field :creator %>
-
-  <%= f.label :category %>
-  <%= f.text_field :category %>
-
-  <%= f.label :publication_year %>
-  <%= f.text_field :publication_year %>
-
-  <section class="description-section">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+  <section class='form-group' name="work[category]">
+    <label><%= f.label :category %></label>
+    <select class="form-control" name="work">
+      <option value="album">album</option>
+      <option value="book">book</option>
+      <option value="movie">movie</option>
+    </select>
   </section>
 
-  <%= f.submit button_title, class: "book-button" %>
+  <section class='form-group'>
+    <label><%= f.label :title %></label>
+    <input class="form-control"><% f.text_field :title %></input>
+  </section>
+
+  <section class='form-group'>
+    <label><%= f.label :creator %></label>
+    <input class="form-control"><% f.text_field :creator %></input>
+  </section>
+
+  <section class='form-group'>
+    <label><%= f.label :publication_year %></label>
+    <input class="form-control"><% f.text_field :publication_year %>
+  </section>
+
+  <section class='form-group'>
+    <label><%= f.label :description %></label>
+    <input class="form-control"><% f.text_area :description %></input>
+  </section>
+
+  <section class='form-group'>
+    <input class="btn btn-primary"><%= f.submit button_title %>
+  </section>
 <% end %>

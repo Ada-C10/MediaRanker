@@ -58,7 +58,7 @@ class WorksController < ApplicationController
         flash[:success] = "Vote successful."
         redirect_back fallback_location: works_path
       else
-        raise
+
         flash[:warning] = "Unable to submit vote"
         redirect_back fallback_location: works_path
     end
@@ -79,7 +79,7 @@ class WorksController < ApplicationController
   end
 
   def work_params
-    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+    return params.require(:work).permit(:category, :movies, :title, :creator, :publication_year, :description)
   end
 
 end
