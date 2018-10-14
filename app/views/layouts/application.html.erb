@@ -39,10 +39,10 @@
         </li>
         <li>
           <% if @current_user %>
-          <%= link_to "LOG IN #{@current_user.handle}", user_path(@current_user.id) %>
-          <%= link_to "LOG OUT", user_path(session[:user_id]), method: :delete %>
+          <%= link_to "LOG OUT #{@current_user.handle}", logout_path, method: :delete %> </li>
+          <li> <%= link_to "MY ACCOUNT", user_path(session[:user_id])%> </li>
           <% else %>
-          <%= link_to "LOG IN", new_user_path %>
+          <%= link_to "LOG IN", new_user_path %> </li>
           <% end %>
 
         </li>
