@@ -1,47 +1,45 @@
 require "test_helper"
+require 'pry'
 
 describe Work do
+
+  # VALIDATIONS TESTS
   describe 'validations' do
 
-    it 'has a title' do
+    it 'is not valid without a title' do
       work = works(:beatles)
 
       work.title = nil
 
-      is_valid = work.valid?
-
-      expect( is_valid ).must_equal false
+      expect( work ).must_be :invalid?
       expect( work.errors.messages ).must_include :title
     end
 
-    it 'has a unique title within the same category' do
-      work = works(:potter)
+    it 'is not valid without a unique title within the same category' do
+      work = works(:greys)
+      new_work = works(:titanic)
 
-      new_work = Work.new(category: work.category, title: work.title, creator: 'Jon Snow', publication_year: 1990, description: 'Creating a new description here')
+      new_work.title = work.title
 
-      is_valid = new_work.valid?
-
-      expect( is_valid ).must_equal false
-      expect( new_work.errors.messages).must_include :title
+      expect( new_work).must_be :invalid?
+      expect( new_work.errors.messages ).must_include :title
     end
 
-    it 'is valid with same title in different categories' do
+    it 'is valid with same title but in different categories' do
       work = works(:greys)
 
-      new_work = Work.new(category: 'album' , title: work.title, creator: 'Derek Shepherd', publication_year: 2010, description: 'Some sort of window to your right as he goes left, and you stay right')
+      new_work = works(:potter)
 
-      is_valid = new_work.valid?
+      new_work.title = work.title
 
-      expect( is_valid ).must_equal true
+      expect( new_work ).must_be :valid?
     end
 
 
     it 'is valid when all fields are present' do
       work = works(:beatles)
 
-      is_valid = work.valid?
-
-      expect( is_valid ).must_equal true
+      expect( work ).must_be :valid?
 
     end
 
@@ -50,20 +48,105 @@ describe Work do
 
       work.category = "podcast"
 
-      is_valid = work.valid?
+      expect( work ).must_be :invalid?
 
-      expect( is_valid ).must_equal false
-
-      Work::CATEGORY.each do |c|
+      Work::CATEGORIES.each do |c|
         work.category = c
 
-        still_valid = work.valid?
+        expect( work ).must_be :valid?
+      end
 
-        expect( still_valid ).must_equal true
+    end
+  end
+
+
+    # RELATIONS TESTS
+    describe 'relations' do
+      it 'must relate to a vote' do
+        work = works(:potter)
+
+        expect( work ).must_respond_to :votes
+      end
+
+      it 'returns returns an array of votes when using the votes method call' do
+        work = works(:potter)
+        votes = work.votes
+
+        expect( work.votes.first ).must_be_kind_of Vote
+        expect( work.votes.count ).must_equal 5
+      end
+    end
+
+    # CUSTOM METHODS TESTS
+    describe 'top_media' do
+      it 'returns only 10 works' do
+        works = Work.top_media('book')
+
+        expect( works.count ).must_equal 10
+      end
+
+      it 'returns the 10 works in descending order based on votes' do
+        works = Work.top_media('book')
+
+        expect( works.first ).must_equal works(:potter)
+        expect( works.last ).wont_equal works(:potter)
+      end
+
+      it 'returns only the works of the same category' do
+        works = Work.top_media('book')
+
+        works.each do |w|
+          category = w.category
+
+          expect( category ).must_equal 'book'
+        end
+
+      end
+    end
+
+    describe 'spotlight' do
+      it 'returns the work with the most amount of votes' do
+        most_votes = Work.spotlight
+
+        expect( most_votes ).must_equal works(:potter)
+      end
+
+
+    end
+
+    describe 'get_all_works' do
+      let(:albums) { Work.get_all_works('album') }
+      let(:books) { Work.get_all_works('book') }
+      let(:movies) { Work.get_all_works('movie') }
+
+      it 'returns all the works for each category' do
+
+        expect( albums.count ).must_equal 2
+        expect( books.count ).must_equal 11
+        expect( movies.count ).must_equal 3
+      end
+
+      it 'returns only the works of the specific category' do
+        albums.each do |a|
+          category = a.category
+
+          expect( category ).must_equal 'album'
+        end
+
+        books.each do |a|
+          category = a.category
+
+          expect( category ).must_equal 'book'
+        end
+
+        movies.each do |a|
+          category = a.category
+
+          expect( category ).must_equal 'movie'
+        end
       end
 
     end
 
 
-  end
 end

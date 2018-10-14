@@ -20,3 +20,94 @@ greys:
   creator: meredith grey
   publication_year: 2007
   description: And I would have stayed up with you all night had I known how to save a life
+
+titanic:
+  category: movie
+  title: A woman's heart is a deep ocean of secrets
+  creator: leo dicap
+  publication_year: 2001
+  description:  I mean, I love waking up in the morning not knowing what’s gonna happen or, who I’m gonna meet, where I’m gonna wind up.
+
+twix:
+  category: book
+  title: A story about a chocolate bar
+  creator: yum yum
+  publication_year: 1999
+  description: I'm going to make him an offer he can't refuse
+
+starburst:
+  category: book
+  title: packs a punch
+  creator: yellow bears
+  publication_year: 2010
+  description: Go ahead, make my day
+
+twizzlers:
+  category: book
+  title: top ten snacks but why
+  creator: swizzle swizzle
+  publication_year: 1990
+  description: Here's looking at you, kid
+
+smarties:
+  category: book
+  title: sweet, tart, and somewhat chalky
+  creator: chalky chalk
+  publication_year: 2000
+  description: The stuff that dreams are made of
+
+pez:
+  category: book
+  title: it is a dispenser candy
+  creator: allpez
+  publication_year: 1995
+  description: I want to be alone
+
+sourpatch:
+  category: book
+  title: sour on the outside and sweet on the inside
+  creator: the kids
+  publication_year: 2000
+  description: I'll have what she's having
+
+fireball:
+  category: book
+  title: a ball candy made of fire
+  creator: fire fire
+  publication_year: 1998
+  description: Hasta la vista, baby
+
+reeses:
+  category: book
+  title: chocolate and peanut butter mush
+  creator: loves pb
+  publication_year: 2018
+  description: Carpe diem. Seize the day, boys. Make your lives extraordinary
+
+butterfinger:
+  category: book
+  title: not sure how to describe this chocolate
+  creator: cravings forsure
+  publication_year: 1967
+  description: A martini. Shaken, not stirred
+
+tootsie:
+  category: book
+  title: could be a roll, could be a lollipop
+  creator: tootsie owl
+  publication_year: 1990
+  description: Well, nobody's perfect
+
+kitkat:
+  category: album
+  title: always comes in different flavors
+  creator: someone amazing
+  publication_year: 1988
+  description: Houston, we have a problem
+
+snickers:
+  category: movie
+  title: hungry, why wait
+  creator: someone hungry
+  publication_year: 1955
+  description: One morning I shot an elephant in my pajamas. How he got in my pajamas, I don't know

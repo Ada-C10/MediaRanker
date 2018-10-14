@@ -1,10 +1,10 @@
 class Work < ApplicationRecord
   has_many :votes, dependent: :destroy
 
-  CATEGORY = ["album", "book", "movie"]
+  CATEGORIES = ["album", "book", "movie"]
 
   validates :title, presence: true
-  validates :category, inclusion: { in: CATEGORY }
+  validates :category, inclusion: { in: CATEGORIES }
   validates_uniqueness_of :title, scope: :category
 
   def self.top_media(category)

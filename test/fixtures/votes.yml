@@ -3,9 +3,52 @@
 # This model initially had no columns defined. If you add columns to the
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+
+
+vote_one:
+  user: oreo
+  work: potter
+
+vote_two:
+  user: muffin
+  work: potter
+
+vote_three:
+  user: chips
+  work: potter
+
+vote_four:
+  user: chips
+  work: beatles
+
+vote_five:
+  user: oreo
+  work: greys
+
+vote_six:
+  user: muffin
+  work: greys
+
+vote_seven:
+  user: oreo
+  work: titanic
+
+vote_eight:
+  user: muffin
+  work: tootsie
+
+vote_nine:
+  user: chips
+  work: twizzlers
+
+vote_ten:
+  user: muffin
+  work: sourpatch
+
+vote_eleven:
+  user: cheetos
+  work: potter
+
+vote_twelve:
+  user: burger
+  work: potter

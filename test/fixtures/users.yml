@@ -1,7 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  username: MyString
+oreo:
+  username: oreo
 
-two:
-  username: MyString
+muffin:
+  username: muffin
+
+chips:
+  username: chips
+
+burger:
+  username: burger
+
+cheetos:
+  username: cheetos
