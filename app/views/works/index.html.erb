@@ -20,8 +20,9 @@
      <tbody>
        <% @works.each do |work| %>
        <% if work.category == 'album' %>
+       <% votes = @votes.find_votes_by_work(work.id) %>
        <tr>
-         <td>[TO DO: POPULATE WORK -  WORK.VOTES]</td>
+         <td><%= "#{votes.length}"%></td>
          <td><%=link_to "#{work.title}", work_path(work)%></td>
          <td><%= work.creator%></td>
          <td><%= work.publication_year%></td>
@@ -50,12 +51,13 @@
        <tbody>
          <% @works.each do |work| %>
          <% if work.category == 'book' %>
+         <% votes = @votes.find_votes_by_work(work.id) %>
          <tr>
-           <td>[TO DO: POPULATE WORK -  WORK.VOTES]</td>
+           <td><%= "#{votes.length}"%></td>
            <td><%=link_to "#{work.title}", work_path(work)%></td>
            <td><%= work.creator%></td>
            <td><%= work.publication_year%></td>
-           <td><a class="btn btn-primary">VOTE[TO DO: ADD data-method="post" href="/works/[NUM]/vote"]</a></td>
+           <td><%= link_to 'UpVote', work_votes_path(work), method: :post, class: "btn btn-primary" %></td>
          </tr>
          <%end%>
          <%end%>
@@ -79,12 +81,13 @@
         <tbody>
           <% @works.each do |work| %>
           <% if work.category == 'movie' %>
+          <% votes = @votes.find_votes_by_work(work.id) %>
           <tr>
-            <td>[TO DO: POPULATE WORK -  WORK.VOTES]</td>
+            <td><%= "#{votes.length}"%></td>
             <td><%=link_to "#{work.title}", work_path(work)%></td>
             <td><%= work.creator%></td>
             <td><%= work.publication_year%></td>
-            <td><a class="btn btn-primary">VOTE[TO DO: ADD data-method="post" href="/works/[NUM]/vote"]</a></td>
+            <td><%= link_to 'UpVote', work_votes_path(work), method: :post, class: "btn btn-primary" %></td>
           </tr>
           <%end%>
           <%end%>

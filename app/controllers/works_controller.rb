@@ -1,13 +1,12 @@
 class WorksController < ApplicationController
 before_action :find_work, only: [:show, :edit, :update, :destroy]
-before_action :find_work_votes, only: :show
+before_action :find_work_votes, only: [:show]
 
   def index
     @works = Work.all
   end
 
   def show
-
     if @work == nil
       flash.now[:failure] = "Work not found. Please use one of the options above."
       render 'layouts/invalid_page', status: :not_found
