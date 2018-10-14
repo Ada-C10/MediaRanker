@@ -1,17 +1,30 @@
-User Summary: <%= @user.username %>
+<h2>User Summary: <%= @user.username %></h2>
 <br>
 Joined: <%= @user.created_at.to_datetime %>
 
-<br>
-Votes
 
-<table>
-<tr>
-  <td>Media</td>
-  <td>Title</td>
-  <td>Created By</td>
-  <td>Published</td>
-  <td>Category</td>
-  <td>Voted On</td>
-</tr>
-</table>
+<section class = "user-table">
+  <h3>Votes</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Media Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <% @user.votes.each do |vote| %>
+        <td><%= movie.votes.title %></td>
+
+      </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</section>

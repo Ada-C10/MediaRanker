@@ -21,7 +21,7 @@
       <tr>
         <% @all_albums.each do |album| %>
         <td><%= album.votes.count %></td>
-        <td><%= album.title %></td>
+        <td><%= link_to album.title, work_path(album) %></td>
         <td><%= album.creator %></td>
         <td><%= album.publication_year %></td>
         <td><%= link_to "Upvote", upvote_work_path(album), method: :post %></td>
@@ -50,7 +50,7 @@
       <tr>
         <% @all_books.each do |book| %>
         <td><%= book.votes.count %></td>
-        <td><%= book.title %></td>
+        <td><%= link_to book.title, work_path(book) %></td>
         <td><%= book.creator %></td>
         <td><%= book.publication_year %></td>
         <td><%= link_to "Upvote", upvote_work_path(book), method: :post %></td>
@@ -79,7 +79,7 @@
       <tr>
         <% @all_movies.each do |movie| %>
         <td><%= movie.votes.count %></td>
-        <td><%= movie.title %></td>
+        <td><%= link_to movie.title, work_path(movie) %></td>
         <td><%= movie.creator %></td>
         <td><%= movie.publication_year %></td>
         <td><%= link_to "Upvote", upvote_work_path(movie), method: :post %></td>
