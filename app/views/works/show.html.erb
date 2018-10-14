@@ -4,7 +4,7 @@
   <h1> 404 Not found</h1>
 <% else %>
 <section class='vote-for'>
-  <%= link_to "Vote!", vote_path(@work.id), method: :create %>
+    <%= link_to "Vote!", vote_path(@work.id), method: :create %>
   <p> <%= "#{@work.title} has #{@work.votes.count} votes." %> </p>
 
 </section>
@@ -17,8 +17,10 @@
    <li> <%= @work.description %> </li>
  </ul>
  <!-- only allow users to edit/delete if they had added the work to the db -->
- <% if @work.user_id == session[:user_id] %>
+ <% if @current_user %>
     <%= link_to "Edit", edit_work_path(@work.id) %>
     <%= link_to "Delete Work", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure? This cannot be undone!'} %>
+    <% else %>
+    You must be logged in to delete or edit a work.
   <% end %>
  <% end %>

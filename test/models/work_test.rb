@@ -30,7 +30,5 @@ describe 'validations' do
     expect(work.errors.messages).must_include :title
     expect(work.errors.messages[:title]).must_equal ["can't be blank", "has already been taken"]
   end
-
-
 end
 end

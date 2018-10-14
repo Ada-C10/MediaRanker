@@ -15,7 +15,14 @@ alanis:
 pygmalion:
   creator: Ovid
   year: 8
-    category: literature
-    title: Metamorphoses
-    description: the greek poet's magnum opus
+  category: book
+  title: Metamorphoses
+  description: the greek poet's magnum opus
 # column: value
+
+lawrence:
+  creator: David Lean
+  year: 1962
+  category: movie
+  title: Lawrence of Arabia
+  description: classic historical drama starring Peter O'Toole
