@@ -8,7 +8,7 @@ class VotesController < ApplicationController
   def create
     @vote = @current_user.votes.new(vote_params)
     if @vote.save
-      redirect_to votes_path
+      redirect_to work_path(vote_params[:work_id])
     else
       flash[:error] = "cant save vote"
       redirect_to votes_path
