@@ -144,6 +144,16 @@ ul {
     border-color: #26A69A;
 }
 
+.log-button {
+  background-color: #26A69A;
+  color: white;
+  border-color: #26A69A;
+}
+
+.btn-primary:hover {
+  background-color: black;
+}
+
 .btn:not(:disabled):not(.disabled) {
     cursor: pointer;
 }
