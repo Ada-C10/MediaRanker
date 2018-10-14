@@ -105,6 +105,43 @@ describe Work do
     end
   end
 
+  describe "sorted_works" do
+    it "sorts the works in descending order by votes" do
+      sorted = Work.sorted_works("book")
+      first = sorted.first.votes.count
+      last = sorted.last.votes.count
+
+      expect(first).must_be :>=, last
+    end
+
+    it "sorts correctly if new votes are added"  do
+      # user: johnie work:harry_potter
+      pickle1 = Vote.new(user_id: 921899516, work_id: 820998458)
+      # user: sam work:harry_potter
+      pickle2 = Vote.create(user_id: 638797851, work_id: 820998458)
+      # user: bonanza work: How to Pickle
+      pickle3 = Vote.create(user_id: 59467727, work_id: 820998458)
+      pickle1.save
+      pickle2.save
+      pickle3.save
+
+      sorted = Work.sorted_works("book")
+
+      expect(sorted.first.title).must_equal "How to Pickle"
+    end
+
+    it "will keep existing top choice, if new vote is added to different work to create tie" do
+      # user: johnie work:harry_potter
+      pickle1 = Vote.new(user_id: 921899516, work_id: 820998458)
+      # user: sam work:harry_potter
+      pickle2 = Vote.create(user_id: 638797851, work_id: 820998458)
+
+      sorted = Work.sorted_works("book")
+
+      expect(sorted.first.title).must_equal "Knife of Dreams"
+    end
+  end
+
   describe "top ten" do
 
     it "sorts the works in descending order by votes" do

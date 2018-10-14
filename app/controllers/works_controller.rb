@@ -2,7 +2,7 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def index
-    @works = Work.all.order(:title)
+    @works = Work.all
   end
 
   def show; end

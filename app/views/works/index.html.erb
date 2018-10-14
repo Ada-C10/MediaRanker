@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <% albums = Work.where(category: "album") %>
+        <% albums = Work.sorted_works("album") %>
         <% albums.each do |album| %>
           <tr>
             <td><%= album.votes.count %></td>
@@ -41,7 +41,7 @@
         </tr>
       </thead>
       <tbody>
-        <% books = Work.where(category: "book") %>
+        <% books = Work.sorted_works("book") %>
         <% books.each do |book| %>
           <tr>
             <td><%= book.votes.count %></td>
@@ -67,7 +67,7 @@
         </tr>
       </thead>
       <tbody>
-        <% movies = Work.where(category: "movie") %>
+        <% movies = Work.sorted_works("movie") %>
         <% movies.each do |movie| %>
           <tr>
             <td><%= movie.votes.count %></td>
