@@ -1,7 +1,7 @@
-<section class="users">
+<section class = "users">
   <h2>List of Users</h2>
 
-  <table class="table">
+  <table class = "table">
     <thead>
       <tr>
         <th>Username</th>
@@ -13,6 +13,7 @@
         <td><%= link_to "#{user.username}", user_path(user.id) %></td>
       </tr>
       <% end %>
+    </tbody>
   </table>
 
   <button type="button" class="btn btn-info"><%= link_to "Back to Media List", top_works_path %></button>
