@@ -2,6 +2,4 @@
 
 one:
   count: 1
-
-two:
-  count: 1
+  work_id: 1

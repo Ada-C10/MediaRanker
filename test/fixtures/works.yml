@@ -1,15 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+jane:
+  id: 1
+  category: book
+  title: jane austin
+  creator: someone
+  publication_year: 1999
+  description: test book
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+harry:
+  category: movie
+  title: harry potter
+  creator: jk rowling
+  publication_year: 1999
+  description: test movie
