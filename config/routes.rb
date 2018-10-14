@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :works
-  resources :votes 
+  resources :votes
 
 get "/:page" => "welcome#index"
 
