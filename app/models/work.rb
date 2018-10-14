@@ -24,9 +24,6 @@ class Work < ApplicationRecord
     return Work.all.max_by { |work| work.votes.count }
   end
 
-  def self.get_num_votes(work)
-    return work.votes.count
-  end
 
 
 
