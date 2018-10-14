@@ -1,7 +1,7 @@
 <h2><%= list_name %></h2>
 <ul>
 
-  <% model.sort_by { |work| work.votes.length }.reverse.first(10).each do |work| %>
+  <% model.sort_by_votes.first(10).each do |work| %>
   <li>
     <%= work.title %> by <%= work.creator %>
   </li>

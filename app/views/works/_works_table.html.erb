@@ -7,7 +7,7 @@
     <th>Upvote</th>
   </tr>
 
-  <% model.sort_by { |work| work.votes.length }.reverse.each do |work|%>
+  <% model.sort_by_votes.each do |work|%>
   <tr>
     <td><%= work.votes.count %></td>
     <td>
