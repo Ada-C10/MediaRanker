@@ -96,6 +96,10 @@ html {
     -webkit-tap-highlight-color: transparent;
 }
 
+.spotlight__header--prefix {
+  color: black;
+}
+
 .top-ten__container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -151,7 +155,7 @@ ul {
 }
 
 .btn-primary:hover {
-  background-color: black;
+  background-color: teal;
 }
 
 .btn:not(:disabled):not(.disabled) {
