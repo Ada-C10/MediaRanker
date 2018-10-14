@@ -1,5 +1,9 @@
 <section class='spotlight'>
-  <h2>Media Spotlight</h2>
+  <h2>Media Spotlight: <h3><%= link_to Work.top_vote_getter.title, work_path(Work.top_vote_getter.id) %> by <%= Work.top_vote_getter.creator %></h3>
+  <p>
+    <%= Work.top_vote_getter_votes %> votes - <%= Work.top_vote_getter.description %>
+  </p>
+
 </section>
 <section class='top-lists'>
   <div>
@@ -7,13 +11,14 @@
       Top Movies
     </h2>
     <ul>
-      <% @works.each do |work| %>
-        <% if work.category == 'movie' %>
+      <% Work.top_works_by_category('movie', 10).each do |work| %>
         <li>
           <strong><%= link_to work.title, work_path(work.id) %></strong> by
           <%= work.creator %>
+          <p>
+            <%= work.votes.size %> votes
+          </p>
         </li>
-        <% end %>
       <% end %>
     </ul>
   </div>
@@ -22,13 +27,14 @@
       Top Books
     </h2>
     <ul>
-      <% @works.each do |work| %>
-        <% if work.category == 'book' %>
+      <% Work.top_works_by_category('book', 10).each do |work| %>
         <li>
           <strong><%= link_to work.title, work_path(work.id) %></strong> by
           <%= work.creator %>
+          <p>
+            <%= work.votes.size %> votes
+          </p>
         </li>
-        <% end %>
       <% end %>
     </ul>
   </div>
@@ -37,13 +43,14 @@
       Top Albums
     </h2>
     <ul>
-      <% @works.each do |work| %>
-        <% if work.category == 'album' %>
+      <% Work.top_works_by_category('album', 10).each do |work| %>
         <li>
           <strong><%= link_to work.title, work_path(work.id) %></strong> by
           <%= work.creator %>
+          <p>
+            <%= work.votes.size %> votes
+          </p>
         </li>
-        <% end %>
       <% end %>
     </ul>
   </div>

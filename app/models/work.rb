@@ -4,6 +4,20 @@ class Work < ApplicationRecord
   # validate for unique title
   validates :title, presence: true, uniqueness: true
 
+  def self.order_works_by_votes
+    works = Work.all
+    ordered_works = works.sort_by { |work| work.votes.size }.reverse
+    return ordered_works
+  end
+
+  def self.top_vote_getter
+    return Work.order_works_by_votes.first
+  end
+
+  def self.top_vote_getter_votes
+    return Work.top_vote_getter.votes.size
+  end
+
   def self.list_works_by_category(category)
     works = Work.all
     works_by_category = works.select { |work| work.category == category }
@@ -16,7 +30,7 @@ class Work < ApplicationRecord
     return sorted_works_by_category
   end
 
-  def self.top_works_by_category(number)
-    return Work.order_works_by_category.take(number)
+  def self.top_works_by_category(category, number)
+    return Work.order_works_by_category(category).take(number)
   end
 end
