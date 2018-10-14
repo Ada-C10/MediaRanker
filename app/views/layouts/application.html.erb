@@ -8,7 +8,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
-    <!-- <link rel="icon" type="image/jpg" href="owl.jpg"> -->
 
   </head>
 
@@ -61,13 +60,15 @@
 
 
 
-    <section class="flash-messages">
+    <% unless flash.empty? %>
+    <section class="flash-messages" role="alert">
       <% flash.each do |key, message| %>
-      <p class="<%= key %>">
+      <p class=" alert alert-<%= key %>">
         <%= message %>
       </p>
       <% end %>
     </section>
+    <%end%>
 
     <%= yield %>
   </body>

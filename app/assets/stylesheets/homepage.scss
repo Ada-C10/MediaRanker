@@ -15,9 +15,10 @@
   margin-top: 2em;
 }
 
-.top-media a {
+.top-media a, .card-title span {
   text-decoration: none;
   color: #26A69A;
+  font-size: 1.5rem;
 }
 
 .top-media > section {
@@ -35,7 +36,7 @@
 }
 
 .top-media li a {
-  font-size: 1.5rem;
+
 }
 
 .top-media li:first-child {
@@ -54,9 +55,12 @@
   font-weight: bold;
 }
 
-.card-title span {
+.card-title span > * {
+  text-decoration: none;
   color: #26A69A;
 }
+
+
 
 .card-title .title{
   border-bottom: 1px solid #26A69A;

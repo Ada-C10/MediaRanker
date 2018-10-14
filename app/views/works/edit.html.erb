@@ -1,6 +1,10 @@
-<h2>Edit This Album</h2>
+<div id="edit-work">
+
+<h2>Edit This <%=@work.category.capitalize%></h2>
 
 <%= render partial: "work_form", locals: {
   action_type: "Update Work",
   form_title: "Edit"
 }%>
+
+</div>
