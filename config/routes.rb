@@ -7,8 +7,14 @@ Rails.application.routes.draw do
 
   resources :works do
     resources :votes, only: [:index, :create, :update]
+    member do
+      post 'upvote'
+    end
   end
 
+  resources :works do
+
+   end
 
 
   resources :users do
@@ -19,7 +25,7 @@ Rails.application.routes.draw do
 
   post '/sessions/logout', to: 'sessions#logout', as: 'logout'
 
-  post '/works/upvote', to: 'works#upvote', as: 'upvote'
+  # post '/works/upvote', to: 'works#upvote', as: 'upvote'
 
   get '/home', to: 'works#homepage', as: 'home'
 
