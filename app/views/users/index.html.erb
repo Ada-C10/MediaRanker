@@ -1,1 +1,22 @@
-<h1>Index of all users</h1>
+<section>
+  <h2>List of all users</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Username</th>
+        <th scope="col">Joined</th>
+        <th scope="col">Votes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.sort.each do |user| %>
+      <tr>
+        <th scope="row"> <%=user.id %> </th>
+        <td> <%=user.username %> </td>
+        <td> <%=user.created_at.strftime("%-m/%e/%Y") %> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
