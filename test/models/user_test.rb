@@ -19,12 +19,39 @@ describe User do
       user.votes.must_include votes(:one)
     end
 
-    it "can set the work id in vote through work" do
+    it "can set the user id in vote through user" do
       user = users(:harry)
       vote = votes(:two)
       user.votes << vote
 
       user.votes.first.id.must_equal votes(:two).id
+    end
+  end
+
+  describe 'validations' do
+    before do
+      # Arrange
+      @user = User.new(username: 'puppy')
+    end
+
+    it 'is valid when all fields are present' do
+      # Act
+      result = @user.valid?
+
+      # Assert
+      expect(result).must_equal true
+    end
+
+    it 'is invalid without a username' do
+      # Arrange
+      @user.username = nil
+
+      # Act
+      result = @user.valid?
+
+      # Assert
+      expect(result).must_equal false
+      expect(@user.errors.messages).must_include :username
     end
   end
 end
