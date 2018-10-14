@@ -106,6 +106,7 @@ describe Work do
   end
 
   describe "sorted_works" do
+    # what other tests should I include?
     it "sorts the works in descending order by votes" do
       sorted = Work.sorted_works("book")
       first = sorted.first.votes.count
