@@ -7,8 +7,5 @@ class Work < ApplicationRecord
   has_many :votes
   has_many :upvoted_users, through: :votes, source: :user
 
-  def self.sort_by_votes
-    return self.all.sort_by { |work| work.votes.count }.reverse
-  end
 
 end
