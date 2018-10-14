@@ -1,21 +1,91 @@
 
 
 
-List of Works
+<h2>List of Works</h2>
 
-<% @works.each do |work| %>
-<ul>
-  <li>
-  <%= link_to work[:title], work_path(work.id) %>
-</li>
-</ul>
-  <% end %>
+<section class = "media-table">
+  <h4>Albums</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
 
-  BOOKS
-  <% @all_books.each do |book| %>
-  <ul>
-    <li>
-    <%= book[0] %>
-  </li>
-  </ul>
-    <% end %>
+    <tbody>
+
+      <tr>
+        <% @all_albums.each do |album| %>
+        <td><%= album.votes.count %></td>
+        <td><%= album.title %></td>
+        <td><%= album.creator %></td>
+        <td><%= album.publication_year %></td>
+        <td><%= link_to "Upvote", upvote_work_path(album), method: :post %></td>
+      </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</section>
+
+<section class = "media-table">
+  <h4>Books</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <% @all_books.each do |book| %>
+        <td><%= book.votes.count %></td>
+        <td><%= book.title %></td>
+        <td><%= book.creator %></td>
+        <td><%= book.publication_year %></td>
+        <td><%= link_to "Upvote", upvote_work_path(book), method: :post %></td>
+      </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</section>
+
+<section class = "media-table">
+  <h4>Movies</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <% @all_movies.each do |movie| %>
+        <td><%= movie.votes.count %></td>
+        <td><%= movie.title %></td>
+        <td><%= movie.creator %></td>
+        <td><%= movie.publication_year %></td>
+        <td><%= link_to "Upvote", upvote_work_path(movie), method: :post %></td>
+      </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</section>
