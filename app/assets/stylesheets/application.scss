@@ -16,3 +16,35 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+ul {
+  list-style: none;
+}
+
+header {
+  padding: 2rem 1rem 0.5rem 1rem;
+  max-width: 100%;
+  margin-bottom: 0.5rem;
+  background-color: #B2DFDB;
+}
+.all-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.site-nav, .user-nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  box-sizing: border-box;
+}
+
+.site-nav-item {
+  margin-right: 2rem;
+}
+
+.user-nav-item {
+  margin-left: 2rem;
+}

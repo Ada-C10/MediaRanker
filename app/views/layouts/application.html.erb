@@ -12,35 +12,34 @@
   <body>
   <header>
     <h1>Media Ranker | Ranking the Best of Everything</h1>
-    <nav>
-      <ul>
-        <li><%= link_to "View top media", root_path %></li>
-        <li><%= link_to "View all media", works_path %></li>
-        <li><%= link_to "Add a new work", new_work_path %></li>
-        <li><%= link_to "View all users", users_path %></li>
+
+    <nav class='all-nav'>
+      <ul class='site-nav'>
+        <li class='site-nav-item'><%= link_to "View top media", root_path %></li>
+        <li class='site-nav-item'><%= link_to "View all media", works_path %></li>
+        <li class='site-nav-item'><%= link_to "Add a new work", new_work_path %></li>
+        <li class='site-nav-item'><%= link_to "View all users", users_path %></li>
 
       </ul>
-    </nav>
 
-    <section class="login-info">
       <% if @logged_in_user %>
-      <ul>
-        <li>
+      <ul class='user-nav'>
+        <li class='user-nav-item'>
           <%= link_to user_path(@logged_in_user.id), class: "btn btn-outline-info" do %>
           Logged in as
           <%= @logged_in_user.name %>
           <% end %>
         </li>
-        <li>
+        <li class='user-nav-item'>
           <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
         </li>
       <% else %>
-        <li>
+        <li class='user-nav-item'>
           <%= link_to "Log in", new_session_path, class: "btn btn-outline-info" %>
         </li>
       <% end %>
     </ul>
-    </section>
+  </nav>
   </header>
 
   <section class="flash-messages">
