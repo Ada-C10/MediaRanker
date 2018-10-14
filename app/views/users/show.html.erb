@@ -1,0 +1,30 @@
+<section class="user-details">
+<h2>User Summary:
+  <%=@user.username%>
+</h2><p>
+  <%= @user.created_at.strftime("Joined site %b %d, %Y")%></p>
+
+<h3>Votes</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Media Title</th>
+      <th>Created By </th>
+      <th>Published</th>
+      <th>Category</th>
+      <th>Voted On</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @user.votes.each do |vote| %>
+      <td><%=vote.work.title %></td>
+      <td><%=vote.user.username %></td>
+      <td><%=vote.work.published_year%></td>
+      <td><%=vote.work.category.capitalize%></th>
+      <td><%=vote.created_at.strftime("%b %d, %Y")%></th>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</section>
