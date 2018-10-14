@@ -13,4 +13,8 @@ class Work < ApplicationRecord
    return works[0..9]
   end
 
+  def self.top_work
+    return Work.all.max_by {|work| work.votes.count}
+  end
+
 end

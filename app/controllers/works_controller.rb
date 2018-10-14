@@ -12,6 +12,7 @@ class WorksController < ApplicationController
       @books = Work.top_works_by_category("book")
       @albums = Work.top_works_by_category("album")
       @movies = Work.top_works_by_category("movie")
+      @top_work = Work.top_work
     end
 
 
