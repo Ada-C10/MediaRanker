@@ -6,4 +6,12 @@ describe User do
   it "must be valid" do
     value(user).must_be :valid?
   end
+
+  it 'has required fields' do
+    fields = [:handle]
+
+    fields.each do |field|
+      expect(work).must_respond_to field
+    end
+  end 
 end

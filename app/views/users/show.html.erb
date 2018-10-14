@@ -1,2 +1,31 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<% if @user.nil? %>
+  <h1> 404 Not found</h1>
+<% else %>
+
+
+<h1> <%= "#{@current_user.handle}'s Profile" %> </h1>
+Joined site on <%= "#{@current_user.created_at.strftime ("%b. %d, %Y")}" %>
+<table>
+  <thead>
+    <tr>
+        <th>Media Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @current_user.votes.each do |vote| %>
+    <tr>
+      <td> <%= link_to "#{vote.work.title}", work_path(vote.work_id) %> </td>
+      <td> <%= "#{vote.work.creator}" %> </td>
+      <td> <%= "#{vote.work.year}" %> </td>
+      <td> <%= "#{vote.work.category_id.type}" %> </td>
+      <td> <%= "#{vote.created_at.strftime ("%b. %d, %Y")}" %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>

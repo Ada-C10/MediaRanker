@@ -13,7 +13,6 @@ class VotesController < ApplicationController
   end
 
   def create
-
     if @current_user && voted?
       flash[:error] = "Sorry, you can only vote for a work once."
       redirect_back fallback_location: root_path

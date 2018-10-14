@@ -7,7 +7,7 @@
 alanis:
   creator: Alanis Morisette
   year: 1995
-  category: album
+  category_id: album
   title: Jagged Little Pill
   description: classic 90's
 # column: value
@@ -15,7 +15,7 @@ alanis:
 pygmalion:
   creator: Ovid
   year: 8
-  category: book
+  category_id: book
   title: Metamorphoses
   description: the greek poet's magnum opus
 # column: value
@@ -23,6 +23,6 @@ pygmalion:
 lawrence:
   creator: David Lean
   year: 1962
-  category: movie
+  category_id: movie
   title: Lawrence of Arabia
   description: classic historical drama starring Peter O'Toole
