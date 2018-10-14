@@ -21,8 +21,10 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
+      flash[:success] = "Successfully created new work: #{@work.title}"
       redirect_to works_path
     else
+      flash.now[:error] = "Invalid data, please try again"
       render :new , status: :bad_request
     end
   end
