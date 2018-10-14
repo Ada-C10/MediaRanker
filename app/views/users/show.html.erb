@@ -23,4 +23,9 @@
     <td><%= work.created_at.strftime("%b %d, %Y") %></td>
   </tr>
   <% end %>
-  </table>
+</table>
+
+<section class='nav-links'>
+  <%= link_to 'See all Users', users_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Back to media list', root_path, class: 'btn btn-primary' %>
+</section>
