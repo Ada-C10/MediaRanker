@@ -2,7 +2,11 @@
    <h2 class="spotlight__header">
      <span class="spotlight__header--prefix">Media Spotlight:</span>
      <% spot = Work.top_one%>
-     <a class="spotlight__link-to"> <%= link_to "#{spot.title}", work_path(spot.id) %> by i will not stand for this!</a>
+     <!-- <a class="spotlight__link-to">
+       <%= link_to "#{spot.title}", work_path(spot.id) %>
+     </a> -->
+     <a class="spotlight__link-to" href="work_path(spot.id)"><%=spot.title%></a>
+     <a>by <%= spot.creator%></a>
    </h2>
    <p class="spotlight__description">
      <%= "#{spot.votes.count} vote(s)- #{spot.description}"%>
@@ -28,9 +32,9 @@
       </li>
     <%end%>
   </ul>
-</section>
+  </section>
 
-<section class="top-ten__container">
+
   <section class="top-ten__list-container">
   <h2 class="top-ten__header">
     Top Books
@@ -47,9 +51,8 @@
       </li>
     <%end%>
   </ul>
-</section>
+  </section>
 
-<section class="top-ten__container">
   <section class="top-ten__list-container">
   <h2 class="top-ten__header">
     Top Albums
@@ -66,4 +69,6 @@
       </li>
     <%end%>
   </ul>
+  </section>
+
 </section>
