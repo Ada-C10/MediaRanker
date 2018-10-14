@@ -23,7 +23,7 @@ class UsersController < ApplicationController
          flash[:success] = "#{user.name} Successfully logged in!"
          redirect_to root_path
        else
-         flash[:warning] = "A problem occurred: Could not log in"
+         flash[:warning] = "Could not log in, please provide a username more than 3 letters."
 
          redirect_back fallback_location: root_path
        end
