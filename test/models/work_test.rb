@@ -195,9 +195,4 @@ describe Work do
 
   end
 
-
-
-
-
-
 end

@@ -25,7 +25,7 @@ class WorksController < ApplicationController
 
     if !@work.nil?
       @work.destroy
-      flash[:success] = "#{work.title} deleted"
+      flash[:success] = "#{@work.title} deleted"
       redirect_to root_path
     end
   end
@@ -33,11 +33,11 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
-      flash[:success] = 'Work Created!'
+      flash[:success] = "Successfully created #{@work.category} #{@work.title}!"
 
-      redirect_to root_path
+      redirect_to work_path(id: @work.id)
     else
-      flash.now[:error] = 'Work not created!'
+      flash.now[:error] = "#{@work.title} not created!"
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end

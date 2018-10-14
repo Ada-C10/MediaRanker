@@ -12,6 +12,10 @@ class Work < ApplicationRecord
 
   end
 
+  def self.top_books
+    return Work.book_list[0..9]
+  end
+
   def self.album_list
      return Work.all.select {|work| work.category == "album"}.sort_by {|e| e.votes.count}.reverse
   end
@@ -40,4 +44,6 @@ class Work < ApplicationRecord
     spotlight = top.max_by {|e| e.votes.count}
     return spotlight
   end
+
+
 end

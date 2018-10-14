@@ -1,11 +1,10 @@
 <h1> <%= action_name %> </h1>
 
-
 <%= form_with model: @work, class: "work-form"  do |f|%>
   <p>Please provide the following information to save to our database:</p>
 
   <%= f.label :category %>
-  <%= f.select :category, [['Movie','Movie'], ['Book','Book'],['Album','Album']] %>
+  <%= f.select :category,[['movie','movie'], ['book','book'],['album','album']] %>
 
   <%= f.label :title %>
   <%= f.text_field :title %>

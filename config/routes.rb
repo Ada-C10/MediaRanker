@@ -10,5 +10,4 @@ Rails.application.routes.draw do
 
   post '/works/:id/upvote', to: 'works#upvote', as: 'upvote'
 
-
 end
