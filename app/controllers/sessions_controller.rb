@@ -13,7 +13,6 @@ class SessionsController < ApplicationController
       redirect_to user_path(user)
     else
       #direct them to sign in
-      # redirect_to signup_path
       user = User.new(username: params[:username])
       if user.save
         #login user / assign session user_id as current user
@@ -21,6 +20,7 @@ class SessionsController < ApplicationController
         flash[:success] = "User '#{user.username}' signed up and logged in!"
         redirect_to root_path
       else
+        # redirect_to signup_path
         flash[:failure] = "Username invalid or does not exist. Please sign up below."
         redirect_to signup_path
       end
