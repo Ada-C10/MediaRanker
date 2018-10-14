@@ -63,6 +63,7 @@ class WorksController < ApplicationController
   end
 
   def upvote
+    session[:user_id]
 
   end
 
