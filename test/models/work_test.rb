@@ -76,6 +76,13 @@ describe Work do
       expect(work.errors.messages).must_include :publication_year
     end
 
+    it "must have a year with four digits" do
+      work.publication_year = 87
+
+      expect(valid).must_equal false
+      expect(work.errors.messages).must_include :publication_year
+    end
+
     it 'must have a category' do
       #is this the correct test for a select drop down?
       work.category = nil
@@ -96,28 +103,28 @@ describe Work do
     end
   end
 
-  describe "top albums, books, and movies" do
+  describe "top ten" do
 
     it "sorts the works in descending order by votes" do
-      sorted = Work.top_books
+      sorted = Work.top_ten("book")
       first = sorted.first.votes.count
       last = sorted.last.votes.count
 
       expect(first).must_be :>=, last
     end
     it "displays only ten pieces of work" do
-      sorted = Work.top_books
+      sorted = Work.top_ten("book")
 
       expect(sorted.length).must_be :<=, 10
     end
     it "will post nothing if there are no works in a category" do
-      sorted = Work.top_albums
+      sorted = Work.top_ten("album")
 
       expect(sorted.length).must_equal 0
 
     end
     it "will post only book if there is only one work in category" do
-      sorted = Work.top_movies
+      sorted = Work.top_ten("movie")
 
       expect(sorted.length).must_equal 1
     end
