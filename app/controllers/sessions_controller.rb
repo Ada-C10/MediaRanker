@@ -2,20 +2,6 @@ class SessionsController < ApplicationController
   def new
   end
 
-  # def create
-  #   name = params[:user_name]
-  #   user = User.find_by(user_name: name)
-  #
-  #   if user
-  #     flash[:existing_user] = "Welcome back #{name}!"
-  #   else
-  #     user = User.create(:user_name => name)
-  #     flash[:new_user] = "Successfully logged in as new user \"#{name}\""
-  #   end
-  #   session[:user_id] = user.id
-  #   redirect_to root_path
-  # end
-
   def create
     @user = User.find_by(user_name: params[:user_name])
 

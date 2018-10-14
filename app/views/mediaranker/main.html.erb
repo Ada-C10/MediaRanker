@@ -1,7 +1,9 @@
 <section class="spotlight">
-  <h2 class="spotlight-header">Media Spotlight:</h2>
+  <h2 class="spotlight-header"> <span>Media Spotlight:
+  <%= link_to @media_spotlight.title, work_path(@media_spotlight.id) %>
+    by <%= @media_spotlight.creator %></span></h2>
   <p class="spotlight-description">
-    description about this media
+    <%= @media_spotlight.votes_count %> votes - <%= @media_spotlight.description %>
   </p>
 </section>
 
