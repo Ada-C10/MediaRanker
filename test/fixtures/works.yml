@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+pride:
+  category: book
+  title: Pride and Prejudice
+  creator: Jane Austin
+  publication_year: 1813
+  description: Master piece comedy
+
+hello:
+  category: album
+  title: Hello
+  creator: Adele Adkins
+  publication_year: 2015
+  description: a piano ballad
+
+taken:
+  category: movie
+  title: Taken
+  creator: unkown
+  publication_year: 2013
+  description: thrill, action
