@@ -1,20 +1,17 @@
-<h2>Media Ranker</h2>
-<%= link_to "Add a Work", new_work_path %>
-<%= link_to "View all works", works_path %>
-
+<section class='spotlight'>
 <h2>Media Spotlight: <%= @works.spotlight.title %> by <%= @works.spotlight.creator %></h2>
+</section>
 
-<%= render partial: "top_works_list", locals: {
-  model: @movies,
-  list_name: "Top Movies"
-} %>
+<section class='top-ten-container'>
+  <section class='top-ten-list-container'>
+    <%= render partial: "top_works_list", locals: { model: @movies, list_name: "Top Movies" } %>
+  </section>
 
-<%= render partial: "top_works_list", locals: {
-  model: @books,
-  list_name: "Top Books"
-} %>
+  <section class='top-ten-list-container'>
+    <%= render partial: "top_works_list", locals: { model: @books, list_name: "Top Books" } %>
+  </section>
 
-<%= render partial: "top_works_list", locals: {
-  model: @albums,
-  list_name: "Top Albums"
-} %>
+  <section class='top-ten-list-container'>
+    <%= render partial: "top_works_list", locals: { model: @albums, list_name: "Top Albums" } %>
+  </section>
+</section>

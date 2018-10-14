@@ -1,9 +1,12 @@
-<h2><%= list_name %></h2>
-<ul>
+<h2 class='top-ten-header'><%= list_name %></h2>
+<ul class='top-ten'>
 
   <% model.sort_by_votes.first(10).each do |work| %>
   <li>
-    <%= work.title %> by <%= work.creator %>
+    <%= link_to work_path(work.id) do %>
+    <%= work.title %>
+    <% end %>
+    by <%= work.creator %>
   </li>
   <li>
     <%= work.votes.length %> votes
