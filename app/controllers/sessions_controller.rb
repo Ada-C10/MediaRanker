@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
   def create
     name = params[:username]
     user = User.find_by(username: name)
-
     if user
       flash[:success] = "Successfully logged in as #{name}"
       session[:user_id] = user.id
