@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ten:
+  category: album
+  title: Ten
+  creator: Pearl Jam
+  publication_year: 1991
+  description: First album by PJ!
+
+fire:
+  category: movie
+  title: Fire Walk With Me
+  creator: David Lynch
+  publication_year: 1990
+  description: Meanwhile
+
+vale:
+    category: book
+    title: Welcome to Night Vale
+    creator: The Glow Cloud
+    publication_year: 2010
+    description: All hail the glow cloud!
