@@ -2,10 +2,9 @@
 
 <ul>
   <% @votes.sort.reverse.each do |vote| %>
-    <li><strong><%=vote.user_id %></strong></li>
-    <!-- <%=link_to "View Details", driver_path(driver.id) %> |
-    <%=link_to "Edit", edit_driver_path(driver.id) %> |
-    <%=link_to "Delete", driver_path(driver), method: :delete, data: {confirm: "Are you sure you want to delete #{driver.name} from the database?" }%> -->
+    <li><strong>UserID - <%=vote.user_id %></strong></li>
+    <li><strong>WorkID - <%=vote.work_id %></strong></li>
+
     <br> </br>
   <% end %>
 </ul>
