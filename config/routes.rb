@@ -3,11 +3,9 @@ Rails.application.routes.draw do
 
   root to: 'pages#index'
 
-  resources :works do
-  end
-  resources :users
-  resources :sessions
-  resources :votes
+  resources :works
+  resources :users, except: [:edit, :update, :destroy]
+  resources :sessions, only: [:new, :create]
 
   get '/pages', to: 'pages#index', as: 'pages'
   post '/logout', to: 'sessions#logout', as: 'logout'
