@@ -4,13 +4,11 @@
     <title>MediaRanker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
       <section class="flash">
         <%flash.each do |name, message|%>
         <% if message.class == Array %>
@@ -26,13 +24,18 @@
       <%end%>
 
       </section>
-    <h1><%= link_to "Media Ranker", root_path %> | Ranking the Best of Everything</h1>
-    <nav>
-      <ul>
-        <li><%= link_to "View Top Media", "/" %></li>
-        <li><%= link_to "View all Media", "/works" %></li>
-        <li><%= link_to "Add a New Work", "/works/new" %></li>
-        <li><%= link_to "View all Users", "/users" %></li>
+  <header class="app_header">
+    <h1>
+      <a href="/"> Media Ranker</a>
+
+      <small> Ranking the Best of Everything</small>
+    </h1>
+    <nav class="app_header_nav">
+      <ul class="nav nav_app_header_site_nav_container">
+        <li class="nav-item app-header_nav_item"><%= link_to "View Top Media", "/" %></li>
+        <li class="nav-item app-header_nav_item"><%= link_to "View all Media", "/works" %></li>
+        <li class="nav-item app-header_nav_item"><%= link_to "Add a New Work", "/works/new" %></li>
+        <li class="nav-item app-header_nav_item"><%= link_to "View all Users", "/users" %></li>
         <li>
         <% if @current_user %>
           <%= link_to "Logged in as #{@current_user.username}", user_path(@current_user.id), class: 'btn btn-primary'%>
