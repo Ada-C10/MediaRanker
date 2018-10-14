@@ -42,7 +42,6 @@ class WorksController < ApplicationController
     end
   end
 
-  
 
   def destroy
     id = params[:id].to_i
@@ -52,7 +51,11 @@ class WorksController < ApplicationController
     end
   end
 
-
+  def upvote
+    @work = Work.find(params[:id]) #find work's id, stores it in @work
+    @work.votes.create #creates new vote and saves it
+    redirect_to works_path
+  end   
 
 
   private

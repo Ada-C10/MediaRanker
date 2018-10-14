@@ -4,7 +4,8 @@ class VotesController < ApplicationController
     @work = Work.find(id)
     ## Figure out how to get a user of a session.
     ## user =
-    if @work.upvote(user) == false
+    @current_user = User.find_by(id: session[:user_id])
+    if @work.upvote(@current_user) == false
       flash[:error] = "A problem occurred: Could not create #{@work.category} #{@work.title}: has already been taken"
     else
       flash[:sucess] = "Successfully created #{@work.category} #{@work.id}"
