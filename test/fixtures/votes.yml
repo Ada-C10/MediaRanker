@@ -13,27 +13,27 @@ vote1:
 vote2:
   work: :harry_potter
   user: :test2
-vote4:
+vote3:
   work: :harry_potter
   user: :test3
-vote5:
+vote4:
   work: :road
   user: :val
-vote6:
-  work: :road
-  user: :test1
 vote5:
   work: :road
-  user: :test2
+  user: :test1
 vote6:
-    work: :secondhand
-    user: :val
+  work: :road
+  user: :test2
 vote7:
-    work: :secondhand
-    user: :test1
+  work: :secondhand
+  user: :val
 vote8:
-    work: :stand
-    user: :val
+  work: :secondhand
+  user: :test1
 vote9:
-    work: :stand
-    user: :test1
+  work: :stand
+  user: :val
+vote10:
+  work: :stand
+  user: :test1

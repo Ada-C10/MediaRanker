@@ -1,5 +1,5 @@
 require "test_helper"
-
+require 'pry'
 describe Work do
   before do
     @work = works(:harry_potter)
@@ -47,12 +47,16 @@ describe Work do
     end
   end
 
-  describe '#sort_by_votes' do
-    it 'is valid' do
+  describe '.sort_by_votes' do
+    it 'is valid class method' do
       expect(Work).must_respond_to :sort_by_votes
+    end
+    it 'sorts all works' do
+      expect(Work.sort_by_votes.length).must_equal 6
     end
     it 'sorts by votes in descending order' do
       expect(Work.sort_by_votes.first.title).must_equal 'Harry Potter'
+      expect(Work.sort_by_votes[1].title).must_equal 'On the Road'
     end
   end
 
