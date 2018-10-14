@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       flash[:sucess] = "Successfully logged in as existing user #{user.username}"
       redirect_to root_path
     else
-      new_user = User.new(name: name)
+      new_user = User.new(username: name)
       session[:user_id] = new_user.id
       if new_user.save
         flash[:sucess] = "Successfully created new user #{new_user.username} with ID #{new_user.id}"
