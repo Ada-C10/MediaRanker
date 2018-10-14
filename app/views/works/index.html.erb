@@ -15,13 +15,12 @@
       <tbody>
         <% @albums.each do |work| %>
         <tr>
-            <td>Votes</td>
-            <!-- <td><%=work.votes %></td> -->
-            <td><%=link_to "#{work.title}", work_path(work.id)%></td>
+            <td><%=work.votes %></td>
+            <td><%=link_to "#{work.title}", work_votes_path(work.id)%></td>
             <td><%=work.created_by %></td>
             <td><%=work.year_published %></td>
-            <td>Upvote</td>
-          </td>
+            <td><%=link_to "Upvote", votes_path, method: :post, class: "btn btn-primary" %> </td>
+
           <% end %>
         </tr>
       </tbody>
@@ -44,13 +43,11 @@
       <tbody>
         <% @books.each do |work| %>
         <tr>
-            <td>Votes</td>
-            <!-- <td><%=work.votes %></td> -->
+            <td><%=work.votes %></td>
             <td><%=link_to "#{work.title}", work_path(work.id)%></td>
             <td><%=work.created_by %></td>
             <td><%=work.year_published %></td>
-            <td>Upvote</td>
-          </td>
+            <td><%=link_to "Upvote", work_votes_path(work.id), method: :post, class: "btn btn-primary" %> </td>
           <% end %>
         </tr>
       </tbody>
@@ -73,12 +70,11 @@
       <tbody>
         <% @movies.each do |work| %>
         <tr>
-            <td>Votes</td>
-            <!-- <td><%=work.votes %></td> -->
+            <td><%=work.votes %></td>
             <td><%=link_to "#{work.title}", work_path(work.id)%></td>
             <td><%=work.created_by %></td>
             <td><%=work.year_published %></td>
-            <td>Upvote</td>
+            <td><%=link_to "Upvote", votes_path, method: :post, class: "btn btn-primary" %> </td>
           </td>
           <% end %>
         </tr>

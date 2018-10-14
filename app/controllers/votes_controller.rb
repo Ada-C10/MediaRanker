@@ -1,15 +1,15 @@
 class VotesController < ApplicationController
 
   def index
-    if params[:work_id]
-      work = Work.find_by(id: params[:work_id])
-      @votes = work.votes
-    elsif params[:user_id]
-      user = User.find_by(id: params[:user_id])
-      @votes = user.votes
-    else
+    # if params[:work_id]
+    #   work = Work.find_by(id: params[:work_id])
+    #   @votes = work.votes
+    # elsif params[:user_id]
+    #   user = User.find_by(id: params[:user_id])
+    #   @votes = user.votes
+    # else
       @votes = Vote.all
-    end
+    # end
   end
 
   def show
@@ -25,19 +25,16 @@ class VotesController < ApplicationController
 
   def create
     work = Work.find_by(id: params[:work_id])
+    user = User.find_by(id: params[:user_id])
 
-    if work
-      @vote = Vote.new
+    @vote = Vote.new(work_id: work.id, user_id: user.id)
 
-      if @vote.save
-        redirect_to votes_path
-      else
-        render :new
-      end
+    if @vote.save
+      flash[:success] = "Congratulations - you successfully voted!"
+      redirect_to votes_path
     else
+      flash[:error] = "Your vote wasn't tabulated.  What else is new in Amercia..."
       redirect_to root_path
     end
-
   end
-
 end
