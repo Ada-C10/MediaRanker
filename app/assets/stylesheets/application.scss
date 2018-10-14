@@ -20,11 +20,11 @@
 header {
   background-color: #B2DFDB;
   color: white;
-  padding: 3em;
+  padding-top: 3em;
   margin-bottom: 1.5em;
   display: flex;
-    flex-direction: column;
-    text-align: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 header a {
@@ -40,12 +40,17 @@ nav ul {
   list-style: none;
   display: flex;
   padding-top: 2em;
+  align-items: center;
 }
 
 nav a:visited, nav a:link, nav a:hover {
   color: teal;
   margin: 2em;
   text-decoration: none;
+}
+
+.login-info {
+  justify-content: flex-end;
 }
 
 main {
