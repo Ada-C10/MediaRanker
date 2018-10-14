@@ -1,8 +1,7 @@
 <h1>List of Works</h1>
 <h2>Albums</h2>
 <ul>
-  <% @works.each do |work| %>
-    <% if work.category == "movie" %>
+  <% Work.order_works_by_category('album').each do |work| %>
     <li>
       <%= "#{work.votes.size}" %>
       <%= link_to work.title, work_path(work.id) %>
@@ -10,15 +9,11 @@
       <%= work.publication_year %>
       <%= link_to "Upvote", work_votes_path(work.id), method: :create %>
     </li>
-    <% else %>
-      <% next %>
-    <% end %>
   <% end %>
 </ul>
 <h2>Books</h2>
 <ul>
-  <% @works.each do |work| %>
-    <% if work.category == "movie" %>
+  <% Work.order_works_by_category('book').each do |work| %>
     <li>
       <%= "#{work.votes.size}" %>
       <%= link_to work.title, work_path(work.id) %>
@@ -26,15 +21,11 @@
       <%= work.publication_year %>
       <%= link_to "Upvote", work_votes_path(work.id), method: :create %>
     </li>
-    <% else %>
-      <% next %>
-    <% end %>
   <% end %>
 </ul>
 <h2>Movies</h2>
 <ul>
-  <% @works.each do |work| %>
-    <% if work.category == "movie" %>
+  <% Work.order_works_by_category('movie').each do |work| %>
     <li>
       <%= "#{work.votes.size}" %>
       <%= link_to work.title, work_path(work.id) %>
@@ -42,8 +33,5 @@
       <%= work.publication_year %>
       <%= link_to "Upvote", work_votes_path(work.id), method: :create %>
     </li>
-    <% else %>
-      <% next %>
-    <% end %>
   <% end %>
 </ul>
