@@ -1,3 +1,5 @@
+
+
 <table>
   <tr>
     <th>Votes</th>
@@ -17,7 +19,7 @@
     </td>
     <td><%= work.creator %></td>
     <td><%= work.publication_year %></td>
-    <td><%= link_to 'Upvote', upvote_path(work.id) %></td>
+    <td><%= link_to 'Upvote', upvote_path(work.id), method: :post %></td>
   </tr>
   <% end %>
 </table>

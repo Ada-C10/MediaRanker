@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :sessions
+  resources :votes
 
   get '/pages', to: 'pages#index', as: 'pages'
   post '/logout', to: 'sessions#logout', as: 'logout'
-  get '/works/:id/upvote', to: 'works#upvote', as: 'upvote'
+  post '/works/:id/upvote', to: 'works#upvote', as: 'upvote'
 end
