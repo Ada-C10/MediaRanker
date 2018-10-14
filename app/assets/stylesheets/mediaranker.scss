@@ -1,3 +1,50 @@
 // Place all the styles related to the Mediaranker controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-ten-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+}
+
+section.top-ten-list-container {
+  display: block;
+}
+
+.top-ten-header {
+  color: #26A69A;
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+}
+
+.top-ten-list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.list-group {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.list-group-item:first-child {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.list-group-item {
+    border: none;
+}
+
+.top-ten-creator {
+  color: slategrey;
+  font-size: 80%;
+  font-weight: 400;
+}
+
+.spotlight-header {
+  color: #424242;
+}
