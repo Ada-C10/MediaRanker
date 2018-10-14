@@ -30,10 +30,6 @@
   text-transform: capitalize;
 }
 
-.top-media li a {
-
-}
-
 .top-media li:first-child {
   color: slategrey;
   font-weight: bold;
@@ -47,7 +43,6 @@
 
 .card-title {
   color: #424242;
-  font-weight: bold;
 }
 
 .card-title span > * {
@@ -55,8 +50,15 @@
   color: #26A69A;
 }
 
-
-
 .card-title .title{
   border-bottom: 1px solid #26A69A;
+}
+
+.card-title, .card-title .title {
+  font-weight: 1000;
+  font-size: 2rem;
+}
+
+.top-media ul {
+  padding-bottom: 1.5em;
 }

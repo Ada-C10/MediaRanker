@@ -58,9 +58,7 @@
 
     </header>
 
-
-
-    <% unless flash.empty? %>
+    <% unless flash.empty?%>
     <section class="flash-messages" role="alert">
       <% flash.each do |key, message| %>
       <p class=" alert alert-<%= key %>">

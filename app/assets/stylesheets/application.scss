@@ -38,6 +38,7 @@ body {
   margin-right: 15px;
   border-right: white 2px solid;
   font-weight: 1000;
+  font-size: 2.5rem;
 }
 
 .brand h1 {
@@ -128,4 +129,16 @@ a {
   color: #856404;
   background-color: #fff3cd;
   border-color: #ffeeba;
+}
+
+.alert-warning {
+  margin-top: -1em;
+}
+
+.alert-warning>p {
+  padding-left: 1.25rem;
+}
+
+.table td {
+  padding-bottom: 2rem;
 }
