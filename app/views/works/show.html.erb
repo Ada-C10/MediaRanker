@@ -1,9 +1,32 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
 
-<h1>Media Details</h1>
-<h2>Category:<%= @work.category %></h2>
-<h2>Title:<%= @work.title %></h2>
-<h2>Creator:<%= @work.creator %></h2>
-<h2>Publication Year:<%= @work.publication_year %></h2>
-<h2>Description:<%= @work.description %></h2>
+<section>
+  <h2><%= @work.title %></h2>
+  <p>Created by: <%= @work.creator %></p>
+  <p>Published:<%= @work.publication_year %> </p>
+  <p></p>
+  <section>
+    <a class="btn btn-primary" href="/">Back to media ranks</a>
+    <a class="btn btn-primary" <%= link_to "Edit", edit_work_path(@work.id)%></a>
+    <a class="btn btn-primary" <%= link_to "upvote", work_votes_path(@work.id), method: :post %></a>
+    <a class="btn btn-danger" <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure you want to delete?'}%></a>
+  </section>
+</section>
+<section class="works-votes__container">
+  <h3 class="works-votes__header"><%= @work.votes.count %>Votes for this <%= @work.category.capitalize.singularize %> </h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @work.votes.each do |vote| %>
+      <tr>
+        <td><%= link_to vote.user.name, user_path(vote.user) %></td>
+         <td><%=  vote.created_at %></td>
+
+      </li>
+    <% end %>
+  </ul>
+</section>

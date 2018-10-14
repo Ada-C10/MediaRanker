@@ -5,4 +5,8 @@ class Vote < ApplicationRecord
   validates :work_id, numericality: { only_integer: true }
   validates :user_id, numericality: { only_integer: true }
 
+  # def votes_by_user
+  #   return @sorted = vote.id.sort_by &:user_id
+  # end
+
 end

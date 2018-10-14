@@ -2,15 +2,16 @@ class WorksController < ApplicationController
   def index
       @albums = Work.where(category: "album")
       @movies = Work.where(category: "movie")
-      @books = Work.where(category: "book")###.paginate(page: params[:page], per_page: 10)
+      @books = Work.where(category: "book")#paginate(page: params[:page], per_page: 10)
+
       #@works = Work.joins(:votes).select('works.*, count(vote.id)as vote_count').group('works.id').order(:title)
     end
 
+    # def top_albums
+    # @albums = Work.joins(:votes).group("votes.work_id").order('count(votes.work_id) desc').limit(2)
+    # end
 
 
-    def all_works
-        @works = Work.order(:title)
-      end
 
     def show
       id = params[:id]
@@ -38,6 +39,13 @@ class WorksController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    work = Work.find_by(id: params[:id].to_i)
+    work.destroy
+    redirect_to works_path
+  end
+
 
   private
 
