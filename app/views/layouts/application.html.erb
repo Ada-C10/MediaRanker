@@ -17,7 +17,8 @@
         <% if message.class == Array %>
           <%message.each do |msg|%>
             <div class="alert-warning">
-              <strong> <%= "#{name}:" %> </strong> <%= " #{msg}"%> </div>
+              <strong> <%= "#{name}:" %> </strong> <%= " #{msg}"%>
+            </div>
           <%end%>
         <%else%>
           <div class="alert-warning">

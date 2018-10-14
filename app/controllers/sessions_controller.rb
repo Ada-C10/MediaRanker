@@ -3,22 +3,22 @@ class SessionsController < ApplicationController
 
   def login
     # @users = User.all
-    user = User.find_by(handle: params[:user][:handle])
+    @user = User.find_by(handle: params[:user][:handle])
 
-    if user.nil?
+    if @user.nil?
       # redirect_to root_path
-      user = User.create(handle: params[:user][:handle])
+      @user = User.create(handle: params[:user][:handle])
       flash.now[:error] = 'Sorry, we cannot find that username.'
       # render :login
-      if !user.valid?
+      if !@user.valid?
         flash[:danger] = "Didn't work"
         redirect_to root_path
       end
     end
 
-    if user.valid?
-      session[:user_id] = user.id
-      flash[:success] = "Hello, #{user.handle} you are now logged in."
+    if @user.valid?
+      session[:user_id] = @user.id
+      flash[:success] = "Hello, #{@user.handle} you are now logged in."
       redirect_to root_path
     end
   end

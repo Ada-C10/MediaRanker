@@ -8,13 +8,14 @@ class WorksController < ApplicationController
   def show; end
 
   def new
-    @work = Work.new
+      @work = Work.new
   end
 
   def edit; end
 
   def update
-    if @work && @work.update(work_params) #(if book exists AND can be updated)
+    if @work && @work.update(work_params) #(if user exists AND can be updated)
+      # @work.user_id = session[:user_id]
       flash[:success] = "#{@work.title} has been edited."
       redirect_to work_path(@work.id)
     else
@@ -33,7 +34,7 @@ class WorksController < ApplicationController
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
-      render :new # show the new book form view again
+      render :new # show the new work form view again
     end
 
   end
@@ -64,6 +65,6 @@ class WorksController < ApplicationController
   end
 
   def work_params
-    return params.require(:work).permit(:id, :creator, :category, :year, :description, :title)
+    return params.require(:work).permit(:id, :creator, :category, :year, :description, :title, :user_id)
   end
 end

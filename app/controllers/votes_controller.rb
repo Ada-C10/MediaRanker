@@ -10,7 +10,7 @@ class VotesController < ApplicationController
   def create
 
     if @current_user
-      new_vote = {work_id: @work.id, user_id: @current_user.id}
+      new_vote = {work_id: params[:work_id], user_id: @current_user.id}
       @vote = Vote.new(new_vote)
       @vote.save
       flash[:success] = "You have voted!"

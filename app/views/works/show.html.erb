@@ -16,7 +16,9 @@
    <li> <%= @work.year %> </li>
    <li> <%= @work.description %> </li>
  </ul>
-  <%= link_to "Edit", edit_work_path(@work.id) %>
-  <%= link_to "Delete Work", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure? This cannot be undone!'} %>
-
+ <!-- only allow users to edit/delete if they had added the work to the db -->
+ <% if @work.user_id == session[:user_id] %>
+    <%= link_to "Edit", edit_work_path(@work.id) %>
+    <%= link_to "Delete Work", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure? This cannot be undone!'} %>
+  <% end %>
  <% end %>
