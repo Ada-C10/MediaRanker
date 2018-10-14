@@ -11,7 +11,7 @@
 
   <% model.each do |work|%>
   <tr>
-    <td><%= work.votes.count %></td>
+    <td><%= work.votes_count %></td>
     <td>
       <%= link_to work_path(work.id) do %>
       <%= work.title %>
