@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+jessie:
+  name: Jessie Z
+
+
+tony:
+  name: Tony L
+
+
+lily:
+  name: Lily X
+  
