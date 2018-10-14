@@ -1,12 +1,12 @@
 here is the main page
 
 
-<h2>MEDIA SPOTLIGHT</h2>
+<h2>MEDIA SPOTLIGHT: <%= @top_media.title %></h2>
 
 <h2>Top Books</h2>
 <ul>
 
-  <% @all_books.each do |book, votes| %>
+  <% @top_books.each do |book, votes| %>
   <li><%= book %></li>
   <li>Votes: <%= votes %></li>
   <br>
@@ -15,7 +15,7 @@ here is the main page
 
 <h2>Top Movies</h2>
 <ul>
-  <% @all_movies.each do |movie, votes| %>
+  <% @top_movies.each do |movie, votes| %>
   <li><%= movie %></li>
   <li>Votes: <%= votes %></li>
   <br>
@@ -24,7 +24,7 @@ here is the main page
 
 <h2>Top Albums</h2>
 <ul>
-    <% @all_albums.each do |album, votes| %>
+    <% @top_albums.each do |album, votes| %>
     <li><%= album %></li>
     <li>Votes: <%= votes %></li>
     <br>

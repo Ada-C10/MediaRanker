@@ -16,3 +16,30 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding-right: 1em;
+}
