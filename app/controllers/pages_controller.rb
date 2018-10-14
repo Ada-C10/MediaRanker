@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
   def index
-    @works = Work.all
-    @books = Work.where(category: 'book')
-    @albums = Work.where(category: 'album')
-    @movies = Work.where(category: 'movie')
+    @works = Work.order(votes_count: :desc)
+    @books = @works.where(category: 'book')
+    @albums = @works.where(category: 'album')
+    @movies = @works.where(category: 'movie')
   end
 end
