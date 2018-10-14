@@ -53,10 +53,10 @@ class WorksController < ApplicationController
     user = @logged_in_user
     @vote = Vote.new(work: work, user: user)
     if @vote.save
-      flash[:notice] = "Thanks for upvoting!"
+      flash[:success] = "Thanks for upvoting!"
       redirect_to works_path
     else
-      flash[:notice] = "You can't vote for the same work twice."
+      flash[:error] = "You can't vote for the same work twice."
       redirect_to works_path
     end
   end

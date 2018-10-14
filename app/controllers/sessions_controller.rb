@@ -9,11 +9,11 @@ class SessionsController < ApplicationController
     @user = User.find_by(name: name)
 
     if @user
-      flash[:success] = "Successfully logged in as #{name}"
+      flash[:success] = "Successfully logged in as existing user #{name}"
     else
       @user = User.new(name: name)
       @user.save
-      flash[:success] = "Successfully created new user #{name}"
+      flash[:success] = "Successfully created new user #{name} with ID #{@user.id}"
     end
 
     session[:user_id] = @user.id
