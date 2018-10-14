@@ -64,7 +64,6 @@ class WorksController < ApplicationController
 
   def upvote
     # if @user.id == session[:user_id]
-    # work = Work.find_by(params[:id])
     work = Work.find_by(id: params[:id])
 
     @vote = Vote.new
