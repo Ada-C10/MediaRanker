@@ -1,3 +1,6 @@
+
+
+
 List of Works
 
 <% @works.each do |work| %>
@@ -7,3 +10,12 @@ List of Works
 </li>
 </ul>
   <% end %>
+
+  BOOKS
+  <% @all_books.each do |book| %>
+  <ul>
+    <li>
+    <%= book[0] %>
+  </li>
+  </ul>
+    <% end %>

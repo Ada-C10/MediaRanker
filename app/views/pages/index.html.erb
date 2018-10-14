@@ -1,32 +1,33 @@
-here is the main page
 
-
-<h2>MEDIA SPOTLIGHT: <%= @top_media.title %></h2>
+<h2>MEDIA SPOTLIGHT: <%= @top_media.votes.count %></h2>
 
 <h2>Top Books</h2>
 <ul>
 
-  <% @top_books.each do |book, votes| %>
-  <li><%= book %></li>
-  <li>Votes: <%= votes %></li>
+  <% @top_books.each do |book| %>
+  <li><%= book.title %></li>
+  <li>Votes: <%= book.votes.count %></li>
+  <li>Creator: <%= book.creator %></li>
   <br>
   <% end %>
 </ul>
 
 <h2>Top Movies</h2>
 <ul>
-  <% @top_movies.each do |movie, votes| %>
-  <li><%= movie %></li>
-  <li>Votes: <%= votes %></li>
+  <% @top_movies.each do |movie| %>
+  <li><%= movie.title %></li>
+  <li>Votes: <%= movie.votes.count %></li>
+  <li>Creator: <%= movie.creator %></li>
   <br>
   <% end %>
 </ul>
 
 <h2>Top Albums</h2>
 <ul>
-    <% @top_albums.each do |album, votes| %>
-    <li><%= album %></li>
-    <li>Votes: <%= votes %></li>
+    <% @top_albums.each do |album| %>
+    <li><%= album.title %></li>
+    <li>Votes: <%= album.votes.count %></li>
+    <li>Creator: <%= album.creator %></li>
     <br>
     <% end %>
 </ul>
