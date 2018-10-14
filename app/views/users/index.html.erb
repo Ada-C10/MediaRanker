@@ -1,7 +1,15 @@
-
-<h1>Users List</h1>
-<% @users.each do |user| %>
-  <h2><%= link_to "#{user.username}", user_path(user.id) %>
-  </h2>
-  <%= link_to "Delete", user_path(user.id), method: :delete %>
-<% end %>
+<h1>List of Users</h1>
+<table style="width:100%">
+  <tr class="header_font">
+    <th>Username</th>
+    <th>Votes</th>
+    <th>Joined</th>
+  </tr>
+  <%@users.each do |user| %>
+  <tr>
+    <td><%=link_to user.username, user_path(user.id) %></td>
+    <td><%=user.votes.count %></td>
+    <td><%=user.created_at%></td>
+  </tr>
+  <%end%>
+</table>

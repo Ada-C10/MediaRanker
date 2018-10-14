@@ -3,16 +3,9 @@
 <% else %>
 <h1> <%= @work.title %></h1>
 <ul>
-  <li>Format:<%=@work.category%></li>
   <li>Created by: <%= @work.creator %></li>
   <li>Published: <%= @work.publication_year%></li>
   <li> <%= @work.description%></li>
-  <li>Votes: <ul>
-            <% @work.votes.each do |vote|%>
-                  <li>  <%= "#{vote.user.username}"%></li>
-                    <%end%>
-                  </ul>
-                  </li>
 </ul>
 <ul>
 <li><%= link_to "Back to Media Ranks", works_path, class: 'btn btn-primary'%></li>
