@@ -37,7 +37,7 @@
             <% if @logged_in_user %>
 
               Logged in as: <b><%= @logged_in_user.username %></b>
-              <a class="btn btn-primary" href="/sessions/new">Log Out</a>
+              <button class="btn btn-light"><%= link_to "Log out", logout_path, method: :post %></button>
 
             <% else %>
             <a class="btn btn-primary" href="/sessions/new">Log In</a>
