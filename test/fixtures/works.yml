@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+book1:
+  category: book
+  title: Book 1
+  creator: Creator 1
+  publication_year: 1982
+  description: Best book ever
+
+book2:
+  category: book
+  title: Book 2
+  creator: Creator 1
+  publication_year: 1984
+  description: Best book of all time
+
+album1:
+  category: album
+  title: Album 1
+  creator: Creator 2
+  publication_year: 1984
+  description: Best album ever
+
+album2:
+  category: album
+  title: Album 2
+  creator: Creator 2
+  publication_year: 1990
+  description: Best album of all time
