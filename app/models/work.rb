@@ -1,6 +1,6 @@
 class Work < ApplicationRecord
   # relation - user can have many votes
-  has_many :votes
+  has_many :votes, dependent: :destroy
   # validate for unique title
   validates :title, presence: true, uniqueness: true
 
