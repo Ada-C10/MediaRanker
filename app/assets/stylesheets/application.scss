@@ -18,6 +18,7 @@
 @import "**/*";
 
 @import url('https://fonts.googleapis.com/css?family=Hammersmith+One');
+@import url('https://fonts.googleapis.com/css?family=Gudea');
 
 html {
   font-family: 'Hammersmith One', sans-serif;
@@ -93,12 +94,45 @@ body {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.container {
+  margin: 0;
+}
+
+.app-header__header {
+  padding: 0;
+}
+
 .top-ten-container {
   background-color: white;
   color: grey;
+  font-family: "Gudea", sans-serif;
+
+}
+.col-3 {
+  flex-grow: 1;
+  padding: 0;
+}
+
+.top-ten-list-container{
+  flex-grow: 1;
+}
+
+.list-group-item {
+  border: none;
 }
 
 .top-ten-header, .top_title{
   color: #00ab9d;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  font-family: "Gudea", sans-serif;
+  padding: 2rem;
+}
+
+.table td{
+  vertical-align: middle;
 }
 
