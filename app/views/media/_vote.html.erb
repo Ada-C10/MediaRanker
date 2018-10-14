@@ -1,4 +1,4 @@
 <tr>
-  <td><%= vote.user.name %></td>
+  <td><%= link_to "#{vote.user.name}", user_path(vote.user) %></td>
   <td><%= vote.created_at.to_date %></td>
 </tr>

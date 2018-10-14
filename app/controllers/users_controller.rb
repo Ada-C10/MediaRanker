@@ -1,5 +1,18 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all
+  end
+
+  def show
+    @user = User.find_by(id: params[:id])
+    @votes = Vote.where(user_id: @user.id)
+
+    if @user.nil?
+      head :not_found
+    end
+  end
+
   def new
   end
 
@@ -33,7 +46,7 @@ class UsersController < ApplicationController
 
   def upvote
     preexisting = Vote.find_by(user_id: session[:user_id], medium_id: params[:id])
-    
+
     if preexisting
       flash[:error] = "bro lol you can't vote for the same thing twice! smh dude u r a TRIP!"
       show_redirect
