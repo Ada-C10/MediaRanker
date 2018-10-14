@@ -3,7 +3,6 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
 
     def index
-      @works = Work.all
       @books = Work.works_by_category("book")
       @albums = Work.works_by_category("album")
       @movies = Work.works_by_category("movie")
@@ -36,6 +35,7 @@ class WorksController < ApplicationController
 
     def show
       @work = Work.find(params[:id])
+      @votes = Vote.votes_by_work(@work.id)
     end
 
     def edit

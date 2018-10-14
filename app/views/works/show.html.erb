@@ -12,9 +12,33 @@
 
 
 <%= link_to "(Edit Media Details)", edit_work_path %>
-<%= link_to "(Upvote)", edit_work_path %>
+<%= link_to "(Upvote)", votes_path(vote:{work_id: @work.id}), class: "button upvote", method: :post  %>
 
 <%= link_to "(Delete This Work)", work_path(@work), method: :delete, data: { confirm: "Are you 1000% sure you want to delete the work: #{@work.title}?" } %>
 <p>
 <h4><%= link_to "Back to media ranks", votes_path %></h4>
 </p>
+
+
+
+<h3 class="work-votes__header">
+  <td><%= @work.votes.count %></td>
+  Votes For This Work</h3>
+
+ <table class="table">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @votes.each do |vote| %>
+    <tr>
+      <td><%= link_to "#{vote.user.name}", user_path(vote.user.name) %></td>
+      <td><%= vote.created_at.strftime('%b %d, %Y') %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
