@@ -7,6 +7,6 @@ Rails.application.routes.draw do
 
   resources :works, :users, :votes
   resources :sessions, only: [:new]
-  get '/sessions/login', to: 'sessions#login', as: "login"
+  post '/sessions/login', to: 'sessions#login', as: "login"
   post '/sessions/logout', to: "sessions#logout", as: "logout"
 end
