@@ -19,8 +19,7 @@ Rails.application.routes.draw do
 
   post '/sessions/logout', to: 'sessions#logout', as: 'logout'
 
-  post '/works/upvote', to: 'works#upvote', as: 'upvote'
-
+  post '/works', to: 'works#upvote', as: 'upvote'
 
   get '/home', to: 'works#homepage', as: 'home'
 

@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
 
-  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def homepage
 
@@ -63,11 +63,12 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    if @user.id == session[:user_id]
+    # if @user.id == session[:user_id]
 
-    user = User.find_by(id: params[:session_id])
-    # @work = Work.find_by(id: params[:id])
-    @vote = Vote.new
+    # user = User.find_by(id: session[:user_id])
+    # work = Work.find_by(id: params[:id])
+    # @vote = Vote.new(work_id: work.id, user_id: user.id)
+    @vote = Vote.new(user_id: @logged_in_user.id, work_id: @work.id)
 
     if @vote.save
       flash[:success] = "Successfully voted!"

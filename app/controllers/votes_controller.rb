@@ -26,13 +26,15 @@ class VotesController < ApplicationController
   def create
 
     @vote = Vote.new
-    if @vote.save
-      flash[:success] = "Congratulations - you successfully voted!"
-      redirect_to works_path
-    else
-      flash[:error] = "Snap! Your vote wasn't counted.  What else is new in Amercia..."
-      redirect_to works_path
-    end
+    @vote.save
+    # if @vote.save
+    #   flash[:success] = "Congratulations - you successfully voted!"
+    #   redirect_to works_path
+    # else
+    #   flash[:error] = "Snap! Your vote wasn't counted.  What else is new in Amercia..."
+    #   redirect_to works_path
+    # end
+
     # work = Work.find_by(id: params[:work_id])
     # user = User.find_by(id: params[:user_id])
     #
