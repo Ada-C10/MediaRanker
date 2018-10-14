@@ -79,6 +79,8 @@ describe Work do
     it "must have a year with four digits" do
       work.publication_year = 87
 
+      valid = work.valid?
+
       expect(valid).must_equal false
       expect(work.errors.messages).must_include :publication_year
     end
