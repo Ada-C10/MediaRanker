@@ -1,28 +1,32 @@
-List of Works
-<br>
-<table>
-  <thead>
-    <tr>
-      <th width=80>Votes(loljk work id)</th>
-      <th>Title</th>
-      <th width=100>Category</th>
-      <th>Created By</th>
-      <th width=100>Published</th>
-      <th width=100>Upvote</th>
-    </tr>
-  </thead>
-  <tbody>
+<h2>List of Works</h2>
+<% [["Albums", @albums], ["Books", @books], ["Movies", @movies]].each do |name, works| %>
+  <section class="media-table">
+    <h4><%=name%></h4>
 
-    <% @works.each do |work| %>
-      <tr>
-        <td><%= work.id %></td>
-        <td><%= link_to work.title, work_path(work) %></td>
-        <td><%= work.category %></td>
-        <td><%= work.creator %></td>
-        <td><%= work.publication_year %></td>
-        <td><%= link_to "Upvote", vote_path(work), class: "button upvote", method: :post %></td>
-      </tr>
-    <% end %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width=80>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width=100>Published</th>
+          <th width=100>Upvote</th>
+        </tr>
+      </thead>
 
-  </tbody>
-</table>
+    <tbody>
+      <% if works.any? %>
+        <% works.each do |work| %>
+          <tr>
+            <td><%= work.votes.count %></td>
+            <td><%= link_to work.title, work_path(work) %></td>
+            <td><%= work.creator %></td>
+            <td><%= work.publication_year %></td>
+            <td><%= link_to "Upvote", votes_path(vote:{work_id: work.id}), class: "button upvote", method: :post %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+    
+  </table>
+<% end %>

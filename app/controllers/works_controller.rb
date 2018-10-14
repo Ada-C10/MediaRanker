@@ -4,6 +4,9 @@ class WorksController < ApplicationController
 
     def index
       @works = Work.all
+      @books = Work.works_by_category("book")
+      @albums = Work.works_by_category("album")
+      @movies = Work.works_by_category("movie")
     end
 
 

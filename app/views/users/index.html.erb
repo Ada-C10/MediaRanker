@@ -1,20 +1,19 @@
-home users page
-<br>
-displays lists of users
-<p>
-<table>
+<h2>List of Users</h2>
+ <table class="table">
   <thead>
     <tr>
-      <th width=80>User ID</th>
-      <th>Name</th>
-      <th>Joined Date</th>
+      <th>Username</th>
+      <th>Votes</th>
+      <th>Joined</th>
     </tr>
   </thead>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.id %></td>
-      <td><%= user.name %></td>
-      <td><%= user.created_at %></td>
-    </tr>
-  <% end %>
+   <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to "#{user.name}", user_path(user.id) %></td>
+        <td><%= user.votes.count %></td>
+        <td><%= user.created_at.strftime('%b %d, %Y') %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
