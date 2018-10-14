@@ -14,48 +14,43 @@ class UsersController < ApplicationController
 
 
   def new
-  end
-
-  def create
-    username = params[:username]
-    @user = User.new(params[:user][:username])
-
-
-    if @user.save
-      flash[:success] = "New user successfully added"
-    else
-      flash[:error] = "user could not be added"
-    end
+    @user = User.new
   end
 
 
   def login
     username = params[:username]
-    user = User.find_by(username: username)
+    user = User.find_by(username: params[:username])
 
     if user
       flash[:success] = "logged in as #{username}"
-      session[:test] = user.id
-      redirect_to user_path(user)
+      session[:user_id] = user.id
+      redirect_to user_path(user) and return
     else
-      # render :create
-      flash[:error] = "user doesn't exist"
-      render :create
+
+      @user = User.new(username: username)
+
+      if @user.save
+        session[:user_id] = @user.id
+        flash[:success] = "New user successfully added"
+        redirect_to user_path(@user.id) and return
+      else
+        render :new
+      end
+    end
+  end
+
+
+    def logout
+      session[:user_id] = nil
+      flash[:success] = "successfully logged out"
+      redirect_to root_path
+    end
+
+
+    private
+    def user_params
+      return params.require(:user).permit(:username)
     end
 
   end
-
-
-  def logout
-    session[:test] = nil
-    flash[:success] = "successfully logged out"
-    redirect_to root_path
-  end
-
-
-  private
-  def user_params
-    return params.require(:user).permit(:username)
-  end
-
-end

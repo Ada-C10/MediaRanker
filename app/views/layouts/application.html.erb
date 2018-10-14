@@ -34,13 +34,15 @@
 
     </header>
 
-    <section class = "flash-message">
+    <section class="flash-messages">
       <% flash.each do |key, message| %>
-      <p class= "<%= key %>">
+      <% alert_class = key == "error" ? "danger" : key %>
+      <p class="alert alert-<%= alert_class %>">
         <%= message %>
       </p>
       <% end %>
     </section>
+
 
     <main>
       <%= yield %>
