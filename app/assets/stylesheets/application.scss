@@ -18,8 +18,16 @@
 @import "**/*";
 
 .flash_messages{
-  background-color: #ceeed8;
   margin-top: 25px;
+  margin-bottom: -30px;
+}
+
+#flash_success{
+  background-color: #ceeed8;
+}
+
+#flash_error{
+  background-color: #fff3c8;
 }
 
 body{
@@ -30,9 +38,13 @@ body{
   padding: 30px;
 }
 
-.title{
+.title, .title > a{
   color: #FF5722;
   font-size: 2.5rem
+}
+
+.title > a:hover{
+  color: #d53806;
 }
 
 #subtitle{

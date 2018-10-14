@@ -20,7 +20,7 @@ class VotesController < ApplicationController
         work_upvoted.total_votes = new_vote_count
         work_upvoted.save
 
-        flash[:sucess] = "Successfully upvoted"
+        flash[:success] = "Successfully upvoted"
         redirect_back fallback_location: '/', allow_other_host: false
       else
         flash[:error] = "A problem occurred: Could not upvote. You've already upvoted this work."

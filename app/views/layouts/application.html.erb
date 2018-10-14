@@ -14,7 +14,7 @@
   <body>
     <header>
       <div class="header_title">
-        <h1 class="title">Media Ranker <span id="subtitle">| Ranking the Best of Everything</span>
+        <h1 class="title"><%= link_to "Media Ranker", root_path %> <span id="subtitle">| Ranking the Best of Everything</span>
         </h1>
       </div>
       <div class="links">
@@ -49,7 +49,15 @@
     <section class="flash_messages">
         <p>
           <% flash.each do |key, message| %>
-            <%= message %>
+            <% if flash[:success] %>
+              <div id="flash_success">
+                <%= message %>
+              </div>
+            <% else %>
+              <div id="flash_error">
+                <%= message %>
+              </div>
+            <% end %>
           <% end %>
         </p>
     </section>

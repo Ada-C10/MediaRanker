@@ -31,7 +31,7 @@
         <% users.each do |user| %>
           <tr>
             <td class = "table_grid">
-              <%= user.username %>
+              <%= link_to user.username, user_path(user.id) %>
             </td>
 
             <td class = "table_grid">
