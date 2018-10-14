@@ -22,5 +22,9 @@ class Work < ApplicationRecord
     Work.all.sort_by {|work| -work.votes.count}.select { |work| work.category == category }
   end
 
+  def self.spotlight
+    Work.all.sort_by {|work| -work.votes.count}
+  end
+
 
 end

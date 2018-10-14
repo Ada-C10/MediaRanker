@@ -39,6 +39,7 @@ describe Vote do
       expect(new_vote.errors.messages).must_equal :work_id=>["You can only vote once for this work"]
     end
 
+
   describe 'relationships' do
 
     it "a vote must belong to a user" do

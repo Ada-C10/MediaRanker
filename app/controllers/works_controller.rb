@@ -4,6 +4,7 @@ class WorksController < ApplicationController
     @books = Work.list_by_votes("book")
     @albums = Work.list_by_votes("album")
     @movies = Work.list_by_votes("movie")
+
   end
 
   def show
@@ -17,12 +18,12 @@ class WorksController < ApplicationController
   end
 
   def main
-    @works = Work.all
+    @works = Work.spotlight
     @books = Work.list_by_votes("book")
     @albums = Work.list_by_votes("album")
     @movies = Work.list_by_votes("movie")
 
-    @top_work = (@works.all.sample(1))[0]
+    @top_work = Work.spotlight.first
   end
 
   def edit
@@ -40,43 +41,58 @@ class WorksController < ApplicationController
   end
 
   def update
-    id = params[:id]
-    @work = Work.find_by(id: id)
-    @work.update(work_params)
+    if @work && @work.update(work_params) #(if user exists AND can be updated)
+       # @work.user_id = session[:user_id]
+       flash[:success] = "#{@work.title} has been edited."
+       redirect_to work_path(@work.id)
+     else
+       flash.now[:error] = 'Sorry, no edits were saved.'
+       render :edit
+     end
 
-    if @work.save
-      redirect_to work_path # go to the index so we can see the book in the list
-    else
-      render :new
-    end
+
+    # id = params[:id]
+    # @work = Work.find_by(id: id)
+    # @work.update(work_params)
+    #
+    # if @work.save
+    #   redirect_to work_path # go to the index so we can see the book in the list
+    # else
+    #   render :new
+    # end
   end
 
+
   def create
+    @work = Work.new(work_params)
+
     if @current_user.nil?
-      flash[:warning] = "You must be logged in to vote"
+      flash[:error] = "You must be logged in to vote"
     end
+
     @work = Work.new(work_params)
       if @work.save
-        flash[:success] = "New work created"
+        flash[:success] = "#{@work.title} has been created"
         redirect_to work_path(@work.id)
       else # save failed :(
         flash.now[:error] = 'Work not created'
         @work.errors.messages.each do |field, messages|
-          flash.now[field] = messages
-        end
-        render :new, status: 400 # show the new book form view again
+        flash.now[field] = messages
+      end
+      render :new, status: 400 # show the new book form view again
       end
   end
 
   def upvote
     id = params[:id]
     @work = Work.find_by(id: id)
+
     if @current_user
       @work.upvote(user_id: @current_user.id)
       flash[:success] = "Your vote was added"
       redirect_to works_path
-    else
-      flash[:warning] = "You must be logged in to vote"
+    elsif @current_user.nil?
+      flash.now[:error] = "You must be logged in to vote"
     end
   end
 

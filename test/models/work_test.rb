@@ -61,7 +61,7 @@ describe Work do
       expect(less.errors.messages).must_include :publication_year
     end
 
-    describe 'relations' do
+    describe 'relationships' do
       before(:each) do
         user = users(:jazz)
         work = works(:book2)
@@ -88,8 +88,8 @@ describe Work do
         expect(Work.list_by_votes("album").first.title).must_equal album1.title
       end
 
-      it "expects nil is no work is listed" do
-        expect(Work.list_by_votes("dvd")).must_be :empty? 
+      it "expects category to be empty if no work is listed" do
+        expect(Work.list_by_votes("dvd")).must_be :empty?
       end
     end
 

@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-  #uses the filter to find user
     id = params[:id]
     @user = User.find_by(id: id)
 
@@ -74,7 +73,6 @@ class UsersController < ApplicationController
       flash[:success] = "Successfully logged out"
       redirect_to new_user_path
     end
-
 
 
 end

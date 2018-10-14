@@ -48,13 +48,14 @@
 
           </ul>
         </nav>
+
       </header>
 
-        <section class= "alert__container">
+        <section class= "flash">
            <% flash.each do |name, message| %>
              <% if message.class == Array %>
-             <div class="alert-warning">
                <% message.each do |msg| %>
+               <div class="alert-warning">
                    <p><strong><%= "#{name}:" %></strong><%= " #{msg}" %></p>
                <% end %>
              </div>
