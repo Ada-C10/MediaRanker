@@ -110,3 +110,18 @@ hr {
 .works-votes__container {
     margin-top: 2rem;
   }
+
+.work-f {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-f select {
+  line-height: 500%;
+  width: 100%;
+}
+
+.work-f input {
+  line-height: 250%;
+  width: 100%;
+}

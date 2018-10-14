@@ -24,9 +24,14 @@ class WorksController < ApplicationController
   def destroy
 
     if !@work.nil?
-      @work.destroy
-      flash[:success] = "#{@work.title} deleted"
-      redirect_to root_path
+      if @work.votes.nil? || @work.votes.count < 1
+        @work.destroy
+        flash[:success] = "#{@work.title} deleted"
+        redirect_to root_path
+      else
+        flash[:warning] = "#{@work.title} cannot be deleted, there are votes on it!"
+        redirect_back fallback_location: works_path
+      end
     end
   end
 
@@ -37,7 +42,7 @@ class WorksController < ApplicationController
 
       redirect_to work_path(id: @work.id)
     else
-      flash.now[:error] = "#{@work.title} not created!"
+      flash.now[:warning] = "Item is not created!"
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
@@ -49,8 +54,13 @@ class WorksController < ApplicationController
   def update
 
     if @work && @work.update(work_params)
+      flash[:success] = "Successfully edited!"
       redirect_to work_path(@work.id)
     elsif @work
+      flash.now[:warning] = "Item is not updated!"
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
       render :edit
     end
   end
@@ -90,7 +100,7 @@ private
     @work = Work.find_by(id: params[:id].to_i)
 
     if @work.nil?
-      flash[:warning] = "cannot find #{@work.title}"
+      flash[:warning] = "Cannot find #{@work.title}"
       redirect_to works_path
     end
   end
