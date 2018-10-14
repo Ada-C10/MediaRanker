@@ -1,21 +1,21 @@
-<%= form_with model: @work, class: "work-form"  do |f|%>
+<%= form_with model: @work  do |f|%>
   <p>Please provide the following information to save your work to our database:</p>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
 
 
-  <section class="description-section">
+  <section>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
     <%= f.label :description %>
     <%= f.text_area :description %>
+    <%= f.label :creator %>
+    <%= f.text_area :creator %>
+    <%= f.label :publication_year %>
+    <%= f.text_area :publication_year %>
     <%= f.label :category, "Category" %>
-    <%= f.text_area :category %>
+    <%= f.select :category, ['album', 'movie', 'book']%>
   </section>
-  <%#= f.select :author_id, [ ['Bob', 1], ['Ada', 2], ['JK', 42]  ] %>
 
-  <%# f.text_field :author %>
 
-  <%# f.hidden :creator, value: 'Divya' %>
-
-  <%= f.submit button_title, class: "work-button" %>
+  <%= f.submit button_title %>
 <% end %>

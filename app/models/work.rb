@@ -10,6 +10,11 @@ class Work < ApplicationRecord
   validates :publication_year, presence: true, length: {in:4..5}
   validates :publication_year, numericality: { only_integer: true }
 
+  def self.catergory_list
+    return Work.all.map do |work|
+      [work.category , work.id]
+    end
+  end
 
 
 end

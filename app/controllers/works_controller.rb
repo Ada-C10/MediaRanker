@@ -21,6 +21,15 @@ class WorksController < ApplicationController
         @work = Work.new
       end
 
+      def update
+        if @work && @work.update(work_params)
+        redirect_to work_path(@work.id)
+      elsif @work
+          render :edit
+        end
+      end
+
+
     def create
     @work = Work.new(work_params)
     if @work.save
