@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+#sign up then login?
 
   def login
     # @users = User.all
@@ -15,9 +16,8 @@ class SessionsController < ApplicationController
       end
     end
 
-    session[:user_id] = user.id
-
     if user.valid?
+      session[:user_id] = user.id
       flash[:success] = "Hello, #{user.handle} you are now logged in."
       redirect_to root_path
     end

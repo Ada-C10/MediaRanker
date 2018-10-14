@@ -1,6 +1,6 @@
 class Vote < ApplicationRecord
-  belongs_to :users
-  belongs_to :works
+  belongs_to :user
+  belongs_to :work
 
   # def change_vote
   #   #toggle vote status false true

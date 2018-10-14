@@ -5,7 +5,10 @@
 <% else %>
 <section class='vote-for'>
   <%= link_to "Vote!", vote_path(@work.id), method: :create %>
+    <p> <%= "#{@work.title} has #{@work.votes.count} votes." %> </p>
+
 </section>
+  <!-- show vote counts, then as badge in bootstrap -->
  <ul>
    <li> <%= @work.title %> </li>
    <li> <%= @work.creator %> </li>

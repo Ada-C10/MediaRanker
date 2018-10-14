@@ -13,8 +13,11 @@ class VotesController < ApplicationController
       new_vote = {work_id: @work.id, user_id: @current_user.id}
       @vote = Vote.new(new_vote)
       @vote.save
+      flash[:success] = "You have voted!"
+      redirect_to root_path
     else
       flash[:warning] = "You must be logged in to vote"
+      redirect_back fallback_location: root_path #go to same page or go to home
     end
   end
 
