@@ -80,7 +80,7 @@ class WorksController < ApplicationController
         flash[:warning]= "Already upvoted!"
      end
    end
-   redirect_to works_path
+   redirect_back fallback_location: works_path
   end
 
 

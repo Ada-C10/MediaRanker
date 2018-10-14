@@ -1,22 +1,24 @@
-<h1> <%= action_name %> </h1>
+<h2> <%= action_name %> </h2>
 
+<form>
 <%= form_with model: @work, class: "work-form"  do |f|%>
-  <p>Please provide the following information to save to our database:</p>
 
-  <%= f.label :category %>
-  <%= f.select :category,[['movie','movie'], ['book','book'],['album','album']] %>
+  <p> <%= f.label :category %></p>
+  <p class="form-select"> <%= f.select :category,[['movie','movie'], ['book','book'],['album','album']] %></p>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <p> <%= f.label :title %></p>
+  <p class="form-size"> <%= f.text_field :title %></p>
 
-  <%= f.label :creator %>
-  <%= f.text_field :creator %>
+  <p> <%= f.label :creator %></p>
+  <p class="form-size"> <%= f.text_field :creator %></p>
 
-  <%= f.label :publication_year %>
-  <%= f.text_field :publication_year %>
+  <p> <%= f.label :publication_year %></p>
+  <p class="form-size"> <%= f.text_field :publication_year %></p>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+  <p> <%= f.label :description %></p>
+  <p class="form-s"> <%= f.text_field :description %></p>
 
-  <%= f.submit button_title, class: "work-button" %>
+  <p> <%= f.submit button_title, class: "btn btn-primary"%></p>
+
 <% end %>
+</form>
