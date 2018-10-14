@@ -52,3 +52,7 @@ vote_eleven:
 vote_twelve:
   user: burger
   work: potter
+
+vote_thirteen:
+  user: cheetos
+  work: titanic

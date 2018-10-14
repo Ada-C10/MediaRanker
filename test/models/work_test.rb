@@ -146,6 +146,17 @@ describe Work do
         end
       end
 
+      it 'returns the works in descending order of votes per category' do
+
+        expect( albums.first ).must_equal works(:beatles)
+        expect( albums.last ).wont_equal works(:beatles)
+
+        expect( books.first ).must_equal works(:potter)
+        expect( books.last ).wont_equal works(:potter)
+
+        expect( movies.first ).must_equal works(:titanic)
+        expect( movies.last ).wont_equal works(:titanic)
+      end
     end
 
 
