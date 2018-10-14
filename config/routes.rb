@@ -3,11 +3,12 @@ Rails.application.routes.draw do
 
   root 'works#homepage'
 
-  resources :votes, only: [:index, :show, :new, :create]
+  resources :votes, only: [:index, :show, :create]
 
   resources :works do
     resources :votes, only: [:index, :create, :update]
   end
+
 
 
   resources :users do
@@ -15,7 +16,11 @@ Rails.application.routes.draw do
   end
 
   resources :sessions, only: [:new, :create]
+
   post '/sessions/logout', to: 'sessions#logout', as: 'logout'
+
+  post '/works/upvote', to: 'works#upvote', as: 'upvote'
+
 
   get '/home', to: 'works#homepage', as: 'home'
 

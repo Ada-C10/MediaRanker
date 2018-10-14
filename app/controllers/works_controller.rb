@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
 
-  before_action :find_work, only: [:show, :edit, :update, :destroy]
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def homepage
 
@@ -63,7 +63,24 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    session[:user_id]
+    if @user.id == session[:user_id]
+
+    user = User.find_by(id: params[:session_id])
+    # @work = Work.find_by(id: params[:id])
+    @vote = Vote.new
+
+    if @vote.save
+      flash[:success] = "Successfully voted!"
+      redirect_to works_path
+    else
+      flash[:error] = "Snap! Your vote wasn't counted.  What else is new in Amercia..."
+      redirect_back(fallback_location: root_path)
+    end
+
+  #search for the user via session id
+  #search for work via param
+  #create a new vote by passing in the user id from above
+  #if success, flash successfully upvoted
 
   end
 
