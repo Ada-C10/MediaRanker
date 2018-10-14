@@ -8,11 +8,7 @@ module PagesHelper
   def media_spotlight_text(medium)
     text = "#{medium.votes.length} "
 
-    if medium.votes.length == 1
-      text += "vote"
-    else
-      text += "votes"
-    end
+    medium.votes.length == 1 ? text += "vote" : text += "votes"
 
     return text += " - #{medium.description}"
   end
