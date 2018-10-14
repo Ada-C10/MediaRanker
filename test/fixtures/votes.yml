@@ -2,10 +2,10 @@
 
 one:
   vote_date: 2018-10-10
-  user_id: 1
-  work_id: 1
+  user: one
+  work: one
 
 two:
   vote_date: 2018-10-10
-  user_id: 1
-  work_id: 1
+  user: two
+  work: one

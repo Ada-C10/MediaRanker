@@ -1,9 +1,18 @@
 require "test_helper"
+require 'pp'
 
 describe Vote do
-  let(:vote) { Vote.new }
+  describe 'relations' do
+    it "has a work" do
+      v = Vote.first
+      work = v.work
+      expect(work).must_be_instance_of Work
+    end
 
-  it "must be valid" do
-    value(vote).must_be :valid?
+    it "has a user" do
+      v = Vote.first
+      user = v.user
+      expect(user).must_be_instance_of User
+    end
   end
 end

@@ -1,7 +1,8 @@
 class Work < ApplicationRecord
   has_many :votes
 
-  validates :title, :creator, :category, :description, :publication_year, presence: true
+  validates :title, presence: true, uniqueness: true
+  validates :creator, :category, :description, :publication_year, presence: true
 
   def self.works_by_category(category)
     return Work.where(category: category)
