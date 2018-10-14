@@ -69,7 +69,7 @@ class WorksController < ApplicationController
     else
       flash[:error] = "A problem occurred: Could not upvote"
     end
-    redirect_to works_path
+     redirect_back fallback_location: root_path
   end
 
   private
