@@ -17,13 +17,15 @@
 
   <h4><%= link_to "(Back to media ranks)", works_path %></h4>
 
-
+  <%= link_to "Upvote", upvote_work_path(@work.id), method: :post, class: "btn btn-outline-info"
+  %>
 
   <%= @work.total_votes %> Votes for this <%= @work.category %></p>
 
 
   <% @work.votes.each do |vote| %></p>
   <%= link_to "#{vote.user.username}", user_path(vote.user.id) %>
+  Date: 
   <%= vote.created_at %>
 
   <% end %>
