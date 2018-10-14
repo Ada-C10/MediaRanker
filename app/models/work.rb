@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  has_many :votes
+  has_many :votes, dependent: :destroy
 
   # validations goes here: user and work combo is unique...
   validates :title, presence: true, uniqueness: {scope: :creator, :message => "and creator combination already exists"}
