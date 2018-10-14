@@ -3,7 +3,7 @@
 <head>
   <title>Media Ranker 2.0</title>
   <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="+NWjwbpEjahlAJVqUEAPt0rznjar5m53fCjGGV3PEiCtihAocnRHCSkEpVxIHq/Wz+3Egl1uvhBR33csjS59Wg==" />
+<meta name="csrf-token" content="23k5pdZDJAEsZaEyQsSIA7HpQiEnDOl0Z6iOzMnj2seOJopMHnPuoGBhkQRamihiNPcYldGEORNKXz/5GQK1vQ==" />
 
   <link rel="stylesheet" media="screen" href="/assets/application-23e0d10ed2d885fab99a6549bc004eca19f49cf694e045afebe16b6e9bf1345a.css" />
 <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One" />
@@ -12,62 +12,60 @@
   <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-910822ff6cd5f6d37119171c4b716f1d4e5fe0e8ad5e408627659ebf8d7f16b1.ico" />
 </head>
 
-  <body>
-    <header="app-header__header">
-      <h1>
-        <a href="/">Media Ranker</a>
-        <small>Ranking the Best of Everything</small>
-      </h1>
+<body>
+  <header class="app-header__header">
+    <h1>
+      <a href="/">Media Ranker</a>
+      <small>Ranking the Best of Everything</small>
+    </h1>
 
-      <section class="flash">
-        <% flash.each do |name, message| %>
-          <% if message.class == Array %>
-            <% message.each do |msg| %>
-              <div class="alert-<%= name %>">
-                <strong><%= "#{name}:" %></strong><%= " #{msg}" %></div>
-            <% end %>
-          <% else %>
+    <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/">View top media</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/works">View all media</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/works/new">Add a new work</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/users">View all users</a>
+        </li>
+      </ul>
+      <ul class="nav app-header__user-nav-container">
+      </ul>
+    </nav>
+
+    <section class="flash">
+      <% flash.each do |name, message| %>
+        <% if message.class == Array %>
+          <% message.each do |msg| %>
             <div class="alert-<%= name %>">
-                <%= message %>
-            </div>
+              <strong><%= "#{name}:" %></strong><%= " #{msg}" %></div>
           <% end %>
-        <% end %>
-
-        <% if @current_user %>
-          <h2>Welcome <%= @current_user.username %> </h2>
-        <% end %>
-      </section>
-
-      <nav class="app-header__nav">
-        <ul class="nav app-header__site-nav-container">
-          <li class="nav-item app-header__nav_item">
-            <a class="nav-link" href="/">View top media</a>
-          </li>
-          <li class="nav-item app-header__nav_item">
-            <a class="nav-link" href="/works">View all media</a>
-          </li>
-          <li class="nav-item app-header__nav_item">
-            <a class="nav-link" href="/works/new">Add a new work</a>
-          </li>
-          <li class="nav-item app-header__nav_item">
-            <a class="nav-link" href="/users">View all users</a>
-          </li>
-        </ul>
-        <ul class="nav app-header__user-nav-container">
-
-          <li class="nav-item app-header__nav_item">
-            <!-- <%= link_to "login", new_session_path, class: "btn btn-primary" %> -->
-          </li>
-          <% if session[:user_id] %>
-          <%= link_to "Log Out", logout_path, method: :delete, class: 'btn btn-primary' %>
         <% else %>
-          <%= link_to "Login", login_path, class: 'btn btn-primary' %>
+          <div class="alert-<%= name %>">
+              <%= message %>
+          </div>
         <% end %>
+      <% end %>
 
-
-        </ul>
-      </nav>
-    </header>
+      <% if @current_user %>
+        <h2>Welcome <%= @current_user.username %> </h2>
+      <% end %>
+    </section>
+      <li>
+      <% if session[:user_id] %>
+        <%= link_to "Log Out", logout_path, method: :delete, class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to "Login", login_path, class: 'btn btn-primary' %>
+      <% end %>
+      </li>
+    </nav>
+  </header>
+  <main>
 
           <!--
         <div class="navbar-header">
@@ -86,7 +84,7 @@
       </li> -->
     <!-- </header>
     <main> -->
-      <%= yield %>
-    </main>
-  </body>
-</html>
+        <%= yield %>
+      </main>
+    </body>
+  </html>
