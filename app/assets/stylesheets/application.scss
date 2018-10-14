@@ -16,9 +16,8 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
-// *{
-//   border: solid 1px black;
-// }
+@import url('https://fonts.googleapis.com/css?family=Gudea');
+
 main {
   padding: 2rem;
 }
@@ -29,12 +28,13 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  font-family: "Gudea", sans-serif;
+  font-family: 'Gudea', sans-serif;
 }
 
 h1, h2, h3, h4, h5 {
   font-weight: bold;
-  color: #50B6AC;
+  // color: #50B6AC;
+  color: #26A69A;
 }
 
 p {
@@ -97,6 +97,11 @@ ul {
    justify-content: space-between;
  }
 
+ .user-log-in {
+   margin-left: 30px;
+   margin-top: 50px;
+ }
+
 .nav {
   display: flex;
   flex-wrap: wrap;
@@ -127,6 +132,23 @@ ul {
 
 .headliner {
   color: #26A69A;
-  margin-top: 30px;
-  margin-left: 20px;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  border-collapse: collapse;
+}
+
+
+th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
 }

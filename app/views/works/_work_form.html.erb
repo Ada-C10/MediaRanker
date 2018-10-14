@@ -13,7 +13,7 @@ locals: {
         <div>
           <%= f.label :category %>
         </div>
-        <%= f.select :category, [*"album", "book", "movie"] %>
+        <%= f.select :category, %w[album book movie], class: "form-control" %>
       </div>
     </div>
 

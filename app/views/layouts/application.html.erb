@@ -48,12 +48,13 @@
     </section> -->
     <section class="flash-messages">
       <% flash.each do |key, message| %>
-        <% alert_class = key == "error" ? "danger" : key %>
+        <% alert_class = key == "error" ? "warning" : key %>
         <p class="alert alert-<%= alert_class %>">
           <%= message %>
         </p>
       <% end %>
     </section>
+
 
     <main>
       <%= yield %>

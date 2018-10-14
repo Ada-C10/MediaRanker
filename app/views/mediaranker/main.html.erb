@@ -1,7 +1,7 @@
 <section class="spotlight">
-  <h2 class="spotlight-header"> <span>Media Spotlight:
-  <%= link_to @media_spotlight.title, work_path(@media_spotlight.id) %>
-    by <%= @media_spotlight.creator %></span></h2>
+  <h2 class="spotlight-header"><span class="header-prefix">Media Spotlight:</span> 
+  <%= link_to @media_spotlight.title, work_path(@media_spotlight.id), class: "spotlight-link-to" %>
+    by <%= @media_spotlight.creator %></h2>
   <p class="spotlight-description">
     <%= @media_spotlight.votes_count %> votes - <%= @media_spotlight.description %>
   </p>
