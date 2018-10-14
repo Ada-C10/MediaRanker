@@ -1,9 +1,16 @@
 
 
-<h1>Please Log in</h1>
+<h2>Log in</h2>
+
+<section>
 
 <%= form_with model: @user, url: login_path, method: :post do |f| %>
-  <%= f.label :name, 'Username' %>
-  <%= f.text_field :name, placeholder: 'Username' %>
-  <%= f.submit 'Login' %>
+
+  <p><%= f.label :name, 'Username' %></P>
+  <p class="form-size"><%= f.text_field :name%></P>
+
+  <p><%= f.submit 'Login', class:"btn btn-primary" %></P>
+
 <% end %>
+
+</section>

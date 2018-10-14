@@ -2,11 +2,10 @@
    <h2 class="spotlight__header">
      <span class="spotlight__header--prefix">Media Spotlight:</span>
      <% spot = Work.top_one%>
-     <!-- <a class="spotlight__link-to">
-       <%= link_to "#{spot.title}", work_path(spot.id) %>
-     </a> -->
-     <a class="spotlight__link-to" href="work_path(spot.id)"><%=spot.title%></a>
-     <a>by <%= spot.creator%></a>
+     <a >
+       <%= link_to "#{spot.title}", work_path(id:spot.id),class:"spotlight__link-to" %> by <%= spot.creator%>
+     </a>
+     <!-- <a>by <%= spot.creator%></a> -->
    </h2>
    <p class="spotlight__description">
      <%= "#{spot.votes.count} vote(s)- #{spot.description}"%>

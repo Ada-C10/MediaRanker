@@ -1,25 +1,29 @@
 <% if @work.nil? %>
   <h1> 404 Not found</h1>
 <% else %>
-  <h1><%=@work.title%></h1>
+  <h2><%=@work.title%></h2>
   <p>Created by:<%= @work.creator%> </p>
   <p>Published:<%= @work.publication_year%> </p>
   <p><%= @work.description%> </p>
 
-  <p><%= button_to "Edit", edit_work_path(@work.id), method: :get %></p>
-  <p><%= button_to "Delete", work_path(@work.id), method: :delete , data: {confirm: "Are you sure?"}%></p>
-  <p><%= button_to "Upvote", upvote_path(@work.id), method: :post %></p>
+  <a><%= link_to "Back to modia ranks", root_path, class: 'btn btn-primary'%></a>
+  <a><%= link_to "Edit", edit_work_path(@work.id), method: :get, class: 'btn btn-primary', rel: 'nofollow' %></a>
+  <a><%= link_to "Upvote", upvote_path(@work.id), method: :post, class: 'btn btn-primary', rel: 'nofollow' %></a>
+  <a><%= link_to "Delete", work_path(@work.id), method: :delete , data: {confirm: "Are you sure?"}, class: 'btn btn-danger',rel: 'nofollow'%></a>
 
-  <p><%= "#{@work.votes.count} votes for this #{@work.category}"%> </p>
-  <table class="header">
-  <tr><td>User</td><td>Date</td></tr>
-  <p><%@work.votes.map do |vote| %>
-    <tr>
-    <td><%= link_to "#{vote.user_id}", user_path(vote.user_id) %></td>
-    <td><%=vote.created_at%></td>
-    </tr>
-  <%end%>
+<section class="works-votes__container">
+  <h3 class="works-votes__header"><%= "#{@work.votes.count} votes for this #{@work.category}"%> </h3>
+  <table class="table">
+    <thead><tr><td>User</td><td>Date</td></tr></thead>
+    <tbody>
+      <p><%@work.votes.map do |vote| %>
+        <tr>
+          <td><%= link_to "#{vote.user.name}", user_path(vote.user_id) %></td>
+          <td><%=vote.created_at.to_date.strftime("%b %d, %Y")%></td>
+        </tr>
+      <%end%>
+    </tbody>
   </table>
-
+</section>
 
 <% end %>
