@@ -130,15 +130,17 @@ describe Work do
       expect(sorted.first.title).must_equal "How to Pickle"
     end
 
-    it "will keep existing top choice, if new vote is added to different work to create tie" do
-      # user: johnie work:harry_potter
-      pickle1 = Vote.new(user_id: 921899516, work_id: 820998458)
-      # user: sam work:harry_potter
-      pickle2 = Vote.create(user_id: 638797851, work_id: 820998458)
+    it "will post nothing if there are no works in a category" do
+      sorted = Work.sorted_works("album")
 
-      sorted = Work.sorted_works("book")
+      expect(sorted.length).must_equal 0
 
-      expect(sorted.first.title).must_equal "Knife of Dreams"
+    end
+
+    it "will post only book if there is only one work in category" do
+      sorted = Work.sorted_works("movie")
+
+      expect(sorted.length).must_equal 1
     end
   end
 
