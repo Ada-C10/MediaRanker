@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   resources :works, :users
 
+  # resources :works do
+  #   resources :users, only: [:show]
+  # end
+
 
 
 end

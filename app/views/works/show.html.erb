@@ -3,15 +3,15 @@
 </header>
 
 <ul>
-  <li>Created by: <%@work.creator%></li>
-  <li>Published: <%@work.publication_year%></li>
-  <li>Description: <%@work.description%> </li>
+  <li>Created by: <%=@work.creator%></li>
+  <li>Published: <%=@work.publication_year%></li>
+  <li>Description: <%=@work.description%> </li>
 </ul>
 
 
   <%= button_to "Back to media ranks", root_path, class: "alt-button", method: :get %>
   <%= button_to "Edit", edit_work_path(@work.id), class: "alt-button", method: :get %>
-  <h5>upvote</h5><%# insert button to upvote here%>
+  <h5></h5><%# insert button to upvote here%>
   <%= button_to "Delete", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure?'}, class: "alt-button" %>
 <h1><%= %> (insert work.total_votes here) votes for this <%= @work.category%></h1>
 
@@ -24,11 +24,15 @@
       <td>Date</td>
     </tr>
 
-    <%# @works.each do |work| %>
+    <h3> by <%# link_to "#{@book.author.name}", author_path(@book.author.id) %></h3>
+<%# find the users who voted on this work %>
+<%# i'm trying to get to users thru work but must go thru votes first %>
+
+    <% @work.votes.each do |vote| %>
       <tr class="details">
-        <td><%= link_to @work.title, work_path(@work.id) %></td>
-        <td><%#  update this when i have votes link_to "#{work.vote.date}", work_path(work.id) %></td>
+        <td><%= link_to vote.user.name, user_path(vote.user.id) %></td>
+        <td><%= vote.created_at.to_formatted_s(:long) %></td>
       </tr>
-    <%# end %>
+    <% end %>
   </table>
 </section>
