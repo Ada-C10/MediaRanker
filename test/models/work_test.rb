@@ -41,28 +41,14 @@ describe Work do
   describe 'relations' do
     it 'responds to votes method' do
       expect(@work.votes).must_respond_to :each
+      expect(@work.votes.length).must_equal 4
     end
     it 'responds to upvoted_users method' do
       expect(@work.upvoted_users).must_respond_to :each
+      expect(@work.upvoted_users.length).must_equal 4
     end
-  end
-
-  describe '.sort_by_votes' do
-    it 'is valid class method' do
-      expect(Work).must_respond_to :sort_by_votes
-    end
-    it 'sorts all works' do
-      expect(Work.sort_by_votes.length).must_equal 6
-    end
-    it 'sorts by votes in descending order' do
-      expect(Work.sort_by_votes.first.title).must_equal 'Harry Potter'
-      expect(Work.sort_by_votes[1].title).must_equal 'On the Road'
-    end
-  end
-
-  describe '.spotlight' do
-    it 'returns highest voted work' do
-      expect(Work.spotlight.title).must_equal 'Harry Potter'
+    it 'responds to votes_count method' do
+      expect(@work).must_respond_to :votes_count
     end
   end
 
