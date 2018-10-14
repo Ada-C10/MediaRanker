@@ -5,7 +5,7 @@
    width: 20vw;
  }
 
-article > h1{
+#show_title, article > h1{
   color: #00a99a;
   font-size: 2.0rem;
   font-weight: bold;
@@ -13,4 +13,16 @@ article > h1{
 
 td > a{
   color: #00a99a;
+}
+
+article > h2{
+  color: black;
+}
+
+.show_page_buttons > button:nth-of-type(4){
+  background-color: red;
+}
+
+.show_page_buttons{
+  margin-bottom: 20px;
 }

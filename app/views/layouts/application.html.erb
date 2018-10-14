@@ -30,7 +30,7 @@
               <% logged_in_user = User.find_by(id: session[:user_id]) %>
               <% if logged_in_user %>
                 <button type="button" class="Login_logout_button">
-                  <%= link_to "Currently logged in as #{logged_in_user.username}", user_path(logged_in_user.id) %>
+                  <%= link_to "Logged in as #{logged_in_user.username}", user_path(logged_in_user.id) %>
                 </button>
                 <button type="button" class="Login_logout_button">
                   <%= link_to "Log Out", logout_path, method: :post%>
