@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  root 'votes#index'
+  root 'works#homepage'
 
   resources :votes
   resources :users

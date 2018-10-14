@@ -4,7 +4,13 @@ class Work < ApplicationRecord
   validates :title, :creator, :category, :description, :publication_year, presence: true
 
   def self.works_by_category(category)
-    return works = Work.where(category: category)
+    return Work.where(category: category)
+  end
+
+  def self.top_works_by_category(category)
+    works = self.works_by_category(category)
+    works = works.sort_by {|work| work.votes.count}.reverse!
+   return works[0..9]
   end
 
 end

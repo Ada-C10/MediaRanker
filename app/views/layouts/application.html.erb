@@ -17,7 +17,7 @@
 
     <nav class="app-header__nav">
     <ul class="nav app-header__site-nav-container">
-      <li class="nav-item app-header__nav_item"><%= link_to "(View Top Works/MainPage)", votes_path %></li>
+      <li class="nav-item app-header__nav_item"><%= link_to "(View Top Works/MainPage)", root_path %></li>
       <li class="nav-item app-header__nav_item"><%= link_to "(View All Works)", works_path %></li>
       <li class="nav-item app-header__nav_item"><%= link_to "(Add A New Work)", new_work_path %></li>
       <li class="nav-item app-header__nav_item"><%= link_to "(View All Users)", users_path %></li>
@@ -52,6 +52,6 @@
     <main>
       <%= yield %>
     </main>
-    
+
   </body>
 </html>

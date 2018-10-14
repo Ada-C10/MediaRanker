@@ -8,6 +8,13 @@ class WorksController < ApplicationController
       @movies = Work.works_by_category("movie")
     end
 
+    def homepage
+      @books = Work.top_works_by_category("book")
+      @albums = Work.top_works_by_category("album")
+      @movies = Work.top_works_by_category("movie")
+    end
+
+
 
     def new
       if params[:user_id]
