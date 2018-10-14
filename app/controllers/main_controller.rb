@@ -1,8 +1,8 @@
 class MainController < ApplicationController
   def index
-    @albums = Work.where(category: "album").limit(10)
-    @movies = Work.where(category: "movie").limit(10)
-    @books = Work.where(category: "book").limit(10)
-    @spotlight = Work.first
+    @albums = Work.albums.order(votes_count: :desc).limit(10)
+    @movies = Work.movies.order(votes_count: :desc).limit(10)
+    @books = Work.books.order(votes_count: :desc).limit(10)
+    @spotlight = Work.order(votes_count: :desc).first
   end
 end

@@ -9,7 +9,7 @@
         <p class="spotlight__description">
           <%=link_to @spotlight.title, work_path(@spotlight.id) %>
             <p><%= @spotlight.description %> </p>
-          <p><%= @spotlight.votes.count %> Votes</p>
+          <p><%= @spotlight.votes_count %> Votes</p>
         </p>
       </section>
 
@@ -27,7 +27,7 @@
                 <br>
                 <%=link_to book.title, work_path(book.id) %>
                   <%= link_to "upvote", work_votes_path(book.id), method: :post %>
-                <p><%= book.votes.count %> Votes</p>
+                <p><%= book.votes_count %> Votes</p>
 
             <small class="top-ten__creator"><%=link_to book.creator, work_path(book.id) %></small>
             <% end %>
@@ -50,7 +50,7 @@
                       <br>
                       <%=link_to movie.title, work_path(movie.id) %>
                         <%= link_to "upvote", work_votes_path(movie.id), method: :post %>
-                      <p><%= movie.votes.count %> Votes</p>
+                      <p><%= movie.votes_count %> Votes</p>
 
                   <small class="top-ten__creator"><%=link_to movie.creator, work_path(movie.id) %></small>
                   <% end %>
@@ -76,7 +76,7 @@
                   <br>
                   <%=link_to album.title, work_path(album.id) %>
                   <%= link_to "upvote", work_votes_path(album.id), method: :post %>
-                  <p><%= album.votes.count %> Votes</p>
+                  <p><%= album.votes_count %> Votes</p>
 
               <small class="top-ten__creator"><%=link_to album.creator, work_path(album.id) %></small>
               <% end %>

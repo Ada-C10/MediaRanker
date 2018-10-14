@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_10_212225) do
+ActiveRecord::Schema.define(version: 2018_10_14_202708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2018_10_10_212225) do
     t.string "publication_year"
     t.string "description"
     t.string "category"
+    t.integer "votes_count", default: 0
   end
 
 end
