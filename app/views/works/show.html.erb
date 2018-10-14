@@ -1,21 +1,24 @@
 <% if @work.nil? %>
-  <h1> 404 Not found</h1>
+  <h2> 404 Not found</h2>
 <% else %>
-  <h1><%=@work.title %></h1>
+
+<section>
+  <h2><%=@work.title %></h2>
   <p>Creator: <%= @work.creator %></p>
   <p>Published:<%= @work.publication_year %></p>
   <p>Description: <%= @work.description %></p>
-  <p>Category: <%= @work.category %></p>
+  <!-- <p>Category: <%# @work.category %></p> -->
+</section>
 
+<section>
+  <a class="btn btn-primary" href="/">Back to media ranks</a>
+  <%= link_to "Edit", edit_work_path(@work.id), class:"btn btn-primary" %>
+  <%= link_to "Upvote", upvote_path(@work.id), method: :post, class:"btn btn-primary" %>
+  <%= link_to "Delete #{@work.title}", work_path(@work.id), method: :delete, class:"btn btn-danger" %>
+</section>
 
-  <%= link_to "Edit", edit_work_path(@work.id) %>
-  <br />
-  <%= link_to "Delete #{@work.title}", work_path(@work.id), method: :delete %>
-  <br />
-  <%= link_to "Upvote", upvote_path(@work.id), method: :post%>
-
+<section></section>
 <% end %>
 
-<br />
-<br />
+
 <h3><%= @work.votes.count %> Votes for this <%= @work.category.capitalize %></h3>
