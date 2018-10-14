@@ -8,15 +8,13 @@ class SessionsController < ApplicationController
     user = User.find_by(username: name)
 
     if user
-
-      redirect_to root_path
       flash[:success] = "Successfully logged in as #{name}"
       session[:user_id] = user.id
-
+      redirect_to root_path
     else
       @user = User.new(username: name)
       if @user.save
-        flash.now[:success] = "Successfully created new user \"#{name}\" with ID #{User.find_by(username: name).id}"
+        flash[:success] = "Successfully logged in as new user \"#{name}\" "
         redirect_to root_path
       else
         render :new
