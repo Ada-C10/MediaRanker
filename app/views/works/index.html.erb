@@ -66,11 +66,11 @@
       <% @movies.each do |movie| %>
       <tbody>
           <tr>
-            <td><%= movies.votes.count %></td>
-            <td><%= link_to movie.title, work_votes_path(movie.id) %></td>
+            <td><%= movie.votes.count %></td>
+            <td><%= link_to movie.title, work_path(movie.id) %></td>
             <td><%= movie.creator %></td>
             <td><%= movie.publication_year %></td>
-            <td><%= link_to "Upvote", work_path(movie.id), method: :post, class:"btn btn-primary"  %></td>
+            <td><%= link_to "Upvote", work_votes_path(movie.id), method: :post, class:"btn btn-primary"  %></td>
             <% end %>
           </tr>
       </tbody>
