@@ -12,27 +12,21 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 2em;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .top-media a, .card-title span {
-  text-decoration: none;
-  color: #26A69A;
   font-size: 1.5rem;
 }
 
 .top-media h3 {
-  color: #26A69A;
-  font-weight: bold;
   font-size: 2rem;
   margin-bottom: 0.5rem;
   border-bottom: 2px solid #B2DFDB;
-  text-transform: capitalize;
 }
 
 .top-media li:first-child {
   color: slategrey;
-  font-weight: bold;
 }
 
 .spotlight {
@@ -43,11 +37,6 @@
 
 .card-title {
   color: #424242;
-}
-
-.card-title span > * {
-  text-decoration: none;
-  color: #26A69A;
 }
 
 .card-title .title{

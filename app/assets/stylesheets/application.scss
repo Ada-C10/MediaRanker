@@ -24,15 +24,17 @@ body {
 #banner {
   margin-bottom: 0.5rem;
   padding: 3.5rem 1rem 0rem 1rem;
-  color: white;
 }
 
 #banner, .navbar {
   background-color: #B2DFDB;
 }
 
+#banner, .btn > a {
+  color: white;
+}
+
 .brand h1>a {
-  text-decoration: none;
   color: #FF5722;
   padding-right: 25px;
   margin-right: 15px;
@@ -62,10 +64,9 @@ body {
 
 .btn {
   border-color: #26A69A;
-  text-decoration: none;
 }
 
-.btn-info {
+.btn-info, .btn-primary {
   background-color: #26A69A;
 }
 
@@ -98,15 +99,15 @@ li {
   margin-top: 1rem;
 }
 
-h2 {
+h2, .btn-primary, a, .card-title span, .top-media h3, .card-title span > * {
   color: #26A69A;
 }
 
-h2, h3, h4, table th {
+h2, h3, h4, table th, .top-media li:first-child {
   font-weight: bold;
 }
 
-h4 {
+h4, .top-media h3 {
   text-transform: capitalize;
 }
 
@@ -114,14 +115,8 @@ h4 {
   color: rgb(3, 85, 72);
 }
 
-a {
+a, .brand h1>a, .btn, .top-media a, .card-title span, .card-title span > *, .btn > a{
   text-decoration: none;
-  color: #26A69A;
-}
-
-.btn-primary {
-  background-color: #26A69A;
-  border-color: #26A69A;
 }
 
 .alert-error {
@@ -140,4 +135,8 @@ a {
 
 .table td {
   padding-bottom: 2rem;
+}
+
+#log-in, #users-index, #user-details, #works-index, #edit-work, #new-work, #work-details {
+  padding: 2em;
 }
