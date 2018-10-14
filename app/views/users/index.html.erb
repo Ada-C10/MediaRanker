@@ -10,7 +10,7 @@
   <tbody>
 <tr> <% @users.each do |user| %>
   <td><%= link_to "#{user.name}", user_path(user.id) %></td>
-  <td> <%=  user.created_at %></td>
+  <td> <%=  (user.created_at).to_time.strftime("%m/%d/%y") %></td>
   <td> <%=  user.votes.length %> </td>
  </tr>
  </tbody>

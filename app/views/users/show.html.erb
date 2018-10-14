@@ -1,6 +1,6 @@
 
 <h2><%="User Summary:#{@user.name}" %></h2>
-<p><%="Joined site: #{@user.created_at}" %></p>
+<p><%="Joined site: #{@user.created_at.to_time.strftime("%m/%d/%y")}" %></p>
 
 <table class="table">
 <h2> Votes</h2>
@@ -19,6 +19,6 @@
   <td> <%= vote.work.creator  %></td>
   <td> <%= vote.work.publication_year  %></td>
   <td> <%= vote.work.category  %></td>
-  <td> <%= vote.created_at  %></td>
+  <td> <%= (vote.created_at).to_time.strftime("%m/%d/%y")  %></td>
 </tbody>
 <% end %>

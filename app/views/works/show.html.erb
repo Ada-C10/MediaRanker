@@ -9,7 +9,7 @@
   <%= link_to "Edit", edit_work_path(@work.id),class: 'btn btn-primary', role: "button" %>
   <%= link_to "Upvote", upvote_path(@work.id), method: :post, class: 'btn btn-primary', role: "button"%>
   <%= link_to "Delete", work_path(@work.id), method: :delete,class: 'btn btn-danger', role: "button", data: { confirm: 'Are you sure? This cannot be undone!'} %>
-  
+
 </section>
 
 <table class="table">
@@ -23,6 +23,6 @@
   <tbody>
 <tr> <% @work.votes.each do |vote| %>
   <td><%= link_to "#{vote.user.name}", user_path(vote.user.id) %></td>
-  <td> <%= vote.created_at  %></td>
+  <td> <%= (vote.created_at).to_time.strftime("%m/%d/%y")  %></td>
 </tbody>
 <% end %>
