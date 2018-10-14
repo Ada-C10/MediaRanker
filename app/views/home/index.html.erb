@@ -1,57 +1,62 @@
 <section class='spotlight'>
-  <h2>Media Spotlight: <h3><%= link_to Work.top_vote_getter.title, work_path(Work.top_vote_getter.id) %> by <%= Work.top_vote_getter.creator %></h3>
-  <p>
-    <%= Work.top_vote_getter_votes %> votes - <%= Work.top_vote_getter.description %>
-  </p>
-
+  <div class="card">
+    <div class="card-body">
+      <h2><span>Media Spotlight: </span><span class="list-titles"><%= link_to Work.top_vote_getter.title, work_path(Work.top_vote_getter.id) %></span> by <%= Work.top_vote_getter.creator %> </h2>
+      <p>
+        <%= Work.top_vote_getter_votes %> votes - <%= Work.top_vote_getter.description %>
+      </p>
+    </div>
+  </div>
 </section>
-<section class='top-lists'>
-  <div>
+<div class="container">
+</div>
+<div class="row">
+  <div class="col-sm">
     <h2 class='list-titles'>
       Top Movies
     </h2>
-    <ul>
+    <ul class="list-group">
       <% Work.top_works_by_category('movie', 10).each do |work| %>
-        <li>
-          <strong><%= link_to work.title, work_path(work.id) %></strong> by
-          <%= work.creator %>
-          <p>
-            <%= work.votes.size %> votes
-          </p>
-        </li>
+      <li class="list-group-item">
+        <strong class="list-titles"><%= link_to work.title, work_path(work.id) %></strong> by
+        <%= work.creator %>
+        <p>
+          <%= work.votes.size %> votes
+        </p>
+      </li>
       <% end %>
     </ul>
   </div>
-  <div>
+  <div class="col-sm">
     <h2 class='list-titles'>
       Top Books
     </h2>
-    <ul>
+    <ul class="list-group">
       <% Work.top_works_by_category('book', 10).each do |work| %>
-        <li>
-          <strong><%= link_to work.title, work_path(work.id) %></strong> by
-          <%= work.creator %>
-          <p>
-            <%= work.votes.size %> votes
-          </p>
-        </li>
+      <li class="list-group-item">
+        <strong class="list-titles"><%= link_to work.title, work_path(work.id) %></strong> by
+        <%= work.creator %>
+        <p>
+          <%= work.votes.size %> votes
+        </p>
+      </li>
       <% end %>
     </ul>
   </div>
-  <div>
+  <div class="col-sm">
     <h2 class='list-titles'>
       Top Albums
     </h2>
-    <ul>
+    <ul class="list-group">
       <% Work.top_works_by_category('album', 10).each do |work| %>
-        <li>
-          <strong><%= link_to work.title, work_path(work.id) %></strong> by
-          <%= work.creator %>
-          <p>
-            <%= work.votes.size %> votes
-          </p>
-        </li>
+      <li class="list-group-item">
+        <strong class="list-titles"><%= link_to work.title, work_path(work.id) %></strong> by
+        <%= work.creator %>
+        <p>
+          <%= work.votes.size %> votes
+        </p>
+      </li>
       <% end %>
     </ul>
   </div>
-</section>
+</div>
