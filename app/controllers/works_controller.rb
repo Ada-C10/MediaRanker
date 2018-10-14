@@ -2,6 +2,10 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.all
+
+    @all_books = Work.ranked_media("Book")
+    @all_movies = Work.ranked_media("Movie")
+    @all_albums = Work.ranked_media("Album")
   end
 
 
@@ -27,7 +31,6 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully added new media: #{@work.title}"
       redirect_to work_path(@work)
     else
-      flash.now[:error] = "did not save"
       render :new, status: :bad_request
     end
   end
@@ -63,24 +66,42 @@ class WorksController < ApplicationController
   def upvote
     ##search for the user via session id - error if logged out user
 
+    if session[:user_id]
 
-    @user = User.find(session[:user_id])
+      @user = User.find(session[:user_id])
 
-    ##search for work via param
-    @work = Work.find_by(id: params[:id])
+      ##search for work via param
+      @work = Work.find_by(id: params[:id])
 
-    ##Vote.new(user id, work id)
-    @vote = @work.votes.new(user: @user)
 
-    ##if success, flash "Successfully upvoted!" and stay on page
-    if @vote.save
-      flash[:success] = "Successfully upvoted!"
-      # render :new
+      ##make sure user hasn't voted on this:
+      # votes = @user.check_votes
+      # if votes.include?(@work.id)
+      #   return "nope"
+      # end
 
-    ##else "you can only upvote a piece of media one time"
+
+
+      ##Vote.new(user id, work id)
+      @vote = @work.votes.new(user: @user)
+
+      ##if success, flash "Successfully upvoted!" and stay on page
+      if @vote.save
+        flash[:success] = "Successfully upvoted!"
+
+        redirect_to work_path(@work)
+
+
+        ##else "you can only upvote a piece of media one time"
+      else
+        flash.now[:error] = "An error has occurred. Please try again."
+        render :show
+      end
     else
-      flash[:error] = "an error has occurred with either the user #{@user} or work #{@work}"
-      render 'works/show/'
+      flash.now[:error] = "You must be logged in to cast a vote."
+      @work = Work.find_by(id: params[:id])
+      render :show
+
     end
 
   end
