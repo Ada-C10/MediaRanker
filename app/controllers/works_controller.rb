@@ -66,7 +66,7 @@ class WorksController < ApplicationController
         redirect_back fallback_location: works_path
       end
     else
-      flash[:warning] = "A problem occurred: Could not upvote"
+      flash[:warning] = "A problem occurred: Could not upvote - work has already been voted for"
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
