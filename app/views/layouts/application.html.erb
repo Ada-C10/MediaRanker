@@ -30,19 +30,24 @@
         </li>
       </ul>
       <ul class="nav">
+        <% if @logged_in_user %>
         <li class="login-link">
-          <% if @logged_in_user %>
-            <p class="btn btn-info">
-                Logged in as
-              <%= @logged_in_user.name %>
-            </p>
-            <p>
-              <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
-            </p>
-          <% else %>
-            <%= link_to "Log in", new_session_path, class: "btn btn-info" %>
-          <% end %>
+          <p class="btn btn-info">
+            Logged in as
+            <%= @logged_in_user.name %>
+          </p>
+        </li>&nbsp &nbsp &nbsp &nbsp &nbsp
+        <li>
+          <p>
+            <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
+          </p>
         </li>
+          <% else %>
+        <li>
+          <%= link_to "Log in", new_session_path, class: "btn btn-info" %>
+        </li>
+        <% end %>
+
       </ul>
     </nav>
   </header>

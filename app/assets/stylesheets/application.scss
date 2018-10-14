@@ -59,3 +59,47 @@
 .alert {
   margin-top: 1rem;
 }
+
+.btn {
+  color: white;
+  background-color: #26A69A;
+}
+
+.list-titles {
+  color: #26A69A;
+  padding-top: 50px;
+}
+
+.list-titles > a[href] {
+  color: #26A69A;
+}
+
+.top-list-creator {
+  color: slategrey;
+}
+
+.list-group-item {
+  border: none;
+}
+
+.card-body {
+  padding: 50px 30px 20px 50px;
+}
+
+.top-media-container {
+  align-content: space-between;
+  padding-left: 32px;
+}
+
+.container {
+  margin: 0px;
+  padding: 0px;
+}
+
+div.btn > a[href] {
+  color: white;
+}
+
+.btn-danger {
+  background-color: #dc3545;;
+}
