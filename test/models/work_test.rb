@@ -1,5 +1,5 @@
 require "test_helper"
-
+require 'pry'
 describe Work do
   describe 'validations' do
     before do
@@ -41,6 +41,33 @@ describe Work do
       result = @new_work.valid?
 
       expect(result).must_equal false
+    end
+  end
+
+  describe 'relations' do
+    it 'can set the work id through new vote' do
+      # Create two models
+      @work = Work.create!(category: 'book', title: "test books")
+      @vote = Vote.new
+
+      # Make the models relate to one another
+      @vote.work_id = @work.id
+
+      # author_id should have changed accordingly
+      expect(@vote.work_id).must_equal @work.id
+    end
+
+    it "has a vote" do
+      work = works(:jane)
+      work.votes.must_include votes(:one)
+    end
+
+    it "can set the work id in vote through work" do
+      work = works(:harry)
+      vote = votes(:two)
+      work.votes << vote
+
+      work.votes.first.id.must_equal votes(:two).id
     end
   end
 end
