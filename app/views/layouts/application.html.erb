@@ -15,18 +15,10 @@
   <body>
     <header class="app-header__header">
       <h1>
-        <%= link_to "Media Ranker", root_path, id: "home-link" %> |
+        <%= link_to "Media Ranker", root_path, id: "home-link" %>
         <small>Ranking the Best of Everything</small>
       </h1>
     <nav class="app-header__nav">
-      <%# <ul class="nav app-header__site-nav-container">%>
-       <%# <li class="nav-item app-header__nav_item">%>
-       <%#   <% lname = ['View Top Media', 'View all Work', 'View a New Work', 'View all Users'] %>
-        <%#  <% links = ['works/top', 'works/index', 'works/newest', 'users/index'] %>
-         <%# <% lname.each_with_index do |lname, i| %>
-         <%#   <%= link_to "#{lname}", render links[i], class: "nav-link" %>
-       <%# <li>%>
-       <%# <% end </ul> %>
       <ul class="nav app-header__site-nav-container">
         <li class="nav-item app-header__nav_item">
         <%= link_to "View Top Media", works_top_path, class: "nav-link" %> 
@@ -53,18 +45,18 @@
         <%= link_to "Log In", login_path, class: "btn btn-primary" %></li>
       <% end %> 
     </nav>
-
+    </header>
     <header>
     <section class="flash">
             <% flash.each do |name, message| %>
               <% if message.class == Array %>
                 <% message.each do |msg| %>
                   <div class="alert-<%= name %>">
-                    <strong><%= "#{name}:" %></strong><%= " #{msg}" %></div>
+                    <strong><% "#{name}:" %></strong><% " #{msg}" %></div>
                 <% end %>
               <% else %>
                 <div class="alert-<%= name %>">
-                    <%= message %>
+                    <% message %>
                 </div>
               <% end %>
             <% end %>

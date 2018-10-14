@@ -26,6 +26,22 @@ describe Vote do
       expect(vote.errors.messages).must_include :work_id
     end
   end
+
+  describe 'relationships' do
+    it 'belongs to a user' do
+      test_vote = vote.user
+
+      expect(test_vote).must_be_instance_of User
+      expect(test_vote.id).must_equal vote.user_id
+    end
+
+    it 'belongs to a work' do
+      test_vote = vote.work
+
+      expect(test_vote).must_be_instance_of Work
+      expect(test_vote.id).must_equal vote.work_id
+    end
+  end
 end
 
 

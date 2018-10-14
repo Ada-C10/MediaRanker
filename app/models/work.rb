@@ -14,14 +14,13 @@ class Work < ApplicationRecord
 
   def self.top?(category)
     works = self.where(category: category)
-    top_works = works.order(votes_count: :desc)
-    top_works = works.first(10)
+    top_works = works.order(votes_count: :desc).first(10)
+
     return top_works
   end
 
   def self.spotlight?
     spot = self.all.sample
-
     return spot
   end
 end

@@ -48,14 +48,19 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    work, user = @work.id, @current_user.id
-    if @current_user.votes.where(work_id: work).empty?
-      @work.votes.create(work_id: work, user_id: user)
-      flash[:success] = "Upvote successful."
+    if @current_user.nil?
+      flash[:error] = 'You must be logged in to vote.'
       redirect_back(fallback_location: root_path)
     else
-      flash[:error] = 'A user can only vote on each work once.'
-      redirect_back(fallback_location: root_path)
+      work, user = @work.id, @current_user.id
+      if @current_user.votes.where(work_id: work).empty?
+        @work.votes.create(work_id: work, user_id: user)
+        flash[:success] = "Upvote successful."
+        redirect_back(fallback_location: root_path)
+      else
+        flash[:error] = 'A user can only vote on each work once.'
+        redirect_back(fallback_location: root_path)
+      end
     end
   end
 
