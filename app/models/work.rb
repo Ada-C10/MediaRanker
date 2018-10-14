@@ -23,12 +23,6 @@ class Work < ApplicationRecord
   def self.top_media
     total_votes = self.total_votes
     top_media = total_votes.first
-
-
-    # total_votes = self.total_votes
-    # total_votes = total_votes.sort_by { |title, vote| -vote}
-    # top_media = total_votes.first
-    # media = self.find_by(title: top_media)
   end
 
 end

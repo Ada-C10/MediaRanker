@@ -1,4 +1,5 @@
 require "test_helper"
+require 'pry'
 
 describe Work do
 
@@ -10,10 +11,8 @@ describe Work do
 
     it 'is valid when title is present and unique' do
 
-      #act
       is_valid = @work.valid?
 
-      #assert
       expect( is_valid ).must_equal true
     end
 
@@ -38,49 +37,123 @@ describe Work do
       expect( @work.errors.messages ).must_include :title
     end
 
-
-
-
-
   end
 
 
   describe 'relations' do
 
-  #   it 'can set a vote through the method "vote"' do
-  #   vote = 1
-  #   work = Work.new(title: 'test work')
-  #
-  #   work.vote = vote
-  #
-  #   expect( work.vote ).must_equal vote
-  #   expect( work.vote_id ).must_equal work.vote_id
-  # end
+    it "Has some votes" do
+      work = Work.first
 
+      votes = work.votes
 
-  it "Has some votes" do
-    work = Work.first
+      expect(votes).must_respond_to :each
+    end
 
-    votes = work.votes
-
-    expect(votes).must_respond_to :each
   end
 
-end
 
-  #works must have a method that is part of the relationship to votes
-  #must have a .votes method
+  describe 'total_votes' do
 
-  #work that doesn't have a title is not valid
-  #work with nil title or not provided will
-  #when calling .valid? will return false
+    it 'has one record for each work' do
 
-  #a work that has a non-unique title is not valid
-  #there is an instance of work a
-  #there is an instance of work b with the same title
-  #calling .valid? on second book will return false
+      all_works = Work.all
+      total_works = all_works.length
+      works_table = Work.total_votes
+
+      expect(works_table.length).must_equal total_works
 
 
+      all_works.each do |work|
+        expect(works_table).must_include work
+      end
+    end
+
+    it 'ranks media from most to least votes' do
+
+      works_table = Work.total_votes
+
+      expect(works_table.first.votes.count >= works_table.last.votes.count).must_equal true
+
+    end
+  end
 
 
+  describe 'ranked_media' do
+
+    it 'only contains entries for the category passed in as a parameter' do
+
+      books = Work.ranked_media("Books")
+
+      books.each do |book|
+        expect(book).must_be_kind_of Book
+      end
+
+    end
+
+
+    it 'has a vote count for every piece of media' do
+
+      books = Work.ranked_media("Books")
+
+      books.each do |book|
+        expect(book).must_respond_to book.votes
+      end
+    end
+
+  end
+
+
+  describe 'top_ten' do
+
+    it 'returns only 10 entries of each category' do
+
+      x = 2
+
+      50.times do
+        book = Work.new(title: "Title#{x}", category: "Book")
+        book.save
+        x += 1
+      end
+
+      all_books = Work.where(category: "Book")
+      ten_books = Work.top_ten("Book")
+
+
+      expect(all_books.length > ten_books.length).must_equal true
+
+      expect(ten_books.length).must_equal 10
+
+    end
+
+    it 'returns the entry with the highest votes first' do
+
+      ten_books = Work.top_ten("Book")
+
+      expect(ten_books.first.votes.count >= ten_books.last.votes.count).must_equal true
+    end
+  end
+
+  describe 'top_media' do
+
+    it 'has the most votes out of all media' do
+
+      top = Work.top_media
+
+      all_works = Work.all
+
+      all_works.each do |work|
+        expect(work.votes.count <= top.votes.count).must_equal true
+      end
+    end
+
+    it 'returns a single piece of media' do
+
+      top_media = Work.top_media
+
+      expect(top_media).must_be_kind_of Work
+
+    end
+
+  end
 end
