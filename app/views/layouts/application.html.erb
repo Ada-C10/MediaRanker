@@ -32,19 +32,28 @@
         <li class="nav-item app-header nav_item">
           <a class="nav-link" href="/users">View all users</a>
         </li>
-        <li class="nav-item app-header nav_item">
-          <a class="btn btn-primary" href="/sessions/new">Log In</a>
+        <li class="login">
+
+            <% if @logged_in_user %>
+
+              Logged in as: <b><%= @logged_in_user.username %></b>
+              <a class="btn btn-primary" href="/sessions/new">Log Out</a>
+
+            <% else %>
+            <a class="btn btn-primary" href="/sessions/new">Log In</a>
+            <% end %>
+
         </li>
       </ul>
     </nav>
   </header>
 
   <section class='flash-message'>
-      <% flash.each do |key, message| %>
-      <p class="<%key%>">
-          <div class="alert alert-success" role="alert"><%= message %></div>
-      </p>
-      <% end %>
+    <% flash.each do |key, message| %>
+    <p class="<%key%>">
+      <div class="alert alert-success" role="alert"><%= message %></div>
+    </p>
+    <% end %>
   </section>
 
 
