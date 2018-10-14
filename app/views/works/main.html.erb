@@ -1,16 +1,30 @@
-<h1>Media Spotlight:
-  <% spotlight = @works.sample%>
-  <%=link_to spotlight.title, work_path(spotlight.id)%> by <%=spotlight.creator%></h1>
-  <p><%=spotlight.votes.count%> votes - <%=spotlight.description%></p>
-<%['movie', 'book', 'album'].each do |category|%>
-  <h1>Top <%=category.capitalize%>s</h1>
-  <%@works = Work.sort_by_votes(category)%>
-    <% @works.first(10).each do |work| %>
-        <%if category == work.category%>
-        <h4> <%=link_to work.title, work_path(work.id)%> by <%=work.creator%></h4>
-        <p> <%=work.votes.count%> votes</p>
-        <%end%>
-    <%end%>
-    <br>
-    <br>
-<% end %>
+<main>
+  <section class="spotlight">
+    <h2 class="spotlight__header">Media Spotlight:
+      <% spotlight = @works.sample%>
+      <%=link_to spotlight.title, work_path(spotlight.id)%> by <%=spotlight.creator%></h2>
+      <p class="spotlight__description"><%=spotlight.votes.count%> votes - <%=spotlight.description%></p>
+    </section>
+    <hr class="root__hr">
+    <section class="top-ten__container">
+      <%['movie', 'book', 'album'].each do |category|%>
+      <section class="top-ten__list-container">
+        <h2 class="top-ten__header">
+          Top <%=category.capitalize%>s</h2>
+          <ul class="list-group top-ten__list">
+            <%@works = Work.sort_by_votes(category)%>
+            <% @works.first(10).each do |work| %>
+            <%if category == work.category%>
+            <li class="list-group-item">
+              <h4> <a href="/works/<%=work.id%>"><%=work.title%></a>
+                <small class="top-ten__creator"> by <%=work.creator%></small>
+              </h4>
+              <p> <%=work.votes.count%> votes</p>
+            </li>
+            <%end%>
+          </ul>
+          <%end%>
+        </section>
+        <% end %>
+      </section>
+    </main>
