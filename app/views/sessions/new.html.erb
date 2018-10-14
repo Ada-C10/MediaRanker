@@ -2,19 +2,19 @@
 
   <h2>Log In</h2>
 
-  <form>
 
-    <%= form_with method: :post, url: sessions_path do |f| %>
-    <div class="form-group">
 
-      <%= f.label :user_name %>
-      <%= f.text_field :user_name, class: "form-control" %>
-    </div>
+  <%= form_with method: :post, url: sessions_path do |f| %>
+  <div class="form-group">
 
-    <div class="form-group">
-      <%= f.submit "Log in", class: "btn btn-info"%>
-      <% end %>
-    </div>
+    <%= f.label :user_name %>
+    <%= f.text_field :user_name, class: "form-control" %>
+  </div>
 
-  </form>
+  <div class="form-group">
+    <%= f.submit "Log in", class: "btn btn-info"%>
+    <% end %>
+  </div>
+
+
 </div>
