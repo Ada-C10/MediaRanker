@@ -2,7 +2,7 @@
 <%= link_to "Add a Work", new_work_path %>
 <%= link_to "View all works", works_path %>
 
-<h2>Media Spotlight: <%= @works.first.title %> by <%= @works.first.creator %></h2>
+<h2>Media Spotlight: <%= @works.max_by { |work| work.votes.length }.title %> by <%= @works.max_by { |work| work.votes.length }.creator %></h2>
 
 <%= render partial: "top_works_list", locals: {
   model: @movies,
