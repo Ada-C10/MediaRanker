@@ -5,9 +5,16 @@ class WorksController < ApplicationController
   before_action :find_all_work
 
   def index;
+    @books = Work.show_by_vote("book")
+    @movies = Work.show_by_vote("movie")
+    @albums = Work.show_by_vote("album")
   end
 
   def home;
+    @books = Work.show_by_vote("book")
+    @movies = Work.show_by_vote("movie")
+    @albums = Work.show_by_vote("album")
+    @top_vote = Work.top_vote
   end
 
 
