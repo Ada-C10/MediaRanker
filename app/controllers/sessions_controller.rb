@@ -9,15 +9,13 @@ class SessionsController < ApplicationController
 
     if @user
       flash[:success] = "Successfully logged in as existing user #{name}"
-      puts "SUCCESSFUL LOGIN"
-
+      session[:user_id] = @user.id
     else
-      puts "NOT SUCCESSFUL LOGIN"
       user = User.create(username: name)
+      session[:user_id] = user.id
       flash[:error] = "Successfully created new user #{name} with ID #{user.id}"
     end
 
-    session[:user_id] = @user.id
     redirect_to works_path
   end
 
