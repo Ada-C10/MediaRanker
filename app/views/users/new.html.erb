@@ -1,6 +1,18 @@
-<%= form_with method: :post, url: users_path do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
+<h2>Tag In, Broseph! The SMACKDOWN Awaits!!</h2>
 
-<%= f.submit "slurp" %>
+<%= form_with method: :post, url: users_path do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "slurp", class: 'btn btn-primary' %>
+  </div>
 <% end %>
+
+<article>
+  <h4>Bro, lemme be honest w you...</h4>
+  <p>
+    We literally have no idea how the internet works. We scraped most of the code for this website from StackOverflow posts, and I have actually used the same password for every single website I've logged into since 1998. Besides, the government already has your password duhhh.
+  </p>
+</article>
