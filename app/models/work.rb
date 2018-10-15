@@ -34,10 +34,9 @@ class Work < ApplicationRecord
       user = User.find_by(id: vote.user_id)
 
       voters << user
+      
     end
-
     return voters
-
   end
 
 end

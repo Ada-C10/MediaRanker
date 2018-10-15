@@ -66,46 +66,33 @@ class WorksController < ApplicationController
 
 
   def upvote
-    ##search for the user via session id - error if logged out user
 
     if session[:user_id]
 
       @user = User.find(session[:user_id])
 
-      ##search for work via param
       @work = Work.find_by(id: params[:id])
 
-
-      ##make sure user hasn't voted on this:
-      # votes = @user.check_votes
-      # if votes.include?(@work.id)
-      #   return "nope"
-      # end
-
-
-
-      ##Vote.new(user id, work id)
       @vote = @work.votes.new(user: @user)
 
-      ##if success, flash "Successfully upvoted!" and stay on page
       if @vote.save
         flash[:success] = "Successfully upvoted!"
 
         redirect_to work_path(@work)
 
-
-        ##else "you can only upvote a piece of media one time"
       else
         flash.now[:error] = "An error has occurred. Please try again."
         render :show
       end
+
     else
       flash.now[:error] = "You must be logged in to cast a vote."
       @work = Work.find_by(id: params[:id])
+      @voters = @work.see_voters
+
       render :show
 
     end
-
   end
 
 
