@@ -1,6 +1,10 @@
 <section class = "spotlight">
-  <h2>Media Spotlight: Title by Someone</h2>
-  <p> No votes - some description</p>
+  <h2>Media Spotlight:
+    <%= @top.title%> by
+    <%= @top.creator%>
+  </h2>
+  <p><%=@top.votes.count%> votes -
+    <%=@top.description%></p>
 </section>
 
 <section class = "toplists">
@@ -9,8 +13,8 @@
 
     <li>
       <h2> Top <%= category.capitalize%>s</h2>
-      <% list = Work.where(category: category) %>
-
+      <!-- <% list = Work.where(category: category) %> -->
+      <% list = Work.get_top_list(category) %>
       <% list.each do |work , info| %>
       <section class = "toplist-entry">
         <p><h4><%= link_to "#{work.title}", work_path(work.id) %></h4> by <%= work.creator %></p>
