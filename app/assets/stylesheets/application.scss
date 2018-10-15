@@ -1,0 +1,80 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+
+header {
+  background-color: #B2DFDB;
+  color: white;
+  padding-top: 3em;
+  margin-bottom: 1.5em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+header a {
+  color: #FF4500;
+}
+
+nav {
+  display: inline;
+  padding-top: 2em;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  padding-top: 2em;
+  align-items: center;
+}
+
+nav a:visited, nav a:link, nav a:hover {
+  color: teal;
+  margin: 2em;
+  text-decoration: none;
+}
+
+.login-info {
+  justify-content: flex-end;
+}
+
+main {
+  margin: 2em;
+}
+
+.flashmessage {
+  padding: 1.5em;
+  margin: 1em;
+}
+
+h2, h3, h4, main a:visited, main a:link, main a:hover  {
+  color: #26A69A;
+}
+
+ul {
+  list-style: none;
+}
+
+.btn a:visited, .btn a:link, .btn a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.btn-info {
+  background-color: #26A69A;
+}
