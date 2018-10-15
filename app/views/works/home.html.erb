@@ -1,0 +1,90 @@
+<h1>Home page</h1>
+
+
+<h2>
+  <%= link_to @works.first.title, work_path(@works.first.id) %> by
+  <%= @works.first.total_votes %> votes -
+
+</h2>
+
+
+<h4> Albums </h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Votes</th>
+      <th scope="col">Title</th>
+      <th scope="col">Created By</th>
+      <th scope="col">Published</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @albums.each do |album| %>
+    <tr>
+      <th scope="row"><%= "#{album.total_votes}"%></th>
+      <td><%= link_to "(#{album.title})", work_path(album.id) %></td>
+      <td><%= "#{album.creator}"%></td>
+      <td><%= "#{album.publication_year}"%></td>
+      <p>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <h4> Books </h4>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @books.each do |book| %>
+      <tr>
+        <th scope="row"><%= "#{book.total_votes}"%></th>
+        <td><%= link_to "(#{book.title})", work_path(book.id) %></td>
+        <td><%= "#{book.creator}"%></td>
+        <td><%= "#{book.publication_year}"%></td>
+
+
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4> Movies </h4>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @movies.each do |movie| %>
+      <tr>
+        <th scope="row"><%= "#{movie.total_votes}"%></th>
+        <td><%= link_to "(#{movie.title})", work_path(movie.id) %></td>
+        <td><%= "#{movie.creator}"%></td>
+        <td><%= "#{movie.publication_year}"%></td>
+
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
