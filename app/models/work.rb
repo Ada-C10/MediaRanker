@@ -20,10 +20,10 @@ class Work < ApplicationRecord
     where(category: 'movie')
   end
 
-  def self.work_with_max_votes
-    max_work = work
-
-    return max_work
+  def self.highest_rated
+    left_outer_joins(:votes)
+      .group("works.id")
+      .order("count(works.id) DESC")
   end
 
   def self.top_albums

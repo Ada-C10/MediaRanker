@@ -13,7 +13,9 @@
     <section class="top-ten__list-container">
       <h2 class="top-ten__header">Top Movies</h2>
       <ul class="list-group top-ten__list">
-        <li>Movies with top votes go here</li>
+        <% @movies.each do |movie| %>
+        <li><%= link_to movie.title, work_path(movie)%></li>
+        <% end %>
       </ul>
     </section>
     <section class="top-ten__list-container">
