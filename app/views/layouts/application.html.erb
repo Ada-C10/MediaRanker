@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>(Sammi-Jo) Media Ranker</title>
+    <title>//samjo// Media Pranker</title>
     <%= favicon_link_tag %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,14 +14,14 @@
   <body>
 
     <header class="pt-4 pb-1 text-center bg-light">
-        <h1 class="d-inline font-weight-bold"><%= link_to "Media Ranker", root_path, class: "text-primary pr-4" %>
-        <small class= "d-inline text-white font-weight-light pl-3">Ranking the Best of Everything</small>
+        <h1 class="d-inline font-weight-bold"><%= link_to "Media Pranker", root_path, class: "text-primary pr-4" %>
+        <small class= "d-inline text-white font-weight-light pl-3">Pranking the Best of Everything</small>
         </h1>
 
         <nav>
           <!-- TODO: add hamburger menu  -->
           <ul class="nav pt-5 pr-3 pb-1 pl-1">
-            <li class="nav-item"><%= link_to "View Top Media", root_path, class: "nav-link text-info" %></li>
+            <li class="nav-item"><%= link_to "Home (Top 10)", root_path, class: "nav-link text-info" %></li>
             <li class="nav-item"><%= link_to "View All Media", works_path, class: "nav-link text-info"%></li>
             <li class="nav-item"><%= link_to "Add A New Work", new_work_path, class: "nav-link text-info" %></li>
             <li class="nav-item"><%= link_to "View All Users", users_path, class: "nav-link text-info" %></li>
@@ -63,8 +63,8 @@
     <section class= "main px-5">
     <%= yield %>
     </section>
-
-    <footer>
+<hr>
+    <footer class="pt-5 px-5">
       <p>cranky ranky © <%= Date.today.year %> <%= link_to "sammi-jo lee", "https://github.com/sjlee3157", target: "_blank" %></p>
     </footer>
 
