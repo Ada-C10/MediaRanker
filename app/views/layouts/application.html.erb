@@ -51,17 +51,17 @@
 
       </header>
 
-        <section class= "flash">
+        <section class= "alert_container">
            <% flash.each do |name, message| %>
              <% if message.class == Array %>
-               <% message.each do |msg| %>
-               <div class="alert-warning">
-                   <p><strong><%= "#{name}:" %></strong><%= " #{msg}" %></p>
-               <% end %>
-             </div>
+                 <% message.each do |msg| %>
+                 <div class="alert alert-warning">
+                     <p><strong><%= "#{name}:" %></strong><%= " #{msg}" %></p>
+                 </div>
+             <% end %>
              <% else %>
                <div class="alert-<%= name %>">
-                   <%= message %>
+                  <p> <%= message %></p>
                </div>
              <% end %>
            <% end %>

@@ -46,7 +46,7 @@ class WorksController < ApplicationController
        flash[:success] = "#{@work.title} has been edited."
        redirect_to work_path(@work.id)
      else
-       flash.now[:error] = 'Sorry, no edits were saved.'
+       flash.now[:warning] = 'Sorry, no edits were saved.'
        render :edit
      end
 
@@ -67,20 +67,17 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @current_user.nil?
-      flash[:error] = "You must be logged in to vote"
-    end
-
-    @work = Work.new(work_params)
+      flash[:danger] = "You must be logged in to create a new work"
+      render :new
+    elsif
       if @work.save
         flash[:success] = "#{@work.title} has been created"
         redirect_to work_path(@work.id)
       else # save failed :(
-        flash.now[:error] = 'Work not created'
-        @work.errors.messages.each do |field, messages|
-        flash.now[field] = messages
+        flash.now[:warning] = 'Work not created'
+        render :new
       end
-      render :new, status: 400 # show the new book form view again
-      end
+    end
   end
 
   def upvote
@@ -89,10 +86,16 @@ class WorksController < ApplicationController
 
     if @current_user
       @work.upvote(user_id: @current_user.id)
-      flash[:success] = "Your vote was added"
-      redirect_to works_path
+      if @work.save
+        flash[:success] = "Your vote was added"
+        redirect_to works_path
+      else
+        flash[:warning] = "Your can only vote once for this work"
+        redirect_to works_path
+      end
     elsif @current_user.nil?
-      flash.now[:error] = "You must be logged in to vote"
+      flash[:warning] = "You must be logged in to vote"
+      redirect_to works_path
     end
   end
 
