@@ -1,6 +1,6 @@
-<%= form_with model: @work, url: works_path, method: :post do |f|%>
+<%= form_with model: @work do |f|%>
 
-  <p>Add a new work</p>
+  <p>Edit Work</p>
 
   <%= f.label :category, "Category" %>
   <%= f.select :category, ["Album", "Book", "Movie"] %>
@@ -20,6 +20,6 @@
   <%= f.text_field :description %>
 
 
-  <%= f.submit "Create Work", class: "add_work-button btn btn-primary" %>
+  <%= f.submit "Update Work", class: "add_work-button btn btn-primary" %>
 
-  <% end %>
+<% end %>

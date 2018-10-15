@@ -5,7 +5,7 @@
 
 <div class="btn btn-primary"><%= link_to "Back to media ranks", root_path %></div>
 <div class="btn btn-primary"><%= link_to "Edit", edit_work_path(@work.id) %></div>
-<div class="btn btn-primary"><%= link_to "Upvote", work_path(@work.id) %></div>
+<div class="btn btn-primary"><%= link_to "Upvote", work_votes_path(@work.id) %></div>
 <div class="btn btn-danger"><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Please confirm you would like to delete." } %></div>
 
 

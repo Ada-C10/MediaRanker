@@ -1,15 +1,15 @@
 class VotesController < ApplicationController
   def create
-    id = params[:work_id].to_i
-    @work = Work.find(id)
-    ## Figure out how to get a user of a session.
-    ## user =
-    @current_user = User.find_by(id: session[:user_id])
-    if @work.upvote(@current_user) == false
-      flash[:error] = "A problem occurred: Could not create #{@work.category} #{@work.title}: has already been taken"
-    else
-      flash[:sucess] = "Successfully created #{@work.category} #{@work.id}"
+    if @current_user
+      work = Work.find_by(id: params[:work_id])
+      @vote = Vote.new(work_id: work.id, user_id: @current_user.id)
+      return @vote.save
+      flash[:success] = "Successfully upvoted!"
       redirect_to work_path
+    else
+      flash[:error] = "Can't vote twice"
     end
   end
 end
+
+  # if @work.upvote(@current_user) == false

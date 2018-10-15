@@ -1,13 +1,14 @@
 <% if @user.nil? %>
   <h1> 404 Not found</h1>
 <% else %>
+  <h2>User's summary: <%= link_to "#{@user.username}", user_path(@user.id) %>
+  <br>
+  <%= "Joined site #{Time.now.getutc}" %>
+  <br>
+  <br>
+<% end %>
 
-    <%= link_to "User's Summary: #{@user.username}", user_path(@user.id) %>
-    <br>
-    <%= "Joined site #{Time.now.getutc}" %>
-  <% end %>
-
-<h2>Votes</h2>
+<h2>Votes</h2> <%#user's voting history%>
 
 <table style="width:100%" class="table">
   <tr class="header_font">
@@ -17,3 +18,15 @@
     <th>Category</th>
     <th>Voted On</th>
   </tr>
+<% @user.votes.work.each do |work| %>
+    <td><%= link_to work.title, user_path(vote.user) %></td>
+    <td><%= link_to work.creator, work_path(vote.user) %></td>
+    <td><%= link_to work.published_year, work_path(vote.user) %></td>
+    <td><%= link_to work.category, work_path(vote.user) %></td>
+    <td><%# work's vote timestamp %></td>
+  </tr>
+<% end %>
+</table>
+
+<div class="btn btn-primary"><%= link_to "See all Users", users_path %></div>
+<div class="btn btn-primary"><%= link_to "Back to media ranks", root_path %></div>

@@ -11,11 +11,11 @@
 
 <% @works.each do |work| %>
   <tr>
-    <td>total votes goes here</td>
+    <td><%= work.votes.count%></td>
     <td><%=link_to work.title, work_path(work.id)%></td>
     <td><%=work.creator%></td>
     <td><%=work.published_year%></td>
-    <td><div class="buttonContainer"><%= link_to "Vote", work_votes_path(work), method: :post, class: "button" %></div></td>
+    <td><div class="buttonContainer"><%= link_to "Vote", work_votes_path(work.id), method: :post, class: "button" %></div></td>
   </tr>
 <% end %>
 </table>
