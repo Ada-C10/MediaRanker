@@ -1,4 +1,4 @@
-<% if @user.nil? %>
+<% if @user.nil? || !@current_user %>
   <h1> 404 Not found</h1>
 <% else %>
 
@@ -21,7 +21,7 @@ Joined site on <%= "#{@current_user.created_at.strftime ("%b. %d, %Y")}" %>
       <td> <%= link_to "#{vote.work.title}", work_path(vote.work_id) %> </td>
       <td> <%= "#{vote.work.creator}" %> </td>
       <td> <%= "#{vote.work.year}" %> </td>
-      <td> <%= "#{vote.work.category_id.type}" %> </td>
+      <td> <%= "#{vote.work.category}" %> </td>
       <td> <%= "#{vote.created_at.strftime ("%b. %d, %Y")}" %> </td>
     </tr>
     <% end %>

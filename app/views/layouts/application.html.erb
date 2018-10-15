@@ -11,7 +11,7 @@
 
   <body>
   <header>
-    <h1>Media Ranker</h1>
+     <h1> <%= link_to "MEDIA RANKER", root_path %> </h1>
     <section class="flash">
         <%flash.each do |name, message|%>
         <% if message.class == Array %>
@@ -32,9 +32,6 @@
     <nav>
       <ul>
         <li>
-          <%= link_to "HOME", root_path %>
-        </li>
-        <li>
           <%= link_to "NEW", new_work_path %>
         </li>
         <li>
@@ -44,16 +41,18 @@
           <% else %>
           <%= link_to "LOG IN", new_user_path %> </li>
           <% end %>
-
         </li>
         <li>
-          <%= link_to "EVERYTHING" %>
+          <%= link_to "View all media" %>
         </li>
         <li>
-          <%= link_to "TOP TEN" %>
+          <%= link_to "View top media" %>
         </li>
         <li>
-          <%= link_to "RANDOM!" %>
+          <%= link_to "Add a new work" %>
+        </li>
+        <li>
+          <%= link_to "View all users", users_path %>
         </li>
       </ul>
 
