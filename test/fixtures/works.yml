@@ -13,3 +13,57 @@ pride:
   publication_year: 1990
   description: Mr. Darcy
   category: book
+
+donniedarko:
+  title: Donnie Darko
+  creator: Flower Films
+  publication_year: 2001
+  category: movie
+
+10things:
+  title: 10 things I hate about you
+  creator: Touchstone
+  publication_year: 1999
+  category: movie
+
+candles:
+  title: 16 Candles
+  creator: Universal
+  publication_year: 1984
+  category: movie
+
+hp2:
+  title: Harry Potter and the Chamber of Secrets
+  creator: WB
+  publication_year: 2002
+  category: movie
+
+hp3:
+  title: Harry Potter and the Prisoner of Azkaban
+  creator: WB
+  publication_year: 2004
+  category: movie
+
+hp4:
+  title: Harry Potter and the Goblet of Fire
+  creator: WB
+  publication_year: 2006
+  category: movie
+
+hp5:
+  title: Harry Potter and the Order of the Phoenix
+  creator: WB
+  publication_year: 2007
+  category: movie
+
+hp6:
+  title: Harry Potter and the Half Blood Prince
+  creator: WB
+  publication_year: 2008
+  category: movie
+
+hp7:
+  title: Harry Potter and the Deathly Hallows
+  creator: WB
+  publication_year: 2009
+  category: movie
