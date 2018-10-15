@@ -1,10 +1,8 @@
-<% if @user.nil? || !@current_user %>
-  <h1> 404 Not found</h1>
-<% else %>
 
 
-<h1> <%= "#{@current_user.handle}'s Profile" %> </h1>
-Joined site on <%= "#{@current_user.created_at.strftime ("%b. %d, %Y")}" %>
+
+<h1> <%= "#{@user.handle}'s Profile" %> </h1>
+Joined site on <%= "#{@user.created_at.strftime ("%b. %d, %Y")}" %>
 <table>
   <thead>
     <tr>
@@ -16,7 +14,7 @@ Joined site on <%= "#{@current_user.created_at.strftime ("%b. %d, %Y")}" %>
       </tr>
   </thead>
   <tbody>
-    <% @current_user.votes.each do |vote| %>
+    <% @user.votes.each do |vote| %>
     <tr>
       <td> <%= link_to "#{vote.work.title}", work_path(vote.work_id) %> </td>
       <td> <%= "#{vote.work.creator}" %> </td>
@@ -27,5 +25,3 @@ Joined site on <%= "#{@current_user.created_at.strftime ("%b. %d, %Y")}" %>
     <% end %>
   </tbody>
 </table>
-
-<% end %>

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
 #user category votes
   def index
+    @users = User.all
   end
 
   def show; end #method same as private find_user method (before_action)
