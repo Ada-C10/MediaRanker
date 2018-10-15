@@ -1,0 +1,56 @@
+<main>
+  <h2> <%=@work.title%></h2>
+  <p>
+    Created by: <%=@work.creator%>
+  </p>
+
+  <p>
+    Published: <%=@work.publication_year%>
+  </p>
+
+  <p>
+    Summary: <%=@work.description%>
+  </p>
+
+  <button type="button" class="btn btn-info">
+    <div><%= link_to "Back to media ranks", root_path%>
+    </div>
+  </button>
+
+  <button type="button" class="btn btn-info">
+    <div><%= link_to "Edit", edit_work_path(@work)%>
+    </div>
+  </button>
+
+  <button type="button" class="btn btn-info">
+    <div><%= link_to "Upvote", work_upvote_path(@work), method: :post%>
+    </div>
+  </button>
+
+  <button type="button" class="btn
+  btn-danger">
+  <div class="delete"><%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title}"} %>
+  </div>
+</button>
+<br>
+<br>
+
+<h3><%="#{@work.votes_count}"%> Votes for this <%="#{@work.category}".capitalize%></h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">Date</th>
+    </tr>
+
+  </thead>
+
+  <tr>
+    <%@work.votes.each do |vote| %>
+    <td scope="row"><%= link_to vote.user.username, user_path(vote.user)%></td>
+    <td scope="row"><%=(vote.created_at).strftime("%b %e, %Y")%></td>
+  </tr>
+  <%end%>
+</table>
+</main>

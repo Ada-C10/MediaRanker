@@ -1,0 +1,62 @@
+
+<%= form_with model: @work do |f| %>
+<% if @work.errors.any?%>
+<h5>Errors:</h5>
+
+<ul>
+  <% @work.errors.each do |column, message| %>
+  <li>
+    <strong><%=column.capitalize%>: </strong><%= message%>
+  </li>
+  <%end%>
+</ul>
+<% end %>
+
+<section>
+
+  <form>
+
+    <div class="row">
+      <div class="control-label col-sm-12">
+        <div class="form-group">
+
+          <label>Category</label>
+          <select name=work[category] class="form-control">
+            <option value="album">Album</option>
+            <option value="book">Book</option>
+            <option value="movie">Movie</option>
+          </select>
+
+
+        </div>
+
+        <div class="form-group">
+          <%= f.label :title %><br>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :creator %><br>
+          <%= f.text_field :creator, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :publication_year %><br>
+          <%= f.text_field :publication_year, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description %><br>
+          <%= f.text_field :description, class: "form-control" %>
+        </div>
+
+
+          <%= f.submit action_name, class:"btn btn-info" %>
+
+
+
+
+      </div>
+    </form>
+  </section>
+  <% end %>
+
+</div>

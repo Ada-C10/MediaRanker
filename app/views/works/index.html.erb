@@ -1,0 +1,93 @@
+<main>
+
+
+  <h2>List of Works</h2>
+
+
+  <table class="table">
+    <h3>Albums</h3>
+    <thead>
+      <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+      </tr>
+    </thead>
+    <tr>
+      <%@works.each do |work| %>
+      <%if work.category == "album"%>
+      <td scope="row"><%=work.votes.count%></td>
+      <td scope="row" class="row-title"><%= link_to work.title, work_path(work.id)%></td>
+      <td scope="row"><%=work.creator%></td>
+      <td scope="row"><%=work.publication_year%></td>
+      <td scope="row">
+        <button type="button" class="btn btn-info">
+          <div><%= link_to "Upvote", work_upvote_path(work), method: :post%>
+          </div>
+        </button>
+      </td>
+      <%end%>
+    </tr>
+    <%end%>
+  </table>
+
+  <table class="table">
+    <h3>Books</h3>
+    <thead>
+      <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+      </tr>
+    </thead>
+    <tr>
+      <%@works.each do |work| %>
+      <%if work.category == "book"%>
+      <td scope="row"><%=work.votes.count%></td>
+      <td scope="row" class="row-title"><%=link_to work.title, work_path(work.id)%></td>
+      <td scope="row"><%=work.creator%></td>
+      <td scope="row"><%=work.publication_year%></td>
+      <td scope="row">
+        <button type="button" class="btn btn-info">
+          <div><%= link_to "Upvote", work_upvote_path(work), method: :post%>
+          </div>
+        </button>
+      </td>
+      <%end%>
+    </tr>
+    <%end%>
+  </table>
+
+  <table class="table">
+    <h3>Movies</h3>
+    <thead>
+      <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+      </tr>
+    </thead>
+    <tr>
+      <%@works.each do |work| %>
+      <%if work.category == "movie"%>
+      <td scope="row"><%=work.votes.count%></td>
+      <td scope="row" class="row-title" ><%=link_to work.title, work_path(work.id)%></td>
+      <td scope="row"><%=work.creator%></td>
+      <td scope="row"><%=work.publication_year%></td>
+      <td scope="row">
+        <button type="button" class="btn btn-info">
+          <div><%= link_to "Upvote", work_upvote_path(work), method: :post%>
+          </div>
+        </button>
+      </td>
+      <%end%>
+    </tr>
+    <%end%>
+  </table>
+</main>

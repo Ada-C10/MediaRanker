@@ -1,0 +1,57 @@
+// Place all the styles related to the Works controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+thead {
+  font-weight: bold;
+}
+
+.delete {
+  color: white;
+}
+.top_grid_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+}
+
+button a{
+  color: white;
+}
+
+section {
+  display: block;
+}
+
+.spotlight a{
+  color: #26A69A;
+}
+
+.top_list_container {
+
+}
+.top_header {
+  color: #26A69A;
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+  font-weight: bold;
+}
+
+.top_list p{
+color: grey;
+}
+
+.top_list .votes {
+  color: black;
+}
+
+.top_titles a{
+  color: #26A69A;
+}
+
+.row-title a{
+  color: #26A69A;
+}
+table h3 {
+  color: #26A69A;
+}
