@@ -3,13 +3,20 @@
 <% if @users.size == 0 %>
 <p><%= "No users yet!" %></p>
 <% else %>
-  <% @users.each do |user| %>
-    <ul>
-      <li><%= link_to user.name, user_path(user.id) %></li>
-      <li><%= user.print_number_of_votes %></li>
-      <li><%= (user.created_at).to_date.strftime("%b %d, %Y") %></li>
-    </ul>
-  <% end %>
+  <table class="table table-sm">
+    <thead>
+      <tr class="d-flex">
+        <th class="col-6">Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+          <tr class="d-flex">
+            <td class="col-6"><%= link_to user.name, user_path(user.id), class: "text-info" %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
 
 <section class= "mt-5 d-flex justify-content-center">
