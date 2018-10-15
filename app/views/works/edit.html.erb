@@ -1,4 +1,6 @@
-<h1><%= @work.title %></h1>
+<section class = "main-content">
+
+  <h2 class="main-content-header"><%= @work.title %></h2>
 <p>Created by: <%= @work.creator %></p>
 <p>Published: <%= @work.publication %></p>
 <p><%= @work.description %></p>
@@ -12,3 +14,5 @@
                 selected_category: @work.category,
                 publication_placeholder: @work.publication,
                 button_title: 'Save Your Edits!' } %>
+
+</section>

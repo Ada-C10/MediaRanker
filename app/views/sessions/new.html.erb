@@ -1,4 +1,5 @@
-<h1>Please Log In</h1>
+<section class = "main-content">
+  <h2 class="main-content-header">Please Log In</h2>
 
 <%= form_with model: @user, url: login_path, method: :post do |f| %>
   <%= f.label :name, 'Username (6-20 characters)' %>
@@ -8,3 +9,5 @@
   oninput: "this.setCustomValidity('')" %>
   <%= f.submit 'Login' %>
 <% end %>
+
+</section>

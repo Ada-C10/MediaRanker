@@ -1,5 +1,5 @@
-<section class = "mt-5">
-<h2 class="text-info mb-4">List of Works</h1>
+<section class = "main-content">
+<h2 class="main-content-header">List of Works</h2>
   <% @works.each_key do |category| %>
     <h3 class="pt-2 d-inline"><%= category.capitalize %>s
     <% if @works[category].size == 0 %>
@@ -22,7 +22,7 @@
           <% @works[category].each do |work| %>
             <tr class="d-flex">
               <td class="col-1"><%= work.print_number_of_votes %></td>
-              <td class="col-4"dir=""><%= link_to work.title, work_path(work.id), class: "text-info" %></td>
+              <td class="col-4"><%= link_to work.title, work_path(work.id), class: "text-info" %></td>
               <td class="col-3"><%= work.creator %></td>
               <td class="col-2"><%= work.publication %></td>
               <td class="col-2">
@@ -44,8 +44,8 @@
 
 
 <section class= "mt-5 d-flex justify-content-center">
-  <%= link_to "Add A New Work", new_work_path, class: "btn btn-info m-2" %></li>
-  <%= link_to "Back to Top 10 (Home)", root_path, class: "btn btn-info m-2" %></li>
+  <%= link_to "Add A New Work", new_work_path, class: "btn btn-info m-2", role: "button" %>
+  <%= link_to "Back to Top 10 (Home)", root_path, class: "btn btn-info m-2", role: "button" %>
 </section>
 
 </section>

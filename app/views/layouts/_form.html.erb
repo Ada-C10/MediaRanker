@@ -1,4 +1,4 @@
-<h1> <%= action_name %> </h1>
+<h2 class="main-content-header"><%= action_name %> </h2>
 
 <%= form_with model: this_model, class: "#{this_model}-form" do |f|%>
 
@@ -19,5 +19,5 @@
   <%= f.label :publication, 'Publication Year' %>
   <%= f.text_field :publication, type: :number, placeholder: publication_placeholder, required: true, min: 1000, max: Date.today.year, maxlength: 4 %>
 
-  <%= f.submit button_title, class: "#{this_model}-button btn btn-primary" %>
+  <%= f.submit button_title, class: "#{this_model}-button btn btn-primary", role: "button" %>
 <% end %>

@@ -1,5 +1,6 @@
-<%= render partial: "layouts/form",
-      locals: { action_name: 'Create a new work',
+<section class = "main-content">
+  <%= render partial: "layouts/form",
+      locals: { action_name: 'Create A New Work',
                 this_model: @work,
                 title_placeholder: 'Title',
                 creator_placeholder: 'Creator',
@@ -7,3 +8,4 @@
                 selected_category: VALID_WORK_CATEGORIES.first,
                 publication_placeholder: 'Year',
                 button_title: 'Save Me!' } %>
+</section>
