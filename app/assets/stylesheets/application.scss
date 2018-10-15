@@ -37,6 +37,10 @@ body {
   margin: 0;
 }
 
+a:visited {
+  color: #a4e2dd;
+}
+
 .btn:not(:disabled):not(.disabled) {
   cursor: pointer;
 }
@@ -60,15 +64,31 @@ body {
   border-right: white 2px solid;
 }
 .nav-link:hover, .nav-link:focus {
-  text-decoration: none;
+  background-color: transparent;
+  text-decoration: underline;
+
+
 }
 .app-header__nav_item .nav-link {
   color: #00796B;
+  font-size: 1rem;
 }
 
-.nav-item a{
-  color: white;
-  align-self: flex-end;
+.works-index{
+  margin: 1rem 3rem 1rem 3rem;
+}
+
+.works-index h1{
+  color: #00796B;
+}
+
+.table th{
+  font-weight: bold;
+}
+
+td{
+  font-family: "Gudea", sans-serif;
+  font-size: 1rem;
 }
 
 .btn-primary {
@@ -94,27 +114,43 @@ body {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.container {
-  margin: 0;
-}
+
 
 .app-header__header {
   padding: 0;
 }
 
+.spotlight {
+  border-bottom: 1px solid lightgray;
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem 2.5rem 1.5rem 2.5rem;
+}
+
+.spotlight a{
+  color: #00ab9d;
+}
 .top-ten-container {
   background-color: white;
   color: grey;
   font-family: "Gudea", sans-serif;
 
 }
-.col-3 {
-  flex-grow: 1;
-  padding: 0;
+h2.top-ten-header {
+  border-bottom: 5px solid #b5dfdb;
+  margin-bottom: 0.5rem;
+  font-weight: bolder;
+  font-size: 2rem;
 }
 
-.top-ten-list-container{
-  flex-grow: 1;
+.top-title {
+  color: #00ab9d;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.top_ten__creator > *{
+  font-weight: normal;
+  font-size: 1rem;
 }
 
 .list-group-item {
@@ -136,3 +172,58 @@ body {
   vertical-align: middle;
 }
 
+.new-form {
+  margin: 3rem 5rem auto 5rem;
+}
+
+.new-work {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #26A69A;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error !optional;
+  .form-control {
+    color: red;
+  }
+}
+
+.show-work {
+  text-align: center;
+  font-family: "Gudea", sans-serif;
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+
+.show-work h2 {
+  color: #26A69A;
+}
+
+.show-btns a {
+  margin-right: 1rem;
+}
+
+.user_index h1{
+  color: #26A69A;
+}
+
+.user_index {
+  margin: 1rem 4rem auto 4rem;
+}
+
+.table thead th {
+  border: none;
+}
+
+.btn-center {
+  margin: 1rem 25rem auto 25rem;
+}

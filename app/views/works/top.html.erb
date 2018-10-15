@@ -1,5 +1,12 @@
-<section class="top-ten-container container row">
-  <section class="top-ten-list-container tenmovies col-3">
+<section class="spotlight">
+  <h2>MEDIA SPOTLIGHT: <%=link_to "#{@spot.title}", work_path(@spot.id) %> by <%= @spot.creator %></h2>
+  <p><h4><%= @spot.votes.count %> votes - <%= @spot.description %></h4>
+
+</section>
+
+<section class="top-ten-container container">
+  <div class="row">
+  <section class="top-ten-list-container tenmovies col-4">
       <h2 class="top-ten-header">Top Movies</h2>
       <ul class="list-group top-ten__list">
         <% if @movies.empty? %>
@@ -17,7 +24,7 @@
       </ul>
     </section>
 
-  <section class="top-ten-list-container tenbooks col-3">
+  <section class="top-ten-list-container tenbooks col-4">
       <h2 class="top-ten-header">Top Books</h2>
       <ul class="list-group top-ten__list">
       <% if @books.empty? %>
@@ -36,7 +43,7 @@
    </section>
 
 
-  <section class="top-ten-list-container tenalbums col-3">
+  <section class="top-ten-list-container tenalbums col-4">
       <h2 class="top-ten-header">Top Albums</h2>
       <ul class="list-group top-ten__list">
         <% if @albums.empty? %>
@@ -53,5 +60,6 @@
         <% end %>
       </ul>
   </section>
+  </div>
 </section>
 

@@ -65,6 +65,7 @@ class WorksController < ApplicationController
   end
 
   def top
+    @spot = Work.spotlight?
     @albums = Work.top?("album")
     @books = Work.top?("book")
     @movies = Work.top?("movie")

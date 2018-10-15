@@ -19,7 +19,7 @@
         <small>Ranking the Best of Everything</small>
       </h1>
     <nav class="app-header__nav">
-      <ul class="nav app-header__site-nav-container">
+      <ul class="nav site-nav-container d-flex justify-content-around">
         <li class="nav-item app-header__nav_item">
         <%= link_to "View Top Media", works_top_path, class: "nav-link" %> 
         </li>
@@ -32,9 +32,6 @@
         <li class="nav-item app-header__nav_item">
         <%= link_to "View All Users", users_path, class: "nav-link" %> 
         </li>
-
-      </ul>
-      <ul class="nav app-header__site-nav-container">
         <li class="nav-item app-header__nav_item">
         <% if @current_user %>
           <%= link_to "Logged in as: #{@current_user.name}", user_path(@current_user.id), class: "btn btn-primary" %></li>
@@ -43,8 +40,8 @@
       <% else %>
         <li class="nav-item app-header__nav_item">
         <%= link_to "Log In", login_path, class: "btn btn-primary" %></li>
-      <% end %> 
-    </nav>
+      <% end %>
+          </ul></nav>
     </header>
     <header>
     <section class="flash">

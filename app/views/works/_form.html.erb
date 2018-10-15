@@ -1,43 +1,36 @@
 <%= form_with(model: work, local: true) do |form| %>
-  <% if work.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(work.errors.count, "error") %> prohibited this work from being saved:</h2>
-
-      <ul>
-      <% work.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+  <%= render 'layouts/form_errors' %>
+<form>
+  <section class="new-form">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control"%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :creator %>
-    <%= form.text_field :creator %>
+    <%= form.text_field :creator, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_field :description, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :category %>
-    <%= form.text_field :category %>
+    <%= form.select :category, [["Album", "album"], ["Book", "book"], ["Movie", "movie"]], {}, {class: "form-control"} %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :publication_year %>
-    <%# form.select_year :publication_year, (Time.zone.now.year - 100)..(Time.zone.now.year + 1) %>
-    <%= form.text_field :publication_year %>
+    <%= form.text_field :publication_year, class: "form-control" %>
+
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
 <% end %>
+
+</section>
+
+</form>

@@ -10,13 +10,15 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+<form>
+<section class="new-form">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control"%>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <button type="submit" class="btn btn-primary actions">Login
+  </button>
 <% end %>
+</section>
+</form>
