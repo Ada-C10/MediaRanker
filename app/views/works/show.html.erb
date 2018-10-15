@@ -1,31 +1,28 @@
-<h2> Work details</h2>
-
 <% if @work.nil? %>
   <h1> 404 Not found</h1>
 <% else %>
 <section class='vote-for'>
-    <%= link_to "Vote!", vote_path(@work.id), method: :create %>
-  <p> <%= "#{@work.title} has #{@work.votes.count} votes." %> </p>
-
+    <%= link_to "Vote!", vote_path(@work.id), method: :create, class: "btn btn-primary" %>
 </section>
   <!-- show vote counts, then as badge in bootstrap -->
- <ul>
-   <li> <%= @work.title %> </li>
-   <li> <%= @work.creator %> </li>
-   <li> <%= @work.category %> </li>
-   <li> <%= @work.year %> </li>
-   <li> <%= @work.description %> </li>
- </ul>
+   <h2> <%= @work.title %> </h2>
+   <ul class="list-group">
+     <li> Created by: <%= @work.creator %> </li>
+     <li> Category: <%= @work.category %> </li>
+     <li> Published in: <%= @work.year %> </li>
+     <li> Added by: <%= @work.user_id %> </li>
+   </ul>
+   <p> <%= @work.description %> </p>
  <!-- only allow users to edit/delete if they had added the work to the db -->
  <% if @current_user %>
     <%= link_to "Edit", edit_work_path(@work.id) %>
-    <%= link_to "Delete Work", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure? This cannot be undone!'} %>
+    <%= link_to "Delete Work", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure? This cannot be undone!'}, class: "btn btn-danger" %>
     <% else %>
-    You must be logged in to delete or edit a work.
+    <p> You must be logged in to delete or edit a work.</P>
   <% end %>
 
-
- <table>
+<h3> <%= "#{@work.title} has #{@work.votes.count} votes." %> </h3>
+ <table class="table">
    <thead>
      <tr>
          <th>User</th>

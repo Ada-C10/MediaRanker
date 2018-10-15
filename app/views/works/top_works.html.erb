@@ -1,18 +1,21 @@
-<h1> The Top-Rated Media </h1>
+<section class="top-ten__container">
 
 <% Category.show_all.each do |category| %>
-<section class="top-ten__container">
   <section class="top-ten__list-container">
   <h2 class="top-ten__header">
-  <h2><%= "Top 10 in #{category.name.capitalize}" %> </h2>
+    <%= "Top 10 in #{category.name.capitalize}" %>
+  </h2>
   <ul class="list-group top-ten__list">
     <% Work.all.each do |work| %>
     <%  if work.category == category.name %>
-      <li> <%= link_to "#{work.title}", work_path(work.id) %> by <%= "#{work.creator}" %> </li>
-      <li> <%= "#{work.votes.count}" %> votes  </li>
-      <% end %>
+      <li class="list-group-item"> <%= link_to "#{work.title}", work_path(work.id) %> by
+        <small class=class="top-ten__creator"> <%= "#{work.creator}" %> </small>
+      <p> <%= "#{work.votes.count}" %> votes  </p>
+      </li>
+    <% end %>
     <% end %>
   </ul>
   </section>
-  </section>
 <% end %>
+
+</section>
