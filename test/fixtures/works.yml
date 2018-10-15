@@ -1,0 +1,46 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+book1:
+  title: cat in the hat
+  creator: dr. seuss
+  category: book
+  publication_year: 1999-01-01
+  description: one fish
+
+
+book2:
+  title: killer joe
+  creator: tracy letts
+  category: book
+  publication_year: 1998-01-01
+  description: a play
+
+album1:
+  title: white album
+  creator: beatles
+  category: album
+  publication_year: 1969-01-01
+  description: groovy songs
+
+
+album2:
+  title: black album
+  creator: jay z
+  category: album
+  publication_year: 2002-01-01
+  description: chill songz
+
+movie1:
+  title: rosemary's baby
+  creator: roman polanski
+  category: movie
+  publication_year: 1969-01-01
+  description: devil baby
+
+
+movie2:
+  title: whiplash
+  creator: damien chazelle
+  category: movie
+  publication_year: 2014-01-01
+  description: veritas

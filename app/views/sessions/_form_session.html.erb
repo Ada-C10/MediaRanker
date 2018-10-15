@@ -1,0 +1,10 @@
+<%= form_with method: :post, url: login_path, , local: true do |f| %>
+
+
+      <%= f.label :username %>:
+      <%= f.text_field :username %>
+
+      <%= f.submit action_type %>
+
+
+<% end %>

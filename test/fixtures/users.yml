@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+user1:
+  username: Carmen Sandiego
+
+user2:
+  username: Ada Lovelace
+
+user3:
+  username: Grace Hopper
