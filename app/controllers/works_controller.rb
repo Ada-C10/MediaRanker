@@ -81,6 +81,7 @@ class WorksController < ApplicationController
 
       # Array of works, in descending order by votes, subsorted in descending order by most recent vote date:
       works_by_category = works_by_category.sort_by { |work| work.number_of_votes }.reverse!
+      works_by_category = works_by_category.delete_if { |work| work.number_of_votes < 1 }
 
       # Array of top 10 works, by votes, by title
       works_by_category[0..9].each do |work|
