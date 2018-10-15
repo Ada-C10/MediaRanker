@@ -17,55 +17,23 @@
 
 <div class="container">
   <section class="row">
-    <section class="col-sm">
-      <h2 class="header top-ten">Top Movies</h2>
-      <ul class="list-group top-ten">
-        <% Work.list_of("movie")[0..9].each do |movie| %>
-          <li class="list-group-item">
-            <h4>
-              <%= link_to movie.title, work_path(movie.id) %>
-            <small class="top-ten creator">by <%= movie.creator %></small>
-            </h4>
-            <p>
-              <%= movie.votes.length %> votes
-            </p>
-          </li>
-        <% end %>
-      </ul>
-    </section>
-
-    <section class="col-sm">
-      <h2 class="header top-ten">Top Books</h2>
-      <ul class="list-group top-ten">
-        <% Work.list_of("book")[0..9].each do |book| %>
-          <li class="list-group-item">
-            <h4>
-              <%= link_to book.title, work_path(book.id) %>
-            <small class="top-ten creator">by <%= book.creator %></small>
-            </h4>
-            <p>
-              <%= book.votes.length %> votes
-            </p>
-          </li>
-        <% end %>
-      </ul>
-    </section>
-
-    <section class="col-sm">
-      <h2 class="header top-ten">Top Albums</h2>
-      <ul class="list-group top-ten">
-        <% Work.list_of("album")[0..9].each do |album| %>
-          <li class="list-group-item">
-            <h4>
-              <%= link_to album.title, work_path(album.id) %>
-            <small class="top-ten creator">by <%= album.creator %></small>
-            </h4>
-            <p>
-              <%= album.votes.length %> votes
-            </p>
-          </li>
-        <% end %>
-      </ul>
-    </section>
+    <% ["movie", "book", "album"].each do |category| %>
+      <section class="col-sm">
+        <h2 class="header top-ten">Top <%= category.titleize %>s</h2>
+        <ul class="list-group top-ten">
+          <% Work.list_of(category)[0..9].each do |work| %>
+            <li class="list-group-item">
+              <h4>
+                <%= link_to work.title, work_path(work.id) %>
+              <small class="top-ten creator">by <%= work.creator %></small>
+              </h4>
+              <p>
+                <%= work.votes.length %> votes
+              </p>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
   </section>
 </div>
