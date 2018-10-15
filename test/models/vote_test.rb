@@ -1,24 +1,18 @@
 require "test_helper"
-
 require "pry"
+
 describe Vote do
-  describe 'relations' do
-    before do
-      work = works(:book1)
+
+  describe "relations" do
+    it "belongs to a user" do
       user = users(:jim)
-      vote = votes(:one)
-    end
-    it "belongs to a user " do
-      before do
-        work = works(:book1)
-        user = users(:jim)
-        vote = votes(:one)
-      end
-      user.vote.must_equal votes(:one)
+      user.votes.must_include votes(:one)
     end
 
     it "belongs to a work" do
-      work.vote.must_equal works(:one)
+      work = works(:book1)
+      work.votes.must_include votes(:one)
     end
   end
+
 end
