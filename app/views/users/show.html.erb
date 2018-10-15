@@ -18,12 +18,12 @@
   <tbody>
     <tr>
       <% @user.votes.each do |vote| %>
-      <td><%=vote.work.title %></td>
-      <td><%=vote.user.username %></td>
-      <td><%=vote.work.published_year%></td>
-      <td><%=vote.work.category.capitalize%></th>
-      <td><%=vote.created_at.strftime("%b %d, %Y")%></th>
-    </tr>
+        <td><%= link_to "#{vote.work.title}", work_path(vote.work.id) %></td>
+        <td><%=vote.user.username %></td>
+        <td><%=vote.work.published_year%></td>
+        <td><%=vote.work.category.capitalize%></th>
+        <td><%=vote.created_at.strftime("%b %d, %Y")%></th>
+      </tr>
     <% end %>
   </tbody>
 </table>
