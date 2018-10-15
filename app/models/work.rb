@@ -7,8 +7,13 @@ class Work < ApplicationRecord
   validates :creator, presence: true
   validates :year, presence: true, numericality: { only_integer: true }
   validates :description, presence: true
-  # validates :category
+  validates :category, presence: true
 
-  # scope :by_votes, joins: :votes, group: "works.id", :order => "COUNT(works.id) DESC"
+def self.top_list
+    all_works = Work.all.map do |work|
+      [work.votes.count, work.title, work.category]
+    end
+    all_works.sort.reverse
+end
 
 end

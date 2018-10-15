@@ -3,7 +3,7 @@
 <% Category.show_all.each do |category| %>
   <section class="top-ten__list-container">
   <h2 class="top-ten__header">
-    <%= "Top 10 in #{category.name.capitalize}" %>
+    <%= "Top in #{category.name.capitalize}" %>
   </h2>
   <ul class="list-group top-ten__list">
       <% @top_works.each do |work| %>

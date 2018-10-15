@@ -1,5 +1,5 @@
 <h1> <%= action_name %> </h1>
-
+<%= render partial: "layouts/form_errors", locals: { model: model_name } %>
 
 <%= form_with model: model_name, local: true do |f|%>
 

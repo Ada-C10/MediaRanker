@@ -45,10 +45,6 @@ class WorksController < ApplicationController
 
   end
 
-  # def sort_category #sorting categories for view
-  #
-  # end
-
   def destroy
     if @work != nil
       work = @work.destroy #to temp store work instance for title below
@@ -71,6 +67,6 @@ class WorksController < ApplicationController
   end
 
   def work_params
-    return params.require(:work).permit(:id, :creator, :category_id, :year, :description, :title, :user_id)
+    return params.require(:work).permit(:id, :creator, :category, :year, :description, :title, :user_id)
   end
 end

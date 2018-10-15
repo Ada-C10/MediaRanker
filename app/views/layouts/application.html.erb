@@ -15,21 +15,6 @@
        <%= link_to "MEDIA RANKER", root_path %>
        <small>Ranking the Best of Everything</small>
      </h1>
-    <section class="flash">
-        <%flash.each do |name, message|%>
-        <% if message.class == Array %>
-          <%message.each do |msg|%>
-            <div class="alert-<%= name %>">
-              <strong> <%= "#{name}:" %> </strong> <%= " #{msg}"%>
-            </div>
-          <%end%>
-        <%else%>
-          <div class="alert-<%= name %>">
-             <%=message %>
-           </div>
-        <%end%>
-      <%end%>
-      </section>
 
 
     <nav class="app-header__nav">
@@ -60,7 +45,23 @@
       </ul>
     </nav>
   </header>
+
 <main>
+    <section class="alert__container">
+        <%flash.each do |name, message|%>
+        <% if message.class == Array %>
+          <%message.each do |msg|%>
+            <div class="alert alert-<%= name %>" role="alert">
+              <strong> <%= "#{name}:" %> </strong> <%= " #{msg}"%>
+        </div>
+          <%end%>
+        <%else%>
+          <div class="alert alert-<%= name %>" role="alert">
+             <%= message %>
+          </div>
+        <%end%>
+      <%end%>
+    </section>
     <%= yield %>
 </main>
   </body>

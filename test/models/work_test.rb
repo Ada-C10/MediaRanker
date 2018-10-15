@@ -8,10 +8,10 @@ describe Work do
   end
 
   it 'has required fields' do
-  fields = [:title, :creator, :description, :year, :category]
+    fields = [:title, :creator, :description, :year, :category]
 
-  fields.each do |field|
-    expect(work).must_respond_to field
+    fields.each do |field|
+      expect(work).must_respond_to field
   end
 end
 
