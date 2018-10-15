@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  root 'works#index'
+  root 'works#top_works'
 
   get 'sessions/login', to: 'sessions#login', as: 'login'
   post 'sessions/login', to: 'sessions#login'
   delete 'sessions/logout', to: 'sessions#destroy', as: 'logout'
 
   post 'works/:work_id/votes/create', to: 'votes#create', as: 'vote'
+  
   # get 'works/index'
   # get 'works/new'
 
