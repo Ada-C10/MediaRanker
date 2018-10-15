@@ -84,4 +84,13 @@ describe Work do
       @works.first.title.must_equal works(:memento).title
     end
   end
+
+  describe "get_top_list" do
+    it "returns a list of no more than ten works" do
+      @works = Work.all
+      @works.count.must_be :<, 11
+    end
+
+    # add more fixtures so can test with over ten category works? 
+  end
 end
