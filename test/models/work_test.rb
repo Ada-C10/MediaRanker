@@ -56,14 +56,10 @@ describe Work do
 
   end
 
-  describe 'relations' do
-    it "has a vote " do
-
-      v = Vote.first
-
-      user = v.user
-
-      expect(user).must_be_instance_of User
+  describe "relations" do
+    it "has a vote" do
+      work = works(:book1)
+      work.votes.must_include votes(:one)
     end
   end
 
