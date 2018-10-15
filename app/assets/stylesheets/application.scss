@@ -1,0 +1,81 @@
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+
+
+// APPLICATION WIDE STYLING
+body{
+  font-family: 'Montserrat', sans-serif;
+}
+
+a{
+  color: rgb(168, 82, 11);
+}
+
+a:hover{
+  color: rgb(140, 68, 8);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.flash-message{
+  margin-right: 50px;
+}
+
+.login{
+  position: absolute;
+  right: 20px;
+}
+
+.button-block{
+  display: inline-flex;
+}
+
+// NAVIGATION BAR
+
+header{
+  background-color: rgba(203, 160, 139, 0.74);
+  font-family: 'Muli', sans-serif;
+}
+
+header h1{
+  text-align: center;
+  padding: 50px;
+  padding-top: 100px;
+  text-decoration: none;
+  font-size: 3em;
+}
+
+header h1 small{
+  padding-left: 10px;
+}
+
+
+header small{
+  color: white;
+}
+
+.btn-primary{
+  background-color: rgb(168, 82, 11);
+  border-color: rgb(168, 82, 11);
+  margin: 5px;
+}
+
+.btn-outline-danger{
+  margin: 5px;
+}
+.btn-primary:hover{
+  background-color: rgb(140, 68, 8);
+  border-color: rgb(140, 68, 8);
+}
+
+
+
+
+.nav{
+  margin: 20px;
+}
+
+footer{
+  padding-top: 200px;
+}

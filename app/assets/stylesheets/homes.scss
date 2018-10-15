@@ -1,0 +1,32 @@
+.spotlight{
+  padding: 100px;
+}
+
+.media-spotlight{
+  font-weight: bolder;
+}
+
+
+.top-media-columns{
+  display: grid;
+  grid-column: 1fr 1fr 1fr;
+  padding: 20px;
+}
+
+.books-container{
+grid-column: 2 / 3;
+}
+
+.albums-container{
+grid-column: 3 / 4;
+}
+
+.top-ten-header{
+  padding-left: 10px;
+  padding-bottom: 20px;
+}
+
+
+.list-group-item{
+  border: none;
+}

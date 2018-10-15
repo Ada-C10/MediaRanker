@@ -1,0 +1,97 @@
+<section>
+  <h2>List of all works</h2>
+  <h3>Albums</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @works.sort.each do |work| %>
+      <% if work.category == "album" %>
+      <tr>
+        <th scope="row"> <%=work.votes.length %> </th>
+        <td> <%=link_to work.title, work_path(work.id) %> </td>
+        <td> <%=work.creator %> </td>
+        <td> <%=work.pub_year %> </td>
+        <td>
+          <%= form_for @vote, url: work_votes_path(work) do |f| %>
+          <%= f.submit "Upvote", class: "btn btn-primary" %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <br >
+
+  <h3>Books</h3>
+  <br >
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @works.sort.each do |work| %>
+      <% if work.category == "book" %>
+      <tr>
+        <th scope="row"> <%=work.votes.length %> </th>
+        <td> <%=link_to work.title, work_path(work.id) %> </td>
+        <td> <%=work.creator %> </td>
+        <td> <%=work.pub_year %> </td>
+        <td>
+          <%= form_for @vote, url: work_votes_path(work) do |f| %>
+          <%= f.submit "Upvote", class: "btn btn-primary" %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <br />
+
+  <h3>Movies</h3>
+  <br >
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @works.sort.each do |work| %>
+      <% if work.category == "movie" %>
+      <tr>
+        <th scope="row"> <%= work.votes.length %> </th>
+        <td> <%=link_to work.title, work_path(work.id) %> </td>
+        <td> <%=work.creator %> </td>
+        <td> <%=work.pub_year %> </td>
+        <td>
+          <%= form_for @vote, url: work_votes_path(work) do |f| %>
+          <%= f.submit "Upvote", class: "btn btn-primary" %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+</section>

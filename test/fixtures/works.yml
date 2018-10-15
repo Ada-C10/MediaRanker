@@ -1,0 +1,42 @@
+nemo:
+  category: movie
+  title: Finding Nemo
+  creator: Pixar
+  pub_year: 2001
+  description: daddy issues
+sunshine:
+  category: movie
+  title: Secret Sunshine
+  creator: Lee Chang-dong
+  pub_year: 2007
+  description: korean culture and cinema at its most depressing
+marie:
+  category: movie
+  title: Marie Antoinette
+  creator: Sofia Coppola
+  pub_year: 2006
+  description: Kristen Dunst pre-beheading
+heartburn:
+  category: book
+  title: Heartburn
+  creator: Nora Ephron
+  pub_year: 1983
+  description: don't marry men
+headless:
+  category: book
+  title: Headless Pumpkin Monster
+  creator: Headless Nick
+  pub_year: 1000
+  description: boo
+beyonce:
+  category: album
+  title: Beyonce
+  creator: Beyonce
+  pub_year: 2016
+  description: self-titled album
+prince:
+  category: album
+  title: Purple Rain
+  creator: Prince
+  pub_year: 1980
+  description: purple raaaaaain

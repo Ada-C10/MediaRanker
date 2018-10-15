@@ -1,0 +1,80 @@
+<main>
+  <section class="spotlight">
+    <h2 class="spotlight-header">
+      <span class="media-spotlight">🔦 Media Spotlight: </span>
+      <a class="spotlight-link-to" href="/works/<%=@works.spotlight.id%>"><%= @works.spotlight.title %></a> by <%= @works.spotlight.creator %>
+    </h2>
+    <p class="spotlight__description">
+      <%= @works.spotlight.votes.length %> votes -
+      <%= @works.spotlight.description %>
+    </p>
+  </section>
+
+  <div class="top-media-columns">
+
+    <section class="movies-container">
+      <h2 class="top-ten-header">
+        🎬 Top Movies
+      </h2>
+
+      <ul class="list-group top-ten-list">
+        <% i = 0 %>
+        <% @works.sorted.each do |work| %>
+        <% if work.category == 'movie' && i < 10 %>
+        <li class="list-group-item">
+          <h4>
+            <%=link_to work.title, work_path(work.id) %>
+            <small class="top-ten-creator">by <%= work.creator %></small>
+          </h4>
+          <p><%= work.votes.length %> votes</p>
+        </li>
+        <% i += 1 %>
+        <% end %>
+        <% end %>
+      </ul>
+    </section>
+
+    <section class="books-container">
+      <h2 class="top-ten-header">
+        📖 Top Books
+      </h2>
+      <ul class="list-group top-ten-list">
+        <% i = 0 %>
+        <% @works.sorted.each do |work| %>
+        <% if work.category == 'book' && i < 10 %>
+        <li class="list-group-item">
+          <h4>
+            <%=link_to work.title, work_path(work.id) %>
+            <small class="top-ten-creator">by <%= work.creator %></small>
+          </h4>
+          <p><%= work.votes.length %> votes</p>
+        </li>
+        <% i += 1 %>
+        <% end %>
+        <% end %>
+      </ul>
+    </section>
+
+    <section class="albums-container">
+      <h2 class="top-ten-header">
+        🎙 Top Albums
+      </h2>
+      <ul class="list-group top-ten-list">
+        <% i = 0 %>
+        <% @works.sorted.each do |work| %>
+        <% if work.category == 'album' && i < 10 %>
+        <li class="list-group-item">
+          <h4>
+            <%=link_to work.title, work_path(work.id) %>
+            <small class="top-ten-creator">by <%= work.creator %></small>
+          </h4>
+          <p><%= work.votes.length %> votes</p>
+        </li>
+        <% i += 1 %>
+        <% end %>
+        <% end %>
+      </ul>
+    </section>
+
+  </div>
+</main>

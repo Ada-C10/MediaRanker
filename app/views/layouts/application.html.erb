@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MediaRanker</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Muli:200" rel="stylesheet">
+</head>
+
+<body>
+  <header class="app-header header">
+    <h1>
+      <a href="/">Media Ranker</a>
+      <small> Ranking the Best of Everything</small>
+    </h1>
+
+    <nav class="app-header nav">
+      <ul class="nav app-header site-nav-container">
+        <li class="nav-item app-header nav_item">
+          <a class="nav-link" href="/">View top media</a>
+        </li>
+        <li class="nav-item app-header nav_item">
+          <a class="nav-link" href="/works">View all media</a>
+        </li>
+        <li class="nav-item app-header nav_item">
+          <a class="nav-link" href="/works/new">Add a new work</a>
+        </li>
+        <li class="nav-item app-header nav_item">
+          <a class="nav-link" href="/users">View all users</a>
+        </li>
+        <li class="login">
+
+            <% if @logged_in_user %>
+
+              Logged in as: <b><%= @logged_in_user.username %></b>
+              <button class="btn btn-light"><%= link_to "Log out", logout_path, method: :post %></button>
+
+            <% else %>
+            <a class="btn btn-primary" href="/sessions/new">Log In</a>
+            <% end %>
+
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class='flash-message'>
+    <% flash.each do |key, message| %>
+    <p class="<%key%>">
+      <div class="alert alert-info" role="alert"><%= message %></div>
+    </p>
+    <% end %>
+  </section>
+
+
+  <%= yield %>
+
+  <footer>
+    don't steal me, k thnx
+  </footer>
+</body>
+
+</html>
