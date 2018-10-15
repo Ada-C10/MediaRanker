@@ -7,7 +7,9 @@
       <% end %>
     </h2>
     <p class="spotlight__description">
-      <%= media_spotlight_text(@media_spotlight) %>
+      <% if @media_spotlight %>
+        <%= media_spotlight_text(@media_spotlight) %>
+      <% end %>
     </p>
   </section>
 
