@@ -2,67 +2,50 @@ require "test_helper"
 
 describe User do
   describe 'User validations' do
-     before do
-       @user = User.new(name: 'testname')
-     end
+    it "is valid with dashes, underscores, numbers, and letters" do
+      valid_names = ["test_user", "test-user", "123testuser"]
+      valid_names.each do |name|
+        user = User.new(name: name)
+        expect(user).must_be :valid?
+      end
+    end
 
-     it 'is valid when all fields are present' do
-       expect(@user.valid?).must_equal true
-     end
+    it 'is invalid with spaces, periods, and special characters' do
+      invalid_names = ["test user", "test.user", "test!user"]
+      invalid_names.each do |name|
+        user = User.new(name: name)
+        expect(user.valid?).must_equal false
+        expect(user.errors.messages).must_include :name
+      end
+    end
 
     it 'is invalid unless name is unique (case-insensitive)' do
-      @user.save!
-      another_user = User.new(name: 'tEStnAmE')
+      another_user = User.new(name: "sTeVONniE")
       expect(another_user.valid?).must_equal false
       expect(another_user.errors.messages).must_include :name
     end
 
     it 'is invalid unless name length is within 6..20 characters' do
-      @user.name = ("a" * 5)
-      expect(@user.valid?).must_equal false
-      expect(@user.errors.messages).must_include :name
+      user = User.new(name: nil)
+      invalid_lengths = [0, 5, 21]
+      invalid_lengths.each do |length|
+        user.name = ("a" * length)
+        expect(user.valid?).must_equal false
+        expect(user.errors.messages).must_include :name
+      end
 
-      @user.name = ("a" * 6)
-      expect(@user.valid?).must_equal true
-
-      @user.name = ("a" * 20)
-      expect(@user.valid?).must_equal true
-
-      @user.name = ("a" * 21)
-      expect(@user.valid?).must_equal false
-      expect(@user.errors.messages).must_include :name
-    end
-
-    it 'is invalid unless name is only letters, numbers, dashes, and underscores' do
-      @user.name = ("123testuser")
-      expect(@user.valid?).must_equal true
-
-      @user.name = ("test-user")
-      expect(@user.valid?).must_equal true
-
-      @user.name = ("test_user")
-      expect(@user.valid?).must_equal true
-
-      @user.name = ("test.user")
-      expect(@user.valid?).must_equal false
-      expect(@user.errors.messages).must_include :name
-
-      @user.name = ("test!user")
-      expect(@user.valid?).must_equal false
-      expect(@user.errors.messages).must_include :name
+      valid_lengths = [6, 20]
+      valid_lengths.each do |length|
+        user.name = ("a" * length)
+        expect(user.valid?).must_equal true
+      end
     end
    end
 
    describe 'User relations' do
-     before do
-       @user = User.create!(name: 'test_name')
-     end
-
      it 'can get votes with "votes"' do
-       work = Work.create!(title: 'test book', category: :album,
-         creator: 'test creator', publication: 1700, description: nil)
-       vote = Vote.create!(user_id: @user.id, work_id: work.id)
-       expect(@user.votes.ids).must_equal [vote.id]
+       vote = Vote.create!(user_id: users(:stevonnie).id, work_id: works(:parable).id)
+       expect(users(:stevonnie).votes.ids).must_equal [vote.id]
      end
    end
 end

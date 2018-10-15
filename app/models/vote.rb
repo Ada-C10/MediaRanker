@@ -10,7 +10,7 @@ class Vote < ApplicationRecord
      message: "should only be one user_id per work" }
 
 # Media Title;	Created By;	Published;	Category;	Voted On; work id for work_path
-# Should this array go in the model or the controller? Move to controller!
+# Should this array go in the model or the controller? Is it a view helper?
     def user_votes_table_row
       work = self.work
       return [work.title, work.creator, work.publication, work.category.capitalize, self.created_at, work.id]

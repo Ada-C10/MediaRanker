@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-test_album:
+parable:
+  title: Parable of the Sower
+  category: book
+  creator: butler
+  publication: 1979
+  description: all that you touch, you change. changes you.
+
+valid_nil:
   title: A Great Album Title
   category: album
   creator: Some Artist
   publication: 1000
-  description: This album is so hot right now.
-
-test_book:
-  title: An Amazing Book Title
-  category: book
-  creator: Some Author
-  publication: 1000
-  description: Just read it.
+  description: nil
