@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     name = params[:username]
     @user = User.find_by(username: name)
 
+
     if @user
       flash[:sucess] = "Successfully logged in as existing user #{@user.username}"
       session[:user_id] = @user.id
