@@ -32,6 +32,7 @@ class WorksController < ApplicationController
     if is_successful_save
       flash[:success] = "Successfully added new media: #{@work.title}"
       redirect_to work_path(@work)
+      
     else
       render :new, status: :bad_request
     end
