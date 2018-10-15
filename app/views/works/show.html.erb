@@ -13,8 +13,6 @@
   <%= link_to "Back to media ranks", root_path %>
   <%= link_to "Edit", edit_work_path(@work.id) %>
   <%= link_to "Delete", @work, method: :delete, data: { confirm: "Are you sure that you want to delete?" } %>
-
-<%= form_for @work.votes.build do |f| %>
-  <%= f.submit 'Vote', class: 'vote-submit' %>
-<% end %>
+  <%= button_to '+1', vote_work_path(@work.id) %>
+  <%= @work.votes.length %> votes for this <%= @work.category %>
 </div>

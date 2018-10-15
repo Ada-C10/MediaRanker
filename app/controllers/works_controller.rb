@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :vote]
+
   def index
     @works = Work.all
   end
@@ -43,12 +45,22 @@ class WorksController < ApplicationController
   end
 
   def vote
-    @work = Work.find(params[:id])
-    @work.votes.create
-    redirect_to(works_path)
+    if @logged_in_user
+      if @logged_in_user.votes.find_by(work_id: @work.id)
+        flash[:warning] = "A problem occurred: cannot vote twice"
+        redirect_back fallback_location: work_path
+      else
+      @vote = Vote.create(user_id: @logged_in_user.id, work_id: @work.id)
+      @vote = @vote.save
+      flash[:success] = "success"
+      redirect_back fallback_location: work_path
+      end
+    else flash[:warning] = "A problem occurred: You must log in to do that"
+    end
   end
 
   private
+
 
   def work_params
     return params.require(:work).permit(
@@ -57,9 +69,10 @@ class WorksController < ApplicationController
       :description,
       :publication_year,
       :category,
-      :vote
+
     )
   end
-
-
+  def find_work
+    @work = Work.find_by(id: params[:id])
+  end
 end
