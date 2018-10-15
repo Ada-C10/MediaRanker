@@ -1,0 +1,46 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-10-08
+  work: titanic
+  user: jane
+
+two:
+  date: 2018-10-08
+  work: the_big_lebowski
+  user: ken
+
+three:
+  date: 2018-10-08
+  work: titanic
+  user: ken
+
+four:
+  date: 2018-10-08
+  work: spice_world
+  user: jane
+
+five:
+  date: 2018-10-08
+  work: spice_world
+  user: ken
+
+six:
+  date: 2018-10-08
+  work: tragic_kindgom
+  user: ken
+
+seven:
+  date: 2018-10-08
+  work: harry_potter
+  user: jane
+
+eight:
+  date: 2018-10-08
+  work: harry_potter
+  user: ken
+
+nine:
+  date: 2018-10-08
+  work: harry_potter_two
+  user: ken

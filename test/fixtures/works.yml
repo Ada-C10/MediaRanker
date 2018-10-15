@@ -1,0 +1,50 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+titanic:
+  title: Titanic
+  category: movie
+  creator: James Cameron
+  publication_year: 1997
+  description: Unsinkable ship sinks
+
+the_big_lebowski:
+  title: The Big Lebowski
+  category: movie
+  creator: The Coen Brothers
+  publication_year: 1998
+  description: The Dude abides
+
+tragic_kindgom:
+  title: Tragic Kingdom
+  category: album
+  creator: No Doubt
+  publication_year: 1996
+  description: Don't speak
+
+spice_world:
+  title: Spice World
+  category: album
+  creator: The Spice Girls
+  publication_year: 1998
+  description: Spice up your life!
+
+harry_potter:
+  title: Harry Potter
+  category: book
+  creator: JK Rowling
+  publication_year: 1997
+  description: Magical book
+
+harry_potter_two:
+  title: Harry Potter Two
+  category: book
+  creator: JK Rowling
+  publication_year: 1997
+  description: Magical second book
+
+harry_potter_three:
+  title: Harry Potter Three
+  category: book
+  creator: JK Rowling
+  publication_year: 1997
+  description: Magical third book
