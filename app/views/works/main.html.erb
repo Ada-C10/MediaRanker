@@ -1,8 +1,18 @@
-<h1>Works#main</h1>
-<p>Find me in app/views/works/index.html.erb</p>
+
+
+<section class="spotlight">
+  <h2 class="spotlight__header">
+    <span class="spotlight__header--prefix">Media Spotlight</span>
+    <%= link_to "@works.spotlight.title", work_path(@works.ids) , class: "spotlight__link-to" %>
+  </h2>
+  <p class="spotlight__description">
+    2 votes - take me back!
+  </p>
+</section>
+
 
 <%['movie', 'book', 'album'].each do |category| %>
-  <h2> Top <%=category.capitalize%>s </h2>
+  <h2 class="top-ten__header"> Top <%=category.capitalize%>s </h2>
   <% @works.each do |work| %>
     <%if category == work.category%>
     <h4> <%= link_to "#{work.title}", work_path(work.id)%> by <%=work.creator%> </h4>
