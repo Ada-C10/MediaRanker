@@ -48,24 +48,26 @@ class Work < ApplicationRecord
       # (Integer 0 cannot be compared with Date objects)
       most_recent_vote_date = Date.jd(0)
     end
+
+    return most_recent_vote_date
   end
 
 # Helper method for #home in WorksController
-  def list_top_works
+  def self.list_top_works
    top_ten_works = Work.list_all_works
 
-   top_ten_works[category].each_key do |array_of_works|
+   top_ten_works.each_key do |category|
      # Do not display works with 0 votes
-     array_of_works = array_of_works.delete_if { |work| work.number_of_votes < 1 }
+     top_ten_works[category] = top_ten_works[category].delete_if { |work| work.number_of_votes < 1 }
 
      # Display only the top 10 works
-     array_of_works = array_of_works[0..9]
+     top_ten_works[category] = top_ten_works[category][0..9]
    end
    return top_ten_works
   end
 
 # Helper for list_top_works and #index in WorksController
- def list_all_works
+ def self.list_all_works
    all_works = Hash.new
    VALID_WORK_CATEGORIES.each do |category|   # Find project constants in config/initializers/constants.rb
      works_by_category = Work.by_category(category).reverse # Z to A
