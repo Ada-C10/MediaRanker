@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= favicon_link_tag 'owl.jpg' %>
+  </head>
+
+  <header class="header-section">
+    <h1><%= link_to 'Media Ranker', root_path, class: "header-link" %> <small class="header-text">Ranking the Best of Everything</small>
+    </h1>
+    <nav class="d-flex justify-content-between">
+      <ul class="nav row align-items-end">
+        <li class="nav-item">
+          <%= link_to 'View top media', root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'View all media', works_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Add a new work', new_work_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'View all users', users_path, class: "nav-link" %>
+        </li>
+      </ul>
+      <ul class="nav">
+        <% if @logged_in_user %>
+        <li class="login-link">
+          <p class="btn btn-info">
+            Logged in as
+            <%= @logged_in_user.name %>
+          </p>
+        </li>&nbsp &nbsp &nbsp &nbsp &nbsp
+        <li>
+          <p>
+            <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
+          </p>
+        </li>
+          <% else %>
+        <li>
+          <%= link_to "Log in", new_session_path, class: "btn btn-info" %>
+        </li>
+        <% end %>
+
+      </ul>
+    </nav>
+  </header>
+
+  <section>
+      <% flash.each do |key, message| %>
+        <p class="alert alert-success" role="alert">
+          <%= message %>
+        </p>
+      <% end %>
+    </section>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<%= render partial: 'layouts/form_errors',
+locals: {
+  model: @user
+}
+%>
+
+<%= form_with model: @user, class: 'user-form', data: { remote: false } do |f| %>
+<div>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div>
+  <%= f.submit %>
+  <% end %>
+</div>

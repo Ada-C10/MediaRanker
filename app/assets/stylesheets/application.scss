@@ -1,0 +1,105 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+
+.header-section {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    text-align: center;
+    padding: 3rem 1rem 0.5rem 1rem;
+}
+
+.header-link {
+    color: #FF5722;
+    font-weight: bold;
+    padding-right: 25px;
+    margin-right: 15px;
+    border-right: white 2px solid;
+}
+
+.header-link:hover {
+  color: #FF5722;
+  text-decoration: none;
+}
+
+.header-text {
+  color: white;
+  font-size: 80%;
+  font-weight: 400;
+}
+
+.nav {
+  padding: 3rem 1rem 0rem 1rem;
+}
+
+.nav-link {
+  color: #00796B;
+  padding: 0rem 3rem 0.5rem 1rem;
+}
+
+.login-link {
+  margin: 0rem -1rem 0rem 0rem;
+}
+
+.alert {
+  margin-top: 1rem;
+}
+
+.btn {
+  color: white;
+  background-color: #26A69A;
+}
+
+.list-titles {
+  color: #26A69A;
+  padding-top: 50px;
+}
+
+.list-titles > a[href] {
+  color: #26A69A;
+}
+
+.top-list-creator {
+  color: slategrey;
+}
+
+.list-group-item {
+  border: none;
+}
+
+.card-body {
+  padding: 50px 30px 20px 50px;
+}
+
+.top-media-container {
+  align-content: space-between;
+  padding-left: 32px;
+}
+
+.container {
+  margin: 0px;
+  padding: 0px;
+}
+
+div.btn > a[href] {
+  color: white;
+}
+
+.btn-danger {
+  background-color: #dc3545;;
+}

@@ -1,0 +1,61 @@
+<section>
+  <div class="card">
+    <div class="card-body">
+      <h2><span><strong>Media Spotlight: </strong></span><span class="list-titles"><%= link_to Work.top_vote_getter.title, work_path(Work.top_vote_getter.id) %></span><span class="list-titles"> by <%= Work.top_vote_getter.creator %> </span></h2>
+      <p>
+        <%= Work.top_vote_getter_votes %> votes - <%= Work.top_vote_getter.description %>
+      </p>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="row top-media-container">
+    <div class="col">
+      <h2 class='list-titles'>
+        Top Movies
+      </h2>
+      <ul class="list-group">
+        <% Work.top_works_by_category('movie', 10).each do |work| %>
+        <li class="list-group-item">
+          <strong class="list-titles"><%= link_to work.title, work_path(work.id) %></strong><span class="top-list-creator"> by
+            <%= work.creator %></span>
+            <p>
+              <%= work.votes.size %> votes
+            </p>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col">
+        <h2 class='list-titles'>
+          Top Books
+        </h2>
+        <ul class="list-group">
+          <% Work.top_works_by_category('book', 10).each do |work| %>
+          <li class="list-group-item">
+            <strong class="list-titles"><%= link_to work.title, work_path(work.id) %></strong> by
+            <%= work.creator %>
+            <p>
+              <%= work.votes.size %> votes
+            </p>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col">
+        <h2 class='list-titles'>
+          Top Albums
+        </h2>
+        <ul class="list-group">
+          <% Work.top_works_by_category('album', 10).each do |work| %>
+          <li class="list-group-item">
+            <strong class="list-titles"><%= link_to work.title, work_path(work.id) %></strong> by
+            <%= work.creator %>
+            <p>
+              <%= work.votes.size %> votes
+            </p>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+</div>
