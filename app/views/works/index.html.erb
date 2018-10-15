@@ -14,7 +14,8 @@
           <th>Upvote</th>
         </tr>
       </thead>
-      <% list = Work.where(category: category) %>
+      <!-- <% list = Work.where(category: category) %> -->
+      <% list = Work.get_category_media(category) %>
       <% list.each do |work, info| %>
       <tbody>
         <tr>
