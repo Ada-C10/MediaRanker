@@ -12,11 +12,21 @@ class Work < ApplicationRecord
       return Work.all.order(:title).select {|work| work.category == media}
   end
 
-  def spotlight
-
+  def self.spotlight
+    return Work.all.max_by { |work| work.votes.length }
   end
 
+  def self.top_albums
+    return Work.category('album').max_by(10) { |work| work.votes.length }
+  end
 
+  def self.top_movies
+    return Work.category('movie').max_by(10) { |work| work.votes.length }
+  end
+
+  def self.top_books
+    return Work.category('book').max_by(10) { |work| work.votes.length }
+  end
 
 
 end

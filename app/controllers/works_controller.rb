@@ -2,7 +2,7 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def index
-    @works = Work.all.order(:title)
+    @works = Work.all.sort_by{|work| -work.votes.length}
 
 
     @albums = Work.category('album')
@@ -32,6 +32,10 @@ class WorksController < ApplicationController
 
   def main
     @works = Work.all.order(:title)
+    @spotlight = Work.spotlight
+    @top_albums = Work.top_albums
+    @top_movies = Work.top_movies
+    @top_books = Work.top_books
   end
 
   def show; end
@@ -87,7 +91,7 @@ class WorksController < ApplicationController
 
 
   def work_params
-    return params.require(:work).permit(:title,:category,:publication_year,:description)
+    return params.require(:work).permit(:title,:category,:publication_year,:description,:creator)
   end
 
 end
