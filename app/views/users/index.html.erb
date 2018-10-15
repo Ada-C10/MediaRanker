@@ -12,8 +12,8 @@
 <tbody>
   <% @user.each do |u| %>
   <tr>
-    <td><%= link_to u.user_name %></td>
-    <td><%= u.votes %></td>
+    <td><%= link_to "#{u.user_name}", user_path(u.id) %></td>
+    <td><%= u.votes.count %></td>
     <td><%= u.created_at.strftime("%b %d %Y") %></td>
 
     <% end %>
