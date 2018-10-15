@@ -4,6 +4,6 @@ class User < ApplicationRecord
   has_many :votes
 
   def joining_date
-    return self.created_at
+    return self.created_at.strftime("%B %d, %Y")
   end
 end
