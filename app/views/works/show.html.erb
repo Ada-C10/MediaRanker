@@ -13,7 +13,7 @@
   <% elsif @current_user %>
     <%= link_to "Remove Upvote", work_vote_path(@work.id, @vote.id), method: :delete, class: "btn btn-danger m-2", role: "button" %>
   <% else %>
-    <div class="text-muted">Please log in to upvote.</div>
+    <div class="text-muted d-inline">Please log in to upvote.</div>
   <% end %>
   <%= link_to "Delete This Work", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to delete #{@work.title.capitalize} by #{@work.creator.capitalize}?"}, class: "btn btn-info m-2", role: "button" %>
 </section>
