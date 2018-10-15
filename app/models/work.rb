@@ -34,8 +34,13 @@ class Work < ApplicationRecord
 
   # Helper method for Spotlight
   def most_recent_vote
-    return self.votes.reduce(0) do |most_recent_vote_date, vote|
+    most_recent_vote_date = self.votes.reduce(0) do |most_recent_vote_date, vote|
       vote.created_at > most_recent_vote_date ? vote.created_at : most_recent_vote_date
+    end
+    if most_recent_vote_date == 0
+      return Date.jd(0)
+    else
+      return most_recent_vote_date
     end
   end
 

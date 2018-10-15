@@ -77,10 +77,10 @@ class WorksController < ApplicationController
     VALID_WORK_CATEGORIES.each do |category|
       @works[category] = []
 
-      # Array of works, in descending order by title:
-      works_by_category = Work.by_category(category).reverse!
+      # Array of works, in ascending order by most recent vote date:
+      works_by_category = Work.by_category(category).sort_by {|work| work.most_recent_vote}
 
-      # Array of works, in descending order by votes, subsorted in ascending order by title
+      # Array of works, in descending order by votes, subsorted in descending order by most recent vote date:
       works_by_category = works_by_category.sort_by { |work| work.number_of_votes }.reverse!
 
       # Array of top 10 works, by votes, by title
