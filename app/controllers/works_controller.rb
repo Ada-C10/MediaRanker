@@ -1,3 +1,4 @@
+require 'pry'
 class WorksController < ApplicationController
 
 before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
@@ -81,12 +82,19 @@ before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
       # pass in user_id to find user
       # @work.votes.create(user_id: session[:user_id])
 
-      if @work.votes.count == 0
-        @work.votes.create(user_id: session[:user_id])
-        redirect_to(works_path)
+        # @work.votes.count == 0
+         @work.votes.create(user_id: session[:user_id])
+         if @work.save
+      # binding.pry
+      flash[:success] = "Voted!"
+        # redirect_to(works_path)
+        # if @work.save
+        #   work = Work.find_by(id: params[:id])
+        #   flash[:success] = "Voted!"
+           redirect_to(works_path)
       else flash[:error] = "A problem occurred: Could not upvote. User has already voted for this work"
-        redirect_to(works_path)
-
+          redirect_to(works_path)
+        # end
       end
     end
 
