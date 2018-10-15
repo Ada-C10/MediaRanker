@@ -4,7 +4,7 @@
     <%= "(no votes yet)" %>
   <% else %>
     <%= link_to @spotlight.title, work_path(@spotlight.id), class: "text-info link-underline" %><p class="text-info d-inline"> by <%= @spotlight.creator %></p></h2>
-  <p><%= "#{@spotlight.print_number_of_votes} - #{@spotlight.description}" %></p>
+  <span class="badge badge-light badge-pill"><%= "#{@spotlight.print_number_of_votes}" %></span><p class="d-inline ml-3"><%= "#{@spotlight.description}" %></p>
   <% end %>
 </section>
 
