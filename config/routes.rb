@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   root 'homes#index'
   get '/homes', to: 'homes#index'
 
-  resources :works
-  resources :users, except: [:update]
-  resources :votes, only: [:index, :new, :create]
+  resources :works do
+    resources :votes, only: [:new, :create]
+  end
+  resources :users, except: :update
 
   resources :sessions, only: [:new, :create]
   post '/sessions/logout', to: 'sessions#logout', as: 'logout'

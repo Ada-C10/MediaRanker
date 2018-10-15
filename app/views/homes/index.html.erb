@@ -25,7 +25,7 @@
             <%=link_to work.title, work_path(work.id) %>
             <small class="top-ten-creator">by <%= work.creator %></small>
           </h4>
-          <p># votes</p>
+          <p><%= work.votes.length %> votes</p>
         </li>
         <% i += 1 %>
         <% end %>
@@ -46,7 +46,7 @@
             <%=link_to work.title, work_path(work.id) %>
             <small class="top-ten-creator">by <%= work.creator %></small>
           </h4>
-          <p># votes</p>
+          <p><%= work.votes.length %> votes</p>
         </li>
         <% i += 1 %>
         <% end %>
@@ -67,7 +67,7 @@
             <%=link_to work.title, work_path(work.id) %>
             <small class="top-ten-creator">by <%= work.creator %></small>
           </h4>
-          <p># votes</p>
+          <p><%= work.votes.length %> votes</p>
         </li>
         <% i += 1 %>
         <% end %>

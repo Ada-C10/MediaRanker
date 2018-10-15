@@ -3,7 +3,6 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">ID</th>
         <th scope="col">Username</th>
         <th scope="col">Joined</th>
         <th scope="col">Votes</th>
@@ -12,9 +11,9 @@
     <tbody>
       <% @users.sort.each do |user| %>
       <tr>
-        <th scope="row"> <%=user.id %> </th>
-        <td> <%=user.username %> </td>
+        <th scope="row"> <%=user.username %> </th>
         <td> <%=user.created_at.strftime("%-m/%e/%Y") %> </td>
+        <td> <%=user.votes.length %></td>
       </tr>
       <% end %>
     </tbody>

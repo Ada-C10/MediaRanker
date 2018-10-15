@@ -14,11 +14,16 @@
   <p><b>Created by:</b> <%=@work.creator %></p>
   <p><b>Published:</b> <%=@work.pub_year %></p>
   <p><b>Description:</b> <%=@work.description %></p>
+  <p><b>Votes:</b> <%=@work.votes.length %></p>
 
-  <a class="btn btn-primary" href="/">Back to media ranks</a>
-  <a class="btn btn-primary" href=<%= edit_work_path %>>Edit</a>
-  <!-- <a class="btn btn-primary" rel="nofollow" data-method="post" href=>Upvote</a> -->
+  <div class="button-block">
+    <a class="btn btn-primary" href="/">Back to media ranks</a>
 
-  <%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title}?" }, class: "btn btn-outline-danger" %>
+    <a class="btn btn-primary" href=<%= edit_work_path %>>Edit</a>
+    <%= form_for @vote, url: work_votes_path(@work) do |f| %>
+    <%= f.submit "Upvote", class: "btn btn-primary" %>
+    <% end %>
+    <%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title}?" }, class: "btn btn-outline-danger" %>
+  </div>
 
 </section>

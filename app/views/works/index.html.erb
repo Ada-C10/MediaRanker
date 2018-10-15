@@ -4,7 +4,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">ID</th>
+        <th scope="col">Votes</th>
         <th scope="col">Title</th>
         <th scope="col">Created By</th>
         <th scope="col">Published</th>
@@ -15,7 +15,7 @@
       <% @works.sort.each do |work| %>
       <% if work.category == "album" %>
       <tr>
-        <th scope="row"> <%=work.id %> </th>
+        <th scope="row"> <%=work.votes.length %> </th>
         <td> <%=link_to work.title, work_path(work.id) %> </td>
         <td> <%=work.creator %> </td>
         <td> <%=work.pub_year %> </td>
@@ -32,7 +32,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">ID</th>
+        <th scope="col">Votes</th>
         <th scope="col">Title</th>
         <th scope="col">Created By</th>
         <th scope="col">Published</th>
@@ -43,7 +43,7 @@
       <% @works.sort.each do |work| %>
       <% if work.category == "book" %>
       <tr>
-        <th scope="row"> <%=work.id %> </th>
+        <th scope="row"> <%=work.votes.length %> </th>
         <td> <%=link_to work.title, work_path(work.id) %> </td>
         <td> <%=work.creator %> </td>
         <td> <%=work.pub_year %> </td>
@@ -60,7 +60,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">ID</th>
+        <th scope="col">Votes</th>
         <th scope="col">Title</th>
         <th scope="col">Created By</th>
         <th scope="col">Published</th>
@@ -71,7 +71,7 @@
       <% @works.sort.each do |work| %>
       <% if work.category == "movie" %>
       <tr>
-        <th scope="row"> <%=work.id %> </th>
+        <th scope="row"> <%= work.votes.length %> </th>
         <td> <%=link_to work.title, work_path(work.id) %> </td>
         <td> <%=work.creator %> </td>
         <td> <%=work.pub_year %> </td>

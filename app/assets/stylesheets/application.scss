@@ -26,6 +26,11 @@ a:hover{
   position: absolute;
   right: 20px;
 }
+
+.button-block{
+  display: inline-flex;
+}
+
 // NAVIGATION BAR
 
 header{
@@ -53,18 +58,19 @@ header small{
 .btn-primary{
   background-color: rgb(168, 82, 11);
   border-color: rgb(168, 82, 11);
+  margin: 5px;
 }
 
+.btn-outline-danger{
+  margin: 5px;
+}
 .btn-primary:hover{
   background-color: rgb(140, 68, 8);
   border-color: rgb(140, 68, 8);
 }
 
 
-// .btn{
-//   position: absolute;
-//   right: 20px;
-// }
+
 
 .nav{
   margin: 20px;
