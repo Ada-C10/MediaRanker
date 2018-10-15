@@ -1,14 +1,7 @@
-
-
-Category: <%= @work.category %>
-<br>
-Title: <%= @work.title %>
-<br>
-Creator: <%= @work.creator %>
-<br>
-Published: <%= @work.publication_year %>
-<br>
-Description: <%= @work.description %>
+<h2>Title: <%= @work.title %></h2>
+<h3>Creator: <%= @work.creator %></h3>
+<h4>Published: <%= @work.publication_year %></h4>
+<h4>Description: <%= @work.description %></h4>
 
 
 <div><%= link_to "Edit Work Info", edit_work_path(@work.id) %> </div>
@@ -16,3 +9,10 @@ Description: <%= @work.description %>
 <div><%= link_to "Delete Work", work_path(@work), method: :delete, data: { confirm: "are you sure you want to delete #{@work.title}"} %></div>
 
 <div><%= link_to "Upvote", upvote_work_path(@work), method: :post %></div>
+
+<section class = "voters">
+  <h3><%= @work.votes.count %> votes for this work:</h3>
+  <% @voters.each do |voter| %>
+  <p><%= voter.username %></p>
+  <% end %>
+</section>

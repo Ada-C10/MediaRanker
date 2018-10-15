@@ -25,4 +25,19 @@ class Work < ApplicationRecord
     top_media = total_votes.first
   end
 
+
+  def see_voters
+
+    voters = []
+
+    self.votes.each do |vote|
+      user = User.find_by(id: vote.user_id)
+
+      voters << user
+    end
+
+    return voters
+
+  end
+
 end

@@ -14,6 +14,8 @@ class WorksController < ApplicationController
     if @work.nil?
       head :not_found
     end
+
+    @voters = @work.see_voters
   end
 
 
