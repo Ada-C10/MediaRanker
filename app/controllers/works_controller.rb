@@ -41,25 +41,27 @@ class WorksController < ApplicationController
   end
 
   def update
-    if @work && @work.update(work_params) #(if user exists AND can be updated)
-       # @work.user_id = session[:user_id]
-       flash[:success] = "#{@work.title} has been edited."
-       redirect_to work_path(@work.id)
-     else
-       flash.now[:warning] = 'Sorry, no edits were saved.'
-       render :edit
-     end
+    # if @work && @work.update(work_params) #(if user exists AND can be updated)
+    #    # @work.user_id = session[:user_id]
+    #    flash[:success] = "#{@work.title} has been edited."
+    #    redirect_to work_path(@work.id)
+    #  else
+    #    flash.now[:warning] = 'Sorry, no edits were saved.'
+    #    render :edit
+    #  end
 
 
-    # id = params[:id]
-    # @work = Work.find_by(id: id)
-    # @work.update(work_params)
-    #
-    # if @work.save
-    #   redirect_to work_path # go to the index so we can see the book in the list
-    # else
-    #   render :new
-    # end
+    id = params[:id]
+    @work = Work.find_by(id: id)
+    @work.update(work_params)
+
+    if @work.save
+      flash[:success] = "#{@work.title} has been edited."
+      redirect_to work_path # go to the index so we can see the book in the list
+    else
+      flash.now[:warning] = 'Sorry, no edits were saved.'
+      render :new
+    end
   end
 
 
