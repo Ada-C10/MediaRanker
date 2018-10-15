@@ -4,4 +4,10 @@ class Category < ApplicationRecord
   def self.show_all
     @categories = Category.all
   end
+
+  def self.category_list
+    return Category.all.map do |category|
+      [category.name]
+    end
+  end
 end
