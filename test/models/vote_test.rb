@@ -1,12 +1,10 @@
 require "test_helper"
-require 'pry'
 
 describe Vote do
 
   before do
     @vote1 = votes(:vote1)
     @vote2 = votes(:vote2)
-    # binding.pry
   end
 
 

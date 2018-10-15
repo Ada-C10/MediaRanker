@@ -1,17 +1,5 @@
 require "test_helper"
 
-require 'pry'
-# create_table "works", force: :cascade do |t|
-#   t.string "title"
-#   t.string "category"
-#   t.string "creator"
-#   t.integer "publication_year"
-#   t.string "description"
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
-# end
-
-
 describe Work do
 
   describe 'relations' do
@@ -37,7 +25,6 @@ describe Work do
 
     it "must not be valid for duplicate title with the same category" do
       work1 = Work.new(title: @work.title, category: @work.category)
-      # binding.pry
       is_valid = work1.valid?
       expect( is_valid ).must_equal false
     end
