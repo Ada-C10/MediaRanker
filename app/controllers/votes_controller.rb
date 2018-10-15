@@ -17,7 +17,7 @@ class VotesController < ApplicationController
         redirect_to work_path(@work_obj.id)
       else
         #TODO: gotta fix these alerts
-        flash[:alert] = @vote.errors.messages
+        flash[:alert] = @vote.errors
         redirect_to work_path(@work_obj.id)
       end
 

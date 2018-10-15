@@ -1,40 +1,34 @@
 <main>
-    <h2>User Summary: <%= link_to @user.username, user_path(@user.id) %></a></h2>
-<p>Joined site <%= @user.created_at %></p>
+  <h2>User Summary: <%= link_to @user.username, user_path(@user.id) %></a></h2>
+  <p>Joined site <%= @user.created_at %></p>
 
-<section class="user-votes__container">
-  <h3 class="user-votes__header">Votes</h3>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Media Title</th>
-        <th>Created By</th>
-        <th>Published</th>
-        <th>Category</th>
-        <th>Voted On</th>
-      </tr>
-    </thead>
-    <tbody>
-
+  <section class="user-votes__container">
+    <h3 class="user-votes__header"><%= @user.count_votes %> Votes</h3>
+    <table class="table">
+      <thead>
         <tr>
-          <td><a href="/works/42">!!!titanic soundtrack HD 2018 remaster re-release</a></td>
-          <td>!!!jambes cameron</td>
-          <td>!!!2001</td>
-          <td>!!!Album</td>
-          <td>!!!Oct  8, 2018</td>
+          <th>Media Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Category</th>
+          <th>Voted On</th>
         </tr>
+      </thead>
+      <tbody>
+        <% @user.votes.each do |vote| %>
         <tr>
-          <td><a href="/works/44">!!!Abatar</a></td>
-          <td>!!!Jambes Cameron</td>
-          <td>!!!2009</td>
-          <td>!!!Movie</td>
-          <td>!!!Oct  8, 2018</td>
+          <td><%= link_to vote.work.title, work_path(vote.work) %></td>
+          <td><%= vote.work.creator %></td>
+          <td><%= vote.work.publication_year %></td>
+          <td><%= vote.work.category %></td>
+          <td><%= vote.work.created_at %></td>
         </tr>
-    </tbody>
-  </table>
-</section>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
 
-<a class="btn btn-secondary" href="/users">See all Users</a>
-<a class="btn btn-primary" href="/">Back to Media List</a>
+  <%= link_to 'See all Users', users_path, class:"btn btn-secondary" %>
+  <%= link_to 'Back to Media List', root_path,  class:"btn btn-primary" %>
 
-  </main>
+</main>

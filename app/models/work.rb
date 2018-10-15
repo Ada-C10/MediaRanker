@@ -15,10 +15,6 @@ class Work < ApplicationRecord
     return self.where(category: work_category)
   end
 
-  def count_votes
-    return self.votes.length
-  end
-
   def self.sort_works(work_category)
     cat_works_array = categorize_works(work_category)
     works_by_vote = cat_works_array.sort_by{|work| work.count_votes}.reverse
