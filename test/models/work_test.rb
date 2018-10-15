@@ -15,33 +15,25 @@ describe Work do
     end
   end
 
-  # describe 'Relationships' do
-  #   it 'belongs to a user' do
-  #     # Arrange (done with let)
-  #
-  #     # Act
-  #     user = work.user
-  #
-  #     # Assert
-  #     expect(user).must_be_instance_of User
-  #     expect(user.id).must_equal work.user_id
-  #   end
-  #
-  #   it 'can have many votes' do
-  #     # Arrange, did with let
-  #
-  #     # Act
-  #     work.votes << Vote.first
-  #     votes = work.votes
-  #
-  #
-  #     # Assert
-  #     expect(votes.length).must_be :>=, 1
-  #     votes.each do |vote|
-  #       expect(vote).must_be_instance_of Vote
-  #     end
-  #   end
-  # end
+  describe 'Relationships' do
+    let(:work) { Work.new(title: ' Talking Rain', publication_year:1990, creator: 'tangering') }
+    it 'can have many votes' do
+
+      work.votes << Vote.first
+      votes = work.votes
+
+      expect(votes.length).must_be :>=, 1
+      votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end
+    end
+
+    it 'can only be voted on by a unique user once' do
+      # first_vote = Vote.first
+      # second_vote = Vote.new(user_id:1, work_id:2)
+    end
+
+  end
 
   describe 'validations' do
     it 'must have a title' do
