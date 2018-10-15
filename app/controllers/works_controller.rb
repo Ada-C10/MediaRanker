@@ -59,12 +59,9 @@ class WorksController < ApplicationController
     if @user
       vote = Vote.new
       #(work_id:@work.id, user_id:@user.id)
-      vote.work_id = @work.id #same with user
-      #vote.work = @work
+      vote.work_id = @work.id
       vote.user_id = @user.id
-      #@user.votes << vote
       vote.save
-      #@user.save
       if vote.save
         flash[:sucess] = "sucessfully upvoted"
         redirect_to works_path(@work)
