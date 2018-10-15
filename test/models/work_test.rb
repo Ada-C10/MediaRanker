@@ -58,4 +58,30 @@ describe Work do
       votes.count.must_equal 3
     end
   end
+
+  describe 'votes_count' do
+    it "counts the number of votes a work has" do
+      work = works(:rhymes)
+      work.votes_count.must_equal 3
+    end
+
+    it "returns 0 if there are no votes for a work" do
+      work = works(:kveikur)
+      work.votes_count.must_equal 0
+    end
+  end
+
+  describe 'get_category_media' do
+    before do
+      @works = Work.get_category_media("movie")
+    end
+    it "gets all works of a given category" do
+      @works.first.category.must_equal "movie"
+      @works.count.must_equal 3
+    end
+
+    it "sorts list in order of votes" do
+      @works.first.title.must_equal works(:memento).title
+    end
+  end
 end
