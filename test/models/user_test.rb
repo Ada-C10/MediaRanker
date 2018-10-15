@@ -2,6 +2,15 @@ require "test_helper"
 
 describe User do
 
+  describe 'relations' do
+    it 'has many votes' do
+      user = users(:one)
+
+      user.votes.length.must_equal 2
+      user.votes[0].must_equal votes(:one)
+    end
+  end
+
   describe 'validations' do
     it 'is valid when username is present' do
       is_valid = users(:one).valid?
