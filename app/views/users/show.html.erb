@@ -1,9 +1,36 @@
 <h1>User Summary: user</h1>
 
-  <% @user.votes.each do |vote| %></p>
-  <%= link_to "#{vote.work.title}", work_path(vote.work.id) %>
-  <%= vote.work.creator %>
-  <%= vote.work.publication_year %>
+Joined Site:
+<%= @user.created_at %>
 
 
-  <% end %>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Media Title</th>
+      <th scope="col">Created By </th>
+      <th scope="col">Published</th>
+      <th scope="col">Category</th>
+      <th scope="col">Voted On</th>
+
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @user.votes.each do |vote| %></p>
+
+    <tr>
+      <th scope="row"><%= link_to "#{vote.work.title}", work_path(vote.work.id) %></th>
+      <td>  <%= vote.work.creator %></td>
+      <td> <%= vote.work.publication_year%></td>
+      <td>  <%= vote.work.category %></td>
+      <td>  <%= vote.created_at %></td>
+
+      <% end %>
+    </tr>
+  </tbody>
+</table>
