@@ -1,14 +1,26 @@
 class VotesController < ApplicationController
 
-  def create
-    @vote = Vote.new(work_id: work.id, user_id: user.id)
+  before_action :find_logged_in_user
 
-    if @vote.save
-      flash[:success] = "Successfully upvoted!"
-      redirect_to work_path
+  def create
+    @vote = Vote.new
+    @vote.work_id = Work.find_by(id: params[:work_id])
+
+    if @logged_in_user
+       @vote.user_id = @logged_in_user.id
+
+      if @vote.save
+        flash[:success] = "Successfully upvoted!"
+        redirect_back fallback_location: :works_path
+      else
+        flash[:notice] = "A problem occurred: Could not upvote: user has already voted for this work"
+      end
     else
-      flash.now[:error] = "A problem occurred: You must log in to do that"
-      render :new, status: :bad_request
+      flash[:notice] = "A problem occurred: You must log in to do that"
+      redirect_back fallback_location: :works_path
+      end
+
+
     end
   end
 
@@ -21,4 +33,3 @@ class VotesController < ApplicationController
 #       :user_id,
 #     )
 #   end
-end
