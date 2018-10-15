@@ -21,13 +21,17 @@
     <section class="top-ten__list-container">
       <h2 class="top-ten__header">Top Books</h2>
       <ul class="list-group top-ten__list">
-        <li>Books with top votes go here</li>
+        <% @books.each do |book| %>
+        <li><%= link_to book.title, work_path(book)%></li>
+        <% end %>
       </ul>
     </section>
     <section class="top-ten__list-container">
       <h2 class="top-ten__header">Top Albums</h2>
       <ul class="list-group top-ten__list">
-        <li>Albums with top votes go here</li>
+        <% @albums.each do |album| %>
+          <li><%= link_to album.title, work_path(album)%></li>
+        <% end %>
       </ul>
     </section>
   </section>

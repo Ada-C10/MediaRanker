@@ -62,6 +62,8 @@ class WorksController < ApplicationController
 
   def top_media
     @movies = Work.movies.highest_rated.limit(10)
+    @albums = Work.albums.highest_rated.limit(10)
+    @books = Work.books.highest_rated.limit(10)  
   end
 
   private

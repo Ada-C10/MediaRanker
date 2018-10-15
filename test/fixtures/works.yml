@@ -13,3 +13,10 @@ treat:
   publication_year: 1968
   description: Voluptatem adipisci qui velit.
   category: book
+
+ben:
+  title: Ben goes to school
+  creator: Bens Mom
+  publication_year: 1996
+  description: Adipisci qui velit.
+  category: movie

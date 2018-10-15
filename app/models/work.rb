@@ -23,29 +23,12 @@ class Work < ApplicationRecord
   def self.highest_rated
     left_outer_joins(:votes)
       .group("works.id")
-      .order("count(works.id) DESC")
-  end
-
-  def self.top_albums
-    top_albums = []
-
-    return top_albums
-  end
-
-  def self.top_books
-    top_albums = []
-
-    return top_books
-  end
-
-  def self.top_movies
-    top_albums = []
-
-    return top_movies
+      .order(Arel.sql("count(votes.id) DESC"))
   end
 
   def upvote(user)
-    Vote.create(user: user, work: self)
+    #Vote.create(user: user, work: self)
+    votes.create(user: user)
   end
 
 end

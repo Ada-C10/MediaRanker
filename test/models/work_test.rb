@@ -3,10 +3,6 @@ require "test_helper"
 describe Work do
   let(:work) { works(:treat) }
 
-  it "must be valid" do
-    value(work).must_be :valid?
-  end
-
   describe 'Validations' do
 
     it 'is valid when all fields are present' do
@@ -49,7 +45,24 @@ describe Work do
         expect(work.users.count).must_equal 1
       end
     end
+  end
 
+  describe 'highest_rated' do
+    it "should return works in order of votes" do
+      work_1 = works(:ben)
+      work_2 = works(:breaker)
+      work_3 = works(:treat)
+
+      user_1 = users(:one)
+      user_2 = users(:two)
+
+      work_1.upvote(user_1)
+      work_1.upvote(user_2)
+
+      work_2.upvote(user_1)
+
+      expect(Work.highest_rated).must_equal([work_1, work_2, work_3])
+    end
   end
 
 end
