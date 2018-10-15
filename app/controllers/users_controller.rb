@@ -33,9 +33,12 @@ class UsersController < ApplicationController
     id = params[:id]
     @user = User.find_by(id: id)
 
+
     if @user.nil?
       render :notfound, status: :not_found
     end
+
+    @votes = @user.votes
   end
 
   def update
