@@ -5,7 +5,12 @@ Rails.application.routes.draw do
 
   root 'top_works#index'
 
-  resources :works, :users, :votes
+  resources :users
+
+  resources :works do
+    resources :votes, only: [:create]
+  end
+
   resources :sessions, only: [:new]
   post '/sessions/login', to: 'sessions#login', as: "login"
   post '/sessions/logout', to: "sessions#logout", as: "logout"
