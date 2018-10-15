@@ -32,8 +32,12 @@ class Work < ApplicationRecord
     end
   end
 
-  # Helper method for Works Controller and Work model
   def self.sort_by_most_recent_vote(array_of_works)
+    return array_of_works.sort_by{|work| work.most_recent_vote_date}
+  end
+
+# Returns a date for a single work
+  def most_recent_vote_date
     most_recent_vote_date = self.votes.reduce(0) do |most_recent_vote_date, vote|
       vote.created_at > most_recent_vote_date ? vote.created_at : most_recent_vote_date
     end
@@ -44,8 +48,6 @@ class Work < ApplicationRecord
       # (Integer 0 cannot be compared with Date objects)
       most_recent_vote_date = Date.jd(0)
     end
-
-    return array_of_works.sort_by{|work| work.most_recent_vote_date}
   end
 
 # Helper method for #home in WorksController
