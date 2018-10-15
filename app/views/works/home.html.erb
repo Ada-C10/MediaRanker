@@ -14,23 +14,22 @@
   <section class = "top-ten row">
 
     <% @works.each_key do |category| %>
-<section class= "top-ten-list-container col-4">
-      <h2 class="text-info top-ten-header">Top 10 <%= category.capitalize %>s</h2>
+      <section class= "top-ten-list-container col-4">
+        <h2 class="text-info top-ten-header">Top 10 <%= category.capitalize %>s</h2>
 
-       <ul class="list-group top-ten list">
+        <ul class="list-group top-ten list">
           <% if @works[category].size == 0 %>
-          <li class="list-group-item border-0"><%= "No #{category}s yet!"%></li>
+            <li class="list-group-item border-0"><%= "No #{category}s yet!"%></li>
           <% else %>
-
-          <% @works[category].each do |work| %>
-            <li class="list-group-item border-0"><h3><%= link_to work.title, work_path(work.id) %></h3>
-          <h4>by <%= work.creator %></h4>
-          <p><%= work.print_number_of_votes %></p></li>
+            <% @works[category].each do |work| %>
+              <li class="list-group-item border-0 m-0 mt-1 p-0 d-flex"><h3 class = "m-0 p-0"><%= link_to work.title, work_path(work.id) %></h3>
+               <span class="badge badge-light badge-pill ml-auto mb-auto mt-2"><%= work.print_number_of_votes %></span></li>
+              <li class="list-group-item border-0 mb-3 p-0 d-flex">by <%= work.creator %></li>
+            <% end %>
           <% end %>
         </ul>
-        <% end %>
-            </section>
-      <% end %>
+      </section>
+    <% end %>
 
 
   </section>
