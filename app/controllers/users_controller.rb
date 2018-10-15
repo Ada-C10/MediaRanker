@@ -57,7 +57,7 @@ class UsersController < ApplicationController
         flash[:success] = "bro nice upvote! i saw that!! high five for the positivity bro.."
         show_redirect
       else
-        flash[:error] = "uh bro something did not work sorry :/ (ps i'm bailing)"
+        flash[:error] = "uh bro something did not work sorry :/ (ps i'm bailing) [maybe try tagging in first bro?]"
         show_redirect
       end
     end
