@@ -48,25 +48,7 @@ class WorksController < ApplicationController
     @work.destroy
     redirect_to homes_path
   end
-
-
-  def upvote
-    user = User.find_by(id: session[:user_id])
-    work = Work.find_by(id: params[:id])
-    @vote = Vote.new(user: user, work: work)
-
-    if @vote.save
-      flash[:success] = "Successfully upvoted!"
-      redirect_to works_path
-    else
-      flash[:error] = "You can't vote!"
-      redirect_to works_path
-    end
-
-
-  end
-
-
+  
   private
 
   def work_params
@@ -76,4 +58,5 @@ class WorksController < ApplicationController
   def find_work
     @work = Work.find_by(id: params[:id])
   end
+
 end

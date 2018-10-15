@@ -2,10 +2,11 @@
   <section class="spotlight">
     <h2 class="spotlight-header">
       <span class="media-spotlight">🔦 Media Spotlight: </span>
-      <a class="spotlight-link-to" href=LINK>TITLE</a> by AUTHOR
+      <a class="spotlight-link-to" href="/works/<%=@works.spotlight.id%>"><%= @works.spotlight.title %></a> by <%= @works.spotlight.creator %>
     </h2>
     <p class="spotlight__description">
-      description
+      <%= @works.spotlight.votes.length %> votes -
+      <%= @works.spotlight.description %>
     </p>
   </section>
 
