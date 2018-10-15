@@ -14,7 +14,7 @@
 </section>
 
 <section class="works-votes__container">
-  <h3 class="works-votes__header">!!!!!!!10 Votes for this Album</h3>
+  <h3 class="works-votes__header"><%= @work.count_votes %> votes for this <%= @work.category %></h3>
   <table class="table">
     <thead>
       <tr>

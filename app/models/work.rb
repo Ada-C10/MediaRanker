@@ -11,25 +11,31 @@ class Work < ApplicationRecord
     @categories = ["album", "book", "movie"]
   end
 
+  def self.categorize_works(work_category)
+    return self.where(category: work_category)
+  end
+
   def count_votes
     return self.votes.length
   end
 
-  def self.sort_works(works)
-    works_by_vote = works.sort_by{|work| work.count_votes}.reverse
+  def self.sort_works(work_category)
+    cat_works_array = categorize_works(work_category)
+    works_by_vote = cat_works_array.sort_by{|work| work.count_votes}.reverse
     return works_by_vote
   end
 
-  def self.gen_top_ten_works(works_by_category)
-    works_by_vote = self.sort_works(works_by_category)
+  def self.gen_top_ten_works(work_category)
+    works_by_vote = self.sort_works(work_category)
     @top_ten = works_by_vote.first(10)
     return @top_ten
   end
 
 
-  def self.gen_top_work(all_works)
-    works_by_vote = self.sort_works(all_works)
-    @top_work = works_by_vote.first
+  def self.gen_top_work
+    all_works = Work.all
+    all_works_by_vote = all_works.sort_by{|work| work.votes.length}
+    @top_work = all_works_by_vote.last #sort_by --> ascending order
     return @top_work
   end
 

@@ -1,17 +1,9 @@
 class WorksController < ApplicationController
 
   def index
-    # TODO: DRY THIS UP - REPEAT W WELCOME CONTROLLER!!
-
-    albums = Work.where(category: 'album')
-    books = Work.where(category: 'book')
-    movies = Work.where(category: 'movie')
-
-
-    @albums = Work.sort_works(albums)
-    @books = Work.sort_works(books)
-    @movies = Work.sort_works(movies)
-
+    @albums = Work.sort_works('album')
+    @books = Work.sort_works('book')
+    @movies = Work.sort_works('movie')
   end
 
   def show
@@ -20,8 +12,6 @@ class WorksController < ApplicationController
     else
       return head :not_found
     end
-
-    # @votes = @work.votes ??
   end
 
   def new
