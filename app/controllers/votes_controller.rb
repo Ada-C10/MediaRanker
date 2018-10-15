@@ -4,7 +4,7 @@ class VotesController < ApplicationController
   end
 
   def new
-    user = @logged_in_user
+    user = User.find_by(id: session[:user_id])
     work = Work.find_by(id: params[:work_id])
     if user
       @vote = @work.votes.new(user)
@@ -15,7 +15,7 @@ class VotesController < ApplicationController
 
   def create
     work = Work.find_by(id: params[:work_id])
-    user = @logged_in_user
+    user = User.find_by(id: session[:user_id])
     @vote = Vote.new(work_id: work.id, user_id: user.id)
     # raise
     if @vote.save
