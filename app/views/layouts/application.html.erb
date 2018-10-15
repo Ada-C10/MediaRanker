@@ -8,36 +8,39 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One">
   </head>
 
   <body>
 
-    <header>
-      <div class="jumbotron">
-        <h1 class="display-4"><%= link_to "MediaRanker", root_path %> | Ranking the Best of Everything</h1>
+    <header class="pt-4 pb-1 text-center bg-light">
+        <h1 class="d-inline font-weight-bold"><%= link_to "Media Ranker", root_path, class: "text-primary pr-4" %>
+        <small class= "d-inline text-white font-weight-light pl-3">Ranking the Best of Everything</small>
+        </h1>
 
         <nav>
-          <ul>
-            <li><%= link_to "Top Media on MediaRanker (Home)", root_path %></li>
-            <li><%= link_to "View All Media", works_path %></li>
-            <li><%= link_to "Add A New Work", new_work_path %></li>
-            <li><%= link_to "View All Users", users_path %></li>
+          <!-- TODO: add hamburger menu  -->
+          <ul class="nav pt-5 pr-3 pb-1 pl-1">
+            <li class="nav-item"><%= link_to "View Top Media", root_path, class: "nav-link text-info" %></li>
+            <li class="nav-item"><%= link_to "View All Media", works_path, class: "nav-link text-info"%></li>
+            <li class="nav-item"><%= link_to "Add A New Work", new_work_path, class: "nav-link text-info" %></li>
+            <li class="nav-item"><%= link_to "View All Users", users_path, class: "nav-link text-info" %></li>
             <% if @current_user %>
-              <li><%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary btn-lg", role: "button"%> (logged in as <%= link_to "#{@current_user.name}", user_path(@current_user.id) %>)</li>
+              <li class="nav-item mr-4 ml-auto"><%= link_to "Logged in as #{@current_user.name}", user_path(@current_user.id), class: "btn btn-info", role: "button" %></li>
+              <li class="nav-item"><%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-info", role: "button"%></li>
             <% else %>
-              <li><%= link_to "Log In", login_path, class: "btn btn-primary btn-lg", role: "button" %></li>
+              <li class="nav-item ml-auto"><%= link_to "Log In", login_path, class: "btn btn-info", role: "button" %></li>
             <% end %>
           </ul>
         </nav>
-      </div>
-
-
+    </header>
+    <section class = "flash">
       <section class="flash flash-session">
         <% if @current_user %>
-          <div class="alert-info">
+          <div class="alert-info pl-5 py-2">
           <%= "#{session[:salutation]} #{@current_user.name}! You're logged in!" %>
         <% else %>
-          <div class="alert-warning">
+          <div class="alert-warning pl-5">
           <%= "You are not logged in. Please log in to vote." %>
         <% end %>
           </div>
@@ -46,19 +49,20 @@
       <section class="flash">
         <% flash.each do |name, message| %>
         <% if message.class == Array %>
-          <div class="alert-warning">
+          <div class="alert-warning pl-5">
             <% message.each do |msg| %>
-              <strong>(Array) <%= "#{name}".capitalize %></strong> <%= "#{msg}" %></div>
+              <strong><%= "#{name}".capitalize %></strong> <%= "#{msg}" %></div>
             <% end %>
           <% else %>
-            <div class="alert-danger alert-<%= name %>"><strong>(Item) <%= "#{name}".capitalize %>:</strong> <%= "#{message}" %></div>
+            <div class="alert-danger pl-5 alert<%= name %>"><strong><%= "#{name}".capitalize %>:</strong> <%= "#{message}" %></div>
           <% end %>
         <% end %>
       </section>
+    </section>
 
-    </header>
-
+    <section class= "main px-5">
     <%= yield %>
+    </section>
 
     <footer>
       <p>cranky ranky © <%= Date.today.year %> <%= link_to "sammi-jo lee", "https://github.com/sjlee3157", target: "_blank" %></p>

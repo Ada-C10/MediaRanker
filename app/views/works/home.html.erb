@@ -1,23 +1,37 @@
-<h1>Media Spotlight:
+<section class="spotlight mt-5 px-5 pb-2">
+  <h2>Media Spotlight:
   <% if @spotlight == nil %>
-  <%= "(no votes yet)" %>
+    <%= "(no votes yet)" %>
   <% else %>
-  <%= link_to @spotlight.title, work_path(@spotlight.id) %> by <%= @spotlight.creator %></h1>
-<h4><%= "#{@spotlight.print_number_of_votes} - #{@spotlight.description}" %></h4>
-<% end %>
-  <% @works.each_key do |category| %>
-<h2>TOP 10 <%= category.upcase %>S</h2>
-  <% if @works[category].size == 0 %>
-  <p><%= "No #{category}s yet!" %></p>
-  <% else %>
-    <ul>
-      <% @works[category].each do |work| %>
-        <li><h3><%= link_to work.title, work_path(work.id) %></h3></li>
-        <ul>
-          <li><h4>by <%= work.creator %></h4></li>
-          <li><h4><%= work.print_number_of_votes %></h4></li>
-        </ul>
-      <% end %>
-    </ul>
-    <% end %>
+    <%= link_to @spotlight.title, work_path(@spotlight.id), class: "text-info link-underline" %><p class="text-info d-inline"> by <%= @spotlight.creator %></p></h2>
+  <p><%= "#{@spotlight.print_number_of_votes} - #{@spotlight.description}" %></p>
   <% end %>
+</section>
+
+<hr>
+
+<section class = "mt-5 top-ten-container-fluid">
+  <section class = "top-ten row">
+
+    <% @works.each_key do |category| %>
+<section class= "top-ten-list-container col-4">
+      <h2 class="text-info top-ten-header">Top 10 <%= category.capitalize %>s</h2>
+
+       <ul class="list-group top-ten list">
+          <% if @works[category].size == 0 %>
+          <li class="list-group-item border-0"><%= "No #{category}s yet!"%></li>
+          <% else %>
+
+          <% @works[category].each do |work| %>
+            <li class="list-group-item border-0"><h3><%= link_to work.title, work_path(work.id) %></h3>
+          <h4>by <%= work.creator %></h4>
+          <p><%= work.print_number_of_votes %></p></li>
+          <% end %>
+        </ul>
+        <% end %>
+            </section>
+      <% end %>
+
+
+  </section>
+</section>
