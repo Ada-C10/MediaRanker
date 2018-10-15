@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+hannah:
+  user_name: hertweckhr1
+
+banana:
+  user_name: bonanza
+
+sam:
+  user_name: samantha
+
+johnie:
+  user_name: johnie

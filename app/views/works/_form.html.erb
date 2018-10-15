@@ -1,0 +1,39 @@
+<main>
+  <h1><%= page_title %></h1>
+  <div class="new-work">
+    <%= form_with model: @work do |f| %>
+
+      <div class="form-group">
+        <%=f.label :category %>
+        <!-- Could do the following, but will need to create a method in work
+        to be able to handle if one category is not yet posted -->
+        <%#=f.select :category, Work.all.map { |work| [work.category]}.uniq %>
+        <%#= f.select :category, ['album', 'book', 'movie'], class: "form-control" %>
+        <select class="form-control" name="work[category]">
+          <option value="album">album</option>
+          <option value="book">book</option>
+          <option value="movie">movie</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :creator %>
+        <%= f.text_field :creator, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :publication_year %>
+        <%= f.text_field :publication_year, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary"  %>
+      </div>
+    <% end %>
+  </div>
+</main>

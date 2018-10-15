@@ -1,0 +1,44 @@
+<% if @work.nil? %>
+  <h1> 404 Not found</h1>
+<% else %>
+  <main>
+    <section class="work info">
+      <h2><%= @work.title %></h1>
+      <p>Created by:<%= @work.creator%></p>
+      <p>Published:<%= @work.publication_year%></p>
+      <p><%= @work.description %></p>
+    </section>
+    <section>
+      <%= link_to "Back to media ranks", root_path, class: "btn btn-primary" %>
+      <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary"%>
+      <%= link_to "Upvote", upvote_path(@work.id), class: "btn btn-primary", rel: "nofollow", method: "post" %>
+      <%= link_to "Delete", work_path(@work.id), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
+    </section>
+  </body>
+  <!-- Will want to change it to #of votes for this media category -->
+  <section class="works-votes__container">
+    <h3 class="works-votes__header"><%= @work.votes.count %> Votes for this <%= @work.category %></h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @work.votes.each do |vote| %>
+        <tr>
+          <!-- Should I create a find_by method in model or is this okay? -->
+          <td><%=link_to "#{vote.user.user_name}", user_path(vote.user_id) %></td>
+          <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+        <tr>
+        <%end%>
+      </tbody>
+    </table>
+  </section>
+  </main>
+
+
+
+
+<%end%>

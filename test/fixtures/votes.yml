@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+harry_votes:
+  user: hannah
+  work: harry_potter
+
+wheel_votes:
+  user: bonanza
+  work: wheel_of_time
+
+vote_3:
+  user: hannah
+  work: wheel_of_time

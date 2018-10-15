@@ -1,0 +1,85 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+harry_potter:
+  title: Goblet of Fire
+  creator: J.K. Rowling
+  publication_year: 2005
+  description: Enchanting and heart-wrenching.
+  category: movie
+
+wheel_of_time:
+  title: Knife of Dreams
+  creator: Robert Jordan
+  publication_year: 2001
+  description: The dragon reborn continues to struggle with madness as he seeks to save humanity
+  category: book
+
+Boncroft:
+  title: Alias
+  creator: Pam
+  publication_year: 1981
+  description: stunning
+  category: book
+
+Beetles:
+  title: Beatles Reborn
+  creator: Allistor
+  publication_year: 1802
+  description: Simple
+  category: book
+
+ET:
+  title: ET Phone Home
+  creator: Mr. Gadget
+  publication_year: 1950
+  description: where are you from?
+  category: book
+
+Pickle:
+  title: How to Pickle
+  creator: Shelley Sue
+  publication_year: 2015
+  description: Must have in the kitchen
+  category: book
+
+dear_diary:
+  title: Dear Diary
+  creator: Cat Morrison
+  publication_year: 1987
+  description: dull memoir
+  category: book
+
+fabulous_people:
+  title: I dream of People
+  creator: Fabby Sue
+  publication_year: 2004
+  description: inspiring
+  category: book
+
+wheel_of_time:
+  title: Knife of Dreams
+  creator: Robert Jordan
+  publication_year: 1994
+  description: The dragon reborn continues to struggle with madness as he seeks to save humanity
+  category: book
+
+green_eggs_and_ham:
+  title: Green Eggs and Ham
+  creator: Dr. Suess
+  publication_year: 1974
+  description: children's classic
+  category: book
+
+stinky_cheese_man:
+  title: Stinky Cheese Man
+  creator: Dr. Soup
+  publication_year: 1999
+  description: hilarious
+  category: book
+
+ugly_duckling:
+  title: Ugly Duckling
+  creator: Shell Silverstein
+  publication_year: 1
+  description: classic children's story
+  category: book
