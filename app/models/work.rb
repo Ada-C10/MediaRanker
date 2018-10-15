@@ -25,4 +25,8 @@ class Work < ApplicationRecord
   #   return @works
   # end
 
+  def tally_votes
+    num_votes = self.votes.count
+      return num_votes
+  end
 end
