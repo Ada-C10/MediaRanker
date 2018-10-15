@@ -2,17 +2,18 @@
 <p> Here they are! </p>
 
 <!-- album, book, movie -->
-      <tr>
+<table>
         <% @works.each do |work| %>
         <!-- for each category, add the works associated with it, unordered, under the correct table header -->
-        <td>
-          <%= link_to "#{work.title}", work_path(work.id) %>
-        </td>
-        <td>
-          <%= "#{work.votes.count}"%>  votes </td>
-      </tr>
+        <tr>
+          <td>
+            <%= link_to "#{work.title}", work_path(work.id) %> by <%= "#{work.creator}" %>
+          </td>
+          <td>
+            <%= "#{work.votes.count}"%>  votes
+          </td>
+        </tr>
       <% end %>
-</tbody>
 </table>
 
 

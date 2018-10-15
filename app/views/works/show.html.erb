@@ -12,7 +12,7 @@
  <ul>
    <li> <%= @work.title %> </li>
    <li> <%= @work.creator %> </li>
-   <li> <%= @work.category_id.type %> </li>
+   <li> <%= @work.category %> </li>
    <li> <%= @work.year %> </li>
    <li> <%= @work.description %> </li>
  </ul>
@@ -23,4 +23,22 @@
     <% else %>
     You must be logged in to delete or edit a work.
   <% end %>
+
+
+ <table>
+   <thead>
+     <tr>
+         <th>User</th>
+         <th>Date</th>
+       </tr>
+   </thead>
+   <tbody>
+     <% @work.votes.each do |vote| %>
+     <tr>
+       <td> <%= link_to "#{vote.user.handle}", user_path(vote.user_id) %> </td>
+       <td> <%= "#{vote.created_at.strftime ("%b. %d, %Y")}" %> </td>
+     </tr>
+     <% end %>
+   </tbody>
+ </table>
  <% end %>
