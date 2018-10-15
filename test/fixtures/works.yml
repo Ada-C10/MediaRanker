@@ -13,3 +13,10 @@ valid_nil:
   creator: Some Artist
   publication: 1000
   description: nil
+
+parable_album:
+  title: Parable of the Sower
+  category: movie
+  creator: butler
+  publication: 1979
+  description: all that you touch, you change. changes you.
