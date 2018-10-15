@@ -1,0 +1,146 @@
+<div class="container">
+
+  <div class="div5">
+    <h2>List of Works</h2>
+  </div>
+
+
+  <section class="media-table">
+    <h4>Albums</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created by</th>
+          <th>Published</th>
+          <th>Upvote</th>
+        </tr>
+      </thead>
+
+      <% @albums.each do |album| %>
+      <tr>
+        <th><%= album.votes.count %></th>
+        <th><%= link_to album.title, work_path(album.id) %></th>
+        <th><%= album.creator %></th>
+        <th><%= album.publication_year %></th>
+        <th><%= link_to "Upvote", upvote_path(album.id), method: :post, class: "upvote-link" %></th>
+      </tr>
+      <% end %>
+    </table>
+  </section>
+
+  <section class="media-table">
+    <h4>Books</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created by</th>
+          <th>Published</th>
+          <th>Upvote</th>
+        </tr>
+      </thead>
+
+      <% @books.each do |book| %>
+      <tr>
+        <th><%= book.votes.count %></th>
+        <th><%= link_to book.title, work_path(book.id) %></th>
+        <th><%= book.creator %></th>
+        <th><%= book.publication_year %></th>
+        <th><%= link_to "Upvote", upvote_path(book.id), method: :post, class: "upvote-link" %></th>
+      </tr>
+      <% end %>
+
+    </table>
+  </section>
+
+  <section class="media-table">
+    <h4>Movies</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created by</th>
+          <th>Published</th>
+          <th>Upvote</th>
+        </tr>
+      </thead>
+
+      <% @movies.each do |movie| %>
+      <tr>
+        <th><%= movie.votes.count %></th>
+        <th><%= link_to movie.title, work_path(movie.id) %></th>
+        <th><%= movie.creator %></th>
+        <th><%= movie.publication_year %></th>
+        <th><%= link_to "Upvote", upvote_path(movie.id), method: :post, class: "upvote-link" %></th>
+      </tr>
+      <% end %>
+    </table>
+  </section>
+</div>
+
+<!-- <div class="album">
+<h2>ALBUMS</h2>
+<ol class="album">
+<% @works.each do |work| %>
+<% if work.category == "book" %>
+<li>
+<p>
+<strong><%= link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
+</p>
+<p>
+<%= "#{work.votes.count}" %> votes
+</p>
+<%= link_to "Edit", edit_work_path(work.id), class: "edit-link" %> |
+<%= link_to "Delete", work_path(work.id), method: :delete, data: {confirm: "Are you sure you want to get rid of work #{work.title}?" } %>
+</li>
+</ol>
+<% end %>
+</div>
+<% end %>
+
+
+<div class="book">
+<h2>BOOKS</h2>
+<ol class="book">
+<% @works.each do |work| %>
+<% if work.category == "book" %>
+<li>
+<p>
+<strong><%= link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
+</p>
+<p>
+<%= "#{work.votes.count}" %> votes
+</p>
+<%= link_to "Edit", edit_work_path(work.id), class: "edit-link" %> |
+<%= link_to "Delete", work_path(work.id), method: :delete, data: {confirm: "Are you sure you want to get rid of work #{work.title}?" } %>
+</li>
+</ol>
+<% end %>
+</div>
+<% end %>
+
+<div class="movie">
+<h2>MOVIES</h2>
+<ol class="movie">
+<% @works.each do |work| %>
+<% if work.category == "movie" %>
+<li>
+<p>
+<strong><%= link_to work.title, work_path(work.id) %></strong> by <%= "#{work.creator}" %>
+</p>
+<p>
+<%= "#{work.votes.count}" %> votes
+</p>
+<%= link_to "Edit", edit_work_path(work.id), class: "edit-link" %> |
+<%= link_to "Delete", work_path(work.id), method: :delete, data: {confirm: "Are you sure you want to get rid of work #{work.title}?" } %>
+<%= link_to "Upvote", upvote_path(work.id), method: :post, class: "upvote-link" %>
+</li>
+</ol>
+<% end %>
+
+</div>
+<% end %> -->

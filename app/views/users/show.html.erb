@@ -1,0 +1,52 @@
+
+<section class="user-detail-summary">
+  <div class="description-container">
+
+    <h2>User Summary: <%= @user.username %></h2>
+    <p>Joined site on: <%= @user.created_at.strftime("%B %d, %Y") %></p>
+  </div>
+
+  <div class="links-bar">
+    <%= link_to "Back to all users", users_path, class: "all_users" %>
+    <%= link_to "Return to all media", root_path, class: "homepage" %>
+  </div>
+</section>
+
+<div class="user-table-container">
+
+  <table class="user_table">
+    <h3>Votes</h3>
+    <tr>
+      <th>Media title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Category</th>
+      <th>Voted On</th>
+    </tr>
+
+    <% @user.votes.each do |vote| %>
+    <tr>
+      <th><%= vote.work.title %></th>
+      <th><%= vote.work.creator %></th>
+      <th><%= vote.work.publication_year %></th>
+      <th><%= vote.work.created_at.strftime("%B %d, %Y") %></th>
+      <% end %>
+    </tr>
+  </table>
+</div>
+
+
+<div class="end-of-list-links">
+
+  <div class="return-to-users">
+    <h3>
+      <%= link_to "See All Users", users_path, class: "all-users" %>
+    </h3>
+  </div>
+
+  <div class="return-home">
+    <h3>
+      <%= link_to "Return Home", root_path, class: "homepage" %>
+    </h3>
+  </div>
+</div>

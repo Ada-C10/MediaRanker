@@ -1,0 +1,47 @@
+<div class="container">
+
+  <section class="highlight-section">
+    <h2>Media Spotlight: <%= @top_vote.title %></h2>
+    <p><%= @top_vote.votes.count %> votes - <%= @top_vote.description %></p>
+  </section>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3"
+        <h2>Top Movies</h2>
+        <% @movies.first(10).each do |movie| %>
+        <h4><%= movie.title %></h4>
+        <p>by <%= movie.creator %></p>
+        <p><%= movie.votes.count %> votes</p>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-3">
+        <h2>Top Books</h2>
+        <% @books.first(10).each do |book| %>
+        <h4><%= book.title %></h4>
+        <p>by <%= book.creator %></p>
+        <p><%= book.votes.count %> votes</p>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-3">
+        <h2>Top Albums</h2>
+        <% @albums.first(10).each do |album| %>
+        <h4><%= album.title %></h4>
+        <p>by <%= album.creator %></p>
+        <p><%= album.votes.count %> votes</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+</div>

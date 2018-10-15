@@ -1,0 +1,38 @@
+<section class="work-detail-summary">
+  <div class="description-container">
+
+    <h2><%= link_to @work.title, work_path(@work.id) %></h2>
+
+    <p class="description-text">Created by:<%= @work.creator %></p>
+    <p class="description-text">Published:<%= @work.publication_year %></p>
+    <p class="description-text"><%= @work.description %></p>
+  </div>
+
+  <div class="links-bar">
+    <%= link_to "Back to media ranks", works_path, class: "all_works" %>
+    <%= link_to "Edit", edit_work_path(@work.id), class: "edit-link" %>
+    <!-- upvote goes here -->
+    <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to get rid of work #{@work.title}?" } %>
+    <li><%= link_to "Upvote", upvote_path(@work.id), method: :post, class: "upvote-link" %></li>
+  </div>
+</section>
+
+<h3><%= @work.votes.count %> Votes for this <%= @work.category %></h3>
+
+<section class="work-table-section" %>
+
+  <table class="work_table">
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+
+    <tr>
+      <% @work.votes.each do |vote| %>
+      <th><%= link_to vote.user.username, work_path(@work.id) %></th>
+      <th><%= vote.created_at.strftime("%B %d, %Y") %></th>
+    </br>
+  </tr>
+  <% end %>
+</table>
+</section>

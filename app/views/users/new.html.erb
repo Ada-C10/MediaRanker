@@ -1,0 +1,11 @@
+<%= form_with model: @user, class: 'user-form' do |f| %>
+
+<h3>Create New Media Form</h3>
+
+<div class="user-form">
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+
+  <%= f.submit action_name, class: "user btn" %>
+  <% end %>
+</div>
