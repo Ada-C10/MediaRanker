@@ -21,6 +21,7 @@
             <!-- for each category, add the works associated with it, unordered, under the correct table header -->
             <tr>
               <td>
+                <%= "#{work.votes.count}" %>
               </td>
               <td>
                 <%= link_to "#{work.title}", work_path(work.id) %>
