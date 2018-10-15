@@ -51,6 +51,9 @@ describe Work do
       book_list = Work.list_works_by_category('book')
       expect ( book_list.length ).must_equal 2
     end
+  end
+
+  describe 'orders works in a category by votes' do
 
     it 'correctly lists works in order of votes, most' do
       expect ( Work.order_works_by_category('book').first.id ).must_equal 298486374
