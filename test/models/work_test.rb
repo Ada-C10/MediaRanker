@@ -16,18 +16,19 @@ describe Work do
   end
 
   # describe 'Relationships' do
-  #   it 'belongs to an author' do
+  #   it 'can have many votes' do
   #     # Arrange (done with let)
-  #
+  #     work = works(:harrypotter)
+  #     new_vote = votes(:voteone)
   #     # Act
-  #     author = book.author
+  #     vote = work.votes
   #
   #     # Assert
-  #     expect(author).must_be_instance_of Author
-  #     expect(author.id).must_equal book.author_id
+  #     expect(vote).must_be_instance_of Vote
+  #     expect(vote.id).must_equal work.votes_id
   #   end
   #
-  #   it 'can have many genres' do
+  #   it 'can have many users' do
   #     # Arrange, did with let
   #
   #     # Act
@@ -41,7 +42,7 @@ describe Work do
   #       expect(genre).must_be_instance_of Genre
   #     end
   #   end
-  # end
+  #end
 
   describe 'validations' do
     it 'must have a title' do

@@ -1,7 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  username: MyString
+danielle:
+  username: Danielle
 
-two:
-  username: MyString
+jane:
+  username: Jane
+
+austin:
+  username: Austin
+
+renee:
+  username: Renee
+
+tom:
+  username: Tom

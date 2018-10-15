@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 harrypotter:
-  title: 'Harry Potter'
-  creator: 'Warner Brothers'
+  title: Harry Potter
+  creator: Warner Brothers
   publication_year: 2005
-  description: 'A movie about Harry Potter'
-  category: 'movie'
+  description: A movie about Harry Potter
+  category: movie
 
 pride:
-  title: 'Pride & Prejudice'
-  creator: 'Jane Austen'
-  publication_year: '1990'
-  description: 'Mr. Darcy'
-  category: 'book'
+  title: Pride & Prejudice
+  creator: Jane Austen
+  publication_year: 1990
+  description: Mr. Darcy
+  category: book
