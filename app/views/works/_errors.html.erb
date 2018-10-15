@@ -1,0 +1,11 @@
+<% if @work.errors.messages.any? %>
+<ul class="errors">
+  <% @work.errors.each do |column, message| %>
+  <li>
+    <%= column.capitalize %>
+    <%= message %>
+  </li>
+  <% end %>
+
+</ul>
+<% end %>

@@ -1,47 +1,5 @@
-<% if @work.errors.messages.any? %>
-<ul class="errors">
-  <% @work.errors.each do |column, message| %>
-  <li>
-    <%= column.capitalize %>
-    <%= message %>
-  </li>
-  <% end %>
-
-</ul>
-<% end %>
+<%= render partial: "errors" %>
 
 <h1>Add a new work</h1>
 
-
-  <%= form_with model: @work do |f| %>
-
-  <div class="form-group">
-      <%= f.label :category %>
-      <%= f.select :category, [['album', 'album'], ['book', 'book'], ['movie', 'movie']], {}, {class: "form-control"} %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control"  %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :creator %>
-    <%= f.text_field :creator, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :publication_year %>
-    <%= f.text_field :publication_year, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, cols: 5, rows:2, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit "Create Work", class: "btn btn-primary"  %>
-  </div>
-
-  <% end  %>
+<%= render partial: "form", locals: { action_name: "Create Work"} %>
