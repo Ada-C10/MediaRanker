@@ -21,6 +21,10 @@ body {
   font-family: "Gudea", sans-serif;
 }
 
+main {
+  padding: 2rem;
+}
+
 h1, h2, h3, h4, h5 {
     font-weight: bold;
 }
@@ -99,4 +103,8 @@ section .failure, section .form_errors{
   color: #856404;
   background-color: #fff3cd;
   border-color: #ffeeba;
+}
+
+.spotlight__header--prefix {
+  color: #424242;
 }
