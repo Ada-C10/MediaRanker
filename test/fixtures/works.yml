@@ -1,0 +1,24 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+harrypotter:
+  title: Harry Potter
+  creator: JK Rowling
+  publication_year: 1990
+  category: movie
+  description: magical movie
+
+
+
+poodrbook:
+  title: Practical OOD in Ruby
+  creator: metz
+  publication_year: 2014
+  category: book
+  description: Not Poopr
+
+poodrmovie:
+  title: Practical OOD in Ruby
+  creator: metz
+  publication_year: 2014
+  category: movie
+  description: Not Poopr

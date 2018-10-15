@@ -1,0 +1,21 @@
+
+<%= form_with model: @work, method: method, local: true do |f|%>
+<h1><%= action_name %></h1>
+  <%= f.label :category, "Category"%>
+  <%= f.select :category, ['movie', 'album','book']%>
+  <br>
+  <%= f.label :title , "Title"%>
+  <%= f.text_field :title%>
+  <br>
+  <%= f.label :creator , "Creator"%>
+  <%= f.text_field :creator%>
+  <br>
+  <%= f.label :publication_year , "Published"%>
+  <%= f.text_field :publication_year%>
+
+  <%= f.label :description, "Description"%>
+  <%= f.text_field :description %>
+  <br>
+
+  <%= f.submit %>
+<%end%>

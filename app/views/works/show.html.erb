@@ -1,0 +1,43 @@
+<main>
+  <% if @work.nil? %>
+  <h1><%= "404: NOT FOUND" %></h1>
+  <% else %>
+  <section>
+    <h2> <%= @work.title %></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year%></p>
+    <p><%= @work.description%></p>
+    <section>
+      <a class="btn btn-primary" href="/">Back to Media Ranks</a>
+      <a class="btn btn-primary" href="/works/<%=@work.id%>/edit">Edit</a>
+      <a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/<%=@work.id%>/upvote">Upvote</a>
+      <a class="btn btn-danger" data-confirm="Are you sure you want to delete?" rel="nofollow" data-method="delete" href="/works/<%=@work.id%>">Delete</a>
+    </section>
+  </section>
+  <section class="works-votes__container">
+    <h3 class="works-votes__header"><%=@work.votes.count%> Votes for this <%=@work.category.capitalize%></h3>
+    <table class="table">
+      <thead>
+        <tr class="header_font">
+          <th>User</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <%@work.votes.each do |vote| %>
+      <% user = User.find_by(id: vote.user_id.to_i)%>
+      <tbody>
+        <tr>
+          <td>
+            <a href="/users/<%=user.id%>"> <%=user.username%></a>
+          </td>
+          <td><%=vote.created_at%></td>
+        </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </section>
+</thead>
+</table>
+</section>
+<%end%>
+</main>

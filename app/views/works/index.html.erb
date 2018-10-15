@@ -1,0 +1,34 @@
+<main>
+  <h2>List of Works</h2>
+  <%['movie', 'book', 'album'].each do |category| %>
+  <section class="media-table">
+    <h4><%=category.capitalize%>s </h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th width="80">Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@works = Work.sort_by_votes(category)%>
+        <% @works.each do |work| %>
+        <tr>
+          <td><%=work.votes.count%></td>
+          <td><a href="/works/<%=work.id%>"><%=work.title%></a></td>
+          <td><%=work.creator%></td>
+          <td><%=work.publication_year%></td>
+          <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/<%=work.id%>/upvote">Upvote</a></td>
+          </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </section>
+  </section>
+  <%end%>
+  <a class="btn btn-secondary" href="/">View Top Media</a>
+  <a class="btn btn-primary" href="/works/new">Add a new work</a>
+</main>
