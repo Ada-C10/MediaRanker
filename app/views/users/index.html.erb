@@ -1,3 +1,21 @@
-<h3>Users!</h3>
+<h3>List of Users</h3>
 
-<h2>Votes for this</h2>
+<table cellpadding="10">
+<thead>
+  <tr>
+    <td><strong>Username</strong></td>
+    <td><strong>Votes</strong></td>
+    <td><strong>Date Joined</strong></td>
+  </tr>
+  </thead>
+
+<tbody>
+  <% @user.each do |u| %>
+  <tr>
+    <td><%= link_to u.user_name %></td>
+    <td><%= u.votes %></td>
+    <td><%= u.created_at.strftime("%b %d %Y") %></td>
+
+    <% end %>
+</tr>
+</tbody>

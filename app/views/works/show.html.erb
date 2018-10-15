@@ -13,21 +13,22 @@
 <h4><%= "Votes for #{@work.category}" %></h4>
 
 <table cellpadding="20">
-
   <thead>
     <tr>
-      <th>Users</th>
-      <% @work.votes.each do |vote| %>
-        <li>
-        <%= vote.user.user_name %>
-        </li>
-      <% end %>
-      <th>Date</th>
-      <% @work.votes.each do |date| %>
-        <%= date.user.created_at %>
-      <% end %>
+      <td>Users</td>
+      <td>Date</td>
     </tr>
   </thead>
+
+  <tbody>
+      <% @work.votes.each do |vote| %>
+      <tr>
+        <td><%= vote.user.user_name %></td>
+        <td><%= vote.user.created_at.strftime("%b %d %Y") %></td>
+      <% end %>
+    </tr>
+  </tbody>
+
 
 
 
