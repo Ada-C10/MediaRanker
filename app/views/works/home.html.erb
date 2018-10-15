@@ -1,14 +1,12 @@
 <h1>Home page</h1>
-<section class="spotlight">
-    <h2 class="spotlight__header">
-      <span class="spotlight__header--prefix">Media Spotlight</span>
-      <a class="spotlight__link-to"> <%= link_to @works.first.title, work_path(@works.first.id)%> by
-        <%= @works.first.total_votes %> votes -
+<h2>
+  <%= link_to @works.first.title, work_path(@works.first.id)%> by
+  <%= @works.first.total_votes %> votes -
 
-    </h2>
-    <p class="spotlight__description">
-    </p>
-  </section>
+</h2>
+
+</p>
+</section>
 
 <h4> Albums </h4>
 
@@ -59,34 +57,34 @@
         <td><%= "#{book.publication_year}"%></td>
 
 
-          <% end %>
-        </tr>
-      </tbody>
-    </table>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
 
 
-    <h4> Movies </h4>
+  <h4> Movies </h4>
 
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Votes</th>
-          <th scope="col">Title</th>
-          <th scope="col">Created By</th>
-          <th scope="col">Published</th>
-        </tr>
-      </thead>
-      <tbody>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+      </tr>
+    </thead>
+    <tbody>
 
-        <% @movies.each do |movie| %>
-        <tr>
-          <th scope="row"><%= "#{movie.total_votes}"%></th>
-          <td><%= link_to "(#{movie.title})", work_path(movie.id) %></td>
-          <td><%= "#{movie.creator}"%></td>
-          <td><%= "#{movie.publication_year}"%></td>
+      <% @movies.each do |movie| %>
+      <tr>
+        <th scope="row"><%= "#{movie.total_votes}"%></th>
+        <td><%= link_to "(#{movie.title})", work_path(movie.id) %></td>
+        <td><%= "#{movie.creator}"%></td>
+        <td><%= "#{movie.publication_year}"%></td>
 
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>

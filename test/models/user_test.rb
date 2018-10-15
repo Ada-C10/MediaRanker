@@ -1,5 +1,4 @@
 require "test_helper"
-require 'pry'
 
 describe User do
   # let(:user) { User.new }
