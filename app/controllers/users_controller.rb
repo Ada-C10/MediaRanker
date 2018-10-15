@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  
+
 
   def index
     @users = User.all.order(:username)
@@ -25,19 +25,6 @@ class UsersController < ApplicationController
     end
   end
 
-
-
-
-
-  # def create
-  #   @user = User.new(user_params)
-  #   if @user.save
-  #     redirect_to user_path(@user.id)
-  #   else
-  #     render :new
-  #   end
-  # end
-
   def edit
     @user = User.find_by(id: params[:id])
   end
@@ -50,7 +37,6 @@ class UsersController < ApplicationController
       render :notfound, status: :not_found
     end
   end
-
 
   def update
     @user = User.find_by(id: params[:id])
