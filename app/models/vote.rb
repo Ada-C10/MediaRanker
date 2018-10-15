@@ -2,8 +2,7 @@ class Vote < ApplicationRecord
   belongs_to :work
   belongs_to :user
 
-  def upvote(work_id)
-    @vote = Vote.new(work_id)
-    @vote.save
-  end
+  validates :user, presence: true, uniqueness: { scope: :work, message: "You may only vote on this work once."}
+  validates :work, presence: true
+
 end

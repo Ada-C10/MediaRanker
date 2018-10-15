@@ -1,31 +1,26 @@
 class Work < ApplicationRecord
-  # CATEGORIES = ["album", "book", "movie"]
+  # QUESTION: how to get this to work? CATEGORIES = ["album", "book", "movie"]
   has_many :votes, dependent: :delete_all
 
-  validates :title, presence: true
-  # , uniqueness: true
-  # validates_uniqueness_of :work, scope: :category
-  # validates_inclusion_of :category, :in => CATEGORIES
+  validates :title, presence: true, uniqueness: {scope: :categoy, message: "This category already knows about that title." }
+  # TODO: validates :publication_year --> how to get year only??
+
+  # TODO: necessary???? validates_inclusion_of :category, :in => CATEGORIES
 
   def self.work_categories
     @categories = ["album", "book", "movie"]
   end
 
-
+  def count_votes
+    return self.votes.length
+  end
 
   def self.sort_works(works)
-    works_by_vote = works.sort_by{|work| work.votes.length}.reverse
+    works_by_vote = works.sort_by{|work| work.count_votes}.reverse
     return works_by_vote
   end
 
   def self.gen_top_ten_works(works_by_category)
-  # def self.top_ten_works(works)
-    # CATEGORIES.each do |category|
-    #   works.each do |work|
-    #     work
-    #   end
-    # end
-
     works_by_vote = self.sort_works(works_by_category)
     @top_ten = works_by_vote.first(10)
     return @top_ten
@@ -39,6 +34,6 @@ class Work < ApplicationRecord
   end
 
 
-  #QUESTION: uniqueness: really?? depends on media type, no?
+  # TODO: grammar---> don't show for 0, 1 vote, x>1 votes
 
 end

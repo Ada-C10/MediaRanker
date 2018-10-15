@@ -1,49 +1,35 @@
 class VotesController < ApplicationController
 
-  # def new
-  #   @vote = Vote.new
-  # end
 
-  def create # TODO: add checks from destroy for sessions + flash
-    # @vote = Vote.new(work_id: params[:work_id])
-
-    # redirect_to root_path
+  def create
 
     if find_logged_in_user() # hi, are you logged in?
 
-      # @work_id = Work.find_by(id: params[:work])
-      @work_id = Work.find_by(id: params[:work_id])
-      @user_id = find_logged_in_user()
+      @work_obj = Work.find_by(id: params[:work_id])
+      @user_obj = find_logged_in_user()
 
-      @vote = Vote.new(work: @work_id, user: @user_id)
+      @vote = Vote.new(work: @work_obj, user: @user_obj)
 
       result = @vote.save
 
       if result
         flash[:success] = "Successfully upvoted!"
-        redirect_to root_path
+        redirect_to work_path(@work_obj.id)
       else
-        flash[:alert] = "something went wrong"
-        redirect_to work_path(1)
+        #TODO: gotta fix these alerts
+        flash[:alert] = @vote.errors.messages
+        redirect_to work_path(@work_obj.id)
       end
 
-    else flash[:alert] = "you must be logged in to vote"
-      redirect_to work_path(1)
+    else flash[:alert] = "You must be logged in to vote"
+      redirect_to work_path(@work_obj.id)
     end
 
-    # redirect_to root_path
-
-    # if result
-    #   flash[:success] = "Successfully created #{@work.category} #{@work.id}"
-    #   redirect_to work_path(@work.id)
-    # else
-    #   flash.now[:alert] = "something went wrong" #QUESTION: how to flash error messages??? error.messages?????
-    #   render :new
-    # end
   end
 
+# QUESTION: hm, make private??? is that possible? comes from work
   # private
-
+  #
   # def vote_params
   #   return params.require(:vote).permit(
   #     # :user_id,

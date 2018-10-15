@@ -45,8 +45,8 @@
               <% end %>
 
               <section class="flash">
-                <% flash.each do |name, message| %>
-                <div class="<%= name %>"><%= message %></div>
+                <% flash.each do |error, message| %>
+                <div class="<%= error %>"><%= message %></div>
                 <% end %>
               </section>
 <!-- </section> -->

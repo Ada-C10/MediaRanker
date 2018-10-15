@@ -5,13 +5,12 @@ class SessionsController < ApplicationController
 
   def create
     username = params[:username]
-    @user = User.find_by(username: username) #QUESTION: param obj or attribute???
+    @user = User.find_by(username: username)
 
     if @user
       flash[:success] = "Successfuly logged in as existing user #{username}"
 
       user_success_plus_redirect()
-      # TODO: dry up code; repeat below
       # session[:user_id] = @user.id
       # redirect_to root_path
     else
@@ -23,12 +22,11 @@ class SessionsController < ApplicationController
         flash[:success] = "Successfully created new user #{username} with ID #{@user.id}"
 
         user_success_plus_redirect()
-        #TODO: dry up code; repeat below
         # session[:user_id] = @user.id
         # redirect_to root_path
       else
-        # QUESTION: fix alert?
-        flash[:alert] = "something went wrong"
+        #TODO: fix flash alerts; render???
+        flash[:alert] = @user.errors.messages
         redirect_to new_login_path
       end
     end
