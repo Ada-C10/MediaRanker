@@ -1,0 +1,33 @@
+<h2>List of Works</h2>
+<% [["Albums", @albums], ["Books", @books], ["Movies", @movies]].each do |name, works| %>
+  <section class="media-table">
+    <h4><%=name%></h4>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th width=80>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width=100>Published</th>
+          <th width=100>Upvote</th>
+        </tr>
+      </thead>
+
+    <tbody>
+      <% if works.any? %>
+        <% works = works.sort_by {|work| work.votes.count}.reverse! %>
+        <% works.each do |work| %>
+          <tr>
+            <td><%= work.votes.count %></td>
+            <td><%= link_to work.title, work_path(work) %></td>
+            <td><%= work.creator %></td>
+            <td><%= work.publication_year %></td>
+            <td><%= link_to "Upvote", votes_path(vote:{work_id: work.id}), class: "button upvote", method: :post %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+
+  </table>
+<% end %>

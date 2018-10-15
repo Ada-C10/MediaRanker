@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vote_date: 2018-10-10
+  user: one
+  work: one
+
+two:
+  vote_date: 2018-10-10
+  user: two
+  work: one

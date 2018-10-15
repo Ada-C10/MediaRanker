@@ -1,0 +1,29 @@
+<h2> User Profile: <%= link_to "#{@user.name}", user_path(@user.id) %> </h2>
+<p>Joined on: <%= @user.created_at.strftime('%b %d, %Y') %></p></td>
+ <h3 class="user-votes__header">Votes </h3>
+
+ <table class="table">
+  <tr>
+    <th>Media Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Category</th>
+    <th>Voted On</th>
+  </tr>
+
+    <% @user.votes.each do |vote| %>
+      <tr>
+        <% @work = vote.work %>
+        <td><%= link_to "#{@work.title}", work_path(@work.id) %></td>
+        <td><p>
+          <%= @work.creator %> </p></td>
+        <td><p>
+          <%= @work.publication_year %> </p></td>
+        <td><p>
+          <%= @work.category %></p></td>
+        <td><p>
+          <%= vote.created_at.strftime('%b %d, %Y') %></p></td>
+      </tr>
+    <% end %>
+
+</table>
