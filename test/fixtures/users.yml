@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+jackie:
+  username: jackie
+  joined: '2018-10-08'
+
+dan:
+  username: dan
+  joined: '2018-10-09'
+
+garrett:
+  username: garrett
+  joined: '2018-10-09'
+
+emily:
+  username: emily
+  joined: '2018-10-09'

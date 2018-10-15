@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+hp:
+  category: book
+  title: Harry Potter
+  creator: J.K. Rowling
+  publication_year: '1997'
+  description: A series of novels that chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry. The main story arc concerns Harry's struggle against Lord Voldemort, a dark wizard who intends to become immortal, overthrow the wizard governing body known as the Ministry of Magic, and subjugate all wizards and Muggles (non-magical people).
+
+interstellar:
+  category: movie
+  title: Interstellar
+  creator: Christopher Nolan
+  publication_year: '2014'
+  description: Set in a dystopian future where humanity is struggling to survive, the film follows a group of astronauts who travel through a wormhole in search of a new home for humanity.
+
+sgtpepper:
+  category: album
+  title: Sgt. Pepper's Lonely Hearts Club Band
+  creator: Beatles
+  publication_year: '1967'
+  description: The 8th studio album by The Beatles. Lauded by critics for its innovations in production, songwriting and graphic design, for bridging a cultural divide between popular music and high art, and for providing a musical representation of its generation and the contemporary counterculture. It won four Grammy Awards in 1968, including Album of the Year, the first rock LP to receive this honour.
+
+startrek:
+  category: movie
+  title: Star Trek
+  creator: JJ Abrams
+  publication_year: '2009'
+  description: Aboard the USS Enterprise, the most-sophisticated starship ever built, a novice crew embarks on its maiden voyage. Their path takes them on a collision course with Nero (Eric Bana), a Romulan commander whose mission of vengeance threatens all mankind.
