@@ -1,10 +1,6 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
   username: test_name
-
 two:
   username: potato32
-
 three:
   username: _h-a_h-a
