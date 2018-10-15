@@ -38,6 +38,8 @@ class Work < ApplicationRecord
       vote.created_at > most_recent_vote_date ? vote.created_at : most_recent_vote_date
     end
     if most_recent_vote_date == 0
+      # This is a weird workaround for other methods that need to sort_by most_recent_vote
+      # (Integer 0 cannot be compared with Date objects)
       return Date.jd(0)
     else
       return most_recent_vote_date

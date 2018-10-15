@@ -76,7 +76,6 @@ class WorksController < ApplicationController
   # Find project constants in config/initializers/constants.rb
     VALID_WORK_CATEGORIES.each do |category|
       @works[category] = []
-
       # Array of works, in ascending order by most recent vote date:
       works_by_category = Work.by_category(category).sort_by {|work| work.most_recent_vote}
 
