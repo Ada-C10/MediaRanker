@@ -18,7 +18,7 @@
     <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-warning" %>
     <%= link_to "Delete Work", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure? This cannot be undone!'}, class: "btn btn-danger" %>
     <% else %>
-    <p> You must be logged in to delete or edit a work.</P>
+    <p> You must be <strong> logged in </strong> to delete or edit a work.</P>
   <% end %>
 
 <h3> <%= "#{@work.title} has #{@work.votes.count} votes." %> </h3>
