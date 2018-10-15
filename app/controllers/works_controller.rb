@@ -1,13 +1,14 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
-  before_action :list_top_works, only: [:home]
-  before_action :list_all_works, only: [:index]
 
   def home
     @spotlight = Work.spotlight
+    @works = Work.list_top_works
   end
 
-  def index; end
+  def index
+    @works = Work.list_all_works
+  end
 
   def show
     if session[:user_id]
@@ -65,43 +66,6 @@ class WorksController < ApplicationController
     if @work.nil?
       flash.now[:warning] = 'Cannot find the work'
       render :notfound, status: :not_found
-    end
-  end
-
-# Filter for #home
-# Sorts works by votes (desc), then subsorts by title (asc)
-  def list_top_works
-    # ...should this hash go in the model or the controller?
-    @works = Hash.new
-  # Find project constants in config/initializers/constants.rb
-    VALID_WORK_CATEGORIES.each do |category|
-      @works[category] = []
-      # Array of works, in ascending order by most recent vote date:
-      works_by_category = Work.by_category(category).reverse.sort_by {|work| work.most_recent_vote}
-
-      # Array of works, in descending order by votes, subsorted in descending order by most recent vote date:
-      works_by_category = works_by_category.sort_by { |work| work.number_of_votes }.reverse!
-      works_by_category = works_by_category.delete_if { |work| work.number_of_votes < 1 }
-
-      # Array of top 10 works, by votes, by title
-      works_by_category[0..9].each do |work|
-        @works[category] << work
-      end
-    end
-  end
-
-# Filter for #index
-# Sorts works by votes (desc), then subsorts by title (asc)
-  def list_all_works
-    # ...should this hash go in the model or the controller?
-    @works = Hash.new
-  # Find project constants in config/initializers/constants.rb
-    VALID_WORK_CATEGORIES.each do |category|
-      # Array of works, in ascending order by most recent vote date:
-      works_by_category = Work.by_category(category).reverse.sort_by {|work| work.most_recent_vote}
-
-      # Array of works, in descending order by votes, subsorted in descending order by most recent vote date:
-      @works[category] = works_by_category.sort_by { |work| work.number_of_votes }.reverse!
     end
   end
 

@@ -27,25 +27,56 @@ class Work < ApplicationRecord
     else
     # Tiebreaking: Spotlight will show the most recently upvoted work
       spotlight = Work.all.select {|work| work.number_of_votes == max_votes}
-      spotlight = spotlight.sort_by {|work| work.most_recent_vote}.reverse!
+      spotlight = Work.sort_by_most_recent_vote(spotlight).reverse!
       return spotlight.first
     end
   end
 
-  # Helper method for Spotlight
-  def most_recent_vote
+  # Helper method for Works Controller and Work model
+  def self.sort_by_most_recent_vote(array_of_works)
     most_recent_vote_date = self.votes.reduce(0) do |most_recent_vote_date, vote|
       vote.created_at > most_recent_vote_date ? vote.created_at : most_recent_vote_date
     end
+
     if most_recent_vote_date == 0
       # If a work has no votes, then the date is set as Date.jd(0), which is a very long time ago
       # This is a weird workaround for other methods that need to sort_by most_recent_vote
       # (Integer 0 cannot be compared with Date objects)
-      return Date.jd(0)
-    else
-      return most_recent_vote_date
+      most_recent_vote_date = Date.jd(0)
     end
+
+    return array_of_works.sort_by{|work| work.most_recent_vote_date}
   end
+
+# Helper method for #home in WorksController
+  def list_top_works
+   top_ten_works = Work.list_all_works
+
+   top_ten_works[category].each_key do |array_of_works|
+     # Do not display works with 0 votes
+     array_of_works = array_of_works.delete_if { |work| work.number_of_votes < 1 }
+
+     # Display only the top 10 works
+     array_of_works = array_of_works[0..9]
+   end
+   return top_ten_works
+  end
+
+# Helper for list_top_works and #index in WorksController
+ def list_all_works
+   all_works = Hash.new
+   VALID_WORK_CATEGORIES.each do |category|   # Find project constants in config/initializers/constants.rb
+     works_by_category = Work.by_category(category).reverse # Z to A
+     works_by_category = Work.sort_by_most_recent_vote(works_by_category)  #oldest to newest
+     all_works[category] = works_by_category.sort_by { |work| work.number_of_votes }.reverse!
+                                                     # fewest to most          # then reverse it
+       # after .reverse!, the final sort order is:
+       # 1. most to fewest votes,
+       # 2. newest to oldest vote,
+       # 3. A to Z (by title)
+   end
+   return all_works
+ end
 
   def upvote_button
     if !@current_user
