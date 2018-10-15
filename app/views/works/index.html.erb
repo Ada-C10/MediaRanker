@@ -2,17 +2,8 @@
 <p> Here they are! </p>
 
 <!-- album, book, movie -->
-<% Category.each do |category| %>
-<table>
-  <tbody>
-    <thead> <!--table header row -->
       <tr>
-        <th>Top<%=category.type%>s</th>
-      </tr>
-    </thead>
-    <% @works.each do |work| %>
-    <% if work.category_id == category.id %>
-      <tr>
+        <% @works.each do |work| %>
         <!-- for each category, add the works associated with it, unordered, under the correct table header -->
         <td>
           <%= link_to "#{work.title}", work_path(work.id) %>
@@ -20,9 +11,10 @@
         <td>
           <%= "#{work.votes.count}"%>  votes </td>
       </tr>
-  <% end %>
+      <% end %>
 </tbody>
 </table>
-<% end %>
-<%end%>
+
+
+
 </section>
