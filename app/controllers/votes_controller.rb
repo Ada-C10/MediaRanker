@@ -32,4 +32,5 @@ class VotesController < ApplicationController
       redirect_to work_path(work.id)
     end
   end
+
 end
