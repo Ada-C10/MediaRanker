@@ -18,6 +18,7 @@
     <tbody>
       <% @votes.each do |vote| %>
         <% row = vote.user_votes_table_row %>
+        <!-- Find me in the User model -->
           <tr class="d-flex">
             <td class="col-4"><%= link_to row[0], work_path(row[5]), class: "text-info" %></td>
             <td class="col-2"><%= row[1] %></td>
