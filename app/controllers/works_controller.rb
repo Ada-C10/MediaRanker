@@ -14,7 +14,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    # @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
     end
@@ -37,11 +36,9 @@ class WorksController < ApplicationController
   end
 
   def edit
-    # @work = Work.find_by(id: params[:id])
   end
 
   def update
-    # @work = Work.find_by(id: params[:id])
 
     if @work.update(work_params)
       flash[:success] = "Successfully updated \"#{@work.title}\""
@@ -53,7 +50,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    # @work = Work.find_by(id: params[:id])
     if @work.destroy
       flash[:success] = "Successfully destroyed \"#{@work.title}\""
       redirect_to works_path
