@@ -4,7 +4,8 @@
 
 <div class="form-group">
 <%= f.label :category, "Category"%>
-<%= f.select :category, ['movie', 'album','book'], class: "form-control"%>
+<!-- Select helper takes two options hashes, one for select, and the second for html options. So all you need is to give default empty options as first param after list of items and then add your class to html_options -->
+<%= f.select(:category, ['movie', 'album','book'], {}, class: "form-control")%>
 </div>
 
 <div class="form-group">
