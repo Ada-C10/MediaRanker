@@ -1,20 +1,20 @@
-<h1>List of Users</h1>
-
-   <br />
-<table>
-     <colgroup span="1"> </colgroup>
-     <tr>
+<main>
+    <h2>List of Users</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Username</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
         <% @users.each do |user| %>
-         <th>Username</th>
-     </tr>
-     <tr>
-       <td><%= link_to user.name, user_path(user.id) %> </td>
-       <% end %>
-     </tr>
+        <td><%= link_to user.name, user_path(user.id) %> </td>
+      </tr>
+      <% end %>
+  </tbody>
 </table>
 
-
-
-
-
 <a class="btn btn-secondary" href="/">Back to Media List</a>
+
+</main>
