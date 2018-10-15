@@ -21,10 +21,6 @@ describe Vote do
       expect(votes).must_respond_to :each
 
     end
-
   end
-
-
-
 
 end

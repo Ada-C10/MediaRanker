@@ -1,3 +1,23 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.all-media {
+  display: grid;
+  grid-column: 1fr 1fr 1fr;
+}
+
+.media-container:nth-of-type(1) {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.media-container:nth-of-type(2) {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.media-container:nth-of-type(3) {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
