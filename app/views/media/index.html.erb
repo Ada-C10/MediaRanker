@@ -1,0 +1,17 @@
+<h2>List of Bros</h2>
+
+  <section class="media-table">
+    <h4>Sound Bros</h4>
+    <%= render partial: "media_table", locals: { collection: order_by_votes(@albums) } %>
+  </section>
+  <section class="media-table">
+    <h4>Word Bros</h4>
+    <%= render partial: "media_table", locals: { collection: order_by_votes(@books) } %>
+  </section>
+  <section class="media-table">
+    <h4>Visual Bros</h4>
+    <%= render partial: "media_table", locals: { collection: order_by_votes(@movies) } %>
+  </section>
+
+<%= link_to "View top bros", root_path, class: 'btn btn-secondary' %>
+<%= link_to "Add a new bro", new_medium_path, class: 'btn btn-primary' %>

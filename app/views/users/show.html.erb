@@ -1,0 +1,31 @@
+<h2>Bro Summary: <%= link_to "#{@user.name}", user_path(@user) %></h2>
+<p>
+  Joined site <%= @user.created_at.strftime("%b, %d, %Y") %>
+</p>
+
+<section class="user-votes__container">
+  <h3 class="user-votes__header">Votes</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Bro Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @votes.each do |vote| %>
+      <tr>
+        <td><%= link_to "#{vote.medium.title}", medium_path(vote.medium) %></td>
+        <td><%= vote.medium.creator %></td>
+        <td><%= vote.medium.publication_year %></td>
+        <td><%= vote.medium.category %></td>
+        <td><%= vote.created_at %> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%= link_to "See all Users", users_path, class: 'btn btn-secondary' %>
+<%= link_to "Back to Bro List", root_path, class: 'btn btn-primary' %>

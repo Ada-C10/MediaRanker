@@ -1,0 +1,45 @@
+<section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Bro Spotlight</span>
+      <% if @media_spotlight %>
+        <%= link_to @media_spotlight.title, medium_path(@media_spotlight) %>  by
+        <%= @media_spotlight.creator %>
+      <% end %>
+    </h2>
+    <p class="spotlight__description">
+      <% if @media_spotlight %>
+        <%= media_spotlight_text(@media_spotlight) %>
+      <% end %>
+    </p>
+  </section>
+
+  <hr class="root__hr" />
+
+  <section class="top-ten__container">
+    <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Visual Bros
+    </h2>
+    <ul class="list-group top-ten__list">
+      <%= render partial: 'medium', collection: first_ten_by_votes(@movies) %>
+    </ul>
+  </section>
+
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Word Bros
+    </h2>
+    <ul class="list-group top-ten__list">
+      <%= render partial: 'medium', collection: first_ten_by_votes(@books) %>
+    </ul>
+  </section>
+
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Sound Bros
+    </h2>
+    <ul class="list-group top-ten__list">
+      <%= render partial: 'medium', collection: first_ten_by_votes(@albums) %>
+    </ul>
+  </section>
+</section>

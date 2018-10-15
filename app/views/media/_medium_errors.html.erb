@@ -1,0 +1,16 @@
+<% if medium.errors.messages.any? %>
+  <section class="alert__container">
+    <div class="alert alert-warning">
+      <span>A pronblem occurred bro: Could not create <%= medium.category %></span>
+      <% medium.errors.messages.each do |field, problem_list| %>
+          <ul>
+            <% problem_list.each do |problem| %>
+              <li>
+                <%= field %>: <%= problem %>
+              </li>
+            <% end %>
+          </ul>
+      <% end %>
+  </div>
+  </section>
+<% end %>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bro Ranker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One" />
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="app-header__header">
+      <h1>
+        <%= link_to "Bro Ranker™", root_path %>
+        <small>Ranking Only the Best Bros...</small>
+      </h1>
+      <nav class="app-header__nav">
+        <ul class="nav app-header__site-nav-container">
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "View top bros", root_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "View all bros", media_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Add a new bro", new_medium_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "View all users", users_path, class:'nav-link' %>
+          </li>
+        </ul>
+        <ul class="nav app-header__user-nav-container">
+          <li class="nav-item app-header__nav_item">
+            <% if @existing_user %>
+                <%= link_to "Tagged in as  #{@existing_user.name.capitalize}", user_path(@existing_user), class: 'btn btn-primary' %>
+                <%= link_to "Tag Out, Bro", logout_path, method: :post, class: 'btn btn-primary' %>
+            <% else %>
+              <%= link_to "Tag In, Bro", new_user_path, class: 'btn btn-primary' %>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <% if flash  %>
+      <section class="alert__container">
+        <% flash.each do |key, message| %>
+          <% alert_class = key == "error" ? "danger" : key %>
+          <div class="alert alert-<%= alert_class %>">
+            <span><%= message %></span>
+          </div>
+        <% end %>
+      </section>
+    <% end %>    
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

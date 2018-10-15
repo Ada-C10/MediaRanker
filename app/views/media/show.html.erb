@@ -1,0 +1,17 @@
+<section>
+  <h2><%= @medium.title %></h2>
+  <p>Created By: <%= @medium.creator %></p>
+  <p>Published: <%= @medium.publication_year %></p>
+  <p><%= @medium.description %></p>
+  <section>
+    <%= link_to 'Back to bro ranks', root_path, class: 'btn btn-primary' %>
+    <%= link_to 'Edit', edit_medium_path(@medium), class: 'btn btn-primary' %>
+    <%= link_to 'UpBROte', upvote_path(@medium), method: :post, class: 'btn btn-primary' %>
+    <%= link_to 'Delete', medium_path(@medium), method: :delete, data: {confirm: 'Bro do you actually wanna delete this? Cuz u can still back out now...'}, class: 'btn btn-danger' %>
+  </section>
+</section>
+
+<section class="works-votes__container">
+  <h3 class="works-votes__header"><%= @medium.votes.length %> votes for this <%= @medium.category %></h3>
+  <%= render partial: "vote_table", locals: { collection: @medium.votes } %>
+</section>
