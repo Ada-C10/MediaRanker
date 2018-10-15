@@ -11,8 +11,10 @@ Rails.application.routes.draw do
    delete '/logout', to: 'sessions#destroy'
 
    resources :works do
-     resources :votes, only: :create
-   end
-   #[:index, :new, :show, :create, :edit, :update, :delete]
+     #post 'work_votes', to:  votes#create
+     resources :works do
+       resources :votes, only: :create
+     end
 
+     #[:index, :new, :show, :create, :edit, :update, :delete]
 end
