@@ -1,6 +1,11 @@
 // Place all the styles related to the TopWorks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.spotlight {
+  border-bottom: solid 1px #607d8b33;
+  padding: 1em;
+}
+
 .toplist-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr
@@ -8,4 +13,12 @@
 
 .toplist-list li {
   padding: 1em;
+}
+
+.top-header {
+  border-bottom: solid 2px #26A69A;;
+}
+
+.black-hdg {
+  color: black;
 }

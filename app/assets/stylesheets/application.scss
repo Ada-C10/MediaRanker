@@ -63,7 +63,7 @@ main {
 }
 
 h2, h3, h4, main a:visited, main a:link, main a:hover  {
-  color: teal;
+  color: #26A69A;
 }
 
 ul {
@@ -73,4 +73,8 @@ ul {
 .btn a:visited, .btn a:link, .btn a:hover {
   text-decoration: none;
   color: white;
+}
+
+.btn-info {
+  background-color: #26A69A;
 }

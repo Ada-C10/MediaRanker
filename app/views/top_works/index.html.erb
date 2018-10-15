@@ -1,8 +1,10 @@
 <section class = "spotlight">
-  <h2>Media Spotlight:
+  <p>
+  <h2><span class="black-hdg"> Media Spotlight: </span>
     <%= @top.title%> by
     <%= @top.creator%>
   </h2>
+</p>
   <p><%=@top.votes.count%> votes -
     <%=@top.description%></p>
 </section>
@@ -12,7 +14,7 @@
     <% Work::WORK_CATEGORIES.each do |category| %>
 
     <li>
-      <h2> Top <%= category.capitalize%>s</h2>
+      <h2 class="top-header"> Top <%= category.capitalize%>s</h2>
       <!-- <% list = Work.where(category: category) %> -->
       <% list = Work.get_top_list(category) %>
       <% list.each do |work , info| %>
