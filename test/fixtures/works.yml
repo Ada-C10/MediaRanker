@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+breaker:
+  title: Blue Breaker
+  creator: Dr. Sarai Langosh
+  publication_year: 1949
+  description: Et et expedita non aut quo.
+  category: album
+
+treat:
+  title: Joe Treat
+  creator: Blaise Lesch
+  publication_year: 1968
+  description: Voluptatem adipisci qui velit.
+  category: book
+
+ben:
+  title: Ben goes to school
+  creator: Bens Mom
+  publication_year: 1996
+  description: Adipisci qui velit.
+  category: movie
