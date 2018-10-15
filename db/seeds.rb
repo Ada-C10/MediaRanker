@@ -31,3 +31,11 @@ end
 
 puts "Added #{Work.count} work records"
 puts "#{work_failures.length} works failed to save"
+
+
+puts "Manually resetting PK sequence on each table"
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
+
+puts "done"
