@@ -74,4 +74,21 @@ describe Work do
       expect(@work.users.ids).must_equal [user.id]
     end
   end
+
+  describe 'Work model methods: listing and sorting' do
+    it "most_recent_vote_date" do
+
+    end
+
+    it "self.sort_by_most_recent_vote(array_of_works)" do
+
+    end
+
+    it "self.list_all_works" do
+    end
+
+    it "self.list_top_works" do
+
+    end
+  end
 end
