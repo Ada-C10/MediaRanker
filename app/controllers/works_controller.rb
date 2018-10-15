@@ -2,6 +2,7 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def index
+    @vote = Vote.new
     @works = Work.all
   end
 
@@ -48,7 +49,7 @@ class WorksController < ApplicationController
     @work.destroy
     redirect_to homes_path
   end
-  
+
   private
 
   def work_params
