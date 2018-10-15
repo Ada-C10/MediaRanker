@@ -1,31 +1,43 @@
-<% if @work.nil? %>
+<main>
+  <% if @work.nil? %>
   <h1><%= "404: NOT FOUND" %></h1>
-<% else %>
-<h1> <%= @work.title %></h1>
-<ul>
-  <li>Created by: <%= @work.creator %></li>
-  <li>Published: <%= @work.publication_year%></li>
-  <li> <%= @work.description%></li>
-</ul>
-<ul>
-<li><%= link_to "Back to Media Ranks", works_path, class: 'btn btn-primary'%></li>
-<li><%= link_to "Edit", edit_work_path(@work.id), class: 'btn btn-primary'%></li>
-<li><%= link_to "Upvote", upvote_path(@work.id), method: :post, class: "btn btn-primary" %></li>
-<li><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm:"Are you sure you want to delete?"}, class: 'btn btn-primary' %></li>
-</ul>
-
-<h2><%=@work.votes.count%> Votes for this <%=@work.category%></h2>
-<table style="width:100%">
-  <tr class="header_font">
-    <th>User</th>
-    <th>Date</th>
-  </tr>
-  <%@work.votes.each do |vote| %>
-    <% user = User.find_by(id: vote.user_id.to_i)%>
-  <tr>
-    <td><%=link_to user.username, user_path(user.id) %></td>
-    <td><%=vote.created_at%></td>
-  </tr>
-  <%end%>
+  <% else %>
+  <section>
+    <h2> <%= @work.title %></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year%></p>
+    <p><%= @work.description%></p>
+    <section>
+      <a class="btn btn-primary" href="/">Back to Media Ranks</a>
+      <a class="btn btn-primary" href="/works/<%=@work.id%>/edit">Edit</a>
+      <a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/<%=@work.id%>/upvote">Upvote</a>
+      <a class="btn btn-danger" data-confirm="Are you sure you want to delete?" rel="nofollow" data-method="delete" href="/works/<%=@work.id%>">Delete</a>
+    </section>
+  </section>
+  <section class="works-votes__container">
+    <h3 class="works-votes__header"><%=@work.votes.count%> Votes for this <%=@work.category.capitalize%></h3>
+    <table class="table">
+      <thead>
+        <tr class="header_font">
+          <th>User</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <%@work.votes.each do |vote| %>
+      <% user = User.find_by(id: vote.user_id.to_i)%>
+      <tbody>
+        <tr>
+          <td>
+            <a href="/users/<%=user.id%>"> <%=user.username%></a>
+          </td>
+          <td><%=vote.created_at%></td>
+        </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </section>
+</thead>
 </table>
+</section>
 <%end%>
+</main>

@@ -9,6 +9,10 @@ body {
    background-color: #fff;
 }
 
+a {
+  text-decoration: none;
+  background-color: transparent;
+}
 .app-header__nav {
    display: flex;
    flex-direction: row;
@@ -79,6 +83,11 @@ main {
    color: #00796B;
 }
 
+.nav-link
+{
+  display: block;
+  padding: 0.5rem 1rem;
+}
 .spotlight__header--prefix {
    color: #424242;
 }
@@ -221,4 +230,52 @@ h4, .h4 {
    padding-left: 0;
    margin-bottom: 0;
    list-style: none;
+}
+ul {
+  margin-top:0;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+table {
+  display: table;
+  border-spacing: 2px;
+  border-color: grey;
+  border-collapse: collapse;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.works-votes__header {
+    color: black;
 }
