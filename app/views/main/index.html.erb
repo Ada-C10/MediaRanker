@@ -1,4 +1,5 @@
 
+<h2>Top Media</h2>
   <body>
     <main>
           <section class="spotlight">
@@ -8,12 +9,11 @@
         </h2>
         <p class="spotlight__description">
           <%=link_to @spotlight.title, work_path(@spotlight.id) %>
-            <p><%= @spotlight.description %> </p>
+            <%= @spotlight.description %>
+          </p>
           <p><%= @spotlight.votes_count %> Votes</p>
-        </p>
-      </section>
 
-    <hr class="root__hr">
+      </section>
 
     <section class = ".top-ten__container"
     <section class="top-ten__list-container">
