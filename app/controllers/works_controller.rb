@@ -46,7 +46,26 @@ class WorksController < ApplicationController
   end
 
   def top
+
     @works = Work.featured
+    #top media for spot light
+    @top = @works.first
+
+    # for top 10 movies
+    @movies = Work.where(category: "movie")
+    # sort by votes and take only 10 movies
+    @movies = (@movies.sort_by { |movie| -movie.votes_count}).take(10)
+
+    # for top 10 books
+    @books = Work.where(category: "book")
+    # sort by votes and take only 10 movies
+    @books = (@books.sort_by { |book| -book.votes_count}).take(10)
+
+    # for top 10 albums
+    @albums = Work.where(category: "album")
+    # sort by votes and take only 10 movies
+    @albums = (@albums.sort_by { |album| -album.votes_count}).take(10)
+
   end
 
   def upvote
@@ -70,7 +89,7 @@ class WorksController < ApplicationController
           redirect_to work_path(@work)
         else
           flash[:error] = "You already voted for this work, can't vote for it again!"
-          redirect_back(fallback_location: root_path)
+
         end
       end
     end

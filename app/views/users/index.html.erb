@@ -1,15 +1,19 @@
-<h2>List of Users</h2>
+<main>
 
 
-<table class="table">
-  <thead>
+  <h2>List of Users</h2>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Username</th>
+      </tr>
+    </thead>
     <tr>
-      <th scope="col">Username</th>
+      <%@users.each do |user| %>
+      <td scope="row"><%=link_to user.username, user_path(user)%></td>
     </tr>
-  </thead>
-  <tr>
-    <%@users.each do |user| %>
-    <td scope="row"><%=link_to user.username, user_path(user)%></td>
-  </tr>
-  <%end%>
-</table>
+    <%end%>
+  </table>
+</main>

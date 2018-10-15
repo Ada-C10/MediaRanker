@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
+      flash[:success] = "Successfully logged in as #{name}"
       redirect_to root_path
     end
 

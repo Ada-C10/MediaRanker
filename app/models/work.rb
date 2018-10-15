@@ -7,5 +7,13 @@ class Work < ApplicationRecord
   validates_uniqueness_of :title, scope: :category
   scope :featured, -> {order('votes_count DESC')}
 
+  # def top_media_find
+  #   works = Work.all
+  #   works.sort_by {|vote|}
+  #   top = works.first
+  #
+  #   return top
+  # end
+
 
 end

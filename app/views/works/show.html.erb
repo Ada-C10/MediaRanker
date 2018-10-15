@@ -1,38 +1,41 @@
-<h2> <%=@work.title%></h2>
-<p>
-  Created by: <%=@work.creator%>
-</p>
+<main>
+  <h2> <%=@work.title%></h2>
+  <p>
+    Created by: <%=@work.creator%>
+  </p>
 
-<p>
-  Published: <%=@work.publication_year%>
-</p>
+  <p>
+    Published: <%=@work.publication_year%>
+  </p>
 
-<p>
-  Summary: <%=@work.description%>
-</p>
+  <p>
+    Summary: <%=@work.description%>
+  </p>
 
-<button type="button" class="btn btn-info">
-  <div><%= link_to "Back to media ranks", root_path%>
+  <button type="button" class="btn btn-info">
+    <div><%= link_to "Back to media ranks", root_path%>
+    </div>
+  </button>
+
+  <button type="button" class="btn btn-info">
+    <div><%= link_to "Edit", edit_work_path(@work)%>
+    </div>
+  </button>
+
+  <button type="button" class="btn btn-info">
+    <div><%= link_to "Upvote", work_upvote_path(@work), method: :post%>
+    </div>
+  </button>
+
+  <button type="button" class="btn
+  btn-danger">
+  <div class="delete"><%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title}"} %>
   </div>
 </button>
+<br>
+<br>
 
-<button type="button" class="btn btn-info">
-  <div><%= link_to "Edit", edit_work_path(@work)%>
-  </div>
-</button>
-
-<button type="button" class="btn btn-info">
-  <div><%= link_to "Upvote", work_upvote_path(@work), method: :post%>
-  </div>
-</button>
-
-<button type="button" class="btn
-btn-danger">
-<div class="delete"><%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure you want to delete #{@work.title}"} %>
-</div>
-</button>
-
-<h3>Votes</h3>
+<h3><%="#{@work.votes_count}"%> Votes for this <%="#{@work.category}".capitalize%></h3>
 
 <table class="table">
   <thead>
@@ -50,3 +53,4 @@ btn-danger">
   </tr>
   <%end%>
 </table>
+</main>

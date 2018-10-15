@@ -1,28 +1,31 @@
-<h2>User Summary: <%=@user.username%></h2>
-<p>
-  Joined site <%=(@user.created_at).strftime("%b %e, %Y")%>
-</p>
+<main>
 
-<h3>Votes</h3>
+  <h2>User Summary: <%=@user.username%></h2>
+  <p>
+    Joined site <%=(@user.created_at).strftime("%b %e, %Y")%>
+  </p>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Media Title</th>
-      <th scope="col">Created By</th>
-      <th scope="col">Published</th>
-      <th scope="col">Category</th>
-      <th scope="col">Voted On</th>
-    </tr>
-  </thead>
+  <h3>Votes</h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Media Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Category</th>
+        <th scope="col">Voted On</th>
+      </tr>
+    </thead>
 
     <%@user.votes.each do |vote|%>
     <tr>
-    <td scope="row"><%=link_to vote.work.title, work_path(vote.work)%></td>
-    <td scope="row"><%=vote.work.creator%></td>
-    <td scope="row"><%=vote.work.publication_year%></td>
-    <td scope="row"><%=vote.work.category%></td>
-    <td scope="row"><%=(vote.created_at).strftime("%b %e, %Y")%></td>
-  </tr>
-<%end%>
-</table>
+      <td scope="row"><%=link_to vote.work.title, work_path(vote.work)%></td>
+      <td scope="row"><%=vote.work.creator%></td>
+      <td scope="row"><%=vote.work.publication_year%></td>
+      <td scope="row"><%=vote.work.category%></td>
+      <td scope="row"><%=(vote.created_at).strftime("%b %e, %Y")%></td>
+    </tr>
+    <%end%>
+  </table>
+</main>
