@@ -19,8 +19,12 @@ Joined: <%= @user.created_at.to_datetime %>
     <tbody>
 
       <tr>
-        <% @user.votes.each do |vote| %>
-        <td><%= movie.votes.title %></td>
+        <% @media_votes.each do |work| %>
+        <td><%= work.title %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td><%= work.category %></td>
+        <td><%= work.created_at %></td>
 
       </tr>
       <% end %>

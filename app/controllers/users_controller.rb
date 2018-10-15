@@ -10,6 +10,8 @@ class UsersController < ApplicationController
     if @user.nil?
       head :not_found
     end
+
+    @media_votes = @user.media_votes
   end
 
 
