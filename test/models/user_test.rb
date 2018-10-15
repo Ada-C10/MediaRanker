@@ -34,6 +34,13 @@ describe User do
       expect(result).must_equal false
       expect(user.errors.messages).must_include :username
     end
+  end
 
+  describe 'relations' do
+    it "has votes" do
+      votes = users(:anon).votes
+
+      votes.count.must_equal 2
+    end
   end
 end

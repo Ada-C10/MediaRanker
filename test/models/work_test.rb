@@ -48,8 +48,14 @@ describe Work do
       expect(result).must_equal false
       expect(work.errors.messages).must_include :category
     end
-
   end
 
 
+  describe 'relations' do
+    it "has votes" do
+      votes = works(:rhymes).votes
+
+      votes.count.must_equal 3
+    end
+  end
 end

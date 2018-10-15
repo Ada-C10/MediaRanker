@@ -68,4 +68,17 @@ describe Vote do
     vote4.valid?.must_equal true
     end
   end
+
+  describe 'relations' do
+    it "belongs to a user" do
+      vote = votes(:one)
+      vote.user.must_equal users(:rigo)
+    end
+
+    it "belongs to a work" do
+      vote = votes(:one)
+      vote.work.must_equal works(:clueless)
+    end
+  end
+
 end
