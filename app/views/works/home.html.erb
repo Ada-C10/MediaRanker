@@ -1,9 +1,9 @@
 <section class="spotlight main-content px-5 pb-2">
-  <h2 class="main-content-header"> Media Spotlight:
+  <h3> Media Spotlight:
   <% if @spotlight == nil %>
     <%= "(no votes yet)" %>
   <% else %>
-    <%= link_to @spotlight.title, work_path(@spotlight.id), class: "text-info link-underline" %><p class="text-info d-inline"> by <%= @spotlight.creator %></p></h2>
+    <%= link_to @spotlight.title, work_path(@spotlight.id), class: "text-info link-underline" %><p class="text-info d-inline"> by <%= @spotlight.creator %></p></h3>
   <span class="badge badge-light badge-pill"><%= "#{@spotlight.print_number_of_votes}" %></span><p class="d-inline ml-3"><%= "#{@spotlight.description}" %></p>
   <% end %>
 </section>
