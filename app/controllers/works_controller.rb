@@ -42,11 +42,6 @@ end
 
   def destroy
     unless @work.nil?
-      # if @work.votes.count > 0
-      #   @work.votes do |vote|
-      #     vote.destroy
-      #   end
-      # end
       @work.destroy
       flash[:success] = "#{@work.title} deleted"
       redirect_to root_path
