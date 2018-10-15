@@ -1,0 +1,9 @@
+<h1>List of All Users</h1>
+<table>
+<tr><td>Username</td></tr>
+<%@users.each do |user| %>
+<tr>
+  <td><%= link_to "#{user.username}", user_path(user.id) %></td><td>
+</tr>
+<% end %>
+</table>
