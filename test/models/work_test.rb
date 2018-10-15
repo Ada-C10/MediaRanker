@@ -91,6 +91,9 @@ describe Work do
       @works.count.must_be :<, 11
     end
 
-    # add more fixtures so can test with over ten category works? 
+    # add more fixtures so can test with over ten category works?
+
+  # describe get_top_work
+  # must return work with most votes
   end
 end
