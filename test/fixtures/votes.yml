@@ -29,3 +29,7 @@ user2_movie1:
 user3_movie2:
   user: user3
   work: movie2
+
+user4_movie2:
+  user: user4
+  work: movie2

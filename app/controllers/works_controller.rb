@@ -27,7 +27,7 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully created #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
     else
-      flash.now[:alert] = "something went wrong" #QUESTION: how to flash error messages??? error.messages?????
+      flash.now[:alert] = @work.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -51,7 +51,8 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
     else
-      flash.now[:alert] = "something went wrong" #QUESTION: how to flash error messages??? error.messages?????
+      flash.now[:alert] = @work.errors.full_messages.to_sentence
+       #QUESTION: how to flash error messages??? error.messages?????
       render :edit
     end
   end
@@ -67,12 +68,12 @@ class WorksController < ApplicationController
         flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
         redirect_to root_path
       else
-        flash.now[:alert] = "something went wrong" #QUESTION: how to flash error messages??? error.messages?????
+        flash.now[:alert] = "something went wrong"
         render :show
       end
 
     else # TODO: error messages
-      flash[:error] = "not found"
+      flash[:alert] = "not found"
       redirect_back(fallback_location: root_path)
     end
   end
