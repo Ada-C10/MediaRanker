@@ -1,0 +1,34 @@
+<h1>Users Details: <%= @user.username %></h1>
+<p>
+  Joined site <%= "#{@user.created_at.strftime("%B %e, %Y")}" %>
+</p>
+
+
+<section class="table">
+  <h3> Votes </h3>
+  <table id="">
+    <tr>
+      <th>Media Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Category</th>
+      <th>Voted On</th>
+    <tr>
+
+<% @votes.each do |vote| %>
+    <tr>
+
+      <td><%= vote.work.title %></td>
+      <td><%= vote.user.username %></td>
+      <td><%= vote.work.publication_year %></td>
+      <td><%= vote.work.category %></td>
+      <td><%= "#{vote.created_at.strftime("%B %e, %Y")}" %></td>
+
+    </tr>
+      <% end %>
+
+  </table>
+</section>
+
+<%= link_to "See all Users", users_path %>
+<%= link_to "Back to Media List", home_path %>

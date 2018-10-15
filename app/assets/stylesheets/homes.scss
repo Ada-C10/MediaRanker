@@ -1,0 +1,23 @@
+// Place all the styles related to the Homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+section > h2, p {
+    padding: 0 2rem 2rem 2rem;
+}
+
+h2 {
+  color: #26A69A;
+}
+
+.top-ten__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2em;
+}
+.top-ten__container section > ul {
+    list-style: none;
+}
+
+.top-ten__container section ul > li{
+color: #26A69A;
+}

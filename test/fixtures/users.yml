@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+karis:
+  username: karis
+  id: 1
+
+harry:
+  username: harry

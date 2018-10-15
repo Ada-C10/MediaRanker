@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+jane:
+  id: 1
+  category: book
+  title: jane austin
+  creator: someone
+  publication_year: 1999
+  description: test book
+
+harry:
+  category: movie
+  title: harry potter
+  creator: jk rowling
+  publication_year: 1999
+  description: test movie
