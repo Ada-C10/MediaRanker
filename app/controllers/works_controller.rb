@@ -59,7 +59,7 @@ class WorksController < ApplicationController
 
   private
 
-# Filter
+# Filter for #show, #edit, #update, #destroy
   def find_work
     @work = Work.find_by(id: params[:id].to_i)
     if @work.nil?
@@ -68,19 +68,30 @@ class WorksController < ApplicationController
     end
   end
 
-# Filter
+# Filter for #home
+# Sorts works by votes (desc), then subsorts by title (asc)
   def list_top_works
     # ...should this hash go in the model or the controller?
     @works = Hash.new
   # Find project constants in config/initializers/constants.rb
     VALID_WORK_CATEGORIES.each do |category|
       @works[category] = []
-      Work.by_category(category)[0..9].each do |work|
+
+      # Array of works, in descending order by title:
+      works_by_category = Work.by_category(category).reverse!
+
+      # Array of works, in descending order by votes, subsorted in ascending order by title
+      works_by_category = works_by_category.sort_by { |work| work.number_of_votes }.reverse!
+
+      # Array of top 10 works, by votes, by title
+      works_by_category[0..9].each do |work|
         @works[category] << work
       end
     end
   end
 
+# Filter for #index
+# Sorts works in alphabetical order by title (asc)
   def list_all_works
     # ...should this hash go in the model or the controller?
     @works = Hash.new

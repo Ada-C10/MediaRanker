@@ -12,18 +12,31 @@ class Work < ApplicationRecord
   validates :description, length: { maximum: 140 }
 
   def self.by_category(category)
-    works = Work.where(category: category).order(title: :desc)
-    return works.sort_by { |work| work.number_of_votes }.reverse!
+    # Sorts works in alphabetical order
+    return Work.where(category: category).order(title: :asc).to_a
   end
 
   def self.spotlight
-    spotlight = Work.all.max_by {|work| work.number_of_votes}
-    if spotlight.number_of_votes < 1
+    # Spotlight returns the work with the highest number of votes
+    max_votes = Work.all.reduce(0) do |max, work|
+      work.number_of_votes > max ? work.number_of_votes : max
+    end
+    # If none of the works have any votes, spotlight returns nil
+    if max_votes < 1
       return nil
     else
-      return spotlight
+    # Tiebreaking: Spotlight will show the most recently upvoted work
+      spotlight = Work.all.select {|work| work.number_of_votes == max_votes}
+      spotlight = spotlight.sort_by {|work| work.most_recent_vote}.reverse!
+      return spotlight.first
     end
-    # tie breaking?
+  end
+
+  # Helper method for Spotlight
+  def most_recent_vote
+    return self.votes.reduce(0) do |most_recent_vote_date, vote|
+      vote.created_at > most_recent_vote_date ? vote.created_at : most_recent_vote_date
+    end
   end
 
   def upvote_button
