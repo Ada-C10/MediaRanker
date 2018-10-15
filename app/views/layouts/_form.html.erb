@@ -1,17 +1,6 @@
 <h1> <%= action_name %> </h1>
 
 
-<% if model_name.errors.any? %>
-  <ul class="errors">
-    <% model_name.errors.each do |column, message| %>
-      <li>
-        <strong><%= column.capitalize %></strong> <%= message %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-
-
 <%= form_with model: model_name, class: "form-group", local: true do |f|%>
   <%= form_description %>
 
@@ -31,6 +20,10 @@
   <%= f.label :description %>
   <%= f.text_field :description, class: "form-control" %>
 
+  <% if @current_user %>
+    <%= f.submit button_title, class: "btn btn-primary" %>
+     <% else %>
+    <%= f.submit button_title, class: "btn btn-primary", disabled: true %>
+  <% end %>
 
-  <%= f.submit button_title, class: "btn btn-primary" %>
 <% end %>

@@ -5,6 +5,12 @@ class WorksController < ApplicationController
     @works = Work.all
   end
 
+  def top_works
+    works = Work.all
+    #sorts works in descending order by votes with most work_ids based on the votes joint table
+    @top_works = works.left_joins(:votes).group(:id).order('COUNT(work_id) DESC')
+  end
+
   def show; end
 
   def new

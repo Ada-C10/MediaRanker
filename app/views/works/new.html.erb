@@ -1,2 +1,6 @@
+<% if !@current_user %>
+    <h3> YOU MUST BE LOGGED IN TO ADD A NEW WORK </h3>
+<% end %>
+
 <%= render partial: "layouts/form",
       locals: { action_name: 'Add a Work', model_name: @work, button_title: "Create", form_description: 'New Work'} %>

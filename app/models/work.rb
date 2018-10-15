@@ -5,8 +5,10 @@ class Work < ApplicationRecord
 
   validates :title, presence: true, uniqueness: true
   validates :creator, presence: true
-  validates :year, presence: true
+  validates :year, presence: true, numericality: { only_integer: true }
   validates :description, presence: true
-  validates :category, presence: true
+  # validates :category
+
+  # scope :by_votes, joins: :votes, group: "works.id", :order => "COUNT(works.id) DESC"
 
 end

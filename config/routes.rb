@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   delete 'sessions/logout', to: 'sessions#destroy', as: 'logout'
 
   post 'works/:work_id/votes/create', to: 'votes#create', as: 'vote'
-  
+
   # get 'works/index'
   # get 'works/new'
 
