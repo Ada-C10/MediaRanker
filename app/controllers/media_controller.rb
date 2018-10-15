@@ -1,5 +1,7 @@
 class MediaController < ApplicationController
 
+  before_action :find_medium, except: [:index, :new, :create]
+
   def index
     @movies = Medium.where(category: "movie")
     @books = Medium.where(category: "book")
@@ -7,7 +9,6 @@ class MediaController < ApplicationController
   end
 
   def show
-    @medium = Medium.find_by(id: params[:id])
     if @medium.nil?
       head :not_found
     end
@@ -29,22 +30,18 @@ class MediaController < ApplicationController
   end
 
   def edit
-    @medium = Medium.find_by(id: params[:id])
   end
 
   def update
-    medium = Medium.find(params[:id])
-    if medium.update(medium_params)
-      redirect_to medium_path(medium.id)
+    if @medium.update(medium_params)
+      redirect_to medium_path(@medium.id)
     else
       render :edit, status: :bad_request
     end
   end
 
   def destroy
-    medium = Medium.find_by(id: params[:id])
-
-    medium.destroy
+    @medium.destroy
     redirect_to media_path
   end
 
@@ -58,6 +55,10 @@ class MediaController < ApplicationController
       :creator,
       :publication_year
     )
+  end
+
+  def find_medium
+    @medium = Medium.find_by(id: params[:id])
   end
 
 end
