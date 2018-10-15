@@ -40,7 +40,7 @@ describe User do
     it "has votes" do
       votes = users(:anon).votes
 
-      votes.count.must_equal 2
+      votes.count.must_equal 3
     end
   end
 end
