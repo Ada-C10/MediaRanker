@@ -52,20 +52,6 @@ class Work < ApplicationRecord
     return most_recent_vote_date
   end
 
-# Helper method for #home in WorksController
-  def self.list_top_works
-   top_ten_works = Work.list_all_works
-
-   top_ten_works.each_key do |category|
-     # Do not display works with 0 votes
-     top_ten_works[category] = top_ten_works[category].delete_if { |work| work.number_of_votes < 1 }
-
-     # Display only the top 10 works
-     top_ten_works[category] = top_ten_works[category][0..9]
-   end
-   return top_ten_works
-  end
-
 # Helper for list_top_works and #index in WorksController
  def self.list_all_works
    all_works = Hash.new
@@ -81,6 +67,20 @@ class Work < ApplicationRecord
    end
    return all_works
  end
+
+ # Helper method for #home in WorksController
+   def self.list_top_works
+    top_ten_works = Work.list_all_works
+
+    top_ten_works.each_key do |category|
+      # Do not display works with 0 votes
+      top_ten_works[category] = top_ten_works[category].delete_if { |work| work.number_of_votes < 1 }
+
+      # Display only the top 10 works
+      top_ten_works[category] = top_ten_works[category][0..9]
+    end
+    return top_ten_works
+   end
 
   def upvote_button
     if !@current_user
