@@ -7,7 +7,7 @@ class VotesController < ApplicationController
     user = User.find_by(id: session[:user_id])
     work = Work.find_by(id: params[:work_id])
     if user
-      @vote = @work.votes.new(user)
+      @vote = @work.votes.new(user_id: user.id, work_id: work_id)
     else
       flash[:error] = "Must be logged in to vote."
     end
@@ -16,10 +16,14 @@ class VotesController < ApplicationController
   def create
     work = Work.find_by(id: params[:work_id])
     user = User.find_by(id: session[:user_id])
-    @vote = Vote.new(work_id: work.id, user_id: user.id)
+    @vote = Vote.new
     # raise
     if @vote.save
       flash[:success] = "Successfully upvoted!"
+      redirect_to work_path(params[:work_id])
+    elsif
+      user == nil
+      flash[:error] = "Must be logged in to vote."
       redirect_to work_path(params[:work_id])
     else
       flash[:error] = "You can only vote once for a work."
