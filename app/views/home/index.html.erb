@@ -6,10 +6,12 @@
 
 </section>
 
-<h2> List of Works </h2>
-<strong>
-  Books
-</strong>
+<section class="top-ten__container">
+
+<section>
+
+
+<h2> Top Books </h2>
 <ul>
   <% @books[0..9].each do |book| %>
   <li>
@@ -18,10 +20,12 @@
   <p><%= book.votes.length %> votes</p>
   <% end %>
 </ul>
+</section>
 
-<strong>
-  Albums
-</strong>
+<section>
+
+
+<h2> Top Albums </h2>
 <ul>
   <% @albums[0..9].each do |album| %>
   <li>
@@ -30,11 +34,12 @@
   <p><%= album.votes.length %> votes</p>
   <% end %>
 </ul>
+</section>
 
 
-<strong>
-  Movies
-</strong>
+<section>
+
+<h2> Top Movies </h2>
 <ul>
   <% @movies[0..9].each do |movie| %>
   <li>
@@ -43,3 +48,5 @@
   <p><%= movie.votes.length %> votes</p>
   <% end %>
 </ul>
+</section>
+</section>
