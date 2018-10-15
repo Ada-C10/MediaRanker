@@ -1,2 +1,4 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>Username <%=@user.username%></h1>
+<p>Joined site: <%=@user.joining_date%></p>
+<%= link_to "Back to Media List", root_path, class: 'btn btn-primary'%>
+<%= link_to "See all users", users_path, class: 'btn btn-primary' %>
