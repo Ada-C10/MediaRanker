@@ -30,7 +30,7 @@ class WorksController < ApplicationController
         flash[field] = messages
       end
       redirect_to new_work_path
-      # I think we're supposed to use render :new, but don't I want the url to change...?
+      # I think we're supposed to use render :new, but I want the url to change...?
     end
   end
 

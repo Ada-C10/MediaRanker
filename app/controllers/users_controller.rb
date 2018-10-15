@@ -8,11 +8,4 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @votes = Vote.find(@user.votes.ids) # returns Array of Votes
   end
-
-  private
-
-  # def user_params
-  #   return params.require(:user).permit(:name)
-  # end
-
 end
