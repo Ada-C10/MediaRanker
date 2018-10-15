@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to root_path
       else
-        flash.now[:error] = "Could not log in"
+        flash.now[:error] = "Could not log in, user name can't be blank"
         render :new
       end
     else

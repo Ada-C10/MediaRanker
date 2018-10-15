@@ -71,9 +71,5 @@ describe Work do
       expect(@work.valid?).must_equal false
     end
 
-    it 'responds to votes' do
-
-    end
-
   end
 end
