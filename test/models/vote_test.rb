@@ -11,7 +11,15 @@ describe Vote do
   end
 
   describe 'validations' do
+    it 'can only have one vote per user' do
+      new_vote = Vote.new (
+        user_id: @user.id,
+        work_id: @work.id,
+        date_created: Date.today
+      )
 
+      
+    end
   end
 
   describe 'relations' do

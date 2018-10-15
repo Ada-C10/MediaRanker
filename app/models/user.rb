@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Multiple votes can be associated with a single user
   has_many :votes
-  # has_many :works :through :votes
+  # has_many :works :through :votes = Not needed 
   validates :name, presence: true
   validates :name, uniqueness: true
 

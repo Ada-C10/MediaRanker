@@ -44,7 +44,8 @@ describe Work do
       work.votes <<
         Vote.new(
             date_created: Date.today,
-            user_id: @user.id
+            user_id: @user.id,
+            work_id: work.id
         )
 
       votes = work.votes
@@ -57,6 +58,27 @@ describe Work do
   end
 
   describe 'custom methods' do
+    before do
 
+    end
+    # test top ten categories
+    it 'returns the correct category' do
+
+    end
+
+    it 'has the lowest number of votes as the last item' do
+
+    end
+
+    it 'has the highest number of votes as the first item' do
+
+    end
+
+    it 'returns no more than 10 works' do
+
+    end
+
+    # What if there's no works?
+    
   end
 end

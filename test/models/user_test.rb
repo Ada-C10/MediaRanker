@@ -57,7 +57,4 @@ describe User do
     end
   end
 
-  describe 'custom methods' do
-
-  end
 end
