@@ -15,5 +15,17 @@ class Work < ApplicationRecord
   scope :books, -> { where(category: 'book') }
 
 
+  # def self.by_category(category)
+  #   category = category.singularize.downcase
+  #   self.where(category: category).order(votes: :desc)
+  # end
+
+ #  def self.top_ten(category)
+ #   where(category: category).order(votes: :desc).limit(10)
+ # end
+ #
+ #  def self.best_albums
+ #    top_ten("album")
+ #  end
 
 end
