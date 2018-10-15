@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+jim:
+  name: Jim Bob
+
+nancy:
+  name: Nancy Drew
+
+yoyo:
+  name: YoYo Ma

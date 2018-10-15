@@ -1,0 +1,10 @@
+<h1> All Votes </h1>
+
+<ul>
+  <% @votes.sort.reverse.each do |vote| %>
+    <li><strong>UserID - <%=vote.user_id %></strong></li>
+    <li><strong>WorkID - <%=vote.work_id %></strong></li>
+
+    <br> </br>
+  <% end %>
+</ul>

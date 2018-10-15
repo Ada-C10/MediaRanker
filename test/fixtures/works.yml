@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+book1:
+  title: Beanstock
+  description: An interesting book about beanstocks
+  year_published: 1999
+  created_by: Carly
+  category: Book
+
+book2:
+  title: Trees
+  description: An intersting book about trees
+  year_published: 2000
+  created_by: Ann Irving
+  category: Book
+
+movie1:
+  title: Devil
+  description: An interesting movie about devils
+  year_published: 1998
+  created_by: Joe Cocker
+  category: Movie
+
+movie2:
+  title: Pumpkin
+  description: An intersting movie about pumpkins
+  year_published: 1988
+  created_by: Pumpkin Joe
+  category: Movie
+
+album1:
+  title: Strings
+  description: An interesting record about strings
+  year_published: 1899
+  created_by: Joeseph Technicolor
+  category: Album
+
+album2:
+  title: Percussion
+  description: An intersting record about drums
+  year_published: 1977
+  created_by: Yoyo Ma
+  category: Album
