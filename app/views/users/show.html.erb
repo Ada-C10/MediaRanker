@@ -18,11 +18,11 @@
     <th>Category</th>
     <th>Voted On</th>
   </tr>
-<% @user.votes.work.each do |work| %>
-    <td><%= link_to work.title, user_path(vote.user) %></td>
-    <td><%= link_to work.creator, work_path(vote.user) %></td>
-    <td><%= link_to work.published_year, work_path(vote.user) %></td>
-    <td><%= link_to work.category, work_path(vote.user) %></td>
+<% if @user.upvote.include? @user.id %>
+    <td><%= link_to work.title, work_path(work_id) %></td>
+    <td><%= link_to work.creator, work_path(work_id) %></td>
+    <td><%= link_to work.published_year, work_path(work_id) %></td>
+    <td><%= link_to work.category, work_path(work_id) %></td>
     <td><%# work's vote timestamp %></td>
   </tr>
 <% end %>

@@ -58,12 +58,22 @@ class WorksController < ApplicationController
       redirect_to root_path
     end
   end
+  #
+  # def create
+  #   @work = Work.find(params[:id])
+  #   @work = User.find(params[:id])
+  #   @work.votes.create
+  #   redirect_to(works_path)
 
-  def upvote
-    @work = Work.find(params[:id]) #find work's id, stores it in @work
-    @work.votes.create #creates new vote and saves it
-    redirect_to works_path
-  end
+    #
+    # if @work.upvote(@current_user)
+    #   flash[:success] = "Vote successful."
+    # else
+    #   flash[:warning] = "Unable to submit vote"
+    # end
+    #
+    # redirect_back fallback_location: works_path
+  # end
 
 
   private
