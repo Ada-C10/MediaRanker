@@ -9,7 +9,7 @@ resources :users
     resources :works, only:[:create, :new, :show]
     resources :users
   end
-  resources :main, only: [:index]
+  resources :main, only: [:index, :show]
   post 'works/:id/upvote', to: 'works#upvote', as: 'upvote'
   post 'sessions/login', to: 'sessions#login', as: 'login'
   get 'sessions/login', to: 'sessions#new'
