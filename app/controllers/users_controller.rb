@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show]
+  before_action :find_user, only: :show
   before_action :find_user_works, only: :show
 
   def new
@@ -47,6 +47,6 @@ class UsersController < ApplicationController
   end
 
   def find_user_works
-    @user_votes = @votes.find_votes_by_user(params[:id])
+    @user_votes = User.find_by(id: params[:id]).votes
   end
 end
