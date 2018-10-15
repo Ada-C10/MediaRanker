@@ -62,6 +62,7 @@ describe Work do
 
     # RELATIONS TESTS
     describe 'relations' do
+
       it 'must relate to a vote' do
         work = works(:potter)
 
@@ -72,13 +73,24 @@ describe Work do
         work = works(:potter)
         votes = work.votes
 
-        expect( work.votes.first ).must_be_kind_of Vote
-        expect( work.votes.count ).must_equal 5
+        expect( votes.first ).must_be_kind_of Vote
+        expect( votes.count ).must_equal 5
       end
+
+      it 'returns an empty array of votes when there are no votes for a work' do
+        work = works(:butterfinger)
+
+        work_votes = work.votes
+
+        expect( work_votes.first ).must_equal nil
+        expect( work_votes.count ).must_equal 0
+      end
+
     end
 
     # CUSTOM METHODS TESTS
     describe 'top_media' do
+
       it 'returns only 10 works' do
         works = Work.top_media('book')
 
@@ -105,6 +117,7 @@ describe Work do
     end
 
     describe 'spotlight' do
+
       it 'returns the work with the most amount of votes' do
         most_votes = Work.spotlight
 
@@ -115,6 +128,7 @@ describe Work do
     end
 
     describe 'get_all_works' do
+      
       let(:albums) { Work.get_all_works('album') }
       let(:books) { Work.get_all_works('book') }
       let(:movies) { Work.get_all_works('movie') }

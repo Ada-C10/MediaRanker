@@ -1,3 +1,15 @@
+<% if @work.errors.messages.any? %>
+<ul class="errors">
+  <% @work.errors.each do |column, message| %>
+  <li>
+    <%= column.capitalize %>
+    <%= message %>
+  </li>
+  <% end %>
+
+</ul>
+<% end %>
+
 <%= form_with method: :post, url: login_path do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %>
