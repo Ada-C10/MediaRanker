@@ -10,27 +10,50 @@
   </head>
 
   <body>
-    <section class="login-info">
-        <% if @existing_user %>
-          <p>
-            Bro:
-            <%= @existing_user.name %>
-            <%= link_to "tag out bro", logout_path, method: :post %>
-          </p>
-        <% else %>
-          <%= link_to "tag in bro", new_user_path %>
+    <header class="app-header__header">
+      <h1>
+        <%= link_to "Bro Ranker™", root_path %>
+        <small>Ranking the Best Bros</small>
+      </h1>
+      <nav class="app-header__nav">
+        <ul class="nav app-header__site-nav-container">
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "View top bros", root_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Vew all bros", media_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Add a new bro", new_medium_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "View all users", users_path, class:'nav-link' %>
+          </li>
+        </ul>
+        <ul class="nav app-header__user-nav-container">
+          <li class="nav-item app-header__nav_item">
+            <% if @existing_user %>
+                <%= link_to "Tagged in as  #{@existing_user.name.capitalize}", user_path(@existing_user), class: 'btn btn-primary' %>
+                <%= link_to "Tag Out, Bro", logout_path, method: :post, class: 'btn btn-primary' %>
+            <% else %>
+              <%= link_to "Tag In, Bro", new_user_path, class: 'btn btn-primary' %>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <% if flash  %>
+      <section class="alert__container">
+        <% flash.each do |key, message| %>
+          <% alert_class = key == "error" ? "danger" : key %>
+          <div class="alert alert-<%= alert_class %>">
+            <span><%= message %></span>
+          </div>
         <% end %>
       </section>
-
-    <section class="flash-messages">
-      <% flash.each do |key, message| %>
-        <% alert_class = key == "error" ? "danger" : key %>
-        <p class="alert alert-<%= alert_class %>">
-          <%= message %>
-        </p>
-      <% end %>
-    </section>
-
-    <%= yield %>
+    <% end %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

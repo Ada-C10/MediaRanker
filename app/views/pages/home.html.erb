@@ -1,18 +1,41 @@
-<h1>Hey welfcome to the media site haha...ha..</h1>
+<section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Bro Spotlight</span>
+      <%= link_to @media_spotlight.title, medium_path(@media_spotlight) %>  by
+      <%= @media_spotlight.creator %>
+    </h2>
+    <p class="spotlight__description">
+      <%= media_spotlight_text(@media_spotlight) %>
+    </p>
+  </section>
 
-<section>
-  <h2>
-    <span>Media Spotlight</span>
-    <%= link_to @media_spotlight.title, medium_path(@media_spotlight) %>
-  </h2>
-  <p>
-    <%= media_spotlight_text(@media_spotlight) %>
-  </p>
+  <hr class="root__hr" />
+
+  <section class="top-ten__container">
+    <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Visual Bros
+    </h2>
+    <ul class="list-group top-ten__list">
+      <%= render partial: 'medium', collection: first_ten_by_votes(@movies) %>
+    </ul>
+  </section>
+
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Word Bros
+    </h2>
+    <ul class="list-group top-ten__list">
+      <%= render partial: 'medium', collection: first_ten_by_votes(@books) %>
+    </ul>
+  </section>
+
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Sound Bros
+    </h2>
+    <ul class="list-group top-ten__list">
+      <%= render partial: 'medium', collection: first_ten_by_votes(@albums) %>
+    </ul>
+  </section>
 </section>
-
-<h4>Books</h4>
-<%= render partial: "media/media_table", locals: {collection: first_ten_by_votes(@books) } %>
-<h4>Movies</h4>
-<%= render partial: "media/media_table", locals: {collection: first_ten_by_votes(@movies) } %>
-<h4>Albums</h4>
-<%= render partial: "media/media_table", locals: {collection: first_ten_by_votes(@albums) } %>
