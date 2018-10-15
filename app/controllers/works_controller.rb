@@ -90,16 +90,17 @@ class WorksController < ApplicationController
   end
 
 # Filter for #index
-# Sorts works in alphabetical order by title (asc)
+# Sorts works by votes (desc), then subsorts by title (asc)
   def list_all_works
     # ...should this hash go in the model or the controller?
     @works = Hash.new
   # Find project constants in config/initializers/constants.rb
     VALID_WORK_CATEGORIES.each do |category|
-      @works[category] = []
-      Work.by_category(category).each do |work|
-        @works[category] << work
-      end
+      # Array of works, in ascending order by most recent vote date:
+      works_by_category = Work.by_category(category).sort_by {|work| work.most_recent_vote}
+
+      # Array of works, in descending order by votes, subsorted in descending order by most recent vote date:
+      @works[category] = works_by_category.sort_by { |work| work.number_of_votes }.reverse!
     end
   end
 
