@@ -15,7 +15,8 @@ class WelcomeController < ApplicationController
   end
 
   def find_top_ten_movies
-      @top_ten_movies = Work.where(category: 'movie').left_joins(:votes).group(:title).order('COUNT(votes.id) DESC').limit(10)
+
+      @top_ten_movies = Work.where(category: 'movie').left_joins(:votes).group(:id).order('COUNT(votes.id) DESC').limit(10)
   end
 
   def find_top_ten_books
