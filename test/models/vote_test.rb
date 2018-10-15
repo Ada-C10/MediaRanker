@@ -9,6 +9,9 @@ describe Vote do
     # binding.pry
   end
 
+
+
+
   it "must be valid when a vote is made" do
     is_valid = @vote1.valid?
     expect( is_valid ).must_equal true
@@ -49,6 +52,14 @@ describe Vote do
   #testing the realtionship that a Vote has a Work which has work_id.
   it "A vote has a work_id" do
     expect(@vote1.work_id == @vote1.work.id).must_equal true
+  end
+
+
+  it "It returns the work with most votes" do
+    vote = Vote.where(work_id: @vote1.work)
+
+    expect(vote.length).must_equal 3
+
   end
 
 

@@ -23,3 +23,12 @@ green:
   creator: Dr. Who
   publication_year: 2018
   description: The movie that blew everyone's hat
+
+yellow:
+  category: movie
+  title: Under the Stars
+  creator: Dr. Purple
+  publication_year: 2018
+  description: A movie about stars
+
+  

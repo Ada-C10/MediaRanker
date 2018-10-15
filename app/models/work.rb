@@ -16,17 +16,6 @@ class Work < ApplicationRecord
     return total_votes
   end
 
-#find me all the votes for one particular work_id, and then give me all ther user that are in there
-  # def get_users
-  #   votes = Vote.where(work_id: id)
-  #   users = []
-  #   votes.each do |vote|
-  #      users << vote.user
-  #   end
-  #   return users
-  # end
-
-
 
 
 end

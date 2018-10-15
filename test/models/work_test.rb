@@ -60,6 +60,53 @@ describe Work do
       expect(@work.errors.messages).must_include :title
     end
 
+
+
+    it "returns the work with the most votes" do
+      @works = Work.all.to_a
+      @works = (@works.sort_by { |work| work.total_votes()}).reverse!
+
+      votes = []
+      @works.each do |work|
+        votes << work.total_votes
+      end
+
+      expect(votes.length).must_equal 4
+      expect(votes.first).must_equal 3
+      expect(@works.first.title).must_equal "Blue Breaker"
+      expect(@works.first.category).must_equal "album"
+      expect(@works.first.creator).must_equal "Dr. Sarai Langosh"
+
+    end
+
+
+
+    it "returns the top work within a certain category (album)" do
+
+
+      @albums = Work.where(category: "album")
+
+      @albums = ((@albums.sort_by { |album| album.total_votes()}).reverse!).take(1)
+
+
+      votes = []
+      @albums.each do |album|
+        votes << album.total_votes
+      end
+
+      expect(@albums.length).must_equal 1
+      expect(@albums).must_be_kind_of Array
+
+      expect(@albums.first.title).must_equal "Blue Breaker"
+      expect(@albums.first.category).must_equal "album"
+      expect(@albums.first.creator).must_equal "Dr. Sarai Langosh"
+
+    end
+
+
+
+
+
   end
 
 

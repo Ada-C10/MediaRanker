@@ -11,13 +11,4 @@ class Vote < ApplicationRecord
 
 
 
-#slow
-#get all works
-#each work get votes
-#then sort
-
-
-#fast way, sort votes in the model
-
-
 end
