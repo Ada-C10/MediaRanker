@@ -39,13 +39,7 @@
       </nav>
     </header>
 
-    <!-- <section class="flash-messages">
-      <% flash.each do |name, msg| %>
-      <ul>
-        <li> <%= msg %> </li>
-      </ul>
-      <% end %>
-    </section> -->
+
     <section class="flash-messages">
       <% flash.each do |key, message| %>
         <% alert_class = key == "error" ? "warning" : key %>

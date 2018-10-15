@@ -1,4 +1,5 @@
 class MediarankerController < ApplicationController
+  
   def main
     @media_spotlight = Work.order(votes_count: :desc).first
     @movies = (Work.where(category: "movie")).ordering.limit(10)

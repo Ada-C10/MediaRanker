@@ -4,42 +4,31 @@ locals: {
 }
 %>
 
-<div class='row'>
-  <div class='col-sm-12'>
-    <%= form_with model: @work, class: 'form-horizontal', role: 'form' do |f| %>
-
-    <div class="form-group">
-      <div class="control-label col-sm-12">
-        <div>
-          <%= f.label :category %>
-        </div>
-        <%= f.select :category, %w[album book movie], class: "form-control" %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="control-label col-sm-12">
-
-        <%= f.label :title %>
-        <%= f.text_field :title, class: "form-control" %>
-
-        <%= f.label :creator %>
-        <%= f.text_field :creator, class: "form-control" %>
-
-        <%= f.label :publication_year %>
-        <%= f.text_field :publication_year,class: "form-control" %>
-
-        <%= f.label :description %>
-        <%= f.text_field :description, class: "form-control" %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-3">
-        <%= f.submit action_type, class: 'btn btn-primary btn-md' %>
-      </div>
-    </div>
-
-    <% end %>
-  </div>
+<%= form_with model: @work, class: 'work-form' do |f| %>
+<div class="form-group">
+  <%= f.label :category %>
+  <%= f.select :category, Work.get_categories, {}, class: "form-control" %>
 </div>
+
+<div class="form-group">
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :creator %>
+  <%= f.text_field :creator, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control" %>
+</div>
+
+<%= f.submit action_type, class: "btn btn-primary btn-md" %>
+<% end %>

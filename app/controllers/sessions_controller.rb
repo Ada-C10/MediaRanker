@@ -8,16 +8,16 @@ class SessionsController < ApplicationController
     if @user.nil?
       @user = User.new(user_name: params[:user_name])
       if @user.save
-        flash[:new_user] = "Successfully logged in as new user #{@user.user_name}"
+        flash[:success] = "Successfully logged in as new user #{@user.user_name}"
         session[:user_id] = @user.id
         redirect_to root_path
       else
-        flash[:notice] = "Could not log in"
+        flash.now[:error] = "Could not log in"
         render :new
       end
     else
       session[:user_id] = @user.id
-      flash[:existing_user] = "Welcome back #{@user.user_name}!"
+      flash[:success] = "Welcome back #{@user.user_name}!"
       redirect_to root_path
     end
   end
