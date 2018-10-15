@@ -1,29 +1,51 @@
-<h1>List of Works</h1>
+<section class = "mt-5">
+<h2 class="text-info mb-4">List of Works</h1>
   <% @works.each_key do |category| %>
-    <h2><%= category.capitalize %>s</h2>
+    <h3 class="pt-2 d-inline"><%= category.capitalize %>s
     <% if @works[category].size == 0 %>
-      <p><%= "No #{category}s yet!" %></p>
+      <div class="empty-category d-inline ml-5 px-3 badge badge-warning"><%= "No #{category}s yet!" %></div></h3>
+      <hr class="media-category-header">
+
     <% else %>
-      <% @works[category].each do |work| %>
-        <ul>
-          <li><%= work.print_number_of_votes %></li>
-          <li><%= link_to work.title, work_path(work.id) %></li>
-          <li><%= work.creator %></li>
-          <li><%= work.publication %></li>
-          <% if @current_user && work.has_no_vote_by?(@current_user) %>
-            <li><%= link_to "Upvote", work_votes_path(work.id), method: :post %></li>
-          <% elsif @current_user %>
-          <% vote = work.votes.find_by(user_id: @current_user.id) %>
-            <li><%= link_to "Remove Your Upvote", work_vote_path(work.id, vote.id), method: :delete %></li>
-          <% else %>
-            <li>Please log in to upvote.</li>
+  </h3>
+      <table class="table table-sm">
+        <thead>
+          <tr class="d-flex">
+            <th class="col-1">Votes</th>
+            <th class="col-4">Title</th>
+            <th class="col-3">Created By</th>
+            <th class="col-2">Published</th>
+            <th class="col-2">Upvote</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @works[category].each do |work| %>
+            <tr class="d-flex">
+              <td class="col-1"><%= work.print_number_of_votes %></td>
+              <td class="col-4"><%= link_to work.title, work_path(work.id), class: "text-info" %></td>
+              <td class="col-3"><%= work.creator %></td>
+              <td class="col-2"><%= work.publication %></td>
+              <td class="col-2">
+                <% if @current_user && work.has_no_vote_by?(@current_user) %>
+                  <%= link_to "Upvote!", work_votes_path(work.id), method: :post, class: "btn btn-outline-info", role: "button"%></td>
+                <% elsif @current_user %>
+                <% vote = work.votes.find_by(user_id: @current_user.id) %>
+                  <%= link_to "Remove Upvote", work_vote_path(work.id, vote.id), method: :delete, class: "btn btn-danger", role: "button" %></td>
+                <% else %>
+                  Please log in to upvote.
+                <% end %>
+            </td>
+            </tr>
           <% end %>
-        </ul>
-      <% end %>
+        </tbody>
+      </table>
     <% end %>
   <% end %>
 
-<ul>
-  <li><%= link_to "Add A New Work", new_work_path %></li>
-  <li><%= link_to "Back to Top 10 (Home)", root_path %></li>
-</ul>
+
+<section class= "mt-5">
+  <%= link_to "Add A New Work", new_work_path, class: "btn btn-info" %></li>
+  <%= link_to "Back to Top 10 (Home)", root_path, class: "btn btn-info" %></li>
+</section>
+
+</section>
