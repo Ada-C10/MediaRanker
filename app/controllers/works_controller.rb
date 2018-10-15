@@ -59,7 +59,7 @@ class WorksController < ApplicationController
     if vote.save
       flash[:success] = "Successfully voted!"
     else
-      flash[:error] = "You've already voted for this, sowry!"
+      flash[:error] = "Couldn't record vote, sowry!"
     end
     redirect_back(fallback_location: root_path)
   end
