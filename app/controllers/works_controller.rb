@@ -7,12 +7,6 @@ class WorksController < ApplicationController
       #@works = Work.joins(:votes).select('works.*, count(vote.id)as vote_count').group('works.id').order(:title)
     end
 
-    # def top_albums
-    # @albums = Work.joins(:votes).group("votes.work_id").order('count(votes.work_id) desc').limit(2)
-    # end
-
-
-
     def show
       id = params[:id]
       @work = Work.find_by(id:id)
