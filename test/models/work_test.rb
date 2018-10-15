@@ -3,12 +3,12 @@ require 'pry'
 
 describe Work do
   describe 'relations' do
-    # it "has votes" do
-    #   w = Work.first
-    #   creator = w.creator
-    #
-    #   expect(creator).must_be_instance_of
-    # end
+    it 'has many votes' do
+      work = works(:nemo)
+
+      work.votes.length.must_equal 3
+      work.votes[0].must_equal votes(:one)
+    end
   end
 
   describe 'validations' do
