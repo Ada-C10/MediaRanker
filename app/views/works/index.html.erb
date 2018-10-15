@@ -20,7 +20,7 @@
      <tbody>
        <% @works.each do |work| %>
        <% if work.category == 'album' %>
-       <% votes = @votes.find_votes_by_work(work.id) %>
+       <% votes = work.votes %>
        <tr>
          <td><%= "#{votes.length}"%></td>
          <td><%=link_to "#{work.title}", work_path(work)%></td>
@@ -51,7 +51,7 @@
        <tbody>
          <% @works.each do |work| %>
          <% if work.category == 'book' %>
-         <% votes = @votes.find_votes_by_work(work.id) %>
+         <% votes = work.votes%>
          <tr>
            <td><%= "#{votes.length}"%></td>
            <td><%=link_to "#{work.title}", work_path(work)%></td>
@@ -81,7 +81,7 @@
         <tbody>
           <% @works.each do |work| %>
           <% if work.category == 'movie' %>
-          <% votes = @votes.find_votes_by_work(work.id) %>
+          <% votes = work.votes %>
           <tr>
             <td><%= "#{votes.length}"%></td>
             <td><%=link_to "#{work.title}", work_path(work)%></td>
