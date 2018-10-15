@@ -1,7 +1,7 @@
 <section class="work-detail-summary">
   <div class="description-container">
 
-    <h2><%= @work.title %> </h2>
+    <h2><%= link_to @work.title, work_path(@work.id) %></h2>
 
     <p class="description-text">Created by:<%= @work.creator %></p>
     <p class="description-text">Published:<%= @work.publication_year %></p>
@@ -29,7 +29,7 @@
 
     <tr>
       <% @work.votes.each do |vote| %>
-      <th><%= vote.user.username %></th>
+      <th><%= link_to vote.user.username, work_path(@work.id) %></th>
       <th><%= vote.created_at.strftime("%B %d, %Y") %></th>
     </br>
   </tr>
