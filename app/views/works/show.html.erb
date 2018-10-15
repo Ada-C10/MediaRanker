@@ -1,11 +1,11 @@
 <% if @work.nil? %>
   <h1> 404 Not found</h1>
 <% else %>
-<section class='vote-for'>
-    <%= link_to "Vote!", vote_path(@work.id), method: :create, class: "btn btn-primary" %>
-</section>
   <!-- show vote counts, then as badge in bootstrap -->
    <h2> <%= @work.title %> </h2>
+   <section class='vote-for'>
+       <%= link_to "Vote!", vote_path(@work.id), method: :create, class: "btn btn-outline-primary btn-sm" %>
+   </section>
    <ul class="list-group">
      <li> Created by: <%= @work.creator %> </li>
      <li> Category: <%= @work.category %> </li>
@@ -15,7 +15,7 @@
    <p> <%= @work.description %> </p>
  <!-- only allow users to edit/delete if they had added the work to the db -->
  <% if @current_user %>
-    <%= link_to "Edit", edit_work_path(@work.id) %>
+    <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-warning" %>
     <%= link_to "Delete Work", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure? This cannot be undone!'}, class: "btn btn-danger" %>
     <% else %>
     <p> You must be logged in to delete or edit a work.</P>

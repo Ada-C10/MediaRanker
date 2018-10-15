@@ -19,9 +19,13 @@ class VotesController < ApplicationController
     elsif @current_user
       new_vote = {work_id: params[:work_id], user_id: @current_user.id}
       @vote = Vote.new(new_vote)
-      @vote.save
-      flash[:success] = "You have voted!"
-      redirect_to root_path
+      if @vote.save
+        flash[:success] = "You have voted!"
+        redirect_to root_path
+      else
+        flash[:error] = "Sorry, your vote wasn't cast. Please try again."
+        redirect_to root_path
+      end
     else
       flash[:warning] = "You must be logged in to vote"
       redirect_back fallback_location: root_path #go to same page or go to home
@@ -31,6 +35,6 @@ class VotesController < ApplicationController
   private
 
   def vote_params
-    return params.require(:user_id, :work_id)
+    return params.require(:vote).permit(:user_id, :work_id, :status)
   end
 end

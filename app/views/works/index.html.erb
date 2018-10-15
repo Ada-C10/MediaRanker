@@ -33,7 +33,7 @@
                 <%= "#{work.year}"%>
               </td>
               <td>
-              <%= link_to "Vote!", vote_path(work.id), method: :create %>
+              <%= link_to "Vote!", vote_path(work.id), method: :create, class: 'btn btn-primary' %>
             </td>
             </tr>
           <% end %>
