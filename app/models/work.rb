@@ -2,7 +2,7 @@ class Work < ApplicationRecord
   # QUESTION: how to get this to work? CATEGORIES = ["album", "book", "movie"]
   has_many :votes, dependent: :delete_all
 
-  validates :title, presence: true, uniqueness: {scope: :categoy, message: "This category already knows about that title." }
+  validates :title, presence: true, uniqueness: {scope: :category, message: "This category already knows about that title." }
   # TODO: validates :publication_year --> how to get year only??
 
   # TODO: necessary???? validates_inclusion_of :category, :in => CATEGORIES

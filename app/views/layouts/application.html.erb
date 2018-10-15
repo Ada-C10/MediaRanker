@@ -19,35 +19,46 @@
         <nav class="app-header__nav">
           <ul class="nav app-header__site-nav-container">
             <li class="nav-item app-header__nav_item">
-              <%= link_to 'View top media', root_path %>
+              <%= link_to 'View top media', root_path, class:'nav-link' %>
             </li>
             <li class="nav-item app-header__nav_item">
-              <%= link_to 'View all media', works_path %>
+              <%= link_to 'View all media', works_path, class:'nav-link' %>
             </li>
             <li class="nav-item app-header__nav_item">
-              <%= link_to 'Add a new work', new_work_path %>
+              <%= link_to 'Add a new work', new_work_path, class:'nav-link' %>
             </li>
             <li class="nav-item app-header__nav_item">
-              <%= link_to 'View all users', users_path %>
+              <%= link_to 'View all users', users_path, class:'nav-link' %>
             </li>
           </ul>
           <ul class="nav app-header__user-nav-container">
-            <!-- TODO: ADD LOG-IN/LOG-OUT BUTTON FUNCTIONALITY -->
+
             <li class="nav-item app-header__nav_item">
               <!-- <section class="login-info"> -->
               <% if @logged_in_user %>
 
               <%= link_to "Logged in as #{@logged_in_user.username}", user_path(@logged_in_user) %>
-              <%= link_to 'Log out', logout_path, method: :delete %> </p>
+              <%= link_to 'Log out', logout_path, method: :delete, class:"btn btn-primary" %> </p>
 
               <% else %>
-              <%= link_to "Log in", login_path %>
+              <%= link_to "Log in", login_path, class:"btn btn-primary" %>
               <% end %>
 
-              <section class="flash">
-                <% flash.each do |error, message| %>
-                <div class="<%= error %>"><%= message %></div>
+              <section class="alert__container">
+                <% flash.each do |name, message| %>
+                <div class="<%= name %>"><%= message %></div>
+                <% if name == :alert %>
+                <ul>
+                  <% flash[:alert].each do |field, message| %>
+                  <li>
+                    <%= field %>: <%= message %>
+                  </li>
+                  <% end %>
+
+                </ul>
+
                 <% end %>
+                  <% end %>
               </section>
 <!-- </section> -->
             </li>
