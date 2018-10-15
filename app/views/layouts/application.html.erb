@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="app__header">
+      <h1 class="title"><span class="ranker"><%= link_to "Media Ranker", root_path %></span><span id="subtext">Ranking the Best of Everything</span></h1>
+
+      <nav class="app-header">
+        <ul class="nav">
+          <li class="nav-list"><%= link_to "View top media", root_path %></li>
+          <li class="nav-list"><%= link_to "View all media", works_path%></li>
+          <li class="nav-list"><%= link_to "Add a new work", new_work_path %></li>
+          <li class="nav-list"><%= link_to "View all users", users_path %></li>
+        </ul>
+
+        <% logged_in_user = User.find_by(id: session[:user_id]) %>
+        <% if logged_in_user %>
+        <ul class="app-header">
+          <li class="nav-list">
+            <button class="btn btn-primary">Currently logged in as <%= logged_in_user.user_name %> </button>
+          </li>
+          <li class="nav-list">
+            <%= link_to "Log out", logout_path, method: :post, class: "btn btn-primary" %>
+          </li>
+          <% else %>
+          <li class="nav-list">
+            <%= link_to "Log in", new_session_path, class: "btn btn-primary" %>
+          </li>
+        </ul>
+        <% end %>
+      </nav>
+    </header>
+
+
+    <section class="flash-messages">
+      <% flash.each do |key, message| %>
+        <% alert_class = key == "error" ? "warning" : key %>
+        <p class="alert alert-<%= alert_class %>">
+          <%= message %>
+        </p>
+      <% end %>
+    </section>
+
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <!-- <%= debug(params) if Rails.env.development? %> -->
+  </body>
+</html>

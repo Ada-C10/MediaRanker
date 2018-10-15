@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+bikes:
+  title: My adventure down PNW
+  publication_year: 1985
+  description: Riding bikes and camping
+  creator: Nancy Drew
+  category: book
+
+interview:
+  title: How to crack the code interview
+  publication_year: 1975
+  description: Learn techniques to pass your code test
+  creator: Someone Super Smart
+  category: book
+
+potter:
+  title: Harry Potter and the Goblet of Fire
+  publication_year: 2004
+  description: Boy uses magic to outwit Voldemort
+  creator: JK Rowling
+  category: movie
+
+limpbizkit:
+  title: Chocolate Starfish and the Hotdog Flavored Water
+  publication_year: 2003
+  description: Fred Durst sings about stuff
+  creator: Limp Bizkit
+  category: album

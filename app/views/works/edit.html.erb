@@ -1,0 +1,9 @@
+<h1 class="headliner">Edit This <%= @work.category.capitalize %></h1>
+
+<div class="edit-container">
+  <%= render partial: "work_form", locals: {
+  action_type: "Edit Work",
+  form_title: "Edit Work Form"
+} %>
+
+</div>
