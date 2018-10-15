@@ -26,7 +26,6 @@ describe Work do
           pub_year: 2001,
           description: 'daddy issues',
         )
-        w.title = nil
         is_valid = w.valid?
 
         expect( is_valid ).must_equal false
