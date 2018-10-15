@@ -1,25 +1,40 @@
+<h2><%= message %> </h2>
 
 <%= form_with model: @work, message: message do |f| %>
-<h1><%= message %></h1>
 
-<br>
-<h2><%= message %> </h2>
+<div class="form-group">
 <%= f.label :category, "Category"%>
-<%= f.select :category, ['movie', 'album','book']%>
+<%= f.select :category, ['movie', 'album','book'], class: "form-control"%>
+</div>
 
+<div class="form-group">
 <%= f.label :title, "Title"%>
-<%= f.text_field :title%>
+<%= f.text_field :title, class: "form-control"%>
+</div>
 
+<div class="form-group">
 <%= f.label :creator, "Creator"%>
-<%= f.text_field :creator%>
+<%= f.text_field :creator, class: "form-control"%>
+</div>
 
+<div class="form-group">
 <%= f.label :publication_year, "Publication Year"%>
-<%= f.text_field :publication_year%>
+<%= f.text_field :publication_year, class: "form-control"%>
+</div>
 
+<div class="form-group">
 <%= f.label :description, "Description"%>
-<%= f.text_field :description%>
+<%= f.text_area :description, class: "form-control"%>
+</div>
 
-
-<%= f.submit button_text%>
+<div class="form-group">
+<%= f.submit button_text, class: "btn btn-primary"%>
+</div>
 
 <% end %>
+
+<div class="form-group">
+<label for="work_Category">Category</label>
+<select name="work[category]" class="form-control">
+</select>
+</div>
