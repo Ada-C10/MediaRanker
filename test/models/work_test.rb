@@ -31,6 +31,24 @@ describe Work do
   end
 
   describe 'Relationships' do
+    describe "#upvote" do
+      let(:work) { works(:breaker) }
+      let(:user) { users(:one) }
+
+      it "should create a new vote" do
+        expect(work.votes.count).must_equal 0
+
+        work.upvote(user)
+
+        expect(work.votes.count).must_equal 1
+      end
+
+      it "should associate a user with the work" do
+        expect(work.users.count).must_equal 0
+        work.upvote(user)
+        expect(work.users.count).must_equal 1
+      end
+    end
 
   end
 

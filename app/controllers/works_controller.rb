@@ -2,11 +2,9 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :upvote, :destroy]
 
   def index
-    @works = Work.all.order(:votes)
-
-    @albums = Work.albums.order(:votes)
-    @books = Work.books.order(:votes)
-    @movies = Work.movies.order(:votes)
+    @albums = Work.albums.highest_rated
+    @books = Work.books.highest_rated
+    @movies = Work.movies.highest_rated
   end
 
   def show; end
@@ -16,6 +14,7 @@ class WorksController < ApplicationController
   end
 
   def create
+
     @work = Work.new(work_params)
 
     if @work.save
@@ -24,7 +23,7 @@ class WorksController < ApplicationController
     else
       flash.now[:warning] = "Media not Added!"
       @work.errors.messages.each do |field, msg|
-        flash.now[field] = messages
+        flash.now[field] = msg
       end
 
       render :new
@@ -52,19 +51,17 @@ class WorksController < ApplicationController
   end
 
   def upvote
-      vote = Vote.new(user_id: @current_user.id, work_id: @work.id)
-
-      if vote.save
-        flash[:success] = "Vote successful."
-        redirect_back fallback_location: works_path
-      else
-
-        flash[:warning] = "Unable to submit vote"
-        redirect_back fallback_location: works_path
+    if @work.upvote(@current_user)
+      flash[:success] = "Vote successful."
+    else
+      flash[:warning] = "Unable to submit vote"
     end
+
+    redirect_back fallback_location: works_path
   end
 
   def top_media
+    @movies = Work.movies.highest_rated.limit(10)
   end
 
   private
@@ -79,7 +76,7 @@ class WorksController < ApplicationController
   end
 
   def work_params
-    return params.require(:work).permit(:category, :movies, :title, :creator, :publication_year, :description)
+    params.require(:work).permit(:category, :movies, :title, :creator, :publication_year, :description)
   end
 
 end

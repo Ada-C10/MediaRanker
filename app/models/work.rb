@@ -44,4 +44,8 @@ class Work < ApplicationRecord
     return top_movies
   end
 
+  def upvote(user)
+    Vote.create(user: user, work: self)
+  end
+
 end
