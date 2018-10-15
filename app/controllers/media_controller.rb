@@ -25,6 +25,7 @@ class MediaController < ApplicationController
       flash[:success] = "Successfully added a new #{@medium.category} to the database!"
       redirect_to medium_path(@medium)
     else
+      flash.now[:error] = "Something went wrong here bro.. Try filling out all the fields yeah?"
       render :new, status: :bad_request
     end
   end
