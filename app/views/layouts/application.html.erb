@@ -40,7 +40,7 @@
           <div class="alert-info pl-5 py-2">
           <%= "#{session[:salutation]} #{@current_user.name}! You're logged in!" %>
         <% else %>
-          <div class="alert-warning pl-5">
+          <div class="alert-warning pl-5 py-2">
           <%= "You are not logged in. Please log in to vote." %>
         <% end %>
           </div>
@@ -49,12 +49,12 @@
       <section class="flash">
         <% flash.each do |name, message| %>
         <% if message.class == Array %>
-          <div class="alert-warning pl-5">
+          <div class="alert-warning pl-5 py-2">
             <% message.each do |msg| %>
               <strong><%= "#{name}".capitalize %></strong> <%= "#{msg}" %></div>
             <% end %>
           <% else %>
-            <div class="alert-danger pl-5 alert<%= name %>"><strong><%= "#{name}".capitalize %>:</strong> <%= "#{message}" %></div>
+            <div class="alert-danger pl-5 py-2 alert<%= name %>"><strong><%= "#{name}".capitalize %>:</strong> <%= "#{message}" %></div>
           <% end %>
         <% end %>
       </section>
