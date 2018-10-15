@@ -6,4 +6,9 @@ class Vote < ApplicationRecord
     return votes = Vote.where(work_id: work_id)
   end
 
+  def self.already_voted?(work_id, user_id)
+    vote = Vote.where(work_id: work_id, user_id: user_id)
+
+    return vote.any?
+  end
 end

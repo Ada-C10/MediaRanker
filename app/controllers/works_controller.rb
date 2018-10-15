@@ -60,23 +60,12 @@ class WorksController < ApplicationController
     end
 
     def destroy
-      if @current_user == session[:user_id]
-            @work.destroy
+        @work.destroy
 
         flash[:success] = "Successfully destroyed book \"#{@work.title}\""
         redirect_to works_path
 
-      else
-        flash[:error] = "You must be logged in as a book's author in order to delete it!"
-
-        redirect_back(fallback_location: root_path)
-      end
     end
-
-    def upvote
-    end
-
-
 
     private
 
