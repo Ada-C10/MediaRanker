@@ -14,7 +14,7 @@
     <ul>
       <% @movies.each do |work| %>
       <li><%= link_to "#{work.title}", work_path(work.id)%></li>
-      <li><%= "by #{work.creator}" %></li>
+      <li class="creator"><%= "by #{work.creator}" %></li>
       <li><%= pluralize("#{work.votes.count}", 'vote')%></li>
       <br>
       <br>
@@ -30,7 +30,7 @@
     <ul>
       <% @books.each do |work| %>
       <li><%= link_to "#{work.title}", work_path(work.id)%></li>
-      <li><%= "by #{work.creator}" %></li>
+      <li class="creator"><%= "by #{work.creator}" %></li>
       <li><%= pluralize("#{work.votes.count}", 'vote')%></li>
       <br>
       <br>
@@ -45,7 +45,7 @@
     <ul>
       <% @albums.each do |work| %>
       <li><%= link_to "#{work.title}", work_path(work.id)%></li>
-      <li><%= "by #{work.creator}" %></li>
+      <li class="creator"><%= "by #{work.creator}" %></li>
       <li><%= pluralize("#{work.votes.count}", 'vote')%></li>
       <br>
       <br>

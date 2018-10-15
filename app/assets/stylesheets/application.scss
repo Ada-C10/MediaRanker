@@ -109,8 +109,8 @@ a:hover {
 }
 
 .btn-primary:hover {
-  color: white;
   background-color: #00796B;
+  color: white;
 }
 
 .login-info li {
@@ -187,4 +187,8 @@ main {
   font-weight: bold;
   text-align: center;
   list-style-type: none;
+}
+
+.creator {
+  color: slategrey;
 }
