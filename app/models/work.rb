@@ -13,13 +13,15 @@ class Work < ApplicationRecord
 
   def self.get_category_media(category)
     works = Work.where(category: category).to_a
-    return works
+    # return works
+    return works.sort_by{|item| item.votes_count}.reverse
   end
 
   def self.get_top_list(category)
     category_works = Work.get_category_media(category).to_a
-    sorted = category_works.sort_by{|item| item.votes_count}.reverse
-    return sorted[0..9]
+    # sorted = category_works.sort_by{|item| item.votes_count}.reverse
+    # return sorted[0..9]
+    return category_works[0..9]
     end
 
   def self.get_top_work
