@@ -3,9 +3,9 @@ class WorksController < ApplicationController
   def index
     @works = Work.all
 
-    @all_books = Work.ranked_media("Book")
-    @all_movies = Work.ranked_media("Movie")
-    @all_albums = Work.ranked_media("Album")
+    @all_books = Work.ranked_media("book")
+    @all_movies = Work.ranked_media("movie")
+    @all_albums = Work.ranked_media("album")
   end
 
 
@@ -32,7 +32,7 @@ class WorksController < ApplicationController
     if is_successful_save
       flash[:success] = "Successfully added new media: #{@work.title}"
       redirect_to work_path(@work)
-      
+
     else
       render :new, status: :bad_request
     end

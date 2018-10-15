@@ -1,6 +1,7 @@
 class Work < ApplicationRecord
   has_many :votes
   validates :title, presence: true, uniqueness: true
+  validates :category, included_in: ["book", "movie", "album"]
 
 
   def self.total_votes
@@ -9,6 +10,7 @@ class Work < ApplicationRecord
 
 
   def self.ranked_media(category)
+    category = category.downcase
     all_media = self.where(category: category)
     votes_by_work = all_media.total_votes
   end
@@ -34,7 +36,7 @@ class Work < ApplicationRecord
       user = User.find_by(id: vote.user_id)
 
       voters << user
-      
+
     end
     return voters
   end
