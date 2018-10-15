@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+danielle:
+  username: Danielle
+
+jane:
+  username: Jane
+
+austin:
+  username: Austin
+
+renee:
+  username: Renee
+
+tom:
+  username: Tom
