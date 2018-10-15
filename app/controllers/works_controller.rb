@@ -1,21 +1,13 @@
 class WorksController < ApplicationController
+  before_action :find_work, only:[:show, :edit, :update, :upvote]
+  before_action :find_top_media, only:[:welcome]
+  before_action :find_all_works, only:[:index]
 
-  def welcome
-    @albums = Work.top_media('album')
-    @books = Work.top_media('book')
-    @movies = Work.top_media('movie')
-    @spotlight = Work.spotlight
-  end
+  def welcome; end
 
-  def index
-    @albums = Work.get_all_works('album')
-    @books = Work.get_all_works('book')
-    @movies = Work.get_all_works('movie')
-  end
+  def index; end
 
-  def show
-    @work = Work.find_by(id: params[:id])
-  end
+  def show; end
 
   def new
     @work = Work.new
@@ -34,7 +26,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
 
     if @work.nil?
       head :not_found
@@ -43,8 +34,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       head :not_found
     end
@@ -72,7 +61,6 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    @work = Work.find_by(id: params[:id])
 
     if @work.nil?
       head :not_found
@@ -97,7 +85,6 @@ class WorksController < ApplicationController
 
     end
 
-
   end
 
 
@@ -107,4 +94,23 @@ private
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
+  end
+
+  def find_top_media
+    @albums = Work.top_media('album')
+    @books = Work.top_media('book')
+    @movies = Work.top_media('movie')
+    @spotlight = Work.spotlight
+  end
+
+  def find_all_works
+    @albums = Work.get_all_works('album')
+    @books = Work.get_all_works('book')
+    @movies = Work.get_all_works('movie')
+  end
+
+
 end
