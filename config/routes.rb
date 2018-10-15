@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :works do
     resources :votes, only: [:new, :create]
   end
-  resources :users, except: :update
+
+  resources :users, except: [:new, :create, :update]
 
   resources :sessions, only: [:new, :create]
   post '/sessions/logout', to: 'sessions#logout', as: 'logout'
