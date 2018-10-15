@@ -16,3 +16,37 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+.app-header_header
+{
+  max-width: 100%;
+  background-color:#B2DFDB;
+  margin-bottom: 0.5rem;
+  padding: 2rem 1rem 0.5rem 1rem;
+}
+
+.app-header__header h1 {
+    text-align: center;
+    margin: 25px auto 40px auto;
+    font-size: 2.5rem;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: bold;
+}
+
+body, h1, h2, h3, h4, h5 {
+    font-family: "Gudea", sans-serif;
+}
+
+h1, .h1 {
+    font-size: 2.5rem;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}
