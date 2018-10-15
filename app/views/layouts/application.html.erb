@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header class="app-header__header">
+     <h1>
+       <%= link_to "MEDIA RANKER", root_path %>
+       <small>Ranking the Best of Everything</small>
+     </h1>
+
+
+    <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all media", works_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View top media", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all users", users_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Add a new work", new_work_path, class: "nav-link" %>
+        </li>
+      </ul>
+
+      <ul class="nav app-header__user-nav-container>"
+        <li class="nav-item app-header__nav_item">
+          <% if @current_user %>
+          <%= link_to "Log out, #{@current_user.handle}", logout_path, method: :delete, class: "btn btn-primary" %> </li>
+          <li class="nav-item app-header__nav_item"> <%= link_to "My account", user_path(session[:user_id]), class: "btn btn-primary" %> </li>
+          <% else %>
+          <%= link_to "Log In", new_user_path, class: "btn btn-primary" %> </li>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+<main>
+    <section class="alert__container">
+        <%flash.each do |name, message|%>
+        <% if message.class == Array %>
+          <%message.each do |msg|%>
+            <div class="alert alert-<%= name %>" role="alert">
+              <strong> <%= "#{name}:" %> </strong> <%= " #{msg}"%>
+        </div>
+          <%end%>
+        <%else%>
+          <div class="alert alert-<%= name %>" role="alert">
+             <%= message %>
+          </div>
+        <%end%>
+      <%end%>
+    </section>
+    <%= yield %>
+</main>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<% if @work.nil? %>
+  <h1> 404 Not found</h1>
+<% else %>
+  <!-- show vote counts, then as badge in bootstrap -->
+   <h2> <%= @work.title %> </h2>
+   <section class='vote-for'>
+       <%= link_to "Vote!", vote_path(@work.id), method: :create, class: "btn btn-outline-primary btn-sm" %>
+   </section>
+   <ul class="list-group">
+     <li> Created by: <%= @work.creator %> </li>
+     <li> Category: <%= @work.category %> </li>
+     <li> Published in: <%= @work.year %> </li>
+     <li> Added by: <%= @work.user_id %> </li>
+   </ul>
+   <p> <%= @work.description %> </p>
+ <!-- only allow users to edit/delete if they had added the work to the db -->
+ <% if @current_user %>
+    <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-warning" %>
+    <%= link_to "Delete Work", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure? This cannot be undone!'}, class: "btn btn-danger" %>
+    <% else %>
+    <p> You must be <strong> logged in </strong> to delete or edit a work.</P>
+  <% end %>
+
+<h3> <%= "#{@work.title} has #{@work.votes.count} votes." %> </h3>
+ <table class="table">
+   <thead>
+     <tr>
+         <th>User</th>
+         <th>Date</th>
+       </tr>
+   </thead>
+   <tbody>
+     <% @work.votes.each do |vote| %>
+     <tr>
+       <td> <%= link_to "#{vote.user.handle}", user_path(vote.user_id) %> </td>
+       <td> <%= "#{vote.created_at.strftime ("%b. %d, %Y")}" %> </td>
+     </tr>
+     <% end %>
+   </tbody>
+ </table>
+ <% end %>

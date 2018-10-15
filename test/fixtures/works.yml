@@ -1,0 +1,28 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+alanis:
+  creator: Alanis Morisette
+  year: 1995
+  category: album
+  title: Jagged Little Pill
+  description: classic 90's
+# column: value
+#
+pygmalion:
+  creator: Ovid
+  year: 8
+  category: book
+  title: Metamorphoses
+  description: the greek poet's magnum opus
+# column: value
+
+lawrence:
+  creator: David Lean
+  year: 1962
+  category: movie
+  title: Lawrence of Arabia
+  description: classic historical drama starring Peter O'Toole

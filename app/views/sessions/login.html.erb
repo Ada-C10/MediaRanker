@@ -1,0 +1,7 @@
+<h1> Log in, human </h1>
+
+<%= form_with model: @user, url: login_path, method: :post do |f| %>
+  <%= f.label :handle, 'Username' %>
+  <%= f.text_field :handle, placeholder: 'Username' %>
+  <%= f.submit 'Login' %>
+<% end %>

@@ -1,0 +1,27 @@
+<h1> <%= "#{@user.handle}'s Profile" %> </h1>
+<P>
+  Joined site on <%= "#{@user.created_at.strftime ("%b. %d, %Y")}" %>
+</P>
+
+<table class="table">
+  <thead>
+    <tr>
+        <th>Media Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @user.votes.each do |vote| %>
+    <tr>
+      <td> <%= link_to "#{vote.work.title}", work_path(vote.work_id) %> </td>
+      <td> <%= "#{vote.work.creator}" %> </td>
+      <td> <%= "#{vote.work.year}" %> </td>
+      <td> <%= "#{vote.work.category}" %> </td>
+      <td> <%= "#{vote.created_at.strftime ("%b. %d, %Y")}" %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
