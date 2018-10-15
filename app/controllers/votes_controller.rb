@@ -1,32 +1,35 @@
 class VotesController < ApplicationController
 
   def new
-    @vote = Vote.new
   end
 
   def create
-
     work = Work.find_by(id: params[:work_id])
     user = User.find_by(id: session[:user_id])
 
     if user
-      @vote = Vote.new(work_id: work.id, user_id: user.id)
+      had_voted = false
 
-      if @vote.save
+      user.votes.each do |vote|
+        if vote.work_id == work.id
+          had_voted = true
+        end
+      end
+
+      @vote = Vote.new(work_id: work.id, user_id: user.id)
+      if had_voted
+        flash[:error] = "You have already voted for this media."
+        redirect_to work_path(work.id)
+      elsif @vote.save
         flash[:success] = "Successfully upvoted!"
-        redirect_to works_path
+        redirect_to work_path(work.id)
       else
-        flash[:error] = "You can't vote!"
-        redirect_to works_path
+        flash[:error] = "There was an error."
+        redirect_to work_path(work.id)
       end
     else
-      redirect_to root_path
+      flash[:error] = "You must be logged in to vote!"
+      redirect_to work_path(work.id)
     end
   end
-
-  private
-  def vote_params
-    return params.require(:vote).permit(:user_id, :work_id)
-  end
-
 end
