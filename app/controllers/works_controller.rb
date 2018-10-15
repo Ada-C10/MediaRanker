@@ -61,9 +61,10 @@ class WorksController < ApplicationController
   end
 
   def top_media
+    @works = Work.all.highest_rated
     @movies = Work.movies.highest_rated.limit(10)
     @albums = Work.albums.highest_rated.limit(10)
-    @books = Work.books.highest_rated.limit(10)  
+    @books = Work.books.highest_rated.limit(10)
   end
 
   private
@@ -78,7 +79,7 @@ class WorksController < ApplicationController
   end
 
   def work_params
-    params.require(:work).permit(:category, :movies, :title, :creator, :publication_year, :description)
+    params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 
 end

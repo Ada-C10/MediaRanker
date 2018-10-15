@@ -2,7 +2,7 @@
   <h2> 404 Not found</h2>
 <% else %>
   <h2>User Summery:<%= @user.username %></h2>
-  <p>Joined site: <%= @user.created_at %></p>
+  <p>Joined site: <%= @user.created_at.strftime("%b %d, %Y") %></p>
 
   <section class="user-votes__container">
   <h3 class="user-votes__header">Votes</h3>
@@ -23,7 +23,7 @@
             <td><%= vote.work.creator %></td>
             <td><%= vote.work.publication_year %></td>
             <td><%= vote.work.category %></td>
-            <td><%= vote.created_at %></td>
+            <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
         </tr>
       <% end %>
     </tbody>

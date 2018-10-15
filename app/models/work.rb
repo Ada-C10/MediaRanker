@@ -3,7 +3,7 @@ class Work < ApplicationRecord
   validates :creator, presence: true, length: { in: 5..100 }
   validates_inclusion_of :category, in: %w(book album movie)
   validates :publication_year, presence: true
-  validates :description, presence: true, length: { in: 5..100 }
+  validates :description, presence: true
 
   has_many :votes
   has_many :users, through: :votes

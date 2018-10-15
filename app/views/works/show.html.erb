@@ -2,27 +2,23 @@
   <h2> 404 Not found</h2>
 <% else %>
 
-<section>
-  <h2><%=@work.title %></h2>
-  <p>Creator: <%= @work.creator %></p>
-  <p>Published:<%= @work.publication_year %></p>
-  <p>Description: <%= @work.description %></p>
-  <!-- <p>Category: <%# @work.category %></p> -->
-</section>
+  <section>
+    <h2><%=@work.title %></h2>
+    <p>Creator: <%= @work.creator %></p>
+    <p>Published:<%= @work.publication_year %></p>
+    <p>Description: <%= @work.description %></p>
+  </section>
 
-<section>
-  <a class="btn btn-primary" href="/">Back to media ranks</a>
-  <%= link_to "Edit", edit_work_path(@work.id), class:"btn btn-primary" %>
-  <%= link_to "Upvote", upvote_path(@work.id), method: :post, class:"btn btn-primary" %>
-  <%= link_to "Delete #{@work.title}", work_path(@work.id), method: :delete, class:"btn btn-danger" %>
-</section>
-
+  <section>
+    <a class="btn btn-primary" href="/">Back to media ranks</a>
+    <%= link_to "Edit", edit_work_path(@work.id), class:"btn btn-primary" %>
+    <%= link_to "Upvote", upvote_path(@work.id), method: :post, class:"btn btn-primary" %>
+    <%= link_to "Delete #{@work.title}", work_path(@work.id), method: :delete, class:"btn btn-danger" %>
+  </section>
 <% end %>
 
-<h3><%= @work.votes.count %> Votes for this <%= @work.category.capitalize %></h3>
-
 <section class="work-votes__container">
-<h3 class="work-votes__header">Votes</h3>
+  <h3 class="work-votes__header" id="votes-header"><%= @work.votes.count %> Votes for this <%= @work.category.capitalize %></h3>
 <table class="table">
   <thead>
     <tr>
@@ -34,7 +30,7 @@
       <% @work.votes.each do |vote| %>
       <tr>
           <td><%= link_to "#{vote.user.username}", user_path(vote.user)  %></td>
-          <td><%= vote.created_at %></td>
+          <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
       </tr>
     <% end %>
   </tbody>
