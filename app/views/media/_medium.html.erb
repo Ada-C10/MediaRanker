@@ -1,7 +1,7 @@
 <tr>
   <td><%= medium.votes.length %></td>
-  <td><%= medium.title %></td>
+  <td><%= link_to "#{medium.title}", medium_path(medium) %></td>
   <td><%= medium.creator %></td>
   <td><%= medium.publication_year %></td>
-  <td><%= link_to "upvote", medium_path(medium.id) %> </td>
+  <td><%= link_to "upBROte", upvote_path(medium), method: :post, class: 'btn btn-primary' %> </td>
 </tr>
