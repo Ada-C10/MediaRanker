@@ -9,24 +9,44 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-
-    <!-- <nav class="nav">
-      <li><%= link_to "View top media", root_path %></li>
-      <li><%= link_to "View all media", works_path %></li>
-      <li><%= link_to "Add a new work", new_work_path %></li>
-      <li><%= link_to "View all users", users_path %></li>
-    </nav> -->
-
-    <section class="spotlight">
-      <h2>"Media Spotlight"</h>
-      <p>
-        <% work_most = @works.each do { |work| work.vote.max } %>
-          <%=link_to work.id, work_path(work.id)%>
-      </p>
+  <!-- <body>
+    <section class="row" id="media-spotlight">
+      <h3>Media Spotlight: <%= link_to @work.title, work_path(@work.id) %> <small>by <%= @work.creator %></small></h3>
+      <p> <%= @work.votes.length %> votes - <%= @work.description %> </p>
     </section>
 
+    <section class="top-ten columns large-4 small-12">
+      <h3>Top Albums</h3>
 
+      <% albums = Work.all.where(category: Album) %>
+        <% albums.sort_by { |work| work.total_votes} %>
+      <ul>
+        <h4><%= link_to work.title, work_path(work.id) %><small> by <%= work.creator %></small></h4>
+        <p><%= work.votes.length %> votes</p>
+      </ul>
+      <% end %>
+    </section>
 
+    <section class="top-ten columns large-4 small-12" id="top-books">
+      <h3>Top Books</h3>
+      <% books = Work.all.where(category: Book) %>
+        <% books.sort_by { |work| work.total_votes} %>
+      <ul>
+        <h4><%= link_to work.title, work_path(work.id) %><small> by <%= work.creator %></small></h4>
+        <p><%= book.votes.length %> votes</p>
+      </ul>
+      <% end %>
+    </section>
+
+    <section class="top-ten columns large-4 small-12" id="top-albums">
+      <h3>Top Movies</h3>
+        <% movies = Work.all.where(category: Movie) %>
+        <% movies.sort_by { |work| work.total_votes} %>
+      <ul>
+        <h4><%= link_to work.title, work_path(work.id) %><small> by <%= work.creator%></small></h4>
+        <p><%= movie.votes.length %> votes</p>
+      </ul>
+      <% end %>
+    </section> -->
   </body>
 </html>

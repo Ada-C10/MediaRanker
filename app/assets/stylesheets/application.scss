@@ -17,6 +17,65 @@
 /* Import scss content */
 @import "**/*";
 
-  .alert-warning {
-    background-color: red
-  }
+.alert-warning {
+background-color: red
+}
+html {
+  font-family: sans-serif;
+  /* 1 */
+  line-height: 1.15;
+  /* 2 */
+  -ms-text-size-adjust: 100%;
+  /* 3 */
+  -webkit-text-size-adjust: 100%;
+  /* 3 */ }
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.app-header__header {
+  max-width: 100%;
+  border-bottom: 1px solid darkgrey;
+  margin-bottom: 10px;
+}
+
+.float_right {
+  float: right !important;
+  margin-right: 18px;
+}
+
+.button {
+  background-color: #26A69A;
+  font-family: sans-serif;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+}
+
+.delete_button {
+  background-color: #cc4b37
+}
+
+table.scroll {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+table.hover thead tr:hover {
+  background-color: #f3f3f3;
+}
+
+table.hover tfoot tr:hover {
+  background-color: #ececec;
+}
+
+table.hover tbody tr:hover {
+  background-color: #f9f9f9;
+}

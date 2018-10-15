@@ -1,9 +1,12 @@
 class VotesController < ApplicationController
   def create
-    id = params[:id].to_i
-    @work = Work.find_by(id: id),
-    @work = User.find_by(id: id)
-    @work.upvote.create
-    redirect_to(works_path)
+    id = params[:work_id].to_i
+    if @work.upvote(@current_user)
+      flash[:success] = "Vote successful."
+      redirect_to root_path
+    else
+      flash[:warning] = "Unable to submit vote"
+      redirect_back fallback_location: root_path
+    end
   end
 end

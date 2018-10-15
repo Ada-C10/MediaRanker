@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+
   post 'users/login', to: 'sessions#login', as: 'login' #lets users login
   get 'users/login', to: 'sessions#new', as: 'new_session' #gets the login form
   delete 'users/destroy', to: 'sessions#destroy', as: 'logout' #logging out

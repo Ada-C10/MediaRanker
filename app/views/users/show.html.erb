@@ -1,3 +1,4 @@
+<section class="row">
 <% if @user.nil? %>
   <h1> 404 Not found</h1>
 <% else %>
@@ -18,15 +19,18 @@
     <th>Category</th>
     <th>Voted On</th>
   </tr>
-<% if @user.upvote.include? @user.id %>
-    <td><%= link_to work.title, work_path(work_id) %></td>
-    <td><%= link_to work.creator, work_path(work_id) %></td>
-    <td><%= link_to work.published_year, work_path(work_id) %></td>
-    <td><%= link_to work.category, work_path(work_id) %></td>
+<% if @user.votes.each do| vote| %>
+  <tr>
+    <td><%= link_to vote.work.title, work_path(vote.work_id) %></td>
+    <td><%= vote.work.creator %></td>
+    <td><%= vote.work.published_year %></td>
+    <td><%= vote.work.category %></td>
     <td><%# work's vote timestamp %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
 
-<div class="btn btn-primary"><%= link_to "See all Users", users_path %></div>
-<div class="btn btn-primary"><%= link_to "Back to media ranks", root_path %></div>
+<%= link_to "See all users", users_path, class: :button %>
+<%= link_to "Back to media list", root_path, class: :button %>
+<% end %>
+</section>
