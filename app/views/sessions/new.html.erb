@@ -1,9 +1,12 @@
+<section class="new-user mx-auto">
 <h1>Please Login </h1>
 
 <%= form_with model: @user, url: login_path, method: :post do |form| %>
-<form class="form-group new-form new-user">
+<form class="form-group new-form">
     <%= form.label :name, 'Username'%>
     <%= form.text_field :name, placeholder: 'username', class: "form-control" %>
-    <%= form.submit 'Login', class: "btn btn-primary" %>
+    <%= form.submit 'Login', class: "btn btn-primary btn-user" %>
 </form>
 <% end %>
+
+</section>
