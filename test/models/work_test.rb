@@ -77,7 +77,6 @@ describe Work do
           if index < sorted_works.length - 1
             expect(work.most_recent_vote_date).must_be :<=, sorted_works[index+1].most_recent_vote_date
           else
-            binding.pry
             expect(work.most_recent_vote_date.to_date).must_equal Date.today
           end
         end
