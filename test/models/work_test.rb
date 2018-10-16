@@ -119,32 +119,32 @@ describe Work do
         end
       end
 
-      # it "Nominal: sorts test(seed) and fixture data correctly" do
-      #   # Load seed data into the test environment
-      #   require Rails.root.join('test', 'helpers', 'use_seeds.rb')
-      #
-      #   VALID_WORK_CATEGORIES.each do |category|
-      #     last_index = works_hash[category].length-1
-      #
-      #     works_hash[category].each_with_index do |work, index|
-      #       if index < last_index
-      #         next_work = works_hash[category][index+1]
-      #         expect(work.votes.size).must_be :>=, next_work.votes.size
-      #
-      #         if work.votes.count == next_work.votes.count
-      #           expect(work.most_recent_vote_time).must_be :>=, next_work.most_recent_vote_time
-      #
-      #           if work.most_recent_vote_time == next_work.most_recent_vote_time
-      #             expect(work.title).must_be :<=, next_work.title
-      #           end
-      #
-      #         end
-      #       end
-      #
-      #     end
-      #   end
-      #
-      # end
+      it "Nominal: sorts test(seed) and fixture data correctly" do
+        # Load seed data into the test environment
+        require Rails.root.join('test', 'helpers', 'use_seeds.rb')
+
+        VALID_WORK_CATEGORIES.each do |category|
+          last_index = works_hash[category].length-1
+
+          works_hash[category].each_with_index do |work, index|
+            if index < last_index
+              next_work = works_hash[category][index+1]
+              expect(work.votes.size).must_be :>=, next_work.votes.size
+
+              if work.votes.count == next_work.votes.count
+                expect(work.most_recent_vote_time).must_be :>=, next_work.most_recent_vote_time
+
+                if work.most_recent_vote_time == next_work.most_recent_vote_time
+                  expect(work.title).must_be :<=, next_work.title
+                end
+
+              end
+            end
+
+          end
+        end
+
+      end
 
       # Edge: a work has no votes (is most recent vote time pushed to end?)
       it "Edge case: works with no votes are pushed to end" do
