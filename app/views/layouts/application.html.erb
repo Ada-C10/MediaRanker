@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="/assets/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <%= favicon_link_tag(source='favicon.ico', options={}) %>
+   <%#  <link href="/assets/favicon.ico" rel="shortcut icon" type="image/x-icon" /> %>
+
     <title>MediaRanker</title>
 
     <%= csrf_meta_tags %>
@@ -36,7 +37,7 @@
         <% if @current_user %>
           <%= link_to "Logged in as: #{@current_user.name}", user_path(@current_user.id), class: "btn btn-primary" %></li>
         <li class="nav-item app-header__nav_item">
-          <%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary" %></li>
+          <%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-danger btn-red" %></li>
       <% else %>
         <li class="nav-item app-header__nav_item">
         <%= link_to "Log In", login_path, class: "btn btn-primary" %></li>

@@ -17,10 +17,10 @@ class VotesController < ApplicationController
     @vote = Vote.new(vote_params)
     respond_to do |format|
       if @vote.save
-        flash[:success] = 'vote successfully created'
+        flash[:success] = 'Vote successfully created'
         format.html { redirect_to @vote.work, notice: 'vote was successfully created.' }
       else
-        flash.now[:error] = 'vote not created!'
+        flash.now[:danger] = 'Vote not created!'
         @vote.errors.messages.each do |field, messages|
           flash.now[field] = messages
         end

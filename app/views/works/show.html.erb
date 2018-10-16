@@ -1,4 +1,21 @@
-<p id="notice"><%= notice %></p>
+
+<section class="flash">
+  <% flash.each do |name, message| %>
+    <% if message.class == Array %>
+      <div class="alert alert-warning">
+        <% message.each do |msg| %>
+          <p><strong><%= "#{name}:" %></strong><%= " #{msg}" %></p>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="alert alert-<%= name %>">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+</section>
+
+
 <section class="show-work justify-content-center">
 <h2><%= @work.title %></h2>
 
@@ -24,25 +41,33 @@
 </p>
 
 <p>
-  <strong>Votes:</strong>
+  <strong>Total Votes:</strong>
   <%= @work.votes_count %>
 </p>
 
-<p>
-  <strong>User Votes:</strong>
-  <% @work.votes.each do |vote| %>
-    <% user = User.find(vote.user_id) %>
-    <%= user.name %><br>
-  <% end %>
-</p>
+
+  <table class="table-sm ">
+    <thead>
+      <tr>
+        <th class="h5">Biggest Fans:</th>
+      </tr>
+    </thead>
+    <tr>
+        <% @work.votes.each do |vote| %>
+          <% user = User.find(vote.user_id) %>
+          <td><%= user.name %></td>
+        </tr>
+        <% end %>
+
+  </table>
+
+
+
 
 </section>
 <section class="d-flex justify-content-center show-btns">
-  <%= link_to 'Back', works_path, class: "btn btn-primary" %>
-  <%= link_to 'Edit', edit_work_path(@work), class: "btn btn-primary" %>
-  <%= link_to 'Destroy', @work, method: :delete, class: "btn btn-primary", data: { confirm: 'Are you sure?' } %>
-  <%= link_to "Upvote", works_upvote_path(@work.id), method: :patch, class: "btn btn-primary" %>
+  <%= link_to 'Back', works_path, class: "btn btn-secondary" %>
+  <%= link_to 'Edit', edit_work_path(@work), class: "btn btn-secondary" %>
+  <%= link_to 'Destroy', @work, method: :delete, class: "btn btn-secondary", data: { confirm: 'Are you sure?' } %>
+  <%= link_to "Upvote", works_upvote_path(@work.id), method: :patch, class: "btn btn-secondary" %>
 </section>
-
-
-

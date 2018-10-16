@@ -1,4 +1,19 @@
-<p id="notice"><%= notice %></p>
+<section class="flash">
+  <% flash.each do |name, message| %>
+    <% if message.class == Array %>
+      <div class="alert alert-warning">
+        <% message.each do |msg| %>
+          <p><strong><%= "#{name}:" %></strong><%= " #{msg}" %></p>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="alert alert-<%= name %>">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+</section>
+
 <section class="user_index">
 <h1>Users</h1>
 <table class="table">

@@ -33,6 +33,8 @@ class WorksController < ApplicationController
   def update
     respond_to do |format|
       if @work.update(work_params)
+        # flash[:primary] = 'Work was successfully updated.'
+        # redirect_to work_path(@work.id)
         format.html { redirect_to @work, notice: 'Work was successfully updated.' }
       else
         format.html { render :edit }
@@ -43,13 +45,13 @@ class WorksController < ApplicationController
   def destroy
     @work.destroy
     respond_to do |format|
-      format.html { redirect_to works_url, notice: 'Work was successfully destroyed.' }
+      format.html { redirect_to works_url, dark: 'Work was successfully destroyed.' }
     end
   end
 
   def upvote
     if @current_user.nil?
-      flash[:error] = 'You must be logged in to vote.'
+      flash[:warning] = 'You must be logged in to vote.'
       redirect_back(fallback_location: root_path)
     else
       work, user = @work.id, @current_user.id
@@ -58,7 +60,7 @@ class WorksController < ApplicationController
         flash[:success] = "Upvote successful."
         redirect_back(fallback_location: root_path)
       else
-        flash[:error] = 'A user can only vote on each work once.'
+        flash[:danger] = 'A user can only vote on each work once.'
         redirect_back(fallback_location: root_path)
       end
     end
@@ -82,7 +84,7 @@ class WorksController < ApplicationController
   def set_work
     @work = Work.find(params[:id])
     if @work.nil?
-      flash.now[:error] = 'Work not found'
+      flash.now[:warning] = 'Work not found'
       render :not_found
     end
   end
