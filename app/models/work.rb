@@ -77,7 +77,7 @@ class Work < ApplicationRecord
 
      all_works[category] = works_by_category
    end
-   
+
    return all_works
  end
 
