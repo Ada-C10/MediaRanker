@@ -5,8 +5,8 @@ describe Vote do
   let(:vote2) { votes(:vote2) }
 
 
-  it "must not be valid when created without user_id and work_id" do
-    value(vote.valid?).must_equal true
+  it "must be valid" do
+    value(vote).must_be :valid?
   end
 
   it 'has required fields' do
@@ -41,32 +41,35 @@ describe Vote do
       expect(valid).must_equal false
     end
 
-    it 'must be associated with only one user_id (aka each user can only vote on a work once)' do
-      #arrange
-      vote.user_id = "user1"
+    describe 'Relationships' do
 
-      #act
-      vote.save
-      vote.user_id = "user1"
-      valid = vote.save
+      it 'must be associated with only one user_id (aka each user can only vote on a work once)' do
+        #arrange
+        vote.user_id = "user1"
 
-      #assert
-      expect(valid).must_equal false
+        #act
+        vote.save
+        vote.user_id = "user1"
+        valid = vote.save
 
-    end
+        #assert
+        expect(valid).must_equal false
 
-    it 'must be associated with only one work_id ' do
-      #arrange
-      vote.work_id = "work1"
+      end
 
-      #act
-      vote.save
-      vote.work_id = "work1"
-      valid = vote.save
+      it 'must be associated with only one work_id ' do
+        #arrange
+        vote.work_id = "work1"
+        
+        #act
+        vote.save
+        vote.work_id = "work1"
+        valid = vote.save
 
-      #assert
-      expect(valid).must_equal false
+        #assert
+        expect(valid).must_equal false
 
+      end
     end
 
   end
