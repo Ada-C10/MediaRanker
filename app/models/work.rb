@@ -98,33 +98,23 @@ end
   end
 
 # TODO: write tests for this method
-  def upvote_button
-    if !@current_user
-      return nil
-    elsif self.has_no_vote_by?(@current_user)
-      return "Upvote"
-    else
-      return "Remove Upvote"
-    end
-  end
-
-# TODO: write tests for this method
-  def vote_by_current_user
-    if @current_user
-      return self.votes.find_by(user_id: @current_user.id)
-    else
-      return nil
-    end
-  end
-
-# TODO: write tests for this method
-  def has_no_vote_by?(current_user)
-    return self.votes.where(user: current_user).any?
-  end
-
-# TODO: write tests for this method
+# Required for sort method
   def number_of_votes
     return self.votes.size
+  end
+
+# TODO: write tests for this method
+  def upvote_button(current_user)
+    if current_user.class == User
+      vote = self.votes.find_by(user_id: current_user.id)
+      if vote.nil?
+        return "Upvote!"
+      else
+        return "Remove Upvote"
+      end
+    else
+      return nil # "Please log in to upvote."
+    end
   end
 
   def print_number_of_votes

@@ -9,7 +9,8 @@ class WorksController < ApplicationController
   end
 
   def index
-    @works = Work.list_all_works
+    @works = Work.all
+    @works_hash = Work.list_all_works
   end
 
   def show

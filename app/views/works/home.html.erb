@@ -15,15 +15,14 @@
 
     <% @top_ten_hash.each do |category, works| %>
       <section class= "top-ten-list-container col-4">
-        <h2 class="text-info top-ten-header">Top 10 <%= category.capitalize %>s</h2>
-
+        <h2 class="text-info top-ten-header">Top 10 <%= category.capitalize %>s
+          <% if @works_hash[category].size == 0 %>
+            <div class= "badge-para d-inline"><div class="empty-category d-inline ml-4 badge badge-warning"><%= "No #{category}s yet!" %></div></div>
+          <% end %>
+          </h2>
         <ul class="list-group top-ten list">
           <% if works.size == 0 %>
-            <% if @works_hash[category].size == 0 %>
-              <li class="list-group-item border-0"><%= "No #{category}s yet!"%></li>
-            <% else %>
-              <li class="list-group-item border-0"><%= "No votes yet!"%></li>
-            <% end %>
+            <li class="list-group-item border-0"><%= "No votes yet!"%></li>
           <% else %>
             <% works.each do |work| %>
               <li class="list-group-item border-0 m-0 mt-1 p-0 d-flex"><h3 class = "m-0 p-0"><%= link_to work.title, work_path(work.id) %></h3>
