@@ -23,28 +23,20 @@ describe User do
       expect( @user.errors.messages ).must_include :username
     end
   end
+  describe User do
+    let(:user) { users(:naheed) }
+    it "must be valid" do
+      expect(user).must_be :valid?
+    end
+    describe 'Relationships' do
+      it 'can have many votes' do
+        user.votes << Vote.first
+        votes = user.votes
+        expect(votes.length).must_be :>=, 0
+        votes.each do |vote|
+          expect(vote).must_be_instance_of Vote
+        end
+      end
+    end
+  end
 end
-
-
-# require "test_helper"
-#
-# describe Work do
-#   describe 'validations' do
-#     before do
-#       # Arrange
-#       @work = Work.new(title: 'test')
-#     end
-#
-#     it 'is invalid without a title' do
-#     # Arrange
-#     @work.title = nil
-#
-#     # Act
-#     result = @work.valid?
-#
-#     # Assert
-#     expect(result).must_equal false
-#     expect(@work.errors.messages).must_include :title
-#     end
-#   end
-# end
