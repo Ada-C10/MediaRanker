@@ -13,112 +13,108 @@ class Work < ApplicationRecord
     less_than_or_equal_to: Date.today.year, greater_than_or_equal_to: 1000 }
   validates :description, length: { maximum: 140 }
 
-  def self.by_category(category)
-    # Sorts works in alphabetical order
-    return Work.where(category: category).order(title: :asc).to_a
-  end
+  def self.sort(array_of_works)
+    # 1. number of votes (descending)
+    # 2. date of most recent vote (descending)
+    # 3. title (ascending)
+    # 4. category (ascending)
+  # (No two works in the same category can have the same title)
 
-  def self.spotlight
-    # Spotlight returns the work with the highest number of votes
-    max_votes = Work.all.reduce(0) do |max, work|
-      work.number_of_votes > max ? work.number_of_votes : max
-    end
-    # If none of the works have any votes, spotlight returns nil
-    if max_votes < 1
-      return nil
-    else
-    # Tiebreaking: Spotlight will show the most recently upvoted work
-      spotlight = Work.all.select {|work| work.number_of_votes == max_votes}
-      spotlight = Work.sort_by_most_recent_vote(spotlight).reverse!
-      return spotlight.first
-    end
-  end
-
-  def self.sort_by_most_recent_vote(array_of_works)
-    return array_of_works.sort_by{|work| work.most_recent_vote_date}
+    array_of_works.sort! { |work, next_work|
+      [ next_work.number_of_votes,
+        next_work.most_recent_vote_time,
+        work.title,
+        work.category
+      ] <=>
+      [ work.number_of_votes,
+        work.most_recent_vote_time,
+        next_work.title,
+        next_work.category
+      ]
+    }
+    return array_of_works
   end
 
 # Returns a date for a single work
-  def most_recent_vote_date
-    most_recent_vote_date = self.votes.reduce(0) do |most_recent_vote_date, vote|
-      vote.created_at > most_recent_vote_date ? vote.created_at : most_recent_vote_date
+# Required for the self.sort method
+  def most_recent_vote_time
+    most_recent_vote_time = self.votes.reduce(0) do |most_recent_vote_time, vote|
+      vote.created_at > most_recent_vote_time ? vote.created_at : most_recent_vote_time
     end
 
-    if most_recent_vote_date == 0
-      # If a work has no votes, then the date is set as Date.jd(0), which is a very long time ago
-      # This is a weird workaround for other methods that need to sort_by most_recent_vote
-      # (Integer 0 cannot be compared with Date objects)
-      most_recent_vote_date = Date.jd(0)
+    if most_recent_vote_time == 0
+      # If a work has no votes, then the date is set as Time.new(0), which is a very long time ago
+      # This is a weird workaround for other methods that need to sort_by most_recent_vote_time
+      # (Integer 0 cannot be compared with Time objects)
+      most_recent_vote_time = Time.new(0)
     end
 
-    return most_recent_vote_date
+    return most_recent_vote_time
   end
 
-# Helper for list_top_works and #index in WorksController
- def self.list_all_works
+# Used by list_top_works, #show, and #index in WorksController
+  def self.list_all_works
    all_works = Hash.new
    VALID_WORK_CATEGORIES.each do |category|   # Find project constants in config/initializers/constants.rb
      works_by_category = Work.by_category(category)
-
-     # 1. number of votes (descending)
-     # 2. date of most recent vote (descending)
-     # 3. title (ascending)
-
-     works_by_category.sort! { |work, next_work|
-       [ next_work.number_of_votes,
-         next_work.most_recent_vote_date,
-         work.title
-       ] <=>
-       [ work.number_of_votes,
-         work.most_recent_vote_date,
-         next_work.title
-       ]
-     }
-
-     all_works[category] = works_by_category
+     all_works[category] = Work.sort(works_by_category)
    end
-
    return all_works
- end
+  end
 
  # Helper method for #home in WorksController
-   def self.list_top_works
-    top_ten_works = Work.list_all_works
-
-    top_ten_works.each_key do |category|
-      # Do not display works with 0 votes
-      top_ten_works[category] = top_ten_works[category].delete_if { |work| work.number_of_votes < 1 }
-
-      # Display only the top 10 works
-      top_ten_works[category] = top_ten_works[category][0..9]
+ # Execute this method after self.list_all_works
+  def self.top_ten(sorted_hash)
+    top_ten_works = Hash.new
+    sorted_hash.each do |category, works|
+      unless works == []
+        works = works[0..9]
+        works.delete_if { |work| work.number_of_votes < 1 }
+      end
+      top_ten_works[category] = works
     end
     return top_ten_works
-   end
+  end
 
-  def upvote_button
-    if !@current_user
-      return nil
-    elsif self.has_no_vote_by?(@current_user)
-      return "Upvote"
-    else
-      return "Remove Upvote"
+# Execute this method after self.top_ten(sorted_hash)
+def self.spotlight(sorted_hash)
+  # If none of the works have any votes, spotlight returns nil
+  if Vote.none?
+    return nil
+  else
+    top_works = []
+    sorted_hash.each do |category, works|
+      unless works.first.nil?
+        top_works << works.first
+      end
     end
+    return Work.sort(top_works).first
+  end
+end
+
+# Required for list_all_works
+  def self.by_category(category)
+    return Work.where(category: category).order(title: :asc).to_a
   end
 
-  def vote_by_current_user
-    if @current_user
-      return self.votes.find_by(user_id: @current_user.id)
-    else
-      return nil
-    end
-  end
-
-  def has_no_vote_by?(current_user)
-    return !self.votes.any? { |vote| vote.user == current_user }
-  end
-
+# TODO: write tests for this method
+# Required for sort method
   def number_of_votes
     return self.votes.size
+  end
+
+# TODO: write tests for this method
+  def upvote_button(current_user)
+    if current_user.class == User
+      vote = self.votes.find_by(user_id: current_user.id)
+      if vote.nil?
+        return "Upvote!"
+      else
+        return "Remove Upvote"
+      end
+    else
+      return nil # "Please log in to upvote."
+    end
   end
 
   def print_number_of_votes

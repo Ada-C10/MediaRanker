@@ -2,12 +2,15 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def home
-    @spotlight = Work.spotlight
-    @works = Work.list_top_works
+    @works = Work.all
+    @works_hash = Work.list_all_works
+    @top_ten_hash = Work.top_ten(@works_hash)
+    @spotlight = Work.spotlight(@top_ten_hash)
   end
 
   def index
-    @works = Work.list_all_works
+    @works = Work.all
+    @works_hash = Work.list_all_works
   end
 
   def show
