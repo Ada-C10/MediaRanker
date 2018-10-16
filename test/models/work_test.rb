@@ -8,7 +8,6 @@ describe Work do
     Vote.create!(user_id: users(:stevonnie).id, work_id: works(:parable).id)
   end
 
-
   describe 'Work validations' do
     it 'is valid when all required fields are present' do
       expect(valid_nil.valid?).must_equal true
@@ -59,8 +58,25 @@ describe Work do
   end
 
   describe 'Work model methods: listing and sorting' do
-    it "most_recent_vote_date" do
+    before do
+      # Multiple votes for the same work
+      users = [:stevonnie, :pink, :lars]
+      yesterdays_votes = []
+      users.each do |user|
+        vote = Vote.create!(user_id: users(user).id, work_id: parable.id, created_at: DateTime.yesterday)
+        yesterdays_votes << vote
+      end
+      Vote.create!(user_id: users(:onion).id, work_id: parable.id, created_at: (DateTime.now - 2))
+    end
 
+    it "most_recent_vote_date returns today for a work with a vote from today" do
+      expect(parable.most_recent_vote_date.to_date).must_equal Date.yesterday
+      todays_vote = Vote.create!(user_id: users(:onion).id, work_id: parable.id)
+      # expect(parable.most_recent_vote_date.to_date).must_equal Date.today
+    end
+
+    it "most_recent_vote_date returns Date.jd(0) for a work with no votes" do
+      expect(parable_album.most_recent_vote_date).must_equal Date.jd(0)
     end
 
     it "self.sort_by_most_recent_vote(array_of_works)" do
