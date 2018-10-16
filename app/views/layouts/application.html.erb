@@ -11,9 +11,13 @@
 
 <body>
   <header>
+    <h1>
+      <a href="/">Media Ranker</a>
+      <small>Ranking the Best of Everything</small>
+    </h1>
     <nav>
       <%= link_to "View top media ", root_path %>
-      <%= link_to "View all media ", root_path %>
+      <%= link_to "View all media ", works_path %>
       <%= link_to "Add a new work", new_work_path %>
       <%= link_to "View all users", users_path %>
     </nav>
@@ -21,8 +25,7 @@
     <section class="login-info">
       <% if @logged_in_user %>
         <p>
-          Currently logged in as user
-          <%= @logged_in_user.username %>
+          <%= "Logged in as #{@logged_in_user.username}" %>
           <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
         </p>
       <% else %>
