@@ -48,7 +48,11 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find_by(id: params[:id].to_i)
+      if @user.nil?
+        flash.now[:danger] = "Cannot find the user #{params[:id]}"
+        render :notfound
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

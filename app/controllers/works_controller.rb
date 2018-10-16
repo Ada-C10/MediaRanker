@@ -82,10 +82,10 @@ class WorksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_work
-    @work = Work.find(params[:id])
+    @work = Work.find_by(id: params[:id].to_i)
     if @work.nil?
       flash.now[:warning] = 'Work not found'
-      render :not_found
+      render :notfound
     end
   end
 
