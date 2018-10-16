@@ -257,7 +257,7 @@ describe Work do
     end
 
     describe 'self.spotlight' do
-      it "returns a single instance of Work, even breaking an extreme tie" do
+      it "spotlight returns a single instance of Work, even breaking an extreme tie" do
         vote1 = Vote.create!(user: stevonnie,
                              work: parable_album,
                              created_at: Time.zone.parse("1 Jan 2018 12:00:00 PST -08:00"))
@@ -269,13 +269,13 @@ describe Work do
         expect(Work.spotlight(top_ten_hash)).must_be_instance_of Work
       end
 
-      it "Edge: returns a single instance of Work, even when a category has no works" do
+      it "Edge: spotlight returns a single instance of Work, even when a category has no works" do
         top_ten_hash = Work.top_ten(Work.list_all_works)
         expect(top_ten_hash["movie"]).must_equal []
         expect(Work.spotlight(top_ten_hash)).must_be_instance_of Work
       end
 
-      it "Edge: returns nil if there are no works" do
+      it "Edge: spotlight returns nil if there are no works" do
         Work.destroy_all
         top_ten_hash = Work.top_ten(Work.list_all_works)
         expect(Work.spotlight(top_ten_hash)).must_equal nil
