@@ -7,12 +7,16 @@
       <thead>
         <tr class="d-flex">
           <th class="col-6">Username</th>
+          <th class="col-3">Votes</th>
+          <th class="col-3">Joined</th>
         </tr>
       </thead>
       <tbody>
         <% @users.each do |user| %>
             <tr class="d-flex">
               <td class="col-6"><%= link_to user.name, user_path(user.id), class: "text-info" %></td>
+              <td class="col-3"><%= user.votes.size %></td>
+              <td class="col-3"><%= user.created_at.to_date.strftime("%b %d, %Y") %></td>
             </tr>
         <% end %>
       </tbody>
