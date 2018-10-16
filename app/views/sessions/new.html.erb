@@ -1,10 +1,9 @@
-<form class="form-group new-form new-user">
 <h1>Please Login </h1>
 
 <%= form_with model: @user, url: login_path, method: :post do |form| %>
-  <%= form.label :name, 'Username'%>
-  <%= form.text_field :name, placeholder: 'username', class: "form-control" %>
-    <button type="submit" class="btn btn-primary btn-user">Login</button>
-<% end %>
-
+<form class="form-group new-form new-user">
+    <%= form.label :name, 'Username'%>
+    <%= form.text_field :name, placeholder: 'username', class: "form-control" %>
+    <%= form.submit 'Login', class: "btn btn-primary" %>
 </form>
+<% end %>
