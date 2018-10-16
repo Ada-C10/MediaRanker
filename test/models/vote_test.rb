@@ -1,5 +1,5 @@
 require "test_helper"
-
+#TODO: refacto with fixtures
 describe Vote do
   let (:vote) do
     Vote.create!(user_id: users(:stevonnie).id, work_id: works(:parable).id)

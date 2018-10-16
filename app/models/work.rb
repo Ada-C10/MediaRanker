@@ -1,4 +1,6 @@
 class Work < ApplicationRecord
+  # TODO: refactor with active record methods for sorting, filtering, and ordering!
+
   has_many :votes, dependent: :destroy
   has_many :users, through: :votes
 

@@ -7,16 +7,16 @@ parable:
   publication: 1979
   description: all that you touch, you change. changes you.
 
-valid_nil:
-  title: A Great Album Title
+deluxe:
+  title: 1992 Deluxe
   category: album
-  creator: Some Artist
+  creator: Princess Nokia
   publication: 1000
   description: nil
 
 parable_album:
   title: Parable of the Sower
-  category: movie
+  category: album
   creator: butler
   publication: 1979
   description: all that you touch, you change. changes you.

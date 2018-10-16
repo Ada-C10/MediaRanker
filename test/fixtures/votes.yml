@@ -3,3 +3,40 @@
 # This model initially had no columns defined. If you add columns to the
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
+
+
+# works(:parable_album) has no votes
+# users(:onion) has no votes
+# works(:parable) and works(:deluxe) each have 3 (identical) votes
+
+# pvotes 1-3: votes for "Parable of the Sower"
+pvote1:
+  user: stevonnie
+  work: parable
+  created_at: Time.zone.parse("Jan 1 2018, 1:00 pm")
+
+pvote2:
+  user: pink
+  work: parable
+  created_at: Time.zone.parse("Jan 1, 2018, 1:01 pm")
+
+pvote3:
+  user: lars
+  work: parable
+  created_at: Time.zone.parse("Jan 1, 2018, 1:02 pm")
+
+# dvotes 1-3: votes for "1992 Deluxe"
+dvote1:
+  user: stevonnie
+  work: deluxe
+  created_at: Time.zone.parse("Jan 1 2018, 1:00 pm")
+
+dvote2:
+  user: pink
+  work: deluxe
+  created_at: Time.zone.parse("Jan 1 2018, 1:01 pm")
+
+dvote3:
+  user: lars
+  work: deluxe
+  created_at: Time.zone.parse("Jan 1 2018, 1:02 pm")
