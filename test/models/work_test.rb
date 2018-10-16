@@ -60,6 +60,18 @@ describe Work do
       expect(valid).must_equal false
       expect(other_work.errors.messages).must_include :title
     end
+
+    describe "validations" do
+      it "scope defines three valid categories" do
+        valid_categories = ['album', 'book', 'movie']
+          @album = Work.new(title: "flash", category: "album")
+          work.category.must_equal "album"
+      end
+    end
+
+
+
+
   end
 
 

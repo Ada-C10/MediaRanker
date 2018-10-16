@@ -1,6 +1,17 @@
 
       <h2>Top Media</h2>
-  
+      <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight</span>
+      <%=link_to @spotlight.title, work_path(@spotlight.id) %>
+    </h2>
+    <p class="spotlight__description">
+      <%=link_to @spotlight.title, work_path(@spotlight.id) %>
+        <%= @spotlight.description %>
+      </p>
+      <p><%= @spotlight.votes_count %> Votes</p>
+
+  </section>
 
       <section class="top-ten__container">
        <section class="top-ten__list-container">

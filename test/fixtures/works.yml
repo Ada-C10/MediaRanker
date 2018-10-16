@@ -7,9 +7,9 @@ horror_movie:
   publication_year: 1992
   description: horror
 
-adventure_movie:
+adventure_song:
   title: flash
-  category: book
+  category: album
   creator: geoff
   publication_year: 1992
   description: adventure
