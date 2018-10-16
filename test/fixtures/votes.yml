@@ -4,37 +4,60 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 
-
+##############################################################
+# EDGE CASES
+##############################################################
 # works(:parable_album) has no votes
 # users(:onion) has no votes
 
-# works(:parable) and works(:deluxe) each have 2 (identical) votes
-# works(:circa91) has 1 vote
+##############################################################
+# BOOK VOTES
+##############################################################
+# Sort order should be:
+# parable, burnbook, hp, poodr
 
-# votes for "Parable of the Sower"
+# Having a more recent vote breaks tie when number of votes are the same:
 pvote1:
   user: stevonnie
   work: parable
-  created_at: Time.zone.parse("Jan 1 2018, 1:00 pm")
+  created_at: Time.zone.parse("1 Jan 2018 12:00:00 PST -08:00")
 
 pvote2:
   user: pink
   work: parable
-  created_at: Time.zone.parse("Jan 1, 2018, 1:01 pm")
+  created_at: Time.zone.parse("1 Jan 2018 12:02:00 PST -08:00")
 
-# votes for "1992 Deluxe"
+bvote1:
+  user: stevonnie
+  work: burnbook
+  created_at: Time.zone.parse("1 Jan 2018 12:00:00 PST -08:00")
+
+bvote2:
+  user: pink
+  work: burnbook
+  created_at: Time.zone.parse("1 Jan 2018 12:01:00 PST -08:00")
+
+# Title breaks tie when number of votes and time of most recent vote are the same:
+hvote1:
+  user: stevonnie
+  work: hp
+  created_at: Time.zone.parse("1 Jan 2018 12:00:00 PST -08:00")
+
+poovote1:
+  user: stevonnie
+  work: poodr
+  created_at: Time.zone.parse("1 Jan 2018 12:00:00 PST -08:00")
+
+##############################################################
+# ALBUM VOTES
+##############################################################
+
 dvote1:
   user: stevonnie
   work: deluxe
-  created_at: Time.zone.parse("Jan 1 2018, 1:00 pm")
+  created_at: Time.zone.parse("1 Jan 2018 12:00:00 PST -08:00")
 
 dvote2:
   user: pink
   work: deluxe
-  created_at: Time.zone.parse("Jan 1 2018, 1:01 pm")
-
-# vote for "Circa91"
-cvote1:
-  user: lars
-  work: circa
-  created_at: Time.zone.parse("Jan 1 2018, 1:00 pm")
+  created_at: Time.zone.parse("1 Jan 2018 12:00:00 PST -08:00")

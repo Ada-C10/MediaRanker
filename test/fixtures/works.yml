@@ -7,6 +7,31 @@ parable:
   publication: 1979
   description: all that you touch, you change. all that you change, changes you.
 
+hp:
+  title: Harry Potter
+  category: book
+  creator: j.k. rowling
+  publication: 2005
+  description: dedicated to the Ada Nodes class
+
+poodr:
+  title: POODR
+  category: book
+  creator: sandi metz
+  publication: 2018
+  description: not POOPR
+
+burnbook:
+  title: Burn Book
+  category: book
+  creator: mean girls
+  publication: 1999
+  description: DO NOT TRUST HER
+
+##############################################################
+# ALBUMS
+##############################################################
+
 deluxe:
   title: 1992 Deluxe
   category: album
