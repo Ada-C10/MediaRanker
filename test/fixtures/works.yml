@@ -5,18 +5,25 @@ parable:
   category: book
   creator: butler
   publication: 1979
-  description: all that you touch, you change. changes you.
+  description: all that you touch, you change. all that you change, changes you.
 
 deluxe:
   title: 1992 Deluxe
   category: album
   creator: Princess Nokia
-  publication: 1000
+  publication: 2017
   description: nil
+
+circa:
+  title: Circa91
+  category: album
+  creator: Ruby Ibarra
+  publication: 2017
+  description: They got evil plans in the devil’s hands, but I don't pray cuz I organize
 
 parable_album:
   title: Parable of the Sower
   category: album
   creator: butler
   publication: 1979
-  description: all that you touch, you change. changes you.
+  description: all that you touch, you change. all that you change, changes you.
