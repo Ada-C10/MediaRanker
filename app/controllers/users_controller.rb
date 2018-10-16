@@ -4,14 +4,14 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  # def show
-  #   id = params[:id].to_i
-  #   @user = User.find_by(id: id)
-  #
-  #   if @user.nil?
-  #     render :notfound, status: :not_found
-  #   end
-  # end
+  def show
+    id = params[:id].to_i
+    @user = User.find_by(id: id)
+
+    if @user.nil?
+      render :notfound, status: :not_found
+    end
+  end
 
   def create
     @user = User.new(name: params[:user][:user_name])

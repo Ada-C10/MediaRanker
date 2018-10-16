@@ -1,30 +1,9 @@
-<tr>
-  <td><a href="/users/1">dee</a></td>
-  <td>1</td>
-  <td>Oct  6, 2018</td>
-</tr>
+
 
 <h2>List of users</h2>
-
+<div class="user-list">
+<% @users.each do |user| %>
+<li><%= link_to "#{user.user_name}\n", user_path(user.id) %>
+<% end %>
+</div>
 <ul>
-
-  <table>
-    <tr>
-      <td><%= User.first.user_name %></td>
-    </tr>
-    <td><%= User.second.user_name %></td>
-  </tr>
-  <tr>
-    <td><%= User.third.user_name %></td>
-  </tr><tr>
-    <td><%= User.fourth.user_name %></td>
-  </tr>
-  <tr>
-    <td><%= User.fifth.user_name %></td>
-  </tr>
-</tbody>
-</table>
-<!-- <% @users.each do |user| %>
-<li><%= link_to "#{user.user_name}", users_path(user.id) %>
-<% end %> -->
-</ul>
