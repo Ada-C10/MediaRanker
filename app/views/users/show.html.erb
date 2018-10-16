@@ -1,0 +1,5 @@
+<h2>User Summary: <%="#{@user.username}"%> </h2>
+<h3>Joined site since: <%="#{@user.created_at.strftime("%b %d, %Y")}" %></h3>
+<p>Voted works:</p>
+  <%= works = User.voted_works(@user.id) %>
+  <%= "#{works}" %>

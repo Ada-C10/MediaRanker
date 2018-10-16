@@ -1,0 +1,64 @@
+<main>
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight:</span>
+
+      <a class="spotlight__link-to" href="/works/10"><%= link_to "#{Work.find_top_work.title}", work_path(Work.find_top_work.id) %></a> by <%= Work.find_top_work.creator %>
+    </h2>
+    <p class="spotlight__description"><%= Work.find_top_work.votes.count %> votes - <%= Work.find_top_work.description %>
+    </p>
+  </section>
+  <hr class="root__hr" />
+  <section class="top-ten__container">
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Movies
+    </h2>
+    <ul class="list-group top-ten__list">
+        <li class="list-group-item">
+        <% works = Work.list_top_ten("movie") %>
+        <% works.each do |movie| %>
+          <h4>
+           <p><%= link_to "#{movie.title}", work_path(movie.id) %></p>
+           <small class="top-ten__creator"><%= movie.creator %></small>
+         </h4>
+         <p><%= movie.votes.count %></p>
+        <% end %>
+       </li>
+    </ul>
+  </section>
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Books
+    </h2>
+    <ul class="list-group top-ten__list">
+        <li class="list-group-item">
+        <% works = Work.list_top_ten("book") %>
+        <% works.each do |book| %>
+          <h4>
+           <p><%= link_to "#{book.title}", work_path(book.id) %></p>
+           <small class="top-ten__creator"><%= book.creator %></small>
+         </h4>
+         <p><%= book.votes.count %></p>
+        <% end %>
+       </li>
+    </ul>
+  </section>
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Albums
+    </h2>
+    <ul class="list-group top-ten__list">
+        <li class="list-group-item">
+        <% works = Work.list_top_ten("album") %>
+        <% works.each do |album| %>
+          <h4>
+           <p><%= link_to "#{album.title}", work_path(album.id) %></p>
+           <small class="top-ten__creator"><%= album.creator %></small>
+         </h4>
+         <p><%= album.votes.count %></p>
+        <% end %>
+       </li>
+    </ul>
+  </section>
+</main>

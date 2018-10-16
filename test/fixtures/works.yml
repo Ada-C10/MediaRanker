@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+work_one:
+  title: work_one
+  publication_year: 2000
+  description: A description of my work
+  category: Album
+
+work_two:
+  title: work_two
+  publication_year: 2001
+  description: A description of my second work
+  category: Movie

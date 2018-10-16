@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MediaRanker</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <header>
+    <h1>
+      <a href="/">Media Ranker</a>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+    <nav>
+      <%= link_to "View top media ", root_path %>
+      <%= link_to "View all media ", works_path %>
+      <%= link_to "Add a new work", new_work_path %>
+      <%= link_to "View all users", users_path %>
+    </nav>
+  </header>
+    <section class="login-info">
+      <% if @logged_in_user %>
+        <p>
+          <%= "Logged in as #{@logged_in_user.username}" %>
+          <%= link_to "Log out", logout_path, method: :post, class: "btn btn-outline-info" %>
+        </p>
+      <% else %>
+        <%= link_to "Log in", login_path, class: "btn btn-outline-info" %>
+      <% end %>
+    </section>
+  </header>
+
+  <section class="flash-messages">
+    <% flash.each do |key, message| %>
+      <% alert_class = key == "error" ? "danger" : key %>
+      <p class="alert alert-<%= alert_class %>">
+        <%= message %>
+      </p>
+    <% end %>
+  </section>
+  <main>
+    <%= yield %>
+  </main>
+  <footer>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<%= form_with model: @work, class: 'work-form' do |f| %>
+
+  <h3><%= form_with %></h3>
+
+  <%= f.label :category %>
+  <%= f.select :from, [ 'album ','book','tv' ], :prompt => 'Select One' %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
+
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+
+  <%= f.submit action_type, class: "work-form-submit-button" %>
+
+<% end %>
