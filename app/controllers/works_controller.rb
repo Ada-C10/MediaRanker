@@ -59,6 +59,12 @@ class WorksController < ApplicationController
     end
   end
 
+  def sort
+    @album = sort_works.album
+
+  end
+
+
   private
 
 
@@ -72,6 +78,7 @@ class WorksController < ApplicationController
 
     )
   end
+
   def find_work
     @work = Work.find_by(id: params[:id])
   end

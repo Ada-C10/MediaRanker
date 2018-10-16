@@ -1,9 +1,9 @@
 <div class="wrapper_index">
   <h2>WORKS</h2>
   <ul>
-    <%@works.each_with_index do |work, index| %>
+    <%@albums.each do |work| %>
       <li class="works">
-        <%=link_to "#{index +1}. " + work.title, work_path(work.id)%>
+        <%=link_to "1" + work.title, work_path(work.id)%>
       </li>
     <% end %>
   </ul>
