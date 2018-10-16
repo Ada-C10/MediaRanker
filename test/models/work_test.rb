@@ -111,6 +111,9 @@ describe Work do
    # 1. number of votes (descending)
    # 2. date of most recent vote (descending)
    # 3. title (ascending)
+   # 4. category (ascending)
+ # (No two works in the same category can have the same title)
+
 
       it "Nominal: the method sorts Book / Book Votes fixture data correctly" do
         expected_order = [parable, burnbook, hp, poodr]
@@ -159,11 +162,23 @@ describe Work do
         expect(Work.none?).must_equal true
         expect(Work.sort(Work.all.to_a)).must_equal []
       end
+
+      it "Tiebreaking: breaks extreme tie with category name" do
+        Vote.destroy_all
+        tied_works = []
+        parable_movie = Work.create!(title: "Parable of the Sower",
+                            category: "movie",
+                            creator: "butler",
+                            publication: 1979,
+                            description: "all that you touch, you change. all that you change, changes you.")
+        tied_works = [parable_movie, parable, parable_album]
+        expect(Work.sort(tied_works).first).must_equal parable_album
+      end
     end
 
     describe 'self.list_all_works' do
       it "Nominal: creates a hash where sorted arrays of works are grouped by category" do
-
+        expect(Work.list_all_works["album"][0].category).must_equal "album"
       end
       # Edge: returns empty hash if there are no works
       it "Edge case: returns empty arrays in a hash if there are no works" do

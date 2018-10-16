@@ -17,16 +17,19 @@ class Work < ApplicationRecord
     # 1. number of votes (descending)
     # 2. date of most recent vote (descending)
     # 3. title (ascending)
+    # 4. category (ascending)
   # (No two works in the same category can have the same title)
 
     array_of_works.sort! { |work, next_work|
       [ next_work.number_of_votes,
         next_work.most_recent_vote_time,
-        work.title
+        work.title,
+        work.category
       ] <=>
       [ work.number_of_votes,
         work.most_recent_vote_time,
-        next_work.title
+        next_work.title,
+        next_work.category
       ]
     }
     return array_of_works
