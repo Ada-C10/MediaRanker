@@ -50,6 +50,7 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (9.1.4)
       execjs
+    awesome_print (1.8.0)
     better_errors (2.5.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -146,6 +147,8 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
+    minitest-skip (0.0.1)
+      minitest (~> 5.0)
     msgpack (1.2.4)
     multi_json (1.13.1)
     multi_xml (0.6.0)
@@ -267,6 +270,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)
@@ -283,6 +287,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   minitest-rails
   minitest-reporters
+  minitest-skip
   omniauth
   omniauth-github
   pg (>= 0.18, < 2.0)

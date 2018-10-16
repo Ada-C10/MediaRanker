@@ -83,6 +83,25 @@ describe Work do
       end
     end
 
+    describe 'self.by_category(category)' do
+      it 'returns an Array' do
+        require Rails.root.join('test', 'helpers', 'use_seeds.rb')
+        puts "Number of works: #{Work.count}"
+        VALID_WORK_CATEGORIES.each do |category|
+          ordered_works = Work.by_category(category)
+
+          ordered_works.each_with_index do |work, index|
+            last_index = ordered_works.size-1
+            if index < last_index
+              next_work = ordered_works[index+1]
+              expect(work.title).must_be :<=, next_work.title
+            end
+          end
+        end
+
+      end
+    end
+
     describe 'self.list_all_works' do
       let(:works_hash){Work.list_all_works}
       # after .reverse!, the final sort order is:
@@ -103,36 +122,14 @@ describe Work do
       end
 
       it "sorts test(seed) data correctly" do
+        skip
 
-        require 'csv'
-
-        WORK_FILE = Rails.root.join('db', 'media_seeds.csv')
-        puts "Loading raw media (work) data from #{WORK_FILE}"
-
-        work_failures = []
-        CSV.foreach(WORK_FILE, :headers => true) do |row|
-          work = Work.new
-          work.title = row['title']
-          work.category = row['category']
-          work.creator = row['creator']
-          work.publication = row['publication_year'].to_i
-          work.description = row['description']
-          successful = work.save
-          if !successful
-            work_failures << work
-            puts "Failed to save work: #{work.inspect}"
-          else
-            puts "Created work: #{work.inspect}"
-          end
-        end
-
-        puts "Added #{Work.count} work records"
-        puts "#{work_failures.length} works failed to save"
+        require Rails.root.join('test', 'helpers', 'use_seeds.rb')
 
         hash_keys = ["album", "book", "movie"]
         expect(works_hash.keys).must_equal hash_keys
 
-        works_hash
+        works_hash = Work.list_all_works
 
         works_hash["book"].each do |book|
           p book.votes.count
