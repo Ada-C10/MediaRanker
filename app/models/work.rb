@@ -64,23 +64,11 @@ class Work < ApplicationRecord
   def self.top_ten(sorted_hash)
     top_ten_works = Hash.new
     sorted_hash.each do |category, works|
-      top_ten_per_category = []
-      works.each do |work|
-        i = 0
-        # Display up to 10 works
-        while i<= 10 do
-
-        # Do not display works with 0 votes
-          if work.number_of_votes < 1
-            i = 10
-          else
-            work << top_ten_per_category
-            i += 1
-          end
-        end
+      unless works == []
+        works = works[0..9]
+        works.delete_if { |work| work.number_of_votes < 1 }
       end
-
-      top_ten_works[category] = top_ten_per_category
+      top_ten_works[category] = works
     end
     return top_ten_works
   end
@@ -91,9 +79,11 @@ def self.spotlight(sorted_hash)
   if Vote.none?
     return nil
   else
+    top_works = []
     sorted_hash.each do |category, works|
-      top_works = []
-      works.first << top_works
+      unless works.first.nil?
+        top_works << works.first
+      end
     end
     return Work.sort(top_works).first
   end
@@ -101,8 +91,6 @@ end
 
 # Required for list_all_works
   def self.by_category(category)
-    # Sorts works in alphabetical order
-    # TODO: test edge case: what happens if there are no works in that category?
     return Work.where(category: category).order(title: :asc).to_a
   end
 

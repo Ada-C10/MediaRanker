@@ -11,6 +11,8 @@ describe Work do
   let (:hp) { works(:hp) }
   let (:works_hash) { Work.list_all_works }
   let (:poodr) { works(:poodr) }
+  let (:stevonnie) {users(:stevonnie)}
+  let (:pink) { users(:pink)}
 
   describe 'Work validations' do
     it 'work fixtures demonstrate which fields are required' do
@@ -70,18 +72,18 @@ describe Work do
       end
 
 # Edge case: a tie
-    it "returns a single date even when multiple votes have the exact same created_at time" do
+    it "Edge case: tie - returns a single date even when multiple votes have the exact same created_at time" do
       expect(deluxe.most_recent_vote_time).must_equal Time.zone.parse("1 Jan 2018 12:00:00 PST -08:00")
     end
 
 # Edge case: work has no votes
-      it "most_recent_vote_time returns a specific, ancient date for a work with no votes" do
+      it "Edge case: most_recent_vote_time returns a specific, ancient date for a work with no votes" do
         expect(parable_album.most_recent_vote_time).must_equal Time.new(0)
       end
     end
 
     describe 'self.by_category(category)' do
-      it 'orders each category alphabetically' do
+      it 'Nominal: orders each category alphabetically' do
         require Rails.root.join('test', 'helpers', 'use_seeds.rb')
 
         VALID_WORK_CATEGORIES.each do |category|
@@ -97,7 +99,11 @@ describe Work do
         end
 
       end
-      # EDGE: there are no works in that category
+
+      # EDGE: there are no movies
+      it "Edge case: there are no works in the category" do
+        expect(Work.by_category("movie")).must_equal []
+      end
     end
 
     describe 'self.sort(array_of_works)' do
@@ -113,16 +119,70 @@ describe Work do
         end
       end
 
-      it "Nominal: sorts test(seed) and fixture data correctly" do
-        # Load seed data into the test environment
-        require Rails.root.join('test', 'helpers', 'use_seeds.rb')
+      # it "Nominal: sorts test(seed) and fixture data correctly" do
+      #   # Load seed data into the test environment
+      #   require Rails.root.join('test', 'helpers', 'use_seeds.rb')
+      #
+      #   VALID_WORK_CATEGORIES.each do |category|
+      #     last_index = works_hash[category].length-1
+      #
+      #     works_hash[category].each_with_index do |work, index|
+      #       if index < last_index
+      #         next_work = works_hash[category][index+1]
+      #         expect(work.votes.size).must_be :>=, next_work.votes.size
+      #
+      #         if work.votes.count == next_work.votes.count
+      #           expect(work.most_recent_vote_time).must_be :>=, next_work.most_recent_vote_time
+      #
+      #           if work.most_recent_vote_time == next_work.most_recent_vote_time
+      #             expect(work.title).must_be :<=, next_work.title
+      #           end
+      #
+      #         end
+      #       end
+      #
+      #     end
+      #   end
+      #
+      # end
 
+      # Edge: a work has no votes (is most recent vote time pushed to end?)
+      it "Edge case: works with no votes are pushed to end" do
+        # albums(:circa) and albums(:parable_album) have no votes
+        albums = Work.sort(Work.by_category("album"))
+        expect(albums.pop).must_equal parable_album
+        expect(albums.pop).must_equal circa
+      end
+
+      it "Edge case: returns empty array if there are no works" do
+        Work.destroy_all
+        expect(Work.none?).must_equal true
+        expect(Work.sort(Work.all.to_a)).must_equal []
+      end
+    end
+
+    describe 'self.list_all_works' do
+      it "Nominal: creates a hash where sorted arrays of works are grouped by category" do
+
+      end
+      # Edge: returns empty hash if there are no works
+      it "Edge case: returns empty arrays in a hash if there are no works" do
+        Work.destroy_all
+        expect(Work.none?).must_equal true
+        expected_hash = {"album"=>[], "book"=>[], "movie"=>[]}
+        expect(works_hash).must_equal expected_hash
+      end
+    end
+
+    describe 'self.top_ten(sorted_hash)' do
+      it "Nominal: each array is ordered correctly" do
+        top_ten_hash = Work.top_ten(Work.list_all_works)
         VALID_WORK_CATEGORIES.each do |category|
-          last_index = works_hash[category].length-1
+          last_index = top_ten_hash[category].length-1
 
-          works_hash[category].each_with_index do |work, index|
+          top_ten_hash[category].each_with_index do |work, index|
             if index < last_index
-              next_work = works_hash[category][index+1]
+              next_work = top_ten_hash[category][index+1]
               expect(work.votes.size).must_be :>=, next_work.votes.size
 
               if work.votes.count == next_work.votes.count
@@ -140,35 +200,72 @@ describe Work do
 
       end
 
-      # Edge: a work has no votes (is most recent vote time pushed to end?)
-      # Edge: there are no works
-    end
+      it "Nominal: it returns 10 or fewer works in each hash" do
+        15.times do |i|
+          work = Work.create!(title: i,
+                              category: "book",
+                              creator: i,
+                              publication: 2000)
+          Vote.create!(user: onion, work: work)
+        end
 
-
-    describe 'self.list_all_works' do
-      it "Nominal: creates a hash where sorted arrays of works are grouped by category" do
-
+        all_works_hash = Work.list_all_works
+        expect(all_works_hash["book"].size).must_equal 15+4
+        top_ten_hash = Work.top_ten(all_works_hash)
+        expect(top_ten_hash["book"].size).must_equal 10
+        expect(top_ten_hash["album"].size).must_equal 1
+        expect(top_ten_hash["movie"].size).must_equal 0
       end
-      # Edge: returns empty hash if there are no works
-    end
 
-    describe 'self.top_ten(sorted_hash)' do
-      it "does what i want" do
+      it "Nominal: all of the works have at least one vote" do
+        15.times do |i|
+          work = Work.create!(title: i,
+                              category: "book",
+                              creator: i,
+                              publication: 2000)
+          Vote.create!(user: onion, work: work)
+        end
 
+        top_ten_hash = Work.top_ten(Work.list_all_works)
+        top_ten_hash.each do |cat, works|
+          works.each do |work|
+            expect(work.votes.count).must_be :>=, 1
+          end
+        end
       end
-  # Nominal: it returns 10 or fewer votes in each hash
-  # Nominal: all of the votes have at least one vote
-  # edge: it returns empty hash if there are no votes
+
+      it "Edge: it returns empty hash if there are no votes" do
+        Vote.destroy_all
+        expected_hash = {"album"=>[], "book"=>[], "movie"=>[]}
+        expect(Work.top_ten(Work.list_all_works)).must_equal expected_hash
+      end
     end
 
     describe 'self.spotlight' do
-      it "does what i want" do
-
+      it "returns a single instance of Work, even breaking an extreme tie" do
+        vote1 = Vote.create!(user: stevonnie,
+                             work: parable_album,
+                             created_at: Time.zone.parse("1 Jan 2018 12:00:00 PST -08:00"))
+        vote2 = Vote.create!(user: pink,
+                             work: parable_album,
+                             created_at: Time.zone.parse("1 Jan 2018 12:02:00 PST -08:00"))
+        top_ten_hash = Work.top_ten(Work.list_all_works)
+        expect(top_ten_hash["movie"]).must_equal []
+        expect(Work.spotlight(top_ten_hash)).must_be_instance_of Work
       end
-      # Edge case: there are no votes in any category returns nil
-      # Edge case: all #1 works in all categories have the same
-                    # title, vote date, and number of votes
-      # Edge case:
+
+      it "Edge: returns a single instance of Work, even when a category has no works" do
+        top_ten_hash = Work.top_ten(Work.list_all_works)
+        expect(top_ten_hash["movie"]).must_equal []
+        expect(Work.spotlight(top_ten_hash)).must_be_instance_of Work
+      end
+
+      it "Edge: returns nil if there are no works" do
+        Work.destroy_all
+        top_ten_hash = Work.top_ten(Work.list_all_works)
+        expect(Work.spotlight(top_ten_hash)).must_equal nil
+      end
+
     end
 
   end
