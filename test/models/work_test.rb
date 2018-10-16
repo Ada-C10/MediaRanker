@@ -1,26 +1,27 @@
 require "test_helper"
 
 describe Work do
+  let (:work) { works(:parable) }
   let (:parable) { works(:parable) }
-  let (:valid_nil) { works(:valid_nil) }
+  let (:deluxe) { works(:deluxe) }
   let (:parable_album) { works(:parable_album) }
-  let (:vote) do
-    Vote.create!(user_id: users(:stevonnie).id, work_id: works(:parable).id)
-  end
+  let (:onion) { users(:onion) }
 
   describe 'Work validations' do
-    it 'is valid when all required fields are present' do
-      expect(valid_nil.valid?).must_equal true
+    it 'work fixtures demonstrate which fields are required' do
+      # works are valid when all required fields are present
+      # even for nil description, or duplicate title in different category
+      Work.all.each { |work| expect(work.valid?).must_equal true }
     end
 
-    it 'is invalid without a publication year' do
-      valid_nil.publication = nil
-      expect(valid_nil.valid?).must_equal false
-      expect(valid_nil.errors.messages).must_include :publication
-    end
-
-    it 'is valid when title is not unique in different category (case-insensitive)' do
-      expect(parable_album.valid?).must_equal true
+    it 'is invalid without required fields' do
+      required_fields = [:title=, :category=, :creator=, :publication=]
+      required_fields.each do |field|
+        work.send field, nil
+        expect(work.valid?).must_equal false
+        field = field.to_s.chop.to_sym
+        expect(work.errors.messages).must_include field
+      end
     end
 
     it 'is invalid when title is not unique in same category (case-insensitive)' do
@@ -30,60 +31,57 @@ describe Work do
     end
 
     it 'is invalid when category is not included in valid categories array' do
-      parable.category = "category"
-      expect(parable.valid?).must_equal false
-      expect(parable.errors.messages).must_include :category
+      work.category = "category"
+      expect(work.valid?).must_equal false
+      expect(work.errors.messages).must_include :category
     end
 
     it 'is invalid when publication year is not a valid integer' do
-      invalid_years = [Date.today.year + 1, 0-Date.today.year]
-      invalid_years.each do |year|
-        parable.publication = year
-        expect(parable.valid?).must_equal false
-        expect(parable.errors.messages).must_include :publication
+      [999999, 0, -1, 1000.1].each do |year|
+        work.publication = year
+        expect(work.valid?).must_equal false
+        expect(work.errors.messages).must_include :publication
       end
     end
   end
 
   describe 'Work relations' do
-    it 'can get votes with "votes"' do
-      vote
-      expect(parable.votes.ids).must_equal [vote.id]
+    it 'can get votes with \"work.votes\"' do
+      expect(work.votes).must_equal Vote.where(work: work)
     end
 
-    it 'can get users with "users" through votes' do
-      vote
-      expect(parable.users.ids).must_equal [users(:stevonnie).id]
+    it 'can get users with \"work.users\" (through votes)' do
+      expect(work.users).must_equal User.where.not(name: "onion")
     end
   end
 
   describe 'Work model methods: listing and sorting' do
-    before do
-      # Multiple votes for the same work
-      users = [:stevonnie, :pink, :lars]
-      yesterdays_votes = []
-      users.each do |user|
-        vote = Vote.create!(user_id: users(user).id, work_id: parable.id, created_at: DateTime.yesterday)
-        yesterdays_votes << vote
-      end
-      Vote.create!(user_id: users(:onion).id, work_id: parable.id, created_at: (DateTime.now - 2))
+    it "most_recent_vote_date returns the youngest vote" do
+      # Create a new vote -> expect most recent vote to be today's
+      Vote.create!(user: onion, work: parable)
+      expect(Work.find_by(title: "Parable of the Sower").most_recent_vote_date.to_date).must_equal Date.today
     end
 
-    it "most_recent_vote_date returns today for a work with a vote from today" do
-      expect(parable.most_recent_vote_date.to_date).must_equal Date.yesterday
-      todays_vote = Vote.create!(user_id: users(:onion).id, work_id: parable.id)
-      # expect(parable.most_recent_vote_date.to_date).must_equal Date.today
-    end
-
-    it "most_recent_vote_date returns Date.jd(0) for a work with no votes" do
+    it "most_recent_vote_date returns a specific, ancient date for a work with no votes" do
       expect(parable_album.most_recent_vote_date).must_equal Date.jd(0)
     end
 
-    it "self.sort_by_most_recent_vote(array_of_works)" do
+    it "#self.sort_by_most_recent_vote correctly sorts in ascending order" do
+      # Create a new vote today:
+      Vote.create!(user: onion, work: deluxe)
+      sorted_works = Work.sort_by_most_recent_vote(Work.all.to_a)
 
+      sorted_works.each_with_index do |work, index|
+        if index < sorted_works.length - 1
+          expect(work.most_recent_vote_date).must_be :<=, sorted_works[index+1].most_recent_vote_date
+        else
+          expect(work.most_recent_vote_date.to_date).must_equal Date.today
+        end
+      end
     end
 
     it "self.list_all_works" do
+      
     end
 
     it "self.list_top_works" do
