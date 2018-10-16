@@ -1,7 +1,12 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
+
+# SJ added these, but they're not working :(
 require "minitest/skip_dsl"
+require "minitest/spec"
+require "minitest/autorun"
+
 require "minitest/rails"
 require "minitest/reporters"  # for Colorized output
 #  For colorful output!

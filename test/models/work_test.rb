@@ -8,7 +8,7 @@ describe Work do
   let (:circa) { works(:circa) }
   let (:onion) { users(:onion) }
 
-  xdescribe 'Work validations' do
+  describe 'Work validations' do
     it 'work fixtures demonstrate which fields are required' do
       # works are valid when all required fields are present
       # even for nil description, or duplicate title in different category
@@ -46,7 +46,7 @@ describe Work do
     end
   end
 
-  xdescribe 'Work relations' do
+  describe 'Work relations' do
     it 'can get votes with \"work.votes\"' do
       expect(work.votes).must_equal Vote.where(work: work)
     end
@@ -57,7 +57,7 @@ describe Work do
   end
 
   describe 'Work model methods: listing and sorting' do
-    xdescribe 'Helper methods' do
+    describe 'Helper methods' do
       it "most_recent_vote_date returns the youngest vote" do
         # Create a new vote -> expect most recent vote to be today's
         Vote.create!(user: onion, work: parable)
@@ -77,6 +77,7 @@ describe Work do
           if index < sorted_works.length - 1
             expect(work.most_recent_vote_date).must_be :<=, sorted_works[index+1].most_recent_vote_date
           else
+            binding.pry
             expect(work.most_recent_vote_date.to_date).must_equal Date.today
           end
         end
@@ -85,9 +86,9 @@ describe Work do
     end
 
     describe 'self.by_category(category)' do
-      it 'returns an Array' do
+      it 'orders each category alphabetically' do
         require Rails.root.join('test', 'helpers', 'use_seeds.rb')
-        puts "Number of works: #{Work.count}"
+
         VALID_WORK_CATEGORIES.each do |category|
           ordered_works = Work.by_category(category)
 
@@ -104,11 +105,8 @@ describe Work do
     end
 
     describe 'self.list_all_works' do
-      let(:works_hash){Work.list_all_works}
-      # after .reverse!, the final sort order is:
-      # 1. most to fewest votes,
-      # 2. newest to oldest vote,
-      # 3. A to Z (by title)
+      let(:works_hash) { Work.list_all_works }
+
       it "orders correctly" do
         # make all of the works a book except parable_album
         [deluxe, circa].each do |work|
@@ -123,21 +121,9 @@ describe Work do
       end
 
       it "sorts test(seed) data correctly" do
-        skip
-
         require Rails.root.join('test', 'helpers', 'use_seeds.rb')
 
-        hash_keys = ["album", "book", "movie"]
-        expect(works_hash.keys).must_equal hash_keys
-
-        works_hash = Work.list_all_works
-
-        works_hash["book"].each do |book|
-          p book.votes.count
-          p book.title
-        end
-
-        hash_keys.each do |category|
+        VALID_WORK_CATEGORIES.each do |category|
           last_index = works_hash[category].length-1
 
           works_hash[category].each_with_index do |work, index|
