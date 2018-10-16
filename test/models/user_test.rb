@@ -43,9 +43,8 @@ describe User do
    end
 
    describe 'User relations' do
-     it 'can get votes with "votes"' do
-       vote = Vote.create!(user_id: users(:stevonnie).id, work_id: works(:parable).id)
-       expect(users(:stevonnie).votes.ids).must_equal [vote.id]
+     it 'can get votes with \"user.votes\"' do
+       expect(users(:stevonnie).votes).must_include votes(:dvote1)
      end
    end
 end

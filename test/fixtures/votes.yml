@@ -36,5 +36,5 @@ dvote2:
 # vote for "Circa91"
 cvote1:
   user: lars
-  work: circa91
+  work: circa
   created_at: Time.zone.parse("Jan 1 2018, 1:00 pm")

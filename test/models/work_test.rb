@@ -132,6 +132,8 @@ describe Work do
         hash_keys = ["album", "book", "movie"]
         expect(works_hash.keys).must_equal hash_keys
 
+        works_hash
+
         works_hash["book"].each do |book|
           p book.votes.count
           p book.title
