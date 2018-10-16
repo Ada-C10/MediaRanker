@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  CATEGORIES = %w[album book movie]
+
   before_action :find_logged_in_user
 
   private
