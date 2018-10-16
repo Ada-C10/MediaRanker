@@ -2,7 +2,7 @@ class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
 
-  validates :title, presence: true, length: { in: 5..100 }
+  validates :title, presence: true, length: { in: 1..100 }
   validates :title, uniqueness: true
   validates :category, presence: true
   validates :description, presence: true, length: { in: 5..100 }
