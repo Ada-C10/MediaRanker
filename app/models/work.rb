@@ -58,15 +58,26 @@ class Work < ApplicationRecord
  def self.list_all_works
    all_works = Hash.new
    VALID_WORK_CATEGORIES.each do |category|   # Find project constants in config/initializers/constants.rb
-     works_by_category = Work.by_category(category).reverse # Z to A
-     works_by_category = Work.sort_by_most_recent_vote(works_by_category)  #oldest to newest
-     all_works[category] = works_by_category.sort_by { |work| work.number_of_votes }.reverse!
-                                                     # fewest to most          # then reverse it
-       # after .reverse!, the final sort order is:
-       # 1. most to fewest votes,
-       # 2. newest to oldest vote,
-       # 3. A to Z (by title)
+     works_by_category = Work.by_category(category)
+
+     # 1. number of votes (descending)
+     # 2. date of most recent vote (descending)
+     # 3. title (ascending)
+
+     works_by_category.sort! { |work, next_work|
+       [ next_work.number_of_votes,
+         next_work.most_recent_vote_date,
+         work.title
+       ] <=>
+       [ work.number_of_votes,
+         work.most_recent_vote_date,
+         next_work.title
+       ]
+     }
+
+     all_works[category] = works_by_category
    end
+
    return all_works
  end
 

@@ -14,9 +14,9 @@ CSV.foreach(WORK_FILE, :headers => true) do |row|
   successful = work.save
   if !successful
     work_failures << work
-    puts "Failed to save work: #{work.inspect}"
+    # puts "Failed to save work: #{work.inspect}"
   else
-    puts "Created work: #{work.inspect}"
+    # puts "Created work: #{work.inspect}"
   end
 end
 
