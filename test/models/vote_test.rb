@@ -1,22 +1,21 @@
 require "test_helper"
-#TODO: refacto with fixtures
+#TODO: refactor with fixtures
 describe Vote do
-  let (:vote) do
-    Vote.create!(user_id: users(:stevonnie).id, work_id: works(:parable).id)
-  end
+  let(:vote){ votes(:pvote1) }
+  let(:parable){ works(:parable) }
+  let(:stevonnie){ users(:stevonnie) }
 
   describe 'Vote validations' do
     it 'is valid when all fields are present' do
-      expect(vote.valid?).must_equal true
+      expect(Vote.first.valid?).must_equal true # fixtures are loaded in a random order
     end
 
     it 'has unique user_id within scope work' do
       # Expect valid when the user is a duplicate that's NOT within the scope work
-      valid_vote = Vote.new(user_id: users(:stevonnie).id, work_id: works(:valid_nil).id)
-      expect(valid_vote.valid?).must_equal true
+      expect(votes(:pvote1).user).must_equal votes(:dvote1).user
+      expect(votes(:dvote1).valid?).must_equal true
 
       # Expect invalid if user is a duplicate within the scope work
-      vote.save!
       non_unique_vote = Vote.new(user_id: users(:stevonnie).id, work_id: works(:parable).id)
       expect(non_unique_vote.valid?).must_equal false
     end
@@ -25,13 +24,15 @@ describe Vote do
   describe 'Vote relations' do
     # belongs_to triggers validation error by default
     it 'is invalid when user_id or work_id are not present' do
-      vote.user_id = nil
-      expect(vote.valid?).must_equal false
-      expect(vote.errors.messages).must_include :user
+      nouser = votes(:pvote1)
+      nouser.user_id = nil
+      expect(nouser.valid?).must_equal false
+      expect(nouser.errors.messages).must_include :user
 
-      vote.work_id = nil
-      expect(vote.valid?).must_equal false
-      expect(vote.errors.messages).must_include :work
+      nowork = votes(:pvote2)
+      nowork.work_id = nil
+      expect(nowork.valid?).must_equal false
+      expect(nowork.errors.messages).must_include :work
     end
 
     it 'can get work with \'work\'' do
@@ -43,17 +44,9 @@ describe Vote do
     end
 
     it 'deleting a work deletes the associated vote(s)' do
-      vote.save!
-      parable = works(:parable)
-      second_vote = Vote.create!(user_id: users(:pink).id, work_id: parable.id)
-      expect(parable.votes).must_equal [vote, second_vote]
-      expect(parable.votes.find_by(user_id: users(:stevonnie).id)).must_equal vote
-      expect(parable.votes.find_by(user_id: users(:pink).id)).must_equal second_vote
-
-      parable.destroy!
-
-      expect(users(:pink).votes).must_equal []
-      expect(users(:stevonnie).votes).must_equal []
+      expect {
+        parable.destroy!
+      }.must_change 'stevonnie.votes.count', -1
     end
 
   end
