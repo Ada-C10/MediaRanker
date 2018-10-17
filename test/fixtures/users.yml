@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+stevonnie:
+  name: "Stevonnie"
+
+pink:
+  name: "Pink_Diamond"
+
+lars:
+  name: "lars-of-the-stars"
+
+onion:
+  name: "onion"

@@ -1,0 +1,2471 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)http://localhost:3000/works -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>NoMethodError at /works</title>
+</head>
+
+  <body>
+    <style>
+    /* Basic reset */
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        vertical-align: top;
+        text-align: left;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    body {
+        font-size: 10pt;
+    }
+
+    body, td, input, textarea {
+        font-family: helvetica neue, lucida grande, sans-serif;
+        line-height: 1.5;
+        color: #333;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+
+    html {
+        background: #f0f0f5;
+    }
+
+    .clearfix::after{
+        clear: both;
+        content: ".";
+        display: block;
+        height: 0;
+        visibility: hidden;
+    }
+
+    /* ---------------------------------------------------------------------
+     * Basic layout
+     * --------------------------------------------------------------------- */
+
+    /* Small */
+    @media screen and (max-width: 1100px) {
+        html {
+            overflow-y: scroll;
+        }
+
+        body {
+            margin: 0 20px;
+        }
+
+        header.exception {
+            margin: 0 -20px;
+        }
+
+        nav.sidebar {
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        ul.frames {
+            max-height: 200px;
+            overflow: auto;
+        }
+    }
+
+    /* Wide */
+    @media screen and (min-width: 1100px) {
+        header.exception {
+           position: fixed;
+           top: 0;
+           left: 0;
+           right: 0;
+        }
+
+        nav.sidebar,
+        .frame_info {
+            position: fixed;
+            top: 95px;
+            bottom: 0;
+
+            box-sizing: border-box;
+
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        nav.sidebar {
+            width: 40%;
+            left: 20px;
+            top: 115px;
+            bottom: 20px;
+        }
+
+        .frame_info {
+            right: 0;
+            left: 40%;
+
+            padding: 20px;
+            padding-left: 10px;
+            margin-left: 30px;
+        }
+    }
+
+    nav.sidebar {
+        background: #d3d3da;
+        border-top: solid 3px #a33;
+        border-bottom: solid 3px #a33;
+        border-radius: 4px;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ---------------------------------------------------------------------
+     * Header
+     * --------------------------------------------------------------------- */
+
+    header.exception {
+        padding: 18px 20px;
+
+        height: 59px;
+        min-height: 59px;
+
+        overflow: hidden;
+
+        background-color: #20202a;
+        color: #aaa;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+        font-weight: 200;
+        box-shadow: inset 0 -5px 3px -3px rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+
+        -webkit-text-smoothing: antialiased;
+    }
+
+    /* Heading */
+    header.exception h2 {
+        font-weight: 200;
+        font-size: 11pt;
+    }
+
+    header.exception h2,
+    header.exception p {
+        line-height: 1.4em;
+        overflow: hidden;
+        white-space: pre;
+        text-overflow: ellipsis;
+    }
+
+    header.exception h2 strong {
+        font-weight: 700;
+        color: #d55;
+    }
+
+    header.exception p {
+        font-weight: 200;
+        font-size: 20pt;
+        color: white;
+    }
+
+    header.exception:hover {
+        height: auto;
+        z-index: 2;
+    }
+
+    header.exception:hover h2,
+    header.exception:hover p {
+        padding-right: 20px;
+        overflow-y: auto;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        height: auto;
+        max-height: 7.5em;
+    }
+
+    @media screen and (max-width: 1100px) {
+        header.exception {
+            height: auto;
+        }
+
+        header.exception h2,
+        header.exception p {
+            padding-right: 20px;
+            overflow-y: auto;
+            word-wrap: break-word;
+            height: auto;
+            max-height: 7em;
+        }
+    }
+
+
+    /* ---------------------------------------------------------------------
+     * Navigation
+     * --------------------------------------------------------------------- */
+
+    nav.tabs {
+        border-bottom: solid 1px #ddd;
+
+        background-color: #eee;
+        text-align: center;
+
+        padding: 6px;
+
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    nav.tabs a {
+        display: inline-block;
+
+        height: 22px;
+        line-height: 22px;
+        padding: 0 10px;
+
+        text-decoration: none;
+        font-size: 8pt;
+        font-weight: bold;
+
+        color: #999;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+
+    nav.tabs a.selected {
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 16px;
+        box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.1);
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    nav.tabs a.disabled {
+        text-decoration: line-through;
+        text-shadow: none;
+        cursor: default;
+    }
+
+    /* ---------------------------------------------------------------------
+     * Sidebar
+     * --------------------------------------------------------------------- */
+
+    ul.frames {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Each item */
+    ul.frames li {
+        background-color: #f8f8f8;
+        background: -webkit-linear-gradient(top, #f8f8f8 80%, #f0f0f0);
+        background: -moz-linear-gradient(top, #f8f8f8 80%, #f0f0f0);
+        background: linear-gradient(top, #f8f8f8 80%, #f0f0f0);
+        box-shadow: inset 0 -1px 0 #e2e2e2;
+        padding: 7px 20px;
+
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    ul.frames .name,
+    ul.frames .location {
+        overflow: hidden;
+        height: 1.5em;
+
+        white-space: nowrap;
+        word-wrap: none;
+        text-overflow: ellipsis;
+    }
+
+    ul.frames .method {
+        color: #966;
+    }
+
+    ul.frames .location {
+        font-size: 0.85em;
+        font-weight: 400;
+        color: #999;
+    }
+
+    ul.frames .line {
+        font-weight: bold;
+    }
+
+    /* Selected frame */
+    ul.frames li.selected {
+        background: #38a;
+        box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 2px 0 rgba(255, 255, 255, 0.01), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    ul.frames li.selected .name,
+    ul.frames li.selected .method,
+    ul.frames li.selected .location {
+        color: white;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    ul.frames li.selected .location {
+        opacity: 0.6;
+    }
+
+    /* Iconography */
+    ul.frames li {
+        padding-left: 60px;
+        position: relative;
+    }
+
+    ul.frames li .icon {
+        display: block;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        border-radius: 15px;
+
+        text-align: center;
+
+        background: white;
+        border: solid 2px #ccc;
+
+        font-size: 9pt;
+        font-weight: 200;
+        font-style: normal;
+
+        position: absolute;
+        top: 14px;
+        left: 20px;
+    }
+
+    ul.frames .icon.application {
+        background: #808090;
+        border-color: #555;
+    }
+
+    ul.frames .icon.application:before {
+        content: 'A';
+        color: white;
+        text-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsiveness -- flow to single-line mode */
+    @media screen and (max-width: 1100px) {
+        ul.frames li {
+            padding-top: 6px;
+            padding-bottom: 6px;
+            padding-left: 36px;
+            line-height: 1.3;
+        }
+
+        ul.frames li .icon {
+            width: 11px;
+            height: 11px;
+            line-height: 11px;
+
+            top: 7px;
+            left: 10px;
+            font-size: 5pt;
+        }
+
+        ul.frames .name,
+        ul.frames .location {
+            display: inline-block;
+            line-height: 1.3;
+            height: 1.3em;
+        }
+
+        ul.frames .name {
+            margin-right: 10px;
+        }
+    }
+
+    /* ---------------------------------------------------------------------
+     * Monospace
+     * --------------------------------------------------------------------- */
+
+    pre, code, .be-repl input, .be-repl .command-line span, textarea, .code_linenums {
+        font-family: menlo, lucida console, monospace;
+        font-size: 8pt;
+    }
+
+    /* ---------------------------------------------------------------------
+     * Display area
+     * --------------------------------------------------------------------- */
+
+    .trace_info {
+        background: #fff;
+        padding: 6px;
+        border-radius: 3px;
+        margin-bottom: 2px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.03), 1px 1px 0 rgba(0, 0, 0, 0.05), -1px 1px 0 rgba(0, 0, 0, 0.05), 0 0 0 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .code_block{
+        background: #f1f1f1;
+        border-left: 1px solid #ccc;
+    }
+
+    /* Titlebar */
+    .trace_info .title {
+        background: #f1f1f1;
+
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        overflow: hidden;
+        padding: 6px 10px;
+
+        border: solid 1px #ccc;
+        border-bottom: 0;
+
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+    }
+
+    .trace_info .title .name,
+    .trace_info .title .location {
+        font-size: 9pt;
+        line-height: 26px;
+        height: 26px;
+        overflow: hidden;
+    }
+
+    .trace_info .title .location {
+        float: left;
+        font-weight: bold;
+        font-size: 10pt;
+    }
+
+    .trace_info .title .location a {
+        color:inherit;
+        text-decoration:none;
+        border-bottom:1px solid #aaaaaa;
+    }
+
+    .trace_info .title .location a:hover {
+        border-color:#666666;
+    }
+
+    .trace_info .title .name {
+        float: right;
+        font-weight: 200;
+    }
+
+    .code, .be-console, .unavailable {
+        background: #fff;
+        padding: 5px;
+
+        box-shadow: inset 3px 3px 3px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .code_linenums{
+        background:#f1f1f1;
+        padding-top:10px;
+        padding-bottom:9px;
+        float:left;
+    }
+
+    .code_linenums span{
+        display:block;
+        padding:0 12px;
+    }
+
+    .code {
+        margin-bottom: -1px;
+        border-top-left-radius:2px;
+        padding: 10px 0;
+        overflow: auto;
+    }
+
+    .code pre{
+        padding-left:12px;
+        min-height:16px;
+    }
+
+    /* Source unavailable */
+    p.unavailable {
+        padding: 20px 0 40px 0;
+        text-align: center;
+        color: #b99;
+        font-weight: bold;
+    }
+
+    p.unavailable:before {
+        content: '\00d7';
+        display: block;
+
+        color: #daa;
+
+        text-align: center;
+        font-size: 40pt;
+        font-weight: normal;
+        margin-bottom: -10px;
+    }
+
+    @-webkit-keyframes highlight {
+        0%   { background: rgba(220, 30, 30, 0.3); }
+        100% { background: rgba(220, 30, 30, 0.1); }
+    }
+    @-moz-keyframes highlight {
+        0%   { background: rgba(220, 30, 30, 0.3); }
+        100% { background: rgba(220, 30, 30, 0.1); }
+    }
+    @keyframes highlight {
+        0%   { background: rgba(220, 30, 30, 0.3); }
+        100% { background: rgba(220, 30, 30, 0.1); }
+    }
+
+    .code .highlight, .code_linenums .highlight {
+        background: rgba(220, 30, 30, 0.1);
+        -webkit-animation: highlight 400ms linear 1;
+        -moz-animation: highlight 400ms linear 1;
+        animation: highlight 400ms linear 1;
+    }
+
+    /* REPL shell */
+    .be-console {
+        padding: 0 1px 10px 1px;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+
+    .be-console pre {
+        padding: 10px 10px 0 10px;
+        max-height: 400px;
+        overflow-x: none;
+        overflow-y: auto;
+        margin-bottom: -3px;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+    }
+
+    /* .command-line > span + input */
+    .be-console .command-line {
+        display: table;
+        width: 100%;
+    }
+
+    .be-console .command-line span,
+    .be-console .command-line input {
+        display: table-cell;
+    }
+
+    .be-console .command-line span {
+        width: 1%;
+        padding-right: 5px;
+        padding-left: 10px;
+        white-space: pre;
+    }
+
+    .be-console .command-line input {
+        width: 99%;
+    }
+
+    /* Input box */
+    .be-console input,
+    .be-console input:focus {
+        outline: 0;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        margin: 0;
+    }
+
+    /* Hint text */
+    .hint {
+        margin: 15px 0 20px 0;
+        font-size: 8pt;
+        color: #8080a0;
+        padding-left: 20px;
+    }
+
+    .hint:before {
+        content: '\25b2';
+        margin-right: 5px;
+        opacity: 0.5;
+    }
+
+    /* ---------------------------------------------------------------------
+     * Variable infos
+     * --------------------------------------------------------------------- */
+
+    .sub {
+        padding: 10px 0;
+        margin: 10px 0;
+    }
+
+    .sub:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 4px;
+
+        border-radius: 2px;
+        background: rgba(0, 150, 200, 0.05);
+        box-shadow: 1px 1px 0 rgba(255, 255, 255, 0.7), inset 0 0 0 1px rgba(0, 0, 0, 0.04), inset 2px 2px 2px rgba(0, 0, 0, 0.07);
+    }
+
+    .sub h3 {
+        color: #39a;
+        font-size: 1.1em;
+        margin: 10px 0;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .sub .inset {
+        overflow-y: auto;
+    }
+
+    .sub table {
+        table-layout: fixed;
+    }
+
+    .sub table td {
+        border-top: dotted 1px #ddd;
+        padding: 7px 1px;
+    }
+
+    .sub table td.name {
+        width: 150px;
+
+        font-weight: bold;
+        font-size: 0.8em;
+        padding-right: 20px;
+
+        word-wrap: break-word;
+    }
+
+    .sub table td pre {
+        max-height: 15em;
+        overflow-y: auto;
+    }
+
+    .sub table td pre {
+        width: 100%;
+
+        word-wrap: break-word;
+        white-space: normal;
+    }
+
+    /* "(object doesn't support inspect)" */
+    .sub .unsupported {
+      font-family: sans-serif;
+      color: #777;
+    }
+
+    /* ---------------------------------------------------------------------
+     * Scrollbar
+     * --------------------------------------------------------------------- */
+
+    nav.sidebar::-webkit-scrollbar,
+    .inset pre::-webkit-scrollbar,
+    .be-console pre::-webkit-scrollbar,
+    .code::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    .inset pre::-webkit-scrollbar-thumb,
+    .be-console pre::-webkit-scrollbar-thumb,
+    .code::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 5px;
+    }
+
+    nav.sidebar::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.0);
+        border-radius: 5px;
+    }
+
+    nav.sidebar:hover::-webkit-scrollbar-thumb {
+        background-color: #999;
+        background: -webkit-linear-gradient(left, #aaa, #999);
+    }
+
+    .be-console pre:hover::-webkit-scrollbar-thumb,
+    .inset pre:hover::-webkit-scrollbar-thumb,
+    .code:hover::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+    </style>
+
+    <script>
+    (function() {
+        var elements = ["section", "nav", "header", "footer", "audio"];
+        for (var i = 0; i < elements.length; i++) {
+            document.createElement(elements[i]);
+        }
+    })();
+    </script>
+
+    <script>
+      if (window.Turbolinks) {
+          for(var i=0; i < document.styleSheets.length; i++) {
+              if(document.styleSheets[i].href)
+                  document.styleSheets[i].disabled = true;
+          }
+          if (window.Turbolinks.controller) {
+              // Turbolinks > 5 (see https://github.com/turbolinks/turbolinks/issues/6)
+              document.addEventListener("turbolinks:load", function restoreCSS(e) {
+                  for(var i=0; i < document.styleSheets.length; i++) {
+                      document.styleSheets[i].disabled = false;
+                  }
+                  document.removeEventListener("turbolinks:load", restoreCSS, false);
+              });
+          } else {
+              document.addEventListener("page:restore", function restoreCSS(e) {
+                  for(var i=0; i < document.styleSheets.length; i++) {
+                      document.styleSheets[i].disabled = false;
+                  }
+                  document.removeEventListener("page:restore", restoreCSS, false);
+              });
+          }
+      }
+    </script>
+
+    <div class="top">
+        <header class="exception">
+            <h2><strong>NoMethodError</strong> <span>at /works</span></h2>
+            <p>undefined method `id' for nil:NilClass</p>
+        </header>
+    </div>
+
+    <section class="backtrace">
+        <nav class="sidebar">
+            <nav class="tabs">
+                <a href="http://localhost:3000/works#" id="application_frames" class="selected">Application Frames</a>
+                <a href="http://localhost:3000/works#" id="all_frames" class="">All Frames</a>
+            </nav>
+            <ul class="frames">
+                    <li class="selected" data-context="application" data-index="0" style="display: block;">
+                        <span class="stroke"></span>
+                        <i class="icon application"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block (2 levels) in #&lt;Class:0x00007fc567a62e88&gt;</strong><span class="method">#_app_views_works_index_html_erb___583034999272646511_70242942317540</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">app/views/works/index.html.erb</span>, line <span class="line">32</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="application" data-context="application" data-index="1" style="display: block;">
+                        <span class="stroke"></span>
+                        <i class="icon application"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in #&lt;Class:0x00007fc567a62e88&gt;</strong><span class="method">#_app_views_works_index_html_erb___583034999272646511_70242942317540</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">app/views/works/index.html.erb</span>, line <span class="line">21</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="application" data-context="application" data-index="2" style="display: block;">
+                        <span class="stroke"></span>
+                        <i class="icon application"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>#&lt;Class:0x00007fc567a62e88&gt;</strong><span class="method">#_app_views_works_index_html_erb___583034999272646511_70242942317540</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">app/views/works/index.html.erb</span>, line <span class="line">3</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="3" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in ActionView::Template</strong><span class="method">#render</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/template.rb</span>, line <span class="line">159</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="4" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActiveSupport::Notifications</strong><span class="method">.instrument</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/notifications.rb</span>, line <span class="line">170</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="5" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionView::Template</strong><span class="method">#instrument_render_template</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/template.rb</span>, line <span class="line">354</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="6" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionView::Template</strong><span class="method">#render</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/template.rb</span>, line <span class="line">157</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="7" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block (2 levels) in ActionView::TemplateRenderer</strong><span class="method">#render_template</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/renderer/template_renderer.rb</span>, line <span class="line">54</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="8" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in ActionView::TemplateRenderer</strong><span class="method">#instrument</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/renderer/abstract_renderer.rb</span>, line <span class="line">44</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="9" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in ActiveSupport::Notifications</strong><span class="method">.instrument</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/notifications.rb</span>, line <span class="line">168</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="10" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActiveSupport::Notifications::Instrumenter</strong><span class="method">#instrument</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/notifications/instrumenter.rb</span>, line <span class="line">23</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="11" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActiveSupport::Notifications</strong><span class="method">.instrument</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/notifications.rb</span>, line <span class="line">168</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="12" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionView::TemplateRenderer</strong><span class="method">#instrument</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/renderer/abstract_renderer.rb</span>, line <span class="line">43</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="13" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in ActionView::TemplateRenderer</strong><span class="method">#render_template</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/renderer/template_renderer.rb</span>, line <span class="line">53</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="14" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionView::TemplateRenderer</strong><span class="method">#render_with_layout</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/renderer/template_renderer.rb</span>, line <span class="line">61</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="15" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionView::TemplateRenderer</strong><span class="method">#render_template</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/renderer/template_renderer.rb</span>, line <span class="line">52</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="16" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionView::TemplateRenderer</strong><span class="method">#render</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/renderer/template_renderer.rb</span>, line <span class="line">16</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="17" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionView::Renderer</strong><span class="method">#render_template</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/renderer/renderer.rb</span>, line <span class="line">44</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="18" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionView::Renderer</strong><span class="method">#render</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/renderer/renderer.rb</span>, line <span class="line">25</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="19" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#_render_template</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/rendering.rb</span>, line <span class="line">103</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="20" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#_render_template</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/streaming.rb</span>, line <span class="line">219</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="21" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#render_to_body</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/rendering.rb</span>, line <span class="line">84</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="22" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#render_to_body</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/rendering.rb</span>, line <span class="line">52</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="23" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#render_to_body</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/renderers.rb</span>, line <span class="line">142</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="24" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#render</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/abstract_controller/rendering.rb</span>, line <span class="line">25</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="25" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#render</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/rendering.rb</span>, line <span class="line">36</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="26" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block (2 levels) in WorksController</strong><span class="method">#render</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb</span>, line <span class="line">46</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="27" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in Benchmark</strong><span class="method">.ms</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/core_ext/benchmark.rb</span>, line <span class="line">14</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dunno" data-context="dunno" data-index="28" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon dunno"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Benchmark</strong><span class="method">.realtime</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">/Users/samjo/.rvm/rubies/ruby-2.5.1/lib/ruby/2.5.0/benchmark.rb</span>, line <span class="line">308</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="29" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Benchmark</strong><span class="method">.ms</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/core_ext/benchmark.rb</span>, line <span class="line">14</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="30" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in WorksController</strong><span class="method">#render</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb</span>, line <span class="line">46</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="31" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#cleanup_view_runtime</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb</span>, line <span class="line">87</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="32" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#cleanup_view_runtime</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activerecord (5.2.1) lib/active_record/railties/controller_runtime.rb</span>, line <span class="line">31</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="33" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#render</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb</span>, line <span class="line">45</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="34" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#default_render</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/implicit_render.rb</span>, line <span class="line">35</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="35" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in WorksController</strong><span class="method">#send_action</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/basic_implicit_render.rb</span>, line <span class="line">6</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="36" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#send_action</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/basic_implicit_render.rb</span>, line <span class="line">6</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="37" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#process_action</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/abstract_controller/base.rb</span>, line <span class="line">194</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="38" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#process_action</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/rendering.rb</span>, line <span class="line">30</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="39" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in WorksController</strong><span class="method">#process_action</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/abstract_controller/callbacks.rb</span>, line <span class="line">42</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="40" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#run_callbacks</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/callbacks.rb</span>, line <span class="line">132</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="41" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#process_action</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/abstract_controller/callbacks.rb</span>, line <span class="line">41</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="42" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#process_action</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/rescue.rb</span>, line <span class="line">22</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="43" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in WorksController</strong><span class="method">#process_action</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb</span>, line <span class="line">34</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="44" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in ActiveSupport::Notifications</strong><span class="method">.instrument</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/notifications.rb</span>, line <span class="line">168</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="45" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActiveSupport::Notifications::Instrumenter</strong><span class="method">#instrument</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/notifications/instrumenter.rb</span>, line <span class="line">23</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="46" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActiveSupport::Notifications</strong><span class="method">.instrument</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/notifications.rb</span>, line <span class="line">168</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="47" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#process_action</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb</span>, line <span class="line">32</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="48" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#process_action</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal/params_wrapper.rb</span>, line <span class="line">256</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="49" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#process_action</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activerecord (5.2.1) lib/active_record/railties/controller_runtime.rb</span>, line <span class="line">24</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="50" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#process</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/abstract_controller/base.rb</span>, line <span class="line">134</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="51" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#process</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionview (5.2.1) lib/action_view/rendering.rb</span>, line <span class="line">32</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="52" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">#dispatch</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal.rb</span>, line <span class="line">191</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="53" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WorksController</strong><span class="method">.dispatch</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_controller/metal.rb</span>, line <span class="line">252</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="54" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::Routing::RouteSet::Dispatcher</strong><span class="method">#dispatch</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb</span>, line <span class="line">52</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="55" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::Routing::RouteSet::Dispatcher</strong><span class="method">#serve</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb</span>, line <span class="line">34</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="56" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in ActionDispatch::Journey::Router</strong><span class="method">#serve</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/journey/router.rb</span>, line <span class="line">52</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="57" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::Journey::Router</strong><span class="method">#serve</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/journey/router.rb</span>, line <span class="line">35</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="58" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::Routing::RouteSet</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb</span>, line <span class="line">840</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="59" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>OmniAuth::Strategies::GitHub</strong><span class="method">#call!</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">omniauth (1.8.1) lib/omniauth/strategy.rb</span>, line <span class="line">190</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="60" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>OmniAuth::Strategies::GitHub</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">omniauth (1.8.1) lib/omniauth/strategy.rb</span>, line <span class="line">168</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="61" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>OmniAuth::Builder</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">omniauth (1.8.1) lib/omniauth/builder.rb</span>, line <span class="line">63</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="62" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Rack::TempfileReaper</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">rack (2.0.5) lib/rack/tempfile_reaper.rb</span>, line <span class="line">15</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="63" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Rack::ETag</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">rack (2.0.5) lib/rack/etag.rb</span>, line <span class="line">25</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="64" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Rack::ConditionalGet</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">rack (2.0.5) lib/rack/conditional_get.rb</span>, line <span class="line">25</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="65" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Rack::Head</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">rack (2.0.5) lib/rack/head.rb</span>, line <span class="line">12</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="66" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::ContentSecurityPolicy::Middleware</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/http/content_security_policy.rb</span>, line <span class="line">18</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="67" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::Session::CookieStore</strong><span class="method">#context</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">rack (2.0.5) lib/rack/session/abstract/id.rb</span>, line <span class="line">232</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="68" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::Session::CookieStore</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">rack (2.0.5) lib/rack/session/abstract/id.rb</span>, line <span class="line">226</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="69" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::Cookies</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/middleware/cookies.rb</span>, line <span class="line">670</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="70" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActiveRecord::Migration::CheckPending</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activerecord (5.2.1) lib/active_record/migration.rb</span>, line <span class="line">559</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="71" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in ActionDispatch::Callbacks</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb</span>, line <span class="line">28</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="72" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::Callbacks</strong><span class="method">#run_callbacks</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/callbacks.rb</span>, line <span class="line">98</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="73" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::Callbacks</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb</span>, line <span class="line">26</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="74" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::Reloader</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb</span>, line <span class="line">14</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="75" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>BetterErrors::Middleware</strong><span class="method">#protected_app_call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">better_errors (2.5.0) lib/better_errors/middleware.rb</span>, line <span class="line">84</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="76" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>BetterErrors::Middleware</strong><span class="method">#better_errors_call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">better_errors (2.5.0) lib/better_errors/middleware.rb</span>, line <span class="line">79</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="77" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>BetterErrors::Middleware</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">better_errors (2.5.0) lib/better_errors/middleware.rb</span>, line <span class="line">57</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="78" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::DebugExceptions</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb</span>, line <span class="line">61</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="79" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WebConsole::Middleware</strong><span class="method">#call_app</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">web-console (3.7.0) lib/web_console/middleware.rb</span>, line <span class="line">135</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="80" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in WebConsole::Middleware</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">web-console (3.7.0) lib/web_console/middleware.rb</span>, line <span class="line">30</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="81" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>WebConsole::Middleware</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">web-console (3.7.0) lib/web_console/middleware.rb</span>, line <span class="line">20</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="82" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::ShowExceptions</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb</span>, line <span class="line">33</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="83" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Rails::Rack::Logger</strong><span class="method">#call_app</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">railties (5.2.1) lib/rails/rack/logger.rb</span>, line <span class="line">38</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="84" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in Rails::Rack::Logger</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">railties (5.2.1) lib/rails/rack/logger.rb</span>, line <span class="line">26</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="85" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in ActiveSupport::Logger</strong><span class="method">#tagged</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/tagged_logging.rb</span>, line <span class="line">71</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="86" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActiveSupport::Logger::SimpleFormatter</strong><span class="method">#tagged</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/tagged_logging.rb</span>, line <span class="line">28</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="87" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActiveSupport::Logger</strong><span class="method">#tagged</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/tagged_logging.rb</span>, line <span class="line">71</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="88" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Rails::Rack::Logger</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">railties (5.2.1) lib/rails/rack/logger.rb</span>, line <span class="line">26</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="89" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Sprockets::Rails::QuietAssets</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb</span>, line <span class="line">13</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="90" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::RemoteIp</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb</span>, line <span class="line">81</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="91" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::RequestId</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb</span>, line <span class="line">27</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="92" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Rack::MethodOverride</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">rack (2.0.5) lib/rack/method_override.rb</span>, line <span class="line">22</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="93" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Rack::Runtime</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">rack (2.0.5) lib/rack/runtime.rb</span>, line <span class="line">22</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="94" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActiveSupport::Cache::Strategy::LocalCache::Middleware</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb</span>, line <span class="line">29</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="95" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::Executor</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb</span>, line <span class="line">14</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="96" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>ActionDispatch::Static</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">actionpack (5.2.1) lib/action_dispatch/middleware/static.rb</span>, line <span class="line">127</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="97" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Rack::Sendfile</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">rack (2.0.5) lib/rack/sendfile.rb</span>, line <span class="line">111</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="98" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>MediaRanker::Application</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">railties (5.2.1) lib/rails/engine.rb</span>, line <span class="line">524</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="99" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Puma::Configuration::ConfigMiddleware</strong><span class="method">#call</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">puma (3.12.0) lib/puma/configuration.rb</span>, line <span class="line">225</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="100" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Puma::Server</strong><span class="method">#handle_request</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">puma (3.12.0) lib/puma/server.rb</span>, line <span class="line">658</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="101" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>Puma::Server</strong><span class="method">#process_client</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">puma (3.12.0) lib/puma/server.rb</span>, line <span class="line">472</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="102" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in Puma::Server</strong><span class="method">#run</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">puma (3.12.0) lib/puma/server.rb</span>, line <span class="line">332</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gem" data-context="gem" data-index="103" style="display: none;">
+                        <span class="stroke"></span>
+                        <i class="icon gem"></i>
+                        <div class="info">
+                            <div class="name">
+                                <strong>block in Puma::ThreadPool</strong><span class="method">#spawn_thread</span>
+                            </div>
+                            <div class="location">
+                                <span class="filename">puma (3.12.0) lib/puma/thread_pool.rb</span>, line <span class="line">133</span>
+                            </div>
+                        </div>
+                    </li>
+            </ul>
+        </nav>
+
+            <div class="frame_info" id="frame_info_0" style="display: block;"><header class="trace_info clearfix">
+    <div class="title">
+        <h2 class="name">block (2 levels) in _app_views_works_index_html_erb___583034999272646511_70242942317540</h2>
+        <div class="location"><span class="filename"><a href="txmt://open?url=file://%2FUsers%2Fsamjo%2FDocuments%2Fada%2Fwk10%2FMediaRanker%2Fapp%2Fviews%2Fworks%2Findex.html.erb&amp;line=32">app/views/works/index.html.erb</a></span></div>
+    </div>
+    <div class="code_block clearfix">
+        <div class="code_linenums"><span class="">   27</span><span class="">   28</span><span class="">   29</span><span class="">   30</span><span class="">   31</span><span class="highlight">   32</span><span class="">   33</span><span class="">   34</span><span class="">   35</span><span class="">   36</span><span class="">   37</span></div><div class="code"><pre class="">              <span style="color:#070;font-weight:bold">&lt;td</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">col-2</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+</pre><pre class="">                <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@current_user</span> &amp;&amp; work.has_no_vote_by?(<span style="color:#33B">@current_user</span>) <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre><pre class="">                  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> link_to <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Upvote!</span><span style="color:#710">"</span></span>, work_votes_path(work.id), <span style="color:#606">method</span>: <span style="color:#A60">:post</span>, <span style="color:#606">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">btn btn-outline-info btn-sm</span><span style="color:#710">"</span></span>, <span style="color:#606">role</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">button</span><span style="color:#710">"</span></span><span style="font-weight:bold;color:#666">%&gt;</span></span><span style="color:#070;font-weight:bold">&lt;/td&gt;</span>
+</pre><pre class="">                <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">elsif</span> <span style="color:#33B">@current_user</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre><pre class="">                <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> vote = work.votes.find_by(<span style="color:#606">user_id</span>: <span style="color:#33B">@current_user</span>.id) <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre><pre class="highlight">                  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> link_to <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">Remove Upvote</span><span style="color:#710">"</span></span>, work_vote_path(work.id, vote.id), <span style="color:#606">method</span>: <span style="color:#A60">:delete</span>, <span style="color:#606">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">btn btn-danger btn-sm</span><span style="color:#710">"</span></span>, <span style="color:#606">role</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">button</span><span style="color:#710">"</span></span> <span style="font-weight:bold;color:#666">%&gt;</span></span><span style="color:#070;font-weight:bold">&lt;/td&gt;</span>
+</pre><pre class="">                <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">else</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre><pre class="">                  <span style="color:#070;font-weight:bold">&lt;div</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">"</span><span style="color:#D20">text-muted</span><span style="color:#710">"</span></span><span style="color:#070;font-weight:bold">&gt;</span>Please log in to upvote.<span style="color:#070;font-weight:bold">&lt;/div&gt;</span>
+</pre><pre class="">                <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">end</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre><pre class="">            <span style="color:#070;font-weight:bold">&lt;/td&gt;</span>
+</pre><pre class="">            <span style="color:#070;font-weight:bold">&lt;/tr&gt;</span>
+</pre></div>
+    </div>
+
+        <div class="be-repl">
+            <div class="be-console">
+                <pre>&gt;&gt; wrok
+!! #&lt;NameError: undefined local variable or method `wrok' for #&lt;#&lt;Class:0x00007fc567a62e88&gt;:0x00007fc56b3fdb48&gt;
+Did you mean?  work&gt;
+&gt;&gt; work
+=&gt; #&lt;Work id: 23, title: "American ", category: "album", creator: "Ms. Vanessa Feest", publication: 1966, description: "At dolorem in ullam.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;
+&gt;&gt; work.id
+=&gt; 23
+&gt;&gt; vote.id
+!! #&lt;NoMethodError: undefined method `id' for nil:NilClass&gt;
+&gt;&gt; vote
+=&gt; nil
+&gt;&gt; work.has_no_vote_by?(<span style="color:#33B">@current_user</span>)
+=&gt; false
+&gt;&gt;  work.votes.find_by(<span style="color:#606">user_id</span>: <span style="color:#33B">@current_user</span>.id
+!! #&lt;SyntaxError: /Users/samjo/Documents/ada/wk10/MediaRanker/app/views/works/index.html.erb:32: syntax error, unexpected end-of-input, expecting ')'
+...nd_by(user_id: @current_user.id
+...                               ^&gt;
+&gt;&gt;  work.votes.find_by(<span style="color:#606">user_id</span>: <span style="color:#33B">@current_user</span>.id_
+!! #&lt;SyntaxError: /Users/samjo/Documents/ada/wk10/MediaRanker/app/views/works/index.html.erb:32: syntax error, unexpected end-of-input, expecting ')'
+...d_by(user_id: @current_user.id_
+...                               ^&gt;
+&gt;&gt;  work.votes.find_by(<span style="color:#606">user_id</span>: <span style="color:#33B">@current_user</span>.id)
+=&gt; nil
+</pre>
+                <div class="command-line"><span class="prompt">&gt;&gt;</span> <input tabindex="1"></div>
+            </div>
+        </div>
+</header>
+
+    <div class="hint">
+        This is a live shell. Type in here.
+    </div>
+
+    <div class="variable_info"></div>
+
+
+<div class="sub">
+    <h3>Request info</h3>
+    <div class="inset variables">
+        <table class="var_table">
+                <tbody><tr><td class="name">Request parameters</td><td><pre>{"controller"=&gt;"works", "action"=&gt;"index"}</pre></td></tr>
+                <tr><td class="name">Rack session</td><td><pre><span class="unsupported">(object too large. Modify ActionDispatch::Request::Session#inspect or adjust BetterErrors.maximum_variable_inspect_size)</span></pre></td></tr>
+        </tbody></table>
+    </div>
+</div>
+
+    <div class="sub">
+        <h3>Local Variables</h3>
+        <div class="inset variables">
+            <table class="var_table">
+                    <tbody><tr><td class="name">work</td><td><pre>#&lt;Work id: 23, title: "American ", category: "album", creator: "Ms. Vanessa Feest", publication: 1966, description: "At dolorem in ullam.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;</pre></td></tr>
+                    <tr><td class="name">vote</td><td><pre>nil</pre></td></tr>
+                    <tr><td class="name">category</td><td><pre>"album"</pre></td></tr>
+                    <tr><td class="name">works</td><td><pre>[#&lt;Work id: 23, title: "American ", category: "album", creator: "Ms. Vanessa Feest", publication: 1966, description: "At dolorem in ullam.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 10, title: "Blue Extract", category: "album", creator: "Lorilee Wisozk", publication: 1918, description: "Repellendus est consequatur alias.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 16, title: "Brooklyn Utopia", category: "album", creator: "Corey Howell", publication: 2004, description: "Hic et assumenda amet.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 26, title: "Dog Mask", category: "album", creator: "For Any Occasion", publication: 2018, description: "Cat Mask... For Meeting the In-Laws", created_at: "2018-10-17 07:14:27", updated_at: "2018-10-17 07:14:27"&gt;, #&lt;Work id: 11, title: "Express Solstice", category: "album", creator: "Lisandra Lakin Sr.", publication: 1946, description: "Consectetur accusamus ut facere.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 7, title: "Express Volcano", category: "album", creator: "Mr. Earnest Moen", publication: 2002, description: "Eum nihil dolor voluptas.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 17, title: "Heart Extract", category: "album", creator: "Ms. Evie Sauer", publication: 1949, description: "Fuga qui velit quia.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 14, title: "Postmodern Mug", category: "album", creator: "Tianna Bogisich Jr.", publication: 1999, description: "Magnam ducimus soluta repudiandae.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 6, title: "Red Breaker", category: "album", creator: "Richard Kling", publication: 1922, description: "Voluptas distinctio qui nihil.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 22, title: "Reg's Mug", category: "album", creator: "Otto O'Hara", publication: 1962, description: "Voluptatem est molestiae nesciunt.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 9, title: "Seattle Breaker", category: "album", creator: "Juan Olson III", publication: 1934, description: "Aperiam maiores velit voluptas.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 13, title: "Spilt Coffee", category: "album", creator: "Alfreda McCullough", publication: 1926, description: "Autem necessitatibus ratione dolores.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 20, title: "Thanksgiving Cake", category: "album", creator: "Major Ullrich", publication: 1984, description: "Fugiat odio aut iure.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;]</pre></td></tr>
+                    <tr><td class="name">local_assigns</td><td><pre>{}</pre></td></tr>
+                    <tr><td class="name">output_buffer</td><td><pre>nil</pre></td></tr>
+                    <tr><td class="name">_old_virtual_path</td><td><pre>nil</pre></td></tr>
+                    <tr><td class="name">_old_output_buffer</td><td><pre>nil</pre></td></tr>
+            </tbody></table>
+        </div>
+    </div>
+
+    <div class="sub">
+        <h3>Instance Variables</h3>
+        <div class="inset variables">
+            <table class="var_table">
+                    <tbody><tr><td class="name">@_routes</td><td><pre>nil</pre></td></tr>
+                    <tr><td class="name">@_config</td><td><pre>{}</pre></td></tr>
+                    <tr><td class="name">@view_renderer</td><td><pre>#&lt;ActionView::Renderer:0x00007fc56b3fdcd8 @lookup_context=#&lt;ActionView::LookupContext:0x00007fc567603630 @details_key=#&lt;Concurrent::Map:0x007fc56b3ffd08 entries=0 default_proc=nil&gt;, @cache=true, @prefixes=["works", "application"], @rendered_format=:html, @details={:locale=&gt;[:en], :formats=&gt;[:html], :variants=&gt;[], :handlers=&gt;[:raw, :erb, :html, :builder, :ruby, :jbuilder]}, @view_paths=#&lt;ActionView::PathSet:0x00007fc567603540 @paths=[#&lt;ActionView::OptimizedFileSystemResolver:0x00007fc568f6f880 @pattern=":prefix/:action{.:locale,}{.:formats,}{+:variants,}{.:handlers,}", @cache=#&lt;ActionView::Resolver::Cache:0x7fc568f6f808 keys=21 queries=0&gt;, @path="/Users/samjo/Documents/ada/wk10/MediaRanker/app/views"&gt;]&gt;&gt;&gt;</pre></td></tr>
+                    <tr><td class="name">@cache_hit</td><td><pre>{}</pre></td></tr>
+                    <tr><td class="name">@marked_for_same_origin_verification</td><td><pre>true</pre></td></tr>
+                    <tr><td class="name">@current_user</td><td><pre>#&lt;User id: 1, name: "sammi-jo", created_at: "2018-10-17 07:14:33", updated_at: "2018-10-17 07:14:33"&gt;</pre></td></tr>
+                    <tr><td class="name">@works</td><td><pre>#&lt;ActiveRecord::Relation [#&lt;Work id: 1, title: "Summer Java", category: "book", creator: "Queenie Corwin", publication: 1928, description: "Consectetur maiores culpa hic.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 2, title: "Jacked Symphony", category: "book", creator: "Mr. Aaron Stoltenberg", publication: 1954, description: "Ipsa accusantium repellat nobis.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 3, title: "Joe Extract", category: "book", creator: "Julius Gutkowski", publication: 1988, description: "Aspernatur qui eius impedit.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 4, title: "Good-morning Enlightenment", category: "book", creator: "Randy Wisoky", publication: 1958, description: "Qui autem provident tenetur.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 5, title: "Summer Choice", category: "book", creator: "Odilia Moore", publication: 1958, description: "Cumque alias nemo doloribus.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 6, title: "Red Breaker", category: "album", creator: "Richard Kling", publication: 1922, description: "Voluptas distinctio qui nihil.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 7, title: "Express Volcano", category: "album", creator: "Mr. Earnest Moen", publication: 2002, description: "Eum nihil dolor voluptas.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 8, title: "Split Extract", category: "book", creator: "Mr. Teressa Kemmer", publication: 1977, description: "Mollitia aliquam rerum dicta.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 9, title: "Seattle Breaker", category: "album", creator: "Juan Olson III", publication: 1934, description: "Aperiam maiores velit voluptas.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 10, title: "Blue Extract", category: "album", creator: "Lorilee Wisozk", publication: 1918, description: "Repellendus est consequatur alias.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, ...]&gt;</pre></td></tr>
+                    <tr><td class="name">@works_hash</td><td><pre>{"album"=&gt;[#&lt;Work id: 23, title: "American ", category: "album", creator: "Ms. Vanessa Feest", publication: 1966, description: "At dolorem in ullam.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 10, title: "Blue Extract", category: "album", creator: "Lorilee Wisozk", publication: 1918, description: "Repellendus est consequatur alias.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 16, title: "Brooklyn Utopia", category: "album", creator: "Corey Howell", publication: 2004, description: "Hic et assumenda amet.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 26, title: "Dog Mask", category: "album", creator: "For Any Occasion", publication: 2018, description: "Cat Mask... For Meeting the In-Laws", created_at: "2018-10-17 07:14:27", updated_at: "2018-10-17 07:14:27"&gt;, #&lt;Work id: 11, title: "Express Solstice", category: "album", creator: "Lisandra Lakin Sr.", publication: 1946, description: "Consectetur accusamus ut facere.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 7, title: "Express Volcano", category: "album", creator: "Mr. Earnest Moen", publication: 2002, description: "Eum nihil dolor voluptas.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 17, title: "Heart Extract", category: "album", creator: "Ms. Evie Sauer", publication: 1949, description: "Fuga qui velit quia.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 14, title: "Postmodern Mug", category: "album", creator: "Tianna Bogisich Jr.", publication: 1999, description: "Magnam ducimus soluta repudiandae.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 6, title: "Red Breaker", category: "album", creator: "Richard Kling", publication: 1922, description: "Voluptas distinctio qui nihil.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 22, title: "Reg's Mug", category: "album", creator: "Otto O'Hara", publication: 1962, description: "Voluptatem est molestiae nesciunt.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 9, title: "Seattle Breaker", category: "album", creator: "Juan Olson III", publication: 1934, description: "Aperiam maiores velit voluptas.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 13, title: "Spilt Coffee", category: "album", creator: "Alfreda McCullough", publication: 1926, description: "Autem necessitatibus ratione dolores.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 20, title: "Thanksgiving Cake", category: "album", creator: "Major Ullrich", publication: 1984, description: "Fugiat odio aut iure.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;], "book"=&gt;[#&lt;Work id: 15, title: "Café Cowboy", category: "book", creator: "Kelsi Ledner", publication: 1969, description: "In voluptatibus tempora saepe.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 12, title: "Cascara Solstice", category: "book", creator: "Robt Macejkovic Jr.", publication: 1985, description: "Voluptatibus id ipsa enim.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 4, title: "Good-morning Enlightenment", category: "book", creator: "Randy Wisoky", publication: 1958, description: "Qui autem provident tenetur.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 21, title: "Green Blend", category: "book", creator: "Wilson Howe", publication: 2004, description: "Et ipsa sed est.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 24, title: "Jacked Cowboy", category: "book", creator: "Leanna Sipes", publication: 1929, description: "Eos consectetur facilis voluptatem.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 2, title: "Jacked Symphony", category: "book", creator: "Mr. Aaron Stoltenberg", publication: 1954, description: "Ipsa accusantium repellat nobis.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 3, title: "Joe Extract", category: "book", creator: "Julius Gutkowski", publication: 1988, description: "Aspernatur qui eius impedit.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 8, title: "Split Extract", category: "book", creator: "Mr. Teressa Kemmer", publication: 1977, description: "Mollitia aliquam rerum dicta.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 19, title: "Split Solstice", category: "book", creator: "Mr. Jose Beahan", publication: 1983, description: "Enim rerum fugiat nam.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 18, title: "Strong Equinox", category: "book", creator: "Golden Hammes", publication: 1923, description: "Voluptas consequatur aperiam quaerat.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 5, title: "Summer Choice", category: "book", creator: "Odilia Moore", publication: 1958, description: "Cumque alias nemo doloribus.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 1, title: "Summer Java", category: "book", creator: "Queenie Corwin", publication: 1928, description: "Consectetur maiores culpa hic.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 25, title: "Wake-up Volcano", category: "book", creator: "Jamison Lehner", publication: 1950, description: "Ea architecto dolorem sunt.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;], "movie"=&gt;[]}</pre></td></tr>
+                    <tr><td class="name">@_assigns</td><td><pre>{"marked_for_same_origin_verification"=&gt;true, "current_user"=&gt;#&lt;User id: 1, name: "sammi-jo", created_at: "2018-10-17 07:14:33", updated_at: "2018-10-17 07:14:33"&gt;, "works"=&gt;#&lt;ActiveRecord::Relation [#&lt;Work id: 1, title: "Summer Java", category: "book", creator: "Queenie Corwin", publication: 1928, description: "Consectetur maiores culpa hic.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 2, title: "Jacked Symphony", category: "book", creator: "Mr. Aaron Stoltenberg", publication: 1954, description: "Ipsa accusantium repellat nobis.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 3, title: "Joe Extract", category: "book", creator: "Julius Gutkowski", publication: 1988, description: "Aspernatur qui eius impedit.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 4, title: "Good-morning Enlightenment", category: "book", creator: "Randy Wisoky", publication: 1958, description: "Qui autem provident tenetur.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 5, title: "Summer Choice", category: "book", creator: "Odilia Moore", publication: 1958, description: "Cumque alias nemo doloribus.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 6, title: "Red Breaker", category: "album", creator: "Richard Kling", publication: 1922, description: "Voluptas distinctio qui nihil.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 7, title: "Express Volcano", category: "album", creator: "Mr. Earnest Moen", publication: 2002, description: "Eum nihil dolor voluptas.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 8, title: "Split Extract", category: "book", creator: "Mr. Teressa Kemmer", publication: 1977, description: "Mollitia aliquam rerum dicta.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 9, title: "Seattle Breaker", category: "album", creator: "Juan Olson III", publication: 1934, description: "Aperiam maiores velit voluptas.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 10, title: "Blue Extract", category: "album", creator: "Lorilee Wisozk", publication: 1918, description: "Repellendus est consequatur alias.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, ...]&gt;, "works_hash"=&gt;{"album"=&gt;[#&lt;Work id: 23, title: "American ", category: "album", creator: "Ms. Vanessa Feest", publication: 1966, description: "At dolorem in ullam.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 10, title: "Blue Extract", category: "album", creator: "Lorilee Wisozk", publication: 1918, description: "Repellendus est consequatur alias.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 16, title: "Brooklyn Utopia", category: "album", creator: "Corey Howell", publication: 2004, description: "Hic et assumenda amet.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 26, title: "Dog Mask", category: "album", creator: "For Any Occasion", publication: 2018, description: "Cat Mask... For Meeting the In-Laws", created_at: "2018-10-17 07:14:27", updated_at: "2018-10-17 07:14:27"&gt;, #&lt;Work id: 11, title: "Express Solstice", category: "album", creator: "Lisandra Lakin Sr.", publication: 1946, description: "Consectetur accusamus ut facere.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 7, title: "Express Volcano", category: "album", creator: "Mr. Earnest Moen", publication: 2002, description: "Eum nihil dolor voluptas.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 17, title: "Heart Extract", category: "album", creator: "Ms. Evie Sauer", publication: 1949, description: "Fuga qui velit quia.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 14, title: "Postmodern Mug", category: "album", creator: "Tianna Bogisich Jr.", publication: 1999, description: "Magnam ducimus soluta repudiandae.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 6, title: "Red Breaker", category: "album", creator: "Richard Kling", publication: 1922, description: "Voluptas distinctio qui nihil.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 22, title: "Reg's Mug", category: "album", creator: "Otto O'Hara", publication: 1962, description: "Voluptatem est molestiae nesciunt.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 9, title: "Seattle Breaker", category: "album", creator: "Juan Olson III", publication: 1934, description: "Aperiam maiores velit voluptas.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 13, title: "Spilt Coffee", category: "album", creator: "Alfreda McCullough", publication: 1926, description: "Autem necessitatibus ratione dolores.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 20, title: "Thanksgiving Cake", category: "album", creator: "Major Ullrich", publication: 1984, description: "Fugiat odio aut iure.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;], "book"=&gt;[#&lt;Work id: 15, title: "Café Cowboy", category: "book", creator: "Kelsi Ledner", publication: 1969, description: "In voluptatibus tempora saepe.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 12, title: "Cascara Solstice", category: "book", creator: "Robt Macejkovic Jr.", publication: 1985, description: "Voluptatibus id ipsa enim.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 4, title: "Good-morning Enlightenment", category: "book", creator: "Randy Wisoky", publication: 1958, description: "Qui autem provident tenetur.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 21, title: "Green Blend", category: "book", creator: "Wilson Howe", publication: 2004, description: "Et ipsa sed est.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 24, title: "Jacked Cowboy", category: "book", creator: "Leanna Sipes", publication: 1929, description: "Eos consectetur facilis voluptatem.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 2, title: "Jacked Symphony", category: "book", creator: "Mr. Aaron Stoltenberg", publication: 1954, description: "Ipsa accusantium repellat nobis.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 3, title: "Joe Extract", category: "book", creator: "Julius Gutkowski", publication: 1988, description: "Aspernatur qui eius impedit.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 8, title: "Split Extract", category: "book", creator: "Mr. Teressa Kemmer", publication: 1977, description: "Mollitia aliquam rerum dicta.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 19, title: "Split Solstice", category: "book", creator: "Mr. Jose Beahan", publication: 1983, description: "Enim rerum fugiat nam.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 18, title: "Strong Equinox", category: "book", creator: "Golden Hammes", publication: 1923, description: "Voluptas consequatur aperiam quaerat.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 5, title: "Summer Choice", category: "book", creator: "Odilia Moore", publication: 1958, description: "Cumque alias nemo doloribus.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 1, title: "Summer Java", category: "book", creator: "Queenie Corwin", publication: 1928, description: "Consectetur maiores culpa hic.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;, #&lt;Work id: 25, title: "Wake-up Volcano", category: "book", creator: "Jamison Lehner", publication: 1950, description: "Ea architecto dolorem sunt.", created_at: "2018-10-17 07:06:35", updated_at: "2018-10-17 07:06:35"&gt;], "movie"=&gt;[]}}</pre></td></tr>
+                    <tr><td class="name">@_controller</td><td><pre><span class="unsupported">(object too large. Modify WorksController#inspect or adjust BetterErrors.maximum_variable_inspect_size)</span></pre></td></tr>
+                    <tr><td class="name">@_request</td><td><pre><span class="unsupported">(object too large. Modify ActionDispatch::Request#inspect or adjust BetterErrors.maximum_variable_inspect_size)</span></pre></td></tr>
+                    <tr><td class="name">@_default_form_builder</td><td><pre>nil</pre></td></tr>
+                    <tr><td class="name">@view_flow</td><td><pre>#&lt;ActionView::OutputFlow:0x00007fc56b3fd8f0 @content={}&gt;</pre></td></tr>
+                    <tr><td class="name">@output_buffer</td><td><pre>nil</pre></td></tr>
+                    <tr><td class="name">@virtual_path</td><td><pre>nil</pre></td></tr>
+                    <tr><td class="name">@tag_builder</td><td><pre><span class="unsupported">(object too large. Modify ActionView::Helpers::TagHelper::TagBuilder#inspect or adjust BetterErrors.maximum_variable_inspect_size)</span></pre></td></tr>
+            </tbody></table>
+        </div>
+    </div>
+
+    <!-- 1.0361030101776123 seconds -->
+</div>
+            <div class="frame_info" id="frame_info_1" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_2" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_3" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_4" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_5" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_6" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_7" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_8" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_9" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_10" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_11" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_12" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_13" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_14" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_15" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_16" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_17" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_18" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_19" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_20" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_21" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_22" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_23" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_24" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_25" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_26" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_27" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_28" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_29" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_30" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_31" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_32" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_33" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_34" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_35" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_36" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_37" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_38" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_39" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_40" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_41" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_42" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_43" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_44" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_45" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_46" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_47" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_48" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_49" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_50" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_51" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_52" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_53" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_54" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_55" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_56" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_57" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_58" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_59" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_60" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_61" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_62" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_63" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_64" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_65" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_66" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_67" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_68" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_69" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_70" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_71" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_72" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_73" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_74" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_75" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_76" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_77" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_78" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_79" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_80" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_81" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_82" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_83" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_84" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_85" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_86" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_87" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_88" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_89" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_90" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_91" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_92" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_93" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_94" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_95" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_96" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_97" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_98" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_99" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_100" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_101" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_102" style="display:none;"></div>
+            <div class="frame_info" id="frame_info_103" style="display:none;"></div>
+    </section>
+
+<script>
+(function() {
+
+    var OID = "7e9cdaa5dbab8287";
+
+    var previousFrame = null;
+    var previousFrameInfo = null;
+    var allFrames = document.querySelectorAll("ul.frames li");
+    var allFrameInfos = document.querySelectorAll(".frame_info");
+
+    function apiCall(method, opts, cb) {
+        var req = new XMLHttpRequest();
+        req.open("POST", "//" + window.location.host + "" + "/__better_errors/" + OID + "/" + method, true);
+        req.setRequestHeader("Content-Type", "application/json");
+        req.send(JSON.stringify(opts));
+        req.onreadystatechange = function() {
+            if(req.readyState == 4) {
+                var res = JSON.parse(req.responseText);
+                cb(res);
+            }
+        };
+    }
+
+    function escapeHTML(html) {
+        return html.replace(/&/, "&amp;").replace(/</g, "&lt;");
+    }
+
+    function REPL(index) {
+        this.index = index;
+
+        var previousCommands = JSON.parse(localStorage.getItem("better_errors_previous_commands"));
+        if(previousCommands === null) {
+          localStorage.setItem("better_errors_previous_commands", JSON.stringify([]));
+          previousCommands = [];
+        }
+
+        this.previousCommandOffset = previousCommands.length;
+    }
+
+    REPL.all = [];
+
+    REPL.prototype.install = function(containerElement) {
+        this.container = containerElement;
+
+        this.promptElement  = this.container.querySelector(".command-line .prompt");
+        this.inputElement   = this.container.querySelector("input");
+        this.outputElement  = this.container.querySelector("pre");
+
+        var self = this;
+        this.inputElement.onkeydown = function(ev) {
+            self.onKeyDown(ev);
+        };
+
+        this.setPrompt(">>");
+
+        REPL.all[this.index] = this;
+    }
+
+    REPL.prototype.focus = function() {
+        this.inputElement.focus();
+    };
+
+    REPL.prototype.setPrompt = function(prompt) {
+        this._prompt = prompt;
+        this.promptElement.innerHTML = escapeHTML(prompt);
+    };
+
+    REPL.prototype.getInput = function() {
+        return this.inputElement.value;
+    };
+
+    REPL.prototype.setInput = function(text) {
+        this.inputElement.value = text;
+
+        if(this.inputElement.setSelectionRange) {
+            // set cursor to end of input
+            this.inputElement.setSelectionRange(text.length, text.length);
+        }
+    };
+
+    REPL.prototype.writeRawOutput = function(output) {
+        this.outputElement.innerHTML += output;
+        this.outputElement.scrollTop = this.outputElement.scrollHeight;
+    };
+
+    REPL.prototype.writeOutput = function(output) {
+        this.writeRawOutput(escapeHTML(output));
+    };
+
+    REPL.prototype.sendInput = function(line) {
+        var self = this;
+        apiCall("eval", { "index": this.index, source: line }, function(response) {
+            if(response.error) {
+                self.writeOutput(response.error + "\n");
+            }
+            self.writeOutput(self._prompt + " ");
+            self.writeRawOutput(response.highlighted_input + "\n");
+            self.writeOutput(response.result);
+            self.setPrompt(response.prompt);
+            self.setInput(response.prefilled_input);
+        });
+    };
+
+    REPL.prototype.onEnterKey = function() {
+        var text = this.getInput();
+        if(text != "" && text !== undefined) {
+            var previousCommands = JSON.parse(localStorage.getItem("better_errors_previous_commands"));
+            this.previousCommandOffset = previousCommands.push(text);
+            if(previousCommands.length > 100) {
+              previousCommands.splice(0, 1);
+              this.previousCommandOffset -= 1;
+            }
+            localStorage.setItem("better_errors_previous_commands", JSON.stringify(previousCommands));
+        }
+        this.setInput("");
+        this.sendInput(text);
+    };
+
+    REPL.prototype.onNavigateHistory = function(direction) {
+        this.previousCommandOffset += direction;
+        var previousCommands = JSON.parse(localStorage.getItem("better_errors_previous_commands"));
+
+        if(this.previousCommandOffset < 0) {
+            this.previousCommandOffset = -1;
+            this.setInput("");
+            return;
+        }
+
+        if(this.previousCommandOffset >= previousCommands.length) {
+            this.previousCommandOffset = previousCommands.length;
+            this.setInput("");
+            return;
+        }
+
+        this.setInput(previousCommands[this.previousCommandOffset]);
+    };
+
+    REPL.prototype.onKeyDown = function(ev) {
+        if(ev.keyCode == 13) {
+            this.onEnterKey();
+        } else if(ev.keyCode == 38 || (ev.ctrlKey && ev.keyCode == 80)) {
+            // the user pressed the up arrow or Ctrl-P
+            this.onNavigateHistory(-1);
+            ev.preventDefault();
+            return false;
+        } else if(ev.keyCode == 40 || (ev.ctrlKey && ev.keyCode == 78)) {
+            // the user pressed the down arrow or Ctrl-N
+            this.onNavigateHistory(1);
+            ev.preventDefault();
+            return false;
+        }
+    };
+
+    function switchTo(el) {
+        if(previousFrameInfo) previousFrameInfo.style.display = "none";
+        previousFrameInfo = el;
+
+        el.style.display = "block";
+
+        var replInput = el.querySelector('.be-console input');
+        if (replInput) replInput.focus();
+    }
+
+    function selectFrameInfo(index) {
+        var el = allFrameInfos[index];
+        if(el) {
+            if (el.loaded) {
+                return switchTo(el);
+            }
+
+            apiCall("variables", { "index": index }, function(response) {
+                el.loaded = true;
+                if(response.error) {
+                    el.innerHTML = "<h2 class='error'>" + escapeHTML(response.error) + "</h2>";
+                    if(response.explanation) {
+                      el.innerHTML += "<p class='explanation'>" + escapeHTML(response.explanation) + "</p>";
+                    }
+                    el.innerHTML += "<p><a target='_new' href='https://github.com/BetterErrors/better_errors'>More about Better Errors</a></p>";
+                } else {
+                    el.innerHTML = response.html;
+
+                    var repl = el.querySelector(".be-repl .be-console");
+                    if(repl) {
+                        new REPL(index).install(repl);
+                    }
+                }
+                switchTo(el);
+            });
+        }
+    }
+
+    for(var i = 0; i < allFrames.length; i++) {
+        (function(i, el) {
+            var el = allFrames[i];
+            el.onclick = function() {
+                if(previousFrame) {
+                    previousFrame.className = "";
+                }
+                el.className = "selected";
+                previousFrame = el;
+
+                selectFrameInfo(el.attributes["data-index"].value);
+            };
+        })(i);
+    }
+
+    // Click the first application frame
+    (
+      document.querySelector(".frames li.application") ||
+      document.querySelector(".frames li")
+    ).onclick();
+
+    // This is the second query performed for frames; maybe the 'allFrames' list
+    // currently used and this list can be better used to avoid the repetition:
+    var applicationFramesCount = document.querySelectorAll(
+        "ul.frames li[data-context=application]"
+    ).length;
+
+    var applicationFramesButtonIsInstalled = false;
+    var applicationFramesButton = document.getElementById("application_frames");
+    var allFramesButton = document.getElementById("all_frames");
+
+    // The application frames button only needs to be bound if
+    // there are actually any application frames to look at.
+    var installApplicationFramesButton = function() {
+        applicationFramesButton.onclick = function() {
+            allFramesButton.className = "";
+            applicationFramesButton.className = "selected";
+            for(var i = 0; i < allFrames.length; i++) {
+                if(allFrames[i].attributes["data-context"].value == "application") {
+                    allFrames[i].style.display = "block";
+                } else {
+                    allFrames[i].style.display = "none";
+                }
+            }
+            return false;
+        };
+
+        applicationFramesButtonIsInstalled = true;
+    }
+
+    allFramesButton.onclick = function() {
+        if(applicationFramesButtonIsInstalled) {
+            applicationFramesButton.className = "";
+        }
+
+        allFramesButton.className = "selected";
+        for(var i = 0; i < allFrames.length; i++) {
+            allFrames[i].style.display = "block";
+        }
+        return false;
+    };
+
+    // If there are no application frames, select the 'All Frames'
+    // tab by default.
+    if(applicationFramesCount > 0) {
+        installApplicationFramesButton();
+        applicationFramesButton.onclick();
+    } else {
+        applicationFramesButton.className = "disabled";
+        applicationFramesButton.title = "No application frames available";
+        allFramesButton.onclick();
+    }
+})();
+</script>
+
+
+<!-- generated by Better Errors in 0.014626026153564453 seconds -->
+</body></html>
