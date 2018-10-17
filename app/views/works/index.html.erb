@@ -1,0 +1,41 @@
+<div id="works-index">
+
+  <h2>List of Works</h2>
+
+
+  <%@works.get_categories.each do |category| %>
+  <section class="list-of-category">
+    <h4><%=category%></h4>
+    <table class="table table-category">
+      <thead>
+        <tr>
+          <th scope="col">Votes</th>
+          <th scope="col">Title</th>
+          <th scope="col">Created By</th>
+          <th scope="col">Published</th>
+          <th scope="col">Upvote</th>
+        </tr>
+      </thead>
+      <% @works.get_works_of_type(category).each do |work| %>
+      <tbody>
+        <tr>
+          <td><%=work.get_num_votes%> votes</td>
+          <td><%=link_to work.title, work_path(work)%></td>
+          <td><%=work.creator%></td>
+          <td><%=work.publication_year%></td>
+          <td><%= button_to "Upvote", create_work_vote_path(work), method: :post, class: "btn btn-info nav-item"%> </td>
+        </tr>
+      </tbody>
+      <%end%>
+    </table>
+  </section>
+  <%end%>
+
+  <nav class="navbar navbar-expand-md">
+    <span>
+      <%=link_to "View top media", works_path, class: "btn btn-info mx-1" %>
+      <%=link_to "Add a new work", new_work_path, class: "btn btn-info mx-1" %>
+    </span>
+  </nav>
+
+</div>

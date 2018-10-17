@@ -1,0 +1,20 @@
+<div id="log-in">
+
+  <h2>Log In</h2>
+
+
+
+  <%= form_with method: :post, url: sessions_path do |f| %>
+  <div class="form-group">
+
+    <%= f.label :user_name %>
+    <%= f.text_field :user_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Log in", class: "btn btn-info"%>
+    <% end %>
+  </div>
+
+
+</div>

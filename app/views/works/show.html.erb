@@ -1,0 +1,51 @@
+<div id="work-details">
+  <h2><%=@work.title%></h2>
+  <ul>
+    <li>Created by: <%=@work.creator%></li>
+    <li>Published: <%=@work.publication_year%></li>
+    <li><p><%=@work.description%></p></li>
+  </ul>
+  <div class="options-bar">
+
+    <button type="button" class="btn btn-info">
+      <%= link_to "Back to media ranks", works_path%>
+    </button>
+
+    <button type="button" class="btn btn-info">
+      <%= link_to "Edit", edit_work_path(@work)%>
+    </button>
+
+    <button type="button" class="btn btn-info">
+      <%= link_to "Upvote", create_work_vote_path(@work), method: :post%>
+    </button>
+
+    <button type="button" class="btn btn-danger">
+      <%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure you want to delete the work \"#{@work.title}?\""}%>
+    </button>
+
+  </div class="votes-summary">
+    <h3><%=@work.get_num_votes%> Votes for this <%=@work.category%></h3>
+    <table class="table">
+      <thead>
+        <th scope="col">
+          User
+        </th>
+        <th scope="col">
+          Date
+        </th>
+      </thead>
+      <% @work.votes.each do |vote| %>
+      <tbody>
+        <tr>
+          <td>
+            <%=link_to vote.user.username, user_path(vote.user)%>
+          </td>
+          <td>
+            <%=vote.get_date%>
+          </td>
+        </tr>
+      </tbody>
+      <%end%>
+
+    </table>
+</div>

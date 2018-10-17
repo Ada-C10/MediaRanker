@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <header id="banner">
+
+      <div class="brand">
+        <h1>
+          <%= link_to 'MediaRanker', home_path%>
+          <small>Ranking the Best of Everything</small>
+        </h1>
+      </div>
+
+      <nav class="navbar">
+        <ul class="nav app-header">
+          <li>
+            <%=link_to "View top media", home_path, class: "nav-item nav-link" %>
+          </li>
+          <li>
+            <%=link_to "View all media", works_path, class: "nav-item nav-link" %>
+          </li>
+          <li>
+            <%=link_to "Add a new work", new_work_path, class: "nav-item nav-link" %>
+          </li>
+          <li>
+            <%=link_to "View all users", users_path, class: "nav-item nav-link" %>
+          </li>
+        </ul>
+
+
+
+        <ul class="nav app-header login">
+          <% if @logged_in_user %>
+          <li>
+            <%= link_to "Logged in as #{@logged_in_user.username}", user_path(@logged_in_user), class: "btn btn-info nav-item" %>
+          </li>
+          <li>
+            <%= link_to "Log out", logout_path, method: :post, class: "btn btn-info nav-item mx-1" %>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to "Log in", new_session_path, class: "btn btn-info nav-item mx-1" %>
+          </li>
+          <% end %>
+        </ul>
+      </nav>
+
+    </header>
+
+    <% unless flash.empty?%>
+    <section class="flash-messages" role="alert">
+      <% flash.each do |key, message| %>
+      <p class=" alert alert-<%= key %>">
+        <%= message %>
+      </p>
+      <% end %>
+    </section>
+    <%end%>
+
+    <%= yield %>
+  </body>
+</html>

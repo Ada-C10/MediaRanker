@@ -1,0 +1,12 @@
+<%= render partial: 'layouts/form_errors', locals: { model: @work } %>
+
+<div id="new-work">
+
+<h2>Add a New Work</h2>
+
+<%= render partial: "work_form", locals: {
+  action_type: "Create Work",
+  form_title: "Create"
+}%>
+
+</div>

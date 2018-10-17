@@ -1,0 +1,32 @@
+<div class="homepage">
+
+  <section class="spotlight card">
+    <div class="card-body">
+      <h2 class="card-title">Media Spotlight:
+        <span><span class="title"><%=link_to Work.top_media.title, work_path(Work.top_media)%></span> by <%=Work.top_media.creator%></span></h2>
+      <p class="card-text">
+        <%=Work.top_media.description%>
+      </p>
+    </div>
+  </section>
+
+  <section class="top-media">
+    <% Work.get_categories.each do |category| %>
+    <section>
+      <h3>Top <%=category.pluralize%></h3>
+      <% Work.top_ten(category).each do |work| %>
+      <ul>
+        <li>
+          <%=link_to work.title, work_path(work)%>
+          <span>by <%=work.creator%></span>
+        </li>
+        <li>
+          <%=work.get_num_votes%> votes
+        </li>
+      </ul>
+      <%end%>
+    </section>
+    <% end %>
+  </section>
+
+</div>

@@ -1,0 +1,16 @@
+// Place all the styles related to the Works controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-danger:hover {
+  background-color: rgb(149, 28, 21);
+  border-color: rgb(149, 28, 21);
+}
+
+.options-bar .btn-danger {
+  border-color: red;
+}
+
+h3 {
+  margin-top: 1.5em;
+}
