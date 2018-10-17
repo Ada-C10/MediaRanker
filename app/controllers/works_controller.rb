@@ -87,10 +87,7 @@ before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
          if @work.save
       # binding.pry
       flash[:success] = "Voted!"
-        # redirect_to(works_path)
-        # if @work.save
-        #   work = Work.find_by(id: params[:id])
-        #   flash[:success] = "Voted!"
+      
            redirect_to(works_path)
       else flash[:error] = "A problem occurred: Could not upvote. User has already voted for this work"
           redirect_to(works_path)
