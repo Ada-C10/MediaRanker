@@ -8,8 +8,36 @@ work1:
   category: book
 
 work2:
-  title: Lord of The Rings
+  title: book2
+  publication_year: 1999
+  creator: JK Rowling
+  description: A book about magic the second
+  category: book
+
+work3:
+  title: album1
   publication_year: 1954
   creator: JRR Tolkien
   description: a book about magic
-  category: book
+  category: album
+
+work4:
+  title: album2
+  publication_year: 1954
+  creator: JRR Tolkien
+  description: a book about magic and more
+  category: album
+
+work5:
+  title: movie1
+  publication_year: 1954
+  creator: JRR Tolkien
+  description: a book about magic and more
+  category: movie
+
+work6:
+  title: movie2
+  publication_year: 1954
+  creator: JRR Tolkien
+  description: a book about magic and more
+  category: movie

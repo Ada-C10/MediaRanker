@@ -60,7 +60,7 @@ describe Vote do
       it 'must be associated with only one work_id ' do
         #arrange
         vote.work_id = "work1"
-        
+
         #act
         vote.save
         vote.work_id = "work1"

@@ -51,7 +51,7 @@ describe Work do
       valid = work2.save
 
       #assert
-      expect(valid).must_equal false
+      expect(work2.save).must_equal false
     end
 
   end
@@ -65,6 +65,26 @@ describe Work do
       albums_array.each do |work|
         expect(work.category).must_equal 'album'
       end
+    end
+
+    it 'returns an array of albums ordered by vote count in descending order' do
+      albums_array = Work.albums #array of works that are albums
+      work1 = albums_array[0]
+      work2 = albums_array[1]
+
+      #act /assert
+        expect(work1.votes.count > work2.votes.count).must_equal true
+    end
+
+    it 'returns an array of albums ordered by title in ascending order' do
+      albums_array = Work.albums #array of works that are albums
+      albums_array2 = Work.albums.sort
+
+      compare = albums_array.zip(albums_array2).map {|album, album2| album == album2}
+      #returns an array of 'true' values if album and album2 are identical
+
+      #assert 
+      expect(compare.all?).must_equal true
     end
 
     it 'returns an array of books' do
