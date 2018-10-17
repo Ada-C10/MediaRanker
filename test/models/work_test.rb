@@ -96,6 +96,14 @@ describe Work do
       end
     end
 
+    it 'returns an array of books ordered by vote count in descending order' do
+      books_array = Work.books #array of works that are albums
+      book1 = books_array[0]
+      book2 = books_array[1]
+      #act /assert
+        expect(book1.votes.count > book2.votes.count).must_equal true
+    end
+
     it 'returns an array of movies' do
       movies_array = Work.movies #array of works that are albums
 
@@ -104,6 +112,16 @@ describe Work do
         expect(work.category).must_equal 'movie'
       end
     end
+
+    # it 'returns an array of movies ordered by vote count in descending order' do
+    #   movies_array = Work.movies #array of works that are albums
+    #   movie1 = movies_array[0]
+    #   movie2 = movies_array[1]
+    #   binding.pry
+    #
+    #   #act /assert
+    #     expect(movie1.votes.count > movie2.votes.count).must_equal true
+    # end
 
 
   end
