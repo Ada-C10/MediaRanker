@@ -68,14 +68,48 @@ describe Work do
 
     describe 'top' do
       it 'returns works with votes counts in descending order' do
+        10.times do
+          work = create(:work)
+        end
 
+        top_movies = Work.top?("movie")
+
+        expect(top_movies.count).must_equal 10
+        expect(top_movies.first.votes_count).must_be :>, top_movies.last.votes_count
+      end
+      it 'returns an empty array if no works in a category' do
+        albums = Work.where(category: "album")
+        albums.destroy_all
+
+        top_albums = Work.top?("album")
+        expect(top_albums).must_be_empty
+        expect(top_albums).must_be_instance_of Array
       end
     end
 
+    describe 'spotlight' do
+      it 'randomly selects a work' do
+        10.times do
+          work = create(:work)
+        end
 
+        # implement a handful of runs to make sure the same works are not
+        # being selected
+        work1 = Work.spotlight?
+        work2 = Work.spotlight?
+        work3 = Work.spotlight?
+        work4 = Work.spotlight?
+        work5 = Work.spotlight?
+
+        expect(work1).wont_equal work2
+        expect(work2).wont_equal work3
+        expect(work3).wont_equal work4
+        expect(work4).wont_equal work5
+        expect(work1).must_be_instance_of Work
+
+      end
+    end
   end
-
-
 end
 
 
