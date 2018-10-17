@@ -15,38 +15,31 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-
-    respond_to do |format|
-      if @work.save
-        flash[:success] = 'Work successfully created'
-        format.html { redirect_to @work, notice: 'Work was successfully created.' }
-      else
-        flash.now[:warning] = 'Work not created!'
-        @work.errors.messages.each do |field, messages|
-          flash.now[field] = messages
-        end
-        format.html { render :new }
+    if @work.save
+      flash[:success] = 'Work successfully created'
+      redirect_to work_path(@work.id)
+    else
+      flash.now[:warning] = 'Work not created!'
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
       end
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @work.update(work_params)
-        # flash[:primary] = 'Work was successfully updated.'
-        # redirect_to work_path(@work.id)
-        format.html { redirect_to @work, notice: 'Work was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @work.update(work_params)
+      flash[:primary] = 'Work was successfully updated.'
+      redirect_to work_path(@work.id)
+    else
+      render :edit
     end
   end
 
   def destroy
     @work.destroy
-    respond_to do |format|
-      format.html { redirect_to works_url, dark: 'Work was successfully destroyed.' }
-    end
+    flash[:secondary] = 'Work was successfully destroyed.'
+    redirect_to works_path
   end
 
   def upvote
@@ -76,7 +69,6 @@ class WorksController < ApplicationController
   def spotlight
     @spot = Work.spotlight?
   end
-
 
 
   private
