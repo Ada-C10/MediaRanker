@@ -66,6 +66,12 @@ describe Work do
       end
     end
 
+    describe 'top' do
+      it 'returns works with votes counts in descending order' do
+
+      end
+    end
+
 
   end
 
