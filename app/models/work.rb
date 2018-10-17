@@ -2,10 +2,15 @@ class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
 
-  def upvote
+  def upvote user
     @vote = Vote.new
-    @vote.work_id = params[:id]
-    @vote.user_id = session[:user]
+    @vote.work_id = self.id
+    @vote.user_id = user.id
+    @vote.vote_time = Date.today
+    unless @vote.valid?
+      puts "*" * 80
+      puts "#{@vote.errors.messages}"
+    end
     @vote.save
   end
 
