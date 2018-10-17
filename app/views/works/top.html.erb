@@ -3,63 +3,13 @@
   <p><h4><%= @spot.votes.count %> votes - <%= @spot.description %></h4>
 
 </section>
-
 <section class="top-ten-container container">
   <div class="row">
-  <section class="top-ten-list-container tenmovies col-4">
-      <h2 class="top-ten-header">Top Movies</h2>
-      <ul class="list-group top-ten__list">
-        <% if @movies.empty? %>
-          <h4>No movies have been added to the database.</h4>
-        <% else %>
-          <% @movies.each do |movie| %>
-            <li class="list-group-item">
-            <h4><%= link_to "#{movie.title}", work_path(movie.id), class: "top_title" %>
-            <small class="top_ten__creator">by</small>
-            <%= movie.creator %>
-            </h4>
-              <p class="vote_num"><%= pluralize movie.votes_count, "vote" %></p></li>
-            <% end %>
-          <% end %>
-      </ul>
-    </section>
-
-  <section class="top-ten-list-container tenbooks col-4">
-      <h2 class="top-ten-header">Top Books</h2>
-      <ul class="list-group top-ten__list">
-      <% if @books.empty? %>
-        <h4>No books have been added to the database.</h4>
-      <% else %>
-        <% @books.each do |book| %>
-          <li class="list-group-item">
-            <h4><%= link_to "#{book.title}", work_path(book.id), class: "top_title" %>
-              <small class="top_ten__creator">by</small>
-              <%= book.creator %>
-            </h4>
-            <p><%= pluralize book.votes_count, "vote" %></p></li>
-        <% end %>
-      <% end %>
-    </ul>
-   </section>
-
-
-  <section class="top-ten-list-container tenalbums col-4">
-      <h2 class="top-ten-header">Top Albums</h2>
-      <ul class="list-group top-ten__list">
-        <% if @albums.empty? %>
-          <h4>No albums have been added to the database.</h4>
-        <% else %>
-          <% @albums.each do |album| %>
-            <li class="list-group-item">
-            <h4><%= link_to "#{album.title}", work_path(album.id), class: "top_title" %>
-            <small class="top_ten__creator">by</small>
-            <%= album.creator %>
-            </h4>
-              <p><%= pluralize album.votes_count, "vote" %></p></li>
-            <% end %>
-        <% end %>
-      </ul>
-  </section>
+    <%= render partial: "top", locals: { cat: "movie", cat_list: @movies } %>
+    <%= render partial: "top", locals: { cat: "book", cat_list: @books } %>
+    <%= render partial: "top", locals: { cat: "album", cat_list: @albums } %>
   </div>
 </section>
+
+
 

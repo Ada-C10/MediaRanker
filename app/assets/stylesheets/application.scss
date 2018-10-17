@@ -199,10 +199,14 @@ h2.top-ten-header {
   margin: 3rem 5rem auto 5rem;
 }
 
-.new-work {
-  font-size: 2rem;
-  font-weight: bold;
+.new-work, .new-user h1, .works-index h1, .user_index h1 {
+  font-size: 3rem;
   color: #26A69A;
+  margin: 2rem auto auto 2rem;
+}
+
+h2 {
+  margin: 1rem auto 1rem 2rem;
 }
 
 .new-user {
@@ -212,6 +216,11 @@ h2.top-ten-header {
 .btn-user {
   margin-top: 1rem;
 }
+
+.form_errors {
+  margin-left: 5rem;
+}
+
 #error_explanation {
   color: red;
   ul {

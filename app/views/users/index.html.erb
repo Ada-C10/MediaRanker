@@ -1,18 +1,5 @@
-<section class="flash">
-  <% flash.each do |name, message| %>
-    <% if message.class == Array %>
-      <div class="alert alert-warning">
-        <% message.each do |msg| %>
-          <p><strong><%= "#{name}:" %></strong><%= " #{msg}" %></p>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="alert alert-<%= name %>">
-        <%= message %>
-      </div>
-    <% end %>
-  <% end %>
-</section>
+<%= render partial: "/layouts/flash_errs" %>
+
 
 <section class="user_index">
 <h1>Users</h1>
@@ -40,4 +27,3 @@
 
 </section>
 
-<%= link_to 'New User', new_user_path, class: "btn btn-primary btn-center d-flex justify-content-center" %>

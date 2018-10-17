@@ -1,70 +1,51 @@
 
-<section class="flash">
-  <% flash.each do |name, message| %>
-    <% if message.class == Array %>
-      <div class="alert alert-warning">
-        <% message.each do |msg| %>
-          <p><strong><%= "#{name}:" %></strong><%= " #{msg}" %></p>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="alert alert-<%= name %>">
-        <%= message %>
-      </div>
-    <% end %>
-  <% end %>
-</section>
-
+<%= render partial: "/layouts/flash_errs" %>
 
 <section class="show-work justify-content-center">
-<h2><%= @work.title %></h2>
+  <h2><%= @work.title %></h2>
+  <p>
+    <strong>Created by:</strong>
+    <%= @work.creator %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @work.description %>
+  </p>
+
+  <p>
+    <strong>Category:</strong>
+    <%= @work.category %>
+  </p>
+
+  <p>
+    <strong>Publication year:</strong>
+    <%= @work.publication_year %>
+  </p>
+
+  <p>
+    <strong>Total Votes:</strong>
+    <%= @work.votes_count %>
+  </p>
 
 
-<p>
-  <strong>Created by:</strong>
-  <%= @work.creator %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @work.description %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @work.category %>
-</p>
-
-<p>
-  <strong>Publication year:</strong>
-  <%= @work.publication_year %>
-</p>
-
-<p>
-  <strong>Total Votes:</strong>
-  <%= @work.votes_count %>
-</p>
-
-
-  <table class="table-sm ">
-    <thead>
-      <tr>
-        <th class="h5">Biggest Fans:</th>
-      </tr>
-    </thead>
-    <tr>
-        <% @work.votes.each do |vote| %>
-          <% user = User.find(vote.user_id) %>
-          <td><%= user.name %></td>
+    <table class="table-sm ">
+      <thead>
+        <tr>
+          <th class="h5">Biggest Fans:</th>
         </tr>
-        <% end %>
+      </thead>
+      <tr>
+          <% @work.votes.each do |vote| %>
+            <% user = User.find(vote.user_id) %>
+            <td><%= user.name %></td>
+          </tr>
+          <% end %>
 
-  </table>
-
-
-
-
+    </table>
 </section>
+
 <section class="d-flex justify-content-center show-btns">
   <%= link_to 'Back', works_path, class: "btn btn-secondary" %>
   <%= link_to 'Edit', edit_work_path(@work), class: "btn btn-secondary" %>

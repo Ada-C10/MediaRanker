@@ -1,18 +1,4 @@
-<section class="flash">
-  <% flash.each do |name, message| %>
-    <% if message.class == Array %>
-      <div class="alert alert-warning">
-        <% message.each do |msg| %>
-          <p><strong><%= "#{name}:" %></strong><%= " #{msg}" %></p>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="alert alert-<%= name %>">
-        <%= message %>
-      </div>
-    <% end %>
-  <% end %>
-</section>
+<%= render partial: "/layouts/flash_errs" %>
 
 <section class="works-index">
   <h1>List of Works</h1>
