@@ -77,7 +77,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id].to_i)
     if @work.nil?
       flash.now[:warning] = 'Work not found'
-      render :notfound
+      render :notfound, status: :not_found
     end
   end
 
