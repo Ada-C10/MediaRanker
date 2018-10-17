@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= favicon_link_tag(source='favicon.ico', options={}) %>
+   <%#  <link href="/assets/favicon.ico" rel="shortcut icon" type="image/x-icon" /> %>
+
+    <title>MediaRanker</title>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="app-header__header">
+      <h1>
+        <%= link_to "Media Ranker", root_path, id: "home-link" %>
+        <small>Ranking the Best of Everything</small>
+      </h1>
+    <nav class="app-header__nav">
+      <ul class="nav site-nav-container d-flex justify-content-around">
+        <li class="nav-item app-header__nav_item">
+        <%= link_to "View Top Media", works_top_path, class: "nav-link" %> 
+        </li>
+        <li class="nav-item app-header__nav_item">
+        <%= link_to "View All Work", works_path, class: "nav-link" %> 
+        </li>
+        <li class="nav-item app-header__nav_item">
+        <%= link_to "Add a New Work", new_work_path, class: "nav-link" %> 
+        </li>
+        <li class="nav-item app-header__nav_item">
+        <%= link_to "View All Users", users_path, class: "nav-link" %> 
+        </li>
+        <li class="nav-item app-header__nav_item">
+        <% if @current_user %>
+          <%= link_to "Logged in as: #{@current_user.name}", user_path(@current_user.id), class: "btn btn-primary" %></li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-danger btn-red" %></li>
+      <% else %>
+        <li class="nav-item app-header__nav_item">
+        <%= link_to "Log In", login_path, class: "btn btn-primary" %></li>
+      <% end %>
+          </ul></nav>
+    </header>
+    <header>
+    <section class="flash">
+            <% flash.each do |name, message| %>
+              <% if message.class == Array %>
+                <% message.each do |msg| %>
+                  <div class="alert-<%= name %>">
+                    <strong><% "#{name}:" %></strong><% " #{msg}" %></div>
+                <% end %>
+              <% else %>
+                <div class="alert-<%= name %>">
+                    <% message %>
+                </div>
+              <% end %>
+            <% end %>
+    </section>
+      
+    </header>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<section class="spotlight">
+  <h2>MEDIA SPOTLIGHT: <%=link_to "#{@spot.title}", work_path(@spot.id) %> by <%= @spot.creator %></h2>
+  <p><h4><%= @spot.votes.count %> votes - <%= @spot.description %></h4>
+
+</section>
+<section class="top-ten-container container">
+  <div class="row">
+    <%= render partial: "top", locals: { cat: "movie", cat_list: @movies } %>
+    <%= render partial: "top", locals: { cat: "book", cat_list: @books } %>
+    <%= render partial: "top", locals: { cat: "album", cat_list: @albums } %>
+  </div>
+</section>
+
+
+
