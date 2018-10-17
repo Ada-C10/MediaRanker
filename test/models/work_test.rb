@@ -125,12 +125,6 @@ describe Work do
   end
 
 
-  # def self.movies
-  #   return Work.where(category: 'movie')
-  # end
-
-  #make sure it returns an instance of Array
-  #make sure each category inside is
 
 
 end
