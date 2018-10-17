@@ -83,7 +83,7 @@ describe Work do
       compare = albums_array.zip(albums_array2).map {|album, album2| album == album2}
       #returns an array of 'true' values if album and album2 are identical
 
-      #assert 
+      #assert
       expect(compare.all?).must_equal true
     end
 
@@ -109,6 +109,19 @@ describe Work do
   end
 
   describe 'Relationships' do
+    it 'has a list of votes' do
+      work.must_respond_to :votes
+
+      work.votes.each do |vote|
+        vote.must_be_kind_of Vote
+      end
+    end
+
+    it 'has a list of users through votes' do
+      work.votes.each do |vote|
+        vote.must_respond_to :user_id
+      end
+    end
   end
 
 
