@@ -1,0 +1,25 @@
+<section>
+  <%= form_with model: @work do |f|%>
+
+    <%= f.label :category %>
+    <%= f.select :category, Work::CATEGORIES, {} %>
+
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :creator %>
+    <%= f.text_field :creator %>
+
+
+    <%= f.label :published_year %>
+    <%= f.text_field :published_year %>
+
+    <%= f.label :description %>
+    <%= f.text_field :description, size: "60x12" %>
+
+
+    <%= f.submit button_title, class: "btn btn-secondary" %>
+
+  <% end %>
+</section>

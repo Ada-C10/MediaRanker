@@ -1,52 +1,31 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Media Ranker</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<% if @best_work %>
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight</span>
+      <%= link_to @best_work.title, work_path(@best_work), class: "spotlight__link-to" %> by <%= @best_work.creator %>
+    </h2>
+    <p class="spotlight__description">
+      <%= @best_work.vote_count %> votes - <%= @best_work.description %>
+    </p>
+  </section>
+<% end %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<hr>
 
-  <!-- <body>
-    <section class="row" id="media-spotlight">
-      <h3>Media Spotlight: <%= link_to @work.title, work_path(@work.id) %> <small>by <%= @work.creator %></small></h3>
-      <p> <%= @work.votes.length %> votes - <%= @work.description %> </p>
-    </section>
-
-    <section class="top-ten columns large-4 small-12">
-      <h3>Top Albums</h3>
-
-      <% albums = Work.all.where(category: Album) %>
-        <% albums.sort_by { |work| work.total_votes} %>
-      <ul>
-        <h4><%= link_to work.title, work_path(work.id) %><small> by <%= work.creator %></small></h4>
-        <p><%= work.votes.length %> votes</p>
-      </ul>
-      <% end %>
-    </section>
-
-    <section class="top-ten columns large-4 small-12" id="top-books">
-      <h3>Top Books</h3>
-      <% books = Work.all.where(category: Book) %>
-        <% books.sort_by { |work| work.total_votes} %>
-      <ul>
-        <h4><%= link_to work.title, work_path(work.id) %><small> by <%= work.creator %></small></h4>
-        <p><%= book.votes.length %> votes</p>
-      </ul>
-      <% end %>
-    </section>
-
-    <section class="top-ten columns large-4 small-12" id="top-albums">
-      <h3>Top Movies</h3>
-        <% movies = Work.all.where(category: Movie) %>
-        <% movies.sort_by { |work| work.total_votes} %>
-      <ul>
-        <h4><%= link_to work.title, work_path(work.id) %><small> by <%= work.creator%></small></h4>
-        <p><%= movie.votes.length %> votes</p>
-      </ul>
-      <% end %>
-    </section> -->
-  </body>
-</html>
+<section class="top-ten__container">
+  <%= render partial: "top_ten", locals: { #render top movies from _top_ten.html.erb
+    work_category: "movie",
+    data: @movies
+  }
+  %>
+  <%= render partial: "top_ten", locals: { #render top books from _top_ten.html.erb
+    work_category: "book",
+    data: @books
+  }
+  %>
+  <%= render partial: "top_ten", locals: { #render top albums from _top_ten.html.erb
+    work_category: "album",
+    data: @albums
+  }
+  %>
+</section>

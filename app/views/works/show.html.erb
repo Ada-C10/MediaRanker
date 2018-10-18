@@ -3,10 +3,10 @@
 <h3><%= "Published: #{@work.published_year}" %></h3>
 <p><%= @work.description %></p>
 
-<%= link_to "Back to media ranks", root_path, class: :button %></div>
-<%= link_to "Edit", edit_work_path(@work.id), class: :button %></div>
-<%= link_to "Upvote", work_votes_path(@work.id), class: :button %></div>
-<%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Please confirm you would like to delete." }, class: :delete_button  %></div>
+<%= link_to "Back to media ranks", root_path, class: "btn btn-primary" %></div>
+<%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary" %></div>
+<%= link_to "Upvote", work_votes_path(@work.id), class: "btn btn-primary" %></div>
+<%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Please confirm you would like to delete." }, class: "btn btn-danger"  %></div>
 
 
 
@@ -17,7 +17,7 @@
   </tr>
 <% @work.votes.each do |vote| %>
   <tr>
-    <td>"Total votes goes here"</td>
+    <td><%= pluralize(@work.votes.count, "votes") %></td>
     <td><%= link_to vote.user.username, user_path(vote.user) %></td>
     <td><%= vote.vote_time %></td>
   </tr>
