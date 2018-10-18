@@ -5,7 +5,7 @@ class Work < ApplicationRecord
   has_many :users, through: :votes
 
 
-  def upvote user
+  def upvote(user)
     @vote = Vote.new #create a new vote
     @vote.work_id = self.id #a work's id is assigned vote's foreign key, work_id
     @vote.user_id = user.id #a user's id is assigned to vote's foreign key, user_id

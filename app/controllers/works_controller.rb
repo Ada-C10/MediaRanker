@@ -7,6 +7,7 @@ class WorksController < ApplicationController
     @books = Work.highest_books #highest votes for book
     @movies = Work.highest_movies #highest votes for movie
     @best_work = Work.order(vote_count: :desc).first #highest votes overall
+    redirect_to works_path
   end
 
   def index
