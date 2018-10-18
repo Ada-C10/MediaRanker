@@ -1,9 +1,9 @@
 <section class="top-ten__list-container">
   <h2 class="top-ten__header">
-    Top <%= work_category.pluralize.capitalize %> #work's category
+    Top <%= work_category.pluralize.capitalize %> <%#work's category%>
   </h2>
   <ul class="list-group top-ten__list">
-    <% data.each do |datum| %> #data from homepage
+    <% data.each do |datum| %> <%#data from homepage%>
       <li class="list-group-item">
         <h4>
           <%= link_to datum.title, work_path(datum) %>
@@ -13,5 +13,5 @@
       </li>
     <% end %>
   </ul>
-  <%= link_to "View More #{work_category.pluralize.capitalize}", works_path(work_category.pluralize.downcase) %>
 </section>
+<%= link_to "View More #{work_category.pluralize.capitalize}", works_path(work_category.pluralize.downcase) %>
