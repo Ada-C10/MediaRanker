@@ -1,0 +1,33 @@
+<section class="works-form">
+  <header class="works_header">
+      <h1 class="works_title"><%= action_name %></h1>
+  </header>
+
+  <section class="form">
+    <% if @work.errors.any? %>
+      <ul class="errors">
+        <% @work.errors.each do |column, message| %>
+        <li>
+          <strong><%= column.capitalize %></strong> <%= message %>
+        </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= form_with model: @work, class: "form" do |f|%>
+        <%= f.label :category %>
+        <%= f.select :category, ['album','book','movie'], class: 'form__input'%>
+
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form__input"%>
+
+        <%= f.label :creator %>
+        <%= f.text_field :creator, class: "form__input"%>
+
+        <%= f.label :publication_year %>
+        <%= f.text_field :publication_year, class: "form__input" %>
+
+      <%= f.submit button_title, class: 'btn'%>
+    <% end %>
+  </section>
+</section>

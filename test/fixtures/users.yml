@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+user1:
+  name: Kay
+
+user2:
+  name: Cody
+
+user3:
+  name: Cake
+
+user4:
+  name: Cheddar
+
+user5:
+  name: Ham
+
+user6:
+  name: Cheese

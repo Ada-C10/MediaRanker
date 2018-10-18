@@ -1,0 +1,34 @@
+<header>
+  <h1><%=@work.title%></h1>
+</header>
+
+<ul>
+  <li>Created by: <%=@work.creator%></li>
+  <li>Published: <%=@work.publication_year%></li>
+  <li>Description: <%=@work.description%> </li>
+</ul>
+
+
+  <%= button_to "Back to media ranks", root_path, method: :get, class:"btn btn-primary"  %>
+  <%= button_to "Edit", edit_work_path(@work.id), method: :get, class:"btn btn-primary"  %>
+  <%= button_to "Upvote", work_votes_path(@work.id), method: :post, class:"btn btn-primary" %>
+  <%= button_to "Delete", work_path(@work.id), method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-primary" %>
+  <h1><%= @work.votes_count%>  votes for this <%= @work.category%></h1>
+
+
+<section>
+
+  <table class="list-of-data">
+    <tr class="table-header details">
+      <td>User</td>
+      <td>Date</td>
+    </tr>
+
+    <% @work.votes.each do |vote| %>
+      <tr class="details">
+        <td><%= link_to vote.user.name, user_path(vote.user.id) %></td>
+        <td><%= vote.created_at.to_formatted_s(:long) %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>

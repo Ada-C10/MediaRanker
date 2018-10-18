@@ -1,0 +1,88 @@
+<main>
+
+
+<hr class="root__hr">
+
+<section class="top-ten__container">
+
+  <section class="top-ten__list-container">
+  <h2 class="top-ten__header">
+    Top Albums
+  </h2>
+  <ul class="list-group top-ten__list">
+      <li class="list-group-item">
+        <h4>
+          <% 10.times do |i|%>
+          <% if @works.albums[i] == nil %>
+          <%# break %>
+          <% else %>
+          <%= @works.albums[i].title %>
+          <small class="top-ten__creator"> by <%= @works.albums[i].creator %></small>
+          <br />
+          <% end %>
+          <small><%= @works.albums[i].votes.size %> votes</small>
+          <br />
+          <% end %>
+        </h4>
+      </li>
+  </ul>
+  </section>
+
+
+
+
+
+
+
+  <section class="top-ten__list-container">
+  <h2 class="top-ten__header">
+    Top Books
+  </h2>
+  <ul class="list-group top-ten__list">
+      <li class="list-group-item">
+        <h4>
+          <% 10.times do |i|%>
+          <% if @works.books[i] == nil %>
+          <% break %>
+          <% else %>
+          <%= @works.books[i].title %>
+          <small class="top-ten__creator"> by <%= @works.books[i].creator %></small>
+          <br />
+          <% end %>
+          <small><%= @works.books[i].votes.size %> votes</small>
+          <br />
+          <% end %>
+        </h4>
+      </li>
+  </ul>
+  </section>
+
+
+
+
+<section class="top-ten__list-container">
+<h2 class="top-ten__header">
+  Top Movies
+</h2>
+<ul class="list-group top-ten__list">
+    <li class="list-group-item">
+      <h4>
+        <% 10.times do |i|%>
+        <% if @works.movies[i] == nil %>
+        <% break %>
+        <% else %>
+        <%= @works.movies[i].title %>
+        <small class="top-ten__creator"> by <%= @works.movies[i].creator %></small>
+        <br />
+        <% end %>
+        <small><%= @works.movies[i].votes.size %> votes</small>
+        <br />
+        <% end %>
+      </h4>
+    </li>
+</ul>
+</section>
+
+</section>
+
+  </main>
