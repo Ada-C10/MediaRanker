@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: movie
+  title: eternal sunshine of the spotless mind
+  creator: michel gondry
+  publication_year: 2011-06-15
+  description: Kate winslet and jim carrey
+
+two:
+  category: book
+  title: hitchhikers guide to the galaxy
+  creator: douglas adams
+  publication_year: 1980-09-05
+  description: guide to inerstellar hitchhiking
