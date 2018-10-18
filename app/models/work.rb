@@ -1,5 +1,6 @@
 class Work < ApplicationRecord
   CATEGORIES = %w(album book movie) #store categories in a constant
+
   has_many :votes
   has_many :users, through: :votes
 
@@ -24,8 +25,8 @@ class Work < ApplicationRecord
   end
 
   def self.by_category(category) #sorts works by category
-    category = category.singularize.downcase
-    self.where(category: category).order(vote_count: :desc) #where is work's category based on vote count (largest to smallest)?
+    category = category.singularize.downcase #category is singular and lowercase
+    self.where(category: category).order(vote_count: :desc) #where's work's category based on vote count (largest to smallest)?
   end
 
   def self.top_ten(category) #calls 10 works based on chosen category

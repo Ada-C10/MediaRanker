@@ -38,4 +38,4 @@ describe Vote do
       expect(vote).must_be_instance_of User
       expect(user.id).must_equal vote.user_id
     end
-end
+  end

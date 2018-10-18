@@ -41,7 +41,6 @@ describe User do
 
   describe "Presence of required attributes" do
     #arrange
-
     it "has required fields" do #act
       fields = [:username, :join_date]
 
@@ -76,28 +75,7 @@ describe User do
       votes.each do |vote|
         expect(vote).must_be_instance of Vote
       end
-
-    it "can have many works through votes"
-      #Arrange done with let
-
-      #Act
-      #user <== add work through votes
-        users.votes.each do |vote|
-          vote.each do |work_id|
-            work
-      @user.works << User.find(user_id)
-
-      user.works.select(vote.id)includes(:vote).each do |work|
-      vote = Work.vote
-
-      user.vote_works.each do |vote_work|
-      vote_work.username
-
-
-      #work <== add users through votes
-      @work.users << User.find(user_id)
-      #Assert
-    end
+    end 
 
 
 end

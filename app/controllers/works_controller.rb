@@ -1,8 +1,8 @@
 class WorksController < ApplicationController
 
-  before_action :category_from_work, except: [:root, :index, :new, :create]
+  before_action :category_from_work, except: [:homepage, :index, :new, :create]
   #lets you know the category of work before running controller action
-  def root
+  def homepage
     @albums = Work.highest_albums #highest votes for album
     @books = Work.highest_books #highest votes for book
     @movies = Work.highest_movies #highest votes for movie

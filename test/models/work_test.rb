@@ -64,28 +64,6 @@ describe Work do
         expect(vote).must_be_instance of Vote
       end
     end
-
-    it "can have many users through votes" #work has many users through votes
-    #Arrange done with let
-
-    #Act
-    #work <== add user through votes
-    #   works.votes.each do |vote|
-    #     vote.each do |user_id|
-    #       user_id
-    # @work.users << User.find(user_id)
-    #
-    # user.works.select(vote.id)includes(:vote).each do |work|
-    # vote = Work.vote
-    #
-    # user.vote_works.each do |vote_work|
-    # vote_work.username
-
-
-    #work <== add users through votes
-    # @work.users << User.find(user_id)
-    #Assert
-    end 
   end
 
   describe 'validations' do
