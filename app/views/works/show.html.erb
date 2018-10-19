@@ -1,0 +1,32 @@
+<main>
+    <section>
+  <h2><%= @work.title %></h2>
+  <p>Created by: <%= @work.creator %></p>
+  <p>Published: <%= @work.publication_year %></p>
+  <p><%= @work.description %></p>
+  <section>
+    <a class="btn btn-primary"
+      <%= link_to "Back to media ranks", works_path%></a>
+    <a class="btn btn-primary" <%= link_to "Edit", edit_work_path(@work.id)%></a>
+    <a class="btn btn-primary" <%= link_to "Upvote", new_vote_path(@work.id), method: :post %></a>
+    <a class="btn btn-danger" <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %></a>
+  </section><br>
+</section>
+
+<section class="works-votes__container">
+  <h3 class="works-votes__header"><%= @work.votes.count %> Votes for this Album</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="/users/#{@work.id}"><%=@work.title%></a></td>
+        <td><%= readable_date(@work.created_at)%></td>
+      </li>
+    </tbody>
+</section>
+</main>

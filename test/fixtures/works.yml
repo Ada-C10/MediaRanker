@@ -1,0 +1,28 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+# column: value
+#
+# column: value
+agua:
+  category: book
+  title: Como Agua Para Chocolate
+  creator: Laura Esquivel
+  publication_year: 1989
+  description: Beautiful story about a love that cannot be.  It explores magic and the connection between emotions and food.
+
+batman:
+  category: movie
+  title: Batman Begins
+  creator: DC Comics
+  publication_year: 2005
+  description: Bruce Wayne becomes batman.
+
+comedy:
+  category: book
+  title: The Divine Comedy
+  creator: Dante
+  publication_year: 1308
