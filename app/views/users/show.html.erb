@@ -1,0 +1,31 @@
+<h2><%="User Summary: #{@user.user_name}" %></h2>
+
+<table cellpadding="20">
+  <thead>
+    <tr>
+      <td>Media Title</td>
+      <td>Created By</td>
+      <td>Published</td>
+      <td>Category</td>
+      <td>Voted On</td>
+    </tr>
+  </thead>
+
+  <tbody>
+      <% @user.votes.each do |vote| %>
+      <tr>
+        <td><%= vote.work.title %></td>
+        <td><%= vote.user.user_name %></td>
+
+        <td><%= vote.work.publication_year %></td>
+        <td><%= vote.work.category %></td>
+
+        <td><%= vote.user.created_at.strftime("%b %d %Y") %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
+
+<%= link_to "See all Users", users_path %>
+<%= link_to "Back to Media List", works_path %>
