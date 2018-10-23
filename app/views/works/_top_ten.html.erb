@@ -1,0 +1,17 @@
+<section class="top-ten__list-container">
+  <h2 class="top-ten__header">
+    Top <%= work_category.pluralize.capitalize %> <%#work's category%>
+  </h2>
+  <ul class="list-group top-ten__list">
+    <% data.each do |datum| %> <%#data from homepage%>
+      <li class="list-group-item">
+        <h4>
+          <%= link_to datum.title, work_path(datum) %>
+          <small class="top-ten__creator">by <%= datum.creator %></small>
+        </h4>
+        <p><%= datum.vote_count %> votes</p>
+      </li>
+    <% end %>
+  </ul>
+</section>
+<%= link_to "View More #{work_category.pluralize.capitalize}", works_path(work_category.pluralize.downcase) %>

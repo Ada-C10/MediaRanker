@@ -1,0 +1,32 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+# one: {}
+# column: value
+#
+# two: {}
+# column: value
+
+book:
+  category: Book
+  title: Rings of Saturn
+  creator: John
+  published_year: 2008
+  description: "The best book ever"
+
+song:
+  category: Album
+  title: Summer Nights
+  creator: The band
+  published_year: 1987
+  description: "The best song ever"
+
+movie:
+  category: Movie
+  title: The Days are long
+  creator: Mary Johnson
+  published_year: 2018
+  description: "The best movie ever"

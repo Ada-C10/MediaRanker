@@ -1,0 +1,31 @@
+<% if @best_work %>
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight</span>
+      <%= link_to @best_work.title, work_path(@best_work), class: "spotlight__link-to" %> by <%= @best_work.creator %>
+    </h2>
+    <p class="spotlight__description">
+      <%= @best_work.vote_count %> votes - <%= @best_work.description %>
+    </p>
+  </section>
+<% end %>
+
+<hr>
+
+<section class="top-ten__container">
+  <%= render partial: "top_ten", locals: { #render top movies from _top_ten.html.erb
+    work_category: "movie",
+    data: @movies
+  }
+  %>
+  <%= render partial: "top_ten", locals: { #render top books from _top_ten.html.erb
+    work_category: "book",
+    data: @books
+  }
+  %>
+  <%= render partial: "top_ten", locals: { #render top albums from _top_ten.html.erb
+    work_category: "album",
+    data: @albums
+  }
+  %>
+</section>

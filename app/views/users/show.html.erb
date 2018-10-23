@@ -1,0 +1,36 @@
+<section class="row">
+<% if @user.nil? %>
+  <h1> 404 Not found</h1>
+<% else %>
+  <h2>User's summary: <%= link_to "#{@user.username}", user_path(@user.id) %>
+  <br>
+  <%= "Joined site #{Time.now.getutc}" %>
+  <br>
+  <br>
+<% end %>
+
+<h2>Votes</h2> <%#user's voting history%>
+
+<table style="width:100%" class="table">
+  <tr class="header_font">
+    <th>Media Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Category</th>
+    <th>Voted On</th>
+  </tr>
+<% if @user.votes.each do| vote| %>
+  <tr>
+    <td><%= link_to vote.work.title, work_path(vote.work_id) %></td>
+    <td><%= vote.work.creator %></td>
+    <td><%= vote.work.published_year %></td>
+    <td><%= vote.work.category %></td>
+    <td><%# work's vote timestamp %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to "See all users", users_path, class: "btn btn-secondary" %>
+<%= link_to "Back to media list", root_path, class: "btn btn-secondary" %>
+<% end %>
+</section>
