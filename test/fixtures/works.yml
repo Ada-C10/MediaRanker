@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+book_example:
+  category: book
+  title: A Nice Book
+  creator: Me
+  publication_year: 1000
+  description: It's a very nice book
+
+album_example:
+  category: album
+  title: A Nice Album
+  creator: Me Again
+  publication_year: 2000
+  description: It's a very nice album
+
+movie_example:
+  category: movie
+  title: A Nice Movie
+  creator: Me Again Again
+  publication_year: 3000
+  description: It's a very nice movie

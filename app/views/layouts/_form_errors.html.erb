@@ -1,0 +1,18 @@
+
+
+<% if model.errors.messages.any? %>
+
+  <section class="form_errors">
+    <h3>Please fix these errors:</h3>
+    <ul>
+      <% model.errors.messages.each do |attribute, problem_list| %>
+        <% problem_list.each do |problem| %>
+          <li>
+            <strong><%= attribute %></strong>
+            <%= problem %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
