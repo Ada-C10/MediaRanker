@@ -1,0 +1,70 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+book:
+    title: Harry Potter and the Goblet of Fire
+    creator: Jk Rowling
+    publication_year: 1999
+    description: One of the hottest books in the series
+    category: book
+
+# column: value
+#
+book2:
+    title: Eat, Love, Pray
+    creator: Susan Smith
+    publication_year: 1999
+    description: A memoir about love, life and the joy of moving on
+    category: book
+
+book3:
+    title: Hotel Motel
+    creator: Susan Smith
+    publication_year: 1999
+    description: A memoir about love, life and the joy of moving on
+    category: book
+
+album:
+      title:
+      creator: Biggie Smalls
+      publication_year: 1999
+      description: One of the hottest books in the series
+      category: album
+
+album1:
+      title: The Nat BIG
+      creator: Biggie Smalls
+      publication_year: 1999
+      description: One of the hottest books in the series
+      category: album
+# column: value
+movie:
+      title: A
+      creator: Bob Hope
+      publication_year: 1999
+      description: One of the hottest books in the series
+      category: movie
+
+creator:
+      title: You are my sunshine
+      creator:
+      publication_year: 1999
+      description: One of the hottest books in the series
+      category: movie
+
+publication:
+      title: You are my rock
+      creator: Sarah Marshall
+      publication_year: twenty
+      description:
+      category: movie
+
+creator:
+      title: You are my sunshine
+      creator: 
+      publication_year: 1999
+      description: One of the hottest books in the series
+      category: movie
