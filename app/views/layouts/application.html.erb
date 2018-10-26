@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <header class="app-header__header">
+      <h1>
+        <a href="/">Media Ranker</a>
+        <small>Ranking the Best of Everything</small>
+      </h1>
+
+      <nav class="app-header__nav">
+        <ul class="nav app-header__site-nav-container">
+          <li class="nav-item app-header__nav_item">
+            <a class="nav-link" href="/">View top media</a>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <a class="nav-link" href="/works">View all media</a>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <a class="nav-link" href="/works/new">Add a new work</a>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <a class="nav-link" href="/users">View all users</a>
+          </li>
+        </ul>
+        <ul class="nav app-header__user-nav-container">
+
+          <li class="nav-item app-header__nav_item">
+          <%= link_to "login", login_path %>
+          </li>
+
+        </ul>
+      </nav>
+    </header>
+
+  <body>
+
+
+
+
+
+    <%= link_to "login", login_path %>
+    <%= link_to "logout", logout_path, :method => :delete, :data => {:confirm => "You Sure?"}%>
+    <%= yield %>
+  </body>
+</html>

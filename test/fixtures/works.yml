@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+horror_movie:
+  title: cabin in the woods
+  category: book
+  creator: katherine
+  publication_year: 1992
+  description: horror
+
+adventure_song:
+  title: flash
+  category: album
+  creator: geoff
+  publication_year: 1992
+  description: adventure

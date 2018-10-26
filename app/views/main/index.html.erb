@@ -1,0 +1,82 @@
+
+      <h2>Top Media</h2>
+      <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight</span>
+      <%=link_to @spotlight.title, work_path(@spotlight.id) %>
+    </h2>
+    <p class="spotlight__description">
+      <%=link_to @spotlight.title, work_path(@spotlight.id) %>
+        <%= @spotlight.description %>
+      </p>
+      <p><%= @spotlight.votes_count %> Votes</p
+
+  </section>
+
+      <section class="top-ten__container">
+       <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
+      Top Books
+    </h2>
+    <ul class="list-group top-ten__list">
+        <li class="list-group-item">
+          <h4>
+            <% @books.each do |book| %>
+                <br>
+                <%=link_to book.title, work_path(book.id) %>
+                  <%= link_to "upvote", work_votes_path(book.id), method: :post %>
+                <p><%= book.votes_count %> Votes</p>
+
+            <small class="top-ten__creator"><%=link_to book.creator, work_path(book.id) %></small>
+            <% end %>
+          </h4>
+        </li>
+
+    </ul>
+  </section>
+
+          <section class="top-ten__list-container">
+          <h2 class="top-ten__header">
+            Top Movies
+          </h2>
+          <ul class="list-group top-ten__list">
+              <li class="list-group-item">
+                <h4>
+                  <% @movies.each do |movie| %>
+                      <br>
+                      <%=link_to movie.title, work_path(movie.id) %>
+                        <%= link_to "upvote", work_votes_path(movie.id), method: :post %>
+                      <p><%= movie.votes_count %> Votes</p>
+
+                  <small class="top-ten__creator"><%=link_to movie.creator, work_path(movie.id) %></small>
+                  <% end %>
+                </h4>
+              </li>
+
+          </ul>
+
+        </section>
+
+      <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        Top Albums
+      </h2>
+      <ul class="list-group top-ten__list">
+          <li class="list-group-item">
+            <h4>
+              <% @albums.each do |album| %>
+                  <br>
+                  <%=link_to album.title, work_path(album.id) %>
+                  <%= link_to "upvote", work_votes_path(album.id), method: :post %>
+                  <p><%= album.votes_count %> Votes</p>
+
+              <small class="top-ten__creator"><%=link_to album.creator, work_path(album.id) %></small>
+              <% end %>
+
+            </h4>
+          </li>
+
+      </ul>
+
+    </section>
+  </section>

@@ -1,0 +1,18 @@
+
+<h1>Album:</h1>
+<% @albums.each do |album| %>
+    <br>
+    <%=link_to album.title, work_path(album.id) %>
+<% end %>
+
+<h1>Book:</h1>
+<% @books.each do |book| %>
+    <br>
+    <%=link_to book.title, work_path(book.id) %>
+<% end %>
+
+<h1>Movie:</h1>
+<% @movies.each do |movie| %>
+    <br>
+    <%=link_to movie.title, work_path(movie.id) %>
+<% end %>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+vote1:
+  work: horror_movie
+  user: User1
+
+vote2:
+  work: adventure_movie
+  user: User2
