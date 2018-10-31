@@ -11,7 +11,8 @@ class Work < ApplicationRecord
   validates :publication_year, presence: true
   validates :description, presence: true
   validates :title, presence: true, uniqueness: true
-
+  #
+# Could be a class method - then might work 
   def top_ten_list(category)
     # Select all of category from work instances
     work_by_category = Work.all.select { |work| work.category.downcase == "#{category}" }

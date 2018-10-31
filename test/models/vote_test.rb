@@ -12,13 +12,10 @@ describe Vote do
 
   describe 'validations' do
     it 'can only have one vote per user' do
-      new_vote = Vote.new (
-        user_id: @user.id,
-        work_id: @work.id,
-        date_created: Date.today
-      )
+      work_vote_count = @work.votes.length
+      new_vote = Vote.new ( @vote )
+      expect(@work.votes.length).must_equal work_vote_count
 
-      
     end
   end
 

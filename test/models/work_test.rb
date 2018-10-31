@@ -59,11 +59,14 @@ describe Work do
 
   describe 'custom methods' do
     before do
+      @movies = [works(:rambo), works(:serenity), works(:inception)]
 
+      # Add votes to works/increase vote count 
     end
     # test top ten categories
     it 'returns the correct category' do
-
+      Work.all.top_ten_list("movie")
+      binding.pry
     end
 
     it 'has the lowest number of votes as the last item' do
@@ -79,6 +82,6 @@ describe Work do
     end
 
     # What if there's no works?
-    
+
   end
 end
