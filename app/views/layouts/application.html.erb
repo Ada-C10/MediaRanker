@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One" rel="stylesheet">
+    <%= favicon_link_tag(source='owl.png', options={}) %> 
+  </head>
+
+  <body>
+    <div id="header_container">
+      <header>
+
+        <section class="flash">
+          <% flash.each do |name, message| %>
+            <% if message.class == Array %>
+              <div class="alert-warning">
+                <% message.each do |msg| %>
+                    <p><strong><%= "#{name}:" %></strong><%= " #{msg}" %></p>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="alert-<%= name %>">
+                  <%= message %>
+              </div>
+            <% end %>
+          <% end %>
+
+        <h1>
+        <%= link_to "Media Ranker", welcome_index_path %>
+          <small>
+          <%= "Ranking the Best of Everything" %>
+        </small>
+      </h1>
+      </header>
+
+      <nav>
+        <%= link_to "View Top Media", welcome_index_path %>
+        <%= link_to "View All Media", works_path %>
+        <%= link_to "Add New Media", new_work_path %>
+        <%= link_to "View All Users", users_path %>
+
+        <% if @current_user %>
+          <%= link_to "Log Out", logout_path, method: :delete, class: 'btn btn-primary' %>
+        <% else %>
+          <%= link_to "Login", login_path, class: 'btn btn-primary' %>
+        <% end %>
+      </nav>
+    </div>
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

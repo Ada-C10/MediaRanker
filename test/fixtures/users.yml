@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+cassy:
+  name: cassy
+  date_joined: 2018-10-08
+
+jane:
+  name: Jane 
+  date_joined: 2018-10-08

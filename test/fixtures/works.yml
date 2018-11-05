@@ -1,0 +1,34 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+rambo:
+  category: movie
+  title: rambo
+  creator: cassy
+  publication_year: 2018
+  description: crazy boxing movie
+  votes_count: 0
+
+serenity:
+  category: movie
+  title: serenity
+  creator: Johss Whedon
+  publication_year: 2005
+  description: awesome scifi movie for firefly
+  votes_count: 0
+
+
+inception:
+  category: movie
+  title: inception
+  creator: legendary pictures
+  publication_year: 2010
+  description: Interesting movie involving dreams
+  votes_count: 0
+
+reputation:
+  category: movie
+  title: reputation
+  creator: no clue
+  publication_year: 1990
+  description: random movie 
+  votes_count: 0
