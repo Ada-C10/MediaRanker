@@ -1,11 +1,18 @@
 class WorksController < ApplicationController
   before_action :find_work, only:[:show, :edit, :update, :upvote]
-  before_action :find_top_media, only:[:welcome]
-  before_action :find_all_works, only:[:index]
+  
+  def welcome
+    @albums = Work.top_media('album')
+    @books = Work.top_media('book')
+    @movies = Work.top_media('movie')
+    @spotlight = Work.spotlight
+  end
 
-  def welcome; end
-
-  def index; end
+  def index
+    @albums = Work.get_all_works('album')
+    @books = Work.get_all_works('book')
+    @movies = Work.get_all_works('movie')
+  end
 
   def show; end
 
@@ -97,19 +104,6 @@ private
 
   def find_work
     @work = Work.find_by(id: params[:id])
-  end
-
-  def find_top_media
-    @albums = Work.top_media('album')
-    @books = Work.top_media('book')
-    @movies = Work.top_media('movie')
-    @spotlight = Work.spotlight
-  end
-
-  def find_all_works
-    @albums = Work.get_all_works('album')
-    @books = Work.get_all_works('book')
-    @movies = Work.get_all_works('movie')
   end
 
 
