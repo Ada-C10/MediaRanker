@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+oreo:
+  username: oreo
+
+muffin:
+  username: muffin
+
+chips:
+  username: chips
+
+burger:
+  username: burger
+
+cheetos:
+  username: cheetos
+
+popcorn:
+  username: popcorn

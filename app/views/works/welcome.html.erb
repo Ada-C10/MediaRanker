@@ -1,0 +1,57 @@
+<section class="spotlight">
+  <h2 id="title-spotlight"><strong><%= "Media Spotlight: "%></strong>
+  <strong><%= link_to "#{@spotlight.title}", work_path(@spotlight)%></strong>
+    <%= "by #{@spotlight.creator}" %>
+  </h2>
+  <p><%= "#{@spotlight.votes.count} votes - #{@spotlight.description}" %></p>
+</section>
+
+
+<section class="top-ten-container">
+
+  <section class="top-ten-list-container">
+    <h2 class="top-ten-header"><strong>Top Movies</strong></h2>
+    <ul>
+      <% @movies.each do |work| %>
+      <li><%= link_to "#{work.title}", work_path(work.id)%></li>
+      <li class="creator"><%= "by #{work.creator}" %></li>
+      <li><%= pluralize("#{work.votes.count}", 'vote')%></li>
+      <br>
+      <br>
+      <% end %>
+      <br>
+
+    </ul>
+
+  </section>
+
+  <section class="top-ten-list-container">
+    <h2 class="top-ten-header"><strong>Top Books</strong></h2>
+    <ul>
+      <% @books.each do |work| %>
+      <li><%= link_to "#{work.title}", work_path(work.id)%></li>
+      <li class="creator"><%= "by #{work.creator}" %></li>
+      <li><%= pluralize("#{work.votes.count}", 'vote')%></li>
+      <br>
+      <br>
+      <% end %>
+      <br>
+    </ul>
+
+  </section>
+
+  <section class="top-ten-list-container">
+    <h2 class="top-ten-header"><strong>Top Albums</strong></h2>
+    <ul>
+      <% @albums.each do |work| %>
+      <li><%= link_to "#{work.title}", work_path(work.id)%></li>
+      <li class="creator"><%= "by #{work.creator}" %></li>
+      <li><%= pluralize("#{work.votes.count}", 'vote')%></li>
+      <br>
+      <br>
+      <% end %>
+      <br>
+    </ul>
+  </section>
+
+</section>

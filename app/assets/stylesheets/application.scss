@@ -1,0 +1,194 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+// Import Google fonts
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+}
+
+body, h1, h2, h3, h4 {
+  font-family: "Gudea", sans-serif;
+}
+
+.app-header {
+  background-color: #B2DFDB;
+  max-width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 2rem 1rem 0.5rem 1rem;
+}
+
+.header-title {
+  padding: 3.5rem 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+header h1 {
+  text-align: center;
+}
+
+
+h1 a {
+  color: #FF5722;
+  border-right: white 2px solid;
+  padding-right: 1rem;
+  font-size: 2.5rem;
+}
+
+h1 small {
+  color: white;
+  font-size: 80%;
+  font-weight: 400;
+  padding-left: 1rem;
+}
+
+.header-title a:hover {
+  text-decoration: none;
+  color: #FF5722;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.site-nav a {
+  display: flex;
+  color: #00796B;
+  text-decoration: none;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 3rem;
+}
+
+.btn-primary {
+  background-color: #26A69A;
+  color: white;
+  border-color: #26A69A;
+}
+
+.btn-primary:hover {
+  background-color: #00796B;
+  color: white;
+}
+
+.login-info li {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.login-info a {
+  color: white;
+  text-align: center;
+}
+
+main {
+  padding: 2rem;
+}
+
+
+.spotlight {
+  padding: 2rem 2rem 1rem 2rem;
+  border-bottom: lightgray 1px solid;
+}
+
+
+.spotlight a {
+  color: #26A69A;
+  text-decoration: underline;
+}
+
+.spotlight a:hover {
+  color: #00796B;
+
+}
+
+.top-ten-container {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+}
+
+.top-ten-header {
+  color: #26A69A;
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+  margin-bottom: 1.5rem;
+}
+
+.top-ten-container a:hover {
+  color: #00796B;
+  text-decoration: none;
+}
+
+.top-ten-container a {
+  color: #26A69A;
+}
+
+.top-ten-container li {
+  list-style-type: none;
+}
+
+.alert-container {
+  margin: 2rem 0 1rem 0;
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+  font-weight: bold;
+  text-align: center;
+}
+
+.errors {
+  color: salmon;
+  font-weight: bold;
+  text-align: center;
+  list-style-type: none;
+}
+
+.creator {
+  color: slategrey;
+}

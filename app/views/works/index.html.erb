@@ -1,0 +1,90 @@
+<h2><strong>List of Works</strong></h2>
+
+<h4><strong>Albums</strong></h4>
+
+<table class="table ">
+
+  <thead>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <% @albums.each do |work| %>
+        <td><%= work.votes.count %></td>
+        <td><%= link_to "#{work.title}", work_path(work.id)%> </td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td><%= link_to "Upvote", upvote_path(work.id), method: :post, class: "btn btn-primary" %></td>
+    </tr>
+      <% end %>
+  </tbody>
+
+</table>
+
+<br>
+
+<h4><strong>Books</strong></h4>
+
+<table class="table ">
+  <thead>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <% @books.each do |work| %>
+        <td><%= work.votes.count %></td>
+        <td><%= link_to "#{work.title}", work_path(work.id)%> </td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td><%= link_to "Upvote", upvote_path(work.id), method: :post, class: "btn btn-primary" %></td>
+    </tr>
+      <% end %>
+  </tbody>
+
+</table>
+
+<br>
+
+<h4><strong>Movies</strong></h4>
+
+<table class="table ">
+  <thead>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <% @movies.each do |work| %>
+        <td><%= work.votes.count %></td>
+        <td><%= link_to "#{work.title}", work_path(work.id)%> </td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td><%= link_to "Upvote", upvote_path(work.id), method: :post, class: "btn btn-primary" %></td>
+    </tr>
+      <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to "View top media", root_path, class: "btn btn-primary" %>
+<%= link_to "Add a new work", new_work_path, class: "btn btn-primary" %>
