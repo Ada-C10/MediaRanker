@@ -1,0 +1,14 @@
+<% if model.errors.messages.any? %>
+<div class="error_messages">
+  <ul>
+    <% model.errors.messages.each do |field, problem_list| %>
+      <% problem_list.each do |problem| %>
+        <li>
+          <%= field %>
+          <%= problem %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+<% end %>

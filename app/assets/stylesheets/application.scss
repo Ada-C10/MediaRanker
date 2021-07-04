@@ -1,0 +1,136 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+
+.flash_messages{
+  margin-top: 25px;
+  margin-bottom: -30px;
+}
+
+#flash_success{
+  background-color: #ceeed8;
+}
+
+#flash_error{
+  background-color: #fff3c8;
+}
+
+body{
+  font-family: "Gudea", sans-serif;
+}
+
+.body_content{
+  padding: 30px;
+}
+
+.title, .title > a{
+  color: #FF5722;
+  font-size: 2.5rem
+}
+
+.title > a:hover{
+  color: #d53806;
+}
+
+#subtitle{
+  color: white;
+  font-size: 80%
+}
+
+header{
+  background-color: #a6e1db;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.header_title{
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.links ul{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.site_navigation{
+  width: 50vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.site_navigation > li > a{
+  color: #007b6c;
+}
+
+.login_logout{
+  width: 50vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.login_logout > li{
+  margin-right: 40px;
+  text-align: center;
+  padding: 7px;
+  border-radius: 5px;
+  background-color: #00a99a;
+  color: white;
+}
+
+ul {
+  list-style: none;
+}
+
+.Login_logout_button{
+  margin-right: 30px;
+}
+
+button{
+  border-radius: 3px;
+  padding: 4px;
+  background-color: #00a99a;
+}
+
+button > a{
+  color: white;
+  padding: 5px;
+}
+
+.flash_text{
+  padding-right: 20px;
+}
+
+.flash_messages > p{
+  padding-left: 30px;
+}
+
+a:hover{
+  text-decoration: none;
+  color: #02827c;
+}

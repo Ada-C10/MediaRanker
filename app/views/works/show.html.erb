@@ -1,0 +1,48 @@
+<section>
+  <h2 id = "show_title"><%= @work.title %></h2>
+  <ul>
+    <li>Created by: <%= @work.creator %></li>
+    <li>Published: <%= @work.publication_year %></li>
+    <li>Description: <%= @work.description %></li>
+  </ul>
+</section>
+
+<section class="show_page_buttons">
+
+    <button type="button"><%= link_to "Back to media ranks", root_path %></button>
+    <button type="button"><%= link_to "Edit", edit_work_path(@work.id) %></button>
+    <button type="button"><%= link_to "Upvote", work_votes_path(@work.id), method: :post %></button>
+    <button type="button"><%= link_to "Delete", work_path(@work.id), data: { confirm: "Are you sure you want to delete #{@work.category} #{@work.title}?", method: :delete} %></button>
+</section>
+
+<section>
+  <h2><%= @work.total_votes %> Votes for this <%= @work.category %></h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th class = "table_grid">User</th>
+          <th class = "table_grid">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% users = @work.users_that_voted_on_this_work %>
+        <% users.each do |user| %>
+          <tr>
+            <td class = "table_grid">
+              <%= link_to user.username, user_path(user.id) %>
+            </td>
+
+            <td class = "table_grid">
+              <% vote = user.vote(@work.id) %>
+              <%= vote[0].created_at.strftime("%b %d,%Y") %>
+            </td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+
+    
+</section>

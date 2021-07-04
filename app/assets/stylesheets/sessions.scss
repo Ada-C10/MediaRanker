@@ -1,0 +1,15 @@
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.login > h2{
+  color: #00a99a;
+  font-size: 2.0rem;
+  font-weight: bold;
+}
+
+input[type=submit]{
+  background-color: #00a99a;
+  color: white;
+  border-radius: 5px;
+  padding: 7px;
+}

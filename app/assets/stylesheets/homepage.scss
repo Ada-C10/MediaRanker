@@ -1,0 +1,67 @@
+// Place all the styles related to the homepage controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.media_body{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+article:nth-of-type(1){
+  border-bottom: .5px solid lightgrey;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#entire_title{
+  color: #00a99a;
+}
+
+ #spotlight{
+   text-decoration: underline;
+ }
+
+article > h1{
+  font-size: 2.0rem;
+}
+
+#media_spotlight{
+  color: black;
+}
+
+.media_column{
+  padding-top: 20px;
+  margin-left: 20px;
+}
+
+.media_column > h4{
+  color: #00a99a;
+  font-size: 2.0rem;
+  border-bottom: 1.5px solid #00a99a;
+}
+
+.title_link > a{
+  color: #00a99a;
+  font-size: 1.5rem;
+}
+
+#spotlight > a{
+  color: #00a99a;
+}
+
+#spotlight > a:hover{
+  text-decoration: none;
+  color: #02827c;
+}
+
+.media_votes{
+  color: #00a99a;
+}
+
+.creator{
+  color: grey;
+}
+
+ul > li {
+  margin-bottom: 25px;
+}

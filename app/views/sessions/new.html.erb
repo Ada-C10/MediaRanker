@@ -1,0 +1,10 @@
+<section class = "login">
+  <h2>Log In</h2>
+
+  <%= form_with method: :post, url: sessions_path do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+
+    <%= f.submit "Log In"%>
+  <% end %>
+</section>

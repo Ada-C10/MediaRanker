@@ -1,0 +1,35 @@
+<section class = "form_partial">
+  <h2>
+  <%= action_title %>
+  </h2>
+
+  <%= form_with model: model do |f| %>
+
+    <%= f.label :category %>
+    <br>
+      <%= f.select :category, ["movie", "book", "album"] %>
+    <br>
+
+    <%= f.label :title %>
+    <br>
+      <%= f.text_field :title %>
+    <br>
+
+    <%= f.label :creator %>
+    <br>
+      <%= f.text_field :creator %>
+    <br>
+
+    <%= f.label :publication_year %>
+    <br>
+      <%= f.text_field :publication_year %>
+    <br>
+
+    <%= f.label :description %>
+    <br>
+      <%= f.text_area :description %>
+    <br>
+
+    <%= f.submit action_submit %>
+  <% end %>
+</section>

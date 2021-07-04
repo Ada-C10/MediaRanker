@@ -1,0 +1,9 @@
+<%= render partial: 'layouts/form_errors', locals:
+{
+  model: @work} %>
+
+<%= render partial: 'work_form', locals:
+{
+  action_title: "Add a new work",
+  model: @work,
+  action_submit: "Create Work"} %>

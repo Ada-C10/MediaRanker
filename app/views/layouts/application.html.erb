@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <header>
+      <div class="header_title">
+        <h1 class="title"><%= link_to "Media Ranker", root_path %> <span id="subtitle">| Ranking the Best of Everything</span>
+        </h1>
+      </div>
+      <div class="links">
+        <nav>
+          <ul>
+            <section class="site_navigation">
+              <li><%= link_to "View top media", root_path %></li>
+              <li><%= link_to "View all media", works_path %></li>
+              <li><%= link_to "Add a new work", new_work_path %></li>
+              <li><%= link_to "View all users", users_path %></li>
+            </section>
+            <section class="login_logout">
+              <% logged_in_user = User.find_by(id: session[:user_id]) %>
+              <% if logged_in_user %>
+                <button type="button" class="Login_logout_button">
+                  <%= link_to "Logged in as #{logged_in_user.username}", user_path(logged_in_user.id) %>
+                </button>
+                <button type="button" class="Login_logout_button">
+                  <%= link_to "Log Out", logout_path, method: :post%>
+                </button>
+              <% else %>
+                <button type="button" class="Login_logout_button">
+                  <%= link_to "Log In", new_session_path%>
+                </button>
+              <% end %>
+            </section>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="flash_messages">
+        <p>
+          <% flash.each do |key, message| %>
+            <% if flash[:success] %>
+              <div id="flash_success">
+                <%= message %>
+              </div>
+            <% else %>
+              <div id="flash_error">
+                <%= message %>
+              </div>
+            <% end %>
+          <% end %>
+        </p>
+    </section>
+
+    <section class = "body_content">
+      <%= yield %>
+    </section>
+
+  </body>
+</html>
